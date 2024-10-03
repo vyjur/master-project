@@ -1,11 +1,86 @@
+import torch
+from torch.utils.data import Dataset, DataLoader
+from sklearn.model_selection import train_test_split
+class CustomDataset(Dataset):
+    def __init__(self, tokenized_data, tokenizer, label2id):
+        self.tokenized_data = tokenized_data
+        self.tokenizer = tokenizer
+        self.label2id = label2id
+
+    def __len__(self):
+        # Return the number of samples
+        return len(self.tokenized_data)
+
+    def __getitem__(self, idx):
+        # Get a single sample of data
+        tokenized = self.tokenized_data[idx]
+        tokenized_sentence = tokenized.tokens()
+        labels = tokenized['labels']
+
+        ids = self.tokenizer.convert_tokens_to_ids(tokenized_sentence)
+        attn_mask = [1 if tok != '[PAD]' else 0 for tok in tokenized_sentence]
+        label_ids = [self.label2id[label] for label in labels]
+        
+        return {
+              'ids': torch.tensor(ids, dtype=torch.long),
+              'mask': torch.tensor(attn_mask, dtype=torch.long),
+              #'token_type_ids': torch.tensor(token_ids, dtype=torch.long),
+              'targets': torch.tensor(label_ids, dtype=torch.long)
+        }
+    
+    def __len__(self):
+        return len(self.tokenized_data)
 class Preprocess:
 
-    def __init__(self):
-        pass
+    def __init__(self, tokenizer, max_length:int=512, train_size:float=0.8):
+        self.__tokenizer = tokenizer
+        self.__max_length = max_length
+        self.__train_size = train_size
 
-    def run(self, data:list=[]):
-        pass
-    
+    def __tokenize_and_align_labels(self, data):
+        tokenized = self.__tokenizer(data["text"], padding="max_length", max_length=self.__max_length, truncation=True, return_offsets_mapping=True)
+        
+        tokens = tokenized.tokens()
+        offsets = tokenized["offset_mapping"]
+
+        labels = ['O']*len(tokenized.tokens())
+        for start, end, _, tag in data['entities']:
+            for i, (_, (token_start, token_end)) in enumerate(zip(tokens, offsets)):
+                if (token_start >= start) and (token_end <= end):
+                    if token_start == start:
+                        labels[i] = f"B-{tag}"
+                    else:
+                            labels[i] = f"I-{tag}"
+        tokenized['labels'] = labels
+        
+        return tokenized 
+
+    def run(self, data:list=[], tags_name:list = []):
+        tags = set()
+        for tag in tags_name:
+            tags.add(f"B-{tag}")
+            tags.add(f"I-{tag}")
+                
+        tags = list(tags)
+
+        label2id = {k: v+1 for v, k in enumerate(tags)}
+        id2label = {v+1: k for v, k in enumerate(tags)}
+
+        label2id['O'] = 0
+        id2label[0]='O'
+
+        tokenized_dataset = [self.__tokenize_and_align_labels(row) for row in data]
+        train, test = train_test_split(tokenized_dataset, train_size=self.__train_size, random_state=42)
+        train_dataset = CustomDataset(train, self.__tokenizer, label2id)
+        test_dataset = CustomDataset(test, self.__tokenizer, label2id)
+
+        return {
+            'train': train_dataset,
+            'test': test_dataset,
+            'label2id': label2id,
+            'id2label': id2label
+        }
+
     
 if __name__ == "__main__":
     text = journal = """
