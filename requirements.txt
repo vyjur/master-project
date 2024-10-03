@@ -29,7 +29,6 @@ jupyter_client==8.6.3
 jupyter_core==5.7.2
 jupyterlab_widgets==3.0.13
 MarkupSafe==2.1.5
--e git+ssh://git@github.com/vyjur/master-project.git@c23a96fb427b9c73187b6ec8f71892c51ac395de#egg=master
 matplotlib-inline==0.1.7
 mpmath==1.3.0
 nest-asyncio==1.6.0
