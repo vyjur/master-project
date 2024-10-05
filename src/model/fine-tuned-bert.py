@@ -9,7 +9,7 @@ from preprocess.setup import Preprocess
 from transformers import get_scheduler
 from tqdm.auto import tqdm
 
-SAVE_DIRECTORY = './src/model/saved_model'
+SAVE_DIRECTORY = './src/model/fine_tuned_bert_model'
 
 class FineTunedBert:
     
@@ -19,15 +19,15 @@ class FineTunedBert:
         
         if load:
             self.__model = AutoModelForTokenClassification.from_pretrained(SAVE_DIRECTORY)
-            self.__tokenizer = AutoTokenizer.from_pretrained(SAVE_DIRECTORY)
+            self.tokenizer = AutoTokenizer.from_pretrained(SAVE_DIRECTORY)
             
             print("Model and tokenizer loaded successfully.")
         else:
 
             checkpoint = 'distilbert-base-cased'
-            self.__tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+            self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 
-            processed = Preprocess(self.__tokenizer).run(dataset, tags_name)
+            processed = Preprocess(self.tokenizer).run_train_test_split(dataset, tags_name)
 
             # TODO: move this out and fix device
             TRAIN_BATCH_SIZE = 2
@@ -74,10 +74,12 @@ class FineTunedBert:
             # Save the tokenizer
             self.__tokenizer.save_pretrained(SAVE_DIRECTORY)
                         
-        self.__pipeline = pipeline(task="token-classification", model=self.__model.to(device), device=0, tokenizer=self.__tokenizer, aggregation_strategy="simple")
+        self.__pipeline = pipeline(task="token-classification", model=self.__model.to(device), device=0, tokenizer=self.tokenizer, aggregation_strategy="simple")
             
-    def predict(self, data):
-        return self.__pipeline(data)
+    def predict(self, data, pipeline=False):
+        if pipeline:
+            self.__pipeline(data)
+        return None
     
     def __train(self, training_loader, num_training_steps, device, optimizer):
         progress_bar = tqdm(range(num_training_steps))
@@ -209,7 +211,9 @@ if __name__ == '__main__':
             
     tags = list(tags)
 
-    model = FineTunedBert(False, dataset_sample, tags)
+    model = FineTunedBert(True, dataset_sample, tags)
+    
+    print(model.predict(dataset_sample[0]['text']))
 
 
     

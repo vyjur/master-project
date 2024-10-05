@@ -163,3 +163,5 @@ cython_debug/
 
 # Models
 /notebooks/saved_model/
+/model/fine_tuned_bert_model/
+/model/bilstmcrf/
