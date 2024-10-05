@@ -24,7 +24,6 @@ class CustomDataset(Dataset):
         return {
               'ids': torch.tensor(ids, dtype=torch.long),
               'mask': torch.tensor(attn_mask, dtype=torch.long),
-              #'token_type_ids': torch.tensor(token_ids, dtype=torch.long),
               'targets': torch.tensor(label_ids, dtype=torch.long)
         }
     
@@ -54,8 +53,26 @@ class Preprocess:
         tokenized['labels'] = labels
         
         return tokenized 
+    
+    def run(self, data:list=[]):
+        tokenized_dataset = [self.__tokenize_and_align_labels(row) for row in data]
+        return tokenized_dataset
 
-    def run(self, data:list=[], tags_name:list = []):
+    def run_train_test_split(self, data:list=[], tags_name:list = []):
+        label2id, id2label = self.get_tags(tags_name)
+        tokenized_dataset = [self.__tokenize_and_align_labels(row) for row in data]
+        train, test = train_test_split(tokenized_dataset, train_size=self.__train_size, random_state=42)
+        train_dataset = CustomDataset(train, self.__tokenizer, label2id)
+        test_dataset = CustomDataset(test, self.__tokenizer, label2id)
+
+        return {
+            'train': train_dataset,
+            'test': test_dataset,
+            'label2id': label2id,
+            'id2label': id2label
+        }
+        
+    def get_tags(self, tags_name):
         tags = set()
         for tag in tags_name:
             tags.add(f"B-{tag}")
@@ -68,18 +85,8 @@ class Preprocess:
 
         label2id['O'] = 0
         id2label[0]='O'
-
-        tokenized_dataset = [self.__tokenize_and_align_labels(row) for row in data]
-        train, test = train_test_split(tokenized_dataset, train_size=self.__train_size, random_state=42)
-        train_dataset = CustomDataset(train, self.__tokenizer, label2id)
-        test_dataset = CustomDataset(test, self.__tokenizer, label2id)
-
-        return {
-            'train': train_dataset,
-            'test': test_dataset,
-            'label2id': label2id,
-            'id2label': id2label
-        }
+        
+        return label2id, id2label
 
     
 if __name__ == "__main__":
