@@ -8,31 +8,36 @@ from transformers import pipeline
 from preprocess.setup import Preprocess
 from transformers import get_scheduler
 from tqdm.auto import tqdm
+import numpy as np
 
-SAVE_DIRECTORY = './src/model/saved_model'
+SAVE_DIRECTORY = './src/model/saved/fine_tuned_bert_model'
 
 class FineTunedBert:
     
     def __init__(self, load:bool=True, dataset:list=[], tags_name:list=[]):
-        device = 'cuda' if cuda.is_available() else 'cpu'
-        print("Using:", device)
+        self.__device = 'cuda' if cuda.is_available() else 'cpu'
+        print("Using:", self.__device)
+        # TODO
+        self.__device = 'cpu'
+        
+        checkpoint = 'distilbert-base-cased'
+        self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+
+        processed = Preprocess(self.tokenizer).run_train_test_split(dataset, tags_name)
+        
+        self.__tag_to_ix = processed['label2id']
         
         if load:
             self.__model = AutoModelForTokenClassification.from_pretrained(SAVE_DIRECTORY)
-            self.__tokenizer = AutoTokenizer.from_pretrained(SAVE_DIRECTORY)
+            self.tokenizer = AutoTokenizer.from_pretrained(SAVE_DIRECTORY)
             
             print("Model and tokenizer loaded successfully.")
         else:
 
-            checkpoint = 'distilbert-base-cased'
-            self.__tokenizer = AutoTokenizer.from_pretrained(checkpoint)
-
-            processed = Preprocess(self.__tokenizer).run(dataset, tags_name)
-
             # TODO: move this out and fix device
             TRAIN_BATCH_SIZE = 2
             VALID_BATCH_SIZE = 2
-            EPOCHS = 3
+            EPOCHS = 1
             LEARNING_RATE = 1e-05
             MAX_GRAD_NORM = 10
 
@@ -52,7 +57,7 @@ class FineTunedBert:
             num_training_steps = len(training_loader)
 
             self.__model = BertForTokenClassification.from_pretrained('bert-base-uncased', num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
-            self.__model.to(device)
+            self.__model.to(self.__device)
 
             optimizer = torch.optim.Adam(params=self.__model.parameters(), lr=LEARNING_RATE)
 
@@ -63,23 +68,32 @@ class FineTunedBert:
 
             for epoch in range(EPOCHS):
                 print(f"Training Epoch: {epoch}")
-                self.__train(training_loader, num_training_steps, device, optimizer)
+                self.__train(training_loader, num_training_steps, optimizer)
 
-            labels, predictions = self.__valid(testing_loader, device, processed['id2label'])
+            labels, predictions = self.__valid(testing_loader, self.__device, processed['id2label'])
             print(classification_report(labels, predictions))
 
             # Save the model
             self.__model.save_pretrained(SAVE_DIRECTORY)
 
             # Save the tokenizer
-            self.__tokenizer.save_pretrained(SAVE_DIRECTORY)
-                        
-        self.__pipeline = pipeline(task="token-classification", model=self.__model.to(device), device=0, tokenizer=self.__tokenizer, aggregation_strategy="simple")
+            self.tokenizer.save_pretrained(SAVE_DIRECTORY)
+        
+        self.__pipeline = pipeline(task="token-classification", model=self.__model.to(self.__device), device=0, tokenizer=self.tokenizer, aggregation_strategy="simple")
             
-    def predict(self, data):
-        return self.__pipeline(data)
-    
-    def __train(self, training_loader, num_training_steps, device, optimizer):
+    def predict(self, data, pipeline=False):
+        if pipeline:
+            return self.__pipeline(data)
+        else: 
+            self.__model = self.__model.to(self.__device)
+            
+            mask = np.where(np.array(data) == 0, 0, 1)
+            outputs = self.__model(input_ids=torch.tensor(data, dtype=torch.long).to(self.__device), attention_mask=torch.tensor(mask, dtype=torch.long).to(self.__device))
+            # pred = torch.argmax(active_logits, axis=2)
+            pred = torch.argmax(outputs.logits, dim=2)
+            return pred
+                
+    def __train(self, training_loader, num_training_steps, optimizer):
         progress_bar = tqdm(range(num_training_steps))
         tr_loss, tr_accuracy = 0, 0
         nb_tr_examples, nb_tr_steps = 0, 0
@@ -89,9 +103,9 @@ class FineTunedBert:
         
         for idx, batch in enumerate(training_loader):
             
-            ids = batch['ids'].to(device, dtype = torch.long)
-            mask = batch['mask'].to(device, dtype = torch.long)
-            targets = batch['targets'].to(device, dtype = torch.long)
+            ids = batch['ids'].to(self.__device, dtype = torch.long)
+            mask = batch['mask'].to(self.__device, dtype = torch.long)
+            targets = batch['targets'].to(self.__device, dtype = torch.long)
 
             outputs = self.__model(input_ids=ids, attention_mask=mask, labels=targets)
             loss, tr_logits = outputs.loss, outputs.logits
@@ -99,11 +113,7 @@ class FineTunedBert:
 
             nb_tr_steps += 1
             nb_tr_examples += targets.size(0)
-            
-            if idx % 100==0:
-                loss_step = tr_loss/nb_tr_steps
-                print(f"Training loss per 100 training steps: {loss_step}")
-            
+
             # compute training accuracy
             flattened_targets = targets.view(-1) # shape (batch_size * seq_len,)
             active_logits = tr_logits.view(-1, self.__model.num_labels) # shape (batch_size * seq_len, num_labels)
@@ -210,6 +220,13 @@ if __name__ == '__main__':
     tags = list(tags)
 
     model = FineTunedBert(False, dataset_sample, tags)
+    tokenized = Preprocess(model.tokenizer).run([dataset_sample[0], dataset_sample[1]])
+    pred1 = model.predict([tokenized[0]['input_ids'], tokenized[1]['input_ids']])
+    pred2 = model.predict([tokenized[0]['input_ids']])
+    
+    print(len(tokenized[0]['input_ids']), len(pred1[0]))
+    print(len(tokenized[1]['input_ids']), len(pred1[1]))
+    print(len(tokenized[0]['input_ids']), len(pred2[0]))
 
 
     
