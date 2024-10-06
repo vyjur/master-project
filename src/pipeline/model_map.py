@@ -1,5 +1,5 @@
-from model.bilstmcrf import BiLSTMCRF
-from model.bert import FineTunedBert
+from ner.bilstmcrf import BiLSTMCRF
+from ner.bert import FineTunedBert
 
 MODEL_MAP = {
     'FineTunedBert': FineTunedBert,

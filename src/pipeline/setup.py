@@ -1,6 +1,6 @@
 import json
 import configparser
-from model.setup import Model
+from ner.setup import Model
 from preprocess.setup import Preprocess
 from visualization.setup import Visualization
 from pipeline.model_map import MODEL_MAP
