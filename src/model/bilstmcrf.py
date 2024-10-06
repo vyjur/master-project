@@ -178,20 +178,14 @@ class Model(nn.Module):
 
 class BiLSTMCRF:
 
-    def __init__(self, load: bool = True, dataset: list = [], tags_name: list = []):
+    def __init__(self, load: bool = True, dataset: list = [], tags_name: list = [], parameters: dict = []):
         self.__device = "cuda" if cuda.is_available() else "cpu"
         print("Using:", self.__device)
         
         # TODO: remove
         self.__device = "cpu"
-
-        TRAIN_BATCH_SIZE = 2
-        VALID_BATCH_SIZE = 1
-        EPOCHS = 1
-        LEARNING_RATE = 1e-05
-        MAX_GRAD_NORM = 10
         
-        self.__valid_batch_size = VALID_BATCH_SIZE
+        self.__valid_batch_size = parameters['valid_batch_size']
         
         checkpoint = "distilbert-base-cased"
         self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
@@ -217,12 +211,12 @@ class BiLSTMCRF:
             self.__model.load_state_dict(torch.load(SAVE_DIRECTORY+'/model.pth', weights_only=True))
         else:
 
-            train_params = {'batch_size': TRAIN_BATCH_SIZE,
+            train_params = {'batch_size': parameters['train_batch_size'],
                             'shuffle': True,
                             'num_workers': 0
                             }
             
-            test_params = {'batch_size': VALID_BATCH_SIZE,
+            test_params = {'batch_size': parameters['valid_batch_size'],
                             'shuffle': True,
                             'num_workers': 0
                             }
@@ -230,12 +224,12 @@ class BiLSTMCRF:
             training_loader = DataLoader(processed["train"], **train_params)
             testing_loader = DataLoader(processed["test"], **test_params)
 
-            self.__model = Model(TRAIN_BATCH_SIZE, vocab_size, tag_to_ix, embedding_dim, hidden_dim).to(self.__device)
+            self.__model = Model(parameters['train_batch_size'], vocab_size, tag_to_ix, embedding_dim, hidden_dim).to(self.__device)
             
             loss_fn = nn.CrossEntropyLoss()
-            optimizer = torch.optim.SGD(self.__model.parameters(), lr=LEARNING_RATE, weight_decay=1e-4)
+            optimizer = torch.optim.SGD(self.__model.parameters(), lr=parameters['learning_rate'], weight_decay=1e-4)
             
-            for t in range(EPOCHS):
+            for t in range(parameters['epochs']):
                 print(f"Epoch {t+1}\n-------------------------------")
                 self.__train(training_loader, loss_fn, optimizer)
                 # self.__test(testing_loader, loss_fn)
@@ -313,6 +307,15 @@ class BiLSTMCRF:
 
 if __name__ == '__main__':
     import json
+    
+    train_parameters = {
+        'train_batch_size': 2,
+        'valid_batch_size': 2,
+        'epochs': 1,
+        'learning_rate': 1e-04,
+        'shuffle': True,
+        'num_workers': 0
+    }
 
     with open('./data/Corona2.json') as f:
         d = json.load(f)
@@ -337,7 +340,7 @@ if __name__ == '__main__':
     tags = list(tags)
     print(tags)
 
-    model = BiLSTMCRF(True, dataset_sample, tags)
+    model = BiLSTMCRF(False, dataset_sample, tags, train_parameters)
     tokenized = Preprocess(model.tokenizer).run([dataset_sample[0], dataset_sample[1]])
     
     pred1 = model.predict([tokenized[0]['input_ids'], tokenized[1]['input_ids']])
