@@ -1,5 +1,5 @@
 import torch
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import Dataset
 from sklearn.model_selection import train_test_split
 class CustomDataset(Dataset):
     def __init__(self, tokenized_data, tokenizer, label2id):

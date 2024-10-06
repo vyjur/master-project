@@ -8,7 +8,7 @@ from TorchCRF import CRF
 from torch_struct import LinearChainCRF
 from sklearn.metrics import accuracy_score, classification_report
 
-SAVE_DIRECTORY = './src/model/bilstmcrf'
+SAVE_DIRECTORY = './src/model/saved/bilstmcrf'
 
 START_TAG = "<START>"
 STOP_TAG = "<STOP>"
@@ -33,13 +33,15 @@ def log_sum_exp(vec):
 
 class Model(nn.Module):
 
-    def __init__(self, vocab_size, tag_to_ix, embedding_dim, hidden_dim):
+    def __init__(self, batch, vocab_size, tag_to_ix, embedding_dim, hidden_dim):
         super(Model, self).__init__()
         self.embedding_dim = embedding_dim
         self.hidden_dim = hidden_dim
         self.vocab_size = vocab_size
         self.tag_to_ix = tag_to_ix
         self.tagset_size = len(tag_to_ix)
+        
+        self.batch = batch
 
         self.word_embeds = nn.Embedding(vocab_size, embedding_dim)
         self.lstm = nn.LSTM(embedding_dim, hidden_dim // 2,
@@ -62,8 +64,8 @@ class Model(nn.Module):
 
     def init_hidden(self):
         #TODO
-        return (torch.randn(2, 2, self.hidden_dim // 2),
-                torch.randn(2, 2, self.hidden_dim // 2))
+        return (torch.randn(2, self.batch, self.hidden_dim // 2),
+                torch.randn(2, self.batch, self.hidden_dim // 2))
 
     def _forward_alg(self, feats):
         # Do the forward algorithm to compute the partition function
@@ -184,7 +186,7 @@ class BiLSTMCRF:
         self.__device = "cpu"
 
         TRAIN_BATCH_SIZE = 2
-        VALID_BATCH_SIZE = 2
+        VALID_BATCH_SIZE = 1
         EPOCHS = 1
         LEARNING_RATE = 1e-05
         MAX_GRAD_NORM = 10
@@ -211,7 +213,7 @@ class BiLSTMCRF:
         n_tags = 3*2 + 1
 
         if load:
-            self.__model = Model(vocab_size, tag_to_ix, embedding_dim, hidden_dim)
+            self.__model = Model(1, vocab_size, tag_to_ix, embedding_dim, hidden_dim)
             self.__model.load_state_dict(torch.load(SAVE_DIRECTORY+'/model.pth', weights_only=True))
         else:
 
@@ -228,7 +230,7 @@ class BiLSTMCRF:
             training_loader = DataLoader(processed["train"], **train_params)
             testing_loader = DataLoader(processed["test"], **test_params)
 
-            self.__model = Model(vocab_size, tag_to_ix, embedding_dim, hidden_dim).to(self.__device)
+            self.__model = Model(TRAIN_BATCH_SIZE, vocab_size, tag_to_ix, embedding_dim, hidden_dim).to(self.__device)
             
             loss_fn = nn.CrossEntropyLoss()
             optimizer = torch.optim.SGD(self.__model.parameters(), lr=LEARNING_RATE, weight_decay=1e-4)
@@ -243,16 +245,19 @@ class BiLSTMCRF:
             
             torch.save(self.__model.state_dict(), SAVE_DIRECTORY + "/model.pth")
 
-    def predict(self, data):
-        return self.__model(torch.tensor(data, dtype=torch.long))
+    def predict(self, data, pipeline=False):
+        data_tensor = torch.tensor(data, dtype=torch.long)
+        self.__model.batch = data_tensor.shape[0]
+        return self.__model(data_tensor)
 
     def __train(self, training_loader, loss_fn, optimizer):
         self.__model.train()
         
         for idx, batch in enumerate(training_loader):
             ids = batch['ids'].to(self.__device, dtype=torch.long)
-            mask = batch['mask'].to(self.__device, dtype=torch.bool)
+            # mask = batch['mask'].to(self.__device, dtype=torch.bool)
             targets = batch['targets'].to(self.__device, dtype=torch.long)
+            self.__model.batch = ids.shape[0]
             
             self.__model.zero_grad()
 
@@ -278,12 +283,10 @@ class BiLSTMCRF:
         
         with torch.no_grad():
             for idx, batch in enumerate(testing_loader):
-                if (batch['ids'].shape[0] != self.__valid_batch_size):
-                    continue
                 ids = batch['ids'].to(device, dtype = torch.long)
                 # mask = batch['mask'].to(device, dtype = torch.long)
                 targets = batch['targets'].to(device, dtype = torch.long)
-                
+                self.__model.batch = ids.shape[0]
                 outputs = self.__model(ids)
                                 
                 nb_eval_steps += 1
@@ -335,8 +338,15 @@ if __name__ == '__main__':
     print(tags)
 
     model = BiLSTMCRF(True, dataset_sample, tags)
-    tokenized = Preprocess(model.tokenizer).run([dataset_sample[0]])
-    model.predict([tokenized[0]['input_ids']])
+    tokenized = Preprocess(model.tokenizer).run([dataset_sample[0], dataset_sample[1]])
+    
+    pred1 = model.predict([tokenized[0]['input_ids'], tokenized[1]['input_ids']])
+    pred2 = model.predict([tokenized[0]['input_ids']])
+    
+    print(len(tokenized[0]['input_ids']), len(pred1[0]))
+    print(len(tokenized[1]['input_ids']), len(pred1[1]))
+    print(len(tokenized[0]['input_ids']), len(pred2[0]))
+
     
 
 
