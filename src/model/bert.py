@@ -14,7 +14,7 @@ SAVE_DIRECTORY = './src/model/saved/fine_tuned_bert_model'
 
 class FineTunedBert:
     
-    def __init__(self, load:bool=True, dataset:list=[], tags_name:list=[]):
+    def __init__(self, load: bool = True, dataset: list = [], tags_name: list = [], parameters: dict = []):
         self.__device = 'cuda' if cuda.is_available() else 'cpu'
         print("Using:", self.__device)
         # TODO
@@ -34,21 +34,14 @@ class FineTunedBert:
             print("Model and tokenizer loaded successfully.")
         else:
 
-            # TODO: move this out and fix device
-            TRAIN_BATCH_SIZE = 2
-            VALID_BATCH_SIZE = 2
-            EPOCHS = 1
-            LEARNING_RATE = 1e-05
-            MAX_GRAD_NORM = 10
-
-            train_params = {'batch_size': TRAIN_BATCH_SIZE,
-                            'shuffle': True,
-                            'num_workers': 0
+            train_params = {'batch_size': parameters['train_batch_size'],
+                            'shuffle': parameters['shuffle'],
+                            'num_workers': parameters['num_workers']
                             }
 
-            test_params = {'batch_size': VALID_BATCH_SIZE,
-                            'shuffle': True,
-                            'num_workers': 0
+            test_params = {'batch_size': parameters['valid_batch_size'],
+                            'shuffle': parameters['shuffle'],
+                            'num_workers': parameters['num_workers']
                             }
             
             training_loader = DataLoader(processed['train'], **train_params)
@@ -59,14 +52,14 @@ class FineTunedBert:
             self.__model = BertForTokenClassification.from_pretrained('bert-base-uncased', num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
             self.__model.to(self.__device)
 
-            optimizer = torch.optim.Adam(params=self.__model.parameters(), lr=LEARNING_RATE)
+            optimizer = torch.optim.Adam(params=self.__model.parameters(), lr=parameters['learning_rate'])
 
             # TODO
             lr_scheduler = get_scheduler(
                 name="linear", optimizer=optimizer, num_warmup_steps=0, num_training_steps=num_training_steps
             )
 
-            for epoch in range(EPOCHS):
+            for epoch in range(parameters['epochs']):
                 print(f"Training Epoch: {epoch}")
                 self.__train(training_loader, num_training_steps, optimizer)
 
@@ -196,6 +189,15 @@ class FineTunedBert:
     
 if __name__ == '__main__':
     import json
+    
+    train_parameters = {
+        'train_batch_size': 2,
+        'valid_batch_size': 2,
+        'epochs': 1,
+        'learning_rate': 1e-04,
+        'shuffle': True,
+        'num_workers': 0
+    }
 
     with open('./data/Corona2.json') as f:
         d = json.load(f)
@@ -219,7 +221,7 @@ if __name__ == '__main__':
             
     tags = list(tags)
 
-    model = FineTunedBert(False, dataset_sample, tags)
+    model = FineTunedBert(False, dataset_sample, tags, train_parameters)
     tokenized = Preprocess(model.tokenizer).run([dataset_sample[0], dataset_sample[1]])
     pred1 = model.predict([tokenized[0]['input_ids'], tokenized[1]['input_ids']])
     pred2 = model.predict([tokenized[0]['input_ids']])
