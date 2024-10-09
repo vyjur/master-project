@@ -10,7 +10,7 @@ from transformers import get_scheduler
 from tqdm.auto import tqdm
 import numpy as np
 
-SAVE_DIRECTORY = './src/model/saved/fine_tuned_bert_model'
+SAVE_DIRECTORY = './src/ner/saved/fine_tuned_bert_model'
 
 class FineTunedBert:
     

@@ -47,6 +47,7 @@ class Pipeline:
         
         self.__model = MODEL_MAP[self.__config['MODEL']['name']](load, dataset, tags, train_parameters)
         self.__preprocess = Preprocess(self.__model.tokenizer)
+        self.label2id, self.id2label = self.__preprocess.get_tags(tags)
         self.__visualization = Visualization()
         
         self.__data = None
@@ -55,6 +56,7 @@ class Pipeline:
         if self.__config['MODEL']['name'] != 'LLM':
             preprocessed_data = self.__preprocess.run(data)
             output = self.__model.predict([val['input_ids'] for val in preprocessed_data])
+            return [[self.id2label[int(j.numpy())] for j in i ] for i in output]
         else:
             output = self.__model.predict(data)
         return output
@@ -70,15 +72,6 @@ class Pipeline:
 if __name__ == "__main__":
     import json
     
-    train_parameters = {
-        'train_batch_size': 2,
-        'valid_batch_size': 2,
-        'epochs': 1,
-        'learning_rate': 1e-04,
-        'shuffle': True,
-        'num_workers': 0
-    }
-
     with open('./data/Corona2.json') as f:
         d = json.load(f)
 
