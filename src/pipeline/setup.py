@@ -58,7 +58,7 @@ class Pipeline:
             output = self.__model.predict([val['input_ids'] for val in preprocessed_data])
             return [[self.id2label[int(j.numpy())] for j in i ] for i in output]
         else:
-            output = self.__model.predict(data)
+            output = self.__model.predict(data['text'])
         return output
 
     def add(self, data):
@@ -88,5 +88,6 @@ if __name__ == "__main__":
     
     pipeline = Pipeline('./src/pipeline/config.ini', './data/Corona2.json')
     
-    pred1 = pipeline.run(dataset_sample[0:2])    
+    pred1 = pipeline.run(dataset_sample[0:2])   
     print(pred1)
+    print(len(pred1[0]))
