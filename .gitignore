@@ -165,3 +165,8 @@ cython_debug/
 /notebooks/saved_model/
 /src/model/saved/
 !/src/model/saved/.gitkeep
+
+output.*
+script.slurm
+._.DS__Store
+.DS__Store

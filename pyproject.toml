@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "master-project"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "master_project"}, {include = "preprocessing", from="src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+ipykernel = "^6.29.5"
+scikit-learn = "^1.5.2"
+transformers = "^4.45.2"
+torch = "^2.4.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
