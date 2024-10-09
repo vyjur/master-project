@@ -9,18 +9,18 @@ class Pipeline:
 
     def __init__(self, config_file: str, train_file:str):
         
-        config = configparser.ConfigParser()
-        config.read(config_file)
+        self.__config = configparser.ConfigParser()
+        self.__config.read(config_file)
         
-        load = config['MODEL'].getboolean('load')
+        load = self.__config['MODEL'].getboolean('load')
         
         train_parameters = {
-            'train_batch_size': config.getint('train.parameters', 'train_batch_size'),
-            'valid_batch_size': config.getint('train.parameters', 'valid_batch_size'),
-            'epochs': config.getint('train.parameters', 'epochs'),
-            'learning_rate': config.getfloat('train.parameters', 'learning_rate'),
-            'shuffle': config.getboolean('train.parameters', 'shuffle'),
-            'num_workers': config.getint('train.parameters', 'num_workers')
+            'train_batch_size': self.__config.getint('train.parameters', 'train_batch_size'),
+            'valid_batch_size': self.__config.getint('train.parameters', 'valid_batch_size'),
+            'epochs': self.__config.getint('train.parameters', 'epochs'),
+            'learning_rate': self.__config.getfloat('train.parameters', 'learning_rate'),
+            'shuffle': self.__config.getboolean('train.parameters', 'shuffle'),
+            'num_workers': self.__config.getint('train.parameters', 'num_workers')
         }
         
         with open(train_file) as f:
@@ -45,15 +45,18 @@ class Pipeline:
                 
         tags = list(tags)
         
-        self.__model = MODEL_MAP[config['MODEL']['name']](load, dataset, tags, train_parameters)
+        self.__model = MODEL_MAP[self.__config['MODEL']['name']](load, dataset, tags, train_parameters)
         self.__preprocess = Preprocess(self.__model.tokenizer)
         self.__visualization = Visualization()
         
         self.__data = None
 
     def run(self, data: list = []):
-        preprocessed_data = self.__preprocess.run(data)
-        output = self.__model.predict([val['input_ids'] for val in preprocessed_data])
+        if self.__config['MODEL']['name'] != 'LLM':
+            preprocessed_data = self.__preprocess.run(data)
+            output = self.__model.predict([val['input_ids'] for val in preprocessed_data])
+        else:
+            output = self.__model.predict(data)
         return output
 
     def add(self, data):
