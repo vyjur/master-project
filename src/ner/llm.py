@@ -26,7 +26,7 @@ class LLM:
             raise Exception('LLM does not need training.')
         
         device = 0 if torch.cuda.is_available() else -1  # Use GPU if available, otherwise fallback to CPU
-        # self.__pipeline = pipeline("text-generation", model="meta-llama/Llama-3.1-8B-Instruct", device = device)    
+        self.__pipeline = pipeline("text-generation", model="meta-llama/Llama-3.1-8B-Instruct", device = device)    
         
         self.__tags_text = ''
         for tag in tags_name:
@@ -95,8 +95,8 @@ class LLM:
     def predict(self, data):
         all_outputs = []
         for val in data:
-            output = DUMMY_OUTPUT
-            # output = self.__pipeline(self.__tags_text, PROMPTS[1].format(val))
+            # output = DUMMY_OUTPUT
+            output = self.__pipeline(self.__tags_text, PROMPTS[1].format(val))
             processed_output = self.__process(val, output)
             all_outputs.append(processed_output)
         return all_outputs 
