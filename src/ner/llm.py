@@ -39,6 +39,7 @@ class LLM:
 
     def __process(self, input, output):
         text = output[0]['generated_text']
+        print(text)
         start = text.find('Output Text:') + len('Output Text:')
         stop = text.find('### Example Use Cases')
         
@@ -78,7 +79,6 @@ class LLM:
                     curr_tokens = curr_tokens[1:len(curr_tokens)]
                 else:
                     curr_tokens = curr_tokens[1:len(curr_tokens)-1]
-                print(child) 
                 curr_class = child['class'][0]
                 tokens.extend(curr_tokens)
                 for i, _ in enumerate(curr_tokens):
