@@ -1,3 +1,4 @@
+import torch
 import unittest
 import json
 import configparser
@@ -6,6 +7,9 @@ from pipeline.setup import Pipeline, MODEL_MAP
 class TestPipeline(unittest.TestCase):
 
     def test_ner_models(self):
+        
+        torch.cuda.empty_cache()
+        
         with open('./data/Corona2.json') as f:
             d = json.load(f)
             
