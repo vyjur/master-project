@@ -22,9 +22,6 @@ DUMMY_OUTPUT = [{'generated_text': '### Task\nYour task is to generate an HTML v
 class LLM:
     
     def __init__(self, load: bool = True, dataset: list = [], tags_name: list = [], parameters: dict = []):
-        if not load:
-            raise Exception('LLM does not need training.')
-        
         device = 0 if torch.cuda.is_available() else -1  # Use GPU if available, otherwise fallback to CPU
         self.__pipeline = pipeline("text-generation", model="meta-llama/Llama-3.1-8B-Instruct", device = device)    
         
@@ -39,7 +36,6 @@ class LLM:
 
     def __process(self, input, output):
         text = output[0]['generated_text']
-        print(text)
         start = text.find('Output Text:') + len('Output Text:')
         stop = text.find('### Example Use Cases')
         
