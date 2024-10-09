@@ -3,7 +3,7 @@ run-name: Running GitHub Actions 🚀
 on: [push]
 
 jobs:
-  Explore-GitHub-Actions:
+  Setting-Up-Environment:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
