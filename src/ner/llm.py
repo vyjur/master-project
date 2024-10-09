@@ -96,7 +96,7 @@ class LLM:
         all_outputs = []
         for val in data:
             # output = DUMMY_OUTPUT
-            output = self.__pipeline(self.__tags_text, PROMPTS[1].format(self.__tags_text, val))
+            output = self.__pipeline(PROMPTS[1].format(self.__tags_text, val))
             processed_output = self.__process(val, output)
             all_outputs.append(processed_output)
         return all_outputs 
