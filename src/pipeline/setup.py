@@ -58,7 +58,7 @@ class Pipeline:
             output = self.__model.predict([val['input_ids'] for val in preprocessed_data])
             return [[self.id2label[int(j.numpy())] for j in i ] for i in output]
         else:
-            output = self.__model.predict(data['text'])
+            output = self.__model.predict([val['text'] for val in data])
         return output
 
     def add(self, data):

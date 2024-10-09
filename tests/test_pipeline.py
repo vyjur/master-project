@@ -41,7 +41,7 @@ class TestPipeline(unittest.TestCase):
                     if val in pipeline.label2id.keys():
                         pass
                     else:
-                        raise TypeError('Output is invalid.')
+                        raise TypeError(val, 'Output is invalid.')
 
 if __name__ == '__main__':
     unittest.main()
