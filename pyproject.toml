@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Your Name <you@example.com>"]
 readme = "README.md"
-packages = [{include = "master_project"}, {include = "preprocessing", from="src"}]
+packages = [{include = "pipeline", from="src"}, {include = "preprocess", from="src"}, {include = "model", from="src"}, {include = "structure", from="src"}, {include = "visualization", from="src"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

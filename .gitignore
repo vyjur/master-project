@@ -168,5 +168,5 @@ cython_debug/
 
 output.*
 script.slurm
-._.DS__Store
 .DS__Store
+._.DS_Store
