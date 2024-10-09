@@ -44,7 +44,7 @@ class LLM:
         stop = text.find('### Example Use Cases')
         
         if stop == -1:
-            stop = len(text)
+            stop = text.find('### Code')
             
         relevant_text = text[start:stop]
         relevant_text = relevant_text.replace('\n', '')
