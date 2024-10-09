@@ -1,12 +1,29 @@
 name: GitHub Actions
 run-name: Running GitHub Actions 🚀
 on: [push]
+
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup environment with Poetry
-        run: poetry install
+      - name: Checkout code
+        uses: actions/checkout@v2  # Checkout the repository code
+
+      - name: Set up Python
+        uses: actions/setup-python@v2  # Set up the Python environment
+        with:
+          python-version: '3.10'  # Specify the Python version
+
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -  # Install Poetry
+          echo "$HOME/.local/bin" >> $GITHUB_PATH  # Add Poetry to the PATH
+          echo "Poetry installed at: $HOME/.local/bin/poetry"  # Print path for verification
+
+      - name: Install dependencies
+        run: |
+          poetry install  # Install dependencies using Poetry
 
       - name: Run tests
-        run: poetry run pytest
+        run: |
+          poetry run pytest  # Run tests using pytest
