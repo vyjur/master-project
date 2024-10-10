@@ -8,8 +8,6 @@ class TestPipeline(unittest.TestCase):
 
     def test_ner_models(self):
         
-        torch.cuda.empty_cache()
-        
         with open('./data/Corona2.json') as f:
             d = json.load(f)
             
@@ -17,7 +15,8 @@ class TestPipeline(unittest.TestCase):
         config_file = './tests/test_pipeline.ini'
         
         for model in models:
-            
+            torch.cuda.empty_cache()
+   
             config = configparser.ConfigParser()
             config.read(config_file)
             
