@@ -163,9 +163,8 @@ cython_debug/
 
 # Models
 /notebooks/saved_model/
-/src/model/saved/
-!/src/model/saved/.gitkeep
-
+/src/ner/saved/*
+!/src/ner/saved/.gitkeep
 output.*
 script.slurm
 .DS__Store
