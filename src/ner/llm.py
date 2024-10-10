@@ -75,7 +75,6 @@ class LLM:
                     curr_tokens = curr_tokens[1:len(curr_tokens)]
                 else:
                     curr_tokens = curr_tokens[1:len(curr_tokens)-1]
-                print(child)
                 curr_class = child['class'][0]
                 tokens.extend(curr_tokens)
                 for i, _ in enumerate(curr_tokens):
