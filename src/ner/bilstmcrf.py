@@ -4,11 +4,9 @@ from torch import cuda
 from torch.utils.data import DataLoader
 from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
-from TorchCRF import CRF
-from torch_struct import LinearChainCRF
 from sklearn.metrics import accuracy_score, classification_report
 
-SAVE_DIRECTORY = './src/model/saved/bilstmcrf'
+SAVE_DIRECTORY = './src/ner/saved/bilstmcrf'
 
 START_TAG = "<START>"
 STOP_TAG = "<STOP>"
