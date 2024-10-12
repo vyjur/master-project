@@ -187,7 +187,7 @@ class BiLSTMCRF:
         vocab_size = self.tokenizer.vocab_size
         embedding_dim = self.tokenizer.model_max_length
 
-        processed = Preprocess(self.tokenizer).run_train_test_split(dataset, tags_name)
+        processed = Preprocess(self.tokenizer).run_train_test_split(dataset, tags_name, align)
 
         tag_to_ix = processed['label2id']
         START_ID = max(processed['id2label'].keys()) + 1
