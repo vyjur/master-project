@@ -20,7 +20,7 @@ class FineTunedBert:
         
         self.tokenizer = tokenizer
 
-        processed = Preprocess(self.tokenizer).run_train_test_split(dataset, tags_name)
+        processed = Preprocess(self.tokenizer).run_train_test_split(dataset, tags_name, align)
         
         self.__tag_to_ix = processed['label2id']
         
