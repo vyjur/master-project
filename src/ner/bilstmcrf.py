@@ -40,7 +40,6 @@ class Model(nn.Module):
         self.tagset_size = len(tag_to_ix)
         
         self.batch = batch
-
         self.word_embeds = nn.Embedding(vocab_size, embedding_dim)
         self.lstm = nn.LSTM(embedding_dim, hidden_dim // 2,
                             num_layers=1, bidirectional=True, batch_first=True)
@@ -185,8 +184,9 @@ class BiLSTMCRF:
         self.tokenizer = tokenizer
 
         vocab_size = self.tokenizer.vocab_size
-        embedding_dim = self.tokenizer.model_max_length
-
+        # TODO
+        # embedding_dim = self.tokenizer.model_max_length
+        embedding_dim = 300
         processed = Preprocess(self.tokenizer).run_train_test_split(dataset, tags_name, align)
 
         tag_to_ix = processed['label2id']
