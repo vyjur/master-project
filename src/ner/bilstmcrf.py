@@ -107,8 +107,8 @@ class Model(nn.Module):
 
     def _score_sentence(self, feats, tags):
         # Gives the score of a provided tag sequence
-        score = torch.zeros(1)
-        tags = torch.cat([torch.tensor([self.tag_to_ix[START_TAG]], dtype=torch.long), tags])
+        score = torch.zeros(1).to(self.device)
+        tags = torch.cat([torch.tensor([self.tag_to_ix[START_TAG]], dtype=torch.long).to(self.device), tags])
         for i, feat in enumerate(feats):
             score = score + \
                 self.transitions[tags[i + 1], tags[i]] + feat[tags[i + 1]]
