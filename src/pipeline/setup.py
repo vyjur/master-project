@@ -1,9 +1,9 @@
 import json
 import configparser
-from ner.setup import Model
 from preprocess.setup import Preprocess
 from visualization.setup import Visualization
 from pipeline.model_map import MODEL_MAP
+from transformers import AutoTokenizer
 
 class Pipeline:
 
@@ -45,7 +45,12 @@ class Pipeline:
                 
         tags = list(tags)
         
-        self.__model = MODEL_MAP[self.__config['MODEL']['name']](load, dataset, tags, train_parameters, align)
+        # old:
+        # checkpoint = "distilbert-base-cased"
+        checkpoint = "ltg/norbert3-large"
+        self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+        
+        self.__model = MODEL_MAP[self.__config['MODEL']['name']](load, dataset, tags, train_parameters, align, self.tokenizer)
         self.__preprocess = Preprocess(self.__model.tokenizer)
         self.label2id, self.id2label = self.__preprocess.get_tags(tags)
         self.__visualization = Visualization()
@@ -86,7 +91,7 @@ if __name__ == "__main__":
             'entities': entities
         })
     
-    pipeline = Pipeline('./src/pipeline/config.ini', './data/Corona2.json')
+    pipeline = Pipeline('./src/pipeline/config.ini', './data/ner_train.csv', align=False)
     
     pred1 = pipeline.run(dataset_sample[0:2])   
     print(pred1)
