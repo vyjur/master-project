@@ -14,16 +14,13 @@ SAVE_DIRECTORY = './src/ner/saved/fine_tuned_bert_model'
 
 class FineTunedBert:
     
-    def __init__(self, load: bool = True, dataset: list = [], tags_name: list = [], parameters: dict = [], align:bool = True):
+    def __init__(self, load: bool = True, dataset: list = [], tags_name: list = [], parameters: dict = [], align:bool=True, tokenizer = None):
         self.__device = 'cuda' if cuda.is_available() else 'cpu'
         print("Using:", self.__device)
-        # TODO
-        self.__device = 'cpu'
         
-        checkpoint = 'distilbert-base-cased'
-        self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+        self.tokenizer = tokenizer
 
-        processed = Preprocess(self.tokenizer).run_train_test_split(dataset, tags_name, align)
+        processed = Preprocess(self.tokenizer).run_train_test_split(dataset, tags_name)
         
         self.__tag_to_ix = processed['label2id']
         
@@ -49,7 +46,8 @@ class FineTunedBert:
 
             num_training_steps = len(training_loader)
 
-            self.__model = BertForTokenClassification.from_pretrained('bert-base-uncased', num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
+            # self.__model = BertForTokenClassification.from_pretrained('bert-base-uncased', num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
+            self.__model = BertForTokenClassification.from_pretrained('ltg/norbert3-large', num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
             self.__model.to(self.__device)
 
             optimizer = torch.optim.Adam(params=self.__model.parameters(), lr=parameters['learning_rate'])
@@ -220,8 +218,11 @@ if __name__ == '__main__':
             tags.add(annot['tag_name'])
             
     tags = list(tags)
+    
+    checkpoint = "distilbert-base-cased"
+    tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 
-    model = FineTunedBert(False, dataset_sample, tags, train_parameters)
+    model = FineTunedBert(False, dataset_sample, tags, train_parameters, tokenizer)
     tokenized = Preprocess(model.tokenizer).run([dataset_sample[0], dataset_sample[1]])
     pred1 = model.predict([tokenized[0]['input_ids'], tokenized[1]['input_ids']])
     pred2 = model.predict([tokenized[0]['input_ids']])
