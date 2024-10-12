@@ -1,5 +1,6 @@
 import json
 import configparser
+import pandas as pd
 from preprocess.setup import Preprocess
 from visualization.setup import Visualization
 from pipeline.model_map import MODEL_MAP
@@ -22,28 +23,31 @@ class Pipeline:
             'shuffle': self.__config.getboolean('train.parameters', 'shuffle'),
             'num_workers': self.__config.getint('train.parameters', 'num_workers')
         }
-        
-        with open(train_file) as f:
-            d = json.load(f)
+        if "csv" in train_file:
+            dataset = pd.read_csv(train_file)
+            dataset.drop(["Unnamed: 0"], axis=1, inplace=True)
+        else:
+            with open(train_file) as f:
+                d = json.load(f)
 
-        dataset = []
+            dataset = []
 
-        for example in d['examples']:
-            
-            entities = [ (annot['start'], annot['end'], annot['value'], annot['tag_name']) for annot in example['annotations']]
-            
-            dataset.append({
-                'text': example['content'],
-                'entities': entities
-            })
-
-        tags = set()
-
-        for example in d['examples']:
-            for annot in example['annotations']:
-                tags.add(annot['tag_name'])
+            for example in d['examples']:
                 
-        tags = list(tags)
+                entities = [ (annot['start'], annot['end'], annot['value'], annot['tag_name']) for annot in example['annotations']]
+                
+                dataset.append({
+                    'text': example['content'],
+                    'entities': entities
+                })
+
+            tags = set()
+
+            for example in d['examples']:
+                for annot in example['annotations']:
+                    tags.add(annot['tag_name'])
+                    
+            tags = list(tags)
         
         # old:
         # checkpoint = "distilbert-base-cased"
