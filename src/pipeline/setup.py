@@ -7,7 +7,7 @@ from pipeline.model_map import MODEL_MAP
 
 class Pipeline:
 
-    def __init__(self, config_file: str, train_file:str):
+    def __init__(self, config_file: str, train_file:str, align:bool = True):
         
         self.__config = configparser.ConfigParser()
         self.__config.read(config_file)
@@ -45,7 +45,7 @@ class Pipeline:
                 
         tags = list(tags)
         
-        self.__model = MODEL_MAP[self.__config['MODEL']['name']](load, dataset, tags, train_parameters)
+        self.__model = MODEL_MAP[self.__config['MODEL']['name']](load, dataset, tags, train_parameters, align)
         self.__preprocess = Preprocess(self.__model.tokenizer)
         self.label2id, self.id2label = self.__preprocess.get_tags(tags)
         self.__visualization = Visualization()

@@ -58,9 +58,16 @@ class Preprocess:
         tokenized_dataset = [self.__tokenize_and_align_labels(row) for row in data]
         return tokenized_dataset
 
-    def run_train_test_split(self, data:list=[], tags_name:list = []):
+    def run_train_test_split(self, data:list=[], tags_name:list = [], align:bool=True):
         label2id, id2label = self.get_tags(tags_name)
-        tokenized_dataset = [self.__tokenize_and_align_labels(row) for row in data]
+        if align:
+            tokenized_dataset = [self.__tokenize_and_align_labels(row) for row in data]
+        else:
+            tokenized_dataset = []
+            for row in data.itertuples():
+                tokenized = self.__tokenizer(row.Term, padding="max_length", max_length=self.__max_length, truncation=True, return_offsets_mapping=True)
+                tokenized['labels'] = [f"B-{row.Category}"] + [f"I-{row.Category}"]*(len(tokenized["input_ids"])-1)
+                tokenized_dataset.append(tokenized)
         train, test = train_test_split(tokenized_dataset, train_size=self.__train_size, random_state=42)
         train_dataset = CustomDataset(train, self.__tokenizer, label2id)
         test_dataset = CustomDataset(test, self.__tokenizer, label2id)
