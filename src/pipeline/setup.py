@@ -1,9 +1,9 @@
 import json
 import configparser
-from ner.setup import Model
 from preprocess.setup import Preprocess
 from visualization.setup import Visualization
 from pipeline.model_map import MODEL_MAP
+from transformers import AutoTokenizer
 
 class Pipeline:
 
@@ -45,7 +45,10 @@ class Pipeline:
                 
         tags = list(tags)
         
-        self.__model = MODEL_MAP[self.__config['MODEL']['name']](load, dataset, tags, train_parameters)
+        checkpoint = "distilbert-base-cased"
+        self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+        
+        self.__model = MODEL_MAP[self.__config['MODEL']['name']](load, dataset, tags, train_parameters, self.tokenizer)
         self.__preprocess = Preprocess(self.__model.tokenizer)
         self.label2id, self.id2label = self.__preprocess.get_tags(tags)
         self.__visualization = Visualization()
