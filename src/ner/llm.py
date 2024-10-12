@@ -21,17 +21,16 @@ DUMMY_OUTPUT = [{'generated_text': '### Task\nYour task is to generate an HTML v
 
 class LLM:
     
-    def __init__(self, load: bool = True, dataset: list = [], tags_name: list = [], parameters: dict = []):
+    def __init__(self, load: bool = True, dataset: list = [], tags_name: list = [], parameters: dict = [], tokenizer = None):
         device = 0 if torch.cuda.is_available() else -1  # Use GPU if available, otherwise fallback to CPU
+        print("Using:", device)
         self.__pipeline = pipeline("text-generation", model="meta-llama/Llama-3.1-8B-Instruct", device = device)    
         
         self.__tags_text = ''
         for tag in tags_name:
             self.__tags_text += f'Use <span class="{tag}"> to denote a {tag}.\n'
             
-        # TODO: remove tokenizer from here?
-        checkpoint = "distilbert-base-cased"
-        self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+        self.tokenizer = tokenizer
             
 
     def __process(self, input, output):
@@ -122,6 +121,9 @@ if __name__ == '__main__':
             tags.add(annot['tag_name'])
             
     tags = list(tags)
+    
+    checkpoint = "distilbert-base-cased"
+    tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 
     model = LLM(True, dataset_sample, tags)
     pred1 = model.predict([dataset_sample[0]['text']])

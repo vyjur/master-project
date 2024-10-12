@@ -14,14 +14,11 @@ SAVE_DIRECTORY = './src/ner/saved/fine_tuned_bert_model'
 
 class FineTunedBert:
     
-    def __init__(self, load: bool = True, dataset: list = [], tags_name: list = [], parameters: dict = []):
+    def __init__(self, load: bool = True, dataset: list = [], tags_name: list = [], parameters: dict = [], tokenizer = None):
         self.__device = 'cuda' if cuda.is_available() else 'cpu'
         print("Using:", self.__device)
-        # TODO
-        self.__device = 'cpu'
         
-        checkpoint = 'distilbert-base-cased'
-        self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+        self.tokenizer = tokenizer
 
         processed = Preprocess(self.tokenizer).run_train_test_split(dataset, tags_name)
         
