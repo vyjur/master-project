@@ -17,6 +17,7 @@ pyvis = "^0.3.2"
 ruff = "^0.6.9"
 bs4 = "^0.0.2"
 numpy = "1.26.4"
+pandas = "^2.2.3"
 
 
 [build-system]
