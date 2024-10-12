@@ -26,6 +26,8 @@ class Pipeline:
         if "csv" in train_file:
             dataset = pd.read_csv(train_file)
             dataset.drop(["Unnamed: 0"], axis=1, inplace=True)
+            
+            tags = dataset['Category'].unique()
         else:
             with open(train_file) as f:
                 d = json.load(f)
