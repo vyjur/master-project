@@ -33,6 +33,9 @@ class Model(nn.Module):
 
     def __init__(self, batch, vocab_size, tag_to_ix, embedding_dim, hidden_dim):
         super(Model, self).__init__()
+        
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
         self.embedding_dim = embedding_dim
         self.hidden_dim = hidden_dim
         self.vocab_size = vocab_size
@@ -61,9 +64,9 @@ class Model(nn.Module):
 
     def init_hidden(self):
         #TODO
-        return (torch.randn(2, self.batch, self.hidden_dim // 2),
-                torch.randn(2, self.batch, self.hidden_dim // 2))
-
+        return (torch.randn(2, self.batch, self.hidden_dim // 2).to(self.device),
+            torch.randn(2, self.batch, self.hidden_dim // 2).to(self.device))
+        
     def _forward_alg(self, feats):
         # Do the forward algorithm to compute the partition function
         init_alphas = torch.full((1, self.tagset_size), -10000.)
