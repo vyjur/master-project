@@ -176,17 +176,13 @@ class Model(nn.Module):
 
 class BiLSTMCRF:
 
-    def __init__(self, load: bool = True, dataset: list = [], tags_name: list = [], parameters: dict = []):
+    def __init__(self, load: bool = True, dataset: list = [], tags_name: list = [], parameters: dict = [], tokenizer = None):
         self.__device = "cuda" if cuda.is_available() else "cpu"
         print("Using:", self.__device)
         
-        # TODO: remove
-        self.__device = "cpu"
-        
         self.__valid_batch_size = parameters['valid_batch_size']
         
-        checkpoint = "distilbert-base-cased"
-        self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+        self.tokenizer = tokenizer
 
         vocab_size = self.tokenizer.vocab_size
         embedding_dim = self.tokenizer.model_max_length
@@ -337,8 +333,11 @@ if __name__ == '__main__':
             
     tags = list(tags)
     print(tags)
+    
+    checkpoint = "distilbert-base-cased"
+    tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 
-    model = BiLSTMCRF(False, dataset_sample, tags, train_parameters)
+    model = BiLSTMCRF(False, dataset_sample, tags, train_parameters, tokenizer)
     tokenized = Preprocess(model.tokenizer).run([dataset_sample[0], dataset_sample[1]])
     
     pred1 = model.predict([tokenized[0]['input_ids'], tokenized[1]['input_ids']])
