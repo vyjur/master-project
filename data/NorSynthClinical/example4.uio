@@ -1,0 +1,201 @@
+# sent_id =  1
+# text =  Han har ingen barn .
+R2	Related_to	FAMILY,14,18	SELF,0,3
+R1	Modifier	NEG,8,13	FAMILY,14,18
+
+# sent_id =  2
+# text =  Pasienten har to barn, en fire år gammel datter og en 6 år gammel sønn .
+R8	Subset	FAMILY,41,47	FAMILY,17,22
+R7	Subset	FAMILY,66,70	FAMILY,17,22
+R6	Holder	AGE,54,65	FAMILY,66,70
+R5	Holder	AGE,26,40	FAMILY,41,47
+R4	Related_to	FAMILY,17,22	SELF,0,9
+R3	Modifier	AMOUNT,14,16	FAMILY,17,22
+
+# sent_id =  3
+# text =  Sønnen skal ha arvet mutasjonen .
+R9	Holder	CONDITION,15,31	FAMILY,0,6
+
+# sent_id =  4
+# text =  Pasienten har en søster som er testet negativt .
+R12	Holder	CONDITION,31,46	FAMILY,17,23
+R11	Related_to	FAMILY,17,23	SELF,0,9
+R10	Modifier	AMOUNT,14,16	FAMILY,17,23
+
+# sent_id =  5
+# text =  Pasienten har en mutasjonspositiv HCM .
+R13	Holder	CONDITION,17,37	SELF,0,9
+
+# sent_id =  6
+# text =  Ingen sikre opplysninger om hjertesykdom hos besteforeldrene .
+R107	Modifier	NEG,0,11	CONDITION,28,40
+R106	Holder	CONDITION,28,40	FAMILY,45,60
+
+# sent_id =  7
+# text =  Hennes far fikk påvist HCM fra 30 års alder og er nylig hjertetransplantert .
+R82	Modifier	TEMPORAL,50,55	CONDITION,56,75
+R17	Modifier	TEMPORAL,31,43	CONDITION,23,26
+R16	Related_to	FAMILY,7,10	SELF,0,6
+R15	Holder	CONDITION,23,26	FAMILY,7,10
+R14	Holder	CONDITION,56,75	FAMILY,7,10
+
+# sent_id =  8
+# text =  Han har en bror som er gennegativ .
+R20	Holder	CONDITION,23,33	FAMILY,11,15
+R19	Modifier	AMOUNT,8,10	FAMILY,11,15
+R18	Related_to	FAMILY,11,15	SELF,0,3
+
+# sent_id =  9
+# text =  Pasienten har en yngre søster som ikke er gentestet ennå .
+R24	Holder	CONDITION,42,51	FAMILY,23,29
+R23	Modifier	AMOUNT,14,16	FAMILY,23,29
+R22	Related_to	FAMILY,23,29	SELF,0,9
+R21	Modifier	NEG,34,38	CONDITION,42,51
+
+# sent_id =  10
+# text =  Hans far døde plutselig 62 år gammel pga antatt koronarsykdom .
+R28	Related_to	FAMILY,5,8	SELF,0,4
+R27	Holder	EVENT,9,23	FAMILY,5,8
+R26	Holder	CONDITION,48,61	FAMILY,5,8
+R25	Modifier	TEMPORAL,24,36	EVENT,9,23
+
+# sent_id =  11
+# text =  Ingen SCD i ung alder i familien .
+R30	Holder	EVENT,6,9	FAMILY,24,32
+R29	Modifier	NEG,0,5	EVENT,6,9
+
+# sent_id =  12
+# text =  Familiens indekspasient er hennes bror, føst 94, som i august 2013 fikk hjertestans .
+R35	Modifier	TEMPORAL,55,66	EVENT,72,83
+R34	Holder	EVENT,72,83	FAMILY,34,39
+R33	Modifier	TEMPORAL,40,47	FAMILY,34,39
+R32	Related_to	FAMILY,34,39	SELF,27,33
+R31	Holder	CONDITION,10,23	FAMILY,34,39
+R111	Related_to	SELF,27,33	FAMILY,0,9
+
+# sent_id =  13
+# text =  Han har fått påvist samme mutasjon .
+R36	Holder	CONDITION,20,34	SELF,0,3
+
+# sent_id =  14
+# text =  Pasienten har et barn på 19 måneder .
+R39	Modifier	AMOUNT,14,16	FAMILY,17,21
+R38	Related_to	FAMILY,17,21	SELF,0,9
+R37	Modifier	AGE,25,35	FAMILY,17,21
+
+# sent_id =  15
+# text =  Er nå gravid i 5 måned med sitt andre barn .
+R41	Modifier	AMOUNT,32,37	FAMILY,38,42
+
+# sent_id =  16
+# text =  Moren er positiv for familiens mutasjon .
+R40	Holder	CONDITION,21,39	FAMILY,0,5
+
+# sent_id =  17
+# text =  En bror av bestemor døde plutselig 18 år gammel, og en sønn av en annen bror av bestemor døde plutselig 25 år gammel .
+R49	Related_to	FAMILY,55,59	FAMILY,72,76
+R48	Modifier	TEMPORAL,104,116	EVENT,89,103
+R47	Holder	EVENT,89,103	FAMILY,55,59
+R46	Related_to	FAMILY,72,76	FAMILY,11,19
+R45	Modifier	TEMPORAL,35,47	EVENT,20,34
+R44	Holder	EVENT,20,34	FAMILY,3,7
+R43	Modifier	AMOUNT,0,2	FAMILY,3,7
+R42	Related_to	FAMILY,3,7	FAMILY,11,19
+
+# sent_id =  18
+# text =  Pasient mor har en søster som ikke er gentestet, og hun har to barn som ikke er undersøkt .
+R58	Holder	CONDITION,38,48	FAMILY,19,25
+R57	Modifier	AMOUNT,60,62	FAMILY,63,67
+R56	Holder	EVENT,80,89	FAMILY,63,67
+R55	Related_to	FAMILY,63,67	FAMILY,19,25
+R54	Related_to	FAMILY,19,25	FAMILY,8,11
+R53	Modifier	AMOUNT,16,18	FAMILY,19,25
+R52	Related_to	SELF,0,7	FAMILY,8,11
+R51	Modifier	NEG,30,34	CONDITION,38,48
+R50	Modifier	NEG,72,76	EVENT,80,89
+
+# sent_id =  19
+# text =  Pasientens far har fått påvist fortykket hjertemuskel, og fått primærprofylaktisk ICD etter at det ble sett NSVT på Holter .
+R62	Holder	EVENT,108,112	FAMILY,11,14
+R61	Holder	CONDITION,82,85	FAMILY,11,14
+R60	Holder	CONDITION,31,53	FAMILY,11,14
+R59	Related_to	FAMILY,11,14	SELF,0,10
+
+# sent_id =  20
+# text =  Pasientens morfar døde plutselig over 50 år gammel .
+R65	Holder	EVENT,18,32	FAMILY,11,17
+R64	Related_to	FAMILY,11,17	SELF,0,10
+R63	Modifier	TEMPORAL,38,50	EVENT,18,32
+
+# sent_id =  21
+# text =  Ingen øvrige tilfeller av plutselig hjertedød i familien .
+R67	Modifier	NEG,0,12	EVENT,26,45
+R66	Holder	EVENT,26,45	FAMILY,48,56
+
+# sent_id =  22
+# text =  Pasienten er eldst av 4 søsken .
+R68	Modifier	AMOUNT,22,23	FAMILY,24,30
+R108	Subset	FAMILY,24,30	SELF,0,9
+
+# sent_id =  23
+# text =  Ingen av disse har hatt symptomer .
+R75	Modifier	CONDITION,24,33	NEG,0,5
+
+# sent_id =  24
+# text =  Pasienten har tre barn, hvorav ett døde 20 år gammel .
+R73	Subset	FAMILY,31,34	FAMILY,18,23
+R72	Holder	EVENT,35,39	FAMILY,31,34
+R71	Modifier	TEMPORAL,40,51	EVENT,35,39
+R70	Related_to	FAMILY,18,23	SELF,0,9
+R69	Modifier	AMOUNT,14,17	FAMILY,18,23
+
+# sent_id =  25
+# text =  Han fikk hjertestans i forbindelse med trening .
+R74	Holder	EVENT,9,20	SELF,0,3
+
+# sent_id =  26
+# text =  Farfar døde av hjerteinfarkt, og det har vært flere onkler og tanter til far med hjerteproblemer, men genstatus er ukjent .
+R81	Holder	CONDITION,15,29	FAMILY,0,6
+R80	Holder	EVENT,7,11	FAMILY,0,6
+R79	Holder	CONDITION,81,97	FAMILY,62,68
+R78	Holder	CONDITION,81,97	FAMILY,52,58
+R77	Modifier	AMOUNT,46,51	FAMILY,62,68
+R76	Modifier	AMOUNT,46,51	FAMILY,52,58
+R109	Related_to	FAMILY,73,76	FAMILY,0,6
+R105	Holder	CONDITION,102,111	FAMILY,62,68
+R104	Holder	CONDITION,102,111	FAMILY,52,58
+R103	Modifier	NEG,115,121	CONDITION,102,111
+
+# sent_id =  27
+# text =  Hos pasienten er det funnet samme mutasjon som hos far, som har mye arytmiplager .
+R85	Related_to	FAMILY,51,55	SELF,4,13
+R84	Holder	CONDITION,68,80	FAMILY,51,55
+R83	Holder	CONDITION,28,42	SELF,4,13
+R110	Holder	CONDITION,28,42	FAMILY,51,55
+
+# sent_id =  28
+# text =  Pasienten har fått påvist mutasjon, men det er ingen andre kjente tilfeller av HCM i familien, og heller ingen kjente tilfeller av plutselig død .
+R91	Holder	EVENT,131,144	FAMILY,85,94
+R90	Modifier	NEG,105,117	EVENT,131,144
+R89	Related_to	FAMILY,85,94	SELF,0,9
+R88	Holder	CONDITION,26,35	SELF,0,9
+R87	Modifier	NEG,47,58	CONDITION,79,82
+R86	Holder	CONDITION,79,82	FAMILY,85,94
+
+# sent_id =  29
+# text =  Hun har tre barn, og ønsker henvisning for gentest av disse .
+R93	Related_to	FAMILY,12,17	SELF,0,3
+R92	Modifier	AMOUNT,8,11	FAMILY,12,17
+
+# sent_id =  30
+# text =  Pasienten har en yngre søster som er frisk, to eldre brøde der den ene har fått pacemaker og den andre skal ha hatt hjerteinfarkt .
+R99	Related_to	FAMILY,53,58	SELF,0,9
+R98	Modifier	AMOUNT,44,46	FAMILY,53,58
+R97	Subset	FAMILY,93,102	FAMILY,53,58
+R96	Subset	FAMILY,63,70	FAMILY,53,58
+R95	Holder	EVENT,116,129	FAMILY,93,102
+R94	Holder	CONDITION,80,89	FAMILY,63,70
+R102	Modifier	AMOUNT,14,16	FAMILY,23,29
+R101	Related_to	FAMILY,23,29	SELF,0,9
+R100	Holder	CONDITION,37,43	FAMILY,23,29
+

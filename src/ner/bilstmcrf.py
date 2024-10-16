@@ -201,7 +201,7 @@ class BiLSTMCRF:
 
         # TODO
         hidden_dim = 512
-        n_tags = 3*2 + 1
+        n_tags = len(tags_name)
 
         if load:
             self.__model = Model(1, vocab_size, tag_to_ix, embedding_dim, hidden_dim)
@@ -234,6 +234,11 @@ class BiLSTMCRF:
             labels, predictions = self.__valid(testing_loader, self.__device, processed['id2label'])
             print(classification_report(labels, predictions))
             
+            labels = [ lab.replace("B-", "").replace("I-", "") for lab in labels]
+            predictions = [ lab.replace("B-", "").replace("I-", "") for lab in predictions]
+
+            print(classification_report(labels, predictions)) 
+
             torch.save(self.__model.state_dict(), SAVE_DIRECTORY + "/model.pth")
 
     def predict(self, data, pipeline=False):

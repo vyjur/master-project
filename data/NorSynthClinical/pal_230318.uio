@@ -1,0 +1,556 @@
+# sent_id =  1
+# text =  Pasientens far hadde en søster og to brødre , søsteren døde plutselig 31 år gammel .
+R7	Related_to	FAMILY,37,43	FAMILY,11,14
+R6	Related_to	FAMILY,24,30	FAMILY,11,14
+R5	Related_to	FAMILY,11,14	SELF,0,10
+R4	Modifier	AMOUNT,34,36	FAMILY,37,43
+R3	Modifier	AMOUNT,21,23	FAMILY,24,30
+R2	Holder	EVENT,55,69	FAMILY,24,30
+R1	Modifier	TEMPORAL,70,82	EVENT,55,69
+
+# sent_id =  2
+# text =  Farens søster hadde en sønn og en datter , sønnen har to friske barn , datteren hadde tre barn men et av dem døde 4 måneder gammel i krybbedød .
+R9	Modifier	AMOUNT,20,22	FAMILY,23,27
+R8	Related_to	FAMILY,7,13	FAMILY,0,6
+R22	Related_to	FAMILY,34,40	FAMILY,7,13
+R21	Related_to	FAMILY,23,27	FAMILY,7,13
+R20	Related_to	FAMILY,90,94	FAMILY,34,40
+R19	Related_to	FAMILY,64,68	FAMILY,23,27
+R18	Holder	CONDITION,57,63	FAMILY,64,68
+R17	Related_to	FAMILY,90,94	FAMILY,71,79
+R16	Modifier	TEMPORAL,114,130	EVENT,109,113
+R15	Holder	EVENT,133,142	FAMILY,99,108
+R14	Holder	EVENT,109,113	FAMILY,99,108
+R13	Subset	FAMILY,99,108	FAMILY,90,94
+R12	Modifier	AMOUNT,86,89	FAMILY,90,94
+R11	Modifier	AMOUNT,54,56	FAMILY,64,68
+R10	Modifier	AMOUNT,31,33	FAMILY,34,40
+
+# sent_id =  3
+# text =  Pasientens bror har en sønn født i 2003 og en datter født i 2008 , sønnen har nylig fått påvist familiens mutasjon , men datteren er ikke testet ennå .
+R35	Holder	EVENT,28,32	FAMILY,23,27
+R34	Related_to	FAMILY,46,52	FAMILY,11,15
+R33	Modifier	AMOUNT,43,45	FAMILY,46,52
+R32	Related_to	FAMILY,23,27	FAMILY,11,15
+R31	Related_to	FAMILY,11,15	SELF,0,10
+R30	Holder	EVENT,53,57	FAMILY,46,52
+R29	Modifier	YEAR,60,64	EVENT,53,57
+R28	Modifier	YEAR,35,39	EVENT,28,32
+R27	Modifier	AMOUNT,20,22	FAMILY,23,27
+R25	Holder	CONDITION,96,114	FAMILY,67,73
+R24	Modifier	NEG,133,137	CONDITION,138,144
+R23	Holder	CONDITION,138,144	FAMILY,121,129
+
+# sent_id =  4
+# text =  Mormoren er over 90 år og sprek , men har hatt et hjerteinfarkt for noen år siden og har visstnok en pacemaker .
+R41	Holder	CONDITION,26,31	FAMILY,0,8
+R40	Modifier	AMOUNT,47,49	EVENT,50,63
+R39	Modifier	TEMPORAL,68,81	EVENT,50,63
+R38	Holder	CONDITION,101,110	FAMILY,0,8
+R37	Holder	EVENT,50,63	FAMILY,0,8
+R36	Holder	AGE,12,22	FAMILY,0,8
+
+# sent_id =  5
+# text =  Moren har vært plaget med hjertebank i mange år , morens ene søster har blitt ablasjonsbehandlet for en arytmi , og den andre søsteren skal ha fått påvist voksende hjerte .
+R48	Related_to	FAMILY,116,134	FAMILY,50,56
+R47	Related_to	FAMILY,57,67	FAMILY,50,56
+R46	Modifier	TEMPORAL,37,47	CONDITION,26,36
+R45	Holder	CONDITION,26,36	FAMILY,0,5
+R44	Holder	EVENT,78,96	FAMILY,57,67
+R43	Holder	CONDITION,104,110	FAMILY,57,67
+R42	Holder	CONDITION,155,170	FAMILY,116,134
+
+# sent_id =  6
+# text =  De har lite kontakt med morens bror som bor i USA , men pasienten har hørt at han skal ha vært innlagt flere ganger med et hjerteproblem .
+R53	Related_to	SELF,56,65	FAMILY,24,30
+R52	Related_to	FAMILY,31,35	FAMILY,24,30
+R51	Modifier	AMOUNT,103,115	EVENT,95,102
+R50	Holder	EVENT,95,102	FAMILY,31,35
+R49	Holder	CONDITION,123,136	FAMILY,31,35
+
+# sent_id =  7
+# text =  Indekspasienten skal ha vært en kusine av farfar , det er usikkert hva slags fenotype denne kusinen hadde , men flere av farfars brøde skal ha hatt angina og hjertefarkt i relativt ung alder , og ingen av dem ble over 70 år .
+R64	Holder	CONDITION,77,85	FAMILY,32,38
+R63	Holder	INDEX,0,15	FAMILY,32,38
+R62	Holder	AGE,218,223	FAMILY,196,201
+R61	Subset	FAMILY,196,201	FAMILY,129,134
+R60	Modifier	TEMPORAL,181,190	EVENT,158,169
+R59	Modifier	TEMPORAL,181,190	CONDITION,148,154
+R58	Holder	EVENT,158,169	FAMILY,112,120
+R57	Related_to	FAMILY,42,48	FAMILY,32,38
+R56	Related_to	FAMILY,129,134	FAMILY,121,128
+R55	Holder	CONDITION,148,154	FAMILY,112,120
+R54	Subset	FAMILY,112,120	FAMILY,129,134
+
+# sent_id =  8
+# text =  Pasienten har to eldre brøde og en yngre søster , den eldste broren fikk påvist HCM etter en synkope-episode for noen år siden , og etter dette ble mutasjonen påvist hos alle fire .
+R68	Related_to	FAMILY,41,47	SELF,0,9
+R67	Related_to	FAMILY,23,28	SELF,0,9
+R66	Modifier	AMOUNT,14,16	FAMILY,23,28
+R65	Modifier	AMOUNT,32,34	FAMILY,41,47
+R228	Holder	CONDITION,148,158	SELF,0,9
+R227	Holder	CONDITION,148,158	FAMILY,41,47
+R226	Holder	CONDITION,148,158	FAMILY,23,28
+R225	Modifier	TEMPORAL,113,126	EVENT,93,108
+R224	Holder	EVENT,93,108	FAMILY,61,67
+R223	Holder	CONDITION,80,83	FAMILY,61,67
+R222	Subset	FAMILY,61,67	FAMILY,23,28
+
+# sent_id =  9
+# text =  Den eldste broren har tre voksne barn , ingen av dem er gentestet ennå , men en av sønnene har nylig vært innlagt Ahus etter hjertestans og skal ha fått implantert hjertestarter der .
+R76	Subset	FAMILY,77,90	FAMILY,33,37
+R75	Holder	EVENT,125,136	FAMILY,77,90
+R74	Holder	EVENT,153,177	FAMILY,77,90
+R73	Holder	EVENT,106,113	FAMILY,77,90
+R72	Modifier	NEG,40,45	CONDITION,56,65
+R71	Holder	CONDITION,56,65	FAMILY,33,37
+R70	Related_to	FAMILY,33,37	FAMILY,11,17
+R69	Modifier	AMOUNT,22,25	FAMILY,33,37
+
+# sent_id =  10
+# text =  Både faren og moren har nylig vært til undersøkelse av hjertet , pasienten vet ikke hva faren har fått vite , men moren fikk beskjed om at hun burde undersøkes videre .
+R81	Related_to	FAMILY,114,119	SELF,65,74
+R80	Related_to	FAMILY,88,93	SELF,65,74
+R79	Modifier	TEMPORAL,24,29	EVENT,39,62
+R78	Holder	EVENT,39,62	FAMILY,14,19
+R77	Holder	EVENT,39,62	FAMILY,5,10
+
+# sent_id =  11
+# text =  Pasientens far har giftet seg på nytt , og har en fem år gammel sønn med sin nye kone .
+R84	Related_to	SELF,0,10	FAMILY,11,14
+R83	Related_to	FAMILY,64,68	FAMILY,11,14
+R82	Modifier	AMOUNT,47,49	FAMILY,64,68
+R26	Holder	AGE,50,63	FAMILY,64,68
+
+# sent_id =  12
+# text =  Faren har ikke villet teste seg , men halvbroren har nå fått påvist samme mutasjon som pasienten .
+R89	Related_to	SELF,87,96	FAMILY,0,5
+R88	Related_to	FAMILY,38,48	FAMILY,0,5
+R87	Modifier	NEG,10,14	EVENT,22,27
+R86	Holder	EVENT,22,27	FAMILY,0,5
+R85	Holder	CONDITION,68,82	FAMILY,38,48
+
+# sent_id =  13
+# text =  Mormor hadde fem søsken , en søster døde i 40-årene i en ulykke , og en annen døde ca 50 år gammel av hjertesykdom etter at hun hadde vært syk lenge , mens to brødre fortsatt er i live og over 70 .
+R99	Holder	CONDITION,102,114	FAMILY,69,77
+R98	Modifier	TEMPORAL,83,98	EVENT,78,82
+R97	Holder	EVENT,78,82	FAMILY,69,77
+R96	Subset	FAMILY,69,77	FAMILY,17,23
+R95	Related_to	FAMILY,0,6	FAMILY,17,23
+R94	Modifier	AMOUNT,13,16	FAMILY,17,23
+R93	Subset	FAMILY,159,165	FAMILY,17,23
+R92	Holder	AGE,188,195	FAMILY,159,165
+R91	Holder	CONDITION,178,184	FAMILY,159,165
+R90	Modifier	AMOUNT,156,158	FAMILY,159,165
+R102	Subset	FAMILY,29,35	FAMILY,17,23
+R101	Modifier	TEMPORAL,41,51	EVENT,36,40
+R100	Holder	EVENT,36,40	FAMILY,29,35
+
+# sent_id =  14
+# text =  Hun har merket hjertebank og hatt svimmelhetsanfall helt siden tenårene , men hadde sin første synkope da hun var 21 i forbindelse med at hun trente spinning , og hadde så flere synkoper i forbindelse med anstrengelse de neste årene , uten at dette førte til ytterligere utredning .
+R112	Holder	EVENT,271,280	SELF,0,3
+R111	Modifier	NEG,235,242	EVENT,271,280
+R110	Holder	EVENT,178,186	SELF,0,3
+R109	Modifier	AMOUNT,172,177	EVENT,178,186
+R108	Modifier	TEMPORAL,114,116	EVENT,95,102
+R107	Holder	EVENT,95,102	SELF,0,3
+R106	Modifier	TEMPORAL,57,71	EVENT,34,51
+R105	Modifier	TEMPORAL,57,71	CONDITION,15,25
+R104	Holder	EVENT,34,51	SELF,0,3
+R103	Holder	CONDITION,15,25	SELF,0,3
+
+# sent_id =  15
+# text =  Først etter at hun ble innlagt Ullevål sykehus etter synkope under Sentrumsløpet i 2008 ble det påvist EKG-forandringer og fortykket septum på ekko , gentest viste MYH7-mutasjon , og familiescreening har vist at både hennes mor , hennes eldre søster , søsterens to barn (en gutt og en jente) og hennes egen sønn har samme mutasjon .
+R132	Holder	CONDITION,316,330	FAMILY,224,227
+R131	Holder	CONDITION,316,330	FAMILY,243,249
+R130	Holder	CONDITION,316,330	FAMILY,265,269
+R129	Holder	CONDITION,316,330	FAMILY,307,311
+R128	Subset	FAMILY,285,291	FAMILY,265,269
+R127	Subset	FAMILY,274,278	FAMILY,265,269
+R126	Related_to	FAMILY,265,269	FAMILY,243,249
+R125	Holder	FAMILY,307,311	SELF,15,18
+R124	Modifier	AMOUNT,270,273	FAMILY,274,278
+R123	Modifier	AMOUNT,282,284	FAMILY,285,291
+R122	Modifier	AMOUNT,262,264	FAMILY,265,269
+R121	Related_to	FAMILY,243,249	SELF,15,18
+R120	Related_to	FAMILY,224,227	SELF,15,18
+R119	Holder	CONDITION,164,177	SELF,15,18
+R118	Holder	EVENT,150,157	SELF,15,18
+R117	Holder	CONDITION,123,139	SELF,15,18
+R116	Holder	CONDITION,103,119	SELF,15,18
+R115	Modifier	TEMPORAL,83,87	EVENT,53,60
+R114	Holder	EVENT,53,60	SELF,15,18
+R113	Holder	EVENT,23,30	SELF,15,18
+
+# sent_id =  16
+# text =  Indekspasienten i familien er morens ene av to søstre , som har hypertrofisk kardiomyopati , moren er testet positiv men foreløpig ikke undersøkt , pasientens søster har også arvet mutasjonen men er frisk .
+R144	Holder	CONDITION,64,90	FAMILY,37,40
+R143	Related_to	FAMILY,47,53	FAMILY,30,36
+R142	Subset	FAMILY,37,40	FAMILY,47,53
+R141	Holder	INDEX,0,15	FAMILY,37,40
+R140	Modifier	AMOUNT,44,46	FAMILY,47,53
+R139	Related_to	FAMILY,30,36	SELF,148,158
+R138	Related_to	FAMILY,159,165	SELF,148,158
+R137	Holder	FAMILY,159,165	CONDITION,175,191
+R136	Holder	CONDITION,199,204	FAMILY,159,165
+R135	Holder	EVENT,136,145	FAMILY,30,36
+R134	Modifier	NEG,131,135	EVENT,136,145
+R133	Holder	CONDITION,102,116	FAMILY,30,36
+
+# sent_id =  17
+# text =  Hans oldemor (mor til farmor) døde plutselig ca 50 år gammel .
+R148	Related_to	FAMILY,22,29	FAMILY,13,17
+R147	Modifier	TEMPORAL,48,60	EVENT,30,44
+R146	Holder	EVENT,30,44	FAMILY,5,12
+R145	Related_to	FAMILY,5,12	SELF,0,4
+
+# sent_id =  18
+# text =  Ingen suspekt hejrtesykdom hos noen av pasientens foreldre , men en kusine på morssiden døde plutselig ca 25 år gammel da hun var gravid i 6. måned .
+R156	Related_to	FAMILY,68,74	SELF,39,49
+R155	Holder	CONDITION,14,26	FAMILY,50,58
+R154	Modifier	NEG,0,5	CONDITION,14,26
+R153	Related_to	FAMILY,50,58	SELF,39,49
+R152	Modifier	SIDE,78,87	FAMILY,68,74
+R151	Modifier	TEMPORAL,103,118	EVENT,88,102
+R150	Holder	EVENT,88,102	FAMILY,68,74
+R149	Holder	CONDITION,130,136	FAMILY,68,74
+
+# sent_id =  19
+# text =  Pasienten har to friske døtre og broren har to friske barn .
+R163	Related_to	FAMILY,24,29	SELF,0,9
+R162	Related_to	FAMILY,33,39	SELF,0,9
+R161	Related_to	FAMILY,54,58	FAMILY,33,39
+R160	Holder	CONDITION,17,23	FAMILY,24,29
+R159	Modifier	AMOUNT,14,16	FAMILY,24,29
+R158	Holder	CONDITION,47,53	FAMILY,54,58
+R157	Modifier	AMOUNT,44,46	FAMILY,54,58
+
+# sent_id =  20
+# text =  Pasientens mor døde for 15 år siden , rundt 40 år gammel , av det som høres ut som hypertrofisk kardiomyopati .
+R168	Related_to	FAMILY,11,14	SELF,0,10
+R167	Holder	EVENT,15,19	FAMILY,11,14
+R166	Modifier	TEMPORAL,20,35	EVENT,15,19
+R165	Modifier	TEMPORAL,44,56	EVENT,15,19
+R164	Holder	CONDITION,83,109	FAMILY,11,14
+
+# sent_id =  21
+# text =  Hun har en halvbror med hjertesykdom , han har blant annet ICD , og en kusine og hennes far har begge samme mutasjon .
+R176	Holder	CONDITION,102,116	FAMILY,71,77
+R175	Related_to	FAMILY,88,91	SELF,0,3
+R174	Related_to	FAMILY,71,77	SELF,0,3
+R173	Related_to	FAMILY,11,19	SELF,0,3
+R172	Holder	CONDITION,59,62	FAMILY,11,19
+R171	Holder	CONDITION,24,36	FAMILY,11,19
+R170	Modifier	AMOUNT,68,70	FAMILY,71,77
+R169	Holder	CONDITION,102,116	FAMILY,88,91
+
+# sent_id =  22
+# text =  En fetter på farssiden ble hjertetransplantert på 90-tallet , og hans far skal ha dødd i rundt 30 års alder uten at han hadde noen kjent sykdom på forhånd .
+R198	Related_to	FAMILY,70,73	FAMILY,3,9
+R197	Holder	EVENT,27,46	FAMILY,3,9
+R196	Modifier	SIDE,13,22	FAMILY,3,9
+R195	Modifier	TEMPORAL,47,59	EVENT,27,46
+R194	Holder	CONDITION,131,143	FAMILY,70,73
+R193	Holder	EVENT,82,86	FAMILY,70,73
+R192	Modifier	TEMPORAL,89,107	EVENT,82,86
+R191	Modifier	NEG,108,112	CONDITION,131,143
+
+# sent_id =  23
+# text =  Pasienten har i ti års tid merket at hun har blitt raskere sliten ved fysisk anstrengelse enn hun skulle ønske , og hennes søster skal også ha omtrent samme plager , i tillegg til hjertebank .
+R200	Holder	CONDITION,180,190	FAMILY,123,129
+R199	Related_to	FAMILY,123,129	SELF,0,9
+
+# sent_id =  24
+# text =  Etter at broren fikk innlagt pacemaker , har han selv merket mer hjertebank , både enkeltstående ekstraslag og perioder av noen sekunders varighet der hjertet går raskt og han kan merke at han blir svimmel.
+R533	Holder	CONDITION,151,168	SELF,45,48
+R205	Holder	CONDITION,198,206	SELF,45,48
+R204	Holder	CONDITION,29,38	FAMILY,9,15
+R203	Related_to	FAMILY,9,15	SELF,45,48
+R202	Holder	EVENT,97,107	SELF,45,48
+R201	Holder	EVENT,65,75	SELF,45,48
+
+# sent_id =  25
+# text =  Både mor og far har hjertesykdom , far var storrøyker , hadde infarkt da han var 67 , har hjertesvikt og nylig fått innlagt pacemaker , mor har hatt angina i mange år .
+R214	Holder	CONDITION,149,155	FAMILY,5,8
+R213	Modifier	TEMPORAL,156,166	CONDITION,149,155
+R212	Modifier	TEMPORAL,70,83	EVENT,62,69
+R211	Holder	CONDITION,124,133	FAMILY,12,15
+R210	Holder	CONDITION,90,101	FAMILY,12,15
+R209	Holder	EVENT,62,69	FAMILY,12,15
+R208	Holder	CONDITION,43,53	FAMILY,12,15
+R207	Holder	CONDITION,20,32	FAMILY,12,15
+R206	Holder	CONDITION,20,32	FAMILY,5,8
+
+# sent_id =  26
+# text =  Alle søsknene har nå fått påvist tegn til sykdom i relativt ung alder; broren er 22 og søsteren er 26 år .
+R221	Subset	FAMILY,87,95	FAMILY,5,13
+R220	Subset	FAMILY,71,77	FAMILY,5,13
+R219	Holder	FAMILY,87,95	FAMILY,71,77
+R218	Holder	AGE,81,83	FAMILY,71,77
+R217	Modifier	AMOUNT,0,4	FAMILY,5,13
+R216	Modifier	TEMPORAL,51,69	CONDITION,33,48
+R215	Holder	CONDITION,33,48	FAMILY,5,13
+
+# sent_id =  27
+# text =  Pasienten må selv orientere familien om genfunnet , og dersom foreldrene eller søsteren ønsker å bli testet , kan de henvende seg til avdeling for medisinsk genetikk .
+R230	Related_to	FAMILY,79,87	SELF,0,9
+R229	Related_to	FAMILY,62,72	SELF,0,9
+
+# sent_id =  28
+# text =  Gentest har størst betydning for pasientens to barn , som ikke behøver å testes før de blir 10-12 år gamle , og for broren og hans barn .
+R234	Related_to	FAMILY,116,122	SELF,33,43
+R233	Related_to	FAMILY,47,51	SELF,33,43
+R232	Modifier	AMOUNT,44,46	FAMILY,47,51
+R231	Related_to	FAMILY,131,135	FAMILY,116,122
+
+# sent_id =  29
+# text =  Bestefaren ble hjerteoperert i England på 80-tallet , og døde 75 år gammel .
+R238	Modifier	TEMPORAL,62,74	EVENT,57,61
+R237	Modifier	TEMPORAL,39,51	EVENT,15,28
+R236	Holder	EVENT,57,61	FAMILY,0,10
+R235	Holder	EVENT,15,28	FAMILY,0,10
+
+# sent_id =  30
+# text =  Både mor og far har barn fra tidligere ekteskap , men ingen av pasientens halvsøsken har hatt hjerteproblemer .
+R246	Related_to	FAMILY,74,84	FAMILY,5,8
+R245	Related_to	FAMILY,74,84	FAMILY,12,15
+R244	Related_to	FAMILY,20,24	FAMILY,5,8
+R243	Related_to	FAMILY,20,24	FAMILY,12,15
+R242	Related_to	SELF,63,73	FAMILY,12,15
+R241	Related_to	SELF,63,73	FAMILY,5,8
+R240	Related_to	FAMILY,74,84	SELF,63,73
+R239	Modifier	NEG,54,59	CONDITION,94,109
+
+# sent_id =  31
+# text =  Hun har tre barn , født 2013 (jente) , 2016 (gutt) og 2018 (gutt) .
+R254	Subset	FAMILY,59,65	FAMILY,12,16
+R253	Subset	FAMILY,44,50	FAMILY,12,16
+R252	Modifier	YEAR,54,58	FAMILY,59,65
+R251	Modifier	YEAR,39,43	FAMILY,44,50
+R250	Modifier	YEAR,24,28	FAMILY,29,36
+R249	Subset	FAMILY,29,36	FAMILY,12,16
+R248	Modifier	AMOUNT,8,11	FAMILY,12,16
+R247	Related_to	FAMILY,12,16	SELF,0,3
+
+# sent_id =  32
+# text =  Hun har en 24 år gammel datter fra forrige ekteskap , og en 18 år gammel datter med nåværende samboer , kun den eldste har så langt vært til ekko og fått påvist hypertrofi , men den andre datteren er også henvist hit og har time i april .
+R534	Partner	FAMILY,94,101	SELF,0,3
+R262	Related_to	FAMILY,73,79	FAMILY,94,101
+R261	Holder	CONDITION,161,171	FAMILY,24,30
+R260	Holder	EVENT,132,145	FAMILY,24,30
+R259	Related_to	FAMILY,73,79	SELF,0,3
+R258	Modifier	AMOUNT,57,59	TEMPORAL,60,72
+R257	Modifier	AMOUNT,8,10	FAMILY,24,30
+R256	Modifier	TEMPORAL,11,23	FAMILY,24,30
+R255	Related_to	FAMILY,24,30	SELF,0,3
+
+# sent_id =  33
+# text =  Det er flere alvorlige hendelser på fars side av slekten , både tidlige dødsfall og hjertestans , og pasientens yngste bror døde 14 år gammel i en drukningsulykke .
+R270	Related_to	FAMILY,49,56	SELF,101,111
+R269	Holder	EVENT,64,80	FAMILY,49,56
+R268	Related_to	FAMILY,119,123	SELF,101,111
+R267	Holder	EVENT,124,128	FAMILY,119,123
+R266	Holder	EVENT,147,162	FAMILY,119,123
+R265	Modifier	TEMPORAL,129,141	EVENT,124,128
+R264	Modifier	EVENT,84,95	SIDE,36,45
+R263	Modifier	EVENT,64,80	SIDE,36,45
+
+# sent_id =  34
+# text =  Både moren og flere av tantene skal ha vært plaget med hjertebank i mange år , og i hvert fall to av dem har pacemaker .
+R275	Subset	FAMILY,95,104	FAMILY,23,30
+R274	Modifier	AMOUNT,14,19	FAMILY,23,30
+R273	Holder	CONDITION,55,65	FAMILY,5,10
+R272	Holder	CONDITION,55,65	FAMILY,23,30
+R271	Holder	CONDITION,109,118	FAMILY,95,104
+
+# sent_id =  35
+# text =  Tvillingbroren hans har hatt et mye mer aggressivt forløp med hjertesvikt fra han var i tenårene , hjertestans da han var 22 , og han ble transplantert for tre år siden da han var 26 år gammel .
+R338	Holder	CONDITION,138,151	FAMILY,0,14
+R337	Holder	EVENT,99,110	FAMILY,0,14
+R336	Holder	CONDITION,62,73	FAMILY,0,14
+R335	Related_to	SELF,15,19	FAMILY,0,14
+R334	Modifier	TEMPORAL,86,96	CONDITION,62,73
+R333	Modifier	TEMPORAL,122,124	EVENT,99,110
+R332	Modifier	TEMPORAL,180,192	CONDITION,138,151
+R331	Modifier	TEMPORAL,152,168	CONDITION,138,151
+
+# sent_id =  36
+# text =  Både hun og broren har vært fulgt opp ved barnemedisinsk avdeling .
+R339	Related_to	FAMILY,12,18	SELF,5,8
+
+# sent_id =  37
+# text =  Hun har ikke så god kontakt med søstren , men kjenner ikke til at hun har hjertesykdom .
+R342	Modifier	NEG,46,62	CONDITION,74,86
+R341	Holder	CONDITION,74,86	FAMILY,32,39
+R340	Related_to	FAMILY,32,39	SELF,0,3
+
+# sent_id =  38
+# text =  Broren har ikke ønsket å la seg teste .
+R344	Holder	EVENT,32,37	FAMILY,0,6
+R343	Modifier	NEG,11,22	EVENT,32,37
+
+# sent_id =  39
+# text =  Datteren fikk påvist en genfeil kort etter fødsel , etter det har pasientens familie blitt gentestet , og samme mutasjon er funnet hos pasientens mor , men ingen av pasientens to søstre har den .
+R535	Related_to	FAMILY,77,84	SELF,66,76
+R355	Modifier	AMOUNT,176,178	FAMILY,179,185
+R352	Modifier	NEG,156,161	CONDITION,106,120
+R351	Holder	CONDITION,106,120	FAMILY,179,185
+R350	Holder	CONDITION,106,120	FAMILY,146,149
+R349	Related_to	FAMILY,179,185	SELF,66,76
+R348	Related_to	FAMILY,146,149	SELF,66,76
+R347	Related_to	FAMILY,0,8	SELF,66,76
+R346	Modifier	TEMPORAL,32,49	CONDITION,24,31
+R345	Holder	CONDITION,24,31	FAMILY,0,8
+
+# sent_id =  40
+# text =  Pasienten har arvet en MYH7-mutasjon fra moren , og en MYBPC3-variant som også kan være sykdomsgivende fra far .
+R549	Partner	FAMILY,107,110	FAMILY,41,46
+R357	Holder	CONDITION,23,36	SELF,0,9
+R356	Holder	CONDITION,55,69	SELF,0,9
+R354	Related_to	FAMILY,41,46	SELF,0,9
+R353	Related_to	FAMILY,107,110	SELF,0,9
+
+# sent_id =  41
+# text =  Faren har en eldre bror og en eldre søster , ingen av dem har mutasjonen .
+R364	Related_to	FAMILY,36,42	FAMILY,0,5
+R363	Related_to	FAMILY,19,23	FAMILY,0,5
+R362	Modifier	AMOUNT,10,12	FAMILY,19,23
+R361	Modifier	AMOUNT,27,29	FAMILY,36,42
+R360	Holder	CONDITION,62,72	FAMILY,36,42
+R359	Holder	CONDITION,62,72	FAMILY,19,23
+R358	Modifier	NEG,45,50	CONDITION,62,72
+
+# sent_id =  42
+# text =  Det er sannsynligvis bestefar på farssiden som hadde genet , da det er flere tilfeller av tidlig død blant hans søsken .
+R541	Modifier	NEG,7,20	CONDITION,53,58
+R540	Holder	CONDITION,53,58	FAMILY,21,29
+R539	Modifier	SIDE,33,42	FAMILY,21,29
+R538	Related_to	FAMILY,112,118	FAMILY,21,29
+R537	Holder	EVENT,90,100	FAMILY,112,118
+R536	Modifier	AMOUNT,71,76	EVENT,90,100
+
+# sent_id =  43
+# text =  Det er mye hjertesykdom både på fars- og morssiden av slekten .
+R542	Holder	FAMILY,54,61	CONDITION,11,23
+
+# sent_id =  44
+# text =  Både pasienten far og pasientens farfar utviklet tidlig hjertesvikt og ble hjertetransplantert før 40 års alder
+R371	Related_to	FAMILY,33,39	SELF,5,14
+R370	Related_to	FAMILY,33,39	SELF,5,14
+R369	Holder	CONDITION,56,67	FAMILY,15,18
+R368	Holder	CONDITION,56,67	FAMILY,33,39
+R367	Holder	CONDITION,75,94	FAMILY,15,18
+R366	Holder	CONDITION,75,94	FAMILY,33,39
+R365	Modifier	TEMPORAL,99,111	CONDITION,75,94
+
+# sent_id =  47
+# text =  Pasienten er eldst av tre søstre , hun er så langt den eneste som har fått påvist HCM .
+R427	Holder	CONDITION,82,85	SELF,0,9
+R426	Modifier	AMOUNT,22,25	FAMILY,26,32
+R425	Subset	SELF,0,9	FAMILY,26,32
+
+# sent_id =  48
+# text =  Pasienten har to barn , sønnen har fått påvist familiens mutasjon , mens datteren er gennegativ.
+R433	Holder	CONDITION,85,96	FAMILY,73,81
+R432	Holder	CONDITION,47,65	FAMILY,24,30
+R431	Subset	FAMILY,73,81	FAMILY,17,21
+R430	Subset	FAMILY,24,30	FAMILY,17,21
+R429	Related_to	FAMILY,17,21	SELF,0,9
+R428	Modifier	AMOUNT,14,16	FAMILY,17,21
+
+# sent_id =  49
+# text =  Pasientens far er genpositiv , følges her for HCM og har nylig fått ICD .
+R437	Related_to	FAMILY,11,14	SELF,0,10
+R436	Modifier	TEMPORAL,57,62	CONDITION,68,71
+R435	Holder	CONDITION,46,49	FAMILY,11,14
+R434	Holder	CONDITION,68,71	FAMILY,11,14
+
+# sent_id =  50
+# text =  Både moren , morens bror , morfar og pasientens fetter og kusine på morssiden har fått påvist mutasjonen , og bortsett fra søskenbarna har alle også fenotypen .
+R456	Modifier	NEG,110,122	CONDITION,149,158
+R455	Holder	CONDITION,149,158	FAMILY,123,134
+R454	Holder	CONDITION,149,158	FAMILY,5,10
+R453	Holder	CONDITION,149,158	FAMILY,20,24
+R452	Holder	CONDITION,149,158	FAMILY,27,33
+R451	Holder	CONDITION,94,104	FAMILY,5,10
+R450	Holder	CONDITION,94,104	FAMILY,20,24
+R449	Holder	CONDITION,94,104	FAMILY,27,33
+R448	Holder	CONDITION,94,104	FAMILY,48,54
+R447	Holder	CONDITION,94,104	FAMILY,58,64
+R446	Subset	FAMILY,48,54	FAMILY,123,134
+R445	Subset	FAMILY,58,64	FAMILY,123,134
+R444	Related_to	FAMILY,58,64	SELF,37,47
+R443	Related_to	FAMILY,48,54	SELF,37,47
+R442	Related_to	FAMILY,5,10	SELF,37,47
+R441	Related_to	FAMILY,5,10	FAMILY,27,33
+R440	Related_to	FAMILY,20,24	FAMILY,5,10
+R439	Modifier	SIDE,68,77	FAMILY,48,54
+R438	Modifier	SIDE,68,77	FAMILY,58,64
+
+# sent_id =  51
+# text =  Alle fire barna , to gutter og to jenter , har HCM .
+R462	Holder	CONDITION,47,50	FAMILY,10,15
+R461	Subset	FAMILY,34,40	FAMILY,10,15
+R460	Subset	FAMILY,21,27	FAMILY,10,15
+R459	Modifier	AMOUNT,31,33	FAMILY,34,40
+R458	Modifier	AMOUNT,18,20	FAMILY,21,27
+R457	Modifier	AMOUNT,5,9	FAMILY,10,15
+
+# sent_id =  57
+# text =  Hun har to barn på 8 og 11 år , men hadde også en dødfødsel for tre år siden .
+R547	Modifier	AMOUNT,47,49	EVENT,50,59
+R330	Modifier	AGE,19,20	FAMILY,11,15
+R329	Modifier	AGE,24,29	FAMILY,11,15
+R328	Related_to	FAMILY,11,15	SELF,0,3
+R327	Modifier	AMOUNT,8,10	FAMILY,11,15
+R326	Holder	EVENT,50,59	SELF,0,3
+R325	Modifier	TEMPORAL,60,76	EVENT,50,59
+
+# sent_id =  58
+# text =  Hun har en tvillingbror som er frisk .
+R324	Holder	CONDITION,31,36	FAMILY,11,23
+R323	Related_to	FAMILY,11,23	SELF,0,3
+
+# sent_id =  60
+# text =  Både pasienten og søsteren har tvillingsønner .
+R319	Related_to	FAMILY,31,45	SELF,5,14
+R318	Related_to	FAMILY,31,45	FAMILY,18,26
+
+# sent_id =  62
+# text =  Pasienten har ingen barn , men broren som også er genbærer har en sønn på 14 og en datter på 17 som begge er genpositive og der jenta har fått påvist fortykket hjertemuskel .
+R308	Related_to	FAMILY,31,37	SELF,0,9
+R307	Related_to	FAMILY,66,70	FAMILY,31,37
+R306	Modifier	AMOUNT,63,65	FAMILY,66,70
+R305	Modifier	AMOUNT,80,82	FAMILY,83,89
+R304	Related_to	FAMILY,83,89	FAMILY,31,37
+R303	Holder	CONDITION,50,58	FAMILY,31,37
+R302	Modifier	TEMPORAL,74,76	FAMILY,66,70
+R301	Modifier	TEMPORAL,93,95	FAMILY,83,89
+R300	Holder	CONDITION,109,120	FAMILY,66,70
+R299	Holder	CONDITION,109,120	FAMILY,83,89
+R298	Holder	CONDITION,150,172	FAMILY,83,89
+R297	Modifier	NEG,14,19	FAMILY,20,24
+R296	Related_to	FAMILY,20,24	SELF,0,9
+
+# sent_id =  64
+# text =  Hun kjenner ikke til at det er påvist noen sykdom hos foreldrene eller foreldrenes søsken , men mormor har forstørret hjerte og anginaplager .
+R188	Related_to	FAMILY,96,102	SELF,0,3
+R187	Holder	CONDITION,128,140	FAMILY,96,102
+R186	Holder	CONDITION,107,124	FAMILY,96,102
+R185	Related_to	FAMILY,83,89	FAMILY,54,64
+R184	Related_to	FAMILY,54,64	SELF,0,3
+R183	Holder	CONDITION,43,49	FAMILY,83,89
+R182	Holder	CONDITION,43,49	FAMILY,54,64
+R181	Modifier	NEG,4,20	CONDITION,43,49
+
+# sent_id =  65
+# text =  Pasienten er enebarn .
+R548	Holder	CONDITION,13,20	SELF,0,9
+
+# sent_id =  66
+# text =  En onkel på morssiden er hjerteoperert , og en tante på morssiden har hjertesvikt .
+R180	Modifier	SIDE,56,65	FAMILY,47,52
+R179	Holder	CONDITION,70,81	FAMILY,47,52
+R178	Holder	CONDITION,25,38	FAMILY,3,8
+R177	Modifier	SIDE,12,21	FAMILY,3,8
+

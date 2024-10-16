@@ -1,5 +1,7 @@
 import json
 import configparser
+import glob
+import os
 import pandas as pd
 from preprocess.setup import Preprocess
 from visualization.setup import Visualization
@@ -23,11 +25,43 @@ class Pipeline:
             'shuffle': self.__config.getboolean('train.parameters', 'shuffle'),
             'num_workers': self.__config.getint('train.parameters', 'num_workers')
         }
+        
+        checkpoint = "ltg/norbert3-large"
+        self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+        
         if "csv" in train_file:
             dataset = pd.read_csv(train_file)
             dataset.drop(["Unnamed: 0"], axis=1, inplace=True)
             
             tags = dataset['Category'].unique()
+        elif train_file == "NorSynthClinical":
+            # Define the directory containing the .ann files
+
+            directory_path = './data/NorSynthClinical'
+
+            # Use glob to find all .ann files in the directory
+            ann_files = glob.glob(os.path.join(directory_path, '*.ann'))
+
+            tags = set()
+            # Read and print the content of each .vert file
+            dataset = []
+            for file_path in ann_files:
+                file_dataset = []
+                with open(file_path, 'r') as file:        
+                    for line in file:
+                        data = line.split('\t')
+                        if "R" in data[0]:
+                            continue
+                        tag = data[1].split()[0].strip()
+                        if tag not in ['CONDITION', 'EVENT']:
+                            tag = "O"
+                        word = data[2].strip().replace('“', "").replace("”", "").split()
+                        for w in word:
+                            file_dataset.append((tag, w))
+                        tags.add(tag)
+                dataset.append(file_dataset)
+            tags = list(tags)
+            
         else:
             with open(train_file) as f:
                 d = json.load(f)
@@ -50,11 +84,6 @@ class Pipeline:
                     tags.add(annot['tag_name'])
                     
             tags = list(tags)
-        
-        # old:
-        # checkpoint = "distilbert-base-cased"
-        checkpoint = "ltg/norbert3-large"
-        self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
         
         self.__model = MODEL_MAP[self.__config['MODEL']['name']](load, dataset, tags, train_parameters, align, self.tokenizer)
         self.__preprocess = Preprocess(self.__model.tokenizer)
@@ -97,7 +126,7 @@ if __name__ == "__main__":
             'entities': entities
         })
     
-    pipeline = Pipeline('./src/pipeline/config.ini', './data/ner_train.csv', align=False)
+    pipeline = Pipeline('./src/pipeline/config.ini', 'NorSynthClinical', align=False)
     
     pred1 = pipeline.run(dataset_sample[0:2])   
     print(pred1)
