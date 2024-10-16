@@ -44,7 +44,7 @@ class FineTunedBert:
             num_training_steps = len(training_loader)
 
             # self.__model = BertForTokenClassification.from_pretrained('bert-base-uncased', num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
-            self.__model = AutoModelForTokenClassification.from_pretrained('ltg/norbert3-large', num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
+            self.__model = AutoModelForTokenClassification.from_pretrained('ltg/norbert3-large', trust_remote_code=True, num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
             self.__model.to(self.__device)
 
             # optimizer = torch.optim.Adam(params=self.__model.parameters(), lr=parameters['learning_rate'])
