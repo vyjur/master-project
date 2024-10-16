@@ -1,0 +1,347 @@
+# sent_id =  1
+# text =  Hun har en jente og en gutt som er halvsøsken .
+R4	Related_to	FAMILY,11,16	SELF,0,3
+R3	Modifier	AMOUNT,8,10	FAMILY,11,16
+R2	Modifier	AMOUNT,20,22	FAMILY,23,27
+R1	Related_to	FAMILY,23,27	SELF,0,3
+
+# sent_id =  2
+# text =  Søsteren har ingen barn .
+R6	Modifier	NEG,13,18	FAMILY,19,23
+R5	Related_to	FAMILY,19,23	FAMILY,0,8
+
+# sent_id =  3
+# text =  Broren har to gutter på fire og seks med sin eks-kone , og en jente med nåværende samboer .
+R9	Modifier	AGE,32,36	FAMILY,14,20
+R8	Modifier	AGE,24,28	FAMILY,14,20
+R7	Modifier	AMOUNT,11,13	FAMILY,14,20
+R185	Partner	FAMILY,45,53	FAMILY,0,6
+R184	Partner	FAMILY,82,89	FAMILY,0,6
+R14	Related_to	FAMILY,62,67	FAMILY,0,6
+R13	Related_to	FAMILY,82,89	FAMILY,62,67
+R12	Modifier	AMOUNT,59,61	FAMILY,62,67
+R11	Related_to	FAMILY,0,6	FAMILY,14,20
+R10	Related_to	FAMILY,45,53	FAMILY,14,20
+
+# sent_id =  4
+# text =  Oldefaren hadde mange søsken , men hun vet ikke om noen av dem var syke .
+R19	Related_to	SELF,35,38	FAMILY,0,9
+R18	Related_to	FAMILY,0,9	FAMILY,22,28
+R17	Modifier	AMOUNT,16,21	FAMILY,22,28
+R16	Modifier	NEG,39,47	CONDITION,67,71
+R15	Holder	CONDITION,67,71	FAMILY,22,28
+
+# sent_id =  5
+# text =  Hun fikk påvist septumtykkelse på 15mm og moderat utløpsobstruksjon i 2014 .
+R21	Modifier	TEMPORAL,68,74	CONDITION,50,67
+R20	Holder	CONDITION,50,67	SELF,0,3
+
+# sent_id =  6
+# text =  Onkelens dødsfall førte til at både moren og pasienten ble gentestet .
+R26	Related_to	SELF,45,54	FAMILY,36,41
+R25	Related_to	SELF,45,54	FAMILY,0,8
+R24	Holder	EVENT,59,68	FAMILY,36,41
+R23	Holder	EVENT,59,68	SELF,45,54
+R22	Holder	EVENT,9,17	FAMILY,0,8
+
+# sent_id =  7
+# text =  Både faren og moren har genvarianter som kan være assosiert med sykdom , og pasienten har arvet begge varianter .
+R32	Related_to	SELF,76,85	FAMILY,14,19
+R31	Related_to	SELF,76,85	FAMILY,5,10
+R30	Holder	CONDITION,102,111	SELF,76,85
+R29	Modifier	AMOUNT,96,101	CONDITION,102,111
+R28	Holder	CONDITION,24,36	FAMILY,5,10
+R27	Holder	CONDITION,24,36	FAMILY,14,19
+
+# sent_id =  8
+# text =  Hun fikk påvist en MYBPC3-mutasjon .
+R33	Holder	CONDITION,19,34	SELF,0,3
+
+# sent_id =  9
+# text =  Indekspasienten skal være en tremenning på morssiden .
+R36	Modifier	AMOUNT,26,28	FAMILY,29,39
+R35	Modifier	SIDE,43,52	FAMILY,29,39
+R34	Holder	CONDITION,0,15	FAMILY,29,39
+
+# sent_id =  10
+# text =  Minst to tilfeller av SCD på farssiden .
+R38	Modifier	AMOUNT,6,8	EVENT,22,25
+R37	Modifier	SIDE,29,38	EVENT,22,25
+
+# sent_id =  11
+# text =  Avlesning av ICD viser at han har hatt tre episoder med NSVT siste halvår .
+R42	Holder	EVENT,56,60	SELF,26,29
+R41	Holder	CONDITION,13,16	SELF,26,29
+R40	Modifier	AMOUNT,39,42	EVENT,56,60
+R39	Modifier	TEMPORAL,61,73	EVENT,56,60
+
+# sent_id =  12
+# text =  Moren hadde hjertestans i 2008 .
+R44	Modifier	TEMPORAL,24,30	EVENT,12,23
+R43	Holder	EVENT,12,23	FAMILY,0,5
+
+# sent_id =  13
+# text =  Hun ble vellykket gjenopplivet og har ikke noe sequele .
+R47	Modifier	NEG,38,42	CONDITION,47,54
+R46	Holder	CONDITION,47,54	SELF,0,3
+R45	Holder	EVENT,18,30	SELF,0,3
+
+# sent_id =  14
+# text =  Moren har utviklet hjertesvikt og har CRT-D .
+R49	Holder	CONDITION,38,43	FAMILY,0,5
+R48	Holder	CONDITION,19,30	FAMILY,0,5
+
+# sent_id =  15
+# text =  Hun forteller at datteren hadde flere besvimelser i barneårene .
+R53	Related_to	FAMILY,17,25	SELF,0,3
+R52	Holder	EVENT,38,49	FAMILY,17,25
+R51	Modifier	TEMPORAL,50,62	EVENT,38,49
+R50	Modifier	AMOUNT,32,37	EVENT,38,49
+
+# sent_id =  16
+# text =  Hun har både besvimt og hatt krampeanfall .
+R55	Holder	EVENT,13,20	SELF,0,3
+R54	Holder	EVENT,29,41	SELF,0,3
+
+# sent_id =  17
+# text =  Datteren er utredet for epilepsi men har ikke fått noen sikker diagnose .
+R59	Holder	CONDITION,24,32	FAMILY,0,8
+R58	Holder	EVENT,12,19	FAMILY,0,8
+R57	Modifier	NEG,41,45	CONDITION,63,71
+R56	Holder	CONDITION,63,71	FAMILY,0,8
+
+# sent_id =  18
+# text =  Rytmeovervåkning har vist at han har korte episoder med uspesifisert supraventrikulær tachycardi .
+R60	Holder	CONDITION,69,96	SELF,29,32
+
+# sent_id =  19
+# text =  Pasienten ble henvist grunnet atrieflimmer , men ekko viste apical hypertrofi og på telemetri er det sett en rekke VES og korte idioventrikulære løp .
+R64	Holder	EVENT,128,148	SELF,0,9
+R63	Holder	EVENT,115,118	SELF,0,9
+R62	Holder	CONDITION,60,77	SELF,0,9
+R61	Holder	CONDITION,30,42	SELF,0,9
+
+# sent_id =  20
+# text =  Pasienten har hatt flere nærsynkoper , men har aldri mistet bevisstheten .
+R68	Holder	EVENT,25,36	SELF,0,9
+R67	Modifier	AMOUNT,19,24	EVENT,25,36
+R66	Holder	EVENT,53,72	SELF,0,9
+R65	Modifier	NEG,47,52	EVENT,53,72
+
+# sent_id =  21
+# text =  Hun har aldri svimt av .
+R70	Modifier	NEG,8,13	EVENT,14,22
+R69	Holder	EVENT,14,22	SELF,0,3
+
+# sent_id =  22
+# text =  Sønnen skal ha svimt av under en fotballkamp da han var ti , men det ble ikke gjort noen flere undersøkelser .
+R72	Modifier	TEMPORAL,56,58	EVENT,15,23
+R71	Holder	EVENT,15,23	FAMILY,0,6
+
+# sent_id =  23
+# text =  Han har nå en dilatert kardiomyopati med EF rundt 20% som trolig er endestadium HCM .
+R74	Holder	CONDITION,14,36	SELF,0,3
+R73	Holder	CONDITION,80,83	SELF,0,3
+
+# sent_id =  24
+# text =  Faren har lettgradig hypertrofi .
+R75	Holder	CONDITION,21,31	FAMILY,0,5
+
+# sent_id =  25
+# text =  Han har samme mutasjon som faren , som har HCM , men har på ekko en annen fenotype med preg av non-compaction .
+R78	Holder	CONDITION,95,109	SELF,0,3
+R77	Holder	CONDITION,43,46	FAMILY,27,32
+R76	Related_to	FAMILY,27,32	SELF,0,3
+
+# sent_id =  26
+# text =  Flere i familien har gjennomgått alkoholablasjon for HOCM .
+R81	Holder	CONDITION,53,57	FAMILY,8,16
+R80	Holder	EVENT,33,48	FAMILY,8,16
+R79	Modifier	AMOUNT,0,5	FAMILY,8,16
+
+# sent_id =  27
+# text =  Hun kommer nå til årskontroll etter myektomi i februar 2016 .
+R83	Modifier	TEMPORAL,45,59	EVENT,36,44
+R82	Holder	EVENT,36,44	SELF,0,3
+
+# sent_id =  28
+# text =  Etter myektomi har hun ikke lenger brystsmerter ved anstrengelse .
+R86	Holder	EVENT,6,14	SELF,19,22
+R85	Holder	CONDITION,35,47	SELF,19,22
+R84	Modifier	NEG,23,27	CONDITION,35,47
+
+# sent_id =  29
+# text =  Hun hadde to anstrengelsesutløste synkoper før kirurgi , men har ikke hatt noen etter operasjonen .
+R90	Modifier	TEMPORAL,80,97	EVENT,34,42
+R89	Modifier	NEG,65,69	EVENT,34,42
+R88	Holder	EVENT,34,42	SELF,0,3
+R87	Modifier	AMOUNT,10,12	EVENT,34,42
+
+# sent_id =  30
+# text =  Han har hatt episoder der han føler han kunne komme til å svime av , men har aldri mistet bevisstheten .
+R92	Holder	EVENT,83,102	SELF,0,3
+R91	Modifier	NEG,77,82	EVENT,83,102
+
+# sent_id =  31
+# text =  Episodene med svimmelhet kommer typisk når han stresser eller anstrenger seg , f.eks løper etter bussen .
+R93	Holder	CONDITION,14,24	SELF,43,46
+
+# sent_id =  32
+# text =  De har to barn fra før , og har nettopp fått en jente i mai .
+R98	Related_to	FAMILY,10,14	FAMILY,0,2
+R97	Related_to	FAMILY,48,53	FAMILY,0,2
+R96	Modifier	TEMPORAL,54,59	FAMILY,48,53
+R95	Modifier	AMOUNT,45,47	FAMILY,48,53
+R94	Modifier	AMOUNT,7,9	FAMILY,10,14
+
+# sent_id =  33
+# text =  Den eldste datteren er gentestet og har ikke fått påvist mutasjonen .
+R99	Holder	CONDITION,57,67	FAMILY,11,19
+R101	Modifier	NEG,40,44	CONDITION,57,67
+R100	Holder	CONDITION,23,32	FAMILY,11,19
+
+# sent_id =  34
+# text =  Han anses å være frisk genbærer .
+R102	Holder	CONDITION,17,31	SELF,0,3
+
+# sent_id =  35
+# text =  Både faren og broren er genbærere .
+R104	Holder	CONDITION,24,33	FAMILY,5,10
+R103	Holder	CONDITION,24,33	FAMILY,14,20
+
+# sent_id =  36
+# text =  Lillebroren fikk pacemaker ved 12 års alder .
+R106	Holder	CONDITION,17,26	FAMILY,0,11
+R105	Modifier	TEMPORAL,27,43	CONDITION,17,26
+
+# sent_id =  37
+# text =  Han har to søstre som begge har ICD , og den ene har hatt flere innslag .
+R113	Related_to	FAMILY,11,17	SELF,0,3
+R112	Holder	CONDITION,32,35	FAMILY,11,17
+R111	Modifier	AMOUNT,22,27	CONDITION,32,35
+R110	Modifier	AMOUNT,8,10	FAMILY,11,17
+R109	Subset	FAMILY,41,48	FAMILY,11,17
+R108	Holder	EVENT,64,71	FAMILY,41,48
+R107	Modifier	AMOUNT,58,63	EVENT,64,71
+
+# sent_id =  38
+# text =  Pasienten har ICD-innslag med ett rettmessig støt på en NSVT som ikke konverterte på ATP .
+R118	Holder	EVENT,85,88	SELF,0,9
+R116	Holder	EVENT,56,60	SELF,0,9
+R115	Holder	EVENT,34,49	SELF,0,9
+R114	Holder	EVENT,14,25	SELF,0,9
+
+# sent_id =  39
+# text =  Hun har merket flere episoder med hjertebank som samsvarer med registrerte SVT-episoder på ICD .
+R122	Holder	CONDITION,91,94	SELF,0,3
+R121	Holder	CONDITION,34,44	SELF,0,3
+R120	Holder	EVENT,75,87	SELF,0,3
+R119	Modifier	AMOUNT,15,20	CONDITION,34,44
+
+# sent_id =  40
+# text =  Ved avlesning av CRT-D , ser man at pasienten har hatt flere episoder med sannsynlig atrieflimmer som hun ikke har merket selv .
+R124	Holder	CONDITION,85,97	SELF,36,45
+R123	Holder	CONDITION,17,22	SELF,36,45
+
+# sent_id =  41
+# text =  Etter at moren hadde innslag av ICD , har hun selv merket mer hjertebank .
+R128	Related_to	SELF,42,45	FAMILY,9,14
+R127	Holder	CONDITION,62,72	SELF,42,45
+R126	Holder	CONDITION,32,35	FAMILY,9,14
+R125	Holder	EVENT,21,28	FAMILY,9,14
+
+# sent_id =  42
+# text =  Hun har tre barn , syv barnebarn , og ble nylig oldemor til en liten gutt .
+R133	Related_to	FAMILY,12,16	SELF,0,3
+R132	Related_to	FAMILY,23,32	SELF,0,3
+R131	Modifier	AMOUNT,8,11	FAMILY,12,16
+R130	Modifier	AMOUNT,19,22	FAMILY,23,32
+R129	Modifier	AMOUNT,60,62	FAMILY,69,73
+
+# sent_id =  43
+# text =  Søsteren har fått trillinger .
+R134	Related_to	FAMILY,18,28	FAMILY,0,8
+
+# sent_id =  44
+# text =  Et av tantebarna skal fått påvist stort hjerte på ultralyd .
+R136	Subset	FAMILY,0,5	FAMILY,6,16
+R135	Holder	CONDITION,34,46	FAMILY,0,5
+
+# sent_id =  45
+# text =  Hun har fått vite at bestefaren døde av “stort hjerte” .
+R139	Holder	EVENT,32,36	FAMILY,21,31
+R138	Holder	CONDITION,40,53	FAMILY,21,31
+R137	Related_to	FAMILY,21,31	SELF,0,3
+
+# sent_id =  46
+# text =  Bestefaren ble 60 år gammel .
+R140	Modifier	AGE,15,27	FAMILY,0,10
+
+# sent_id =  47
+# text =  Pasientens samboer har et barn fra et tidligere forhold , og de har en tre år gammel jente sammen .
+R146	Related_to	SELF,0,10	FAMILY,85,90
+R145	Related_to	FAMILY,11,18	FAMILY,85,90
+R144	Modifier	AMOUNT,23,25	FAMILY,26,30
+R143	Related_to	FAMILY,11,18	FAMILY,26,30
+R142	Modifier	AGE,71,84	FAMILY,85,90
+R141	Modifier	AMOUNT,68,70	FAMILY,85,90
+R117	Partner	SELF,0,10	FAMILY,11,18
+
+# sent_id =  48
+# text =  Flere av søsknene hans har fått påvist fortykket hjertemuskel .
+R149	Related_to	SELF,18,22	FAMILY,9,17
+R148	Modifier	AMOUNT,0,5	FAMILY,9,17
+R147	Holder	CONDITION,39,61	FAMILY,9,17
+
+# sent_id =  49
+# text =  Begge foreldrene har hjerteproblemer , faren har anginaplager og har gjennomgått PCI , mens moren utredes for kardiomyopati .
+R156	Holder	CONDITION,110,123	FAMILY,92,97
+R155	Subset	FAMILY,39,44	FAMILY,6,16
+R154	Holder	EVENT,81,84	FAMILY,39,44
+R153	Holder	CONDITION,49,61	FAMILY,39,44
+R152	Holder	CONDITION,21,36	FAMILY,6,16
+R151	Modifier	AMOUNT,0,5	FAMILY,6,16
+R150	Subset	FAMILY,92,97	FAMILY,6,16
+
+# sent_id =  50
+# text =  Broren har også fått påvist høyt blodtrykk , og en tante døde da hun var i førtiårene , uten at hun hadde noen kjent sykdom .
+R162	Holder	CONDITION,28,42	FAMILY,0,6
+R161	Holder	CONDITION,117,123	FAMILY,51,56
+R160	Modifier	NEG,88,92	CONDITION,117,123
+R159	Holder	EVENT,57,61	FAMILY,51,56
+R158	Modifier	TEMPORAL,73,85	EVENT,57,61
+R157	Modifier	AMOUNT,48,50	FAMILY,51,56
+
+# sent_id =  51
+# text =  I familien er det variabelt uttrykk av mutasjonen , da broren begynte å merke brystsmerter og hjertebank fra han var i 20-årene og ble transplantert da han var 28 , mens den eldste søsteren ikke har hatt symptomer før hun kom i 50-årene .
+R174	Holder	CONDITION,94,104	FAMILY,55,61
+R173	Holder	EVENT,135,148	FAMILY,55,61
+R172	Holder	CONDITION,39,49	FAMILY,2,10
+R171	Subset	FAMILY,181,189	FAMILY,2,10
+R170	Subset	FAMILY,55,61	FAMILY,2,10
+R169	Holder	CONDITION,78,90	FAMILY,55,61
+R168	Modifier	TEMPORAL,226,236	CONDITION,204,213
+R167	Modifier	NEG,190,194	CONDITION,204,213
+R166	Holder	CONDITION,204,213	FAMILY,181,189
+R165	Modifier	TEMPORAL,117,127	CONDITION,78,90
+R164	Modifier	TEMPORAL,117,127	CONDITION,94,104
+R163	Modifier	TEMPORAL,160,162	EVENT,135,148
+
+# sent_id =  52
+# text =  Søsteren hadde hypertensjon og et mer HOCM-liknende bilde med utløpsobstruksjon , og har vært PTSMA-behandlet .
+R178	Holder	EVENT,94,109	FAMILY,0,8
+R177	Holder	CONDITION,62,79	FAMILY,0,8
+R176	Holder	CONDITION,38,51	FAMILY,0,8
+R175	Holder	CONDITION,15,27	FAMILY,0,8
+
+# sent_id =  53
+# text =  Hun måtte få en pacemaker etter PTSMA grunnet totalblokk .
+R181	Holder	CONDITION,16,25	SELF,0,3
+R180	Holder	EVENT,32,37	SELF,0,3
+R179	Holder	CONDITION,46,56	SELF,0,3
+
+# sent_id =  54
+# text =  Pasienten er skeptisk til å gjennomføre septumablasjon , delvis fordi søsteren , som har gjennomgått samme behandling , måtte få pacemaker.
+R183	Related_to	FAMILY,70,78	SELF,0,9
+R182	Holder	CONDITION,129,139	FAMILY,70,78
+

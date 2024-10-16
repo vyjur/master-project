@@ -1,0 +1,53 @@
+# sent_id =  1
+# text =  Pasienten har fått påvist mutasjon i MYPBC3-genet som ledd i familescreening .
+R32	Holder	CONDITION,37,49	SELF,0,9
+R1	Holder	CONDITION,26,34	SELF,0,9
+
+# sent_id =  2
+# text =  Pasientens bestefar på farssiden er indekspasient, han døde 40 år gammel og hadde HCM-diagnosen .
+R7	Holder	CONDITION,82,95	FAMILY,11,19
+R6	Holder	EVENT,55,59	FAMILY,11,19
+R5	Holder	INDEX,36,50	FAMILY,11,19
+R4	Modifier	SIDE,23,32	FAMILY,11,19
+R3	Related_to	SELF,0,10	FAMILY,11,19
+R24	Modifier	TEMPORAL,60,72	EVENT,55,59
+
+# sent_id =  3
+# text =  Farfar hadde to brødre som begge er i live og i 70 -årene, pasienten kjenner ikke til om disse er gentestet .
+R9	Holder	CONDITION,36,42	FAMILY,16,22
+R8	Holder	AGE,48,57	FAMILY,16,22
+R31	Modifier	NEG,69,85	EVENT,98,107
+R30	Holder	EVENT,98,107	FAMILY,16,22
+R11	Modifier	AMOUNT,13,15	FAMILY,16,22
+R10	Related_to	FAMILY,0,6	FAMILY,16,22
+
+# sent_id =  4
+# text =  Pasientens far er frisk genbærer og følges ved vår polklinikk .
+R14	Related_to	SELF,0,10	FAMILY,11,14
+R13	Holder	CONDITION,18,23	FAMILY,11,14
+R12	Holder	CONDITION,24,32	FAMILY,11,14
+
+# sent_id =  5
+# text =  Pasienten har ingen helsøsken, men far har giftet seg på nytt og har en sønn, pasientens halvbror, som er testet positivt for famliiens mutasjon .
+R21	Holder	CONDITION,106,121	FAMILY,72,77
+R20	Related_to	FAMILY,35,38	FAMILY,72,77
+R19	Holder	AMOUNT,69,71	FAMILY,72,77
+R18	Related_to	FAMILY,35,38	SELF,0,9
+R17	Modifier	NEG,14,19	FAMILY,20,30
+R16	Related_to	FAMILY,20,30	SELF,0,9
+
+# sent_id =  6
+# text =  Pasienten har fått påvist mutasjon i MYBPC3-genet som i familien har gitt malign historie med plutselig hjertedød, og det er flere som har PM og ICD .
+R29	Holder	CONDITION,145,148	FAMILY,125,130
+R28	Holder	CONDITION,139,141	FAMILY,125,130
+R27	Holder	EVENT,94,113	FAMILY,56,64
+R22	Subset	FAMILY,125,130	FAMILY,56,64
+R15	Holder	CONDITION,26,34	SELF,0,9
+
+# sent_id =  7
+# text =  Hans halvbror døde plutselig 22 år gammel i 2012. (annet død u kj årsak ?)
+R26	Holder	EVENT,14,28	FAMILY,5,13
+R25	Related_to	FAMILY,5,13	SELF,0,4
+R23	Modifier	TEMPORAL,42,48	EVENT,14,28
+R2	Modifier	TEMPORAL,29,41	EVENT,14,28
+
