@@ -22,8 +22,6 @@ class FineTunedBert:
 
         processed = Preprocess(self.tokenizer).run_train_test_split(dataset, tags_name, align)
         
-        self.__tag_to_ix = processed['label2id']
-        
         if load:
             self.__model = AutoModelForTokenClassification.from_pretrained(SAVE_DIRECTORY)
             self.tokenizer = AutoTokenizer.from_pretrained(SAVE_DIRECTORY)
@@ -50,16 +48,16 @@ class FineTunedBert:
             self.__model = BertForTokenClassification.from_pretrained('ltg/norbert3-large', num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
             self.__model.to(self.__device)
 
-            optimizer = torch.optim.Adam(params=self.__model.parameters(), lr=parameters['learning_rate'])
+            # optimizer = torch.optim.Adam(params=self.__model.parameters(), lr=parameters['learning_rate'])
+            optimizer = torch.optim.Adam(params=self.__model.parameters())
 
-            # TODO
             lr_scheduler = get_scheduler(
                 name="linear", optimizer=optimizer, num_warmup_steps=0, num_training_steps=num_training_steps
             )
 
             for epoch in range(parameters['epochs']):
                 print(f"Training Epoch: {epoch}")
-                self.__train(training_loader, num_training_steps, optimizer)
+                self.__train(training_loader, num_training_steps, optimizer, lr_scheduler)
 
             labels, predictions = self.__valid(testing_loader, self.__device, processed['id2label'])
             print(classification_report(labels, predictions))
@@ -89,7 +87,7 @@ class FineTunedBert:
             pred = torch.argmax(outputs.logits, dim=2)
             return pred
                 
-    def __train(self, training_loader, num_training_steps, optimizer):
+    def __train(self, training_loader, num_training_steps, optimizer, scheduler=None):
         progress_bar = tqdm(range(num_training_steps))
         tr_loss, tr_accuracy = 0, 0
         nb_tr_examples, nb_tr_steps = 0, 0
@@ -129,6 +127,7 @@ class FineTunedBert:
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
+            scheduler.step()
             progress_bar.update(1)
 
         epoch_loss = tr_loss / nb_tr_steps
