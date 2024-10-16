@@ -63,6 +63,11 @@ class FineTunedBert:
 
             labels, predictions = self.__valid(testing_loader, self.__device, processed['id2label'])
             print(classification_report(labels, predictions))
+            
+            labels = [ lab.replace("B-", "").replace("I-", "") for lab in labels]
+            predictions = [ lab.replace("B-", "").replace("I-", "") for lab in predictions]
+
+            print(classification_report(labels, predictions)) 
 
             # Save the model
             self.__model.save_pretrained(SAVE_DIRECTORY)
