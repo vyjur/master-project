@@ -120,7 +120,7 @@ class Model(nn.Module):
         backpointers = []
 
         # Initialize the viterbi variables in log space
-        init_vvars = torch.full((1, self.tagset_size), -10000.)
+        init_vvars = torch.full((1, self.tagset_size), -10000.).to(self.device)
         init_vvars[0][self.tag_to_ix[START_TAG]] = 0
 
         # forward_var at step i holds the viterbi variables for step i-1
@@ -173,7 +173,7 @@ class Model(nn.Module):
         # Find the best path, given the features.
         # score, tag_seq = self._viterbi_decode(lstm_feats)
         result = [self._viterbi_decode(lstm_feat)[1] for lstm_feat in lstm_feats]
-        return torch.tensor(result)
+        return torch.tensor(result).to(self.device)
 
 
 class BiLSTMCRF:
@@ -246,6 +246,7 @@ class BiLSTMCRF:
             self.__model = Model(parameters['train_batch_size'], vocab_size, tag_to_ix, embedding_dim, hidden_dim).to(self.__device)
             
             loss_fn = nn.CrossEntropyLoss(weight = class_weights)
+            # loss_fn = nn.CrossEntropyLoss()
             optimizer = torch.optim.SGD(self.__model.parameters(), lr=parameters['learning_rate'], weight_decay=1e-4)
             
             for t in range(parameters['epochs']):
@@ -264,7 +265,7 @@ class BiLSTMCRF:
             torch.save(self.__model.state_dict(), SAVE_DIRECTORY + "/model.pth")
 
     def predict(self, data, pipeline=False):
-        data_tensor = torch.tensor(data, dtype=torch.long)
+        data_tensor = torch.tensor(data, dtype=torch.long).to(self.__device)
         self.__model.batch = data_tensor.shape[0]
         return self.__model(data_tensor)
 
