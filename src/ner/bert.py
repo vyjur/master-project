@@ -1,6 +1,7 @@
 from transformers import AutoModelForTokenClassification, AutoTokenizer
 from sklearn.metrics import accuracy_score, classification_report
 import torch
+import torch.nn as nn
 from torch.utils.data import DataLoader
 from transformers import BertForTokenClassification, AutoTokenizer
 from torch import cuda
@@ -11,6 +12,18 @@ from tqdm.auto import tqdm
 import numpy as np
 
 SAVE_DIRECTORY = './src/ner/saved/fine_tuned_bert_model'
+
+class FocalLoss(nn.Module):
+    def __init__(self, gamma=2., alpha=0.25):
+        super(FocalLoss, self).__init__()
+        self.gamma = gamma
+        self.alpha = alpha
+
+    def forward(self, logits, targets):
+        ce_loss = nn.CrossEntropyLoss()(logits, targets)
+        pt = torch.exp(-ce_loss)
+        focal_loss = self.alpha * (1 - pt) ** self.gamma * ce_loss
+        return focal_loss
 
 class FineTunedBert:
     
@@ -55,10 +68,12 @@ class FineTunedBert:
             lr_scheduler = get_scheduler(
                 name="linear", optimizer=optimizer, num_warmup_steps=0, num_training_steps=num_training_steps
             )
+            
+            loss_fct = FocalLoss(gamma=2, alpha=0.25)
 
             for epoch in range(parameters['epochs']):
                 print(f"Training Epoch: {epoch}")
-                self.__train(training_loader, num_training_steps, optimizer, lr_scheduler)
+                self.__train(training_loader, num_training_steps, optimizer, lr_scheduler, loss_fct)
 
             labels, predictions = self.__valid(testing_loader, self.__device, processed['id2label'])
             print(classification_report(labels, predictions))
@@ -88,7 +103,7 @@ class FineTunedBert:
             pred = torch.argmax(outputs.logits, dim=2)
             return pred
                 
-    def __train(self, training_loader, num_training_steps, optimizer, scheduler=None):
+    def __train(self, training_loader, num_training_steps, optimizer, scheduler=None, loss_fn=None):
         progress_bar = tqdm(range(num_training_steps))
         tr_loss, tr_accuracy = 0, 0
         nb_tr_examples, nb_tr_steps = 0, 0
@@ -105,7 +120,7 @@ class FineTunedBert:
             outputs = self.__model(input_ids=ids, attention_mask=mask, labels=targets)
             loss, tr_logits = outputs.loss, outputs.logits
             tr_loss += loss.item()
-
+            
             nb_tr_steps += 1
             nb_tr_examples += targets.size(0)
 
@@ -123,6 +138,8 @@ class FineTunedBert:
             
             tmp_tr_accuracy = accuracy_score(targets.cpu().numpy(), predictions.cpu().numpy())
             tr_accuracy += tmp_tr_accuracy
+            
+            loss = loss_fn(predictions.to(self.__device, dtype=torch.float), targets.to(self.__device, dtype=torch.float))
             
             # backward pass
             optimizer.zero_grad()
