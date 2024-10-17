@@ -16,7 +16,6 @@ class CustomDataset(Dataset):
         tokenized = self.tokenized_data[idx]
         tokenized_sentence = tokenized.tokens()
         labels = tokenized['labels']
-
         ids = self.tokenizer.convert_tokens_to_ids(tokenized_sentence)
         attn_mask = [1 if tok != '[PAD]' else 0 for tok in tokenized_sentence]
         label_ids = [self.label2id[label] for label in labels]
@@ -100,6 +99,7 @@ class Preprocess:
         test_dataset = CustomDataset(test, self.__tokenizer, label2id)
 
         return {
+            "dataset": tokenized_dataset,
             'train': train_dataset,
             'test': test_dataset,
             'label2id': label2id,

@@ -2,6 +2,7 @@ from transformers import AutoModelForTokenClassification, AutoTokenizer
 from sklearn.metrics import accuracy_score, classification_report
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 from torch.utils.data import DataLoader
 from transformers import BertForTokenClassification, AutoTokenizer
 from torch import cuda
@@ -13,18 +14,6 @@ import numpy as np
 
 SAVE_DIRECTORY = './src/ner/saved/fine_tuned_bert_model'
 
-class FocalLoss(nn.Module):
-    def __init__(self, gamma=2., alpha=0.25):
-        super(FocalLoss, self).__init__()
-        self.gamma = gamma
-        self.alpha = alpha
-
-    def forward(self, logits, targets):
-        ce_loss = nn.CrossEntropyLoss()(logits, targets)
-        pt = torch.exp(-ce_loss)
-        focal_loss = self.alpha * (1 - pt) ** self.gamma * ce_loss
-        return focal_loss
-
 class FineTunedBert:
     
     def __init__(self, load: bool = True, dataset: list = [], tags_name: list = [], parameters: dict = [], align:bool=True, tokenizer = None):
@@ -34,14 +23,34 @@ class FineTunedBert:
         self.tokenizer = tokenizer
         processed = Preprocess(self.tokenizer).run_train_test_split(dataset, tags_name, align)
         
+        word_count = {}
+        
+        for ex in processed['dataset']:
+            for word in ex['labels']:
+                # Assuming 'word' is a string
+                if word in word_count:
+                    word_count[word] += 1
+                else:
+                    word_count[word] = 1
+
+        print(word_count)
+        
+        total_samples = sum(word_count.values())
+
+        # Calculate class weights
+        class_weights = {class_label: total_samples / (len(word_count) * count) 
+                        for class_label, count in word_count.items()}
+
+        # Display the class weights
+        print(class_weights)
+        class_weights = torch.Tensor(list(class_weights.values()), device=self.__device)
+
         if load:
             self.__model = AutoModelForTokenClassification.from_pretrained(SAVE_DIRECTORY)
             self.tokenizer = AutoTokenizer.from_pretrained(SAVE_DIRECTORY)
             
             print("Model and tokenizer loaded successfully.")
         else:
-            import gc
-            gc.collect()
             torch.cuda.empty_cache()
             train_params = {'batch_size': parameters['train_batch_size'],
                             'shuffle': parameters['shuffle'],
@@ -58,8 +67,10 @@ class FineTunedBert:
 
             num_training_steps = len(training_loader)
 
-            # self.__model = BertForTokenClassification.from_pretrained('bert-base-uncased', num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
+            #self.__model = BertForTokenClassification.from_pretrained('bert-base-uncased', num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
             self.__model = AutoModelForTokenClassification.from_pretrained('ltg/norbert3-large', trust_remote_code=True, num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
+            # self.__model = AutoModelForTokenClassification.from_pretrained('ltg/norbert3-xs', trust_remote_code=True, num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
+
             self.__model.to(self.__device)
 
             # optimizer = torch.optim.Adam(params=self.__model.parameters(), lr=parameters['learning_rate'])
@@ -68,12 +79,11 @@ class FineTunedBert:
             lr_scheduler = get_scheduler(
                 name="linear", optimizer=optimizer, num_warmup_steps=0, num_training_steps=num_training_steps
             )
-            
-            loss_fct = FocalLoss(gamma=2, alpha=0.25)
+            loss_fn = nn.CrossEntropyLoss(weight=class_weights)
 
             for epoch in range(parameters['epochs']):
                 print(f"Training Epoch: {epoch}")
-                self.__train(training_loader, num_training_steps, optimizer, lr_scheduler, loss_fct)
+                self.__train(training_loader, num_training_steps, optimizer, lr_scheduler, loss_fn)
 
             labels, predictions = self.__valid(testing_loader, self.__device, processed['id2label'])
             print(classification_report(labels, predictions))
@@ -127,19 +137,29 @@ class FineTunedBert:
             # compute training accuracy
             flattened_targets = targets.view(-1) # shape (batch_size * seq_len,)
             active_logits = tr_logits.view(-1, self.__model.num_labels) # shape (batch_size * seq_len, num_labels)
-            flattened_predictions = torch.argmax(active_logits, axis=1) # shape (batch_size * seq_len,)
+            softmax_probs = F.softmax(active_logits, dim=1)  # shape (batch_size * seq_len, num_labels)
+            
+            loss = loss_fn(active_logits, flattened_targets)
+    
+            # Now compute predictions based on the probabilities
+            flattened_predictions = torch.argmax(softmax_probs, axis=1)  # shape (batch_size * seq_len,)
+            # flattened_predictions = torch.argmax(active_logits, axis=1) # shape (batch_size * seq_len,)
+
             # now, use mask to determine where we should compare predictions with targets (includes [CLS] and [SEP] token predictions)
             active_accuracy = mask.view(-1) == 1 # active accuracy is also of shape (batch_size * seq_len,)
-            targets = torch.masked_select(flattened_targets, active_accuracy)
-            predictions = torch.masked_select(flattened_predictions, active_accuracy)
-            
+            targets = flattened_targets[active_accuracy]  # Keep gradients
+            predictions = flattened_predictions[active_accuracy]  # Keep gradients
+
+            # loss = custom_loss_fn(predictions.to(self.__device, dtype=torch.float), targets.to(self.__device, dtype=torch.float))
             tr_preds.extend(predictions)
             tr_labels.extend(targets)
             
             tmp_tr_accuracy = accuracy_score(targets.cpu().numpy(), predictions.cpu().numpy())
             tr_accuracy += tmp_tr_accuracy
             
-            loss = loss_fn(predictions.to(self.__device, dtype=torch.float), targets.to(self.__device, dtype=torch.float))
+            torch.nn.utils.clip_grad_norm_(
+                parameters=self.__model.parameters(), max_norm=10
+            )
             
             # backward pass
             optimizer.zero_grad()
@@ -240,11 +260,11 @@ if __name__ == '__main__':
             tags.add(annot['tag_name'])
             
     tags = list(tags)
-    
+        
     checkpoint = "distilbert-base-cased"
     tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 
-    model = FineTunedBert(False, dataset_sample, tags, train_parameters, False, tokenizer)
+    model = FineTunedBert(False, dataset_sample, tags, train_parameters, True, tokenizer)
     tokenized = Preprocess(model.tokenizer).run([dataset_sample[0], dataset_sample[1]])
     pred1 = model.predict([tokenized[0]['input_ids'], tokenized[1]['input_ids']])
     pred2 = model.predict([tokenized[0]['input_ids']])
