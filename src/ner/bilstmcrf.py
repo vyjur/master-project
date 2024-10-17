@@ -191,6 +191,28 @@ class BiLSTMCRF:
         # embedding_dim = self.tokenizer.model_max_length
         embedding_dim = 300
         processed = Preprocess(self.tokenizer).run_train_test_split(dataset, tags_name, align)
+        
+        word_count = {}
+        
+        for ex in processed['dataset']:
+            for word in ex['labels']:
+                # Assuming 'word' is a string
+                if word in word_count:
+                    word_count[word] += 1
+                else:
+                    word_count[word] = 1
+
+        print(word_count)
+        
+        total_samples = sum(word_count.values())
+
+        # Calculate class weights
+        class_weights = {class_label: total_samples / (len(word_count) * count) 
+                        for class_label, count in word_count.items()}
+
+        # Display the class weights
+        print(class_weights)
+        class_weights = torch.tensor(list(class_weights.values())).to(self.__device)
 
         tag_to_ix = processed['label2id']
         START_ID = max(processed['id2label'].keys()) + 1
@@ -223,7 +245,7 @@ class BiLSTMCRF:
 
             self.__model = Model(parameters['train_batch_size'], vocab_size, tag_to_ix, embedding_dim, hidden_dim).to(self.__device)
             
-            loss_fn = nn.CrossEntropyLoss()
+            loss_fn = nn.CrossEntropyLoss(weight = class_weights)
             optimizer = torch.optim.SGD(self.__model.parameters(), lr=parameters['learning_rate'], weight_decay=1e-4)
             
             for t in range(parameters['epochs']):
