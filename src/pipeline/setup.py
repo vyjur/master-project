@@ -96,7 +96,7 @@ class Pipeline:
         if self.__config['MODEL']['name'] != 'LLM':
             preprocessed_data = self.__preprocess.run(data)
             output = self.__model.predict([val['input_ids'] for val in preprocessed_data])
-            return [[self.id2label[int(j.numpy())] for j in i ] for i in output]
+            return [[self.id2label[int(j.cpu().numpy())] for j in i ] for i in output]
         else:
             output = self.__model.predict([val['text'] for val in data])
         return output

@@ -27,7 +27,9 @@ class FineTunedBert:
             
             print("Model and tokenizer loaded successfully.")
         else:
-
+            import gc
+            gc.collect()
+            torch.cuda.empty_cache()
             train_params = {'batch_size': parameters['train_batch_size'],
                             'shuffle': parameters['shuffle'],
                             'num_workers': parameters['num_workers']
