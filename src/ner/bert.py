@@ -1,6 +1,7 @@
 from transformers import AutoModelForTokenClassification, AutoTokenizer
 from sklearn.metrics import accuracy_score, classification_report
 import torch
+import torch.nn as nn
 from torch.utils.data import DataLoader
 from transformers import BertForTokenClassification, AutoTokenizer
 from torch import cuda
@@ -39,6 +40,8 @@ class FineTunedBert:
             
             print("Model and tokenizer loaded successfully.")
         else:
+            import gc
+            gc.collect()
             torch.cuda.empty_cache()
             train_params = {'batch_size': parameters['train_batch_size'],
                             'shuffle': parameters['shuffle'],
@@ -118,8 +121,6 @@ class FineTunedBert:
             loss, tr_logits = outputs.loss, outputs.logits
             tr_loss += loss.item()
             
-            loss = loss_fn(tr_logits, targets)
-
             nb_tr_steps += 1
             nb_tr_examples += targets.size(0)
 
@@ -137,6 +138,8 @@ class FineTunedBert:
             
             tmp_tr_accuracy = accuracy_score(targets.cpu().numpy(), predictions.cpu().numpy())
             tr_accuracy += tmp_tr_accuracy
+            
+            loss = loss_fn(predictions.to(self.__device, dtype=torch.float), targets.to(self.__device, dtype=torch.float))
             
             # backward pass
             optimizer.zero_grad()
