@@ -43,7 +43,7 @@ class FineTunedBert:
 
         # Display the class weights
         print(class_weights)
-        class_weights = torch.Tensor(list(class_weights.values()), device=self.__device)
+        class_weights = torch.tensor(list(class_weights.values())).to(self.__device)
 
         if load:
             self.__model = AutoModelForTokenClassification.from_pretrained(SAVE_DIRECTORY)
@@ -70,11 +70,10 @@ class FineTunedBert:
             #self.__model = BertForTokenClassification.from_pretrained('bert-base-uncased', num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
             self.__model = AutoModelForTokenClassification.from_pretrained('ltg/norbert3-large', trust_remote_code=True, num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
             # self.__model = AutoModelForTokenClassification.from_pretrained('ltg/norbert3-xs', trust_remote_code=True, num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
-
             self.__model.to(self.__device)
 
-            # optimizer = torch.optim.Adam(params=self.__model.parameters(), lr=parameters['learning_rate'])
-            optimizer = torch.optim.Adam(params=self.__model.parameters())
+            optimizer = torch.optim.Adam(params=self.__model.parameters(), lr=parameters['learning_rate'])
+            # optimizer = torch.optim.Adam(params=self.__model.parameters())
 
             lr_scheduler = get_scheduler(
                 name="linear", optimizer=optimizer, num_warmup_steps=0, num_training_steps=num_training_steps
@@ -109,7 +108,6 @@ class FineTunedBert:
             
             mask = np.where(np.array(data) == 0, 0, 1)
             outputs = self.__model(input_ids=torch.tensor(data, dtype=torch.long).to(self.__device), attention_mask=torch.tensor(mask, dtype=torch.long).to(self.__device))
-            # pred = torch.argmax(active_logits, axis=2)
             pred = torch.argmax(outputs.logits, dim=2)
             return pred
                 
@@ -137,20 +135,16 @@ class FineTunedBert:
             # compute training accuracy
             flattened_targets = targets.view(-1) # shape (batch_size * seq_len,)
             active_logits = tr_logits.view(-1, self.__model.num_labels) # shape (batch_size * seq_len, num_labels)
-            softmax_probs = F.softmax(active_logits, dim=1)  # shape (batch_size * seq_len, num_labels)
             
             loss = loss_fn(active_logits, flattened_targets)
     
             # Now compute predictions based on the probabilities
-            flattened_predictions = torch.argmax(softmax_probs, axis=1)  # shape (batch_size * seq_len,)
-            # flattened_predictions = torch.argmax(active_logits, axis=1) # shape (batch_size * seq_len,)
-
+            flattened_predictions = torch.argmax(active_logits, axis=1)  # shape (batch_size * seq_len,)
             # now, use mask to determine where we should compare predictions with targets (includes [CLS] and [SEP] token predictions)
             active_accuracy = mask.view(-1) == 1 # active accuracy is also of shape (batch_size * seq_len,)
             targets = flattened_targets[active_accuracy]  # Keep gradients
             predictions = flattened_predictions[active_accuracy]  # Keep gradients
 
-            # loss = custom_loss_fn(predictions.to(self.__device, dtype=torch.float), targets.to(self.__device, dtype=torch.float))
             tr_preds.extend(predictions)
             tr_labels.extend(targets)
             
@@ -165,7 +159,7 @@ class FineTunedBert:
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
-            scheduler.step()
+            # scheduler.step()
             progress_bar.update(1)
 
         epoch_loss = tr_loss / nb_tr_steps
