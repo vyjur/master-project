@@ -1,0 +1,158 @@
+# sent_id =  1
+# text =  Hun kjenner ikke til noen tilfeller av hjertesykdom i familien unntatt en bestemor som hadde to hjerteinfarkt men døde i godt voksen alder av cancer .
+R97	Modifier	AMOUNT,71,73	FAMILY,74,82
+R84	Modifier	NEG,4,20	CONDITION,39,51
+R83	Holder	CONDITION,39,51	FAMILY,54,62
+R6	Holder	CONDITION,142,148	FAMILY,74,82
+R57	Related_to	FAMILY,54,62	SELF,0,3
+R5	Modifier	TEMPORAL,119,138	EVENT,114,118
+R4	Holder	EVENT,114,118	FAMILY,74,82
+R3	Modifier	AMOUNT,93,95	EVENT,96,109
+R2	Holder	EVENT,96,109	FAMILY,74,82
+R1	Related_to	FAMILY,74,82	SELF,0,3
+
+# sent_id =  2
+# text =  Pasientens far døde plutselig 46 år gammel . Han har to brødre som har dødd i 60-årene, den ene var kreftsyk, den andre døde mens han var på vei til legen .
+R9	Related_to	FAMILY,56,62	SELF,45,48
+R8	Holder	CONDITION,100,109	FAMILY,88,95
+R7	Holder	EVENT,120,124	FAMILY,110,119
+R17	Holder	EVENT,71,75	FAMILY,56,62
+R16	Modifier	TEMPORAL,76,86	EVENT,71,75
+R15	Modifier	AMOUNT,53,55	FAMILY,56,62
+R14	Holder	AGE,30,35	FAMILY,11,14
+R13	Holder	EVENT,15,29	FAMILY,11,14
+R12	Related_to	FAMILY,11,14	SELF,0,10
+R11	Subset	FAMILY,110,119	FAMILY,56,62
+R10	Subset	FAMILY,88,95	FAMILY,56,62
+
+# sent_id =  3
+# text =  Han hadde visstnok lungeproblemer . Pasienten har to gjenlevende søsken .
+R21	Holder	CONDITION,19,33	FAMILY,0,3
+R20	Related_to	FAMILY,65,71	SELF,36,45
+R19	Holder	CONDITION,53,64	FAMILY,65,71
+R18	Modifier	AMOUNT,50,52	FAMILY,65,71
+
+# sent_id =  4
+# text =  Både avdøde søsken og levende søsken har barn som er friske, med unntak av en nevø som døde noen måneder gammel .
+R30	Related_to	FAMILY,78,82	FAMILY,30,36
+R29	Holder	CONDITION,22,29	FAMILY,30,36
+R28	Holder	CONDITION,53,60	FAMILY,41,45
+R27	Related_to	FAMILY,41,45	FAMILY,12,18
+R26	Holder	FAMILY,41,45	FAMILY,30,36
+R25	Holder	CONDITION,5,11	FAMILY,12,18
+R24	Modifier	AMOUNT,75,77	FAMILY,78,82
+R23	Holder	EVENT,87,91	FAMILY,78,82
+R22	Holder	TEMPORAL,92,104	FAMILY,78,82
+
+# sent_id =  5
+# text =  Pasienten selv har en voksen sønn og en voksen datter som begge er friske .
+R36	Related_to	FAMILY,47,53	SELF,0,9
+R35	Holder	CONDITION,67,73	FAMILY,29,33
+R34	Holder	CONDITION,67,73	FAMILY,47,53
+R33	Related_to	FAMILY,29,33	SELF,0,9
+R32	Modifier	AMOUNT,37,39	FAMILY,47,53
+R31	Modifier	AMOUNT,19,21	FAMILY,29,33
+
+# sent_id =  6
+# text =  Pasientens foreldres søsken, åtte på hver side, hadde ingen plutselig hjertedød .
+R41	Modifier	AMOUNT,29,33	FAMILY,21,28
+R40	Related_to	FAMILY,11,20	SELF,0,10
+R39	Related_to	FAMILY,21,28	FAMILY,11,20
+R38	Modifier	NEG,54,59	EVENT,60,79
+R37	Holder	EVENT,60,79	FAMILY,21,28
+
+# sent_id =  7
+# text =  Pasienten er henvist på grunn av at datter til søster er heterozygot for mutasjonen .
+R44	Related_to	SELF,0,9	FAMILY,47,53
+R43	Related_to	FAMILY,47,53	FAMILY,36,42
+R42	Holder	CONDITION,57,83	FAMILY,36,42
+
+# sent_id =  8
+# text =  Hennes søster er bærer av samme gen og går til kontroll ved St.Olavs hospital .
+R46	Holder	CONDITION,17,35	FAMILY,7,13
+R45	Related_to	FAMILY,7,13	SELF,0,6
+
+# sent_id =  9
+# text =  Pasienten er genbærer for mutasjonen som hos hans bror og hans kusine har ført til uttalt sykdom .
+R51	Holder	CONDITION,13,21	SELF,0,9
+R50	Related_to	FAMILY,63,69	SELF,0,9
+R49	Related_to	FAMILY,50,54	SELF,0,9
+R48	Holder	CONDITION,90,96	FAMILY,50,54
+R47	Holder	CONDITION,90,96	FAMILY,63,69
+
+# sent_id =  10
+# text =  Pasienten hadde en bror som døde av drukning 17 år gammel . Han har tre gjenlevende søsken som alle er friske .
+R88	Modifier	TEMPORAL,45,57	EVENT,28,32
+R87	Modifier	TEMPORAL,45,57	EVENT,36,44
+R86	Holder	CONDITION,72,83	FAMILY,84,90
+R85	Modifier	AMOUNT,16,18	FAMILY,19,23
+R58	Related_to	FAMILY,84,90	SELF,60,63
+R56	Modifier	AMOUNT,68,71	FAMILY,84,90
+R55	Holder	EVENT,36,44	FAMILY,19,23
+R54	Holder	EVENT,28,32	FAMILY,19,23
+R53	Related_to	FAMILY,19,23	SELF,0,9
+R52	Holder	CONDITION,103,109	FAMILY,84,90
+
+# sent_id =  11
+# text =  Pasientens far døde plutselig 50 år gammel, pasienten selv har etter utredning for brystsmerter fått påvist fortykket hjertemuskel .
+R89	Holder	CONDITION,83,95	SELF,0,10
+R62	Related_to	FAMILY,11,14	SELF,0,10
+R61	Modifier	TEMPORAL,30,42	EVENT,15,29
+R60	Holder	EVENT,15,29	FAMILY,11,14
+R59	Holder	CONDITION,108,130	SELF,0,10
+
+# sent_id =  12
+# text =  Gentest for HCM skal ha vært negativ .
+R69	Modifier	NEG,29,36	CONDITION,0,7
+
+# sent_id =  13
+# text =  Pasienten har en en søster som har utviklet HCM, en annen søster som er genbærer, men frisk .
+R93	Holder	CONDITION,86,91	FAMILY,58,64
+R92	Holder	CONDITION,72,81	FAMILY,58,64
+R91	Modifier	AMOUNT,49,51	FAMILY,58,64
+R90	Modifier	AMOUNT,17,19	FAMILY,20,26
+R65	Holder	CONDITION,44,48	FAMILY,20,26
+R64	Related_to	FAMILY,58,64	SELF,0,9
+R63	Related_to	FAMILY,20,26	SELF,0,9
+
+# sent_id =  14
+# text =  Pasientens barn har ikke arvet mutasjonen .
+R68	Holder	CONDITION,31,41	FAMILY,11,15
+R67	Modifier	NEG,20,24	CONDITION,31,41
+R66	Related_to	FAMILY,11,15	SELF,0,10
+
+# sent_id =  15
+# text =  Moren lever og er 92 år gammel .
+R71	Holder	CONDITION,6,11	FAMILY,0,5
+R70	Holder	AGE,18,30	FAMILY,0,5
+
+# sent_id =  16
+# text =  Faren har hatt hjerneslag, er 83 år gammel .
+R73	Holder	CONDITION,15,26	FAMILY,0,5
+R72	Holder	AGE,30,42	FAMILY,0,5
+
+# sent_id =  17
+# text =  Han har 7 søsken i alderen 46 til 64 år .
+R95	Holder	AGE,27,29	FAMILY,10,16
+R94	Holder	AGE,34,39	FAMILY,10,16
+R75	Related_to	FAMILY,10,16	FAMILY,0,3
+R74	Modifier	AMOUNT,8,9	FAMILY,10,16
+
+# sent_id =  18
+# text =  En bror skal ha fortykket hjertemuskulatur og går til kontroll på Haukeland .
+R76	Holder	CONDITION,16,41	FAMILY,0,7
+
+# sent_id =  19
+# text =  Familiens indekspasient er moren, som skal ha blitt funnet livløs i sengen da hun var 35 år gammel .
+R79	Holder	EVENT,52,65	FAMILY,27,32
+R78	Modifier	TEMPORAL,86,97	EVENT,52,65
+R77	Holder	INDEX,10,23	FAMILY,27,32
+
+# sent_id =  20
+# text =  En bror av moren har hatt hyppige besvimelser og skal ha fått pacemaker .
+R98	Holder	CONDITION,62,71	FAMILY,3,7
+R96	Modifier	AMOUNT,26,33	EVENT,34,45
+R82	Holder	EVENT,34,45	FAMILY,3,7
+R81	Related_to	FAMILY,3,7	FAMILY,11,16
+R80	Modifier	AMOUNT,0,2	FAMILY,3,7
+

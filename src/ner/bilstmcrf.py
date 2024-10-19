@@ -33,6 +33,9 @@ class Model(nn.Module):
 
     def __init__(self, batch, vocab_size, tag_to_ix, embedding_dim, hidden_dim):
         super(Model, self).__init__()
+        
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
         self.embedding_dim = embedding_dim
         self.hidden_dim = hidden_dim
         self.vocab_size = vocab_size
@@ -40,7 +43,6 @@ class Model(nn.Module):
         self.tagset_size = len(tag_to_ix)
         
         self.batch = batch
-
         self.word_embeds = nn.Embedding(vocab_size, embedding_dim)
         self.lstm = nn.LSTM(embedding_dim, hidden_dim // 2,
                             num_layers=1, bidirectional=True, batch_first=True)
@@ -62,12 +64,12 @@ class Model(nn.Module):
 
     def init_hidden(self):
         #TODO
-        return (torch.randn(2, self.batch, self.hidden_dim // 2),
-                torch.randn(2, self.batch, self.hidden_dim // 2))
-
+        return (torch.randn(2, self.batch, self.hidden_dim // 2).to(self.device),
+            torch.randn(2, self.batch, self.hidden_dim // 2).to(self.device))
+        
     def _forward_alg(self, feats):
         # Do the forward algorithm to compute the partition function
-        init_alphas = torch.full((1, self.tagset_size), -10000.)
+        init_alphas = torch.full((1, self.tagset_size), -10000.).to(self.device)
         # START_TAG has all of the score.
         init_alphas[0][self.tag_to_ix[START_TAG]] = 0.
 
@@ -105,8 +107,8 @@ class Model(nn.Module):
 
     def _score_sentence(self, feats, tags):
         # Gives the score of a provided tag sequence
-        score = torch.zeros(1)
-        tags = torch.cat([torch.tensor([self.tag_to_ix[START_TAG]], dtype=torch.long), tags])
+        score = torch.zeros(1).to(self.device)
+        tags = torch.cat([torch.tensor([self.tag_to_ix[START_TAG]], dtype=torch.long).to(self.device), tags])
         for i, feat in enumerate(feats):
             score = score + \
                 self.transitions[tags[i + 1], tags[i]] + feat[tags[i + 1]]
@@ -118,7 +120,7 @@ class Model(nn.Module):
         backpointers = []
 
         # Initialize the viterbi variables in log space
-        init_vvars = torch.full((1, self.tagset_size), -10000.)
+        init_vvars = torch.full((1, self.tagset_size), -10000.).to(self.device)
         init_vvars[0][self.tag_to_ix[START_TAG]] = 0
 
         # forward_var at step i holds the viterbi variables for step i-1
@@ -171,12 +173,12 @@ class Model(nn.Module):
         # Find the best path, given the features.
         # score, tag_seq = self._viterbi_decode(lstm_feats)
         result = [self._viterbi_decode(lstm_feat)[1] for lstm_feat in lstm_feats]
-        return torch.tensor(result)
+        return torch.tensor(result).to(self.device)
 
 
 class BiLSTMCRF:
 
-    def __init__(self, load: bool = True, dataset: list = [], tags_name: list = [], parameters: dict = [], tokenizer = None):
+    def __init__(self, load: bool = True, dataset: list = [], tags_name: list = [], parameters: dict = [], align:bool = True, tokenizer = None):
         self.__device = "cuda" if cuda.is_available() else "cpu"
         print("Using:", self.__device)
         
@@ -185,9 +187,32 @@ class BiLSTMCRF:
         self.tokenizer = tokenizer
 
         vocab_size = self.tokenizer.vocab_size
-        embedding_dim = self.tokenizer.model_max_length
+        # TODO
+        # embedding_dim = self.tokenizer.model_max_length
+        embedding_dim = 300
+        processed = Preprocess(self.tokenizer).run_train_test_split(dataset, tags_name, align)
+        
+        word_count = {}
+        
+        for ex in processed['dataset']:
+            for word in ex['labels']:
+                # Assuming 'word' is a string
+                if word in word_count:
+                    word_count[word] += 1
+                else:
+                    word_count[word] = 1
 
-        processed = Preprocess(self.tokenizer).run_train_test_split(dataset, tags_name)
+        print(word_count)
+        
+        total_samples = sum(word_count.values())
+
+        # Calculate class weights
+        class_weights = {class_label: total_samples / (len(word_count) * count) 
+                        for class_label, count in word_count.items()}
+
+        # Display the class weights
+        print(class_weights)
+        class_weights = torch.tensor(list(class_weights.values())).to(self.__device)
 
         tag_to_ix = processed['label2id']
         START_ID = max(processed['id2label'].keys()) + 1
@@ -198,7 +223,7 @@ class BiLSTMCRF:
 
         # TODO
         hidden_dim = 512
-        n_tags = 3*2 + 1
+        n_tags = len(tags_name)
 
         if load:
             self.__model = Model(1, vocab_size, tag_to_ix, embedding_dim, hidden_dim)
@@ -220,8 +245,9 @@ class BiLSTMCRF:
 
             self.__model = Model(parameters['train_batch_size'], vocab_size, tag_to_ix, embedding_dim, hidden_dim).to(self.__device)
             
-            loss_fn = nn.CrossEntropyLoss()
-            optimizer = torch.optim.SGD(self.__model.parameters(), lr=parameters['learning_rate'], weight_decay=1e-4)
+            loss_fn = nn.CrossEntropyLoss(weight = class_weights)
+            # loss_fn = nn.CrossEntropyLoss()
+            optimizer = torch.optim.Adam(self.__model.parameters(), lr=parameters['learning_rate'], weight_decay=1e-4)
             
             for t in range(parameters['epochs']):
                 print(f"Epoch {t+1}\n-------------------------------")
@@ -231,10 +257,15 @@ class BiLSTMCRF:
             labels, predictions = self.__valid(testing_loader, self.__device, processed['id2label'])
             print(classification_report(labels, predictions))
             
+            labels = [ lab.replace("B-", "").replace("I-", "") for lab in labels]
+            predictions = [ lab.replace("B-", "").replace("I-", "") for lab in predictions]
+
+            print(classification_report(labels, predictions)) 
+
             torch.save(self.__model.state_dict(), SAVE_DIRECTORY + "/model.pth")
 
     def predict(self, data, pipeline=False):
-        data_tensor = torch.tensor(data, dtype=torch.long)
+        data_tensor = torch.tensor(data, dtype=torch.long).to(self.__device)
         self.__model.batch = data_tensor.shape[0]
         return self.__model(data_tensor)
 
