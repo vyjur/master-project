@@ -1,0 +1,237 @@
+Running from this directory: /cluster/home/julievt/master-project
+Name of job: master-project
+ID of job: 20752187
+The job was run on these nodes: idun-06-01,idun-07-[01-02,04]
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: poetry in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (1.2.2)
+Requirement already satisfied: html5lib<2.0,>=1.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.1)
+Requirement already satisfied: cleo<2.0.0,>=1.0.0a5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.0.0a5)
+Requirement already satisfied: poetry-core==1.3.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.3.2)
+Requirement already satisfied: dulwich<0.21.0,>=0.20.46 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.20.50)
+Requirement already satisfied: poetry-plugin-export<2.0.0,>=1.1.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.2.0)
+Requirement already satisfied: requests<3.0,>=2.18 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from poetry) (2.32.3)
+Requirement already satisfied: pkginfo<2.0,>=1.5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.8.3)
+Requirement already satisfied: virtualenv!=20.4.5,!=20.4.6,>=20.4.3 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (20.16.6)
+Requirement already satisfied: cachecontrol[filecache]<0.13.0,>=0.12.9 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.12.11)
+Requirement already satisfied: urllib3<2.0.0,>=1.26.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.26.12)
+Requirement already satisfied: packaging>=20.4 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from poetry) (24.1)
+Requirement already satisfied: platformdirs<3.0.0,>=2.5.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (2.5.3)
+Requirement already satisfied: jsonschema<5.0.0,>=4.10.0 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from poetry) (4.23.0)
+Requirement already satisfied: crashtest<0.4.0,>=0.3.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.3.1)
+Requirement already satisfied: shellingham<2.0,>=1.5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.5.0)
+Requirement already satisfied: pexpect<5.0.0,>=4.7.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (4.8.0)
+Requirement already satisfied: requests-toolbelt<0.10.0,>=0.9.1 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.9.1)
+Requirement already satisfied: cachy<0.4.0,>=0.3.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.3.0)
+Requirement already satisfied: keyring>=21.2.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (23.11.0)
+Requirement already satisfied: tomlkit!=0.11.2,!=0.11.3,<1.0.0,>=0.11.1 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.11.6)
+Requirement already satisfied: msgpack>=0.5.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from cachecontrol[filecache]<0.13.0,>=0.12.9->poetry) (1.0.4)
+Requirement already satisfied: lockfile>=0.9 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from cachecontrol[filecache]<0.13.0,>=0.12.9->poetry) (0.12.2)
+Requirement already satisfied: pylev<2.0.0,>=1.3.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from cleo<2.0.0,>=1.0.0a5->poetry) (1.4.0)
+Requirement already satisfied: six>=1.9 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from html5lib<2.0,>=1.0->poetry) (1.16.0)
+Requirement already satisfied: webencodings in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from html5lib<2.0,>=1.0->poetry) (0.5.1)
+Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from jsonschema<5.0.0,>=4.10.0->poetry) (2024.10.1)
+Requirement already satisfied: rpds-py>=0.7.1 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from jsonschema<5.0.0,>=4.10.0->poetry) (0.20.0)
+Requirement already satisfied: referencing>=0.28.4 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from jsonschema<5.0.0,>=4.10.0->poetry) (0.35.1)
+Requirement already satisfied: attrs>=22.2.0 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from jsonschema<5.0.0,>=4.10.0->poetry) (24.2.0)
+Requirement already satisfied: jeepney>=0.4.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from keyring>=21.2.0->poetry) (0.8.0)
+Requirement already satisfied: jaraco.classes in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from keyring>=21.2.0->poetry) (3.2.3)
+Requirement already satisfied: SecretStorage>=3.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from keyring>=21.2.0->poetry) (3.3.3)
+Requirement already satisfied: importlib-metadata>=4.11.4 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from keyring>=21.2.0->poetry) (5.0.0)
+Requirement already satisfied: ptyprocess>=0.5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from pexpect<5.0.0,>=4.7.0->poetry) (0.7.0)
+Requirement already satisfied: idna<4,>=2.5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from requests<3.0,>=2.18->poetry) (3.4)
+Requirement already satisfied: certifi>=2017.4.17 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from requests<3.0,>=2.18->poetry) (2022.9.24)
+Requirement already satisfied: charset-normalizer<4,>=2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from requests<3.0,>=2.18->poetry) (2.1.1)
+Requirement already satisfied: distlib<1,>=0.3.6 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from virtualenv!=20.4.5,!=20.4.6,>=20.4.3->poetry) (0.3.6)
+Requirement already satisfied: filelock<4,>=3.4.1 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from virtualenv!=20.4.5,!=20.4.6,>=20.4.3->poetry) (3.8.0)
+Requirement already satisfied: zipp>=0.5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from importlib-metadata>=4.11.4->keyring>=21.2.0->poetry) (3.10.0)
+Requirement already satisfied: cryptography>=2.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from SecretStorage>=3.2->keyring>=21.2.0->poetry) (38.0.3)
+Requirement already satisfied: more-itertools in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from jaraco.classes->keyring>=21.2.0->poetry) (9.0.0)
+Requirement already satisfied: cffi>=1.12 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from cryptography>=2.0->SecretStorage>=3.2->keyring>=21.2.0->poetry) (1.15.1)
+Requirement already satisfied: pycparser in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from cffi>=1.12->cryptography>=2.0->SecretStorage>=3.2->keyring>=21.2.0->poetry) (2.21)
+Installing dependencies from lock file
+
+No dependencies to install or update
+
+Installing the current project: master-project (0.1.0)
+Spawning shell within /cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.10
+Running script
+Using: cuda
+{'O': 5934, 'B-EVENT': 144, 'I-EVENT': 265, 'B-CONDITION': 245, 'I-CONDITION': 580}
+{'O': 0.24159083249073138, 'B-EVENT': 9.955555555555556, 'I-EVENT': 5.409811320754717, 'B-CONDITION': 5.851428571428571, 'I-CONDITION': 2.4717241379310346}
+Training Epoch: 0
+Training loss epoch: 1.7233803669611614
+Training accuracy epoch: 0.21645520929885473
+Training Epoch: 1
+Training loss epoch: 1.9901772737503052
+Training accuracy epoch: 0.054027229344964706
+Training Epoch: 2
+Training loss epoch: 1.4988830089569092
+Training accuracy epoch: 0.28209342439259405
+Training Epoch: 3
+Training loss epoch: 1.3645521799723308
+Training accuracy epoch: 0.3838218846149664
+Training Epoch: 4
+Training loss epoch: 1.4461023410161336
+Training accuracy epoch: 0.2520837862713637
+Training Epoch: 5
+Training loss epoch: 1.4025239149729412
+Training accuracy epoch: 0.2961312753660191
+Training Epoch: 6
+Training loss epoch: 1.3140039841334026
+Training accuracy epoch: 0.4172347621729138
+Training Epoch: 7
+Training loss epoch: 1.2204718192418416
+Training accuracy epoch: 0.5270305084921676
+Training Epoch: 8
+Training loss epoch: 1.1519271930058796
+Training accuracy epoch: 0.5707169354329751
+Training Epoch: 9
+Training loss epoch: 1.1255937814712524
+Training accuracy epoch: 0.5664360778738399
+Training Epoch: 10
+Training loss epoch: 1.0346516172091167
+Training accuracy epoch: 0.5889375356083476
+Training Epoch: 11
+Training loss epoch: 0.8944322466850281
+Training accuracy epoch: 0.6577014497994734
+Training Epoch: 12
+Training loss epoch: 0.899640679359436
+Training accuracy epoch: 0.6530803910716055
+Training Epoch: 13
+Training loss epoch: 0.8879745602607727
+Training accuracy epoch: 0.6656268564930327
+Training Epoch: 14
+Training loss epoch: 0.7937639554341634
+Training accuracy epoch: 0.7003245082624175
+Training Epoch: 15
+Training loss epoch: 0.7346022129058838
+Training accuracy epoch: 0.72632431410468
+Training Epoch: 16
+Training loss epoch: 0.7255030473073324
+Training accuracy epoch: 0.738364335378415
+Training Epoch: 17
+Training loss epoch: 0.6822397510210673
+Training accuracy epoch: 0.7535598011189689
+Training Epoch: 18
+Training loss epoch: 0.6732854048411051
+Training accuracy epoch: 0.7668396240254306
+Training Epoch: 19
+Training loss epoch: 0.6583714286486307
+Training accuracy epoch: 0.770522996149268
+Training Epoch: 20
+Training loss epoch: 0.5957894225915273
+Training accuracy epoch: 0.7970433711857273
+Training Epoch: 21
+Training loss epoch: 0.5891647040843964
+Training accuracy epoch: 0.8007321692349175
+Training Epoch: 22
+Training loss epoch: 0.565820554892222
+Training accuracy epoch: 0.8066950056574748
+Training Epoch: 23
+Training loss epoch: 0.5151016414165497
+Training accuracy epoch: 0.8270323984999726
+Training Epoch: 24
+Training loss epoch: 0.5148203074932098
+Training accuracy epoch: 0.8314820980284106
+Training Epoch: 25
+Training loss epoch: 0.4627337356408437
+Training accuracy epoch: 0.8373616259520338
+Training Epoch: 26
+Training loss epoch: 0.4845866958300273
+Training accuracy epoch: 0.833300866989454
+Training Epoch: 27
+Training loss epoch: 0.46062832077344257
+Training accuracy epoch: 0.8452726891023582
+Training Epoch: 28
+Training loss epoch: 0.42382484674453735
+Training accuracy epoch: 0.8554507019234229
+Training Epoch: 29
+Training loss epoch: 0.45076195398966473
+Training accuracy epoch: 0.8457296472110364
+Training Epoch: 30
+Training loss epoch: 0.39513951539993286
+Training accuracy epoch: 0.8576338299058456
+Training Epoch: 31
+Training loss epoch: 0.43039708336194354
+Training accuracy epoch: 0.851779563671916
+Training Epoch: 32
+Training loss epoch: 0.3548739155133565
+Training accuracy epoch: 0.8716132620085126
+Training Epoch: 33
+Training loss epoch: 0.37129836281140643
+Training accuracy epoch: 0.8719500553168521
+Training Epoch: 34
+Training loss epoch: 0.39624495307604474
+Training accuracy epoch: 0.8644404509561209
+Training Epoch: 35
+Training loss epoch: 0.34927405913670856
+Training accuracy epoch: 0.8765855742728658
+Training Epoch: 36
+Training loss epoch: 0.32910104592641193
+Training accuracy epoch: 0.8846888809851228
+Training Epoch: 37
+Training loss epoch: 0.3408592641353607
+Training accuracy epoch: 0.8833376146139481
+Training Epoch: 38
+Training loss epoch: 0.31958192586898804
+Training accuracy epoch: 0.8911020563401791
+Training Epoch: 39
+Training loss epoch: 0.3084767858187358
+Training accuracy epoch: 0.8917069618429219
+Training Epoch: 40
+Training loss epoch: 0.31810490290323895
+Training accuracy epoch: 0.8924732578157236
+Training Epoch: 41
+Training loss epoch: 0.3059004247188568
+Training accuracy epoch: 0.8937124377243961
+Training Epoch: 42
+Training loss epoch: 0.2799905339876811
+Training accuracy epoch: 0.9024664286649852
+Training Epoch: 43
+Training loss epoch: 0.3079342842102051
+Training accuracy epoch: 0.9013193462200229
+Training Epoch: 44
+Training loss epoch: 0.2650570571422577
+Training accuracy epoch: 0.9087351370092479
+Training Epoch: 45
+Training loss epoch: 0.2600764681895574
+Training accuracy epoch: 0.9075525579085673
+Training Epoch: 46
+Training loss epoch: 0.2794442375500997
+Training accuracy epoch: 0.9064653717456594
+Training Epoch: 47
+Training loss epoch: 0.27987752854824066
+Training accuracy epoch: 0.9056979685982101
+Training Epoch: 48
+Training loss epoch: 0.22584489484628043
+Training accuracy epoch: 0.9177182897613165
+Training Epoch: 49
+Training loss epoch: 0.21229984859625498
+Training accuracy epoch: 0.9217022494742224
+Validation loss per 100 evaluation steps: 0.5221791863441467
+Validation Loss: 0.45557384192943573
+Validation Accuracy: 0.86865234375
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.55      0.91      0.69        58
+     B-EVENT       0.57      0.68      0.62        34
+ I-CONDITION       0.58      0.90      0.71       155
+     I-EVENT       0.55      0.71      0.62        56
+           O       0.98      0.86      0.92      1233
+
+    accuracy                           0.86      1536
+   macro avg       0.65      0.81      0.71      1536
+weighted avg       0.90      0.86      0.87      1536
+
+              precision    recall  f1-score   support
+
+   CONDITION       0.58      0.92      0.71       213
+       EVENT       0.56      0.70      0.62        90
+           O       0.98      0.86      0.92      1233
+
+    accuracy                           0.86      1536
+   macro avg       0.71      0.83      0.75      1536
+weighted avg       0.90      0.86      0.87      1536
+
+[['O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'I-CONDITION', 'O', 'O', 'O', 'B-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'I-CONDITION', 'O', 'O', 'O', 'O', 'B-CONDITION', 'O', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'B-CONDITION', 'O', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'O', 'I-CONDITION', 'O', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'O', 'O', 'O', 'B-CONDITION', 'O', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'B-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'], ['O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'O', 'I-CONDITION', 'O', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'I-CONDITION', 'O', 'O', 'O', 'O', 'B-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'I-CONDITION', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'I-CONDITION']]
+512

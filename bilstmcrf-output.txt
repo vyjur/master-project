@@ -1,0 +1,685 @@
+Running from this directory: /cluster/home/julievt/master-project
+Name of job: master-project
+ID of job: 20747946
+The job was run on these nodes: idun-06-[09-12]
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: poetry in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (1.2.2)
+Requirement already satisfied: cachy<0.4.0,>=0.3.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.3.0)
+Requirement already satisfied: poetry-plugin-export<2.0.0,>=1.1.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.2.0)
+Requirement already satisfied: platformdirs<3.0.0,>=2.5.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (2.5.3)
+Requirement already satisfied: cachecontrol[filecache]<0.13.0,>=0.12.9 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.12.11)
+Requirement already satisfied: html5lib<2.0,>=1.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.1)
+Requirement already satisfied: crashtest<0.4.0,>=0.3.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.3.1)
+Requirement already satisfied: requests<3.0,>=2.18 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from poetry) (2.32.3)
+Requirement already satisfied: urllib3<2.0.0,>=1.26.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.26.12)
+Requirement already satisfied: cleo<2.0.0,>=1.0.0a5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.0.0a5)
+Requirement already satisfied: jsonschema<5.0.0,>=4.10.0 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from poetry) (4.23.0)
+Requirement already satisfied: keyring>=21.2.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (23.11.0)
+Requirement already satisfied: poetry-core==1.3.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.3.2)
+Requirement already satisfied: tomlkit!=0.11.2,!=0.11.3,<1.0.0,>=0.11.1 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.11.6)
+Requirement already satisfied: pexpect<5.0.0,>=4.7.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (4.8.0)
+Requirement already satisfied: packaging>=20.4 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from poetry) (24.1)
+Requirement already satisfied: dulwich<0.21.0,>=0.20.46 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.20.50)
+Requirement already satisfied: pkginfo<2.0,>=1.5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.8.3)
+Requirement already satisfied: shellingham<2.0,>=1.5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.5.0)
+Requirement already satisfied: virtualenv!=20.4.5,!=20.4.6,>=20.4.3 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (20.16.6)
+Requirement already satisfied: requests-toolbelt<0.10.0,>=0.9.1 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.9.1)
+Requirement already satisfied: msgpack>=0.5.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from cachecontrol[filecache]<0.13.0,>=0.12.9->poetry) (1.0.4)
+Requirement already satisfied: lockfile>=0.9 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from cachecontrol[filecache]<0.13.0,>=0.12.9->poetry) (0.12.2)
+Requirement already satisfied: pylev<2.0.0,>=1.3.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from cleo<2.0.0,>=1.0.0a5->poetry) (1.4.0)
+Requirement already satisfied: six>=1.9 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from html5lib<2.0,>=1.0->poetry) (1.16.0)
+Requirement already satisfied: webencodings in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from html5lib<2.0,>=1.0->poetry) (0.5.1)
+Requirement already satisfied: rpds-py>=0.7.1 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from jsonschema<5.0.0,>=4.10.0->poetry) (0.20.0)
+Requirement already satisfied: attrs>=22.2.0 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from jsonschema<5.0.0,>=4.10.0->poetry) (24.2.0)
+Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from jsonschema<5.0.0,>=4.10.0->poetry) (2024.10.1)
+Requirement already satisfied: referencing>=0.28.4 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from jsonschema<5.0.0,>=4.10.0->poetry) (0.35.1)
+Requirement already satisfied: jeepney>=0.4.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from keyring>=21.2.0->poetry) (0.8.0)
+Requirement already satisfied: jaraco.classes in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from keyring>=21.2.0->poetry) (3.2.3)
+Requirement already satisfied: SecretStorage>=3.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from keyring>=21.2.0->poetry) (3.3.3)
+Requirement already satisfied: importlib-metadata>=4.11.4 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from keyring>=21.2.0->poetry) (5.0.0)
+Requirement already satisfied: ptyprocess>=0.5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from pexpect<5.0.0,>=4.7.0->poetry) (0.7.0)
+Requirement already satisfied: idna<4,>=2.5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from requests<3.0,>=2.18->poetry) (3.4)
+Requirement already satisfied: charset-normalizer<4,>=2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from requests<3.0,>=2.18->poetry) (2.1.1)
+Requirement already satisfied: certifi>=2017.4.17 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from requests<3.0,>=2.18->poetry) (2022.9.24)
+Requirement already satisfied: distlib<1,>=0.3.6 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from virtualenv!=20.4.5,!=20.4.6,>=20.4.3->poetry) (0.3.6)
+Requirement already satisfied: filelock<4,>=3.4.1 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from virtualenv!=20.4.5,!=20.4.6,>=20.4.3->poetry) (3.8.0)
+Requirement already satisfied: zipp>=0.5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from importlib-metadata>=4.11.4->keyring>=21.2.0->poetry) (3.10.0)
+Requirement already satisfied: cryptography>=2.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from SecretStorage>=3.2->keyring>=21.2.0->poetry) (38.0.3)
+Requirement already satisfied: more-itertools in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from jaraco.classes->keyring>=21.2.0->poetry) (9.0.0)
+Requirement already satisfied: cffi>=1.12 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from cryptography>=2.0->SecretStorage>=3.2->keyring>=21.2.0->poetry) (1.15.1)
+Requirement already satisfied: pycparser in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from cffi>=1.12->cryptography>=2.0->SecretStorage>=3.2->keyring>=21.2.0->poetry) (2.21)
+Installing dependencies from lock file
+
+No dependencies to install or update
+
+Installing the current project: master-project (0.1.0)
+Spawning shell within /cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.10
+Running script
+Using: cuda
+{'O': 6111, 'B-EVENT': 211, 'I-EVENT': 194, 'B-CONDITION': 300, 'I-CONDITION': 352}
+{'O': 0.23459335624284078, 'B-EVENT': 6.794312796208531, 'I-EVENT': 7.389690721649485, 'B-CONDITION': 4.778666666666667, 'I-CONDITION': 4.072727272727272}
+Epoch 1
+-------------------------------
+Batch 0, Loss: 1214.736328125
+Epoch 2
+-------------------------------
+Batch 0, Loss: 863.45751953125
+Epoch 3
+-------------------------------
+Batch 0, Loss: 2558.29150390625
+Epoch 4
+-------------------------------
+Batch 0, Loss: 947.25537109375
+Epoch 5
+-------------------------------
+Batch 0, Loss: 928.92431640625
+Epoch 6
+-------------------------------
+Batch 0, Loss: 1515.0068359375
+Epoch 7
+-------------------------------
+Batch 0, Loss: 904.578125
+Epoch 8
+-------------------------------
+Batch 0, Loss: 374.453125
+Epoch 9
+-------------------------------
+Batch 0, Loss: 229.65185546875
+Epoch 10
+-------------------------------
+Batch 0, Loss: 183.48876953125
+Epoch 11
+-------------------------------
+Batch 0, Loss: 218.02587890625
+Epoch 12
+-------------------------------
+Batch 0, Loss: 451.01416015625
+Epoch 13
+-------------------------------
+Batch 0, Loss: 130.77001953125
+Epoch 14
+-------------------------------
+Batch 0, Loss: 95.56298828125
+Epoch 15
+-------------------------------
+Batch 0, Loss: 77.351318359375
+Epoch 16
+-------------------------------
+Batch 0, Loss: 67.810302734375
+Epoch 17
+-------------------------------
+Batch 0, Loss: 62.75537109375
+Epoch 18
+-------------------------------
+Batch 0, Loss: 66.1640625
+Epoch 19
+-------------------------------
+Batch 0, Loss: 87.4990234375
+Epoch 20
+-------------------------------
+Batch 0, Loss: 107.530029296875
+Epoch 21
+-------------------------------
+Batch 0, Loss: 145.90234375
+Epoch 22
+-------------------------------
+Batch 0, Loss: 78.1064453125
+Epoch 23
+-------------------------------
+Batch 0, Loss: 54.193603515625
+Epoch 24
+-------------------------------
+Batch 0, Loss: 40.385498046875
+Epoch 25
+-------------------------------
+Batch 0, Loss: 36.697509765625
+Epoch 26
+-------------------------------
+Batch 0, Loss: 35.940673828125
+Epoch 27
+-------------------------------
+Batch 0, Loss: 36.892333984375
+Epoch 28
+-------------------------------
+Batch 0, Loss: 39.1552734375
+Epoch 29
+-------------------------------
+Batch 0, Loss: 39.8359375
+Epoch 30
+-------------------------------
+Batch 0, Loss: 39.60546875
+Epoch 31
+-------------------------------
+Batch 0, Loss: 36.255126953125
+Epoch 32
+-------------------------------
+Batch 0, Loss: 33.237548828125
+Epoch 33
+-------------------------------
+Batch 0, Loss: 29.460205078125
+Epoch 34
+-------------------------------
+Batch 0, Loss: 26.72021484375
+Epoch 35
+-------------------------------
+Batch 0, Loss: 24.397705078125
+Epoch 36
+-------------------------------
+Batch 0, Loss: 22.414306640625
+Epoch 37
+-------------------------------
+Batch 0, Loss: 20.7216796875
+Epoch 38
+-------------------------------
+Batch 0, Loss: 19.0615234375
+Epoch 39
+-------------------------------
+Batch 0, Loss: 17.826904296875
+Epoch 40
+-------------------------------
+Batch 0, Loss: 16.466552734375
+Epoch 41
+-------------------------------
+Batch 0, Loss: 15.514404296875
+Epoch 42
+-------------------------------
+Batch 0, Loss: 14.676513671875
+Epoch 43
+-------------------------------
+Batch 0, Loss: 13.982666015625
+Epoch 44
+-------------------------------
+Batch 0, Loss: 13.38134765625
+Epoch 45
+-------------------------------
+Batch 0, Loss: 12.86962890625
+Epoch 46
+-------------------------------
+Batch 0, Loss: 12.38037109375
+Epoch 47
+-------------------------------
+Batch 0, Loss: 12.021728515625
+Epoch 48
+-------------------------------
+Batch 0, Loss: 11.56640625
+Epoch 49
+-------------------------------
+Batch 0, Loss: 11.16259765625
+Epoch 50
+-------------------------------
+Batch 0, Loss: 10.818115234375
+Epoch 51
+-------------------------------
+Batch 0, Loss: 10.459228515625
+Epoch 52
+-------------------------------
+Batch 0, Loss: 10.123046875
+Epoch 53
+-------------------------------
+Batch 0, Loss: 9.8232421875
+Epoch 54
+-------------------------------
+Batch 0, Loss: 9.508544921875
+Epoch 55
+-------------------------------
+Batch 0, Loss: 9.232666015625
+Epoch 56
+-------------------------------
+Batch 0, Loss: 8.975830078125
+Epoch 57
+-------------------------------
+Batch 0, Loss: 8.76806640625
+Epoch 58
+-------------------------------
+Batch 0, Loss: 8.46728515625
+Epoch 59
+-------------------------------
+Batch 0, Loss: 8.223388671875
+Epoch 60
+-------------------------------
+Batch 0, Loss: 8.005126953125
+Epoch 61
+-------------------------------
+Batch 0, Loss: 7.78759765625
+Epoch 62
+-------------------------------
+Batch 0, Loss: 7.61376953125
+Epoch 63
+-------------------------------
+Batch 0, Loss: 7.387939453125
+Epoch 64
+-------------------------------
+Batch 0, Loss: 7.192138671875
+Epoch 65
+-------------------------------
+Batch 0, Loss: 7.0283203125
+Epoch 66
+-------------------------------
+Batch 0, Loss: 6.83447265625
+Epoch 67
+-------------------------------
+Batch 0, Loss: 6.67626953125
+Epoch 68
+-------------------------------
+Batch 0, Loss: 6.52490234375
+Epoch 69
+-------------------------------
+Batch 0, Loss: 6.3828125
+Epoch 70
+-------------------------------
+Batch 0, Loss: 6.21826171875
+Epoch 71
+-------------------------------
+Batch 0, Loss: 6.07470703125
+Epoch 72
+-------------------------------
+Batch 0, Loss: 5.93310546875
+Epoch 73
+-------------------------------
+Batch 0, Loss: 5.79833984375
+Epoch 74
+-------------------------------
+Batch 0, Loss: 5.66845703125
+Epoch 75
+-------------------------------
+Batch 0, Loss: 5.54638671875
+Epoch 76
+-------------------------------
+Batch 0, Loss: 5.41943359375
+Epoch 77
+-------------------------------
+Batch 0, Loss: 5.3134765625
+Epoch 78
+-------------------------------
+Batch 0, Loss: 5.1943359375
+Epoch 79
+-------------------------------
+Batch 0, Loss: 5.09716796875
+Epoch 80
+-------------------------------
+Batch 0, Loss: 5.00244140625
+Epoch 81
+-------------------------------
+Batch 0, Loss: 4.8828125
+Epoch 82
+-------------------------------
+Batch 0, Loss: 4.78564453125
+Epoch 83
+-------------------------------
+Batch 0, Loss: 4.701171875
+Epoch 84
+-------------------------------
+Batch 0, Loss: 4.60546875
+Epoch 85
+-------------------------------
+Batch 0, Loss: 4.51513671875
+Epoch 86
+-------------------------------
+Batch 0, Loss: 4.44482421875
+Epoch 87
+-------------------------------
+Batch 0, Loss: 4.34521484375
+Epoch 88
+-------------------------------
+Batch 0, Loss: 4.2685546875
+Epoch 89
+-------------------------------
+Batch 0, Loss: 4.19287109375
+Epoch 90
+-------------------------------
+Batch 0, Loss: 4.1171875
+Epoch 91
+-------------------------------
+Batch 0, Loss: 4.04345703125
+Epoch 92
+-------------------------------
+Batch 0, Loss: 3.96875
+Epoch 93
+-------------------------------
+Batch 0, Loss: 3.912109375
+Epoch 94
+-------------------------------
+Batch 0, Loss: 3.84716796875
+Epoch 95
+-------------------------------
+Batch 0, Loss: 3.77099609375
+Epoch 96
+-------------------------------
+Batch 0, Loss: 3.7255859375
+Epoch 97
+-------------------------------
+Batch 0, Loss: 3.6533203125
+Epoch 98
+-------------------------------
+Batch 0, Loss: 3.59130859375
+Epoch 99
+-------------------------------
+Batch 0, Loss: 3.5302734375
+Epoch 100
+-------------------------------
+Batch 0, Loss: 3.5126953125
+Epoch 101
+-------------------------------
+Batch 0, Loss: 3.423828125
+Epoch 102
+-------------------------------
+Batch 0, Loss: 3.36669921875
+Epoch 103
+-------------------------------
+Batch 0, Loss: 3.3154296875
+Epoch 104
+-------------------------------
+Batch 0, Loss: 3.27978515625
+Epoch 105
+-------------------------------
+Batch 0, Loss: 3.2236328125
+Epoch 106
+-------------------------------
+Batch 0, Loss: 3.16552734375
+Epoch 107
+-------------------------------
+Batch 0, Loss: 3.11865234375
+Epoch 108
+-------------------------------
+Batch 0, Loss: 3.08837890625
+Epoch 109
+-------------------------------
+Batch 0, Loss: 3.03369140625
+Epoch 110
+-------------------------------
+Batch 0, Loss: 2.98681640625
+Epoch 111
+-------------------------------
+Batch 0, Loss: 2.9423828125
+Epoch 112
+-------------------------------
+Batch 0, Loss: 2.900390625
+Epoch 113
+-------------------------------
+Batch 0, Loss: 2.86376953125
+Epoch 114
+-------------------------------
+Batch 0, Loss: 2.82275390625
+Epoch 115
+-------------------------------
+Batch 0, Loss: 2.78271484375
+Epoch 116
+-------------------------------
+Batch 0, Loss: 2.74609375
+Epoch 117
+-------------------------------
+Batch 0, Loss: 2.71484375
+Epoch 118
+-------------------------------
+Batch 0, Loss: 2.705078125
+Epoch 119
+-------------------------------
+Batch 0, Loss: 2.64111328125
+Epoch 120
+-------------------------------
+Batch 0, Loss: 2.609375
+Epoch 121
+-------------------------------
+Batch 0, Loss: 2.5751953125
+Epoch 122
+-------------------------------
+Batch 0, Loss: 2.5380859375
+Epoch 123
+-------------------------------
+Batch 0, Loss: 2.50537109375
+Epoch 124
+-------------------------------
+Batch 0, Loss: 2.4755859375
+Epoch 125
+-------------------------------
+Batch 0, Loss: 2.44677734375
+Epoch 126
+-------------------------------
+Batch 0, Loss: 2.4140625
+Epoch 127
+-------------------------------
+Batch 0, Loss: 2.38720703125
+Epoch 128
+-------------------------------
+Batch 0, Loss: 2.36865234375
+Epoch 129
+-------------------------------
+Batch 0, Loss: 2.32666015625
+Epoch 130
+-------------------------------
+Batch 0, Loss: 2.302734375
+Epoch 131
+-------------------------------
+Batch 0, Loss: 2.27587890625
+Epoch 132
+-------------------------------
+Batch 0, Loss: 2.24609375
+Epoch 133
+-------------------------------
+Batch 0, Loss: 2.22412109375
+Epoch 134
+-------------------------------
+Batch 0, Loss: 2.19482421875
+Epoch 135
+-------------------------------
+Batch 0, Loss: 2.17431640625
+Epoch 136
+-------------------------------
+Batch 0, Loss: 2.16259765625
+Epoch 137
+-------------------------------
+Batch 0, Loss: 2.12255859375
+Epoch 138
+-------------------------------
+Batch 0, Loss: 2.10888671875
+Epoch 139
+-------------------------------
+Batch 0, Loss: 2.0751953125
+Epoch 140
+-------------------------------
+Batch 0, Loss: 2.052734375
+Epoch 141
+-------------------------------
+Batch 0, Loss: 2.03759765625
+Epoch 142
+-------------------------------
+Batch 0, Loss: 2.0087890625
+Epoch 143
+-------------------------------
+Batch 0, Loss: 2.00146484375
+Epoch 144
+-------------------------------
+Batch 0, Loss: 1.97314453125
+Epoch 145
+-------------------------------
+Batch 0, Loss: 1.95166015625
+Epoch 146
+-------------------------------
+Batch 0, Loss: 1.92626953125
+Epoch 147
+-------------------------------
+Batch 0, Loss: 1.9091796875
+Epoch 148
+-------------------------------
+Batch 0, Loss: 1.88818359375
+Epoch 149
+-------------------------------
+Batch 0, Loss: 1.873046875
+Epoch 150
+-------------------------------
+Batch 0, Loss: 1.8486328125
+Epoch 151
+-------------------------------
+Batch 0, Loss: 1.83837890625
+Epoch 152
+-------------------------------
+Batch 0, Loss: 1.81591796875
+Epoch 153
+-------------------------------
+Batch 0, Loss: 1.8046875
+Epoch 154
+-------------------------------
+Batch 0, Loss: 1.78076171875
+Epoch 155
+-------------------------------
+Batch 0, Loss: 1.75927734375
+Epoch 156
+-------------------------------
+Batch 0, Loss: 1.74853515625
+Epoch 157
+-------------------------------
+Batch 0, Loss: 1.7275390625
+Epoch 158
+-------------------------------
+Batch 0, Loss: 1.71240234375
+Epoch 159
+-------------------------------
+Batch 0, Loss: 1.69384765625
+Epoch 160
+-------------------------------
+Batch 0, Loss: 1.67626953125
+Epoch 161
+-------------------------------
+Batch 0, Loss: 1.6611328125
+Epoch 162
+-------------------------------
+Batch 0, Loss: 1.6484375
+Epoch 163
+-------------------------------
+Batch 0, Loss: 1.63232421875
+Epoch 164
+-------------------------------
+Batch 0, Loss: 1.6181640625
+Epoch 165
+-------------------------------
+Batch 0, Loss: 1.6025390625
+Epoch 166
+-------------------------------
+Batch 0, Loss: 1.591796875
+Epoch 167
+-------------------------------
+Batch 0, Loss: 1.5791015625
+Epoch 168
+-------------------------------
+Batch 0, Loss: 1.55810546875
+Epoch 169
+-------------------------------
+Batch 0, Loss: 1.5458984375
+Epoch 170
+-------------------------------
+Batch 0, Loss: 1.5302734375
+Epoch 171
+-------------------------------
+Batch 0, Loss: 1.51806640625
+Epoch 172
+-------------------------------
+Batch 0, Loss: 1.51513671875
+Epoch 173
+-------------------------------
+Batch 0, Loss: 1.49462890625
+Epoch 174
+-------------------------------
+Batch 0, Loss: 1.48388671875
+Epoch 175
+-------------------------------
+Batch 0, Loss: 1.46728515625
+Epoch 176
+-------------------------------
+Batch 0, Loss: 1.455078125
+Epoch 177
+-------------------------------
+Batch 0, Loss: 1.4453125
+Epoch 178
+-------------------------------
+Batch 0, Loss: 1.43212890625
+Epoch 179
+-------------------------------
+Batch 0, Loss: 1.41796875
+Epoch 180
+-------------------------------
+Batch 0, Loss: 1.40673828125
+Epoch 181
+-------------------------------
+Batch 0, Loss: 1.39453125
+Epoch 182
+-------------------------------
+Batch 0, Loss: 1.38427734375
+Epoch 183
+-------------------------------
+Batch 0, Loss: 1.375
+Epoch 184
+-------------------------------
+Batch 0, Loss: 1.361328125
+Epoch 185
+-------------------------------
+Batch 0, Loss: 1.3515625
+Epoch 186
+-------------------------------
+Batch 0, Loss: 1.3408203125
+Epoch 187
+-------------------------------
+Batch 0, Loss: 1.32861328125
+Epoch 188
+-------------------------------
+Batch 0, Loss: 1.31689453125
+Epoch 189
+-------------------------------
+Batch 0, Loss: 1.30859375
+Epoch 190
+-------------------------------
+Batch 0, Loss: 1.29638671875
+Epoch 191
+-------------------------------
+Batch 0, Loss: 1.2890625
+Epoch 192
+-------------------------------
+Batch 0, Loss: 1.2802734375
+Epoch 193
+-------------------------------
+Batch 0, Loss: 1.2666015625
+Epoch 194
+-------------------------------
+Batch 0, Loss: 1.25732421875
+Epoch 195
+-------------------------------
+Batch 0, Loss: 1.25
+Epoch 196
+-------------------------------
+Batch 0, Loss: 1.23779296875
+Epoch 197
+-------------------------------
+Batch 0, Loss: 1.23193359375
+Epoch 198
+-------------------------------
+Batch 0, Loss: 1.21826171875
+Epoch 199
+-------------------------------
+Batch 0, Loss: 1.21484375
+Epoch 200
+-------------------------------
+Batch 0, Loss: 1.20556640625
+Validation Accuracy: 0.931640625
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.83      0.72      0.77        72
+     B-EVENT       0.72      0.60      0.66        48
+ I-CONDITION       0.84      0.79      0.81        98
+     I-EVENT       0.85      0.61      0.71        36
+           O       0.95      0.98      0.96      1282
+
+    accuracy                           0.93      1536
+   macro avg       0.84      0.74      0.78      1536
+weighted avg       0.93      0.93      0.93      1536
+
+              precision    recall  f1-score   support
+
+   CONDITION       0.85      0.77      0.81       170
+       EVENT       0.79      0.62      0.69        84
+           O       0.95      0.98      0.96      1282
+
+    accuracy                           0.93      1536
+   macro avg       0.86      0.79      0.82      1536
+weighted avg       0.93      0.93      0.93      1536
+
+[['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-EVENT', 'I-EVENT', 'I-EVENT', 'I-EVENT', 'I-EVENT', 'I-EVENT', 'I-EVENT', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-EVENT', 'I-EVENT', 'I-EVENT', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-EVENT', 'I-EVENT', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-EVENT', 'I-EVENT', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'B-EVENT', 'I-EVENT', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'], ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']]
+512
