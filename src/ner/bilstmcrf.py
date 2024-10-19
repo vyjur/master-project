@@ -247,7 +247,7 @@ class BiLSTMCRF:
             
             loss_fn = nn.CrossEntropyLoss(weight = class_weights)
             # loss_fn = nn.CrossEntropyLoss()
-            optimizer = torch.optim.SGD(self.__model.parameters(), lr=parameters['learning_rate'], weight_decay=1e-4)
+            optimizer = torch.optim.Adam(self.__model.parameters(), lr=parameters['learning_rate'], weight_decay=1e-4)
             
             for t in range(parameters['epochs']):
                 print(f"Epoch {t+1}\n-------------------------------")

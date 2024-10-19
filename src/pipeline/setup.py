@@ -28,6 +28,7 @@ class Pipeline:
         
         checkpoint = "ltg/norbert3-large"
         # checkpoint = "ltg/norbert3-xs"
+        # checkpoint = "NbAiLab/nb-bert-base"
         self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
         
         if "csv" in train_file:
