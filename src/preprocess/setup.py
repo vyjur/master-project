@@ -73,38 +73,44 @@ class Preprocess:
                 words = [val[1] for val in row]
                 annot = [val[0] for val in row]
                 tokenized = self.__tokenizer(words, padding="max_length", max_length=self.__max_length, is_split_into_words=True, truncation=True, return_offsets_mapping=True)
-
-                tokens_annot = []
-                i = -1
-                for j in range(len(tokenized.tokens())):
-                    if tokenized['offset_mapping'][j][0] == 0 and tokenized['offset_mapping'][j][1] == 0:
-                        tokens_annot.append("O")
-                        continue
-                    elif tokenized['offset_mapping'][j][0] == 0:
-                        i += 1
-                        if annot[i] != "O":
-                            tokens_annot.append(f"B-{annot[i]}")
-                        else:
-                            tokens_annot.append(annot[i])
-                    else:
-                        if annot[i] != "O":
-                            tokens_annot.append(f"I-{annot[i]}")
-                        else:
-                            tokens_annot.append(annot[i])
-                
+                tokens_annot = self.tokens_mapping(tokenized, annot)
+                tokenized['words'] = words
                 tokenized['labels'] = tokens_annot
                 tokenized_dataset.append(tokenized)
+                
         train, test = train_test_split(tokenized_dataset, train_size=self.__train_size, random_state=42)
         train_dataset = CustomDataset(train, self.__tokenizer, label2id)
         test_dataset = CustomDataset(test, self.__tokenizer, label2id)
 
         return {
+            "train_raw": train,
+            "test_raw": test,
             "dataset": tokenized_dataset,
             'train': train_dataset,
             'test': test_dataset,
             'label2id': label2id,
             'id2label': id2label
         }
+        
+    def tokens_mapping(self, tokenized, annot):
+        tokens_annot = []
+        i = -1
+        for j in range(len(tokenized.tokens())):
+            if tokenized['offset_mapping'][j][0] == 0 and tokenized['offset_mapping'][j][1] == 0:
+                tokens_annot.append("O")
+                continue
+            elif tokenized['offset_mapping'][j][0] == 0:
+                i += 1
+                if annot[i] != "O":
+                    tokens_annot.append(f"B-{annot[i]}")
+                else:
+                    tokens_annot.append(annot[i])
+            else:
+                if annot[i] != "O":
+                    tokens_annot.append(f"I-{annot[i]}")
+                else:
+                    tokens_annot.append(annot[i])
+        return tokens_annot
         
     def get_tags(self, tags_name):
         tags = set()
