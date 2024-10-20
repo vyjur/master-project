@@ -5,6 +5,7 @@ from torch.utils.data import DataLoader
 from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
 from sklearn.metrics import accuracy_score, classification_report
+from util.setup import Util
 
 from pipeline.lexicon import Lexicon
 
@@ -193,28 +194,7 @@ class BiLSTMCRF:
         # embedding_dim = self.tokenizer.model_max_length
         embedding_dim = 300
         processed = Preprocess(self.tokenizer).run_train_test_split(dataset, tags_name, align)
-
-        word_count = {}
-
-        for ex in processed['dataset']:
-            for word in ex['labels']:
-                # Assuming 'word' is a string
-                if word in word_count:
-                    word_count[word] += 1
-                else:
-                    word_count[word] = 1
-
-        print(word_count)
-
-        total_samples = sum(word_count.values())
-
-        # Calculate class weights
-        class_weights = {class_label: total_samples / (len(word_count) * count) 
-                        for class_label, count in word_count.items()}
-
-        # Display the class weights
-        print(class_weights)
-        class_weights = torch.tensor(list(class_weights.values())).to(self.__device)
+        class_weights = Preprocess(self.tokenizer).class_weights(processed['dataset'], self.__device)
 
         tag_to_ix = processed['label2id']
         START_ID = max(processed['id2label'].keys()) + 1
@@ -257,27 +237,8 @@ class BiLSTMCRF:
                 # self.__test(testing_loader, loss_fn)
 
             labels, predictions = self.__valid(testing_loader, self.__device, processed['id2label'])
-            print(classification_report(labels, predictions))
-
-            cat_labels = [ lab.replace("B-", "").replace("I-", "") for lab in labels]
-            cat_predictions = [ lab.replace("B-", "").replace("I-", "") for lab in predictions]
-
-            print(classification_report(cat_labels, cat_predictions)) 
-
-            lexicon = Lexicon() 
-
-            lexi_predictions = []
-            for tokenized in processed['test_raw']:
-                words = self.tokenizer.decode(tokenized['input_ids']).split()
-                annot = lexicon.run(words)                
-                tokens_annot = Preprocess(self.tokenizer).tokens_mapping(tokenized, annot)
-                lexi_predictions.extend(
-                    tokens_annot
-                )
-                
-            cat_lexi_predictions = [ lab.replace("B-", "").replace("I-", "") for lab in lexi_predictions]
-            print(classification_report(labels, lexi_predictions))
-            print(classification_report(cat_labels, cat_lexi_predictions))
+            lexi_predictions = Lexicon().predict(processed['test_raw'], self.tokenizer)
+            Util().validate_output(labels, predictions, lexi_predictions)
 
             torch.save(self.__model.state_dict(), SAVE_DIRECTORY + "/model.pth")
 
