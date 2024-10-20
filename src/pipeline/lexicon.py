@@ -2,6 +2,7 @@ import nltk
 from nltk.stem import SnowballStemmer
 nltk.download('punkt')
 import pandas as pd
+from preprocess.setup import Preprocess
 
 class Lexicon:
     
@@ -35,8 +36,20 @@ class Lexicon:
             else:
                 major_value = result['ABBREV'].value_counts().idxmax()
                 all_labels.append(major_value)
-        print(len(data), len(all_labels))
         return all_labels
+    
+    def predict(self, dataset, tokenizer):
+        lexi_predictions = []
+        for tokenized in dataset:
+            words = tokenizer.decode(tokenized['input_ids']).split()
+            annot = self.run(words)                
+            tokens_annot = Preprocess(tokenizer).tokens_mapping(tokenized, annot)
+            lexi_predictions.extend(
+                tokens_annot
+            )
+        return lexi_predictions
+                
+        
     
 if __name__ == "__main__":
     print(Lexicon().run(['hei', 'på']))

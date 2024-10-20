@@ -129,6 +129,30 @@ class Preprocess:
         id2label[0]='O'
         
         return label2id, id2label
+    
+    def class_weights(self, dataset, device):
+        word_count = {}
+
+        for ex in dataset:
+            for word in ex['labels']:
+                # Assuming 'word' is a string
+                if word in word_count:
+                    word_count[word] += 1
+                else:
+                    word_count[word] = 1
+
+        print(word_count)
+
+        total_samples = sum(word_count.values())
+
+        # Calculate class weights
+        class_weights = {class_label: total_samples / (len(word_count) * count) 
+                        for class_label, count in word_count.items()}
+
+        # Display the class weights
+        print(class_weights)
+        class_weights = torch.tensor(list(class_weights.values())).to(device)
+        return class_weights
 
     
 if __name__ == "__main__":
