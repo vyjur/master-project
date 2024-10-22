@@ -11,6 +11,8 @@ from preprocess.setup import Preprocess
 from transformers import get_scheduler
 from tqdm.auto import tqdm
 import numpy as np
+from pipeline.lexicon import Lexicon
+from util.setup import Util
 
 SAVE_DIRECTORY = './src/ner/saved/fine_tuned_bert_model'
 
@@ -23,27 +25,7 @@ class FineTunedBert:
         self.tokenizer = tokenizer
         processed = Preprocess(self.tokenizer).run_train_test_split(dataset, tags_name, align)
         
-        word_count = {}
-        
-        for ex in processed['dataset']:
-            for word in ex['labels']:
-                # Assuming 'word' is a string
-                if word in word_count:
-                    word_count[word] += 1
-                else:
-                    word_count[word] = 1
-
-        print(word_count)
-        
-        total_samples = sum(word_count.values())
-
-        # Calculate class weights
-        class_weights = {class_label: total_samples / (len(word_count) * count) 
-                        for class_label, count in word_count.items()}
-
-        # Display the class weights
-        print(class_weights)
-        class_weights = torch.tensor(list(class_weights.values())).to(self.__device)
+        class_weights = Preprocess(self.tokenizer).class_weights(processed['dataset'], self.__device)
 
         if load:
             self.__model = AutoModelForTokenClassification.from_pretrained(SAVE_DIRECTORY)
@@ -87,12 +69,8 @@ class FineTunedBert:
                 self.__train(training_loader, num_training_steps, optimizer, lr_scheduler, loss_fn)
 
             labels, predictions = self.__valid(testing_loader, self.__device, processed['id2label'])
-            print(classification_report(labels, predictions))
-            
-            labels = [ lab.replace("B-", "").replace("I-", "") for lab in labels]
-            predictions = [ lab.replace("B-", "").replace("I-", "") for lab in predictions]
-
-            print(classification_report(labels, predictions)) 
+            lexi_predictions = Lexicon().predict(processed['test_raw'], self.tokenizer)
+            Util().validate_output(labels, predictions, lexi_predictions)
 
             # Save the model
             self.__model.save_pretrained(SAVE_DIRECTORY)

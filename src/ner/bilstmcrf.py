@@ -5,6 +5,9 @@ from torch.utils.data import DataLoader
 from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
 from sklearn.metrics import accuracy_score, classification_report
+from util.setup import Util
+
+from pipeline.lexicon import Lexicon
 
 SAVE_DIRECTORY = './src/ner/saved/bilstmcrf'
 
@@ -181,9 +184,9 @@ class BiLSTMCRF:
     def __init__(self, load: bool = True, dataset: list = [], tags_name: list = [], parameters: dict = [], align:bool = True, tokenizer = None):
         self.__device = "cuda" if cuda.is_available() else "cpu"
         print("Using:", self.__device)
-        
+
         self.__valid_batch_size = parameters['valid_batch_size']
-        
+
         self.tokenizer = tokenizer
 
         vocab_size = self.tokenizer.vocab_size
@@ -191,28 +194,7 @@ class BiLSTMCRF:
         # embedding_dim = self.tokenizer.model_max_length
         embedding_dim = 300
         processed = Preprocess(self.tokenizer).run_train_test_split(dataset, tags_name, align)
-        
-        word_count = {}
-        
-        for ex in processed['dataset']:
-            for word in ex['labels']:
-                # Assuming 'word' is a string
-                if word in word_count:
-                    word_count[word] += 1
-                else:
-                    word_count[word] = 1
-
-        print(word_count)
-        
-        total_samples = sum(word_count.values())
-
-        # Calculate class weights
-        class_weights = {class_label: total_samples / (len(word_count) * count) 
-                        for class_label, count in word_count.items()}
-
-        # Display the class weights
-        print(class_weights)
-        class_weights = torch.tensor(list(class_weights.values())).to(self.__device)
+        class_weights = Preprocess(self.tokenizer).class_weights(processed['dataset'], self.__device)
 
         tag_to_ix = processed['label2id']
         START_ID = max(processed['id2label'].keys()) + 1
@@ -222,7 +204,7 @@ class BiLSTMCRF:
         tag_to_ix[STOP_TAG] = STOP_ID
 
         # TODO
-        hidden_dim = 512
+        hidden_dim = parameters['max_length']
         n_tags = len(tags_name)
 
         if load:
@@ -234,7 +216,7 @@ class BiLSTMCRF:
                             'shuffle': True,
                             'num_workers': 0
                             }
-            
+
             test_params = {'batch_size': parameters['valid_batch_size'],
                             'shuffle': True,
                             'num_workers': 0
@@ -244,23 +226,19 @@ class BiLSTMCRF:
             testing_loader = DataLoader(processed["test"], **test_params)
 
             self.__model = Model(parameters['train_batch_size'], vocab_size, tag_to_ix, embedding_dim, hidden_dim).to(self.__device)
-            
+
             loss_fn = nn.CrossEntropyLoss(weight = class_weights)
             # loss_fn = nn.CrossEntropyLoss()
             optimizer = torch.optim.Adam(self.__model.parameters(), lr=parameters['learning_rate'], weight_decay=1e-4)
-            
+
             for t in range(parameters['epochs']):
                 print(f"Epoch {t+1}\n-------------------------------")
                 self.__train(training_loader, loss_fn, optimizer)
                 # self.__test(testing_loader, loss_fn)
 
             labels, predictions = self.__valid(testing_loader, self.__device, processed['id2label'])
-            print(classification_report(labels, predictions))
-            
-            labels = [ lab.replace("B-", "").replace("I-", "") for lab in labels]
-            predictions = [ lab.replace("B-", "").replace("I-", "") for lab in predictions]
-
-            print(classification_report(labels, predictions)) 
+            lexi_predictions = Lexicon().predict(processed['test_raw'], self.tokenizer)
+            Util().validate_output(labels, predictions, lexi_predictions)
 
             torch.save(self.__model.state_dict(), SAVE_DIRECTORY + "/model.pth")
 
@@ -271,13 +249,13 @@ class BiLSTMCRF:
 
     def __train(self, training_loader, loss_fn, optimizer):
         self.__model.train()
-        
+
         for idx, batch in enumerate(training_loader):
             ids = batch['ids'].to(self.__device, dtype=torch.long)
             # mask = batch['mask'].to(self.__device, dtype=torch.bool)
             targets = batch['targets'].to(self.__device, dtype=torch.long)
             self.__model.batch = ids.shape[0]
-            
+
             self.__model.zero_grad()
 
             # Step 3. Run our forward pass.
@@ -291,15 +269,15 @@ class BiLSTMCRF:
             if idx % 100 == 0:  # Adjust as needed
                 print(f"Batch {idx}, Loss: {loss.item()}")   
                 pass
-    
+
     def __valid(self, testing_loader, device, id2label):
         # put model in evaluation mode
         self.__model.eval()
-        
+
         eval_loss, eval_accuracy = 0, 0
         nb_eval_examples, nb_eval_steps = 0, 0
         eval_preds, eval_labels = [], []
-        
+
         with torch.no_grad():
             for idx, batch in enumerate(testing_loader):
                 ids = batch['ids'].to(device, dtype = torch.long)
@@ -307,21 +285,21 @@ class BiLSTMCRF:
                 targets = batch['targets'].to(device, dtype = torch.long)
                 self.__model.batch = ids.shape[0]
                 outputs = self.__model(ids)
-                                
+
                 nb_eval_steps += 1
                 nb_eval_examples += targets.size(0)
-                
+
                 # compute evaluation accuracy
                 flattened_targets = targets.view(-1) # shape (batch_size * seq_len,)
                 flattened_predictions = outputs.view(-1) # shape (batch_size * seq_len,)
-                
+
                 # now, use mask to determine where we should compare predictions with targets (includes [CLS] and [SEP] token predictions)
                 eval_labels.extend(flattened_targets.tolist())
                 eval_preds.extend(flattened_predictions.tolist())
-                
+
                 tmp_eval_accuracy = accuracy_score(flattened_targets.cpu().numpy(), flattened_predictions.cpu().numpy())
                 eval_accuracy += tmp_eval_accuracy
-        
+
         labels = [id2label[id] for id in eval_labels]
         predictions = [id2label[id] for id in eval_preds]
 
@@ -377,8 +355,3 @@ if __name__ == '__main__':
     print(len(tokenized[0]['input_ids']), len(pred1[0]))
     print(len(tokenized[1]['input_ids']), len(pred1[1]))
     print(len(tokenized[0]['input_ids']), len(pred2[0]))
-
-    
-
-
- 
