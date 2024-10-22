@@ -204,7 +204,7 @@ class BiLSTMCRF:
         tag_to_ix[STOP_TAG] = STOP_ID
 
         # TODO
-        hidden_dim = 512
+        hidden_dim = parameters['max_length']
         n_tags = len(tags_name)
 
         if load:

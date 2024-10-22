@@ -23,7 +23,8 @@ class Pipeline:
             'epochs': self.__config.getint('train.parameters', 'epochs'),
             'learning_rate': self.__config.getfloat('train.parameters', 'learning_rate'),
             'shuffle': self.__config.getboolean('train.parameters', 'shuffle'),
-            'num_workers': self.__config.getint('train.parameters', 'num_workers')
+            'num_workers': self.__config.getint('train.parameters', 'num_workers'),
+            'max_length': self.__config.getint('MODEL', 'max_length')
         }
         
         checkpoint = "ltg/norbert3-large"
@@ -88,7 +89,7 @@ class Pipeline:
             tags = list(tags)
         
         self.__model = MODEL_MAP[self.__config['MODEL']['name']](load, dataset, tags, train_parameters, align, self.tokenizer)
-        self.__preprocess = Preprocess(self.__model.tokenizer)
+        self.__preprocess = Preprocess(self.__model.tokenizer, int(self.__config['MODEL']['max_length']))
         self.label2id, self.id2label = self.__preprocess.get_tags(tags)
         self.__visualization = Visualization()
         
