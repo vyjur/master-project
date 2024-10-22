@@ -7,6 +7,7 @@ from preprocess.setup import Preprocess
 from visualization.setup import Visualization
 from pipeline.model_map import MODEL_MAP
 from transformers import AutoTokenizer
+from pipeline.lexicon import Lexicon
 
 class Pipeline:
 
@@ -99,7 +100,10 @@ class Pipeline:
         if self.__config['MODEL']['name'] != 'LLM':
             preprocessed_data = self.__preprocess.run(data)
             output = self.__model.predict([val['input_ids'] for val in preprocessed_data])
-            return [[self.id2label[int(j.cpu().numpy())] for j in i ] for i in output]
+            
+            predictions = [[self.id2label[int(j.cpu().numpy())] for j in i ] for i in output]
+            lexi_predictions = Lexicon().predict(preprocessed_data, self.tokenizer)
+            output = Lexicon().merge(lexi_predictions, predictions)
         else:
             output = self.__model.predict([val['text'] for val in data])
         return output

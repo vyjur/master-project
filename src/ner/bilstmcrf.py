@@ -238,6 +238,7 @@ class BiLSTMCRF:
 
             labels, predictions = self.__valid(testing_loader, self.__device, processed['id2label'])
             lexi_predictions = Lexicon().predict(processed['test_raw'], self.tokenizer)
+            lexi_predictions = Lexicon().merge(lexi_predictions, predictions)
             Util().validate_output(labels, predictions, lexi_predictions)
 
             torch.save(self.__model.state_dict(), SAVE_DIRECTORY + "/model.pth")
