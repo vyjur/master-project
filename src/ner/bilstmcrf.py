@@ -242,7 +242,7 @@ class BiLSTMCRF:
             Util().validate_output(labels, predictions, lexi_predictions)
 
             torch.save(self.__model.state_dict(), SAVE_DIRECTORY + "/model.pth")
-
+        
     def predict(self, data, pipeline=False):
         data_tensor = torch.tensor(data, dtype=torch.long).to(self.__device)
         self.__model.batch = data_tensor.shape[0]
