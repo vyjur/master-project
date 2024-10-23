@@ -90,7 +90,7 @@ class Preprocess:
             
         return windowed_sequences 
 
-    def run_train_test_split(self, data:list=[], tags_name:list = [], align:bool=True):
+    def run_train_test_split(self, data:list=[], tags_name:list = [], align:bool=True, window_size:int=128, stride:int=16):
         label2id, id2label = self.get_tags(tags_name)
         if align:
             tokenized_dataset = [self.__tokenize_and_align_labels(row) for row in data]
@@ -112,8 +112,7 @@ class Preprocess:
                 tokenized['labels'] = tokens_annot
                 tokenized_dataset.append(tokenized)
             
-            tokenized_dataset = self.sliding_window(tokenized_dataset)
-            
+            tokenized_dataset = self.sliding_window(tokenized_dataset, window_size=window_size, stride=stride)
         train, test = train_test_split(tokenized_dataset, train_size=self.__train_size, random_state=42)
         train_dataset = CustomDataset(train, self.__tokenizer, label2id)
         test_dataset = CustomDataset(test, self.__tokenizer, label2id)
