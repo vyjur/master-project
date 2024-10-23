@@ -51,7 +51,7 @@ class Pipeline:
             dataset = []
             for file_path in ann_files:
                 file_dataset = []
-                with open(file_path, 'r') as file:        
+                with open(file_path, 'r', encoding="UTF-8") as file:        
                     for line in file:
                         data = line.split('\t')
                         if "R" in data[0]:
