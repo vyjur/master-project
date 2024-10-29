@@ -69,7 +69,8 @@ class FineTunedBert:
                 self.__train(training_loader, num_training_steps, optimizer, lr_scheduler, loss_fn)
 
             labels, predictions = self.__valid(testing_loader, self.__device, processed['id2label'])
-            lexi_predictions = Lexicon().predict(processed['test_raw'], self.tokenizer)
+            # lexi_predictions = Lexicon().predict(processed['test_raw'], self.tokenizer)
+            lexi_predictions = []
             Util().validate_output(labels, predictions, lexi_predictions)
 
             # Save the model

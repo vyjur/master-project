@@ -16,7 +16,7 @@ class Util:
         print("### Summary")
         print(classification_report(cat_labels, cat_predictions)) 
         
-        print("### Lexicon")
-        cat_lexi_predictions = [ lab.replace("B-", "").replace("I-", "") for lab in lexi_predictions]
-        print(classification_report(labels, lexi_predictions))
-        print(classification_report(cat_labels, cat_lexi_predictions))
+        # print("### Lexicon")
+        # cat_lexi_predictions = [ lab.replace("B-", "").replace("I-", "") for lab in lexi_predictions]
+        # print(classification_report(labels, lexi_predictions))
+        # print(classification_report(cat_labels, cat_lexi_predictions))
