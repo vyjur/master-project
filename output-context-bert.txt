@@ -1,0 +1,1822 @@
+Running from this directory: /cluster/home/julievt/master-project
+Name of job: master-project
+ID of job: 20758121
+The job was run on these nodes: idun-07-[02-03,07-08]
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: poetry in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (1.2.2)
+Requirement already satisfied: requests<3.0,>=2.18 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from poetry) (2.32.3)
+Requirement already satisfied: platformdirs<3.0.0,>=2.5.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (2.5.3)
+Requirement already satisfied: shellingham<2.0,>=1.5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.5.0)
+Requirement already satisfied: pkginfo<2.0,>=1.5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.8.3)
+Requirement already satisfied: html5lib<2.0,>=1.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.1)
+Requirement already satisfied: pexpect<5.0.0,>=4.7.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (4.8.0)
+Requirement already satisfied: cachecontrol[filecache]<0.13.0,>=0.12.9 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.12.11)
+Requirement already satisfied: poetry-plugin-export<2.0.0,>=1.1.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.2.0)
+Requirement already satisfied: keyring>=21.2.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (23.11.0)
+Requirement already satisfied: tomlkit!=0.11.2,!=0.11.3,<1.0.0,>=0.11.1 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.11.6)
+Requirement already satisfied: virtualenv!=20.4.5,!=20.4.6,>=20.4.3 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (20.16.6)
+Requirement already satisfied: packaging>=20.4 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from poetry) (24.1)
+Requirement already satisfied: crashtest<0.4.0,>=0.3.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.3.1)
+Requirement already satisfied: requests-toolbelt<0.10.0,>=0.9.1 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.9.1)
+Requirement already satisfied: urllib3<2.0.0,>=1.26.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.26.12)
+Requirement already satisfied: dulwich<0.21.0,>=0.20.46 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.20.50)
+Requirement already satisfied: cleo<2.0.0,>=1.0.0a5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.0.0a5)
+Requirement already satisfied: cachy<0.4.0,>=0.3.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.3.0)
+Requirement already satisfied: poetry-core==1.3.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.3.2)
+Requirement already satisfied: jsonschema<5.0.0,>=4.10.0 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from poetry) (4.23.0)
+Requirement already satisfied: msgpack>=0.5.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from cachecontrol[filecache]<0.13.0,>=0.12.9->poetry) (1.0.4)
+Requirement already satisfied: lockfile>=0.9 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from cachecontrol[filecache]<0.13.0,>=0.12.9->poetry) (0.12.2)
+Requirement already satisfied: pylev<2.0.0,>=1.3.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from cleo<2.0.0,>=1.0.0a5->poetry) (1.4.0)
+Requirement already satisfied: webencodings in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from html5lib<2.0,>=1.0->poetry) (0.5.1)
+Requirement already satisfied: six>=1.9 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from html5lib<2.0,>=1.0->poetry) (1.16.0)
+Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from jsonschema<5.0.0,>=4.10.0->poetry) (2024.10.1)
+Requirement already satisfied: attrs>=22.2.0 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from jsonschema<5.0.0,>=4.10.0->poetry) (24.2.0)
+Requirement already satisfied: rpds-py>=0.7.1 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from jsonschema<5.0.0,>=4.10.0->poetry) (0.20.0)
+Requirement already satisfied: referencing>=0.28.4 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from jsonschema<5.0.0,>=4.10.0->poetry) (0.35.1)
+Requirement already satisfied: SecretStorage>=3.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from keyring>=21.2.0->poetry) (3.3.3)
+Requirement already satisfied: jaraco.classes in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from keyring>=21.2.0->poetry) (3.2.3)
+Requirement already satisfied: jeepney>=0.4.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from keyring>=21.2.0->poetry) (0.8.0)
+Requirement already satisfied: importlib-metadata>=4.11.4 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from keyring>=21.2.0->poetry) (5.0.0)
+Requirement already satisfied: ptyprocess>=0.5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from pexpect<5.0.0,>=4.7.0->poetry) (0.7.0)
+Requirement already satisfied: idna<4,>=2.5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from requests<3.0,>=2.18->poetry) (3.4)
+Requirement already satisfied: certifi>=2017.4.17 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from requests<3.0,>=2.18->poetry) (2022.9.24)
+Requirement already satisfied: charset-normalizer<4,>=2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from requests<3.0,>=2.18->poetry) (2.1.1)
+Requirement already satisfied: distlib<1,>=0.3.6 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from virtualenv!=20.4.5,!=20.4.6,>=20.4.3->poetry) (0.3.6)
+Requirement already satisfied: filelock<4,>=3.4.1 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from virtualenv!=20.4.5,!=20.4.6,>=20.4.3->poetry) (3.8.0)
+Requirement already satisfied: zipp>=0.5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from importlib-metadata>=4.11.4->keyring>=21.2.0->poetry) (3.10.0)
+Requirement already satisfied: cryptography>=2.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from SecretStorage>=3.2->keyring>=21.2.0->poetry) (38.0.3)
+Requirement already satisfied: more-itertools in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from jaraco.classes->keyring>=21.2.0->poetry) (9.0.0)
+Requirement already satisfied: cffi>=1.12 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from cryptography>=2.0->SecretStorage>=3.2->keyring>=21.2.0->poetry) (1.15.1)
+Requirement already satisfied: pycparser in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from cffi>=1.12->cryptography>=2.0->SecretStorage>=3.2->keyring>=21.2.0->poetry) (2.21)
+Installing dependencies from lock file
+
+No dependencies to install or update
+
+Installing the current project: master-project (0.1.0)
+Spawning shell within /cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.10
+Running script
+Using: cuda
+{'O': 12281, 'B-EVENT': 343, 'I-EVENT': 353, 'B-CONDITION': 629, 'I-CONDITION': 730}
+{'O': 0.23346633010341178, 'B-EVENT': 8.359183673469389, 'I-EVENT': 8.122379603399434, 'B-CONDITION': 4.558346581875994, 'I-CONDITION': 3.9276712328767123}
+Training Epoch: 0
+Training loss epoch: 0.3701411440320637
+Training accuracy epoch: 0.900985054347826
+Training Epoch: 1
+Training loss epoch: 0.13925522711613905
+Training accuracy epoch: 0.9336786684782609
+Training Epoch: 2
+Training loss epoch: 0.12001292483435701
+Training accuracy epoch: 0.9431895380434783
+Training Epoch: 3
+Training loss epoch: 0.12600553845581802
+Training accuracy epoch: 0.9414911684782609
+Training Epoch: 4
+Training loss epoch: 0.11851558348406917
+Training accuracy epoch: 0.9441236413043478
+Training Epoch: 5
+Training loss epoch: 0.10836123124412868
+Training accuracy epoch: 0.9490489130434783
+Training Epoch: 6
+Training loss epoch: 0.10635233054990353
+Training accuracy epoch: 0.9495584239130435
+Training Epoch: 7
+Training loss epoch: 0.10328523830875107
+Training accuracy epoch: 0.9536345108695652
+Training Epoch: 8
+Training loss epoch: 0.10163602751234303
+Training accuracy epoch: 0.9547384510869565
+Training Epoch: 9
+Training loss epoch: 0.09496526339131853
+Training accuracy epoch: 0.9588145380434783
+Training Epoch: 10
+Training loss epoch: 0.08818344966225002
+Training accuracy epoch: 0.9620414402173914
+Training Epoch: 11
+Training loss epoch: 0.08293203329262526
+Training accuracy epoch: 0.9657778532608695
+Training Epoch: 12
+Training loss epoch: 0.07352801193685635
+Training accuracy epoch: 0.9679008152173914
+Training Epoch: 13
+Training loss epoch: 0.06710516434648763
+Training accuracy epoch: 0.9733355978260869
+Training Epoch: 14
+Training loss epoch: 0.060238371319744896
+Training accuracy epoch: 0.9761379076086957
+Training Epoch: 15
+Training loss epoch: 0.05049649407358273
+Training accuracy epoch: 0.9806385869565217
+Training Epoch: 16
+Training loss epoch: 0.04567339862494365
+Training accuracy epoch: 0.9838654891304348
+Training Epoch: 17
+Training loss epoch: 0.03619228522090808
+Training accuracy epoch: 0.9872622282608695
+Training Epoch: 18
+Training loss epoch: 0.036240699336580605
+Training accuracy epoch: 0.9878566576086957
+Training Epoch: 19
+Training loss epoch: 0.032082494186318436
+Training accuracy epoch: 0.9898097826086957
+Training Epoch: 20
+Training loss epoch: 0.023715497399477856
+Training accuracy epoch: 0.9932914402173914
+Training Epoch: 21
+Training loss epoch: 0.02337370244482451
+Training accuracy epoch: 0.9925271739130435
+Training Epoch: 22
+Training loss epoch: 0.01582962118656091
+Training accuracy epoch: 0.9958389945652174
+Training Epoch: 23
+Training loss epoch: 0.013180056850061468
+Training accuracy epoch: 0.9963485054347826
+Training Epoch: 24
+Training loss epoch: 0.011387839447706938
+Training accuracy epoch: 0.9969429347826086
+Training Epoch: 25
+Training loss epoch: 0.00956390953987189
+Training accuracy epoch: 0.9977921195652174
+Training Epoch: 26
+Training loss epoch: 0.009518147689168867
+Training accuracy epoch: 0.9978770380434783
+Training Epoch: 27
+Training loss epoch: 0.009092676190092512
+Training accuracy epoch: 0.9978770380434783
+Training Epoch: 28
+Training loss epoch: 0.012376360392764858
+Training accuracy epoch: 0.9964334239130435
+Training Epoch: 29
+Training loss epoch: 0.010217492428162823
+Training accuracy epoch: 0.9973675271739131
+Training Epoch: 30
+Training loss epoch: 0.006970953138079494
+Training accuracy epoch: 0.9985563858695652
+Training Epoch: 31
+Training loss epoch: 0.006453868482545342
+Training accuracy epoch: 0.9985563858695652
+Training Epoch: 32
+Training loss epoch: 0.005621345513803965
+Training accuracy epoch: 0.998641304347826
+Training Epoch: 33
+Training loss epoch: 0.0030008618588275885
+Training accuracy epoch: 0.9997452445652174
+Training Epoch: 34
+Training loss epoch: 0.00326056901426257
+Training accuracy epoch: 0.9994904891304348
+Training Epoch: 35
+Training loss epoch: 0.0022286761491356983
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 36
+Training loss epoch: 0.0017106592953812492
+Training accuracy epoch: 1.0
+Training Epoch: 37
+Training loss epoch: 0.0015305655213761265
+Training accuracy epoch: 1.0
+Training Epoch: 38
+Training loss epoch: 0.001352657374176804
+Training accuracy epoch: 1.0
+Training Epoch: 39
+Training loss epoch: 0.0021144761855754514
+Training accuracy epoch: 0.9994904891304348
+Training Epoch: 40
+Training loss epoch: 0.0023123506259213646
+Training accuracy epoch: 0.9996603260869565
+Training Epoch: 41
+Training loss epoch: 0.0056778481432601165
+Training accuracy epoch: 0.9984714673913043
+Training Epoch: 42
+Training loss epoch: 0.006981313040064972
+Training accuracy epoch: 0.997452445652174
+Training Epoch: 43
+Training loss epoch: 0.00424300401431063
+Training accuracy epoch: 0.9990658967391305
+Training Epoch: 44
+Training loss epoch: 0.008701091566447007
+Training accuracy epoch: 0.9968580163043478
+Training Epoch: 45
+Training loss epoch: 0.02494063802346911
+Training accuracy epoch: 0.9924422554347826
+Training Epoch: 46
+Training loss epoch: 0.014090206140004422
+Training accuracy epoch: 0.9961786684782609
+Training Epoch: 47
+Training loss epoch: 0.008030044866482849
+Training accuracy epoch: 0.9977072010869565
+Training Epoch: 48
+Training loss epoch: 0.0032548060711554212
+Training accuracy epoch: 0.9994904891304348
+Training Epoch: 49
+Training loss epoch: 0.0021885136198049977
+Training accuracy epoch: 0.9998301630434783
+Training Epoch: 50
+Training loss epoch: 0.0019198366208001971
+Training accuracy epoch: 0.9998301630434783
+Training Epoch: 51
+Training loss epoch: 0.0017706106477619512
+Training accuracy epoch: 0.9997452445652174
+Training Epoch: 52
+Training loss epoch: 0.001194600058901731
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 53
+Training loss epoch: 0.0012290243327658138
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 54
+Training loss epoch: 0.0013092176725521035
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 55
+Training loss epoch: 0.0017250673845410347
+Training accuracy epoch: 0.9997452445652174
+Training Epoch: 56
+Training loss epoch: 0.0018592739070300013
+Training accuracy epoch: 0.9996603260869565
+Training Epoch: 57
+Training loss epoch: 0.0012635202412797219
+Training accuracy epoch: 0.9998301630434783
+Training Epoch: 58
+Training loss epoch: 0.0013455575200445626
+Training accuracy epoch: 0.9997452445652174
+Training Epoch: 59
+Training loss epoch: 0.0010100120486205687
+Training accuracy epoch: 1.0
+Training Epoch: 60
+Training loss epoch: 0.0008418056633039985
+Training accuracy epoch: 1.0
+Training Epoch: 61
+Training loss epoch: 0.0009586774888347187
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 62
+Training loss epoch: 0.001007192249349116
+Training accuracy epoch: 0.9998301630434783
+Training Epoch: 63
+Training loss epoch: 0.0022647178164966726
+Training accuracy epoch: 0.9995754076086957
+Training Epoch: 64
+Training loss epoch: 0.0012645690180563731
+Training accuracy epoch: 0.9998301630434783
+Training Epoch: 65
+Training loss epoch: 0.0015087268699932358
+Training accuracy epoch: 0.9996603260869565
+Training Epoch: 66
+Training loss epoch: 0.0006978971258554932
+Training accuracy epoch: 1.0
+Training Epoch: 67
+Training loss epoch: 0.0006041020754744987
+Training accuracy epoch: 1.0
+Training Epoch: 68
+Training loss epoch: 0.0006126420769799987
+Training accuracy epoch: 1.0
+Training Epoch: 69
+Training loss epoch: 0.0005834894621764998
+Training accuracy epoch: 1.0
+Training Epoch: 70
+Training loss epoch: 0.0005102126008790473
+Training accuracy epoch: 1.0
+Training Epoch: 71
+Training loss epoch: 0.0004887015877655991
+Training accuracy epoch: 1.0
+Training Epoch: 72
+Training loss epoch: 0.0004382740880828351
+Training accuracy epoch: 1.0
+Training Epoch: 73
+Training loss epoch: 0.0004627405799945573
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 74
+Training loss epoch: 0.0003557420745694443
+Training accuracy epoch: 1.0
+Training Epoch: 75
+Training loss epoch: 0.0003488114231478666
+Training accuracy epoch: 1.0
+Training Epoch: 76
+Training loss epoch: 0.00037692598783431333
+Training accuracy epoch: 1.0
+Training Epoch: 77
+Training loss epoch: 0.00032000424107536674
+Training accuracy epoch: 1.0
+Training Epoch: 78
+Training loss epoch: 0.00030572308700673443
+Training accuracy epoch: 1.0
+Training Epoch: 79
+Training loss epoch: 0.00030766848636710125
+Training accuracy epoch: 1.0
+Training Epoch: 80
+Training loss epoch: 0.00028898740255618065
+Training accuracy epoch: 1.0
+Training Epoch: 81
+Training loss epoch: 0.0002794081273073654
+Training accuracy epoch: 1.0
+Training Epoch: 82
+Training loss epoch: 0.0003678121606556132
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 83
+Training loss epoch: 0.006090273657995884
+Training accuracy epoch: 0.9988111413043478
+Training Epoch: 84
+Training loss epoch: 0.006689576649754916
+Training accuracy epoch: 0.9984714673913043
+Training Epoch: 85
+Training loss epoch: 0.0046230417716762295
+Training accuracy epoch: 0.9988960597826086
+Training Epoch: 86
+Training loss epoch: 0.006080127070637663
+Training accuracy epoch: 0.9984714673913043
+Training Epoch: 87
+Training loss epoch: 0.002513534558997692
+Training accuracy epoch: 0.9995754076086957
+Training Epoch: 88
+Training loss epoch: 0.0014860342881824497
+Training accuracy epoch: 0.9997452445652174
+Training Epoch: 89
+Training loss epoch: 0.0017009642159910468
+Training accuracy epoch: 0.9994904891304348
+Training Epoch: 90
+Training loss epoch: 0.00086051158596883
+Training accuracy epoch: 1.0
+Training Epoch: 91
+Training loss epoch: 0.0006518235225129225
+Training accuracy epoch: 1.0
+Training Epoch: 92
+Training loss epoch: 0.00043822347525628686
+Training accuracy epoch: 1.0
+Training Epoch: 93
+Training loss epoch: 0.0005117957138598127
+Training accuracy epoch: 1.0
+Training Epoch: 94
+Training loss epoch: 0.0006450105315509617
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 95
+Training loss epoch: 0.00038391936433744496
+Training accuracy epoch: 1.0
+Training Epoch: 96
+Training loss epoch: 0.0003529305224377743
+Training accuracy epoch: 1.0
+Training Epoch: 97
+Training loss epoch: 0.00033599548813704723
+Training accuracy epoch: 1.0
+Training Epoch: 98
+Training loss epoch: 0.0005148487094708759
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 99
+Training loss epoch: 0.0003580230777911113
+Training accuracy epoch: 1.0
+Validation loss per 100 evaluation steps: 0.0005406937561929226
+Validation Loss: 0.034791574893461075
+Validation Accuracy: 0.9934895833333334
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.96      0.92      0.94       129
+     B-EVENT       0.88      0.92      0.90        65
+ I-CONDITION       0.99      0.97      0.98       127
+     I-EVENT       0.91      0.98      0.94        60
+           O       1.00      1.00      1.00      2563
+
+    accuracy                           0.99      2944
+   macro avg       0.95      0.96      0.95      2944
+weighted avg       0.99      0.99      0.99      2944
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.98      0.95      0.96       256
+       EVENT       0.89      0.95      0.92       125
+           O       1.00      1.00      1.00      2563
+
+    accuracy                           0.99      2944
+   macro avg       0.96      0.97      0.96      2944
+weighted avg       0.99      0.99      0.99      2944
+
+### Lexicon
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.11      0.12      0.11       129
+     B-EVENT       0.00      0.00      0.00        65
+ I-CONDITION       0.13      0.12      0.12       127
+     I-EVENT       0.00      0.00      0.00        60
+           O       0.88      0.92      0.90      2563
+
+    accuracy                           0.81      2944
+   macro avg       0.22      0.23      0.23      2944
+weighted avg       0.77      0.81      0.79      2944
+
+              precision    recall  f1-score   support
+
+   CONDITION       0.15      0.14      0.15       256
+       EVENT       0.00      0.00      0.00       125
+           O       0.88      0.92      0.90      2563
+
+    accuracy                           0.82      2944
+   macro avg       0.34      0.36      0.35      2944
+weighted avg       0.78      0.82      0.80      2944
+
+Using: cuda
+{'O': 12281, 'B-EVENT': 343, 'I-EVENT': 353, 'B-CONDITION': 629, 'I-CONDITION': 730}
+{'O': 0.23346633010341178, 'B-EVENT': 8.359183673469389, 'I-EVENT': 8.122379603399434, 'B-CONDITION': 4.558346581875994, 'I-CONDITION': 3.9276712328767123}
+Training Epoch: 0
+Training loss epoch: 0.4330934470762377
+Training accuracy epoch: 0.8351732336956522
+Training Epoch: 1
+Training loss epoch: 0.14451709584049557
+Training accuracy epoch: 0.9369904891304348
+Training Epoch: 2
+Training loss epoch: 0.12923210729723392
+Training accuracy epoch: 0.9397927989130435
+Training Epoch: 3
+Training loss epoch: 0.12689572637495788
+Training accuracy epoch: 0.9369904891304348
+Training Epoch: 4
+Training loss epoch: 0.12106425379929335
+Training accuracy epoch: 0.9404721467391305
+Training Epoch: 5
+Training loss epoch: 0.1139964968290018
+Training accuracy epoch: 0.944718070652174
+Training Epoch: 6
+Training loss epoch: 0.10940318846184274
+Training accuracy epoch: 0.9477751358695652
+Training Epoch: 7
+Training loss epoch: 0.1052551810508189
+Training accuracy epoch: 0.9506623641304348
+Training Epoch: 8
+Training loss epoch: 0.11135565910650336
+Training accuracy epoch: 0.9468410326086957
+Training Epoch: 9
+Training loss epoch: 0.10224943219319634
+Training accuracy epoch: 0.9548233695652174
+Training Epoch: 10
+Training loss epoch: 0.09222611882116484
+Training accuracy epoch: 0.9606827445652174
+Training Epoch: 11
+Training loss epoch: 0.08228285270540611
+Training accuracy epoch: 0.9662873641304348
+Training Epoch: 12
+Training loss epoch: 0.07647052925565968
+Training accuracy epoch: 0.968155570652174
+Training Epoch: 13
+Training loss epoch: 0.06825487024110297
+Training accuracy epoch: 0.9731657608695652
+Training Epoch: 14
+Training loss epoch: 0.05860086141721062
+Training accuracy epoch: 0.9774116847826086
+Training Epoch: 15
+Training loss epoch: 0.052411667354728866
+Training accuracy epoch: 0.9802989130434783
+Training Epoch: 16
+Training loss epoch: 0.04038823825185713
+Training accuracy epoch: 0.9861582880434783
+Training Epoch: 17
+Training loss epoch: 0.03275515819373338
+Training accuracy epoch: 0.9904042119565217
+Training Epoch: 18
+Training loss epoch: 0.030243472844038322
+Training accuracy epoch: 0.9916779891304348
+Training Epoch: 19
+Training loss epoch: 0.028237342551026657
+Training accuracy epoch: 0.9918478260869565
+Training Epoch: 20
+Training loss epoch: 0.03611954969718405
+Training accuracy epoch: 0.9884510869565217
+Training Epoch: 21
+Training loss epoch: 0.022317592813835843
+Training accuracy epoch: 0.9946501358695652
+Training Epoch: 22
+Training loss epoch: 0.019663308686374323
+Training accuracy epoch: 0.9945652173913043
+Training Epoch: 23
+Training loss epoch: 0.012704740521376547
+Training accuracy epoch: 0.9976222826086957
+Training Epoch: 24
+Training loss epoch: 0.016081307387060446
+Training accuracy epoch: 0.9949898097826086
+Training Epoch: 25
+Training loss epoch: 0.01164650753059465
+Training accuracy epoch: 0.9976222826086957
+Training Epoch: 26
+Training loss epoch: 0.010147891776717228
+Training accuracy epoch: 0.998046875
+Training Epoch: 27
+Training loss epoch: 0.0069072309213326025
+Training accuracy epoch: 0.9988111413043478
+Training Epoch: 28
+Training loss epoch: 0.005264472084767793
+Training accuracy epoch: 0.9992357336956522
+Training Epoch: 29
+Training loss epoch: 0.0052988093103403635
+Training accuracy epoch: 0.9989809782608695
+Training Epoch: 30
+Training loss epoch: 0.005427911680232248
+Training accuracy epoch: 0.998641304347826
+Training Epoch: 31
+Training loss epoch: 0.00443309114780277
+Training accuracy epoch: 0.9995754076086957
+Training Epoch: 32
+Training loss epoch: 0.003255880706052741
+Training accuracy epoch: 0.9996603260869565
+Training Epoch: 33
+Training loss epoch: 0.0034015396680763883
+Training accuracy epoch: 0.9995754076086957
+Training Epoch: 34
+Training loss epoch: 0.002751341109852428
+Training accuracy epoch: 0.9997452445652174
+Training Epoch: 35
+Training loss epoch: 0.002522593602011709
+Training accuracy epoch: 0.9996603260869565
+Training Epoch: 36
+Training loss epoch: 0.0025022391219744864
+Training accuracy epoch: 0.9995754076086957
+Training Epoch: 37
+Training loss epoch: 0.005408548415921952
+Training accuracy epoch: 0.998641304347826
+Training Epoch: 38
+Training loss epoch: 0.006502416258191933
+Training accuracy epoch: 0.9983016304347826
+Training Epoch: 39
+Training loss epoch: 0.005013425196723446
+Training accuracy epoch: 0.9992357336956522
+Training Epoch: 40
+Training loss epoch: 0.005147964875821186
+Training accuracy epoch: 0.9991508152173914
+Training Epoch: 41
+Training loss epoch: 0.0031447089226592493
+Training accuracy epoch: 0.9992357336956522
+Training Epoch: 42
+Training loss epoch: 0.002385173509221362
+Training accuracy epoch: 0.9996603260869565
+Training Epoch: 43
+Training loss epoch: 0.0018588850051974473
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 44
+Training loss epoch: 0.001353848148542254
+Training accuracy epoch: 1.0
+Training Epoch: 45
+Training loss epoch: 0.001233271189013739
+Training accuracy epoch: 1.0
+Training Epoch: 46
+Training loss epoch: 0.001372876541648546
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 47
+Training loss epoch: 0.0012290372523357687
+Training accuracy epoch: 1.0
+Training Epoch: 48
+Training loss epoch: 0.00112224531704155
+Training accuracy epoch: 1.0
+Training Epoch: 49
+Training loss epoch: 0.0034513184471744235
+Training accuracy epoch: 0.9988960597826086
+Training Epoch: 50
+Training loss epoch: 0.011511617254101388
+Training accuracy epoch: 0.9973675271739131
+Training Epoch: 51
+Training loss epoch: 0.005590937596381358
+Training accuracy epoch: 0.9985563858695652
+Training Epoch: 52
+Training loss epoch: 0.004753866384777686
+Training accuracy epoch: 0.9989809782608695
+Training Epoch: 53
+Training loss epoch: 0.010738558221972831
+Training accuracy epoch: 0.9973675271739131
+Training Epoch: 54
+Training loss epoch: 0.007797035226679366
+Training accuracy epoch: 0.9977921195652174
+Training Epoch: 55
+Training loss epoch: 0.003598210862432809
+Training accuracy epoch: 0.999405570652174
+Training Epoch: 56
+Training loss epoch: 0.0019685729943296833
+Training accuracy epoch: 0.9998301630434783
+Training Epoch: 57
+Training loss epoch: 0.0015658135070344028
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 58
+Training loss epoch: 0.0012715790906678076
+Training accuracy epoch: 1.0
+Training Epoch: 59
+Training loss epoch: 0.001038115456416879
+Training accuracy epoch: 1.0
+Training Epoch: 60
+Training loss epoch: 0.001032987371613474
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 61
+Training loss epoch: 0.0014439843488735673
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 62
+Training loss epoch: 0.0009173308625695822
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 63
+Training loss epoch: 0.008031145069727918
+Training accuracy epoch: 0.9979619565217391
+Training Epoch: 64
+Training loss epoch: 0.008484437985791137
+Training accuracy epoch: 0.9971127717391305
+Training Epoch: 65
+Training loss epoch: 0.008114420910082434
+Training accuracy epoch: 0.997452445652174
+Training Epoch: 66
+Training loss epoch: 0.0034089491236954927
+Training accuracy epoch: 0.9991508152173914
+Training Epoch: 67
+Training loss epoch: 0.0032384065410081785
+Training accuracy epoch: 0.9996603260869565
+Training Epoch: 68
+Training loss epoch: 0.0019318431605706396
+Training accuracy epoch: 0.9996603260869565
+Training Epoch: 69
+Training loss epoch: 0.001571985543705523
+Training accuracy epoch: 0.9997452445652174
+Training Epoch: 70
+Training loss epoch: 0.0012671054371268206
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 71
+Training loss epoch: 0.0009684022389473798
+Training accuracy epoch: 1.0
+Training Epoch: 72
+Training loss epoch: 0.0008273496616469777
+Training accuracy epoch: 1.0
+Training Epoch: 73
+Training loss epoch: 0.0006902867323293796
+Training accuracy epoch: 1.0
+Training Epoch: 74
+Training loss epoch: 0.000615879072068745
+Training accuracy epoch: 1.0
+Training Epoch: 75
+Training loss epoch: 0.0005762151660114203
+Training accuracy epoch: 1.0
+Training Epoch: 76
+Training loss epoch: 0.000506906371573796
+Training accuracy epoch: 1.0
+Training Epoch: 77
+Training loss epoch: 0.0005187395955031009
+Training accuracy epoch: 1.0
+Training Epoch: 78
+Training loss epoch: 0.0004521777091608585
+Training accuracy epoch: 1.0
+Training Epoch: 79
+Training loss epoch: 0.0004407447856425753
+Training accuracy epoch: 1.0
+Training Epoch: 80
+Training loss epoch: 0.00045089494264887077
+Training accuracy epoch: 1.0
+Training Epoch: 81
+Training loss epoch: 0.00042961128486279887
+Training accuracy epoch: 1.0
+Training Epoch: 82
+Training loss epoch: 0.0004271482403450848
+Training accuracy epoch: 1.0
+Training Epoch: 83
+Training loss epoch: 0.0003949494389614657
+Training accuracy epoch: 1.0
+Training Epoch: 84
+Training loss epoch: 0.0003616277282834863
+Training accuracy epoch: 1.0
+Training Epoch: 85
+Training loss epoch: 0.00034031933350691003
+Training accuracy epoch: 1.0
+Training Epoch: 86
+Training loss epoch: 0.00033907576162955195
+Training accuracy epoch: 1.0
+Training Epoch: 87
+Training loss epoch: 0.0003191867575008908
+Training accuracy epoch: 1.0
+Training Epoch: 88
+Training loss epoch: 0.0003181884689104703
+Training accuracy epoch: 1.0
+Training Epoch: 89
+Training loss epoch: 0.00028163147837166554
+Training accuracy epoch: 1.0
+Training Epoch: 90
+Training loss epoch: 0.000293354932775559
+Training accuracy epoch: 1.0
+Training Epoch: 91
+Training loss epoch: 0.0002791514587284916
+Training accuracy epoch: 1.0
+Training Epoch: 92
+Training loss epoch: 0.0002612405951367691
+Training accuracy epoch: 1.0
+Training Epoch: 93
+Training loss epoch: 0.0002598245014466912
+Training accuracy epoch: 1.0
+Training Epoch: 94
+Training loss epoch: 0.0002801811642711982
+Training accuracy epoch: 1.0
+Training Epoch: 95
+Training loss epoch: 0.0002588717097355782
+Training accuracy epoch: 1.0
+Training Epoch: 96
+Training loss epoch: 0.00026520389339724636
+Training accuracy epoch: 1.0
+Training Epoch: 97
+Training loss epoch: 0.0002418130107284726
+Training accuracy epoch: 1.0
+Training Epoch: 98
+Training loss epoch: 0.00028100352463535154
+Training accuracy epoch: 1.0
+Training Epoch: 99
+Training loss epoch: 0.00022933330088246453
+Training accuracy epoch: 1.0
+Validation loss per 100 evaluation steps: 0.006549292244017124
+Validation Loss: 0.013532803640676624
+Validation Accuracy: 0.998046875
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.98      0.98      0.98       129
+     B-EVENT       0.97      0.95      0.96        65
+ I-CONDITION       0.99      1.00      1.00       127
+     I-EVENT       1.00      0.98      0.99        60
+           O       1.00      1.00      1.00      2563
+
+    accuracy                           1.00      2944
+   macro avg       0.99      0.98      0.99      2944
+weighted avg       1.00      1.00      1.00      2944
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.98      0.99      0.99       256
+       EVENT       0.98      0.97      0.98       125
+           O       1.00      1.00      1.00      2563
+
+    accuracy                           1.00      2944
+   macro avg       0.99      0.99      0.99      2944
+weighted avg       1.00      1.00      1.00      2944
+
+### Lexicon
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.03      0.03      0.03       129
+     B-EVENT       0.00      0.00      0.00        65
+ I-CONDITION       0.04      0.04      0.04       127
+     I-EVENT       0.00      0.00      0.00        60
+           O       0.87      0.91      0.89      2563
+
+    accuracy                           0.80      2944
+   macro avg       0.19      0.20      0.19      2944
+weighted avg       0.76      0.80      0.78      2944
+
+              precision    recall  f1-score   support
+
+   CONDITION       0.07      0.07      0.07       256
+       EVENT       0.00      0.00      0.00       125
+           O       0.87      0.91      0.89      2563
+
+    accuracy                           0.80      2944
+   macro avg       0.31      0.33      0.32      2944
+weighted avg       0.76      0.80      0.78      2944
+
+Using: cuda
+{'O': 12281, 'B-EVENT': 343, 'I-EVENT': 353, 'B-CONDITION': 629, 'I-CONDITION': 730}
+{'O': 0.23346633010341178, 'B-EVENT': 8.359183673469389, 'I-EVENT': 8.122379603399434, 'B-CONDITION': 4.558346581875994, 'I-CONDITION': 3.9276712328767123}
+Training Epoch: 0
+Training loss epoch: 0.41360380775902583
+Training accuracy epoch: 0.8488451086956522
+Training Epoch: 1
+Training loss epoch: 0.1336550212100796
+Training accuracy epoch: 0.9399626358695652
+Training Epoch: 2
+Training loss epoch: 0.128823883831501
+Training accuracy epoch: 0.9375849184782609
+Training Epoch: 3
+Training loss epoch: 0.11815786977177081
+Training accuracy epoch: 0.9452275815217391
+Training Epoch: 4
+Training loss epoch: 0.11907309779654378
+Training accuracy epoch: 0.9461616847826086
+Training Epoch: 5
+Training loss epoch: 0.10985121989379758
+Training accuracy epoch: 0.9500679347826086
+Training Epoch: 6
+Training loss epoch: 0.1062212552389373
+Training accuracy epoch: 0.9503226902173914
+Training Epoch: 7
+Training loss epoch: 0.09760973942668541
+Training accuracy epoch: 0.954483695652174
+Training Epoch: 8
+Training loss epoch: 0.0936207045679507
+Training accuracy epoch: 0.9554177989130435
+Training Epoch: 9
+Training loss epoch: 0.09144932873871016
+Training accuracy epoch: 0.9566915760869565
+Training Epoch: 10
+Training loss epoch: 0.08396080265874448
+Training accuracy epoch: 0.9639945652173914
+Training Epoch: 11
+Training loss epoch: 0.07261178512936053
+Training accuracy epoch: 0.9710427989130435
+Training Epoch: 12
+Training loss epoch: 0.07073044841704161
+Training accuracy epoch: 0.9707880434782609
+Training Epoch: 13
+Training loss epoch: 0.07064851211464923
+Training accuracy epoch: 0.9705332880434783
+Training Epoch: 14
+Training loss epoch: 0.048776139221761536
+Training accuracy epoch: 0.983780570652174
+Training Epoch: 15
+Training loss epoch: 0.03905888395788877
+Training accuracy epoch: 0.9871773097826086
+Training Epoch: 16
+Training loss epoch: 0.035038370801054916
+Training accuracy epoch: 0.9889605978260869
+Training Epoch: 17
+Training loss epoch: 0.029348127149126452
+Training accuracy epoch: 0.990828804347826
+Training Epoch: 18
+Training loss epoch: 0.025249893412641857
+Training accuracy epoch: 0.993546195652174
+Training Epoch: 19
+Training loss epoch: 0.024141446930234848
+Training accuracy epoch: 0.9928668478260869
+Training Epoch: 20
+Training loss epoch: 0.02399514291597449
+Training accuracy epoch: 0.9919327445652174
+Training Epoch: 21
+Training loss epoch: 0.017603675976557577
+Training accuracy epoch: 0.9960088315217391
+Training Epoch: 22
+Training loss epoch: 0.013135278212797382
+Training accuracy epoch: 0.9975373641304348
+Training Epoch: 23
+Training loss epoch: 0.010677164668500747
+Training accuracy epoch: 0.9979619565217391
+Training Epoch: 24
+Training loss epoch: 0.009572116496122402
+Training accuracy epoch: 0.9976222826086957
+Training Epoch: 25
+Training loss epoch: 0.009656846624515627
+Training accuracy epoch: 0.9973675271739131
+Training Epoch: 26
+Training loss epoch: 0.00900929683373998
+Training accuracy epoch: 0.9978770380434783
+Training Epoch: 27
+Training loss epoch: 0.008172809045113947
+Training accuracy epoch: 0.9983016304347826
+Training Epoch: 28
+Training loss epoch: 0.01974566312223349
+Training accuracy epoch: 0.9945652173913043
+Training Epoch: 29
+Training loss epoch: 0.026076218943395044
+Training accuracy epoch: 0.9917629076086957
+Training Epoch: 30
+Training loss epoch: 0.024245499866083264
+Training accuracy epoch: 0.9928668478260869
+Training Epoch: 31
+Training loss epoch: 0.009055107761093455
+Training accuracy epoch: 0.9988111413043478
+Training Epoch: 32
+Training loss epoch: 0.006159735605647059
+Training accuracy epoch: 0.9984714673913043
+Training Epoch: 33
+Training loss epoch: 0.0062237616587916145
+Training accuracy epoch: 0.9987262228260869
+Training Epoch: 34
+Training loss epoch: 0.005740421692557309
+Training accuracy epoch: 0.9992357336956522
+Training Epoch: 35
+Training loss epoch: 0.0036037247121819983
+Training accuracy epoch: 0.9997452445652174
+Training Epoch: 36
+Training loss epoch: 0.0032627363233705578
+Training accuracy epoch: 0.9996603260869565
+Training Epoch: 37
+Training loss epoch: 0.0028596169912539745
+Training accuracy epoch: 0.9997452445652174
+Training Epoch: 38
+Training loss epoch: 0.002942545374895891
+Training accuracy epoch: 0.9996603260869565
+Training Epoch: 39
+Training loss epoch: 0.0028750369902295265
+Training accuracy epoch: 0.999405570652174
+Training Epoch: 40
+Training loss epoch: 0.004251674913457068
+Training accuracy epoch: 0.9990658967391305
+Training Epoch: 41
+Training loss epoch: 0.004274071697854315
+Training accuracy epoch: 0.9991508152173914
+Training Epoch: 42
+Training loss epoch: 0.002645142204330667
+Training accuracy epoch: 0.9994904891304348
+Training Epoch: 43
+Training loss epoch: 0.001997538999168445
+Training accuracy epoch: 1.0
+Training Epoch: 44
+Training loss epoch: 0.0018931147161587749
+Training accuracy epoch: 0.9998301630434783
+Training Epoch: 45
+Training loss epoch: 0.0014411781170486431
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 46
+Training loss epoch: 0.0017936380413036954
+Training accuracy epoch: 0.9998301630434783
+Training Epoch: 47
+Training loss epoch: 0.0030655438477760586
+Training accuracy epoch: 0.999405570652174
+Training Epoch: 48
+Training loss epoch: 0.002230475292257641
+Training accuracy epoch: 0.9998301630434783
+Training Epoch: 49
+Training loss epoch: 0.0014108541350730736
+Training accuracy epoch: 1.0
+Training Epoch: 50
+Training loss epoch: 0.0018755865875510094
+Training accuracy epoch: 0.9997452445652174
+Training Epoch: 51
+Training loss epoch: 0.0013521936362730744
+Training accuracy epoch: 0.9998301630434783
+Training Epoch: 52
+Training loss epoch: 0.0015532908728346229
+Training accuracy epoch: 0.9998301630434783
+Training Epoch: 53
+Training loss epoch: 0.0010976584339716835
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 54
+Training loss epoch: 0.0009922302636803815
+Training accuracy epoch: 1.0
+Training Epoch: 55
+Training loss epoch: 0.0010028810103666847
+Training accuracy epoch: 1.0
+Training Epoch: 56
+Training loss epoch: 0.0007800946870069627
+Training accuracy epoch: 1.0
+Training Epoch: 57
+Training loss epoch: 0.0008096657288463219
+Training accuracy epoch: 1.0
+Training Epoch: 58
+Training loss epoch: 0.0008094684883911649
+Training accuracy epoch: 1.0
+Training Epoch: 59
+Training loss epoch: 0.0006909066262027329
+Training accuracy epoch: 1.0
+Training Epoch: 60
+Training loss epoch: 0.0006807162945219518
+Training accuracy epoch: 1.0
+Training Epoch: 61
+Training loss epoch: 0.0006076812012748712
+Training accuracy epoch: 1.0
+Training Epoch: 62
+Training loss epoch: 0.0005875202705678732
+Training accuracy epoch: 1.0
+Training Epoch: 63
+Training loss epoch: 0.0005361972245104287
+Training accuracy epoch: 1.0
+Training Epoch: 64
+Training loss epoch: 0.0005714912777361662
+Training accuracy epoch: 1.0
+Training Epoch: 65
+Training loss epoch: 0.0005066766499784653
+Training accuracy epoch: 1.0
+Training Epoch: 66
+Training loss epoch: 0.0005519562261685243
+Training accuracy epoch: 1.0
+Training Epoch: 67
+Training loss epoch: 0.0004963617121456596
+Training accuracy epoch: 1.0
+Training Epoch: 68
+Training loss epoch: 0.0004832496557830145
+Training accuracy epoch: 1.0
+Training Epoch: 69
+Training loss epoch: 0.0005168790015412252
+Training accuracy epoch: 1.0
+Training Epoch: 70
+Training loss epoch: 0.00042814419746560895
+Training accuracy epoch: 1.0
+Training Epoch: 71
+Training loss epoch: 0.0004170518463386385
+Training accuracy epoch: 1.0
+Training Epoch: 72
+Training loss epoch: 0.0003931088937426229
+Training accuracy epoch: 1.0
+Training Epoch: 73
+Training loss epoch: 0.00038262122720682425
+Training accuracy epoch: 1.0
+Training Epoch: 74
+Training loss epoch: 0.0004017628633174235
+Training accuracy epoch: 1.0
+Training Epoch: 75
+Training loss epoch: 0.0012135241729834968
+Training accuracy epoch: 0.9997452445652174
+Training Epoch: 76
+Training loss epoch: 0.001766851586897088
+Training accuracy epoch: 0.9994904891304348
+Training Epoch: 77
+Training loss epoch: 0.0013386863916504967
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 78
+Training loss epoch: 0.0011248296486092327
+Training accuracy epoch: 0.9998301630434783
+Training Epoch: 79
+Training loss epoch: 0.002021479040748723
+Training accuracy epoch: 0.9994904891304348
+Training Epoch: 80
+Training loss epoch: 0.006408672655790882
+Training accuracy epoch: 0.9977072010869565
+Training Epoch: 81
+Training loss epoch: 0.01143398129700116
+Training accuracy epoch: 0.9965183423913043
+Training Epoch: 82
+Training loss epoch: 0.023323329762839105
+Training accuracy epoch: 0.9926970108695652
+Training Epoch: 83
+Training loss epoch: 0.013716589588590938
+Training accuracy epoch: 0.9957540760869565
+Training Epoch: 84
+Training loss epoch: 0.0035427157784832398
+Training accuracy epoch: 0.999405570652174
+Training Epoch: 85
+Training loss epoch: 0.0015656829953355634
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 86
+Training loss epoch: 0.0010842658748910965
+Training accuracy epoch: 1.0
+Training Epoch: 87
+Training loss epoch: 0.0009349500140397931
+Training accuracy epoch: 0.9998301630434783
+Training Epoch: 88
+Training loss epoch: 0.0006742982798681149
+Training accuracy epoch: 1.0
+Training Epoch: 89
+Training loss epoch: 0.000592518783852701
+Training accuracy epoch: 1.0
+Training Epoch: 90
+Training loss epoch: 0.0006385208069569553
+Training accuracy epoch: 1.0
+Training Epoch: 91
+Training loss epoch: 0.0005024484999012202
+Training accuracy epoch: 1.0
+Training Epoch: 92
+Training loss epoch: 0.0007665135762299938
+Training accuracy epoch: 1.0
+Training Epoch: 93
+Training loss epoch: 0.001573354020998206
+Training accuracy epoch: 0.9997452445652174
+Training Epoch: 94
+Training loss epoch: 0.0009109539880781718
+Training accuracy epoch: 0.9997452445652174
+Training Epoch: 95
+Training loss epoch: 0.000722187692704408
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 96
+Training loss epoch: 0.0006057599486034039
+Training accuracy epoch: 1.0
+Training Epoch: 97
+Training loss epoch: 0.0006262497848618533
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 98
+Training loss epoch: 0.0004485035207598349
+Training accuracy epoch: 1.0
+Training Epoch: 99
+Training loss epoch: 0.0007766291167607288
+Training accuracy epoch: 0.9999150815217391
+Validation loss per 100 evaluation steps: 0.00034038530429825187
+Validation Loss: 0.02633135910582496
+Validation Accuracy: 0.9944661458333334
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.98      0.94      0.96       129
+     B-EVENT       0.89      0.95      0.92        65
+ I-CONDITION       0.99      0.97      0.98       127
+     I-EVENT       0.94      0.98      0.96        60
+           O       1.00      1.00      1.00      2563
+
+    accuracy                           0.99      2944
+   macro avg       0.96      0.97      0.96      2944
+weighted avg       0.99      0.99      0.99      2944
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.98      0.95      0.97       256
+       EVENT       0.91      0.97      0.94       125
+           O       1.00      1.00      1.00      2563
+
+    accuracy                           0.99      2944
+   macro avg       0.96      0.97      0.97      2944
+weighted avg       0.99      0.99      0.99      2944
+
+### Lexicon
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.05      0.05      0.05       129
+     B-EVENT       0.00      0.00      0.00        65
+ I-CONDITION       0.03      0.03      0.03       127
+     I-EVENT       0.00      0.00      0.00        60
+           O       0.87      0.92      0.89      2563
+
+    accuracy                           0.80      2944
+   macro avg       0.19      0.20      0.20      2944
+weighted avg       0.76      0.80      0.78      2944
+
+              precision    recall  f1-score   support
+
+   CONDITION       0.10      0.09      0.09       256
+       EVENT       0.00      0.00      0.00       125
+           O       0.87      0.92      0.89      2563
+
+    accuracy                           0.81      2944
+   macro avg       0.32      0.34      0.33      2944
+weighted avg       0.77      0.81      0.79      2944
+
+Using: cuda
+{'O': 12281, 'B-EVENT': 343, 'I-EVENT': 353, 'B-CONDITION': 629, 'I-CONDITION': 730}
+{'O': 0.23346633010341178, 'B-EVENT': 8.359183673469389, 'I-EVENT': 8.122379603399434, 'B-CONDITION': 4.558346581875994, 'I-CONDITION': 3.9276712328767123}
+Training Epoch: 0
+Training loss epoch: 0.420189154860766
+Training accuracy epoch: 0.8277853260869565
+Training Epoch: 1
+Training loss epoch: 0.1409900918117036
+Training accuracy epoch: 0.9347826086956522
+Training Epoch: 2
+Training loss epoch: 0.12262304378268511
+Training accuracy epoch: 0.9409816576086957
+Training Epoch: 3
+Training loss epoch: 0.11564774244375851
+Training accuracy epoch: 0.9450577445652174
+Training Epoch: 4
+Training loss epoch: 0.11833578445341277
+Training accuracy epoch: 0.9413213315217391
+Training Epoch: 5
+Training loss epoch: 0.11663491570431253
+Training accuracy epoch: 0.9426800271739131
+Training Epoch: 6
+Training loss epoch: 0.1143297504471696
+Training accuracy epoch: 0.9440387228260869
+Training Epoch: 7
+Training loss epoch: 0.10885231261667998
+Training accuracy epoch: 0.9455672554347826
+Training Epoch: 8
+Training loss epoch: 0.1034478911239168
+Training accuracy epoch: 0.9500679347826086
+Training Epoch: 9
+Training loss epoch: 0.09602369206107181
+Training accuracy epoch: 0.9559273097826086
+Training Epoch: 10
+Training loss epoch: 0.09422057931837828
+Training accuracy epoch: 0.9560971467391305
+Training Epoch: 11
+Training loss epoch: 0.08614855680776679
+Training accuracy epoch: 0.9605978260869565
+Training Epoch: 12
+Training loss epoch: 0.0795417718751275
+Training accuracy epoch: 0.963485054347826
+Training Epoch: 13
+Training loss epoch: 0.08642292136083478
+Training accuracy epoch: 0.961531929347826
+Training Epoch: 14
+Training loss epoch: 0.07241343091363492
+Training accuracy epoch: 0.9686650815217391
+Training Epoch: 15
+Training loss epoch: 0.05888311856466791
+Training accuracy epoch: 0.9754585597826086
+Training Epoch: 16
+Training loss epoch: 0.05269566955773727
+Training accuracy epoch: 0.9780910326086957
+Training Epoch: 17
+Training loss epoch: 0.04446609204877978
+Training accuracy epoch: 0.9829313858695652
+Training Epoch: 18
+Training loss epoch: 0.04544932783945747
+Training accuracy epoch: 0.9838654891304348
+Training Epoch: 19
+Training loss epoch: 0.03719637696833714
+Training accuracy epoch: 0.9874320652173914
+Training Epoch: 20
+Training loss epoch: 0.03923247463029364
+Training accuracy epoch: 0.9861582880434783
+Training Epoch: 21
+Training loss epoch: 0.030879719020879787
+Training accuracy epoch: 0.990234375
+Training Epoch: 22
+Training loss epoch: 0.024381386561562187
+Training accuracy epoch: 0.9914232336956522
+Training Epoch: 23
+Training loss epoch: 0.01790080430067104
+Training accuracy epoch: 0.9950747282608695
+Training Epoch: 24
+Training loss epoch: 0.020519622277630413
+Training accuracy epoch: 0.9929517663043478
+Training Epoch: 25
+Training loss epoch: 0.017949811061439308
+Training accuracy epoch: 0.9952445652173914
+Training Epoch: 26
+Training loss epoch: 0.012138055637478828
+Training accuracy epoch: 0.9973675271739131
+Training Epoch: 27
+Training loss epoch: 0.010541572195032368
+Training accuracy epoch: 0.9973675271739131
+Training Epoch: 28
+Training loss epoch: 0.0088209288255514
+Training accuracy epoch: 0.9983865489130435
+Training Epoch: 29
+Training loss epoch: 0.0061042544371245995
+Training accuracy epoch: 0.9989809782608695
+Training Epoch: 30
+Training loss epoch: 0.005268005537800491
+Training accuracy epoch: 0.9992357336956522
+Training Epoch: 31
+Training loss epoch: 0.005831390224478167
+Training accuracy epoch: 0.9988111413043478
+Training Epoch: 32
+Training loss epoch: 0.004220000933855772
+Training accuracy epoch: 0.999405570652174
+Training Epoch: 33
+Training loss epoch: 0.004631175715273813
+Training accuracy epoch: 0.9989809782608695
+Training Epoch: 34
+Training loss epoch: 0.0038479309043158655
+Training accuracy epoch: 0.9994904891304348
+Training Epoch: 35
+Training loss epoch: 0.003621341761849497
+Training accuracy epoch: 0.9997452445652174
+Training Epoch: 36
+Training loss epoch: 0.006033473288761857
+Training accuracy epoch: 0.9985563858695652
+Training Epoch: 37
+Training loss epoch: 0.0055933928005802245
+Training accuracy epoch: 0.9988960597826086
+Training Epoch: 38
+Training loss epoch: 0.004889322323319705
+Training accuracy epoch: 0.9992357336956522
+Training Epoch: 39
+Training loss epoch: 0.01599311922757846
+Training accuracy epoch: 0.9946501358695652
+Training Epoch: 40
+Training loss epoch: 0.009499586065826208
+Training accuracy epoch: 0.9972826086956522
+Training Epoch: 41
+Training loss epoch: 0.005437955720876546
+Training accuracy epoch: 0.9989809782608695
+Training Epoch: 42
+Training loss epoch: 0.0033760204273478494
+Training accuracy epoch: 0.9993206521739131
+Training Epoch: 43
+Training loss epoch: 0.0021307855267482605
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 44
+Training loss epoch: 0.0017561310871868677
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 45
+Training loss epoch: 0.0017277049280338638
+Training accuracy epoch: 0.9998301630434783
+Training Epoch: 46
+Training loss epoch: 0.0014385568539854949
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 47
+Training loss epoch: 0.0019414924495124621
+Training accuracy epoch: 0.9997452445652174
+Training Epoch: 48
+Training loss epoch: 0.0015562053962165246
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 49
+Training loss epoch: 0.0009942174580393603
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 50
+Training loss epoch: 0.0008544821681900193
+Training accuracy epoch: 1.0
+Training Epoch: 51
+Training loss epoch: 0.0008727244364664606
+Training accuracy epoch: 1.0
+Training Epoch: 52
+Training loss epoch: 0.0008485582391427749
+Training accuracy epoch: 1.0
+Training Epoch: 53
+Training loss epoch: 0.0007861350541529448
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 54
+Training loss epoch: 0.0006826452394623471
+Training accuracy epoch: 1.0
+Training Epoch: 55
+Training loss epoch: 0.0006997025655278856
+Training accuracy epoch: 1.0
+Training Epoch: 56
+Training loss epoch: 0.0005673336785074081
+Training accuracy epoch: 1.0
+Training Epoch: 57
+Training loss epoch: 0.0005668419800476049
+Training accuracy epoch: 1.0
+Training Epoch: 58
+Training loss epoch: 0.0005856765505007428
+Training accuracy epoch: 1.0
+Training Epoch: 59
+Training loss epoch: 0.0006940325016014116
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 60
+Training loss epoch: 0.0005989891468071501
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 61
+Training loss epoch: 0.0005333905852318782
+Training accuracy epoch: 1.0
+Training Epoch: 62
+Training loss epoch: 0.00044981007332630133
+Training accuracy epoch: 1.0
+Training Epoch: 63
+Training loss epoch: 0.00040777690415068167
+Training accuracy epoch: 1.0
+Training Epoch: 64
+Training loss epoch: 0.0004239766073980085
+Training accuracy epoch: 1.0
+Training Epoch: 65
+Training loss epoch: 0.00045224705599653333
+Training accuracy epoch: 1.0
+Training Epoch: 66
+Training loss epoch: 0.0008866467915536107
+Training accuracy epoch: 0.9998301630434783
+Training Epoch: 67
+Training loss epoch: 0.002700628468554224
+Training accuracy epoch: 0.9992357336956522
+Training Epoch: 68
+Training loss epoch: 0.002428350954964433
+Training accuracy epoch: 0.9994904891304348
+Training Epoch: 69
+Training loss epoch: 0.002220985130406916
+Training accuracy epoch: 0.999405570652174
+Training Epoch: 70
+Training loss epoch: 0.0028351759740515895
+Training accuracy epoch: 0.9992357336956522
+Training Epoch: 71
+Training loss epoch: 0.002376510847724326
+Training accuracy epoch: 0.999405570652174
+Training Epoch: 72
+Training loss epoch: 0.00198727496773126
+Training accuracy epoch: 0.9995754076086957
+Training Epoch: 73
+Training loss epoch: 0.002451510911392372
+Training accuracy epoch: 0.999405570652174
+Training Epoch: 74
+Training loss epoch: 0.0071266444928883375
+Training accuracy epoch: 0.9975373641304348
+Training Epoch: 75
+Training loss epoch: 0.023585560458266864
+Training accuracy epoch: 0.9923573369565217
+Training Epoch: 76
+Training loss epoch: 0.0059751128352692594
+Training accuracy epoch: 0.9982167119565217
+Training Epoch: 77
+Training loss epoch: 0.0027283725996866174
+Training accuracy epoch: 0.9995754076086957
+Training Epoch: 78
+Training loss epoch: 0.002030053198762724
+Training accuracy epoch: 0.9995754076086957
+Training Epoch: 79
+Training loss epoch: 0.0010996266501024365
+Training accuracy epoch: 1.0
+Training Epoch: 80
+Training loss epoch: 0.0007118253953471456
+Training accuracy epoch: 1.0
+Training Epoch: 81
+Training loss epoch: 0.0006164627949423764
+Training accuracy epoch: 1.0
+Training Epoch: 82
+Training loss epoch: 0.0005200707559909105
+Training accuracy epoch: 1.0
+Training Epoch: 83
+Training loss epoch: 0.000490144535433501
+Training accuracy epoch: 1.0
+Training Epoch: 84
+Training loss epoch: 0.00047839320588694966
+Training accuracy epoch: 1.0
+Training Epoch: 85
+Training loss epoch: 0.0007244847770577863
+Training accuracy epoch: 0.9998301630434783
+Training Epoch: 86
+Training loss epoch: 0.00178440456258376
+Training accuracy epoch: 0.999405570652174
+Training Epoch: 87
+Training loss epoch: 0.0024518089422085527
+Training accuracy epoch: 0.9994904891304348
+Training Epoch: 88
+Training loss epoch: 0.0011433669322919425
+Training accuracy epoch: 0.9998301630434783
+Training Epoch: 89
+Training loss epoch: 0.0004942649469265472
+Training accuracy epoch: 1.0
+Training Epoch: 90
+Training loss epoch: 0.0004960257457518626
+Training accuracy epoch: 1.0
+Training Epoch: 91
+Training loss epoch: 0.0004040964527318821
+Training accuracy epoch: 1.0
+Training Epoch: 92
+Training loss epoch: 0.00043451882748226836
+Training accuracy epoch: 1.0
+Training Epoch: 93
+Training loss epoch: 0.00039780910794987625
+Training accuracy epoch: 1.0
+Training Epoch: 94
+Training loss epoch: 0.00035744579951785016
+Training accuracy epoch: 1.0
+Training Epoch: 95
+Training loss epoch: 0.00044918421063693643
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 96
+Training loss epoch: 0.00033084239491828435
+Training accuracy epoch: 1.0
+Training Epoch: 97
+Training loss epoch: 0.0003522603086742532
+Training accuracy epoch: 1.0
+Training Epoch: 98
+Training loss epoch: 0.00033421860185310084
+Training accuracy epoch: 1.0
+Training Epoch: 99
+Training loss epoch: 0.00029133125676510287
+Training accuracy epoch: 1.0
+Validation loss per 100 evaluation steps: 0.022060152143239975
+Validation Loss: 0.015984787217045476
+Validation Accuracy: 0.9967447916666666
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.96      1.00      0.98       129
+     B-EVENT       1.00      0.92      0.96        65
+ I-CONDITION       0.98      0.98      0.98       127
+     I-EVENT       0.97      0.95      0.96        60
+           O       1.00      1.00      1.00      2563
+
+    accuracy                           1.00      2944
+   macro avg       0.98      0.97      0.98      2944
+weighted avg       1.00      1.00      1.00      2944
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.97      0.99      0.98       256
+       EVENT       0.98      0.94      0.96       125
+           O       1.00      1.00      1.00      2563
+
+    accuracy                           1.00      2944
+   macro avg       0.98      0.98      0.98      2944
+weighted avg       1.00      1.00      1.00      2944
+
+### Lexicon
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.01      0.01      0.01       129
+     B-EVENT       0.00      0.00      0.00        65
+ I-CONDITION       0.02      0.02      0.02       127
+     I-EVENT       0.00      0.00      0.00        60
+           O       0.87      0.91      0.89      2563
+
+    accuracy                           0.79      2944
+   macro avg       0.18      0.19      0.18      2944
+weighted avg       0.75      0.79      0.77      2944
+
+              precision    recall  f1-score   support
+
+   CONDITION       0.04      0.04      0.04       256
+       EVENT       0.00      0.00      0.00       125
+           O       0.87      0.91      0.89      2563
+
+    accuracy                           0.80      2944
+   macro avg       0.30      0.32      0.31      2944
+weighted avg       0.76      0.80      0.78      2944
+
+Using: cuda
+{'O': 12281, 'B-EVENT': 343, 'I-EVENT': 353, 'B-CONDITION': 629, 'I-CONDITION': 730}
+{'O': 0.23346633010341178, 'B-EVENT': 8.359183673469389, 'I-EVENT': 8.122379603399434, 'B-CONDITION': 4.558346581875994, 'I-CONDITION': 3.9276712328767123}
+Training Epoch: 0
+Training loss epoch: 0.2996061243440794
+Training accuracy epoch: 0.9021739130434783
+Training Epoch: 1
+Training loss epoch: 0.14404907174732373
+Training accuracy epoch: 0.9340183423913043
+Training Epoch: 2
+Training loss epoch: 0.1282781432180301
+Training accuracy epoch: 0.9412364130434783
+Training Epoch: 3
+Training loss epoch: 0.12400585445372955
+Training accuracy epoch: 0.9397078804347826
+Training Epoch: 4
+Training loss epoch: 0.11717843086175296
+Training accuracy epoch: 0.944718070652174
+Training Epoch: 5
+Training loss epoch: 0.11000630939784257
+Training accuracy epoch: 0.9487941576086957
+Training Epoch: 6
+Training loss epoch: 0.11044972179376561
+Training accuracy epoch: 0.9493036684782609
+Training Epoch: 7
+Training loss epoch: 0.10129173035207002
+Training accuracy epoch: 0.9526154891304348
+Training Epoch: 8
+Training loss epoch: 0.0980821102047744
+Training accuracy epoch: 0.9543138586956522
+Training Epoch: 9
+Training loss epoch: 0.09325915380664494
+Training accuracy epoch: 0.95703125
+Training Epoch: 10
+Training loss epoch: 0.08974239699866461
+Training accuracy epoch: 0.9594089673913043
+Training Epoch: 11
+Training loss epoch: 0.08329409798202307
+Training accuracy epoch: 0.9640794836956522
+Training Epoch: 12
+Training loss epoch: 0.07395841181784382
+Training accuracy epoch: 0.9684103260869565
+Training Epoch: 13
+Training loss epoch: 0.06602063515911931
+Training accuracy epoch: 0.9709578804347826
+Training Epoch: 14
+Training loss epoch: 0.061361653649288674
+Training accuracy epoch: 0.9743546195652174
+Training Epoch: 15
+Training loss epoch: 0.05146569556192211
+Training accuracy epoch: 0.9802989130434783
+Training Epoch: 16
+Training loss epoch: 0.04928522109074275
+Training accuracy epoch: 0.9802989130434783
+Training Epoch: 17
+Training loss epoch: 0.04423071759368252
+Training accuracy epoch: 0.984375
+Training Epoch: 18
+Training loss epoch: 0.029497981962302456
+Training accuracy epoch: 0.991593070652174
+Training Epoch: 19
+Training loss epoch: 0.02599691498376753
+Training accuracy epoch: 0.9932065217391305
+Training Epoch: 20
+Training loss epoch: 0.02097937885833823
+Training accuracy epoch: 0.9946501358695652
+Training Epoch: 21
+Training loss epoch: 0.01943413752799287
+Training accuracy epoch: 0.9949048913043478
+Training Epoch: 22
+Training loss epoch: 0.01978031375809856
+Training accuracy epoch: 0.9942255434782609
+Training Epoch: 23
+Training loss epoch: 0.02150553732138613
+Training accuracy epoch: 0.9938858695652174
+Training Epoch: 24
+Training loss epoch: 0.013727665332186481
+Training accuracy epoch: 0.9965183423913043
+Training Epoch: 25
+Training loss epoch: 0.01001051432736542
+Training accuracy epoch: 0.9979619565217391
+Training Epoch: 26
+Training loss epoch: 0.008893133080361978
+Training accuracy epoch: 0.9983016304347826
+Training Epoch: 27
+Training loss epoch: 0.008388073760611207
+Training accuracy epoch: 0.9984714673913043
+Training Epoch: 28
+Training loss epoch: 0.00516558459797955
+Training accuracy epoch: 0.9994904891304348
+Training Epoch: 29
+Training loss epoch: 0.005801489202143705
+Training accuracy epoch: 0.9992357336956522
+Training Epoch: 30
+Training loss epoch: 0.004887675390700283
+Training accuracy epoch: 0.9993206521739131
+Training Epoch: 31
+Training loss epoch: 0.006533846947485986
+Training accuracy epoch: 0.9985563858695652
+Training Epoch: 32
+Training loss epoch: 0.006187250177153264
+Training accuracy epoch: 0.998641304347826
+Training Epoch: 33
+Training loss epoch: 0.00914753867191789
+Training accuracy epoch: 0.9969429347826086
+Training Epoch: 34
+Training loss epoch: 0.03004939487689863
+Training accuracy epoch: 0.9915081521739131
+Training Epoch: 35
+Training loss epoch: 0.027401053630139515
+Training accuracy epoch: 0.9906589673913043
+Training Epoch: 36
+Training loss epoch: 0.009082087847080244
+Training accuracy epoch: 0.9983865489130435
+Training Epoch: 37
+Training loss epoch: 0.004809914187163762
+Training accuracy epoch: 0.9994904891304348
+Training Epoch: 38
+Training loss epoch: 0.0038395084784892592
+Training accuracy epoch: 0.999405570652174
+Training Epoch: 39
+Training loss epoch: 0.0033537665857811985
+Training accuracy epoch: 0.999405570652174
+Training Epoch: 40
+Training loss epoch: 0.0032655796613139305
+Training accuracy epoch: 0.9997452445652174
+Training Epoch: 41
+Training loss epoch: 0.0023856202960419264
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 42
+Training loss epoch: 0.0020076825167052448
+Training accuracy epoch: 0.9998301630434783
+Training Epoch: 43
+Training loss epoch: 0.002224312148704801
+Training accuracy epoch: 0.9994904891304348
+Training Epoch: 44
+Training loss epoch: 0.001859598922158551
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 45
+Training loss epoch: 0.0019750614756839755
+Training accuracy epoch: 0.9998301630434783
+Training Epoch: 46
+Training loss epoch: 0.0015175951589101358
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 47
+Training loss epoch: 0.001309798754569467
+Training accuracy epoch: 0.9999150815217391
+Training Epoch: 48
+Training loss epoch: 0.0011956551588018951
+Training accuracy epoch: 1.0
+Training Epoch: 49
+Training loss epoch: 0.0010347286487281647
+Training accuracy epoch: 1.0
+Training Epoch: 50
+Training loss epoch: 0.001001955576888893
+Training accuracy epoch: 1.0
+Training Epoch: 51
+Training loss epoch: 0.0009218830989835703
+Training accuracy epoch: 1.0
+Training Epoch: 52
+Training loss epoch: 0.0009139450279611123
+Training accuracy epoch: 1.0
+Training Epoch: 53
+Training loss epoch: 0.0008171998804597104
+Training accuracy epoch: 1.0
+Training Epoch: 54
+Training loss epoch: 0.0010115761289615994
+Training accuracy epoch: 0.9998301630434783
+Training Epoch: 55
+Training loss epoch: 0.0023771009696445062
+Training accuracy epoch: 0.9997452445652174
+Training Epoch: 56
+Training loss epoch: 0.004252419848774519
+Training accuracy epoch: 0.9992357336956522
+Training Epoch: 57
+Training loss epoch: 0.0039167598537776785
+Training accuracy epoch: 0.9991508152173914
+Training Epoch: 58
+Training loss epoch: 0.004400919447146842
+Training accuracy epoch: 0.9992357336956522
+Training Epoch: 59
+Training loss epoch: 0.0022134050251106205
+Training accuracy epoch: 0.9998301630434783
+Training Epoch: 60
+Training loss epoch: 0.002329169357519435
+Training accuracy epoch: 0.9994904891304348
+Training Epoch: 61
+Training loss epoch: 0.002075098872528938
+Training accuracy epoch: 0.9997452445652174
+Training Epoch: 62
+Training loss epoch: 0.0013987420369749484
+Training accuracy epoch: 0.9998301630434783
+Training Epoch: 63
+Training loss epoch: 0.0013041817279451568
+Training accuracy epoch: 1.0
+Training Epoch: 64
+Training loss epoch: 0.0008966497869392776
+Training accuracy epoch: 1.0
+Training Epoch: 65
+Training loss epoch: 0.0007301174058659893
+Training accuracy epoch: 1.0
+Training Epoch: 66
+Training loss epoch: 0.0007049387457537587
+Training accuracy epoch: 1.0
+Training Epoch: 67
+Training loss epoch: 0.0006123273165228412
+Training accuracy epoch: 1.0
+Training Epoch: 68
+Training loss epoch: 0.0006227438558277714
+Training accuracy epoch: 1.0
+Training Epoch: 69
+Training loss epoch: 0.0006045168695930878
+Training accuracy epoch: 1.0
+Training Epoch: 70
+Training loss epoch: 0.0005025833164361994
+Training accuracy epoch: 1.0
+Training Epoch: 71
+Training loss epoch: 0.0004399264542608643
+Training accuracy epoch: 1.0
+Training Epoch: 72
+Training loss epoch: 0.0004734006639489013
+Training accuracy epoch: 1.0
+Training Epoch: 73
+Training loss epoch: 0.00043534378915944177
+Training accuracy epoch: 1.0
+Training Epoch: 74
+Training loss epoch: 0.0003937230174652422
+Training accuracy epoch: 1.0
+Training Epoch: 75
+Training loss epoch: 0.000408655651288269
+Training accuracy epoch: 1.0
+Training Epoch: 76
+Training loss epoch: 0.00035793759477952415
+Training accuracy epoch: 1.0
+Training Epoch: 77
+Training loss epoch: 0.0003277305782514462
+Training accuracy epoch: 1.0
+Training Epoch: 78
+Training loss epoch: 0.0003409293263836804
+Training accuracy epoch: 1.0
+Training Epoch: 79
+Training loss epoch: 0.00033381026625410533
+Training accuracy epoch: 1.0
+Training Epoch: 80
+Training loss epoch: 0.00030889546368321726
+Training accuracy epoch: 1.0
+Training Epoch: 81
+Training loss epoch: 0.0003146505851359309
+Training accuracy epoch: 1.0
+Training Epoch: 82
+Training loss epoch: 0.00028254292303007907
+Training accuracy epoch: 1.0
+Training Epoch: 83
+Training loss epoch: 0.0003141986247931567
+Training accuracy epoch: 1.0
+Training Epoch: 84
+Training loss epoch: 0.00028537529895244086
+Training accuracy epoch: 1.0
+Training Epoch: 85
+Training loss epoch: 0.0002807352550165809
+Training accuracy epoch: 1.0
+Training Epoch: 86
+Training loss epoch: 0.00026048256752445644
+Training accuracy epoch: 1.0
+Training Epoch: 87
+Training loss epoch: 0.000278370706086128
+Training accuracy epoch: 1.0
+Training Epoch: 88
+Training loss epoch: 0.0002574516383111072
+Training accuracy epoch: 1.0
+Training Epoch: 89
+Training loss epoch: 0.00027484735398067403
+Training accuracy epoch: 1.0
+Training Epoch: 90
+Training loss epoch: 0.00025318585318492967
+Training accuracy epoch: 1.0
+Training Epoch: 91
+Training loss epoch: 0.0002326237673000635
+Training accuracy epoch: 1.0
+Training Epoch: 92
+Training loss epoch: 0.0002484252934506082
+Training accuracy epoch: 1.0
+Training Epoch: 93
+Training loss epoch: 0.00022720300172374624
+Training accuracy epoch: 1.0
+Training Epoch: 94
+Training loss epoch: 0.00021528291361629152
+Training accuracy epoch: 1.0
+Training Epoch: 95
+Training loss epoch: 0.00020603314149649003
+Training accuracy epoch: 1.0
+Training Epoch: 96
+Training loss epoch: 0.0002126665804889458
+Training accuracy epoch: 1.0
+Training Epoch: 97
+Training loss epoch: 0.00021279743004529536
+Training accuracy epoch: 1.0
+Training Epoch: 98
+Training loss epoch: 0.000204335736824483
+Training accuracy epoch: 1.0
+Training Epoch: 99
+Training loss epoch: 0.00020625837382597282
+Training accuracy epoch: 1.0
+Validation loss per 100 evaluation steps: 0.17273738980293274
+Validation Loss: 0.031230139718900318
+Validation Accuracy: 0.9951171875
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.95      0.95      0.95       129
+     B-EVENT       0.91      0.91      0.91        65
+ I-CONDITION       0.99      0.98      0.99       127
+     I-EVENT       0.97      0.98      0.98        60
+           O       1.00      1.00      1.00      2563
+
+    accuracy                           0.99      2944
+   macro avg       0.96      0.97      0.96      2944
+weighted avg       0.99      0.99      0.99      2944
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.97      0.97      0.97       256
+       EVENT       0.94      0.94      0.94       125
+           O       1.00      1.00      1.00      2563
+
+    accuracy                           0.99      2944
+   macro avg       0.97      0.97      0.97      2944
+weighted avg       0.99      0.99      0.99      2944
+
+### Lexicon
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.06      0.06      0.06       129
+     B-EVENT       0.00      0.00      0.00        65
+ I-CONDITION       0.12      0.11      0.12       127
+     I-EVENT       0.00      0.00      0.00        60
+           O       0.87      0.92      0.90      2563
+
+    accuracy                           0.81      2944
+   macro avg       0.21      0.22      0.21      2944
+weighted avg       0.77      0.81      0.79      2944
+
+              precision    recall  f1-score   support
+
+   CONDITION       0.12      0.12      0.12       256
+       EVENT       0.00      0.00      0.00       125
+           O       0.87      0.92      0.90      2563
+
+    accuracy                           0.81      2944
+   macro avg       0.33      0.35      0.34      2944
+weighted avg       0.77      0.81      0.79      2944
+
