@@ -112,9 +112,11 @@ class Preprocess:
                 tokenized['labels'] = tokens_annot
                 tokenized_dataset.append(tokenized)
             
-        train, test = train_test_split(tokenized_dataset, train_size=self.__train_size, random_state=42)
+        train, test = train_test_split(tokenized_dataset, train_size=self.__train_size, random_state=42, shuffle=False)
         
         train = self.sliding_window(train, window_size=window_size, stride=stride)
+        test = self.sliding_window(test, window_size=window_size, stride=window_size)
+        
         train_dataset = CustomDataset(train, self.__tokenizer, label2id)
         test_dataset = CustomDataset(test, self.__tokenizer, label2id)
 
