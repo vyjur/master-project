@@ -25,7 +25,8 @@ class Pipeline:
             'learning_rate': self.__config.getfloat('train.parameters', 'learning_rate'),
             'shuffle': self.__config.getboolean('train.parameters', 'shuffle'),
             'num_workers': self.__config.getint('train.parameters', 'num_workers'),
-            'max_length': self.__config.getint('MODEL', 'max_length')
+            'max_length': self.__config.getint('MODEL', 'max_length'),
+            'window': self.__config.getint('train.parameters', 'window')
         }
         
         checkpoint = "ltg/norbert3-large"
@@ -41,31 +42,53 @@ class Pipeline:
         elif train_file == "NorSynthClinical":
             # Define the directory containing the .ann files
 
-            directory_path = './data/NorSynthClinical'
+            if train_parameters['window'] != 0:
+                directory_path = './data/NorSynthClinical'
 
-            # Use glob to find all .ann files in the directory
-            ann_files = glob.glob(os.path.join(directory_path, '*.ann'))
+                # Use glob to find all .ann files in the directory
+                ann_files = glob.glob(os.path.join(directory_path, '*.ann'))
 
-            tags = set()
-            # Read and print the content of each .vert file
-            dataset = []
-            for file_path in ann_files:
-                file_dataset = []
-                with open(file_path, 'r', encoding="UTF-8") as file:        
+                tags = set()
+                # Read and print the content of each .vert file
+                dataset = []
+                for file_path in ann_files:
+                    file_dataset = []
+                    with open(file_path, 'r', encoding="UTF-8") as file:        
+                        for line in file:
+                            data = line.split('\t')
+                            if "R" in data[0]:
+                                continue
+                            tag = data[1].split()[0].strip()
+                            if tag not in ['CONDITION', 'EVENT']:
+                                tag = "O"
+                            word = data[2].strip().replace('“', "").replace("”", "").split()
+                            for w in word:
+                                file_dataset.append((tag, w))
+                            tags.add(tag)
+                    dataset.append(file_dataset)
+                tags = list(tags)
+            else:
+                file_path = './data/all_sentences.vert.entity'
+                dataset = []
+                tags = set()
+                sentence = []
+                with open(file_path, 'r', encoding='UTF-8') as file:
                     for line in file:
-                        data = line.split('\t')
-                        if "R" in data[0]:
+                        if line.startswith("#"):
                             continue
-                        tag = data[1].split()[0].strip()
+                        if line.startswith('\n'):
+                            dataset.append(sentence.copy())
+                            sentence = []
+                            continue
+                        data = line.split('\t')
+                        tag = data[1].strip()
                         if tag not in ['CONDITION', 'EVENT']:
                             tag = "O"
-                        word = data[2].strip().replace('“', "").replace("”", "").split()
-                        for w in word:
-                            file_dataset.append((tag, w))
+                        word = data[0].strip().replace('“', "").replace("”", "")
+
                         tags.add(tag)
-                dataset.append(file_dataset)
-            tags = list(tags)
-            
+                        sentence.append((tag, word))
+                tags = list(tags)
         else:
             with open(train_file) as f:
                 d = json.load(f)
@@ -102,8 +125,9 @@ class Pipeline:
             output = self.__model.predict([val['input_ids'] for val in preprocessed_data])
             
             predictions = [[self.id2label[int(j.cpu().numpy())] for j in i ] for i in output]
-            lexi_predictions = Lexicon().predict(preprocessed_data, self.tokenizer)
-            output = Lexicon().merge(lexi_predictions, predictions)
+            output = predictions
+            #lexi_predictions = Lexicon().predict(preprocessed_data, self.tokenizer)
+            #output = Lexicon().merge(lexi_predictions, predictions)
         else:
             output = self.__model.predict([val['text'] for val in data])
         return output
@@ -138,3 +162,6 @@ if __name__ == "__main__":
     pred1 = pipeline.run(dataset_sample[0:2])   
     print(pred1)
     print(len(pred1[0]))
+    
+    pred2 = pipeline.run([{'text': 'Pasienten har som ledd i familiescreening fått påvist mutasjon i MYH7 som er årsak til hypertrofisk kardiomyopati.'}])
+    print(pred2)
