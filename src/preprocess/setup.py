@@ -123,7 +123,7 @@ class Preprocess:
         train, test = train_test_split(tokenized_dataset, train_size=self.__train_size, random_state=42)
         
         if window_size != 0:
-            train = self.sliding_window(train, window_size=window_size, stride=(window_size*0.8))
+            train = self.sliding_window(train, window_size=window_size, stride=int(window_size*0.8))
             test = self.sliding_window(test, window_size=window_size, stride=window_size)
         
         train_dataset = CustomDataset(train, self.__tokenizer, label2id)

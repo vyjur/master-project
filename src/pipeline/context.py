@@ -4,6 +4,7 @@ from pipeline.setup import Pipeline
 if __name__ == "__main__":
     
     lengths = [32, 64, 128, 256, 512]
+    
     config_file_path = './src/pipeline/bilstmcrf-window.ini'
     for length in lengths:
         print("CONTEXT LENGTH", length)
