@@ -157,7 +157,7 @@ if __name__ == "__main__":
             'entities': entities
         })
     
-    pipeline = Pipeline('./src/pipeline/config.ini', 'NorSynthClinical', align=False)
+    pipeline = Pipeline('./src/pipeline/bilstmcrf.ini', 'NorSynthClinical', align=False)
     
     pred1 = pipeline.run(dataset_sample[0:2])   
     print(pred1)
