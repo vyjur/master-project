@@ -14,7 +14,10 @@ class CustomDataset(Dataset):
     def __getitem__(self, idx):
         # Get a single sample of data
         tokenized = self.tokenized_data[idx]
-        tokenized_sentence = tokenized['tokens']
+        if 'tokens' not in tokenized:
+            tokenized_sentence = tokenized.tokens()
+        else:
+            tokenized_sentence = tokenized['tokens']
         labels = tokenized['labels']
         ids = self.tokenizer.convert_tokens_to_ids(tokenized_sentence)
         attn_mask = [1 if tok != '[PAD]' else 0 for tok in tokenized_sentence]
@@ -42,6 +45,9 @@ class Preprocess:
         offsets = tokenized["offset_mapping"]
 
         labels = ['O']*len(tokenized.tokens())
+        if 'entities' not in data:
+            return tokenized
+        
         for start, end, _, tag in data['entities']:
             for i, (_, (token_start, token_end)) in enumerate(zip(tokens, offsets)):
                 if (token_start >= start) and (token_end <= end):
@@ -102,18 +108,24 @@ class Preprocess:
                 #tokenized = self.__tokenizer(row.Term, padding="max_length", max_length=self.__max_length, truncation=True, return_offsets_mapping=True)
                 #tokenized['labels'] = [f"B-{row.Category}"] + [f"I-{row.Category}"]*(len(tokenized["input_ids"])-1)
                 #tokenized_dataset.append(tokenized)
-            
             for row in data:
                 words = [val[1] for val in row]
                 annot = [val[0] for val in row]
-                tokenized = self.__tokenizer(words, padding="max_length", max_length=self.__max_length, is_split_into_words=True, truncation=True, return_offsets_mapping=True)
+                if window_size != 0:
+                    tokenized = self.__tokenizer(words, is_split_into_words=True, return_offsets_mapping=True)
+                else:
+                    tokenized = self.__tokenizer(words, padding="max_length", max_length=self.__max_length, is_split_into_words=True, truncation=True, return_offsets_mapping=True)
                 tokens_annot = self.tokens_mapping(tokenized, annot)
                 tokenized['words'] = words
                 tokenized['labels'] = tokens_annot
                 tokenized_dataset.append(tokenized)
-            
-            tokenized_dataset = self.sliding_window(tokenized_dataset, window_size=window_size, stride=stride)
+                
         train, test = train_test_split(tokenized_dataset, train_size=self.__train_size, random_state=42)
+        
+        if window_size != 0:
+            train = self.sliding_window(train, window_size=window_size, stride=int(window_size*0.8))
+            test = self.sliding_window(test, window_size=window_size, stride=window_size)
+        
         train_dataset = CustomDataset(train, self.__tokenizer, label2id)
         test_dataset = CustomDataset(test, self.__tokenizer, label2id)
 
@@ -136,11 +148,14 @@ class Preprocess:
                 continue
             elif tokenized['offset_mapping'][j][0] == 0:
                 i += 1
-                if annot[i] != "O":
+                if annot[i] != "O" and annot[i] not in tokens_annot[-1]:
                     tokens_annot.append(f"B-{annot[i]}")
+                elif annot[i] != "O":
+                    tokens_annot.append(f"I-{annot[i]}")
                 else:
                     tokens_annot.append(annot[i])
             else:
+                
                 if annot[i] != "O":
                     tokens_annot.append(f"I-{annot[i]}")
                 else:
@@ -167,10 +182,16 @@ class Preprocess:
     
     def class_weights(self, dataset, device):
         word_count = {}
-
+    
         for ex in dataset:
-            for word in ex['labels']:
+            if 'labels' not in ex:
+                labels = ex['targets']
+            else:
+                labels = ex['labels']
+            for word in labels:
                 # Assuming 'word' is a string
+                if 'labels' not in ex:
+                    word = int(word.item())
                 if word in word_count:
                     word_count[word] += 1
                 else:

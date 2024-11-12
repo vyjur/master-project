@@ -1,0 +1,3247 @@
+Running from this directory: /cluster/home/julievt/master-project
+Name of job: master-bilstm-window
+ID of job: 20792296
+The job was run on these nodes: idun-06-[01-07],idun-07-[01-09]
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: poetry in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (1.2.2)
+Requirement already satisfied: tomlkit!=0.11.2,!=0.11.3,<1.0.0,>=0.11.1 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.11.6)
+Requirement already satisfied: poetry-plugin-export<2.0.0,>=1.1.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.2.0)
+Requirement already satisfied: cachy<0.4.0,>=0.3.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.3.0)
+Requirement already satisfied: jsonschema<5.0.0,>=4.10.0 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from poetry) (4.23.0)
+Requirement already satisfied: poetry-core==1.3.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.3.2)
+Requirement already satisfied: platformdirs<3.0.0,>=2.5.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (2.5.3)
+Requirement already satisfied: html5lib<2.0,>=1.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.1)
+Requirement already satisfied: requests<3.0,>=2.18 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from poetry) (2.32.3)
+Requirement already satisfied: urllib3<2.0.0,>=1.26.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.26.12)
+Requirement already satisfied: shellingham<2.0,>=1.5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.5.0)
+Requirement already satisfied: pexpect<5.0.0,>=4.7.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (4.8.0)
+Requirement already satisfied: cleo<2.0.0,>=1.0.0a5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.0.0a5)
+Requirement already satisfied: pkginfo<2.0,>=1.5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (1.8.3)
+Requirement already satisfied: crashtest<0.4.0,>=0.3.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.3.1)
+Requirement already satisfied: dulwich<0.21.0,>=0.20.46 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.20.50)
+Requirement already satisfied: requests-toolbelt<0.10.0,>=0.9.1 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.9.1)
+Requirement already satisfied: keyring>=21.2.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (23.11.0)
+Requirement already satisfied: cachecontrol[filecache]<0.13.0,>=0.12.9 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (0.12.11)
+Requirement already satisfied: virtualenv!=20.4.5,!=20.4.6,>=20.4.3 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from poetry) (20.16.6)
+Requirement already satisfied: packaging>=20.4 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from poetry) (24.1)
+Requirement already satisfied: msgpack>=0.5.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from cachecontrol[filecache]<0.13.0,>=0.12.9->poetry) (1.0.4)
+Requirement already satisfied: lockfile>=0.9 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from cachecontrol[filecache]<0.13.0,>=0.12.9->poetry) (0.12.2)
+Requirement already satisfied: pylev<2.0.0,>=1.3.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from cleo<2.0.0,>=1.0.0a5->poetry) (1.4.0)
+Requirement already satisfied: webencodings in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from html5lib<2.0,>=1.0->poetry) (0.5.1)
+Requirement already satisfied: six>=1.9 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from html5lib<2.0,>=1.0->poetry) (1.16.0)
+Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from jsonschema<5.0.0,>=4.10.0->poetry) (2024.10.1)
+Requirement already satisfied: rpds-py>=0.7.1 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from jsonschema<5.0.0,>=4.10.0->poetry) (0.20.0)
+Requirement already satisfied: referencing>=0.28.4 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from jsonschema<5.0.0,>=4.10.0->poetry) (0.35.1)
+Requirement already satisfied: attrs>=22.2.0 in /cluster/home/julievt/.local/lib/python3.10/site-packages (from jsonschema<5.0.0,>=4.10.0->poetry) (24.2.0)
+Requirement already satisfied: importlib-metadata>=4.11.4 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from keyring>=21.2.0->poetry) (5.0.0)
+Requirement already satisfied: SecretStorage>=3.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from keyring>=21.2.0->poetry) (3.3.3)
+Requirement already satisfied: jeepney>=0.4.2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from keyring>=21.2.0->poetry) (0.8.0)
+Requirement already satisfied: jaraco.classes in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from keyring>=21.2.0->poetry) (3.2.3)
+Requirement already satisfied: ptyprocess>=0.5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from pexpect<5.0.0,>=4.7.0->poetry) (0.7.0)
+Requirement already satisfied: certifi>=2017.4.17 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from requests<3.0,>=2.18->poetry) (2022.9.24)
+Requirement already satisfied: charset-normalizer<4,>=2 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from requests<3.0,>=2.18->poetry) (2.1.1)
+Requirement already satisfied: idna<4,>=2.5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from requests<3.0,>=2.18->poetry) (3.4)
+Requirement already satisfied: filelock<4,>=3.4.1 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from virtualenv!=20.4.5,!=20.4.6,>=20.4.3->poetry) (3.8.0)
+Requirement already satisfied: distlib<1,>=0.3.6 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from virtualenv!=20.4.5,!=20.4.6,>=20.4.3->poetry) (0.3.6)
+Requirement already satisfied: zipp>=0.5 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from importlib-metadata>=4.11.4->keyring>=21.2.0->poetry) (3.10.0)
+Requirement already satisfied: cryptography>=2.0 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from SecretStorage>=3.2->keyring>=21.2.0->poetry) (38.0.3)
+Requirement already satisfied: more-itertools in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from jaraco.classes->keyring>=21.2.0->poetry) (9.0.0)
+Requirement already satisfied: cffi>=1.12 in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from cryptography>=2.0->SecretStorage>=3.2->keyring>=21.2.0->poetry) (1.15.1)
+Requirement already satisfied: pycparser in /cluster/apps/eb/software/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/site-packages (from cffi>=1.12->cryptography>=2.0->SecretStorage>=3.2->keyring>=21.2.0->poetry) (2.21)
+Installing dependencies from lock file
+
+No dependencies to install or update
+
+Installing the current project: master-project (0.1.0)
+Spawning shell within /cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.10
+Running script
+CONTEXT LENGTH 32
+Using: cpu with BiLSTM-CRF
+Parameters: {'train_batch_size': 128, 'valid_batch_size': 64, 'epochs': 200, 'learning_rate': 0.01, 'shuffle': True, 'num_workers': 0, 'max_length': 32, 'window': 32}
+ALL:
+{'O': 26748, 'B-EVENT': 937, 'I-EVENT': 1302, 'B-CONDITION': 1548, 'I-CONDITION': 2685}
+{'O': 0.24839240317033048, 'B-EVENT': 7.090715048025614, 'I-EVENT': 5.102918586789555, 'B-CONDITION': 4.291989664082688, 'I-CONDITION': 2.474487895716946}
+Train:
+{0: 9317, 4: 571, 1: 918, 3: 293, 2: 421}
+{0: 0.24728990018246216, 4: 4.035026269702277, 1: 2.5098039215686274, 3: 7.863481228668942, 2: 5.472684085510688}
+Test:
+{0: 1962, 3: 83, 4: 125, 1: 219, 2: 139}
+{0: 0.2576962283384302, 3: 6.091566265060241, 4: 4.0448, 1: 2.308675799086758, 2: 3.6374100719424463}
+{1: 'I-CONDITION', 2: 'I-EVENT', 3: 'B-EVENT', 4: 'B-CONDITION', 0: 'O'}
+Epoch 1
+-------------------------------
+Batch 0, Loss: 50.87413787841797
+Epoch 2
+-------------------------------
+Batch 0, Loss: 22.08587646484375
+Epoch 3
+-------------------------------
+Batch 0, Loss: 18.738174438476562
+Epoch 4
+-------------------------------
+Batch 0, Loss: 15.836593627929688
+Epoch 5
+-------------------------------
+Batch 0, Loss: 13.876998901367188
+Epoch 6
+-------------------------------
+Batch 0, Loss: 13.172218322753906
+Epoch 7
+-------------------------------
+Batch 0, Loss: 12.001899719238281
+Epoch 8
+-------------------------------
+Batch 0, Loss: 12.460182189941406
+Epoch 9
+-------------------------------
+Batch 0, Loss: 12.10308837890625
+Epoch 10
+-------------------------------
+Batch 0, Loss: 10.3123779296875
+Epoch 11
+-------------------------------
+Batch 0, Loss: 10.450454711914062
+Epoch 12
+-------------------------------
+Batch 0, Loss: 10.104278564453125
+Epoch 13
+-------------------------------
+Batch 0, Loss: 8.991180419921875
+Epoch 14
+-------------------------------
+Batch 0, Loss: 8.868743896484375
+Epoch 15
+-------------------------------
+Batch 0, Loss: 8.23089599609375
+Epoch 16
+-------------------------------
+Batch 0, Loss: 7.869873046875
+Epoch 17
+-------------------------------
+Batch 0, Loss: 8.3328857421875
+Epoch 18
+-------------------------------
+Batch 0, Loss: 7.4921722412109375
+Epoch 19
+-------------------------------
+Batch 0, Loss: 7.216461181640625
+Epoch 20
+-------------------------------
+Batch 0, Loss: 7.56903076171875
+Epoch 21
+-------------------------------
+Batch 0, Loss: 7.3442840576171875
+Epoch 22
+-------------------------------
+Batch 0, Loss: 6.4410858154296875
+Epoch 23
+-------------------------------
+Batch 0, Loss: 6.10858154296875
+Epoch 24
+-------------------------------
+Batch 0, Loss: 6.355316162109375
+Epoch 25
+-------------------------------
+Batch 0, Loss: 5.7397918701171875
+Epoch 26
+-------------------------------
+Batch 0, Loss: 6.2935791015625
+Epoch 27
+-------------------------------
+Batch 0, Loss: 5.8681488037109375
+Epoch 28
+-------------------------------
+Batch 0, Loss: 5.21630859375
+Epoch 29
+-------------------------------
+Batch 0, Loss: 5.4524688720703125
+Epoch 30
+-------------------------------
+Batch 0, Loss: 5.4333953857421875
+Epoch 31
+-------------------------------
+Batch 0, Loss: 5.3769378662109375
+Epoch 32
+-------------------------------
+Batch 0, Loss: 5.451690673828125
+Epoch 33
+-------------------------------
+Batch 0, Loss: 4.9962158203125
+Epoch 34
+-------------------------------
+Batch 0, Loss: 4.49591064453125
+Epoch 35
+-------------------------------
+Batch 0, Loss: 4.636962890625
+Epoch 36
+-------------------------------
+Batch 0, Loss: 4.236663818359375
+Epoch 37
+-------------------------------
+Batch 0, Loss: 4.2434234619140625
+Epoch 38
+-------------------------------
+Batch 0, Loss: 4.45965576171875
+Epoch 39
+-------------------------------
+Batch 0, Loss: 4.38775634765625
+Epoch 40
+-------------------------------
+Batch 0, Loss: 4.346405029296875
+Epoch 41
+-------------------------------
+Batch 0, Loss: 4.3309173583984375
+Epoch 42
+-------------------------------
+Batch 0, Loss: 3.912109375
+Epoch 43
+-------------------------------
+Batch 0, Loss: 3.9832916259765625
+Epoch 44
+-------------------------------
+Batch 0, Loss: 4.14208984375
+Epoch 45
+-------------------------------
+Batch 0, Loss: 3.94219970703125
+Epoch 46
+-------------------------------
+Batch 0, Loss: 3.549713134765625
+Epoch 47
+-------------------------------
+Batch 0, Loss: 3.767608642578125
+Epoch 48
+-------------------------------
+Batch 0, Loss: 3.6808013916015625
+Epoch 49
+-------------------------------
+Batch 0, Loss: 3.78509521484375
+Epoch 50
+-------------------------------
+Batch 0, Loss: 3.6749267578125
+Epoch 51
+-------------------------------
+Batch 0, Loss: 3.5510101318359375
+Epoch 52
+-------------------------------
+Batch 0, Loss: 3.4696197509765625
+Epoch 53
+-------------------------------
+Batch 0, Loss: 3.1969757080078125
+Epoch 54
+-------------------------------
+Batch 0, Loss: 3.3441619873046875
+Epoch 55
+-------------------------------
+Batch 0, Loss: 3.6607208251953125
+Epoch 56
+-------------------------------
+Batch 0, Loss: 3.364044189453125
+Epoch 57
+-------------------------------
+Batch 0, Loss: 3.2964935302734375
+Epoch 58
+-------------------------------
+Batch 0, Loss: 3.0209808349609375
+Epoch 59
+-------------------------------
+Batch 0, Loss: 3.56414794921875
+Epoch 60
+-------------------------------
+Batch 0, Loss: 3.3843841552734375
+Epoch 61
+-------------------------------
+Batch 0, Loss: 3.2681732177734375
+Epoch 62
+-------------------------------
+Batch 0, Loss: 3.0105743408203125
+Epoch 63
+-------------------------------
+Batch 0, Loss: 3.3318634033203125
+Epoch 64
+-------------------------------
+Batch 0, Loss: 2.99481201171875
+Epoch 65
+-------------------------------
+Batch 0, Loss: 2.93017578125
+Epoch 66
+-------------------------------
+Batch 0, Loss: 2.83099365234375
+Epoch 67
+-------------------------------
+Batch 0, Loss: 3.281005859375
+Epoch 68
+-------------------------------
+Batch 0, Loss: 2.9686126708984375
+Epoch 69
+-------------------------------
+Batch 0, Loss: 2.9461822509765625
+Epoch 70
+-------------------------------
+Batch 0, Loss: 2.8146514892578125
+Epoch 71
+-------------------------------
+Batch 0, Loss: 2.72808837890625
+Epoch 72
+-------------------------------
+Batch 0, Loss: 2.83551025390625
+Epoch 73
+-------------------------------
+Batch 0, Loss: 3.0663909912109375
+Epoch 74
+-------------------------------
+Batch 0, Loss: 2.75360107421875
+Epoch 75
+-------------------------------
+Batch 0, Loss: 2.915924072265625
+Epoch 76
+-------------------------------
+Batch 0, Loss: 2.6412200927734375
+Epoch 77
+-------------------------------
+Batch 0, Loss: 2.803619384765625
+Epoch 78
+-------------------------------
+Batch 0, Loss: 2.5978851318359375
+Epoch 79
+-------------------------------
+Batch 0, Loss: 2.365936279296875
+Epoch 80
+-------------------------------
+Batch 0, Loss: 2.6010284423828125
+Epoch 81
+-------------------------------
+Batch 0, Loss: 2.7327423095703125
+Epoch 82
+-------------------------------
+Batch 0, Loss: 2.576324462890625
+Epoch 83
+-------------------------------
+Batch 0, Loss: 2.8394012451171875
+Epoch 84
+-------------------------------
+Batch 0, Loss: 2.5400543212890625
+Epoch 85
+-------------------------------
+Batch 0, Loss: 2.4284515380859375
+Epoch 86
+-------------------------------
+Batch 0, Loss: 2.5672454833984375
+Epoch 87
+-------------------------------
+Batch 0, Loss: 2.5964813232421875
+Epoch 88
+-------------------------------
+Batch 0, Loss: 2.6129608154296875
+Epoch 89
+-------------------------------
+Batch 0, Loss: 2.3970489501953125
+Epoch 90
+-------------------------------
+Batch 0, Loss: 2.3445892333984375
+Epoch 91
+-------------------------------
+Batch 0, Loss: 2.6617889404296875
+Epoch 92
+-------------------------------
+Batch 0, Loss: 2.709197998046875
+Epoch 93
+-------------------------------
+Batch 0, Loss: 2.4220733642578125
+Epoch 94
+-------------------------------
+Batch 0, Loss: 2.4022216796875
+Epoch 95
+-------------------------------
+Batch 0, Loss: 2.5698699951171875
+Epoch 96
+-------------------------------
+Batch 0, Loss: 2.6219940185546875
+Epoch 97
+-------------------------------
+Batch 0, Loss: 2.489166259765625
+Epoch 98
+-------------------------------
+Batch 0, Loss: 2.47705078125
+Epoch 99
+-------------------------------
+Batch 0, Loss: 2.470947265625
+Epoch 100
+-------------------------------
+Batch 0, Loss: 2.5596466064453125
+Epoch 101
+-------------------------------
+Batch 0, Loss: 2.0827484130859375
+Epoch 102
+-------------------------------
+Batch 0, Loss: 2.4948272705078125
+Epoch 103
+-------------------------------
+Batch 0, Loss: 2.538116455078125
+Epoch 104
+-------------------------------
+Batch 0, Loss: 2.2406005859375
+Epoch 105
+-------------------------------
+Batch 0, Loss: 2.18975830078125
+Epoch 106
+-------------------------------
+Batch 0, Loss: 2.355743408203125
+Epoch 107
+-------------------------------
+Batch 0, Loss: 2.4795074462890625
+Epoch 108
+-------------------------------
+Batch 0, Loss: 2.254638671875
+Epoch 109
+-------------------------------
+Batch 0, Loss: 2.424346923828125
+Epoch 110
+-------------------------------
+Batch 0, Loss: 2.515625
+Epoch 111
+-------------------------------
+Batch 0, Loss: 2.6168670654296875
+Epoch 112
+-------------------------------
+Batch 0, Loss: 2.3516693115234375
+Epoch 113
+-------------------------------
+Batch 0, Loss: 2.2548828125
+Epoch 114
+-------------------------------
+Batch 0, Loss: 2.358978271484375
+Epoch 115
+-------------------------------
+Batch 0, Loss: 2.4598388671875
+Epoch 116
+-------------------------------
+Batch 0, Loss: 2.2318878173828125
+Epoch 117
+-------------------------------
+Batch 0, Loss: 2.2064361572265625
+Epoch 118
+-------------------------------
+Batch 0, Loss: 2.1529541015625
+Epoch 119
+-------------------------------
+Batch 0, Loss: 2.269439697265625
+Epoch 120
+-------------------------------
+Batch 0, Loss: 2.3301544189453125
+Epoch 121
+-------------------------------
+Batch 0, Loss: 2.40460205078125
+Epoch 122
+-------------------------------
+Batch 0, Loss: 2.4032440185546875
+Epoch 123
+-------------------------------
+Batch 0, Loss: 2.1841278076171875
+Epoch 124
+-------------------------------
+Batch 0, Loss: 2.382781982421875
+Epoch 125
+-------------------------------
+Batch 0, Loss: 2.22076416015625
+Epoch 126
+-------------------------------
+Batch 0, Loss: 2.216400146484375
+Epoch 127
+-------------------------------
+Batch 0, Loss: 2.241973876953125
+Epoch 128
+-------------------------------
+Batch 0, Loss: 2.276092529296875
+Epoch 129
+-------------------------------
+Batch 0, Loss: 2.1288909912109375
+Epoch 130
+-------------------------------
+Batch 0, Loss: 2.4112701416015625
+Epoch 131
+-------------------------------
+Batch 0, Loss: 2.2379150390625
+Epoch 132
+-------------------------------
+Batch 0, Loss: 2.36285400390625
+Epoch 133
+-------------------------------
+Batch 0, Loss: 2.066650390625
+Epoch 134
+-------------------------------
+Batch 0, Loss: 2.2549285888671875
+Epoch 135
+-------------------------------
+Batch 0, Loss: 2.0416107177734375
+Epoch 136
+-------------------------------
+Batch 0, Loss: 2.12127685546875
+Epoch 137
+-------------------------------
+Batch 0, Loss: 2.36273193359375
+Epoch 138
+-------------------------------
+Batch 0, Loss: 2.3942718505859375
+Epoch 139
+-------------------------------
+Batch 0, Loss: 1.9990081787109375
+Epoch 140
+-------------------------------
+Batch 0, Loss: 2.34564208984375
+Epoch 141
+-------------------------------
+Batch 0, Loss: 2.2186737060546875
+Epoch 142
+-------------------------------
+Batch 0, Loss: 2.2501373291015625
+Epoch 143
+-------------------------------
+Batch 0, Loss: 2.0807342529296875
+Epoch 144
+-------------------------------
+Batch 0, Loss: 2.2075042724609375
+Epoch 145
+-------------------------------
+Batch 0, Loss: 2.1605682373046875
+Epoch 146
+-------------------------------
+Batch 0, Loss: 2.20587158203125
+Epoch 147
+-------------------------------
+Batch 0, Loss: 2.2274322509765625
+Epoch 148
+-------------------------------
+Batch 0, Loss: 2.0435638427734375
+Epoch 149
+-------------------------------
+Batch 0, Loss: 2.31378173828125
+Epoch 150
+-------------------------------
+Batch 0, Loss: 2.4604034423828125
+Epoch 151
+-------------------------------
+Batch 0, Loss: 1.9854736328125
+Epoch 152
+-------------------------------
+Batch 0, Loss: 1.9778289794921875
+Epoch 153
+-------------------------------
+Batch 0, Loss: 1.9735260009765625
+Epoch 154
+-------------------------------
+Batch 0, Loss: 2.18499755859375
+Epoch 155
+-------------------------------
+Batch 0, Loss: 2.114654541015625
+Epoch 156
+-------------------------------
+Batch 0, Loss: 2.10888671875
+Epoch 157
+-------------------------------
+Batch 0, Loss: 2.0043487548828125
+Epoch 158
+-------------------------------
+Batch 0, Loss: 2.235015869140625
+Epoch 159
+-------------------------------
+Batch 0, Loss: 2.1844482421875
+Epoch 160
+-------------------------------
+Batch 0, Loss: 2.051116943359375
+Epoch 161
+-------------------------------
+Batch 0, Loss: 2.1153106689453125
+Epoch 162
+-------------------------------
+Batch 0, Loss: 1.9779510498046875
+Epoch 163
+-------------------------------
+Batch 0, Loss: 2.0784149169921875
+Epoch 164
+-------------------------------
+Batch 0, Loss: 2.248260498046875
+Epoch 165
+-------------------------------
+Batch 0, Loss: 2.0209808349609375
+Epoch 166
+-------------------------------
+Batch 0, Loss: 2.461151123046875
+Epoch 167
+-------------------------------
+Batch 0, Loss: 2.39459228515625
+Epoch 168
+-------------------------------
+Batch 0, Loss: 2.3028106689453125
+Epoch 169
+-------------------------------
+Batch 0, Loss: 2.3457794189453125
+Epoch 170
+-------------------------------
+Batch 0, Loss: 2.2161865234375
+Epoch 171
+-------------------------------
+Batch 0, Loss: 2.035369873046875
+Epoch 172
+-------------------------------
+Batch 0, Loss: 1.961883544921875
+Epoch 173
+-------------------------------
+Batch 0, Loss: 2.02471923828125
+Epoch 174
+-------------------------------
+Batch 0, Loss: 1.8567657470703125
+Epoch 175
+-------------------------------
+Batch 0, Loss: 2.0464630126953125
+Epoch 176
+-------------------------------
+Batch 0, Loss: 2.30267333984375
+Epoch 177
+-------------------------------
+Batch 0, Loss: 2.080108642578125
+Epoch 178
+-------------------------------
+Batch 0, Loss: 2.2907562255859375
+Epoch 179
+-------------------------------
+Batch 0, Loss: 2.2674102783203125
+Epoch 180
+-------------------------------
+Batch 0, Loss: 2.04339599609375
+Epoch 181
+-------------------------------
+Batch 0, Loss: 1.9769134521484375
+Epoch 182
+-------------------------------
+Batch 0, Loss: 2.03741455078125
+Epoch 183
+-------------------------------
+Batch 0, Loss: 2.0987396240234375
+Epoch 184
+-------------------------------
+Batch 0, Loss: 2.072357177734375
+Epoch 185
+-------------------------------
+Batch 0, Loss: 2.24188232421875
+Epoch 186
+-------------------------------
+Batch 0, Loss: 2.1560516357421875
+Epoch 187
+-------------------------------
+Batch 0, Loss: 1.96759033203125
+Epoch 188
+-------------------------------
+Batch 0, Loss: 2.2398529052734375
+Epoch 189
+-------------------------------
+Batch 0, Loss: 2.0283355712890625
+Epoch 190
+-------------------------------
+Batch 0, Loss: 1.9092559814453125
+Epoch 191
+-------------------------------
+Batch 0, Loss: 2.160369873046875
+Epoch 192
+-------------------------------
+Batch 0, Loss: 2.0315704345703125
+Epoch 193
+-------------------------------
+Batch 0, Loss: 1.920867919921875
+Epoch 194
+-------------------------------
+Batch 0, Loss: 1.9615478515625
+Epoch 195
+-------------------------------
+Batch 0, Loss: 2.09893798828125
+Epoch 196
+-------------------------------
+Batch 0, Loss: 2.342071533203125
+Epoch 197
+-------------------------------
+Batch 0, Loss: 2.0626068115234375
+Epoch 198
+-------------------------------
+Batch 0, Loss: 1.9182586669921875
+Epoch 199
+-------------------------------
+Batch 0, Loss: 2.1336212158203125
+Epoch 200
+-------------------------------
+Batch 0, Loss: 2.067230224609375
+Validation Accuracy: 0.9101725260416667
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.60      0.93      0.73       125
+     B-EVENT       0.50      0.01      0.02        83
+ I-CONDITION       0.59      0.98      0.73       219
+     I-EVENT       0.00      0.00      0.00       139
+           O       1.00      1.00      1.00      1962
+
+    accuracy                           0.91      2528
+   macro avg       0.54      0.58      0.50      2528
+weighted avg       0.87      0.91      0.88      2528
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.61      0.99      0.75       344
+       EVENT       0.20      0.00      0.01       222
+           O       1.00      1.00      1.00      1962
+
+    accuracy                           0.91      2528
+   macro avg       0.60      0.66      0.59      2528
+weighted avg       0.88      0.91      0.88      2528
+
+CONTEXT LENGTH 64
+Using: cpu with BiLSTM-CRF
+Parameters: {'train_batch_size': 128, 'valid_batch_size': 64, 'epochs': 200, 'learning_rate': 0.01, 'shuffle': True, 'num_workers': 0, 'max_length': 64, 'window': 64}
+ALL:
+{'O': 26748, 'B-EVENT': 937, 'I-EVENT': 1302, 'B-CONDITION': 1548, 'I-CONDITION': 2685}
+{'O': 0.24839240317033048, 'B-EVENT': 7.090715048025614, 'I-EVENT': 5.102918586789555, 'B-CONDITION': 4.291989664082688, 'I-CONDITION': 2.474487895716946}
+Train:
+{0: 9288, 4: 550, 1: 836, 3: 292, 2: 362}
+{0: 0.24392764857881136, 4: 4.119272727272727, 1: 2.7100478468899523, 3: 7.758904109589041, 2: 6.258563535911602}
+Test:
+{0: 1979, 3: 84, 4: 129, 1: 227, 2: 141}
+{0: 0.25871652349671553, 3: 6.095238095238095, 4: 3.9689922480620154, 1: 2.2555066079295156, 2: 3.631205673758865}
+{1: 'I-CONDITION', 2: 'I-EVENT', 3: 'B-EVENT', 4: 'B-CONDITION', 0: 'O'}
+Epoch 1
+-------------------------------
+Batch 0, Loss: 105.64942169189453
+Epoch 2
+-------------------------------
+Batch 0, Loss: 31.774261474609375
+Epoch 3
+-------------------------------
+Batch 0, Loss: 21.709564208984375
+Epoch 4
+-------------------------------
+Batch 0, Loss: 18.120223999023438
+Epoch 5
+-------------------------------
+Batch 0, Loss: 15.10894775390625
+Epoch 6
+-------------------------------
+Batch 0, Loss: 13.9798583984375
+Epoch 7
+-------------------------------
+Batch 0, Loss: 13.155975341796875
+Epoch 8
+-------------------------------
+Batch 0, Loss: 12.350143432617188
+Epoch 9
+-------------------------------
+Batch 0, Loss: 11.147293090820312
+Epoch 10
+-------------------------------
+Batch 0, Loss: 10.496383666992188
+Epoch 11
+-------------------------------
+Batch 0, Loss: 10.141998291015625
+Epoch 12
+-------------------------------
+Batch 0, Loss: 9.120513916015625
+Epoch 13
+-------------------------------
+Batch 0, Loss: 8.4556884765625
+Epoch 14
+-------------------------------
+Batch 0, Loss: 9.08917236328125
+Epoch 15
+-------------------------------
+Batch 0, Loss: 8.01947021484375
+Epoch 16
+-------------------------------
+Batch 0, Loss: 7.839996337890625
+Epoch 17
+-------------------------------
+Batch 0, Loss: 7.8043212890625
+Epoch 18
+-------------------------------
+Batch 0, Loss: 6.94317626953125
+Epoch 19
+-------------------------------
+Batch 0, Loss: 7.142333984375
+Epoch 20
+-------------------------------
+Batch 0, Loss: 6.973388671875
+Epoch 21
+-------------------------------
+Batch 0, Loss: 6.852325439453125
+Epoch 22
+-------------------------------
+Batch 0, Loss: 6.826568603515625
+Epoch 23
+-------------------------------
+Batch 0, Loss: 6.51971435546875
+Epoch 24
+-------------------------------
+Batch 0, Loss: 6.32928466796875
+Epoch 25
+-------------------------------
+Batch 0, Loss: 6.394683837890625
+Epoch 26
+-------------------------------
+Batch 0, Loss: 6.387359619140625
+Epoch 27
+-------------------------------
+Batch 0, Loss: 6.1202392578125
+Epoch 28
+-------------------------------
+Batch 0, Loss: 6.338623046875
+Epoch 29
+-------------------------------
+Batch 0, Loss: 6.016876220703125
+Epoch 30
+-------------------------------
+Batch 0, Loss: 6.0052490234375
+Epoch 31
+-------------------------------
+Batch 0, Loss: 5.984222412109375
+Epoch 32
+-------------------------------
+Batch 0, Loss: 5.737335205078125
+Epoch 33
+-------------------------------
+Batch 0, Loss: 5.8341064453125
+Epoch 34
+-------------------------------
+Batch 0, Loss: 5.513641357421875
+Epoch 35
+-------------------------------
+Batch 0, Loss: 5.51214599609375
+Epoch 36
+-------------------------------
+Batch 0, Loss: 5.4615478515625
+Epoch 37
+-------------------------------
+Batch 0, Loss: 5.479217529296875
+Epoch 38
+-------------------------------
+Batch 0, Loss: 5.268096923828125
+Epoch 39
+-------------------------------
+Batch 0, Loss: 5.209381103515625
+Epoch 40
+-------------------------------
+Batch 0, Loss: 5.535888671875
+Epoch 41
+-------------------------------
+Batch 0, Loss: 5.176116943359375
+Epoch 42
+-------------------------------
+Batch 0, Loss: 5.19207763671875
+Epoch 43
+-------------------------------
+Batch 0, Loss: 5.018524169921875
+Epoch 44
+-------------------------------
+Batch 0, Loss: 5.041168212890625
+Epoch 45
+-------------------------------
+Batch 0, Loss: 4.84136962890625
+Epoch 46
+-------------------------------
+Batch 0, Loss: 5.140350341796875
+Epoch 47
+-------------------------------
+Batch 0, Loss: 5.08154296875
+Epoch 48
+-------------------------------
+Batch 0, Loss: 4.870452880859375
+Epoch 49
+-------------------------------
+Batch 0, Loss: 5.033477783203125
+Epoch 50
+-------------------------------
+Batch 0, Loss: 5.088958740234375
+Epoch 51
+-------------------------------
+Batch 0, Loss: 4.781982421875
+Epoch 52
+-------------------------------
+Batch 0, Loss: 4.805389404296875
+Epoch 53
+-------------------------------
+Batch 0, Loss: 4.84033203125
+Epoch 54
+-------------------------------
+Batch 0, Loss: 4.689117431640625
+Epoch 55
+-------------------------------
+Batch 0, Loss: 4.62744140625
+Epoch 56
+-------------------------------
+Batch 0, Loss: 4.489105224609375
+Epoch 57
+-------------------------------
+Batch 0, Loss: 4.542236328125
+Epoch 58
+-------------------------------
+Batch 0, Loss: 4.665252685546875
+Epoch 59
+-------------------------------
+Batch 0, Loss: 4.71435546875
+Epoch 60
+-------------------------------
+Batch 0, Loss: 4.50390625
+Epoch 61
+-------------------------------
+Batch 0, Loss: 4.48443603515625
+Epoch 62
+-------------------------------
+Batch 0, Loss: 4.568878173828125
+Epoch 63
+-------------------------------
+Batch 0, Loss: 4.58123779296875
+Epoch 64
+-------------------------------
+Batch 0, Loss: 4.40570068359375
+Epoch 65
+-------------------------------
+Batch 0, Loss: 4.757965087890625
+Epoch 66
+-------------------------------
+Batch 0, Loss: 4.638946533203125
+Epoch 67
+-------------------------------
+Batch 0, Loss: 4.309600830078125
+Epoch 68
+-------------------------------
+Batch 0, Loss: 4.4991455078125
+Epoch 69
+-------------------------------
+Batch 0, Loss: 4.607940673828125
+Epoch 70
+-------------------------------
+Batch 0, Loss: 4.187652587890625
+Epoch 71
+-------------------------------
+Batch 0, Loss: 4.183929443359375
+Epoch 72
+-------------------------------
+Batch 0, Loss: 4.223358154296875
+Epoch 73
+-------------------------------
+Batch 0, Loss: 4.657318115234375
+Epoch 74
+-------------------------------
+Batch 0, Loss: 4.463653564453125
+Epoch 75
+-------------------------------
+Batch 0, Loss: 4.207305908203125
+Epoch 76
+-------------------------------
+Batch 0, Loss: 4.437225341796875
+Epoch 77
+-------------------------------
+Batch 0, Loss: 4.261566162109375
+Epoch 78
+-------------------------------
+Batch 0, Loss: 4.153717041015625
+Epoch 79
+-------------------------------
+Batch 0, Loss: 4.30035400390625
+Epoch 80
+-------------------------------
+Batch 0, Loss: 4.325653076171875
+Epoch 81
+-------------------------------
+Batch 0, Loss: 4.095794677734375
+Epoch 82
+-------------------------------
+Batch 0, Loss: 4.102203369140625
+Epoch 83
+-------------------------------
+Batch 0, Loss: 4.2501220703125
+Epoch 84
+-------------------------------
+Batch 0, Loss: 4.09857177734375
+Epoch 85
+-------------------------------
+Batch 0, Loss: 4.137115478515625
+Epoch 86
+-------------------------------
+Batch 0, Loss: 4.147918701171875
+Epoch 87
+-------------------------------
+Batch 0, Loss: 4.13580322265625
+Epoch 88
+-------------------------------
+Batch 0, Loss: 4.157440185546875
+Epoch 89
+-------------------------------
+Batch 0, Loss: 4.30194091796875
+Epoch 90
+-------------------------------
+Batch 0, Loss: 4.290679931640625
+Epoch 91
+-------------------------------
+Batch 0, Loss: 3.93035888671875
+Epoch 92
+-------------------------------
+Batch 0, Loss: 4.20196533203125
+Epoch 93
+-------------------------------
+Batch 0, Loss: 4.05908203125
+Epoch 94
+-------------------------------
+Batch 0, Loss: 4.11248779296875
+Epoch 95
+-------------------------------
+Batch 0, Loss: 3.99127197265625
+Epoch 96
+-------------------------------
+Batch 0, Loss: 4.0303955078125
+Epoch 97
+-------------------------------
+Batch 0, Loss: 3.83441162109375
+Epoch 98
+-------------------------------
+Batch 0, Loss: 3.9132080078125
+Epoch 99
+-------------------------------
+Batch 0, Loss: 4.078216552734375
+Epoch 100
+-------------------------------
+Batch 0, Loss: 3.786773681640625
+Epoch 101
+-------------------------------
+Batch 0, Loss: 4.129180908203125
+Epoch 102
+-------------------------------
+Batch 0, Loss: 4.091644287109375
+Epoch 103
+-------------------------------
+Batch 0, Loss: 3.987548828125
+Epoch 104
+-------------------------------
+Batch 0, Loss: 3.660675048828125
+Epoch 105
+-------------------------------
+Batch 0, Loss: 3.838623046875
+Epoch 106
+-------------------------------
+Batch 0, Loss: 4.028594970703125
+Epoch 107
+-------------------------------
+Batch 0, Loss: 3.75433349609375
+Epoch 108
+-------------------------------
+Batch 0, Loss: 3.8690185546875
+Epoch 109
+-------------------------------
+Batch 0, Loss: 3.894866943359375
+Epoch 110
+-------------------------------
+Batch 0, Loss: 3.64105224609375
+Epoch 111
+-------------------------------
+Batch 0, Loss: 4.029144287109375
+Epoch 112
+-------------------------------
+Batch 0, Loss: 3.85992431640625
+Epoch 113
+-------------------------------
+Batch 0, Loss: 3.714080810546875
+Epoch 114
+-------------------------------
+Batch 0, Loss: 3.9837646484375
+Epoch 115
+-------------------------------
+Batch 0, Loss: 3.9005126953125
+Epoch 116
+-------------------------------
+Batch 0, Loss: 3.956634521484375
+Epoch 117
+-------------------------------
+Batch 0, Loss: 3.894256591796875
+Epoch 118
+-------------------------------
+Batch 0, Loss: 3.700897216796875
+Epoch 119
+-------------------------------
+Batch 0, Loss: 3.956207275390625
+Epoch 120
+-------------------------------
+Batch 0, Loss: 3.77362060546875
+Epoch 121
+-------------------------------
+Batch 0, Loss: 4.015228271484375
+Epoch 122
+-------------------------------
+Batch 0, Loss: 3.862030029296875
+Epoch 123
+-------------------------------
+Batch 0, Loss: 3.813323974609375
+Epoch 124
+-------------------------------
+Batch 0, Loss: 3.822113037109375
+Epoch 125
+-------------------------------
+Batch 0, Loss: 3.838897705078125
+Epoch 126
+-------------------------------
+Batch 0, Loss: 3.951629638671875
+Epoch 127
+-------------------------------
+Batch 0, Loss: 3.826385498046875
+Epoch 128
+-------------------------------
+Batch 0, Loss: 3.80926513671875
+Epoch 129
+-------------------------------
+Batch 0, Loss: 3.832275390625
+Epoch 130
+-------------------------------
+Batch 0, Loss: 3.951507568359375
+Epoch 131
+-------------------------------
+Batch 0, Loss: 3.586517333984375
+Epoch 132
+-------------------------------
+Batch 0, Loss: 3.846343994140625
+Epoch 133
+-------------------------------
+Batch 0, Loss: 3.757843017578125
+Epoch 134
+-------------------------------
+Batch 0, Loss: 3.8568115234375
+Epoch 135
+-------------------------------
+Batch 0, Loss: 3.913116455078125
+Epoch 136
+-------------------------------
+Batch 0, Loss: 3.829833984375
+Epoch 137
+-------------------------------
+Batch 0, Loss: 3.71014404296875
+Epoch 138
+-------------------------------
+Batch 0, Loss: 3.75592041015625
+Epoch 139
+-------------------------------
+Batch 0, Loss: 3.890716552734375
+Epoch 140
+-------------------------------
+Batch 0, Loss: 3.691253662109375
+Epoch 141
+-------------------------------
+Batch 0, Loss: 3.500579833984375
+Epoch 142
+-------------------------------
+Batch 0, Loss: 3.641448974609375
+Epoch 143
+-------------------------------
+Batch 0, Loss: 3.6990966796875
+Epoch 144
+-------------------------------
+Batch 0, Loss: 3.777099609375
+Epoch 145
+-------------------------------
+Batch 0, Loss: 3.792510986328125
+Epoch 146
+-------------------------------
+Batch 0, Loss: 3.7864990234375
+Epoch 147
+-------------------------------
+Batch 0, Loss: 3.560394287109375
+Epoch 148
+-------------------------------
+Batch 0, Loss: 3.78009033203125
+Epoch 149
+-------------------------------
+Batch 0, Loss: 3.736602783203125
+Epoch 150
+-------------------------------
+Batch 0, Loss: 3.660247802734375
+Epoch 151
+-------------------------------
+Batch 0, Loss: 3.826080322265625
+Epoch 152
+-------------------------------
+Batch 0, Loss: 3.59149169921875
+Epoch 153
+-------------------------------
+Batch 0, Loss: 3.75103759765625
+Epoch 154
+-------------------------------
+Batch 0, Loss: 3.783233642578125
+Epoch 155
+-------------------------------
+Batch 0, Loss: 3.86572265625
+Epoch 156
+-------------------------------
+Batch 0, Loss: 3.742279052734375
+Epoch 157
+-------------------------------
+Batch 0, Loss: 3.460540771484375
+Epoch 158
+-------------------------------
+Batch 0, Loss: 3.65521240234375
+Epoch 159
+-------------------------------
+Batch 0, Loss: 3.58056640625
+Epoch 160
+-------------------------------
+Batch 0, Loss: 3.858123779296875
+Epoch 161
+-------------------------------
+Batch 0, Loss: 3.59051513671875
+Epoch 162
+-------------------------------
+Batch 0, Loss: 3.5489501953125
+Epoch 163
+-------------------------------
+Batch 0, Loss: 3.891693115234375
+Epoch 164
+-------------------------------
+Batch 0, Loss: 3.95068359375
+Epoch 165
+-------------------------------
+Batch 0, Loss: 3.576263427734375
+Epoch 166
+-------------------------------
+Batch 0, Loss: 3.581878662109375
+Epoch 167
+-------------------------------
+Batch 0, Loss: 3.59149169921875
+Epoch 168
+-------------------------------
+Batch 0, Loss: 3.63836669921875
+Epoch 169
+-------------------------------
+Batch 0, Loss: 3.724609375
+Epoch 170
+-------------------------------
+Batch 0, Loss: 3.57427978515625
+Epoch 171
+-------------------------------
+Batch 0, Loss: 3.716949462890625
+Epoch 172
+-------------------------------
+Batch 0, Loss: 3.56121826171875
+Epoch 173
+-------------------------------
+Batch 0, Loss: 3.719329833984375
+Epoch 174
+-------------------------------
+Batch 0, Loss: 3.67974853515625
+Epoch 175
+-------------------------------
+Batch 0, Loss: 3.585540771484375
+Epoch 176
+-------------------------------
+Batch 0, Loss: 3.41290283203125
+Epoch 177
+-------------------------------
+Batch 0, Loss: 3.564544677734375
+Epoch 178
+-------------------------------
+Batch 0, Loss: 3.488128662109375
+Epoch 179
+-------------------------------
+Batch 0, Loss: 3.62744140625
+Epoch 180
+-------------------------------
+Batch 0, Loss: 3.51434326171875
+Epoch 181
+-------------------------------
+Batch 0, Loss: 3.749725341796875
+Epoch 182
+-------------------------------
+Batch 0, Loss: 3.639678955078125
+Epoch 183
+-------------------------------
+Batch 0, Loss: 3.7467041015625
+Epoch 184
+-------------------------------
+Batch 0, Loss: 3.66314697265625
+Epoch 185
+-------------------------------
+Batch 0, Loss: 3.62060546875
+Epoch 186
+-------------------------------
+Batch 0, Loss: 3.8109130859375
+Epoch 187
+-------------------------------
+Batch 0, Loss: 3.632781982421875
+Epoch 188
+-------------------------------
+Batch 0, Loss: 3.676055908203125
+Epoch 189
+-------------------------------
+Batch 0, Loss: 3.67486572265625
+Epoch 190
+-------------------------------
+Batch 0, Loss: 3.6610107421875
+Epoch 191
+-------------------------------
+Batch 0, Loss: 3.77728271484375
+Epoch 192
+-------------------------------
+Batch 0, Loss: 3.736663818359375
+Epoch 193
+-------------------------------
+Batch 0, Loss: 3.595428466796875
+Epoch 194
+-------------------------------
+Batch 0, Loss: 3.518157958984375
+Epoch 195
+-------------------------------
+Batch 0, Loss: 3.67681884765625
+Epoch 196
+-------------------------------
+Batch 0, Loss: 3.602020263671875
+Epoch 197
+-------------------------------
+Batch 0, Loss: 3.6363525390625
+Epoch 198
+-------------------------------
+Batch 0, Loss: 3.62152099609375
+Epoch 199
+-------------------------------
+Batch 0, Loss: 3.524200439453125
+Epoch 200
+-------------------------------
+Batch 0, Loss: 3.478118896484375
+Validation Accuracy: 0.909375
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.60      0.94      0.73       129
+     B-EVENT       1.00      0.05      0.09        84
+ I-CONDITION       0.60      0.99      0.74       227
+     I-EVENT       0.00      0.00      0.00       141
+           O       1.00      1.00      1.00      1979
+
+    accuracy                           0.91      2560
+   macro avg       0.64      0.59      0.51      2560
+weighted avg       0.89      0.91      0.88      2560
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.62      1.00      0.76       356
+       EVENT       1.00      0.02      0.03       225
+           O       1.00      1.00      1.00      1979
+
+    accuracy                           0.91      2560
+   macro avg       0.87      0.67      0.60      2560
+weighted avg       0.95      0.91      0.88      2560
+
+CONTEXT LENGTH 128
+Using: cpu with BiLSTM-CRF
+Parameters: {'train_batch_size': 128, 'valid_batch_size': 64, 'epochs': 200, 'learning_rate': 0.01, 'shuffle': True, 'num_workers': 0, 'max_length': 128, 'window': 128}
+ALL:
+{'O': 26748, 'B-EVENT': 937, 'I-EVENT': 1302, 'B-CONDITION': 1548, 'I-CONDITION': 2685}
+{'O': 0.24839240317033048, 'B-EVENT': 7.090715048025614, 'I-EVENT': 5.102918586789555, 'B-CONDITION': 4.291989664082688, 'I-CONDITION': 2.474487895716946}
+Train:
+{0: 9302, 4: 543, 1: 882, 3: 293, 2: 372}
+{0: 0.2449365727800473, 4: 4.195948434622467, 1: 2.583219954648526, 3: 7.7761092150170645, 2: 6.124731182795699}
+Test:
+{0: 1979, 3: 84, 4: 129, 1: 227, 2: 141}
+{0: 0.25871652349671553, 3: 6.095238095238095, 4: 3.9689922480620154, 1: 2.2555066079295156, 2: 3.631205673758865}
+{1: 'I-CONDITION', 2: 'I-EVENT', 3: 'B-EVENT', 4: 'B-CONDITION', 0: 'O'}
+Epoch 1
+-------------------------------
+Batch 0, Loss: 192.70513916015625
+Epoch 2
+-------------------------------
+Batch 0, Loss: 58.0477294921875
+Epoch 3
+-------------------------------
+Batch 0, Loss: 42.32745361328125
+Epoch 4
+-------------------------------
+Batch 0, Loss: 32.25994873046875
+Epoch 5
+-------------------------------
+Batch 0, Loss: 26.225433349609375
+Epoch 6
+-------------------------------
+Batch 0, Loss: 23.863037109375
+Epoch 7
+-------------------------------
+Batch 0, Loss: 22.675537109375
+Epoch 8
+-------------------------------
+Batch 0, Loss: 21.13250732421875
+Epoch 9
+-------------------------------
+Batch 0, Loss: 19.92449951171875
+Epoch 10
+-------------------------------
+Batch 0, Loss: 18.92266845703125
+Epoch 11
+-------------------------------
+Batch 0, Loss: 18.1298828125
+Epoch 12
+-------------------------------
+Batch 0, Loss: 17.380859375
+Epoch 13
+-------------------------------
+Batch 0, Loss: 16.67498779296875
+Epoch 14
+-------------------------------
+Batch 0, Loss: 16.04595947265625
+Epoch 15
+-------------------------------
+Batch 0, Loss: 15.43157958984375
+Epoch 16
+-------------------------------
+Batch 0, Loss: 14.76934814453125
+Epoch 17
+-------------------------------
+Batch 0, Loss: 14.1827392578125
+Epoch 18
+-------------------------------
+Batch 0, Loss: 13.78851318359375
+Epoch 19
+-------------------------------
+Batch 0, Loss: 13.28228759765625
+Epoch 20
+-------------------------------
+Batch 0, Loss: 12.8511962890625
+Epoch 21
+-------------------------------
+Batch 0, Loss: 12.49822998046875
+Epoch 22
+-------------------------------
+Batch 0, Loss: 12.137939453125
+Epoch 23
+-------------------------------
+Batch 0, Loss: 11.75250244140625
+Epoch 24
+-------------------------------
+Batch 0, Loss: 11.434814453125
+Epoch 25
+-------------------------------
+Batch 0, Loss: 11.19293212890625
+Epoch 26
+-------------------------------
+Batch 0, Loss: 11.00677490234375
+Epoch 27
+-------------------------------
+Batch 0, Loss: 10.73419189453125
+Epoch 28
+-------------------------------
+Batch 0, Loss: 10.56719970703125
+Epoch 29
+-------------------------------
+Batch 0, Loss: 10.3775634765625
+Epoch 30
+-------------------------------
+Batch 0, Loss: 10.21832275390625
+Epoch 31
+-------------------------------
+Batch 0, Loss: 10.07232666015625
+Epoch 32
+-------------------------------
+Batch 0, Loss: 9.94085693359375
+Epoch 33
+-------------------------------
+Batch 0, Loss: 9.81207275390625
+Epoch 34
+-------------------------------
+Batch 0, Loss: 9.7542724609375
+Epoch 35
+-------------------------------
+Batch 0, Loss: 9.61981201171875
+Epoch 36
+-------------------------------
+Batch 0, Loss: 9.524169921875
+Epoch 37
+-------------------------------
+Batch 0, Loss: 9.444580078125
+Epoch 38
+-------------------------------
+Batch 0, Loss: 9.37713623046875
+Epoch 39
+-------------------------------
+Batch 0, Loss: 9.30377197265625
+Epoch 40
+-------------------------------
+Batch 0, Loss: 9.230224609375
+Epoch 41
+-------------------------------
+Batch 0, Loss: 9.179443359375
+Epoch 42
+-------------------------------
+Batch 0, Loss: 9.07452392578125
+Epoch 43
+-------------------------------
+Batch 0, Loss: 9.0640869140625
+Epoch 44
+-------------------------------
+Batch 0, Loss: 8.943359375
+Epoch 45
+-------------------------------
+Batch 0, Loss: 8.91741943359375
+Epoch 46
+-------------------------------
+Batch 0, Loss: 8.86822509765625
+Epoch 47
+-------------------------------
+Batch 0, Loss: 8.81109619140625
+Epoch 48
+-------------------------------
+Batch 0, Loss: 8.7674560546875
+Epoch 49
+-------------------------------
+Batch 0, Loss: 8.76568603515625
+Epoch 50
+-------------------------------
+Batch 0, Loss: 8.6617431640625
+Epoch 51
+-------------------------------
+Batch 0, Loss: 8.73040771484375
+Epoch 52
+-------------------------------
+Batch 0, Loss: 8.58453369140625
+Epoch 53
+-------------------------------
+Batch 0, Loss: 8.54913330078125
+Epoch 54
+-------------------------------
+Batch 0, Loss: 8.5244140625
+Epoch 55
+-------------------------------
+Batch 0, Loss: 8.43890380859375
+Epoch 56
+-------------------------------
+Batch 0, Loss: 8.46246337890625
+Epoch 57
+-------------------------------
+Batch 0, Loss: 8.45062255859375
+Epoch 58
+-------------------------------
+Batch 0, Loss: 8.4468994140625
+Epoch 59
+-------------------------------
+Batch 0, Loss: 8.35333251953125
+Epoch 60
+-------------------------------
+Batch 0, Loss: 8.3399658203125
+Epoch 61
+-------------------------------
+Batch 0, Loss: 8.31353759765625
+Epoch 62
+-------------------------------
+Batch 0, Loss: 8.2652587890625
+Epoch 63
+-------------------------------
+Batch 0, Loss: 8.22637939453125
+Epoch 64
+-------------------------------
+Batch 0, Loss: 8.2476806640625
+Epoch 65
+-------------------------------
+Batch 0, Loss: 8.1444091796875
+Epoch 66
+-------------------------------
+Batch 0, Loss: 8.18072509765625
+Epoch 67
+-------------------------------
+Batch 0, Loss: 8.08819580078125
+Epoch 68
+-------------------------------
+Batch 0, Loss: 8.08258056640625
+Epoch 69
+-------------------------------
+Batch 0, Loss: 8.1300048828125
+Epoch 70
+-------------------------------
+Batch 0, Loss: 8.031494140625
+Epoch 71
+-------------------------------
+Batch 0, Loss: 7.9930419921875
+Epoch 72
+-------------------------------
+Batch 0, Loss: 8.0291748046875
+Epoch 73
+-------------------------------
+Batch 0, Loss: 8.00531005859375
+Epoch 74
+-------------------------------
+Batch 0, Loss: 7.95867919921875
+Epoch 75
+-------------------------------
+Batch 0, Loss: 7.9122314453125
+Epoch 76
+-------------------------------
+Batch 0, Loss: 7.8973388671875
+Epoch 77
+-------------------------------
+Batch 0, Loss: 7.90582275390625
+Epoch 78
+-------------------------------
+Batch 0, Loss: 7.852294921875
+Epoch 79
+-------------------------------
+Batch 0, Loss: 7.8284912109375
+Epoch 80
+-------------------------------
+Batch 0, Loss: 7.80584716796875
+Epoch 81
+-------------------------------
+Batch 0, Loss: 7.76885986328125
+Epoch 82
+-------------------------------
+Batch 0, Loss: 7.753173828125
+Epoch 83
+-------------------------------
+Batch 0, Loss: 7.7994384765625
+Epoch 84
+-------------------------------
+Batch 0, Loss: 7.72357177734375
+Epoch 85
+-------------------------------
+Batch 0, Loss: 7.6875
+Epoch 86
+-------------------------------
+Batch 0, Loss: 7.64276123046875
+Epoch 87
+-------------------------------
+Batch 0, Loss: 7.64892578125
+Epoch 88
+-------------------------------
+Batch 0, Loss: 7.62261962890625
+Epoch 89
+-------------------------------
+Batch 0, Loss: 7.67779541015625
+Epoch 90
+-------------------------------
+Batch 0, Loss: 7.6392822265625
+Epoch 91
+-------------------------------
+Batch 0, Loss: 7.6031494140625
+Epoch 92
+-------------------------------
+Batch 0, Loss: 7.5146484375
+Epoch 93
+-------------------------------
+Batch 0, Loss: 7.5758056640625
+Epoch 94
+-------------------------------
+Batch 0, Loss: 7.474365234375
+Epoch 95
+-------------------------------
+Batch 0, Loss: 7.509033203125
+Epoch 96
+-------------------------------
+Batch 0, Loss: 7.4942626953125
+Epoch 97
+-------------------------------
+Batch 0, Loss: 7.47381591796875
+Epoch 98
+-------------------------------
+Batch 0, Loss: 7.50799560546875
+Epoch 99
+-------------------------------
+Batch 0, Loss: 7.48309326171875
+Epoch 100
+-------------------------------
+Batch 0, Loss: 7.44976806640625
+Epoch 101
+-------------------------------
+Batch 0, Loss: 7.4647216796875
+Epoch 102
+-------------------------------
+Batch 0, Loss: 7.486328125
+Epoch 103
+-------------------------------
+Batch 0, Loss: 7.443115234375
+Epoch 104
+-------------------------------
+Batch 0, Loss: 7.4229736328125
+Epoch 105
+-------------------------------
+Batch 0, Loss: 7.380859375
+Epoch 106
+-------------------------------
+Batch 0, Loss: 7.3380126953125
+Epoch 107
+-------------------------------
+Batch 0, Loss: 7.34613037109375
+Epoch 108
+-------------------------------
+Batch 0, Loss: 7.401611328125
+Epoch 109
+-------------------------------
+Batch 0, Loss: 7.387939453125
+Epoch 110
+-------------------------------
+Batch 0, Loss: 7.3052978515625
+Epoch 111
+-------------------------------
+Batch 0, Loss: 7.32635498046875
+Epoch 112
+-------------------------------
+Batch 0, Loss: 7.2515869140625
+Epoch 113
+-------------------------------
+Batch 0, Loss: 7.32159423828125
+Epoch 114
+-------------------------------
+Batch 0, Loss: 7.29046630859375
+Epoch 115
+-------------------------------
+Batch 0, Loss: 7.26617431640625
+Epoch 116
+-------------------------------
+Batch 0, Loss: 7.24407958984375
+Epoch 117
+-------------------------------
+Batch 0, Loss: 7.23321533203125
+Epoch 118
+-------------------------------
+Batch 0, Loss: 7.25457763671875
+Epoch 119
+-------------------------------
+Batch 0, Loss: 7.2109375
+Epoch 120
+-------------------------------
+Batch 0, Loss: 7.184814453125
+Epoch 121
+-------------------------------
+Batch 0, Loss: 7.22332763671875
+Epoch 122
+-------------------------------
+Batch 0, Loss: 7.24072265625
+Epoch 123
+-------------------------------
+Batch 0, Loss: 7.23193359375
+Epoch 124
+-------------------------------
+Batch 0, Loss: 7.2047119140625
+Epoch 125
+-------------------------------
+Batch 0, Loss: 7.17950439453125
+Epoch 126
+-------------------------------
+Batch 0, Loss: 7.20819091796875
+Epoch 127
+-------------------------------
+Batch 0, Loss: 7.1484375
+Epoch 128
+-------------------------------
+Batch 0, Loss: 7.12445068359375
+Epoch 129
+-------------------------------
+Batch 0, Loss: 7.18182373046875
+Epoch 130
+-------------------------------
+Batch 0, Loss: 7.15936279296875
+Epoch 131
+-------------------------------
+Batch 0, Loss: 7.13134765625
+Epoch 132
+-------------------------------
+Batch 0, Loss: 7.20166015625
+Epoch 133
+-------------------------------
+Batch 0, Loss: 7.13037109375
+Epoch 134
+-------------------------------
+Batch 0, Loss: 7.111572265625
+Epoch 135
+-------------------------------
+Batch 0, Loss: 7.08843994140625
+Epoch 136
+-------------------------------
+Batch 0, Loss: 7.120361328125
+Epoch 137
+-------------------------------
+Batch 0, Loss: 7.071533203125
+Epoch 138
+-------------------------------
+Batch 0, Loss: 7.09747314453125
+Epoch 139
+-------------------------------
+Batch 0, Loss: 7.05987548828125
+Epoch 140
+-------------------------------
+Batch 0, Loss: 7.06488037109375
+Epoch 141
+-------------------------------
+Batch 0, Loss: 7.09698486328125
+Epoch 142
+-------------------------------
+Batch 0, Loss: 7.0687255859375
+Epoch 143
+-------------------------------
+Batch 0, Loss: 7.02740478515625
+Epoch 144
+-------------------------------
+Batch 0, Loss: 7.05877685546875
+Epoch 145
+-------------------------------
+Batch 0, Loss: 7.05938720703125
+Epoch 146
+-------------------------------
+Batch 0, Loss: 7.0394287109375
+Epoch 147
+-------------------------------
+Batch 0, Loss: 6.96453857421875
+Epoch 148
+-------------------------------
+Batch 0, Loss: 7.0587158203125
+Epoch 149
+-------------------------------
+Batch 0, Loss: 7.01287841796875
+Epoch 150
+-------------------------------
+Batch 0, Loss: 6.9296875
+Epoch 151
+-------------------------------
+Batch 0, Loss: 6.91180419921875
+Epoch 152
+-------------------------------
+Batch 0, Loss: 6.9849853515625
+Epoch 153
+-------------------------------
+Batch 0, Loss: 6.945068359375
+Epoch 154
+-------------------------------
+Batch 0, Loss: 6.94464111328125
+Epoch 155
+-------------------------------
+Batch 0, Loss: 6.9556884765625
+Epoch 156
+-------------------------------
+Batch 0, Loss: 6.92376708984375
+Epoch 157
+-------------------------------
+Batch 0, Loss: 6.9012451171875
+Epoch 158
+-------------------------------
+Batch 0, Loss: 6.9412841796875
+Epoch 159
+-------------------------------
+Batch 0, Loss: 6.93902587890625
+Epoch 160
+-------------------------------
+Batch 0, Loss: 6.9002685546875
+Epoch 161
+-------------------------------
+Batch 0, Loss: 6.97174072265625
+Epoch 162
+-------------------------------
+Batch 0, Loss: 6.923583984375
+Epoch 163
+-------------------------------
+Batch 0, Loss: 6.94598388671875
+Epoch 164
+-------------------------------
+Batch 0, Loss: 6.9542236328125
+Epoch 165
+-------------------------------
+Batch 0, Loss: 6.907958984375
+Epoch 166
+-------------------------------
+Batch 0, Loss: 6.89190673828125
+Epoch 167
+-------------------------------
+Batch 0, Loss: 6.9638671875
+Epoch 168
+-------------------------------
+Batch 0, Loss: 6.92352294921875
+Epoch 169
+-------------------------------
+Batch 0, Loss: 6.8681640625
+Epoch 170
+-------------------------------
+Batch 0, Loss: 6.85992431640625
+Epoch 171
+-------------------------------
+Batch 0, Loss: 6.94403076171875
+Epoch 172
+-------------------------------
+Batch 0, Loss: 6.8621826171875
+Epoch 173
+-------------------------------
+Batch 0, Loss: 6.87945556640625
+Epoch 174
+-------------------------------
+Batch 0, Loss: 6.827392578125
+Epoch 175
+-------------------------------
+Batch 0, Loss: 6.8272705078125
+Epoch 176
+-------------------------------
+Batch 0, Loss: 6.83074951171875
+Epoch 177
+-------------------------------
+Batch 0, Loss: 6.7894287109375
+Epoch 178
+-------------------------------
+Batch 0, Loss: 6.86444091796875
+Epoch 179
+-------------------------------
+Batch 0, Loss: 6.7828369140625
+Epoch 180
+-------------------------------
+Batch 0, Loss: 6.79071044921875
+Epoch 181
+-------------------------------
+Batch 0, Loss: 6.9202880859375
+Epoch 182
+-------------------------------
+Batch 0, Loss: 6.80828857421875
+Epoch 183
+-------------------------------
+Batch 0, Loss: 6.7882080078125
+Epoch 184
+-------------------------------
+Batch 0, Loss: 6.77099609375
+Epoch 185
+-------------------------------
+Batch 0, Loss: 6.805419921875
+Epoch 186
+-------------------------------
+Batch 0, Loss: 6.8111572265625
+Epoch 187
+-------------------------------
+Batch 0, Loss: 6.7884521484375
+Epoch 188
+-------------------------------
+Batch 0, Loss: 6.7862548828125
+Epoch 189
+-------------------------------
+Batch 0, Loss: 6.77960205078125
+Epoch 190
+-------------------------------
+Batch 0, Loss: 6.7965087890625
+Epoch 191
+-------------------------------
+Batch 0, Loss: 6.80126953125
+Epoch 192
+-------------------------------
+Batch 0, Loss: 6.7869873046875
+Epoch 193
+-------------------------------
+Batch 0, Loss: 6.75213623046875
+Epoch 194
+-------------------------------
+Batch 0, Loss: 6.76519775390625
+Epoch 195
+-------------------------------
+Batch 0, Loss: 6.7974853515625
+Epoch 196
+-------------------------------
+Batch 0, Loss: 6.75860595703125
+Epoch 197
+-------------------------------
+Batch 0, Loss: 6.73138427734375
+Epoch 198
+-------------------------------
+Batch 0, Loss: 6.70391845703125
+Epoch 199
+-------------------------------
+Batch 0, Loss: 6.74658203125
+Epoch 200
+-------------------------------
+Batch 0, Loss: 6.706787109375
+Validation Accuracy: 0.910546875
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.62      0.95      0.75       129
+     B-EVENT       0.86      0.07      0.13        84
+ I-CONDITION       0.60      0.99      0.74       227
+     I-EVENT       0.00      0.00      0.00       141
+           O       1.00      1.00      1.00      1979
+
+    accuracy                           0.91      2560
+   macro avg       0.62      0.60      0.53      2560
+weighted avg       0.89      0.91      0.88      2560
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.62      0.99      0.76       356
+       EVENT       0.67      0.03      0.05       225
+           O       1.00      1.00      1.00      1979
+
+    accuracy                           0.91      2560
+   macro avg       0.76      0.67      0.60      2560
+weighted avg       0.92      0.91      0.88      2560
+
+CONTEXT LENGTH 256
+Using: cpu with BiLSTM-CRF
+Parameters: {'train_batch_size': 128, 'valid_batch_size': 64, 'epochs': 200, 'learning_rate': 0.01, 'shuffle': True, 'num_workers': 0, 'max_length': 256, 'window': 256}
+ALL:
+{'O': 26748, 'B-EVENT': 937, 'I-EVENT': 1302, 'B-CONDITION': 1548, 'I-CONDITION': 2685}
+{'O': 0.24839240317033048, 'B-EVENT': 7.090715048025614, 'I-EVENT': 5.102918586789555, 'B-CONDITION': 4.291989664082688, 'I-CONDITION': 2.474487895716946}
+Train:
+{0: 9354, 4: 560, 1: 908, 3: 299, 2: 399}
+{0: 0.24631173829377806, 4: 4.114285714285714, 1: 2.537444933920705, 3: 7.705685618729097, 2: 5.774436090225564}
+Test:
+{0: 1979, 3: 84, 4: 129, 1: 227, 2: 141}
+{0: 0.25871652349671553, 3: 6.095238095238095, 4: 3.9689922480620154, 1: 2.2555066079295156, 2: 3.631205673758865}
+{1: 'I-CONDITION', 2: 'I-EVENT', 3: 'B-EVENT', 4: 'B-CONDITION', 0: 'O'}
+Epoch 1
+-------------------------------
+Batch 0, Loss: 629.8499755859375
+Epoch 2
+-------------------------------
+Batch 0, Loss: 168.78179931640625
+Epoch 3
+-------------------------------
+Batch 0, Loss: 94.01904296875
+Epoch 4
+-------------------------------
+Batch 0, Loss: 73.90087890625
+Epoch 5
+-------------------------------
+Batch 0, Loss: 68.451904296875
+Epoch 6
+-------------------------------
+Batch 0, Loss: 64.9481201171875
+Epoch 7
+-------------------------------
+Batch 0, Loss: 62.0172119140625
+Epoch 8
+-------------------------------
+Batch 0, Loss: 59.333740234375
+Epoch 9
+-------------------------------
+Batch 0, Loss: 56.462158203125
+Epoch 10
+-------------------------------
+Batch 0, Loss: 53.1004638671875
+Epoch 11
+-------------------------------
+Batch 0, Loss: 49.6708984375
+Epoch 12
+-------------------------------
+Batch 0, Loss: 47.021240234375
+Epoch 13
+-------------------------------
+Batch 0, Loss: 45.03369140625
+Epoch 14
+-------------------------------
+Batch 0, Loss: 43.3050537109375
+Epoch 15
+-------------------------------
+Batch 0, Loss: 41.5338134765625
+Epoch 16
+-------------------------------
+Batch 0, Loss: 39.787841796875
+Epoch 17
+-------------------------------
+Batch 0, Loss: 38.39501953125
+Epoch 18
+-------------------------------
+Batch 0, Loss: 37.269775390625
+Epoch 19
+-------------------------------
+Batch 0, Loss: 36.379638671875
+Epoch 20
+-------------------------------
+Batch 0, Loss: 35.656005859375
+Epoch 21
+-------------------------------
+Batch 0, Loss: 34.990966796875
+Epoch 22
+-------------------------------
+Batch 0, Loss: 34.42822265625
+Epoch 23
+-------------------------------
+Batch 0, Loss: 33.921875
+Epoch 24
+-------------------------------
+Batch 0, Loss: 33.5703125
+Epoch 25
+-------------------------------
+Batch 0, Loss: 33.188720703125
+Epoch 26
+-------------------------------
+Batch 0, Loss: 32.77099609375
+Epoch 27
+-------------------------------
+Batch 0, Loss: 32.418212890625
+Epoch 28
+-------------------------------
+Batch 0, Loss: 32.160888671875
+Epoch 29
+-------------------------------
+Batch 0, Loss: 31.75146484375
+Epoch 30
+-------------------------------
+Batch 0, Loss: 31.495361328125
+Epoch 31
+-------------------------------
+Batch 0, Loss: 31.185791015625
+Epoch 32
+-------------------------------
+Batch 0, Loss: 30.906005859375
+Epoch 33
+-------------------------------
+Batch 0, Loss: 30.61328125
+Epoch 34
+-------------------------------
+Batch 0, Loss: 30.36962890625
+Epoch 35
+-------------------------------
+Batch 0, Loss: 30.060302734375
+Epoch 36
+-------------------------------
+Batch 0, Loss: 29.883544921875
+Epoch 37
+-------------------------------
+Batch 0, Loss: 29.638427734375
+Epoch 38
+-------------------------------
+Batch 0, Loss: 29.358642578125
+Epoch 39
+-------------------------------
+Batch 0, Loss: 29.190673828125
+Epoch 40
+-------------------------------
+Batch 0, Loss: 28.8876953125
+Epoch 41
+-------------------------------
+Batch 0, Loss: 28.719970703125
+Epoch 42
+-------------------------------
+Batch 0, Loss: 28.51513671875
+Epoch 43
+-------------------------------
+Batch 0, Loss: 28.3310546875
+Epoch 44
+-------------------------------
+Batch 0, Loss: 28.135009765625
+Epoch 45
+-------------------------------
+Batch 0, Loss: 27.870361328125
+Epoch 46
+-------------------------------
+Batch 0, Loss: 27.736083984375
+Epoch 47
+-------------------------------
+Batch 0, Loss: 27.525634765625
+Epoch 48
+-------------------------------
+Batch 0, Loss: 27.291259765625
+Epoch 49
+-------------------------------
+Batch 0, Loss: 27.09521484375
+Epoch 50
+-------------------------------
+Batch 0, Loss: 26.955322265625
+Epoch 51
+-------------------------------
+Batch 0, Loss: 26.80908203125
+Epoch 52
+-------------------------------
+Batch 0, Loss: 26.57958984375
+Epoch 53
+-------------------------------
+Batch 0, Loss: 26.43017578125
+Epoch 54
+-------------------------------
+Batch 0, Loss: 26.193359375
+Epoch 55
+-------------------------------
+Batch 0, Loss: 26.0302734375
+Epoch 56
+-------------------------------
+Batch 0, Loss: 25.85205078125
+Epoch 57
+-------------------------------
+Batch 0, Loss: 25.7763671875
+Epoch 58
+-------------------------------
+Batch 0, Loss: 25.53466796875
+Epoch 59
+-------------------------------
+Batch 0, Loss: 25.3544921875
+Epoch 60
+-------------------------------
+Batch 0, Loss: 25.194580078125
+Epoch 61
+-------------------------------
+Batch 0, Loss: 25.03759765625
+Epoch 62
+-------------------------------
+Batch 0, Loss: 24.90478515625
+Epoch 63
+-------------------------------
+Batch 0, Loss: 24.758056640625
+Epoch 64
+-------------------------------
+Batch 0, Loss: 24.56884765625
+Epoch 65
+-------------------------------
+Batch 0, Loss: 24.5126953125
+Epoch 66
+-------------------------------
+Batch 0, Loss: 24.281005859375
+Epoch 67
+-------------------------------
+Batch 0, Loss: 24.14990234375
+Epoch 68
+-------------------------------
+Batch 0, Loss: 23.928466796875
+Epoch 69
+-------------------------------
+Batch 0, Loss: 23.84326171875
+Epoch 70
+-------------------------------
+Batch 0, Loss: 23.72509765625
+Epoch 71
+-------------------------------
+Batch 0, Loss: 23.615234375
+Epoch 72
+-------------------------------
+Batch 0, Loss: 23.46923828125
+Epoch 73
+-------------------------------
+Batch 0, Loss: 23.2958984375
+Epoch 74
+-------------------------------
+Batch 0, Loss: 23.169677734375
+Epoch 75
+-------------------------------
+Batch 0, Loss: 23.078125
+Epoch 76
+-------------------------------
+Batch 0, Loss: 22.905029296875
+Epoch 77
+-------------------------------
+Batch 0, Loss: 22.812255859375
+Epoch 78
+-------------------------------
+Batch 0, Loss: 22.6689453125
+Epoch 79
+-------------------------------
+Batch 0, Loss: 22.507568359375
+Epoch 80
+-------------------------------
+Batch 0, Loss: 22.510009765625
+Epoch 81
+-------------------------------
+Batch 0, Loss: 22.322265625
+Epoch 82
+-------------------------------
+Batch 0, Loss: 22.19384765625
+Epoch 83
+-------------------------------
+Batch 0, Loss: 22.11279296875
+Epoch 84
+-------------------------------
+Batch 0, Loss: 21.980712890625
+Epoch 85
+-------------------------------
+Batch 0, Loss: 21.8857421875
+Epoch 86
+-------------------------------
+Batch 0, Loss: 21.76708984375
+Epoch 87
+-------------------------------
+Batch 0, Loss: 21.625244140625
+Epoch 88
+-------------------------------
+Batch 0, Loss: 21.53759765625
+Epoch 89
+-------------------------------
+Batch 0, Loss: 21.434814453125
+Epoch 90
+-------------------------------
+Batch 0, Loss: 21.388427734375
+Epoch 91
+-------------------------------
+Batch 0, Loss: 21.268798828125
+Epoch 92
+-------------------------------
+Batch 0, Loss: 21.158447265625
+Epoch 93
+-------------------------------
+Batch 0, Loss: 21.07568359375
+Epoch 94
+-------------------------------
+Batch 0, Loss: 20.95068359375
+Epoch 95
+-------------------------------
+Batch 0, Loss: 20.7978515625
+Epoch 96
+-------------------------------
+Batch 0, Loss: 20.772216796875
+Epoch 97
+-------------------------------
+Batch 0, Loss: 20.694091796875
+Epoch 98
+-------------------------------
+Batch 0, Loss: 20.6796875
+Epoch 99
+-------------------------------
+Batch 0, Loss: 20.43896484375
+Epoch 100
+-------------------------------
+Batch 0, Loss: 20.41650390625
+Epoch 101
+-------------------------------
+Batch 0, Loss: 20.251708984375
+Epoch 102
+-------------------------------
+Batch 0, Loss: 20.17919921875
+Epoch 103
+-------------------------------
+Batch 0, Loss: 20.10693359375
+Epoch 104
+-------------------------------
+Batch 0, Loss: 20.06884765625
+Epoch 105
+-------------------------------
+Batch 0, Loss: 19.900390625
+Epoch 106
+-------------------------------
+Batch 0, Loss: 19.870361328125
+Epoch 107
+-------------------------------
+Batch 0, Loss: 19.797607421875
+Epoch 108
+-------------------------------
+Batch 0, Loss: 19.65673828125
+Epoch 109
+-------------------------------
+Batch 0, Loss: 19.5908203125
+Epoch 110
+-------------------------------
+Batch 0, Loss: 19.53564453125
+Epoch 111
+-------------------------------
+Batch 0, Loss: 19.450927734375
+Epoch 112
+-------------------------------
+Batch 0, Loss: 19.44384765625
+Epoch 113
+-------------------------------
+Batch 0, Loss: 19.3876953125
+Epoch 114
+-------------------------------
+Batch 0, Loss: 19.600830078125
+Epoch 115
+-------------------------------
+Batch 0, Loss: 19.402099609375
+Epoch 116
+-------------------------------
+Batch 0, Loss: 19.173583984375
+Epoch 117
+-------------------------------
+Batch 0, Loss: 19.167724609375
+Epoch 118
+-------------------------------
+Batch 0, Loss: 18.99365234375
+Epoch 119
+-------------------------------
+Batch 0, Loss: 19.030517578125
+Epoch 120
+-------------------------------
+Batch 0, Loss: 19.034423828125
+Epoch 121
+-------------------------------
+Batch 0, Loss: 18.816650390625
+Epoch 122
+-------------------------------
+Batch 0, Loss: 18.790771484375
+Epoch 123
+-------------------------------
+Batch 0, Loss: 18.7392578125
+Epoch 124
+-------------------------------
+Batch 0, Loss: 18.584228515625
+Epoch 125
+-------------------------------
+Batch 0, Loss: 18.587890625
+Epoch 126
+-------------------------------
+Batch 0, Loss: 18.501708984375
+Epoch 127
+-------------------------------
+Batch 0, Loss: 18.49462890625
+Epoch 128
+-------------------------------
+Batch 0, Loss: 18.41162109375
+Epoch 129
+-------------------------------
+Batch 0, Loss: 18.398681640625
+Epoch 130
+-------------------------------
+Batch 0, Loss: 18.27587890625
+Epoch 131
+-------------------------------
+Batch 0, Loss: 18.248046875
+Epoch 132
+-------------------------------
+Batch 0, Loss: 18.197509765625
+Epoch 133
+-------------------------------
+Batch 0, Loss: 18.135498046875
+Epoch 134
+-------------------------------
+Batch 0, Loss: 18.102294921875
+Epoch 135
+-------------------------------
+Batch 0, Loss: 17.9990234375
+Epoch 136
+-------------------------------
+Batch 0, Loss: 17.92236328125
+Epoch 137
+-------------------------------
+Batch 0, Loss: 17.90283203125
+Epoch 138
+-------------------------------
+Batch 0, Loss: 17.93017578125
+Epoch 139
+-------------------------------
+Batch 0, Loss: 17.8349609375
+Epoch 140
+-------------------------------
+Batch 0, Loss: 17.748779296875
+Epoch 141
+-------------------------------
+Batch 0, Loss: 17.7109375
+Epoch 142
+-------------------------------
+Batch 0, Loss: 17.600830078125
+Epoch 143
+-------------------------------
+Batch 0, Loss: 17.60888671875
+Epoch 144
+-------------------------------
+Batch 0, Loss: 17.630126953125
+Epoch 145
+-------------------------------
+Batch 0, Loss: 17.5341796875
+Epoch 146
+-------------------------------
+Batch 0, Loss: 17.482666015625
+Epoch 147
+-------------------------------
+Batch 0, Loss: 17.482666015625
+Epoch 148
+-------------------------------
+Batch 0, Loss: 17.36669921875
+Epoch 149
+-------------------------------
+Batch 0, Loss: 17.350830078125
+Epoch 150
+-------------------------------
+Batch 0, Loss: 17.318603515625
+Epoch 151
+-------------------------------
+Batch 0, Loss: 17.215576171875
+Epoch 152
+-------------------------------
+Batch 0, Loss: 17.22119140625
+Epoch 153
+-------------------------------
+Batch 0, Loss: 17.176513671875
+Epoch 154
+-------------------------------
+Batch 0, Loss: 17.206298828125
+Epoch 155
+-------------------------------
+Batch 0, Loss: 17.12890625
+Epoch 156
+-------------------------------
+Batch 0, Loss: 17.040771484375
+Epoch 157
+-------------------------------
+Batch 0, Loss: 17.062255859375
+Epoch 158
+-------------------------------
+Batch 0, Loss: 16.941650390625
+Epoch 159
+-------------------------------
+Batch 0, Loss: 16.935546875
+Epoch 160
+-------------------------------
+Batch 0, Loss: 16.851318359375
+Epoch 161
+-------------------------------
+Batch 0, Loss: 16.909912109375
+Epoch 162
+-------------------------------
+Batch 0, Loss: 16.806640625
+Epoch 163
+-------------------------------
+Batch 0, Loss: 16.815673828125
+Epoch 164
+-------------------------------
+Batch 0, Loss: 16.761474609375
+Epoch 165
+-------------------------------
+Batch 0, Loss: 16.70068359375
+Epoch 166
+-------------------------------
+Batch 0, Loss: 16.6884765625
+Epoch 167
+-------------------------------
+Batch 0, Loss: 16.721923828125
+Epoch 168
+-------------------------------
+Batch 0, Loss: 16.655029296875
+Epoch 169
+-------------------------------
+Batch 0, Loss: 16.65771484375
+Epoch 170
+-------------------------------
+Batch 0, Loss: 16.540283203125
+Epoch 171
+-------------------------------
+Batch 0, Loss: 16.537353515625
+Epoch 172
+-------------------------------
+Batch 0, Loss: 16.470458984375
+Epoch 173
+-------------------------------
+Batch 0, Loss: 16.47412109375
+Epoch 174
+-------------------------------
+Batch 0, Loss: 16.469970703125
+Epoch 175
+-------------------------------
+Batch 0, Loss: 16.424072265625
+Epoch 176
+-------------------------------
+Batch 0, Loss: 16.368896484375
+Epoch 177
+-------------------------------
+Batch 0, Loss: 16.33203125
+Epoch 178
+-------------------------------
+Batch 0, Loss: 16.3017578125
+Epoch 179
+-------------------------------
+Batch 0, Loss: 16.221923828125
+Epoch 180
+-------------------------------
+Batch 0, Loss: 16.306396484375
+Epoch 181
+-------------------------------
+Batch 0, Loss: 16.260009765625
+Epoch 182
+-------------------------------
+Batch 0, Loss: 16.312255859375
+Epoch 183
+-------------------------------
+Batch 0, Loss: 16.1884765625
+Epoch 184
+-------------------------------
+Batch 0, Loss: 16.272705078125
+Epoch 185
+-------------------------------
+Batch 0, Loss: 16.190673828125
+Epoch 186
+-------------------------------
+Batch 0, Loss: 16.170166015625
+Epoch 187
+-------------------------------
+Batch 0, Loss: 16.0810546875
+Epoch 188
+-------------------------------
+Batch 0, Loss: 16.04296875
+Epoch 189
+-------------------------------
+Batch 0, Loss: 15.975341796875
+Epoch 190
+-------------------------------
+Batch 0, Loss: 15.94580078125
+Epoch 191
+-------------------------------
+Batch 0, Loss: 15.966796875
+Epoch 192
+-------------------------------
+Batch 0, Loss: 15.998779296875
+Epoch 193
+-------------------------------
+Batch 0, Loss: 16.100341796875
+Epoch 194
+-------------------------------
+Batch 0, Loss: 16.198486328125
+Epoch 195
+-------------------------------
+Batch 0, Loss: 16.061279296875
+Epoch 196
+-------------------------------
+Batch 0, Loss: 15.805419921875
+Epoch 197
+-------------------------------
+Batch 0, Loss: 15.93408203125
+Epoch 198
+-------------------------------
+Batch 0, Loss: 16.080810546875
+Epoch 199
+-------------------------------
+Batch 0, Loss: 15.805419921875
+Epoch 200
+-------------------------------
+Batch 0, Loss: 15.802001953125
+Validation Accuracy: 0.909375
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.61      0.95      0.74       129
+     B-EVENT       1.00      0.05      0.09        84
+ I-CONDITION       0.59      0.98      0.74       227
+     I-EVENT       0.00      0.00      0.00       141
+           O       1.00      1.00      1.00      1979
+
+    accuracy                           0.91      2560
+   macro avg       0.64      0.60      0.52      2560
+weighted avg       0.89      0.91      0.88      2560
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.61      0.99      0.76       356
+       EVENT       0.57      0.02      0.03       225
+           O       1.00      1.00      1.00      1979
+
+    accuracy                           0.91      2560
+   macro avg       0.73      0.67      0.60      2560
+weighted avg       0.91      0.91      0.88      2560
+
+CONTEXT LENGTH 512
+Using: cpu with BiLSTM-CRF
+Parameters: {'train_batch_size': 128, 'valid_batch_size': 64, 'epochs': 200, 'learning_rate': 0.01, 'shuffle': True, 'num_workers': 0, 'max_length': 512, 'window': 512}
+ALL:
+{'O': 26748, 'B-EVENT': 937, 'I-EVENT': 1302, 'B-CONDITION': 1548, 'I-CONDITION': 2685}
+{'O': 0.24839240317033048, 'B-EVENT': 7.090715048025614, 'I-EVENT': 5.102918586789555, 'B-CONDITION': 4.291989664082688, 'I-CONDITION': 2.474487895716946}
+Train:
+{0: 9172, 4: 549, 1: 876, 3: 285, 2: 382}
+{0: 0.24561709550806804, 4: 4.103460837887067, 1: 2.571689497716895, 3: 7.904561403508772, 2: 5.897382198952879}
+Test:
+{0: 1979, 3: 84, 4: 129, 1: 227, 2: 141}
+{0: 0.25871652349671553, 3: 6.095238095238095, 4: 3.9689922480620154, 1: 2.2555066079295156, 2: 3.631205673758865}
+{1: 'I-CONDITION', 2: 'I-EVENT', 3: 'B-EVENT', 4: 'B-CONDITION', 0: 'O'}
+Epoch 1
+-------------------------------
+Batch 0, Loss: 986.7308959960938
+Epoch 2
+-------------------------------
+Batch 0, Loss: 534.81689453125
+Epoch 3
+-------------------------------
+Batch 0, Loss: 187.73779296875
+Epoch 4
+-------------------------------
+Batch 0, Loss: 156.878173828125
+Epoch 5
+-------------------------------
+Batch 0, Loss: 145.131591796875
+Epoch 6
+-------------------------------
+Batch 0, Loss: 137.159423828125
+Epoch 7
+-------------------------------
+Batch 0, Loss: 125.700439453125
+Epoch 8
+-------------------------------
+Batch 0, Loss: 116.308837890625
+Epoch 9
+-------------------------------
+Batch 0, Loss: 110.04248046875
+Epoch 10
+-------------------------------
+Batch 0, Loss: 105.655517578125
+Epoch 11
+-------------------------------
+Batch 0, Loss: 102.464111328125
+Epoch 12
+-------------------------------
+Batch 0, Loss: 100.123779296875
+Epoch 13
+-------------------------------
+Batch 0, Loss: 98.450439453125
+Epoch 14
+-------------------------------
+Batch 0, Loss: 96.933837890625
+Epoch 15
+-------------------------------
+Batch 0, Loss: 95.415283203125
+Epoch 16
+-------------------------------
+Batch 0, Loss: 93.91455078125
+Epoch 17
+-------------------------------
+Batch 0, Loss: 92.5869140625
+Epoch 18
+-------------------------------
+Batch 0, Loss: 91.538818359375
+Epoch 19
+-------------------------------
+Batch 0, Loss: 90.637939453125
+Epoch 20
+-------------------------------
+Batch 0, Loss: 89.79638671875
+Epoch 21
+-------------------------------
+Batch 0, Loss: 89.01318359375
+Epoch 22
+-------------------------------
+Batch 0, Loss: 88.3193359375
+Epoch 23
+-------------------------------
+Batch 0, Loss: 87.602294921875
+Epoch 24
+-------------------------------
+Batch 0, Loss: 86.855224609375
+Epoch 25
+-------------------------------
+Batch 0, Loss: 86.198974609375
+Epoch 26
+-------------------------------
+Batch 0, Loss: 85.500244140625
+Epoch 27
+-------------------------------
+Batch 0, Loss: 84.6845703125
+Epoch 28
+-------------------------------
+Batch 0, Loss: 83.94775390625
+Epoch 29
+-------------------------------
+Batch 0, Loss: 83.321044921875
+Epoch 30
+-------------------------------
+Batch 0, Loss: 82.6494140625
+Epoch 31
+-------------------------------
+Batch 0, Loss: 81.978271484375
+Epoch 32
+-------------------------------
+Batch 0, Loss: 81.249267578125
+Epoch 33
+-------------------------------
+Batch 0, Loss: 80.536376953125
+Epoch 34
+-------------------------------
+Batch 0, Loss: 79.965087890625
+Epoch 35
+-------------------------------
+Batch 0, Loss: 79.32275390625
+Epoch 36
+-------------------------------
+Batch 0, Loss: 78.599365234375
+Epoch 37
+-------------------------------
+Batch 0, Loss: 78.052734375
+Epoch 38
+-------------------------------
+Batch 0, Loss: 77.31591796875
+Epoch 39
+-------------------------------
+Batch 0, Loss: 76.742919921875
+Epoch 40
+-------------------------------
+Batch 0, Loss: 76.07568359375
+Epoch 41
+-------------------------------
+Batch 0, Loss: 75.504638671875
+Epoch 42
+-------------------------------
+Batch 0, Loss: 75.0322265625
+Epoch 43
+-------------------------------
+Batch 0, Loss: 74.26806640625
+Epoch 44
+-------------------------------
+Batch 0, Loss: 73.75537109375
+Epoch 45
+-------------------------------
+Batch 0, Loss: 73.1708984375
+Epoch 46
+-------------------------------
+Batch 0, Loss: 72.609130859375
+Epoch 47
+-------------------------------
+Batch 0, Loss: 72.044677734375
+Epoch 48
+-------------------------------
+Batch 0, Loss: 71.335205078125
+Epoch 49
+-------------------------------
+Batch 0, Loss: 70.8212890625
+Epoch 50
+-------------------------------
+Batch 0, Loss: 70.26318359375
+Epoch 51
+-------------------------------
+Batch 0, Loss: 69.821044921875
+Epoch 52
+-------------------------------
+Batch 0, Loss: 69.2119140625
+Epoch 53
+-------------------------------
+Batch 0, Loss: 68.704345703125
+Epoch 54
+-------------------------------
+Batch 0, Loss: 68.13623046875
+Epoch 55
+-------------------------------
+Batch 0, Loss: 67.5703125
+Epoch 56
+-------------------------------
+Batch 0, Loss: 67.20458984375
+Epoch 57
+-------------------------------
+Batch 0, Loss: 66.801025390625
+Epoch 58
+-------------------------------
+Batch 0, Loss: 66.24609375
+Epoch 59
+-------------------------------
+Batch 0, Loss: 65.59814453125
+Epoch 60
+-------------------------------
+Batch 0, Loss: 65.378662109375
+Epoch 61
+-------------------------------
+Batch 0, Loss: 64.63330078125
+Epoch 62
+-------------------------------
+Batch 0, Loss: 64.28271484375
+Epoch 63
+-------------------------------
+Batch 0, Loss: 63.71240234375
+Epoch 64
+-------------------------------
+Batch 0, Loss: 63.368896484375
+Epoch 65
+-------------------------------
+Batch 0, Loss: 63.359130859375
+Epoch 66
+-------------------------------
+Batch 0, Loss: 62.467529296875
+Epoch 67
+-------------------------------
+Batch 0, Loss: 62.31396484375
+Epoch 68
+-------------------------------
+Batch 0, Loss: 61.7099609375
+Epoch 69
+-------------------------------
+Batch 0, Loss: 61.339111328125
+Epoch 70
+-------------------------------
+Batch 0, Loss: 60.875
+Epoch 71
+-------------------------------
+Batch 0, Loss: 60.46142578125
+Epoch 72
+-------------------------------
+Batch 0, Loss: 60.078857421875
+Epoch 73
+-------------------------------
+Batch 0, Loss: 59.654296875
+Epoch 74
+-------------------------------
+Batch 0, Loss: 59.141357421875
+Epoch 75
+-------------------------------
+Batch 0, Loss: 58.871337890625
+Epoch 76
+-------------------------------
+Batch 0, Loss: 58.550048828125
+Epoch 77
+-------------------------------
+Batch 0, Loss: 57.93505859375
+Epoch 78
+-------------------------------
+Batch 0, Loss: 57.65478515625
+Epoch 79
+-------------------------------
+Batch 0, Loss: 57.1484375
+Epoch 80
+-------------------------------
+Batch 0, Loss: 57.10986328125
+Epoch 81
+-------------------------------
+Batch 0, Loss: 56.780517578125
+Epoch 82
+-------------------------------
+Batch 0, Loss: 56.114990234375
+Epoch 83
+-------------------------------
+Batch 0, Loss: 55.84619140625
+Epoch 84
+-------------------------------
+Batch 0, Loss: 55.6220703125
+Epoch 85
+-------------------------------
+Batch 0, Loss: 54.854736328125
+Epoch 86
+-------------------------------
+Batch 0, Loss: 54.73828125
+Epoch 87
+-------------------------------
+Batch 0, Loss: 54.2392578125
+Epoch 88
+-------------------------------
+Batch 0, Loss: 54.013916015625
+Epoch 89
+-------------------------------
+Batch 0, Loss: 53.540771484375
+Epoch 90
+-------------------------------
+Batch 0, Loss: 53.166259765625
+Epoch 91
+-------------------------------
+Batch 0, Loss: 52.978759765625
+Epoch 92
+-------------------------------
+Batch 0, Loss: 53.4111328125
+Epoch 93
+-------------------------------
+Batch 0, Loss: 54.2294921875
+Epoch 94
+-------------------------------
+Batch 0, Loss: 52.744384765625
+Epoch 95
+-------------------------------
+Batch 0, Loss: 52.356201171875
+Epoch 96
+-------------------------------
+Batch 0, Loss: 53.087646484375
+Epoch 97
+-------------------------------
+Batch 0, Loss: 51.330078125
+Epoch 98
+-------------------------------
+Batch 0, Loss: 51.96435546875
+Epoch 99
+-------------------------------
+Batch 0, Loss: 51.6708984375
+Epoch 100
+-------------------------------
+Batch 0, Loss: 50.938720703125
+Epoch 101
+-------------------------------
+Batch 0, Loss: 50.68896484375
+Epoch 102
+-------------------------------
+Batch 0, Loss: 50.0185546875
+Epoch 103
+-------------------------------
+Batch 0, Loss: 50.234130859375
+Epoch 104
+-------------------------------
+Batch 0, Loss: 49.167724609375
+Epoch 105
+-------------------------------
+Batch 0, Loss: 49.45849609375
+Epoch 106
+-------------------------------
+Batch 0, Loss: 48.819580078125
+Epoch 107
+-------------------------------
+Batch 0, Loss: 48.771484375
+Epoch 108
+-------------------------------
+Batch 0, Loss: 48.34228515625
+Epoch 109
+-------------------------------
+Batch 0, Loss: 47.7744140625
+Epoch 110
+-------------------------------
+Batch 0, Loss: 47.89990234375
+Epoch 111
+-------------------------------
+Batch 0, Loss: 47.32373046875
+Epoch 112
+-------------------------------
+Batch 0, Loss: 47.2158203125
+Epoch 113
+-------------------------------
+Batch 0, Loss: 46.84716796875
+Epoch 114
+-------------------------------
+Batch 0, Loss: 46.6904296875
+Epoch 115
+-------------------------------
+Batch 0, Loss: 46.54296875
+Epoch 116
+-------------------------------
+Batch 0, Loss: 46.00927734375
+Epoch 117
+-------------------------------
+Batch 0, Loss: 45.73046875
+Epoch 118
+-------------------------------
+Batch 0, Loss: 45.7509765625
+Epoch 119
+-------------------------------
+Batch 0, Loss: 45.203125
+Epoch 120
+-------------------------------
+Batch 0, Loss: 45.1220703125
+Epoch 121
+-------------------------------
+Batch 0, Loss: 44.853515625
+Epoch 122
+-------------------------------
+Batch 0, Loss: 44.2255859375
+Epoch 123
+-------------------------------
+Batch 0, Loss: 43.96337890625
+Epoch 124
+-------------------------------
+Batch 0, Loss: 43.826171875
+Epoch 125
+-------------------------------
+Batch 0, Loss: 43.6806640625
+Epoch 126
+-------------------------------
+Batch 0, Loss: 43.30029296875
+Epoch 127
+-------------------------------
+Batch 0, Loss: 43.0498046875
+Epoch 128
+-------------------------------
+Batch 0, Loss: 42.7607421875
+Epoch 129
+-------------------------------
+Batch 0, Loss: 42.85791015625
+Epoch 130
+-------------------------------
+Batch 0, Loss: 42.59130859375
+Epoch 131
+-------------------------------
+Batch 0, Loss: 42.9775390625
+Epoch 132
+-------------------------------
+Batch 0, Loss: 44.0986328125
+Epoch 133
+-------------------------------
+Batch 0, Loss: 43.6171875
+Epoch 134
+-------------------------------
+Batch 0, Loss: 41.97021484375
+Epoch 135
+-------------------------------
+Batch 0, Loss: 42.36328125
+Epoch 136
+-------------------------------
+Batch 0, Loss: 42.2333984375
+Epoch 137
+-------------------------------
+Batch 0, Loss: 41.5302734375
+Epoch 138
+-------------------------------
+Batch 0, Loss: 41.76953125
+Epoch 139
+-------------------------------
+Batch 0, Loss: 41.17236328125
+Epoch 140
+-------------------------------
+Batch 0, Loss: 41.08203125
+Epoch 141
+-------------------------------
+Batch 0, Loss: 40.8251953125
+Epoch 142
+-------------------------------
+Batch 0, Loss: 40.150390625
+Epoch 143
+-------------------------------
+Batch 0, Loss: 40.25048828125
+Epoch 144
+-------------------------------
+Batch 0, Loss: 40.41650390625
+Epoch 145
+-------------------------------
+Batch 0, Loss: 39.978515625
+Epoch 146
+-------------------------------
+Batch 0, Loss: 39.65576171875
+Epoch 147
+-------------------------------
+Batch 0, Loss: 39.80712890625
+Epoch 148
+-------------------------------
+Batch 0, Loss: 39.57666015625
+Epoch 149
+-------------------------------
+Batch 0, Loss: 38.99609375
+Epoch 150
+-------------------------------
+Batch 0, Loss: 39.208984375
+Epoch 151
+-------------------------------
+Batch 0, Loss: 38.78125
+Epoch 152
+-------------------------------
+Batch 0, Loss: 38.49560546875
+Epoch 153
+-------------------------------
+Batch 0, Loss: 38.21533203125
+Epoch 154
+-------------------------------
+Batch 0, Loss: 38.32275390625
+Epoch 155
+-------------------------------
+Batch 0, Loss: 38.2421875
+Epoch 156
+-------------------------------
+Batch 0, Loss: 37.67919921875
+Epoch 157
+-------------------------------
+Batch 0, Loss: 37.55322265625
+Epoch 158
+-------------------------------
+Batch 0, Loss: 37.58203125
+Epoch 159
+-------------------------------
+Batch 0, Loss: 37.9560546875
+Epoch 160
+-------------------------------
+Batch 0, Loss: 37.91650390625
+Epoch 161
+-------------------------------
+Batch 0, Loss: 37.263671875
+Epoch 162
+-------------------------------
+Batch 0, Loss: 36.556640625
+Epoch 163
+-------------------------------
+Batch 0, Loss: 37.3388671875
+Epoch 164
+-------------------------------
+Batch 0, Loss: 38.95703125
+Epoch 165
+-------------------------------
+Batch 0, Loss: 37.310546875
+Epoch 166
+-------------------------------
+Batch 0, Loss: 36.42236328125
+Epoch 167
+-------------------------------
+Batch 0, Loss: 37.30712890625
+Epoch 168
+-------------------------------
+Batch 0, Loss: 36.10498046875
+Epoch 169
+-------------------------------
+Batch 0, Loss: 36.26025390625
+Epoch 170
+-------------------------------
+Batch 0, Loss: 36.38671875
+Epoch 171
+-------------------------------
+Batch 0, Loss: 35.3447265625
+Epoch 172
+-------------------------------
+Batch 0, Loss: 36.0234375
+Epoch 173
+-------------------------------
+Batch 0, Loss: 36.23486328125
+Epoch 174
+-------------------------------
+Batch 0, Loss: 35.21484375
+Epoch 175
+-------------------------------
+Batch 0, Loss: 35.236328125
+Epoch 176
+-------------------------------
+Batch 0, Loss: 35.4580078125
+Epoch 177
+-------------------------------
+Batch 0, Loss: 34.91650390625
+Epoch 178
+-------------------------------
+Batch 0, Loss: 34.990234375
+Epoch 179
+-------------------------------
+Batch 0, Loss: 35.17578125
+Epoch 180
+-------------------------------
+Batch 0, Loss: 34.677734375
+Epoch 181
+-------------------------------
+Batch 0, Loss: 34.296875
+Epoch 182
+-------------------------------
+Batch 0, Loss: 34.06591796875
+Epoch 183
+-------------------------------
+Batch 0, Loss: 34.3349609375
+Epoch 184
+-------------------------------
+Batch 0, Loss: 35.6767578125
+Epoch 185
+-------------------------------
+Batch 0, Loss: 39.80078125
+Epoch 186
+-------------------------------
+Batch 0, Loss: 34.1337890625
+Epoch 187
+-------------------------------
+Batch 0, Loss: 39.25146484375
+Epoch 188
+-------------------------------
+Batch 0, Loss: 40.79248046875
+Epoch 189
+-------------------------------
+Batch 0, Loss: 36.51708984375
+Epoch 190
+-------------------------------
+Batch 0, Loss: 40.322265625
+Epoch 191
+-------------------------------
+Batch 0, Loss: 34.693359375
+Epoch 192
+-------------------------------
+Batch 0, Loss: 37.54345703125
+Epoch 193
+-------------------------------
+Batch 0, Loss: 34.67529296875
+Epoch 194
+-------------------------------
+Batch 0, Loss: 37.30615234375
+Epoch 195
+-------------------------------
+Batch 0, Loss: 34.2900390625
+Epoch 196
+-------------------------------
+Batch 0, Loss: 36.03564453125
+Epoch 197
+-------------------------------
+Batch 0, Loss: 34.21240234375
+Epoch 198
+-------------------------------
+Batch 0, Loss: 35.70458984375
+Epoch 199
+-------------------------------
+Batch 0, Loss: 33.76123046875
+Epoch 200
+-------------------------------
+Batch 0, Loss: 34.82568359375
+Validation Accuracy: 0.910546875
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.63      0.89      0.74       129
+     B-EVENT       0.63      0.14      0.23        84
+ I-CONDITION       0.60      0.98      0.74       227
+     I-EVENT       0.33      0.01      0.03       141
+           O       1.00      1.00      1.00      1979
+
+    accuracy                           0.91      2560
+   macro avg       0.64      0.61      0.55      2560
+weighted avg       0.90      0.91      0.89      2560
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.62      0.97      0.76       356
+       EVENT       0.56      0.06      0.11       225
+           O       1.00      1.00      1.00      1979
+
+    accuracy                           0.91      2560
+   macro avg       0.73      0.68      0.62      2560
+weighted avg       0.91      0.91      0.89      2560
+

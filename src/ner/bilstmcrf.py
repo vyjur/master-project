@@ -183,7 +183,9 @@ class BiLSTMCRF:
 
     def __init__(self, load: bool = True, dataset: list = [], tags_name: list = [], parameters: dict = [], align:bool = True, tokenizer = None):
         self.__device = "cuda" if cuda.is_available() else "cpu"
-        print("Using:", self.__device)
+        print("Using:", self.__device, "with BiLSTM-CRF")
+        
+        print("Parameters:", parameters)
 
         self.__valid_batch_size = parameters['valid_batch_size']
 
@@ -193,9 +195,15 @@ class BiLSTMCRF:
         # TODO
         # embedding_dim = self.tokenizer.model_max_length
         embedding_dim = 300
-        processed = Preprocess(self.tokenizer).run_train_test_split(dataset, tags_name, align)
-        class_weights = Preprocess(self.tokenizer).class_weights(processed['dataset'], self.__device)
+        processed = Preprocess(self.tokenizer, parameters['max_length']).run_train_test_split(dataset, tags_name, align, parameters['window'])
+        print("ALL:")
+        class_weights = Preprocess(self.tokenizer, parameters['max_length']).class_weights(processed['dataset'], self.__device)
+        print("Train:")
+        Preprocess(self.tokenizer).class_weights(processed['train'], self.__device)
+        print("Test:")
+        Preprocess(self.tokenizer).class_weights(processed['test'], self.__device)
 
+        print(processed['id2label'])
         tag_to_ix = processed['label2id']
         START_ID = max(processed['id2label'].keys()) + 1
         STOP_ID = max(processed['id2label'].keys())+2
