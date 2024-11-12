@@ -18,14 +18,16 @@ SAVE_DIRECTORY = './src/ner/saved/fine_tuned_bert_model'
 
 class FineTunedBert:
     
-    def __init__(self, load: bool = True, dataset: list = [], tags_name: list = [], parameters: dict = [], align:bool=True, tokenizer = None):
+    def __init__(self, load: bool = True, dataset: list = [], tags_name: list = [], parameters: dict = [], align:bool=True, tokenizer = None, window=False):
         self.__device = 'cuda' if cuda.is_available() else 'cpu'
-        print("Using:", self.__device)
+        print("Using:", self.__device, "with BERT")
+        
+        print("Parameters:", parameters)
         
         self.tokenizer = tokenizer
-        processed = Preprocess(self.tokenizer).run_train_test_split(dataset, tags_name, align)
+        processed = Preprocess(self.tokenizer, parameters['max_length']).run_train_test_split(dataset, tags_name, align, parameters['window'])
         
-        class_weights = Preprocess(self.tokenizer).class_weights(processed['dataset'], self.__device)
+        class_weights = Preprocess(self.tokenizer, parameters['max_length']).class_weights(processed['dataset'], self.__device)
 
         if load:
             self.__model = AutoModelForTokenClassification.from_pretrained(SAVE_DIRECTORY)
