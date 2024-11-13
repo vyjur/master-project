@@ -1,0 +1,43 @@
+{
+  "_name_or_path": "ltg/norbert3-xs",
+  "architectures": [
+    "NorbertForSequenceClassification"
+  ],
+  "attention_probs_dropout_prob": 0.0,
+  "auto_map": {
+    "AutoConfig": "ltg/norbert3-xs--configuration_norbert.NorbertConfig",
+    "AutoModel": "ltg/norbert3-xs--modeling_norbert.NorbertModel",
+    "AutoModelForMaskedLM": "ltg/norbert3-xs--modeling_norbert.NorbertForMaskedLM",
+    "AutoModelForMultipleChoice": "ltg/norbert3-xs--modeling_norbert.NorbertForMultipleChoice",
+    "AutoModelForQuestionAnswering": "ltg/norbert3-xs--modeling_norbert.NorbertForQuestionAnswering",
+    "AutoModelForSequenceClassification": "ltg/norbert3-xs--modeling_norbert.NorbertForSequenceClassification",
+    "AutoModelForTokenClassification": "ltg/norbert3-xs--modeling_norbert.NorbertForTokenClassification"
+  },
+  "hidden_dropout_prob": 0.0,
+  "hidden_size": 192,
+  "id2label": {
+    "0": "O",
+    "1": "XDURINGY",
+    "2": "X\\_BEFORE\\_Y",
+    "3": "XBEFOREY",
+    "4": "X\\_DURING\\_Y"
+  },
+  "intermediate_size": 512,
+  "label2id": {
+    "O": 0,
+    "XBEFOREY": 3,
+    "XDURINGY": 1,
+    "X\\_BEFORE\\_Y": 2,
+    "X\\_DURING\\_Y": 4
+  },
+  "layer_norm_eps": 1e-07,
+  "max_position_embeddings": 512,
+  "num_attention_heads": 3,
+  "num_hidden_layers": 12,
+  "output_all_encoded_layers": true,
+  "position_bucket_size": 32,
+  "problem_type": "single_label_classification",
+  "torch_dtype": "float32",
+  "transformers_version": "4.45.2",
+  "vocab_size": 50000
+}

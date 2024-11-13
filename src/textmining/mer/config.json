@@ -17,17 +17,21 @@
   "hidden_size": 192,
   "id2label": {
     "0": "O",
-    "1": "I-EVENT",
-    "2": "B-EVENT",
+    "1": "I-SYMPTOM",
+    "2": "B-SYMPTOM",
     "3": "I-CONDITION",
-    "4": "B-CONDITION"
+    "4": "B-EVENT",
+    "5": "B-CONDITION",
+    "6": "I-EVENT"
   },
   "intermediate_size": 512,
   "label2id": {
-    "B-CONDITION": 4,
-    "B-EVENT": 2,
+    "B-CONDITION": 5,
+    "B-EVENT": 4,
+    "B-SYMPTOM": 2,
     "I-CONDITION": 3,
-    "I-EVENT": 1,
+    "I-EVENT": 6,
+    "I-SYMPTOM": 1,
     "O": 0
   },
   "layer_norm_eps": 1e-07,
