@@ -17,18 +17,18 @@
   "hidden_size": 192,
   "id2label": {
     "0": "O",
-    "1": "XDURINGY",
-    "2": "X\\_BEFORE\\_Y",
-    "3": "XBEFOREY",
-    "4": "X\\_DURING\\_Y"
+    "1": "X\\_BEFORE\\_Y",
+    "2": "XDURINGY",
+    "3": "X\\_DURING\\_Y",
+    "4": "XBEFOREY"
   },
   "intermediate_size": 512,
   "label2id": {
     "O": 0,
-    "XBEFOREY": 3,
-    "XDURINGY": 1,
-    "X\\_BEFORE\\_Y": 2,
-    "X\\_DURING\\_Y": 4
+    "XBEFOREY": 4,
+    "XDURINGY": 2,
+    "X\\_BEFORE\\_Y": 1,
+    "X\\_DURING\\_Y": 3
   },
   "layer_norm_eps": 1e-07,
   "max_position_embeddings": 512,
