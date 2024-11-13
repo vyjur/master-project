@@ -37,19 +37,19 @@ class MERecognition:
         checkpoint = "ltg/norbert3-small"
         self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
         
+        train_parameters = {
+            'train_batch_size': self.__config.getint('train.parameters', 'train_batch_size'),
+            'valid_batch_size': self.__config.getint('train.parameters', 'valid_batch_size'),
+            'epochs': self.__config.getint('train.parameters', 'epochs'),
+            'learning_rate': self.__config.getfloat('train.parameters', 'learning_rate'),
+            'shuffle': self.__config.getboolean('train.parameters', 'shuffle'),
+            'num_workers': self.__config.getint('train.parameters', 'num_workers'),
+            'max_length': self.__config.getint('MODEL', 'max_length')
+        }
+        
         if load:
-            self.__model = MODEL_MAP[self.__config['MODEL']['name']](load, SAVE_DIRECTORY, tokenizer=self.tokenizer)
+            self.__model = MODEL_MAP[self.__config['MODEL']['name']](load, SAVE_DIRECTORY, dataset, tags, parameters=train_parameters, tokenizer=self.tokenizer)
         else:
-            train_parameters = {
-                'train_batch_size': self.__config.getint('train.parameters', 'train_batch_size'),
-                'valid_batch_size': self.__config.getint('train.parameters', 'valid_batch_size'),
-                'epochs': self.__config.getint('train.parameters', 'epochs'),
-                'learning_rate': self.__config.getfloat('train.parameters', 'learning_rate'),
-                'shuffle': self.__config.getboolean('train.parameters', 'shuffle'),
-                'num_workers': self.__config.getint('train.parameters', 'num_workers'),
-                'max_length': self.__config.getint('MODEL', 'max_length')
-            }
-            
             self.__model = MODEL_MAP[self.__config['MODEL']['name']](load, SAVE_DIRECTORY, dataset, tags, train_parameters, self.tokenizer)
         
     def get_tokenizer(self):
