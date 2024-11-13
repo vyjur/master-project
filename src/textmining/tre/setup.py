@@ -17,6 +17,10 @@ class TRExtract:
         
         load = self.__config['MODEL'].getboolean('load')
         
+        #checkpoint = "ltg/norbert3-large"        
+        checkpoint = "ltg/norbert3-small"
+        self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+        
         train_parameters = {
             'train_batch_size': self.__config.getint('train.parameters', 'train_batch_size'),
             'valid_batch_size': self.__config.getint('train.parameters', 'valid_batch_size'),
@@ -26,51 +30,46 @@ class TRExtract:
             'num_workers': self.__config.getint('train.parameters', 'num_workers'),
             'max_length': self.__config.getint('MODEL', 'max_length')
         }
-            
+        folder_path = "./data/annotated/"
+        files = [folder_path + f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
+        
+        manager = DatasetManager(files)
+        dataset_mer = manager.get('MER')
+        dataset_tre = manager.get('TRE')
+        sentences = manager.get('SENTENCES')
+
+        dataset = []
+        tags = set()
+        for k, doc in enumerate(dataset_mer):
+            for i, e_i in enumerate(doc.itertuples()):
+                for j, e_j in enumerate(doc.itertuples()):
+                    if i == j:
+                        continue
+                    relations = dataset_tre[k][(dataset_tre[k]['fk_id'] == e_i[1]) & (dataset_tre[k]['id'] == e_j[1])]
+                    
+                    if len(relations) == 1:
+                        relation = relations.iloc[0]['Temporal Relation']
+                    else:
+                        relation = 'O'
+                        
+                        # TODO: downsample majority class
+                        if random.random() < 0.999:
+                            continue
+                    relation_pair = {
+                        'i': e_i[3],
+                        'context_i': sentences[k].loc[e_i[2]],
+                        'context_j': sentences[k].loc[e_j[2]],
+                        'j': e_j[3],
+                        'relation': relation
+                    }
+                    dataset.append(relation_pair)
+                    tags.add(relation)
+        tags = list(tags)
+        self.label2id, self.id2label = Util().get_tags('sequence', tags)    
         
         if load:
-            self.__model = MODEL_MAP[self.__config['MODEL']['name']](load, SAVE_DIRECTORY, parameters=train_parameters)
+            self.__model = MODEL_MAP[self.__config['MODEL']['name']](load, SAVE_DIRECTORY, dataset, tags, train_parameters, self.tokenizer)
         else:
-            #checkpoint = "ltg/norbert3-large"
-            checkpoint = "ltg/norbert3-small"
-            self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
-            
-            folder_path = "./data/annotated/"
-            files = [folder_path + f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
-            
-            manager = DatasetManager(files)
-            dataset_mer = manager.get('MER')
-            dataset_tre = manager.get('TRE')
-            sentences = manager.get('SENTENCES')
-
-            dataset = []
-            tags = set()
-            for k, doc in enumerate(dataset_mer):
-                for i, e_i in enumerate(doc.itertuples()):
-                    for j, e_j in enumerate(doc.itertuples()):
-                        if i == j:
-                            continue
-                        relations = dataset_tre[k][(dataset_tre[k]['fk_id'] == e_i[1]) & (dataset_tre[k]['id'] == e_j[1])]
-                        
-                        if len(relations) == 1:
-                            relation = relations.iloc[0]['Temporal Relation']
-                        else:
-                            relation = 'O'
-                            
-                            # TODO: downsample majority class
-                            if random.random() < 0.995:
-                                continue
-                        relation_pair = {
-                            'i': e_i[3],
-                            'context_i': sentences[k].loc[e_i[2]],
-                            'context_j': sentences[k].loc[e_j[2]],
-                            'j': e_j[3],
-                            'relation': relation
-                        }
-                        dataset.append(relation_pair)
-                        tags.add(relation)
-            tags = list(tags)
-            self.label2id, self.id2label = Util().get_tags('sequence', tags)
             self.__model = MODEL_MAP[self.__config['MODEL']['name']](load, SAVE_DIRECTORY, dataset, tags, train_parameters, self.tokenizer)
     
     def get_tokenizer(self):

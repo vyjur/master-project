@@ -28,7 +28,7 @@ class BERT:
                 self.tokenizer = AutoTokenizer.from_pretrained(save, trust_remote_code=True)
             else:
                 self.__model = AutoModelForSequenceClassification.from_pretrained(save, trust_remote_code=True)
-                self.tokenizer = AutoModelForSequenceClassification.from_pretrained(save, trust_remote_code=True)
+                self.tokenizer = AutoTokenizer.from_pretrained(save, trust_remote_code=True)
             
             print("Model and tokenizer loaded successfully.")
         else:
@@ -93,7 +93,10 @@ class BERT:
             
             mask = np.where(np.array(data) == 0, 0, 1)
             outputs = self.__model(input_ids=torch.tensor(data, dtype=torch.long).to(self.__device), attention_mask=torch.tensor(mask, dtype=torch.long).to(self.__device))
-            pred = torch.argmax(outputs.logits, dim=2)
+            if self.__task == 'token':
+                pred = torch.argmax(outputs.logits, dim=2)
+            else:
+                pred = torch.argmax(outputs.logits, dim=1).tolist()
             return pred
                 
     def __train(self, training_loader, num_training_steps, optimizer, scheduler=None, loss_fn=None):
