@@ -32,18 +32,22 @@ class DatasetManager:
                 offset = 0
                 if len(sentence) != 16:
                     offset = -2
+
+                clip = sentence[10+offset].find('[')
+                if clip == -1:
+                    clip = len(sentence[10+offset])
                     
                 row = {
-                    'id': sentence[0] if sentence[0] != '_' else None, #0
-                    'Offset': sentence[1] if sentence[1] != '_' else None, #1
-                    'Text': sentence[2] if sentence[2] != '_' else None, #1
-                    'Modality': sentence[8+offset] if sentence[8+offset] != '_' else None, #8
-                    'Polarity': sentence[9+offset] if sentence[9+offset] != '_' else None, #9,
-                    'Medical Entity': sentence[10+offset] if sentence[10+offset] != '_' else None, #10,
-                    'Temporal Feature': sentence[11+offset] if sentence[11+offset] != '_' else None, #11,
-                    'Entity Relation': sentence[12+offset] if sentence[12+offset] != '_' else None, #12,
-                    'Temporal Relation': sentence[13+offset] if sentence[13+offset]!= '_' else None, #13,
-                    'fk_id': sentence[14+offset] if sentence[14+offset] != '_' else None#14
+                    'id': sentence[0] if sentence[0] != '_' else "O", #0
+                    'Offset': sentence[1] if sentence[1] != '_' else "O", #1
+                    'Text': sentence[2] if sentence[2] != '_' else "O", #1
+                    'Modality': sentence[8+offset] if sentence[8+offset] != '_' else "O", #8
+                    'Polarity': sentence[9+offset] if sentence[9+offset] != '_' else "O", #9,
+                    'Medical Entity': sentence[10+offset][:clip] if sentence[10+offset] != '_' else "O", #10,
+                    'Temporal Feature': sentence[11+offset] if sentence[11+offset] != '_' else "O", #11,
+                    'Entity Relation': sentence[12+offset] if sentence[12+offset] != '_' else "O", #12,
+                    'Temporal Relation': sentence[13+offset] if sentence[13+offset]!= '_' else "O", #13,
+                    'fk_id': sentence[14+offset] if sentence[14+offset] != '_' else "O"#14
                 }
                 document.loc[len(document)] = row 
                 
