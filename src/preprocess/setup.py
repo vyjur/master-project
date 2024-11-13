@@ -51,6 +51,9 @@ class Preprocess:
         tokenized_dataset = self.__tokenizer(data, padding="max_length", stride=0, max_length=self.__max_length, truncation=True, return_offsets_mapping=True, return_overflowing_tokens=True).encodings
         return tokenized_dataset
     
+    def decode(self, data:list):
+        return self.__tokenizer.decode(data)
+    
     def sliding_window(self, data, window_size=128, stride=64):
         """
         Window-size: sequence length

@@ -72,6 +72,6 @@ if __name__ == "__main__":
     reg = MERecognition('./src/textmining/mer/config.ini')
     preprocess = Preprocess(reg.get_tokenizer(), reg.get_max_length())
     
-    text = "Hei på deg!"
+    text = "Pasienten har også opplevd økt tungpust de siste månedene, noe som har begrenset aktivitetsnivået hans."
     
     print(reg.run(preprocess.run(text)))
