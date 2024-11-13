@@ -1,12 +1,11 @@
-import json
 import configparser
-import glob
 import os
-import pandas as pd
+from model.util import Util
 from textmining.mer.lexicon import Lexicon
 from preprocess.dataset import DatasetManager
 from model.map import MODEL_MAP
 from transformers import AutoTokenizer
+from preprocess.setup import Preprocess
 import configparser
 
 SAVE_DIRECTORY = './src/textmining/mer'
@@ -18,8 +17,28 @@ class MERecognition:
         
         load = self.__config['MODEL'].getboolean('load')
         
+        folder_path = "./data/annotated/"
+        files = [folder_path + f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
+        raw_dataset = DatasetManager(files).get('MER')
+
+        dataset = []
+        tags = set()
+        for doc in raw_dataset:
+            curr_doc = []
+            for row in doc.itertuples(index=False):
+                curr_doc.append((row[2], row[3]))  # Add (row[1], row[2]) tuple to list
+                tags.add(row[3])          # Add row[2] to the set
+
+            dataset.append(curr_doc)
+        tags = list(tags)
+        self.label2id, self.id2label = Util().get_tags('token', tags)
+        
+        #checkpoint = "ltg/norbert3-large"
+        checkpoint = "ltg/norbert3-small"
+        self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+        
         if load:
-            self.__model = MODEL_MAP[self.__config['MODEL']['name']](load, SAVE_DIRECTORY)
+            self.__model = MODEL_MAP[self.__config['MODEL']['name']](load, SAVE_DIRECTORY, tokenizer=self.tokenizer)
         else:
             train_parameters = {
                 'train_batch_size': self.__config.getint('train.parameters', 'train_batch_size'),
@@ -31,25 +50,6 @@ class MERecognition:
                 'max_length': self.__config.getint('MODEL', 'max_length')
             }
             
-            #checkpoint = "ltg/norbert3-large"
-            checkpoint = "ltg/norbert3-small"
-            self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
-            
-            folder_path = "./data/annotated/"
-            files = [folder_path + f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
-            raw_dataset = DatasetManager(files).get('MER')
-
-            dataset = []
-            tags = set()
-            for doc in raw_dataset:
-                curr_doc = []
-                for row in doc.itertuples(index=False):
-                    curr_doc.append((row[1], row[2]))  # Add (row[1], row[2]) tuple to list
-                    tags.add(row[2])          # Add row[2] to the set
-
-                dataset.append(curr_doc)
-            tags = list(tags)
-            
             self.__model = MODEL_MAP[self.__config['MODEL']['name']](load, SAVE_DIRECTORY, dataset, tags, train_parameters, self.tokenizer)
         
     def get_tokenizer(self):
@@ -59,7 +59,7 @@ class MERecognition:
         return self.__config.getint('MODEL', 'max_length')
     
     def run(self, data):
-        output = self.__model.predict([val['input_ids'] for val in data])
+        output = self.__model.predict([val.ids for val in data])
         predictions = [[self.id2label[int(j.cpu().numpy())] for j in i ] for i in output]
         if self.__config.getboolean('MODEL', 'lexicon'):
             lexi_predictions = Lexicon().predict(data, self.tokenizer)
@@ -70,3 +70,8 @@ class MERecognition:
 
 if __name__ == "__main__":
     reg = MERecognition('./src/textmining/mer/config.ini')
+    preprocess = Preprocess(reg.get_tokenizer(), reg.get_max_length())
+    
+    text = "Hei på deg!"
+    
+    print(reg.run(preprocess.run(text)))

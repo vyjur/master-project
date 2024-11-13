@@ -1,4 +1,4 @@
-from transformers import AutoModelForTokenClassification, AutoTokenizer
+from transformers import AutoModelForTokenClassification, AutoModelForSequenceClassification, AutoTokenizer
 from sklearn.metrics import accuracy_score, classification_report
 import torch
 import torch.nn as nn
@@ -13,25 +13,28 @@ from tqdm.auto import tqdm
 import numpy as np
 from model.util import Util
 
-SAVE_DIRECTORY = './src/ner/saved/fine_tuned_bert_model'
-
 class BERT:
     
-    def __init__(self, load: bool = True, dataset: list = [], tags_name: list = [], parameters: dict = [], align:bool=True, tokenizer = None):
+    def __init__(self, task:str, load: bool, save:str, dataset: list = [], tags_name: list = [], parameters: dict = [], tokenizer = None):
         self.__device = 'cuda' if cuda.is_available() else 'cpu'
         print("Using:", self.__device)
         
         self.tokenizer = tokenizer
-        processed = Preprocess(self.tokenizer).run_train_test_split(dataset, tags_name, align)
-        
-        class_weights = Preprocess(self.tokenizer).class_weights(processed['dataset'], self.__device)
+        self.__task = task
 
         if load:
-            self.__model = AutoModelForTokenClassification.from_pretrained(SAVE_DIRECTORY)
-            self.tokenizer = AutoTokenizer.from_pretrained(SAVE_DIRECTORY)
+            if task == 'token':
+                self.__model = AutoModelForTokenClassification.from_pretrained(save, trust_remote_code=True)
+                self.tokenizer = AutoTokenizer.from_pretrained(save, trust_remote_code=True)
+            else:
+                self.__model = AutoModelForSequenceClassification.from_pretrained(save, trust_remote_code=True)
+                self.tokenizer = AutoModelForSequenceClassification.from_pretrained(save, trust_remote_code=True)
             
             print("Model and tokenizer loaded successfully.")
         else:
+            processed = Preprocess(self.tokenizer, parameters['max_length']).run_train_test_split(task, dataset, tags_name)
+            class_weights = Util().class_weights(task, processed['dataset'], self.__device)
+            
             torch.cuda.empty_cache()
             train_params = {'batch_size': parameters['train_batch_size'],
                             'shuffle': parameters['shuffle'],
@@ -48,15 +51,17 @@ class BERT:
 
             num_training_steps = len(training_loader)
 
-            #self.__model = BertForTokenClassification.from_pretrained('bert-base-uncased', num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
-            # self.__model = AutoModelForTokenClassification.from_pretrained('NbAiLab/nb-bert-base', trust_remote_code=True, num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
-            self.__model = AutoModelForTokenClassification.from_pretrained('ltg/norbert3-large', trust_remote_code=True, num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
-            #
-            # self.__model = AutoModelForTokenClassification.from_pretrained('ltg/norbert3-xs', trust_remote_code=True, num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
+            if task == 'token':
+                #self.__model = AutoModelForTokenClassification.from_pretrained('ltg/norbert3-large', trust_remote_code=True, num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
+                self.__model = AutoModelForTokenClassification.from_pretrained('ltg/norbert3-xs', trust_remote_code=True, num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
+            else:
+                print(processed['id2label'])
+                #self.__model = AutoModelForSequenceClassification.from_pretrained('ltg/norbert3-large', trust_remote_code=True, num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
+                self.__model = AutoModelForSequenceClassification.from_pretrained('ltg/norbert3-xs', trust_remote_code=True, num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
+
             self.__model.to(self.__device)
 
             optimizer = torch.optim.Adam(params=self.__model.parameters(), lr=parameters['learning_rate'])
-            # optimizer = torch.optim.Adam(params=self.__model.parameters())
 
             lr_scheduler = get_scheduler(
                 name="linear", optimizer=optimizer, num_warmup_steps=0, num_training_steps=num_training_steps
@@ -68,17 +73,17 @@ class BERT:
                 self.__train(training_loader, num_training_steps, optimizer, lr_scheduler, loss_fn)
 
             labels, predictions = self.__valid(testing_loader, self.__device, processed['id2label'])
-            # lexi_predictions = Lexicon().predict(processed['test_raw'], self.tokenizer)
-            lexi_predictions = []
-            Util().validate_output(labels, predictions, lexi_predictions)
+            Util().validate_report(labels, predictions)
 
             # Save the model
-            self.__model.save_pretrained(SAVE_DIRECTORY)
+            self.__model.save_pretrained(save)
 
             # Save the tokenizer
-            self.tokenizer.save_pretrained(SAVE_DIRECTORY)
+            self.tokenizer.save_pretrained(save)
         
-        self.__pipeline = pipeline(task="token-classification", model=self.__model.to(self.__device), device=0, tokenizer=self.tokenizer, aggregation_strategy="simple")
+        if task == 'sequence':
+            task = 'text'
+        self.__pipeline = pipeline(task=f"{task}-classification", model=self.__model.to(self.__device), device=0 if self.__device== 'gpu' else None, tokenizer=self.tokenizer, aggregation_strategy="simple")
             
     def predict(self, data, pipeline=False):
         if pipeline:
@@ -104,7 +109,6 @@ class BERT:
             ids = batch['ids'].to(self.__device, dtype = torch.long)
             mask = batch['mask'].to(self.__device, dtype = torch.long)
             targets = batch['targets'].to(self.__device, dtype = torch.long)
-
             outputs = self.__model(input_ids=ids, attention_mask=mask, labels=targets)
             loss, tr_logits = outputs.loss, outputs.logits
             tr_loss += loss.item()
@@ -121,9 +125,14 @@ class BERT:
             # Now compute predictions based on the probabilities
             flattened_predictions = torch.argmax(active_logits, axis=1)  # shape (batch_size * seq_len,)
             # now, use mask to determine where we should compare predictions with targets (includes [CLS] and [SEP] token predictions)
-            active_accuracy = mask.view(-1) == 1 # active accuracy is also of shape (batch_size * seq_len,)
-            targets = flattened_targets[active_accuracy]  # Keep gradients
-            predictions = flattened_predictions[active_accuracy]  # Keep gradients
+            
+            if self.__task == 'token':
+                active_accuracy = mask.view(-1) == 1 # active accuracy is also of shape (batch_size * seq_len,)
+                targets = flattened_targets[active_accuracy]  # Keep gradients
+                predictions = flattened_predictions[active_accuracy]  # Keep gradients
+            else:
+                targets = flattened_targets
+                predictions = flattened_predictions
 
             tr_preds.extend(predictions)
             tr_labels.extend(targets)
@@ -180,8 +189,12 @@ class BERT:
                 flattened_predictions = torch.argmax(active_logits, axis=1) # shape (batch_size * seq_len,)
                 # now, use mask to determine where we should compare predictions with targets (includes [CLS] and [SEP] token predictions)
                 active_accuracy = mask.view(-1) == 1 # active accuracy is also of shape (batch_size * seq_len,)
-                targets = torch.masked_select(flattened_targets, active_accuracy)
-                predictions = torch.masked_select(flattened_predictions, active_accuracy)
+                if self.__task == 'token':
+                    targets = torch.masked_select(flattened_targets, active_accuracy)
+                    predictions = torch.masked_select(flattened_predictions, active_accuracy)
+                else:
+                    targets = flattened_targets
+                    predictions = flattened_predictions
                 
                 eval_labels.extend(targets)
                 eval_preds.extend(predictions)
@@ -238,7 +251,7 @@ if __name__ == '__main__':
     checkpoint = "distilbert-base-cased"
     tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 
-    model = FineTunedBert(False, dataset_sample, tags, train_parameters, True, tokenizer)
+    model = BERT(False, dataset_sample, tags, train_parameters, True, tokenizer)
     tokenized = Preprocess(model.tokenizer).run([dataset_sample[0], dataset_sample[1]])
     pred1 = model.predict([tokenized[0]['input_ids'], tokenized[1]['input_ids']])
     pred2 = model.predict([tokenized[0]['input_ids']])
