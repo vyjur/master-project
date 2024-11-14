@@ -6,13 +6,14 @@ from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
 from sklearn.metrics import accuracy_score
 from model.util import Util
+from structure.enum import Task
 
 START_TAG = "<START>"
 STOP_TAG = "<STOP>"
 
 class NN:
 
-    def __init__(self, model: nn.Module, task: str, load:bool, save:str, dataset: list = [], tags_name: list = [], parameters: dict = [], tokenizer = None):
+    def __init__(self, model: nn.Module, task: Task, load:bool, save:str, dataset: list = [], tags_name: list = [], parameters: dict = [], tokenizer = None):
         self.__device = "cuda" if cuda.is_available() else "cpu"
         print("Using:", self.__device)
 
@@ -27,7 +28,7 @@ class NN:
 
         tag_to_ix = processed['label2id']
         self.__tag_to_ix = tag_to_ix
-        if task == 'token':
+        if task == Task.TOKEN:
             START_ID = max(processed['id2label'].keys()) + 1
             STOP_ID = max(processed['id2label'].keys())+2
 
@@ -74,7 +75,7 @@ class NN:
         data_tensor = torch.tensor(data, dtype=torch.long).to(self.__device)
         self.__model.batch = data_tensor.shape[0]
         outputs = self.__model(data_tensor)
-        if self.__task == 'token':
+        if self.__task == Task.TOKEN:
             return outputs
         else:
             return torch.argmax(outputs, axis=1).tolist()
@@ -88,7 +89,7 @@ class NN:
             self.__model.batch = ids.shape[0]
 
             self.__model.zero_grad()
-            if self.__task == 'token':
+            if self.__task == Task.TOKEN:
                 loss = self.__model.neg_log_likelihood(ids, targets)
             else:
                 outputs = self.__model(ids) 
@@ -126,7 +127,7 @@ class NN:
                 flattened_predictions = outputs.view(-1) # shape (batch_size * seq_len,)
 
 
-                if self.__task != 'token':                
+                if self.__task != Task.TOKEN:                
                     flattened_predictions = torch.argmax(outputs, axis=1) # shape (batch_size * seq_len,)
 
                 # now, use mask to determine where we should compare predictions with targets (includes [CLS] and [SEP] token predictions)

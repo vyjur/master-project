@@ -1,9 +1,14 @@
+import os
 import configparser
+from preprocess.util import majority_element
 from transformers import AutoTokenizer
 from textmining.ere.setup import ERExtract
 from textmining.mer.setup import MERecognition
 from textmining.tre.setup import TRExtract
+from preprocess.dataset import DatasetManager
 from preprocess.setup import Preprocess
+from structure.node import Node
+from structure.relation import Relation
 class Pipeline:
     
         def __init__(self, config_file: str):
@@ -15,11 +20,16 @@ class Pipeline:
             ### Initialize preprocessing module ###
             checkpoint = "ltg/norbert3-small"
             self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+            
+            folder_path = "./data/annotated/"
+            files = [folder_path + f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
+            
+            manager = DatasetManager(files)
 
             ### Initialize text mining modules ###
-            self.__mer = MERecognition(self.__config['CONFIGS']['mer'])
-            self.__ere = ERExtract(self.__config['CONFIGS']['ere'])
-            self.__tre = TRExtract(self.__config['CONFIGS']['tre'])
+            self.__mer = MERecognition(self.__config['CONFIGS']['mer'], manager)
+            self.__ere = ERExtract(self.__config['CONFIGS']['ere'], manager)
+            self.__tre = TRExtract(self.__config['CONFIGS']['tre'], manager)
             
             ### Initialize preprocessing module ###
             self.__preprocess = Preprocess(self.__mer.get_tokenizer(), self.__mer.get_max_length())
@@ -57,7 +67,6 @@ class Pipeline:
             output = self.__preprocess.run(text)
             ### Text Mining ###
             mer_output = self.__mer.run(output)
-            print(mer_output)
             entities = []
             for i, doc in enumerate(output):
                 result = self.__get_non_o_intervals(mer_output[i])
@@ -65,6 +74,7 @@ class Pipeline:
                 offset = 0
                 for int in result:
                     entity = self.__preprocess.decode(output[i].ids[int[0]:int[1]]).strip()
+                    entype = mer_output[i][int[0]].replace('B-', '')
                     found = -1
                     while found == -1 and len(output[0].ids[0:int[1]+offset]) != len(output[0].ids):
                         offset += 1
@@ -76,17 +86,19 @@ class Pipeline:
                             found = -1
                     offset = 0
                     context = context.replace('[CLS]', '').replace('[SEP]', '').replace('[PAD]', '')
-                    entities.append((entity, context))
+                    entities.append((entity, context, entype))
             
-            for i, e_i in enumerate(entities):
+            for i, e_i in enumerate(entities):      
                 for j, e_j in enumerate(entities):
                     if i == j:
                         continue
-                    relation = f"{e_i[0]}: {e_i[1]} [SEP] {e_j[0]}: {e_j[1]}"
+                    relation = f"{e_i.value}: {e_i.context} [SEP] {e_j.value}: {e_j.context}"
                     tokenized_relation = relation
-                    tre_output = self.__tre.run(tokenized_relation)
-                    ere_output = self.__ere.run(tokenized_relation)
-            # self.__ere.run()
+                    tre_output = majority_element(self.__tre.run(tokenized_relation))
+                    ere_output = majority_element(self.__ere.run(tokenized_relation))
+                    if tre_output != 'O' and ere_output != 'O':
+                        e_i.relations.append(Relation(e_i, e_j, tre_output, ere_output))
+                    
 
             ### Constructing trajectory ###
             

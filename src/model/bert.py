@@ -13,9 +13,11 @@ from tqdm.auto import tqdm
 import numpy as np
 from model.util import Util
 
+from structure.enum import Task
+
 class BERT:
     
-    def __init__(self, task:str, load: bool, save:str, dataset: list = [], tags_name: list = [], parameters: dict = [], tokenizer = None):
+    def __init__(self, task:Task, load: bool, save:str, dataset: list = [], tags_name: list = [], parameters: dict = [], tokenizer = None):
         self.__device = 'cuda' if cuda.is_available() else 'cpu'
         print("Using:", self.__device)
         
@@ -23,7 +25,7 @@ class BERT:
         self.__task = task
 
         if load:
-            if task == 'token':
+            if task == Task.TOKEN:
                 self.__model = AutoModelForTokenClassification.from_pretrained(save, trust_remote_code=True)
                 self.tokenizer = AutoTokenizer.from_pretrained(save, trust_remote_code=True)
             else:
@@ -51,7 +53,7 @@ class BERT:
 
             num_training_steps = len(training_loader)
 
-            if task == 'token':
+            if task == Task.TOKEN:
                 #self.__model = AutoModelForTokenClassification.from_pretrained('ltg/norbert3-large', trust_remote_code=True, num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
                 self.__model = AutoModelForTokenClassification.from_pretrained('ltg/norbert3-xs', trust_remote_code=True, num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
             else:
@@ -81,7 +83,7 @@ class BERT:
             # Save the tokenizer
             self.tokenizer.save_pretrained(save)
         
-        if task == 'sequence':
+        if task == Task.SEQUENCE:
             task = 'text'
         self.__pipeline = pipeline(task=f"{task}-classification", model=self.__model.to(self.__device), device=0 if self.__device== 'gpu' else None, tokenizer=self.tokenizer, aggregation_strategy="simple")
             
@@ -93,7 +95,7 @@ class BERT:
             
             mask = np.where(np.array(data) == 0, 0, 1)
             outputs = self.__model(input_ids=torch.tensor(data, dtype=torch.long).to(self.__device), attention_mask=torch.tensor(mask, dtype=torch.long).to(self.__device))
-            if self.__task == 'token':
+            if self.__task == Task.TOKEN:
                 pred = torch.argmax(outputs.logits, dim=2)
             else:
                 pred = torch.argmax(outputs.logits, dim=1).tolist()
@@ -129,7 +131,7 @@ class BERT:
             flattened_predictions = torch.argmax(active_logits, axis=1)  # shape (batch_size * seq_len,)
             # now, use mask to determine where we should compare predictions with targets (includes [CLS] and [SEP] token predictions)
             
-            if self.__task == 'token':
+            if self.__task == Task.TOKEN:
                 active_accuracy = mask.view(-1) == 1 # active accuracy is also of shape (batch_size * seq_len,)
                 targets = flattened_targets[active_accuracy]  # Keep gradients
                 predictions = flattened_predictions[active_accuracy]  # Keep gradients
@@ -192,7 +194,7 @@ class BERT:
                 flattened_predictions = torch.argmax(active_logits, axis=1) # shape (batch_size * seq_len,)
                 # now, use mask to determine where we should compare predictions with targets (includes [CLS] and [SEP] token predictions)
                 active_accuracy = mask.view(-1) == 1 # active accuracy is also of shape (batch_size * seq_len,)
-                if self.__task == 'token':
+                if self.__task == Task.TOKEN:
                     targets = torch.masked_select(flattened_targets, active_accuracy)
                     predictions = torch.masked_select(flattened_predictions, active_accuracy)
                 else:

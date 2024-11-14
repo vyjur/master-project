@@ -8,10 +8,12 @@ from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
 import configparser
 import random
+from structure.enum import Dataset
 
 SAVE_DIRECTORY = './src/textmining/tre'
 class TRExtract:
-    def __init__(self, config_file):
+    def __init__(self, config_file:str, manager:DatasetManager):
+
         self.__config = configparser.ConfigParser()
         self.__config.read(config_file)
         
@@ -30,13 +32,10 @@ class TRExtract:
             'num_workers': self.__config.getint('train.parameters', 'num_workers'),
             'max_length': self.__config.getint('MODEL', 'max_length')
         }
-        folder_path = "./data/annotated/"
-        files = [folder_path + f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
-        
-        manager = DatasetManager(files)
-        dataset_mer = manager.get('MER')
-        dataset_tre = manager.get('TRE')
-        sentences = manager.get('SENTENCES')
+
+        dataset_mer = manager.get(Dataset.MER)
+        dataset_tre = manager.get(Dataset.TRE)
+        sentences = manager.get(Dataset.SENTENCES)
 
         dataset = []
         tags = set()
@@ -84,7 +83,11 @@ class TRExtract:
         return predictions
         
 if __name__ == "__main__":
-    reg = TRExtract('./src/textmining/tre/config.ini')
+    folder_path = "./data/annotated/"
+    files = [folder_path + f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
+    manager = DatasetManager(files)
+    
+    reg = TRExtract('./src/textmining/tre/config.ini', manager)
     preprocess = Preprocess(reg.get_tokenizer(), reg.get_max_length())
     
     text = "Hei på deg!"

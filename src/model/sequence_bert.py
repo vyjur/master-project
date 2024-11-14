@@ -1,6 +1,7 @@
 from model.bert import BERT
+from structure.enum import Task
 
-TASK = 'sequence'
+TASK = Task.SEQUENCE
 
 class SequenceBERT:
     

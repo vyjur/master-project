@@ -3,6 +3,7 @@ import configparser
 from torch.utils.data import Dataset
 from sklearn.model_selection import train_test_split
 from model.util import Util
+from structure.enum import Task
 class CustomDataset(Dataset):
     def __init__(self, tokenized_data, tokenizer, label2id):
         self.tokenized_data = tokenized_data
@@ -91,7 +92,7 @@ class Preprocess:
         tokenized_dataset = []
         
         for row in data:
-            if task == 'token':
+            if task == Task.TOKEN:
                 words = [val[0] for val in row]
                 annot = [val[1] for val in row]
                 split_into_words=True
@@ -102,7 +103,7 @@ class Preprocess:
             tokenized = self.__tokenizer(words, padding="max_length", stride=3, max_length=self.__max_length, is_split_into_words=split_into_words, truncation=True, return_offsets_mapping=True, return_overflowing_tokens=True)
             
             for encoding in tokenized.encodings:
-                if task == 'token':
+                if task == Task.TOKEN:
                     curr_annot = [annot[i] if i is not None else 'O' for i in encoding.word_ids]
                     tokens_annot = self.tokens_mapping(encoding, curr_annot)
                 
@@ -116,7 +117,7 @@ class Preprocess:
                     "overflowing": encoding.overflowing,
                 }
                 encoding_dict['words'] = words
-                if task == 'token':
+                if task == Task.TOKEN:
                     encoding_dict['labels'] = tokens_annot
                 else:
                     encoding_dict['labels'] = row['relation']
