@@ -161,7 +161,7 @@
 7-4	862-875	medikamentell	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 7-5	876-886	behandling	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 7-6	887-890	med	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
-7-7	891-908	acetylsalisylsyre	841.92[1]	0[1]	595.2[1]	factual	positive	EVENT	_	SYMPTOM\_TO\_EVENT|SYMPTOMTOEVENT	X\_BEFORE\_Y|XBEFOREY	4-9|2-5	
+7-7	891-908	acetylsalisylsyre	841.92[1]	0[1]	595.2[1]	factual	positive	EVENT	_	SYMPTOM\_TO\_EVENT|SYMPTOMTOEVENT	XBEFOREY|XBEFOREY	4-9|2-5	
 7-8	909-911	75	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 7-9	912-914	mg	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 7-10	916-922	daglig	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
