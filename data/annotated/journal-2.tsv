@@ -29,7 +29,7 @@
 1-20	89-100	gjennomgått	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 1-21	101-104	EKG	841.92[1]	0[1]	595.2[1]	factual	positive	EVENT	_	_	_	_	
 1-22	105-107	og	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
-1-23	108-123	belastningstest	841.92[1]	0[1]	595.2[1]	factual	positive	EVENT	_	*	X\_DURING\_Y	1-21	
+1-23	108-123	belastningstest	841.92[1]	0[1]	595.2[1]	factual	positive	EVENT	_	*	XDURINGY	1-21	
 1-24	124-127	som	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 1-25	128-134	avtalt	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 1-26	134-135	.	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
@@ -40,7 +40,7 @@
 2-2	148-153	viste	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 2-3	154-158	tegn	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 2-4	159-162	til	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
-2-5	163-169	iskemi	841.92[1]	0[1]	595.2[1]	hypothetical	positive	CONDITION	_	SYMPTOM\_TO\_DISEASE|SYMPTOM\_TO\_DISEASE	X\_BEFORE\_Y|X\_BEFORE\_Y	1-23|1-21	
+2-5	163-169	iskemi	841.92[1]	0[1]	595.2[1]	hypothetical	positive	CONDITION	_	SYMPTOMTODISEASE|SYMPTOMTODISEASE	XBEFOREY|XBEFOREY	1-23|1-21	
 2-6	170-175	under	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 2-7	177-187	belastning	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 2-8	187-188	,	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
@@ -50,7 +50,7 @@
 2-12	201-205	tyde	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 2-13	206-208	på	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 2-14	209-222	underliggende	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
-2-15	223-236	koronarsykdom	841.92[1]	0[1]	595.2[1]	hypothetical[2]	positive[2]	CONDITION[2]	_	DISEASE\_TO\_DISEASE	X\_BEFORE\_Y	2-5[0_2]	
+2-15	223-236	koronarsykdom	841.92[1]	0[1]	595.2[1]	hypothetical[2]	positive[2]	CONDITION[2]	_	DISEASETODISEASE	XBEFOREY	2-5[0_2]	
 2-16	236-237	.	841.92[1]	0[1]	595.2[1]	hypothetical[2]	positive[2]	CONDITION[2]	_	_	_	_	
 
 #Text=Ved belastningstesten 
@@ -144,7 +144,7 @@
 6-17	765-766	,	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 6-18	767-776	inkludert	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 6-19	777-786	eventuell	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
-6-20	787-794	koronar	841.92[1]	0[1]	595.2[1]	factual[4]	positive[4]	EVENT[4]	_	SYMPTOM\_TO\_EVENT|SYMPTOM\_TO\_EVENT	X\_BEFORE\_Y|X\_BEFORE\_Y	4-9[0_4]|2-5[0_4]	
+6-20	787-794	koronar	841.92[1]	0[1]	595.2[1]	factual[4]	positive[4]	EVENT[4]	_	SYMPTOMTOEVENT|SYMPTOMTOEVENT	XBEFOREY|XBEFOREY	4-9[0_4]|2-5[0_4]	
 6-21	795-805	angiografi	841.92[1]	0[1]	595.2[1]	factual[4]	positive[4]	EVENT[4]	_	_	_	_	
 6-22	806-809	for	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 6-23	810-817	nærmere	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
@@ -161,12 +161,12 @@
 7-4	862-875	medikamentell	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 7-5	876-886	behandling	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 7-6	887-890	med	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
-7-7	891-908	acetylsalisylsyre	841.92[1]	0[1]	595.2[1]	factual	positive	EVENT	_	SYMPTOM\_TO\_EVENT|SYMPTOM\_TO\_EVENT	X\_BEFORE\_Y|X\_BEFORE\_Y	4-9|2-5	
+7-7	891-908	acetylsalisylsyre	841.92[1]	0[1]	595.2[1]	factual	positive	EVENT	_	SYMPTOM\_TO\_EVENT|SYMPTOMTOEVENT	X\_BEFORE\_Y|XBEFOREY	4-9|2-5	
 7-8	909-911	75	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 7-9	912-914	mg	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 7-10	916-922	daglig	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 7-11	923-925	og	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
-7-12	926-937	simvastatin	841.92[1]	0[1]	595.2[1]	factual	positive	EVENT	_	SYMPTOM\_TO\_EVENT|SYMPTOM\_TO\_EVENT	X\_BEFORE\_Y|X\_BEFORE\_Y	4-9|2-5	
+7-12	926-937	simvastatin	841.92[1]	0[1]	595.2[1]	factual	positive	EVENT	_	SYMPTOMTOEVENT|SYMPTOMTOEVENT	XBEFOREY|XBEFOREY	4-9|2-5	
 7-13	938-940	40	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 7-14	941-943	mg	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
 7-15	944-951	startet	841.92[1]	0[1]	595.2[1]	_	_	_	_	_	_	_	
