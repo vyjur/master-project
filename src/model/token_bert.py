@@ -1,6 +1,7 @@
 from model.bert import BERT
+from structure.enum import Task
 
-TASK = 'token'
+TASK = Task.TOKEN
 
 class TokenBERT:
     

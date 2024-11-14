@@ -1,5 +1,6 @@
 import torch
 from sklearn.metrics import classification_report
+from structure.enum import Task
 
 class Util:
     
@@ -25,7 +26,7 @@ class Util:
             if tag == "O":
                 continue
                 
-            if task == 'token':
+            if task == Task.TOKEN:
                 tags.add(f"B-{tag}")
                 tags.add(f"I-{tag}")
             else:
@@ -45,7 +46,7 @@ class Util:
         word_count = {}
 
         for ex in dataset:
-            if task == 'token':
+            if task == Task.TOKEN:
                 for word in ex['labels']:
                     # Assuming 'word' is a string
                     if word in word_count:

@@ -7,19 +7,17 @@ from model.map import MODEL_MAP
 from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
 import configparser
+from structure.enum import Dataset
 
 SAVE_DIRECTORY = './src/textmining/mer'
 
 class MERecognition:
-    def __init__(self, config_file):
+    def __init__(self, config_file:str, manager: DatasetManager):
         self.__config = configparser.ConfigParser()
         self.__config.read(config_file)
         
         load = self.__config['MODEL'].getboolean('load')
-        
-        folder_path = "./data/annotated/"
-        files = [folder_path + f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
-        raw_dataset = DatasetManager(files).get('MER')
+        raw_dataset = manager.get(Dataset.MER)
 
         dataset = []
         tags = set()
@@ -69,7 +67,11 @@ class MERecognition:
 
 
 if __name__ == "__main__":
-    reg = MERecognition('./src/textmining/mer/config.ini')
+    folder_path = "./data/annotated/"
+    files = [folder_path + f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
+    manager = DatasetManager(files)
+    
+    reg = MERecognition('./src/textmining/mer/config.ini', manager)
     preprocess = Preprocess(reg.get_tokenizer(), reg.get_max_length())
     
     text = "Pasienten har også opplevd økt tungpust de siste månedene, noe som har begrenset aktivitetsnivået hans."
