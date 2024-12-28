@@ -11,6 +11,8 @@ from structure.enum import Task
 START_TAG = "<START>"
 STOP_TAG = "<STOP>"
 
+# TODO: add weights & bias to monitor training
+
 class NN:
 
     def __init__(self, model: nn.Module, task: Task, load:bool, save:str, dataset: list = [], tags_name: list = [], parameters: dict = [], tokenizer = None):

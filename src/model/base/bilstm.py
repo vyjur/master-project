@@ -6,7 +6,9 @@ from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
 from sklearn.metrics import accuracy_score
 from model.util import Util
-from model.nn import NN
+from model.base.nn import NN
+
+# TODO: add weights & bias to monitor training
 
 class Model(nn.Module):
 
