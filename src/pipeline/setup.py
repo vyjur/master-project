@@ -39,9 +39,10 @@ class Pipeline:
 
             ### Initialize trajectory modules ### 
             # TODO
-        
+            
             ### Initialize visualization module ###
-            # TODO
+            self.viz = VizTool()
+            
             
         def __get_non_o_intervals(self, lst):
             intervals = []
@@ -134,8 +135,7 @@ class Pipeline:
                 all_entities = all_entities + doc
                 
             ### Visualize ###
-            viz = VizTool()
-            viz.create(all_entities)
+            self.viz.create(all_entities)
             
 if __name__ == "__main__":
     pipeline = Pipeline('./src/pipeline/config.ini')

@@ -15,6 +15,8 @@ from model.util import Util
 
 from structure.enum import Task
 
+# TODO: add weights & bias to monitor training
+
 class BERT:
     
     def __init__(self, task:Task, load: bool, save:str, dataset: list = [], tags_name: list = [], parameters: dict = [], tokenizer = None):
