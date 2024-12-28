@@ -1,167 +1,143 @@
-import json
-import configparser
-import glob
 import os
-import pandas as pd
-from preprocess.setup import Preprocess
-from visualization.setup import Visualization
-from pipeline.model_map import MODEL_MAP
+import configparser
+from preprocess.util import majority_element
 from transformers import AutoTokenizer
-from pipeline.lexicon import Lexicon
-
+from textmining.ere.setup import ERExtract
+from textmining.mer.setup import MERecognition
+from textmining.tre.setup import TRExtract
+from preprocess.dataset import DatasetManager
+from preprocess.setup import Preprocess
+from structure.node import Node
+from structure.relation import Relation
+from visualization.setup import VizTool
+from pipeline.util import remove_duplicates, find_duplicates
 class Pipeline:
-
-    def __init__(self, config_file: str, train_file:str, align:bool = True):
-        
-        self.__config = configparser.ConfigParser()
-        self.__config.read(config_file)
-        
-        load = self.__config['MODEL'].getboolean('load')
-        
-        train_parameters = {
-            'train_batch_size': self.__config.getint('train.parameters', 'train_batch_size'),
-            'valid_batch_size': self.__config.getint('train.parameters', 'valid_batch_size'),
-            'epochs': self.__config.getint('train.parameters', 'epochs'),
-            'learning_rate': self.__config.getfloat('train.parameters', 'learning_rate'),
-            'shuffle': self.__config.getboolean('train.parameters', 'shuffle'),
-            'num_workers': self.__config.getint('train.parameters', 'num_workers'),
-            'max_length': self.__config.getint('MODEL', 'max_length'),
-            'window': self.__config.getint('train.parameters', 'window')
-        }
-        
-        checkpoint = "ltg/norbert3-large"
-        # checkpoint = "ltg/norbert3-xs"
-        # checkpoint = "NbAiLab/nb-bert-base"
-        self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
-        
-        if "csv" in train_file:
-            dataset = pd.read_csv(train_file)
-            dataset.drop(["Unnamed: 0"], axis=1, inplace=True)
+    
+        def __init__(self, config_file: str):
             
-            tags = dataset['Category'].unique()
-        elif train_file == "NorSynthClinical":
-            # Define the directory containing the .ann files
+            ### Initialize configuration file ###
+            self.__config = configparser.ConfigParser()
+            self.__config.read(config_file)
+            
+            ### Initialize preprocessing module ###
+            # TODO: config?
+            checkpoint = "ltg/norbert3-small"
+            self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+            
+            folder_path = "./data/annotated/"
+            files = [folder_path + f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
+            
+            manager = DatasetManager(files)
 
-            if train_parameters['window'] != 0:
-                directory_path = './data/NorSynthClinical'
+            ### Initialize text mining modules ###
+            self.__mer = MERecognition(self.__config['CONFIGS']['mer'], manager)
+            self.__ere = ERExtract(self.__config['CONFIGS']['ere'], manager)
+            self.__tre = TRExtract(self.__config['CONFIGS']['tre'], manager)
+            
+            ### Initialize preprocessing module ###
+            self.__preprocess = Preprocess(self.__mer.get_tokenizer(), self.__mer.get_max_length())
 
-                # Use glob to find all .ann files in the directory
-                ann_files = glob.glob(os.path.join(directory_path, '*.ann'))
-
-                tags = set()
-                # Read and print the content of each .vert file
-                dataset = []
-                for file_path in ann_files:
-                    file_dataset = []
-                    with open(file_path, 'r', encoding="UTF-8") as file:        
-                        for line in file:
-                            data = line.split('\t')
-                            if "R" in data[0]:
-                                continue
-                            tag = data[1].split()[0].strip()
-                            if tag not in ['CONDITION', 'EVENT']:
-                                tag = "O"
-                            word = data[2].strip().replace('“', "").replace("”", "").split()
-                            for w in word:
-                                file_dataset.append((tag, w))
-                            tags.add(tag)
-                    dataset.append(file_dataset)
-                tags = list(tags)
-            else:
-                file_path = './data/all_sentences.vert.entity'
-                dataset = []
-                tags = set()
-                sentence = []
-                with open(file_path, 'r', encoding='UTF-8') as file:
-                    for line in file:
-                        if line.startswith("#"):
-                            continue
-                        if line.startswith('\n'):
-                            dataset.append(sentence.copy())
-                            sentence = []
-                            continue
-                        data = line.split('\t')
-                        tag = data[1].strip()
-                        if tag not in ['CONDITION', 'EVENT']:
-                            tag = "O"
-                        word = data[0].strip().replace('“', "").replace("”", "")
-
-                        tags.add(tag)
-                        sentence.append((tag, word))
-                tags = list(tags)
-        else:
-            with open(train_file) as f:
-                d = json.load(f)
-
-            dataset = []
-
-            for example in d['examples']:
+            ### Initialize trajectory modules ### 
+            # TODO
+            
+            ### Initialize visualization module ###
+            self.viz = VizTool()
+            
+            
+        def __get_non_o_intervals(self, lst):
+            intervals = []
+            start = None
+            
+            for i, value in enumerate(lst):
+                if value != 'O' and (start is None or not value.startswith('B')):
+                    if start is None:  # Starting a new interval
+                        start = i
+                else:
+                    if start is not None:  # Closing an existing interval
+                        intervals.append((start, i))
+                        start = None
+            
+            # If the last element is part of an interval
+            if start is not None:
+                intervals.append((start, len(lst) - 1))
+            
+            return intervals
+            
+        def run(self, documents):
+            
+            ### Extract text from PDF ###
+            # TODO: add document logic
+            
+            rel_entities = []
+            
+            for doc in documents:
+                output = self.__preprocess.run(doc)
+                ### Text Mining ###
+                mer_output = self.__mer.run(output)
+                entities = []
+                for i, __ in enumerate(output):
+                    result = self.__get_non_o_intervals(mer_output[i])
+                    start = 0
+                    offset = 0
+                    for int in result:
+                        entity = self.__preprocess.decode(output[i].ids[int[0]:int[1]]).strip()
+                        entype = mer_output[i][int[0]].replace('B-', '')
+                        found = -1
+                        while found == -1 and len(output[0].ids[0:int[1]+offset]) != len(output[0].ids):
+                            offset += 1
+                            context = self.__preprocess.decode(output[i].ids[start:int[1]+offset])
+                            found = context.find('.')
+                            if -1 < found < context.find(entity):
+                                start = start + 1
+                                offset = offset - 1
+                                found = -1
+                        offset = 0
+                        context = context.replace('[CLS]', '').replace('[SEP]', '').replace('[PAD]', '')
+                        entities.append((entity, context, entype))
                 
-                entities = [ (annot['start'], annot['end'], annot['value'], annot['tag_name']) for annot in example['annotations']]
+                ### TODO: choose candidate pairs
+                for i, e_i in enumerate(entities):      
+                    for j, e_j in enumerate(entities):
+                        if i == j:
+                            continue
+                        relation = f"{e_i.value}: {e_i.context} [SEP] {e_j.value}: {e_j.context}"
+                        tokenized_relation = relation
+                        tre_output = majority_element(self.__tre.run(tokenized_relation))
+                        ere_output = majority_element(self.__ere.run(tokenized_relation))
+                        if tre_output != 'O' and ere_output != 'O':
+                            e_i.relations.append(Relation(e_i, e_j, tre_output, ere_output))
+
+                ### Remove local duplicates
+                duplicates = find_duplicates(entities)
+                entities = remove_duplicates(entities, duplicates)
                 
-                dataset.append({
-                    'text': example['content'],
-                    'entities': entities
-                })
-
-            tags = set()
-
-            for example in d['examples']:
-                for annot in example['annotations']:
-                    tags.add(annot['tag_name'])
+                rel_entities.append(entities)
+                
+            ### Constructing trajectory ###            
+            ### Add edges between duplicates across documents
+            for i in range(len(rel_entities)-1):
+                check_entities = []
+                if i != 0:
                     
-            tags = list(tags)
-        
-        self.__model = MODEL_MAP[self.__config['MODEL']['name']](load, dataset, tags, train_parameters, align, self.tokenizer)
-        self.__preprocess = Preprocess(self.__model.tokenizer, int(self.__config['MODEL']['max_length']))
-        self.label2id, self.id2label = self.__preprocess.get_tags(tags)
-        self.__visualization = Visualization()
-        
-        self.__data = None
-
-    def run(self, data: list = []):
-        if self.__config['MODEL']['name'] != 'LLM':
-            preprocessed_data = self.__preprocess.run(data)
-            output = self.__model.predict([val['input_ids'] for val in preprocessed_data])
+                    check_entities = rel_entities[i-1]
+                    check_entities = check_entities + rel_entities[i]
+                    duplicates = find_duplicates(check_entities, False)
+                    rel_entities[i-1] = remove_duplicates(rel_entities[i-1], [j for j in duplicates if j < len(rel_entities[i-1])])
+                    rel_entities[i] = remove_duplicates(rel_entities[i], [j - len(rel_entities[i-1]) for j in duplicates if j >= len(rel_entities[i-1])])
+                
+                check_entities = rel_entities[i] + rel_entities[i+1]
+                duplicates = find_duplicates(check_entities, False)
+                rel_entities[i] = remove_duplicates(rel_entities[i], [j for j in duplicates if j < len(rel_entities[i])])
+                rel_entities[i+1] = remove_duplicates(rel_entities[i+1], [j - len(rel_entities[i]) for j in duplicates if j >= len(rel_entities[i])])
             
-            predictions = [[self.id2label[int(j.cpu().numpy())] for j in i ] for i in output]
-            output = predictions
-            #lexi_predictions = Lexicon().predict(preprocessed_data, self.tokenizer)
-            #output = Lexicon().merge(lexi_predictions, predictions)
-        else:
-            output = self.__model.predict([val['text'] for val in data])
-        return output
-
-    def add(self, data):
-        # here calculate probability to edges?
-        self.__visualization.run(self.__data)
-
-    def predict(self, data):
-        # predict new symptoms/diseases etc
-        self.__visualization.run(self.__data)
-
+            all_entities = []
+            for doc in rel_entities:
+                all_entities = all_entities + doc
+                
+            ### Visualize ###
+            self.viz.create(all_entities)
+            
 if __name__ == "__main__":
-    import json
-    
-    with open('./data/Corona2.json') as f:
-        d = json.load(f)
-
-    dataset_sample = []
-
-    for example in d['examples']:
-        
-        entities = [ (annot['start'], annot['end'], annot['value'], annot['tag_name']) for annot in example['annotations']]
-        
-        dataset_sample.append({
-            'text': example['content'],
-            'entities': entities
-        })
-    
-    pipeline = Pipeline('./src/pipeline/bilstmcrf.ini', 'NorSynthClinical', align=False)
-    
-    pred1 = pipeline.run(dataset_sample[0:2])   
-    print(pred1)
-    print(len(pred1[0]))
-    
-    pred2 = pipeline.run([{'text': 'Pasienten har som ledd i familiescreening fått påvist mutasjon i MYH7 som er årsak til hypertrofisk kardiomyopati.'}])
-    print(pred2)
+    pipeline = Pipeline('./src/pipeline/config.ini')
+    text = "Hei på deg!"
+    print(pipeline.run([text]))

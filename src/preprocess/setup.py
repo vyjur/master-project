@@ -1,6 +1,9 @@
 import torch
+import configparser
 from torch.utils.data import Dataset
 from sklearn.model_selection import train_test_split
+from model.util import Util
+from structure.enum import Task
 class CustomDataset(Dataset):
     def __init__(self, tokenized_data, tokenizer, label2id):
         self.tokenized_data = tokenized_data
@@ -14,14 +17,17 @@ class CustomDataset(Dataset):
     def __getitem__(self, idx):
         # Get a single sample of data
         tokenized = self.tokenized_data[idx]
-        if 'tokens' not in tokenized:
-            tokenized_sentence = tokenized.tokens()
-        else:
+        if 'tokens' in tokenized: 
             tokenized_sentence = tokenized['tokens']
+        else:
+            tokenized_sentence = tokenized.tokens()
         labels = tokenized['labels']
         ids = self.tokenizer.convert_tokens_to_ids(tokenized_sentence)
         attn_mask = [1 if tok != '[PAD]' else 0 for tok in tokenized_sentence]
-        label_ids = [self.label2id[label] for label in labels]
+        if type(labels) != list:
+            label_ids = self.label2id[labels]
+        else:
+            label_ids = [self.label2id[label] for label in labels]
         
         return {
               'ids': torch.tensor(ids, dtype=torch.long),
@@ -31,44 +37,29 @@ class CustomDataset(Dataset):
     
     def __len__(self):
         return len(self.tokenized_data)
+    
 class Preprocess:
 
     def __init__(self, tokenizer, max_length:int=512, train_size:float=0.8):
         self.__tokenizer = tokenizer
         self.__max_length = max_length
         self.__train_size = train_size
-
-    def __tokenize_and_align_labels(self, data):
-        tokenized = self.__tokenizer(data["text"], padding="max_length", max_length=self.__max_length, truncation=True, return_offsets_mapping=True)
         
-        tokens = tokenized.tokens()
-        offsets = tokenized["offset_mapping"]
-
-        labels = ['O']*len(tokenized.tokens())
-        if 'entities' not in data:
-            return tokenized
+        self.__config = configparser.ConfigParser()
+        self.__config.read('./src/preprocess/config.ini')
         
-        for start, end, _, tag in data['entities']:
-            for i, (_, (token_start, token_end)) in enumerate(zip(tokens, offsets)):
-                if (token_start >= start) and (token_end <= end):
-                    if token_start == start:
-                        labels[i] = f"B-{tag}"
-                    else:
-                            labels[i] = f"I-{tag}"
-        tokenized['labels'] = labels
-        
-        return tokenized 
-    
-    def run(self, data:list=[]):
-        tokenized_dataset = [self.__tokenize_and_align_labels(row) for row in data]
+    def run(self, data:str):
+        tokenized_dataset = self.__tokenizer(data, padding="max_length", stride=0, max_length=self.__max_length, truncation=True, return_offsets_mapping=True, return_overflowing_tokens=True).encodings
         return tokenized_dataset
+    
+    def decode(self, data:list):
+        return self.__tokenizer.decode(data)
     
     def sliding_window(self, data, window_size=128, stride=64):
         """
         Window-size: sequence length
         stride: to create overlap
         """
-        
         merged_dict = {}
 
         # Loop through each dictionary in the list
@@ -96,36 +87,47 @@ class Preprocess:
             
         return windowed_sequences 
 
-    def run_train_test_split(self, data:list=[], tags_name:list = [], align:bool=True, window_size:int=128, stride:int=16):
-        label2id, id2label = self.get_tags(tags_name)
-        if align:
-            tokenized_dataset = [self.__tokenize_and_align_labels(row) for row in data]
-        else:
-            tokenized_dataset = []
+    def run_train_test_split(self, task, data:list=[], tags_name:list = [], window_size:int=128, stride:int=16):
+        label2id, id2label = Util().get_tags(task, tags_name)
+        tokenized_dataset = []
+        
+        for row in data:
+            if task == Task.TOKEN:
+                words = [val[0] for val in row]
+                annot = [val[1] for val in row]
+                split_into_words=True
+            else:
+                words = f"{row['i']}: {row['context_i']} [SEP] {row['j']}: {row['context_j']}"
+                split_into_words=False
             
-            # NorMedTerm
-            #for row in data.itertuples():
-                #tokenized = self.__tokenizer(row.Term, padding="max_length", max_length=self.__max_length, truncation=True, return_offsets_mapping=True)
-                #tokenized['labels'] = [f"B-{row.Category}"] + [f"I-{row.Category}"]*(len(tokenized["input_ids"])-1)
-                #tokenized_dataset.append(tokenized)
-            for row in data:
-                words = [val[1] for val in row]
-                annot = [val[0] for val in row]
-                if window_size != 0:
-                    tokenized = self.__tokenizer(words, is_split_into_words=True, return_offsets_mapping=True)
-                else:
-                    tokenized = self.__tokenizer(words, padding="max_length", max_length=self.__max_length, is_split_into_words=True, truncation=True, return_offsets_mapping=True)
-                tokens_annot = self.tokens_mapping(tokenized, annot)
-                tokenized['words'] = words
-                tokenized['labels'] = tokens_annot
-                tokenized_dataset.append(tokenized)
+            tokenized = self.__tokenizer(words, padding="max_length", stride=3, max_length=self.__max_length, is_split_into_words=split_into_words, truncation=True, return_offsets_mapping=True, return_overflowing_tokens=True)
+            
+            for encoding in tokenized.encodings:
+                if task == Task.TOKEN:
+                    curr_annot = [annot[i] if i is not None else 'O' for i in encoding.word_ids]
+                    tokens_annot = self.tokens_mapping(encoding, curr_annot)
                 
+                encoding_dict = {
+                    "ids": encoding.ids,
+                    "type_ids": encoding.type_ids,
+                    "tokens": encoding.tokens,
+                    "offsets": encoding.offsets,
+                    "attention_mask": encoding.attention_mask,
+                    "special_tokens_mask": encoding.special_tokens_mask,
+                    "overflowing": encoding.overflowing,
+                }
+                encoding_dict['words'] = words
+                if task == Task.TOKEN:
+                    encoding_dict['labels'] = tokens_annot
+                else:
+                    encoding_dict['labels'] = row['relation']
+                tokenized_dataset.append(encoding_dict)
+            
         train, test = train_test_split(tokenized_dataset, train_size=self.__train_size, random_state=42)
         
-        if window_size != 0:
-            train = self.sliding_window(train, window_size=window_size, stride=int(window_size*0.8))
-            test = self.sliding_window(test, window_size=window_size, stride=window_size)
-        
+        if self.__config.getboolean('main', 'window'):
+            train  = self.sliding_window(train, window_size=window_size, stride=stride)
+
         train_dataset = CustomDataset(train, self.__tokenizer, label2id)
         test_dataset = CustomDataset(test, self.__tokenizer, label2id)
 
@@ -141,14 +143,12 @@ class Preprocess:
         
     def tokens_mapping(self, tokenized, annot):
         tokens_annot = []
-        i = -1
-        for j in range(len(tokenized['input_ids'])):
-            if tokenized['offset_mapping'][j][0] == 0 and tokenized['offset_mapping'][j][1] == 0:
+        for i in range(len(tokenized.ids)):
+            if tokenized.offsets[i][0] == 0 and tokenized.offsets[i][1] == 0:
                 tokens_annot.append("O")
                 continue
-            elif tokenized['offset_mapping'][j][0] == 0:
-                i += 1
-                if annot[i] != "O" and annot[i] not in tokens_annot[-1]:
+            elif tokenized.offsets[i][0] == 0:
+                if annot[i] != "O":
                     tokens_annot.append(f"B-{annot[i]}")
                 elif annot[i] != "O":
                     tokens_annot.append(f"I-{annot[i]}")
@@ -161,55 +161,8 @@ class Preprocess:
                 else:
                     tokens_annot.append(annot[i])
         return tokens_annot
-        
-    def get_tags(self, tags_name):
-        tags = set()
-        for tag in tags_name:
-            if tag == "O":
-                continue
-            tags.add(f"B-{tag}")
-            tags.add(f"I-{tag}")
-                
-        tags = list(tags)
-
-        label2id = {k: v+1 for v, k in enumerate(tags)}
-        id2label = {v+1: k for v, k in enumerate(tags)}
-
-        label2id['O'] = 0
-        id2label[0]='O'
-        
-        return label2id, id2label
     
-    def class_weights(self, dataset, device):
-        word_count = {}
     
-        for ex in dataset:
-            if 'labels' not in ex:
-                labels = ex['targets']
-            else:
-                labels = ex['labels']
-            for word in labels:
-                # Assuming 'word' is a string
-                if 'labels' not in ex:
-                    word = int(word.item())
-                if word in word_count:
-                    word_count[word] += 1
-                else:
-                    word_count[word] = 1
-
-        print(word_count)
-
-        total_samples = sum(word_count.values())
-
-        # Calculate class weights
-        class_weights = {class_label: total_samples / (len(word_count) * count) 
-                        for class_label, count in word_count.items()}
-
-        # Display the class weights
-        print(class_weights)
-        class_weights = torch.tensor(list(class_weights.values())).to(device)
-        return class_weights
-
     
 if __name__ == "__main__":
     text = journal = """
