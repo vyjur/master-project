@@ -62,11 +62,10 @@ class Pipeline:
             
             return intervals
             
-        def run(self, docs):
+        def run(self, documents):
             
             ### Extract text from PDF ###
             # TODO: add document logic
-            documents = []
             
             rel_entities = []
             
