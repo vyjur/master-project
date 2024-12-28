@@ -21,7 +21,9 @@ class BERT:
     
     def __init__(self, task:Task, load: bool, save:str, dataset: list = [], tags_name: list = [], parameters: dict = [], tokenizer = None):
         self.__device = 'cuda' if cuda.is_available() else 'cpu'
-        print("Using:", self.__device)
+        print("Using:", self.__device, "with BERT")
+        
+        print("Parameters:", parameters)
         
         self.tokenizer = tokenizer
         self.__task = task

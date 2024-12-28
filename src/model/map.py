@@ -1,9 +1,9 @@
-from model.bilstmcrf import BiLSTMCRF
-from model.bilstm import BiLSTM
-from model.bert import BERT
-from model.token_bert import TokenBERT
-from model.sequence_bert import SequenceBERT
-from model.llm import LLM
+from model.nn.bilstmcrf import BiLSTMCRF
+from model.base.bilstm import BiLSTM
+from model.base.bert import BERT
+from model.bert.token_bert import TokenBERT
+from model.bert.sequence_bert import SequenceBERT
+from model.bert.llm import LLM
 
 MODEL_MAP = {
     'BERT': BERT,

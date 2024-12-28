@@ -150,9 +150,12 @@ class Preprocess:
             elif tokenized.offsets[i][0] == 0:
                 if annot[i] != "O":
                     tokens_annot.append(f"B-{annot[i]}")
+                elif annot[i] != "O":
+                    tokens_annot.append(f"I-{annot[i]}")
                 else:
                     tokens_annot.append(annot[i])
             else:
+                
                 if annot[i] != "O":
                     tokens_annot.append(f"I-{annot[i]}")
                 else:
