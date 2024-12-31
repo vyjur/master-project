@@ -12,6 +12,7 @@ from transformers import get_scheduler
 from tqdm.auto import tqdm
 import numpy as np
 from model.util import Util
+import wandb
 
 from structure.enum import Task
 
@@ -38,6 +39,13 @@ class BERT:
             
             print("Model and tokenizer loaded successfully.")
         else:
+            wandb.init(project=f"{task}-bert-model")
+            wandb.config = {
+                'learning_rate': parameters['learning_rate'],
+                'epochs': parameters['epochs'],
+                'batch_size': parameters['train_batch_size']
+            }
+
             processed = Preprocess(self.tokenizer, parameters['max_length']).run_train_test_split(task, dataset, tags_name)
             class_weights = Util().class_weights(task, processed['dataset'], self.__device)
             
@@ -76,7 +84,11 @@ class BERT:
 
             for epoch in range(parameters['epochs']):
                 print(f"Training Epoch: {epoch}")
-                self.__train(training_loader, num_training_steps, optimizer, lr_scheduler, loss_fn)
+                loss, acc = self.__train(training_loader, num_training_steps, optimizer, lr_scheduler, loss_fn)
+                wandb.log({
+                    'loss': loss,
+                    'accuracy': acc
+                })
 
             labels, predictions = self.__valid(testing_loader, self.__device, processed['id2label'])
             Util().validate_report(labels, predictions)
@@ -164,6 +176,7 @@ class BERT:
         tr_accuracy = tr_accuracy / nb_tr_steps
         print(f"Training loss epoch: {epoch_loss}")
         print(f"Training accuracy epoch: {tr_accuracy}")
+        return epoch_loss, tr_accuracy
 
     def __valid(self, testing_loader, device, id2label):
         # put model in evaluation mode
@@ -221,53 +234,3 @@ class BERT:
         print(f"Validation Accuracy: {eval_accuracy}")
 
         return labels, predictions
-    
-    
-if __name__ == '__main__':
-    import json
-    
-    train_parameters = {
-        'train_batch_size': 2,
-        'valid_batch_size': 2,
-        'epochs': 1,
-        'learning_rate': 1e-04,
-        'shuffle': True,
-        'num_workers': 0
-    }
-
-    with open('./data/Corona2.json') as f:
-        d = json.load(f)
-
-    dataset_sample = []
-
-    for example in d['examples']:
-        
-        entities = [ (annot['start'], annot['end'], annot['value'], annot['tag_name']) for annot in example['annotations']]
-        
-        dataset_sample.append({
-            'text': example['content'],
-            'entities': entities
-        })
-
-    tags = set()
-
-    for example in d['examples']:
-        for annot in example['annotations']:
-            tags.add(annot['tag_name'])
-            
-    tags = list(tags)
-        
-    checkpoint = "distilbert-base-cased"
-    tokenizer = AutoTokenizer.from_pretrained(checkpoint)
-
-    model = BERT(False, dataset_sample, tags, train_parameters, True, tokenizer)
-    tokenized = Preprocess(model.tokenizer).run([dataset_sample[0], dataset_sample[1]])
-    pred1 = model.predict([tokenized[0]['input_ids'], tokenized[1]['input_ids']])
-    pred2 = model.predict([tokenized[0]['input_ids']])
-    
-    print(len(tokenized[0]['input_ids']), len(pred1[0]))
-    print(len(tokenized[1]['input_ids']), len(pred1[1]))
-    print(len(tokenized[0]['input_ids']), len(pred2[0]))
-
-
-    
