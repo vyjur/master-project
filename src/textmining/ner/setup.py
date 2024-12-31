@@ -11,13 +11,13 @@ from structure.enum import Dataset
 
 SAVE_DIRECTORY = './src/textmining/mer'
 
-class MERecognition:
+class NERecognition:
     def __init__(self, config_file:str, manager: DatasetManager):
         self.__config = configparser.ConfigParser()
         self.__config.read(config_file)
         
         load = self.__config['MODEL'].getboolean('load')
-        raw_dataset = manager.get(Dataset.MER)
+        raw_dataset = manager.get(Dataset.NER)
 
         dataset = []
         tags = set()
@@ -71,7 +71,7 @@ if __name__ == "__main__":
     files = [folder_path + f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
     manager = DatasetManager(files)
     
-    reg = MERecognition('./src/textmining/mer/config.ini', manager)
+    reg = NERecognition('./src/textmining/mer/config.ini', manager)
     preprocess = Preprocess(reg.get_tokenizer(), reg.get_max_length())
     
     text = "Pasienten har også opplevd økt tungpust de siste månedene, noe som har begrenset aktivitetsnivået hans."

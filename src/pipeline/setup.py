@@ -3,7 +3,7 @@ import configparser
 from preprocess.util import majority_element
 from transformers import AutoTokenizer
 from textmining.ere.setup import ERExtract
-from textmining.mer.setup import MERecognition
+from textmining.ner.setup import NERecognition
 from textmining.tre.setup import TRExtract
 from preprocess.dataset import DatasetManager
 from preprocess.setup import Preprocess
@@ -30,12 +30,12 @@ class Pipeline:
             manager = DatasetManager(files)
 
             ### Initialize text mining modules ###
-            self.__mer = MERecognition(self.__config['CONFIGS']['mer'], manager)
+            self.__ner = NERecognition(self.__config['CONFIGS']['mer'], manager)
             self.__ere = ERExtract(self.__config['CONFIGS']['ere'], manager)
             self.__tre = TRExtract(self.__config['CONFIGS']['tre'], manager)
             
             ### Initialize preprocessing module ###
-            self.__preprocess = Preprocess(self.__mer.get_tokenizer(), self.__mer.get_max_length())
+            self.__preprocess = Preprocess(self.__ner.get_tokenizer(), self.__mer.get_max_length())
 
             ### Initialize trajectory modules ### 
             # TODO
@@ -73,15 +73,15 @@ class Pipeline:
             for doc in documents:
                 output = self.__preprocess.run(doc)
                 ### Text Mining ###
-                mer_output = self.__mer.run(output)
+                ner_output = self.__ner.run(output)
                 entities = []
                 for i, __ in enumerate(output):
-                    result = self.__get_non_o_intervals(mer_output[i])
+                    result = self.__get_non_o_intervals(ner_output[i])
                     start = 0
                     offset = 0
                     for int in result:
                         entity = self.__preprocess.decode(output[i].ids[int[0]:int[1]]).strip()
-                        entype = mer_output[i][int[0]].replace('B-', '')
+                        entype = ner_output[i][int[0]].replace('B-', '')
                         found = -1
                         while found == -1 and len(output[0].ids[0:int[1]+offset]) != len(output[0].ids):
                             offset += 1
