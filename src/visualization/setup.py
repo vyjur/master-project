@@ -2,7 +2,7 @@ from pyvis.network import Network
 from structure.enum import ME, TR, ER
 
 class VizTool():
-    def __init__(self, config:None):
+    def __init__(self, config=None):
         self.config = config
         # TODO: add config
         self.net = Network(

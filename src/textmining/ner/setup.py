@@ -1,7 +1,7 @@
 import configparser
 import os
 from model.util import Util
-from textmining.mer.lexicon import Lexicon
+from textmining.ner.lexicon import Lexicon
 from preprocess.dataset import DatasetManager
 from model.map import MODEL_MAP
 from transformers import AutoTokenizer
@@ -9,7 +9,7 @@ from preprocess.setup import Preprocess
 import configparser
 from structure.enum import Dataset
 
-SAVE_DIRECTORY = './src/textmining/mer'
+SAVE_DIRECTORY = './src/textmining/ner'
 
 class NERecognition:
     def __init__(self, config_file:str, manager: DatasetManager):
@@ -71,7 +71,7 @@ if __name__ == "__main__":
     files = [folder_path + f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
     manager = DatasetManager(files)
     
-    reg = NERecognition('./src/textmining/mer/config.ini', manager)
+    reg = NERecognition('./src/textmining/ner/config.ini', manager)
     preprocess = Preprocess(reg.get_tokenizer(), reg.get_max_length())
     
     text = "Pasienten har også opplevd økt tungpust de siste månedene, noe som har begrenset aktivitetsnivået hans."
