@@ -7,6 +7,7 @@ from preprocess.setup import Preprocess
 from sklearn.metrics import accuracy_score
 from model.util import Util
 from structure.enum import Task
+import wandb
 
 START_TAG = "<START>"
 STOP_TAG = "<STOP>"
@@ -45,7 +46,13 @@ class NN:
             self.__model = model(1, vocab_size, tag_to_ix, embedding_dim, hidden_dim)
             self.__model.load_state_dict(torch.load(save +'/model.pth', weights_only=True))
         else:
-
+            wandb.init(project=f"{task}-bert-model")
+            wandb.config = {
+                'learning_rate': parameters['learning_rate'],
+                'epochs': parameters['epochs'],
+                'batch_size': parameters['train_batch_size']
+            }
+            
             train_params = {'batch_size': parameters['train_batch_size'],
                             'shuffle': True,
                             'num_workers': 0
@@ -66,7 +73,8 @@ class NN:
 
             for t in range(parameters['epochs']):
                 print(f"Epoch {t+1}\n-------------------------------")
-                self.__train(training_loader, loss_fn, optimizer)
+                loss = self.__train(training_loader, loss_fn, optimizer)
+                wandb.log({'loss': loss.item()})
 
             labels, predictions = self.__valid(testing_loader, self.__device, processed['id2label'])
             Util().validate_report(labels, predictions)
@@ -100,10 +108,12 @@ class NN:
                 
             optimizer.step()
             loss.backward()
+            
 
             if idx % 100 == 0:
                 print(f"Batch {idx}, Loss: {loss.item()}")   
-                pass
+            
+            return loss
 
     def __valid(self, testing_loader, device, id2label):
         # put model in evaluation mode
