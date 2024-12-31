@@ -1,7 +1,7 @@
 from enum import Enum
 
 class Dataset(Enum):
-    MER = 1
+    NER = 1
     TFE = 2
     TRE = 3
     ERE = 4

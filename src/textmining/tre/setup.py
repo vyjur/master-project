@@ -33,13 +33,13 @@ class TRExtract:
             'max_length': self.__config.getint('MODEL', 'max_length')
         }
 
-        dataset_mer = manager.get(Dataset.MER)
+        dataset_ner = manager.get(Dataset.NER)
         dataset_tre = manager.get(Dataset.TRE)
         sentences = manager.get(Dataset.SENTENCES)
 
         dataset = []
         tags = set()
-        for k, doc in enumerate(dataset_mer):
+        for k, doc in enumerate(dataset_ner):
             for i, e_i in enumerate(doc.itertuples()):
                 for j, e_j in enumerate(doc.itertuples()):
                     if i == j:

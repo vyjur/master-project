@@ -33,7 +33,7 @@ class ERExtract:
             'max_length': self.__config.getint('MODEL', 'max_length')
         }
 
-        dataset_mer = manager.get(Dataset.MER)
+        dataset_mer = manager.get(Dataset.NER)
         dataset_ere = manager.get(Dataset.ERE)
         sentences = manager.get(Dataset.SENTENCES)
 
