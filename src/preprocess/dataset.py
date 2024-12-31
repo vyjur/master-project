@@ -83,7 +83,7 @@ class DatasetManager:
     
     def get(self, task:Dataset):
         match task:
-            case Dataset.MER:
+            case Dataset.NER:
                 return self.__get_docs_by_cols(['id', 'sentence_id', 'Text', 'Medical Entity'])
             case Dataset.TFE:
                 return self.__get_docs_by_cols(['id', 'Text', 'Temporal Feature'])
@@ -106,4 +106,4 @@ class DatasetManager:
 if __name__ == "__main__":
     manager = DatasetManager(['./data/annotated/journal.tsv', './data/annotated/journal-2.tsv'])
     
-    print(manager.get(Dataset.MER))
+    print(manager.get(Dataset.NER))

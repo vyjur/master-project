@@ -6,7 +6,7 @@ from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
 from sklearn.metrics import accuracy_score
 from model.util import Util
-from model.nn import NN
+from model.base.nn import NN
 
 START_TAG = "<START>"
 STOP_TAG = "<STOP>"
@@ -218,7 +218,6 @@ if __name__ == '__main__':
             tags.add(annot['tag_name'])
             
     tags = list(tags)
-    print(tags)
     
     checkpoint = "distilbert-base-cased"
     tokenizer = AutoTokenizer.from_pretrained(checkpoint)
