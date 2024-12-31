@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Your Name <you@example.com>"]
 readme = "README.md"
-packages = [{include = "pipeline", from="src"}, {include = "preprocess", from="src"}, {include = "ner", from="src"}, {include = "structure", from="src"}, {include = "visualization", from="src"}]
+packages = [{include = "model", from="src"}, {include = "pipeline", from="src"}, {include = "preprocess", from="src"}, {include = "textmining", from="src"}, {include = "structure", from="src"}, {include = "visualization", from="src"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -23,6 +23,7 @@ sentencepiece = "^0.2.0"
 nltk = "^3.9.1"
 matplotlib = "^3.9.2"
 pypdf = "^5.1.0"
+wandb = "^0.19.1"
 
 
 [build-system]

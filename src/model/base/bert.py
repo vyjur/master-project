@@ -69,7 +69,6 @@ class BERT:
                 #self.__model = AutoModelForTokenClassification.from_pretrained('ltg/norbert3-large', trust_remote_code=True, num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
                 self.__model = AutoModelForTokenClassification.from_pretrained('ltg/norbert3-xs', trust_remote_code=True, num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
             else:
-                print(processed['id2label'])
                 #self.__model = AutoModelForSequenceClassification.from_pretrained('ltg/norbert3-large', trust_remote_code=True, num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
                 self.__model = AutoModelForSequenceClassification.from_pretrained('ltg/norbert3-xs', trust_remote_code=True, num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
 
@@ -101,6 +100,8 @@ class BERT:
         
         if task == Task.SEQUENCE:
             task = 'text'
+        else:
+            task = 'token'
         self.__pipeline = pipeline(task=f"{task}-classification", model=self.__model.to(self.__device), device=0 if self.__device== 'gpu' else None, tokenizer=self.tokenizer, aggregation_strategy="simple")
             
     def predict(self, data, pipeline=False):
