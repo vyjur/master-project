@@ -3,7 +3,8 @@ import torch.nn as nn
 from torch import cuda
 from torch.utils.data import DataLoader
 from preprocess.setup import Preprocess
-from sklearn.metrics import accuracy_score from model.util import Util
+from sklearn.metrics import accuracy_score
+from model.util import Util
 from structure.enum import Task
 import wandb
 
@@ -97,7 +98,7 @@ class NN:
 
             for t in range(parameters["epochs"]):
                 print(f"Epoch {t + 1}\n-------------------------------")
-                loss, acc= self.__train(training_loader, loss_fn, optimizer)
+                loss, acc = self.__train(training_loader, loss_fn, optimizer)
                 wandb.log({"loss": loss.item(), "accuracy": acc})  # type: ignore
 
             labels, predictions = self.__valid(
