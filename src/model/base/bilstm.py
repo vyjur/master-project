@@ -1,8 +1,7 @@
 import torch
 import torch.nn as nn
 from model.base.nn import NN
-
-# TODO: add weights & bias to monitor training
+from structure.enum import Task
 
 
 class Model(nn.Module):
@@ -49,11 +48,20 @@ class BiLSTM:
         save: str,
         dataset: list = [],
         tags_name: list = [],
-        parameters: dict = [],
+        parameters: dict = {},
         tokenizer=None,
+        project_name: str | None = None,
     ):
         self.__model = NN(
-            Model, "sequence", load, save, dataset, tags_name, parameters, tokenizer
+            Model,  # type: ignore
+            Task.SEQUENCE,  # TODO: is this correct?
+            load,
+            save,
+            dataset,
+            tags_name,
+            parameters,
+            tokenizer,
+            project_name,
         )
         self.tokenizer = self.__model.tokenizer
 

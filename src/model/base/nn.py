@@ -23,6 +23,7 @@ class NN:
         tags_name: list = [],
         parameters: dict = {},
         tokenizer=None,
+        project_name: str | None = None,
     ):
         self.__device = "cuda" if cuda.is_available() else "cpu"
         print("Using:", self.__device)
@@ -57,7 +58,7 @@ class NN:
                 torch.load(save + "/model.pth", weights_only=True)
             )
         else:
-            wandb.init(project=f"{task}-bert-model")
+            wandb.init(project=f"{project_name}-{task}-bert-model")
             wandb.config = {
                 "learning_rate": parameters["learning_rate"],
                 "epochs": parameters["epochs"],
@@ -186,4 +187,3 @@ class NN:
         print(f"Validation Accuracy: {eval_accuracy}")
 
         return labels, predictions
-
