@@ -22,9 +22,6 @@ class Pipeline:
         self.__config.read(config_file)
 
         ### Initialize preprocessing module ###
-        # TODO: config?
-        checkpoint = "ltg/norbert3-small"
-        self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 
         folder_path = "./data/annotated/"
         files = [

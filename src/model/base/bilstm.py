@@ -55,7 +55,7 @@ class BiLSTM:
     ):
         self.__model = NN(
             Model,  # type: ignore
-            Task.SEQUENCE,  # TODO: is this correct?
+            Task.SEQUENCE,
             load,
             save,
             dataset,
@@ -63,6 +63,7 @@ class BiLSTM:
             parameters,
             tokenizer,
             project_name,
+            pretrain,
         )
         self.tokenizer = self.__model.tokenizer
 
