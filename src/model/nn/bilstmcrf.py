@@ -193,6 +193,7 @@ class BiLSTMCRF:
         tags_name: list = [],
         parameters: dict = {},
         tokenizer=None,
+        project_name: str | None = None,
     ):
         self.__model = NN(
             Model,  # type: ignore
@@ -203,6 +204,7 @@ class BiLSTMCRF:
             tags_name,
             parameters,
             tokenizer,
+            project_name,
         )
         self.tokenizer = self.__model.tokenizer
 
@@ -251,7 +253,9 @@ if __name__ == "__main__":
         dataset.append(curr_doc)
     tags = list(tags)
 
-    model = BiLSTMCRF(False, save, dataset, tags, train_parameters, tokenizer)
+    model = BiLSTMCRF(
+        False, save, dataset, tags, train_parameters, tokenizer, "test_wandb_"
+    )
     tokenized = Preprocess(model.tokenizer).run(["Hei på deg!"])  # type: ignore
 
     pred1 = model.predict([tokenized[0]["input_ids"], tokenized[1]["input_ids"]])

@@ -51,19 +51,15 @@ class NERecognition:
             "max_length": self.__config.getint("MODEL", "max_length"),
         }
 
-        if load:
-            self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
-                load,
-                SAVE_DIRECTORY,
-                dataset,
-                tags,
-                parameters=train_parameters,
-                tokenizer=self.tokenizer,
-            )
-        else:
-            self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
-                load, SAVE_DIRECTORY, dataset, tags, train_parameters, self.tokenizer
-            )
+        self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
+            load,
+            SAVE_DIRECTORY,
+            dataset,
+            tags,
+            parameters=train_parameters,
+            tokenizer=self.tokenizer,
+            project_name=self.__config["GENERAL"]["name"],
+        )
 
     def get_tokenizer(self):
         return self.__model.tokenizer
@@ -96,4 +92,3 @@ if __name__ == "__main__":
     text = "Pasienten har også opplevd økt tungpust de siste månedene, noe som har begrenset aktivitetsnivået hans."
 
     print(reg.run(preprocess.run(text)))
-

@@ -25,7 +25,7 @@ class CustomDataset(Dataset):
         labels = tokenized["labels"]
         ids = self.tokenizer.convert_tokens_to_ids(tokenized_sentence)
         attn_mask = [1 if tok != "[PAD]" else 0 for tok in tokenized_sentence]
-        if type(labels) is list:
+        if type(labels) is not list:
             label_ids = self.label2id[labels]
         else:
             label_ids = [self.label2id[label] for label in labels]

@@ -74,14 +74,15 @@ class TRExtract:
         tags = list(tags)
         self.label2id, self.id2label = Util().get_tags("sequence", tags)
 
-        if load:
-            self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
-                load, SAVE_DIRECTORY, dataset, tags, train_parameters, self.tokenizer
-            )
-        else:
-            self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
-                load, SAVE_DIRECTORY, dataset, tags, train_parameters, self.tokenizer
-            )
+        self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
+            load,
+            SAVE_DIRECTORY,
+            dataset,
+            tags,
+            train_parameters,
+            self.tokenizer,
+            self.__config["GENERAL"]["name"],
+        )
 
     def get_tokenizer(self):
         return self.__model.tokenizer
@@ -110,4 +111,3 @@ if __name__ == "__main__":
     text = "Hei på deg!"
 
     print(reg.run(preprocess.run(text)))
-

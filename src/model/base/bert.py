@@ -29,6 +29,7 @@ class BERT:
         tags_name: list = [],
         parameters: dict = {},
         tokenizer=None,
+        project_name: str | None = None,
     ):
         self.__device = "cuda" if cuda.is_available() else "cpu"
         print("Using:", self.__device, "with BERT")
@@ -56,7 +57,7 @@ class BERT:
 
             print("Model and tokenizer loaded successfully.")
         else:
-            wandb.init(project=f"{task}-bert-model")
+            wandb.init(project=f"{project_name}-{task}-bert-model")
             wandb.config = {
                 "learning_rate": parameters["learning_rate"],
                 "epochs": parameters["epochs"],
@@ -130,7 +131,7 @@ class BERT:
                     lr_scheduler,
                     loss_fn,
                 )
-                wandb.log({"loss": loss, "accuracy": acc})
+            wandb.log({"loss": loss, "accuracy": acc})
 
             labels, predictions = self.__valid(
                 testing_loader, self.__device, processed["id2label"]
@@ -315,4 +316,3 @@ class BERT:
         print(f"Validation Accuracy: {eval_accuracy}")
 
         return labels, predictions
-

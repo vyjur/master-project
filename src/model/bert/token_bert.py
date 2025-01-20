@@ -14,10 +14,12 @@ class TokenBERT:
         tags_name: list = [],
         parameters: dict = {},
         tokenizer=None,
+        project_name: str | None = None,
     ):
-        self.__bert = BERT(TASK, load, save, dataset, tags_name, parameters, tokenizer)
+        self.__bert = BERT(
+            TASK, load, save, dataset, tags_name, parameters, tokenizer, project_name
+        )
         self.tokenizer = self.__bert.tokenizer
 
     def predict(self, data, pipeline=False):
         return self.__bert.predict(data, pipeline)
-
