@@ -1,18 +1,17 @@
-# Note: this file is not used anymore
+# INFO: Baseline model. Currently fixing!
 import nltk
 from nltk.stem import SnowballStemmer
-
-nltk.download("punkt")
 import pandas as pd
 from preprocess.setup import Preprocess
+
+nltk.download("punkt")
 
 
 class Lexicon:
     def __init__(self):
         df = pd.read_csv("./data/NorMedTerm.csv", delimiter="\t")
-        # self.lexicon = df[(df['ABBREV'] == 'CONDITION') | (df['ABBREV'] == 'PROCEDURE')]
         self.lexicon = df[(df["ABBREV"] == "CONDITION")]
-        self.lexicon["ABBREV"].replace("PROCEDURE", "EVENT", inplace=True)
+        self.lexicon["ABBREV"].replace("PROCEDURE", "EVENT", inplace=True)  # type: ignore
         self.lexicon = self.lexicon[["a.", "ABBREV"]]
         self.stemmer = SnowballStemmer("norwegian")
 
@@ -21,11 +20,11 @@ class Lexicon:
         for term in data:
             if exact:
                 result = self.lexicon[
-                    self.lexicon["a."].str.lower() == str(term).lower()
+                    self.lexicon["a."].str.lower() == str(term).lower()  # type: ignore
                 ]
             else:
                 result = self.lexicon[
-                    self.lexicon["a."].str.contains(
+                    self.lexicon["a."].str.contains(  # type: ignore
                         str(term), case=False, na=False, regex=False
                     )
                 ]
@@ -36,18 +35,18 @@ class Lexicon:
                     for t in terms:
                         if exact:
                             result = self.lexicon[
-                                self.lexicon["a."].str.lower() == t.lower()
+                                self.lexicon["a."].str.lower() == t.lower()  # type: ignore
                             ]
                         else:
                             result = self.lexicon[
-                                self.lexicon["a."].str.contains(
+                                self.lexicon["a."].str.contains(  # type: ignore
                                     t, case=False, na=False, regex=False
                                 )
                             ]
                         if len(result) == 0:
                             continue
                         else:
-                            major_value = result["ABBREV"].value_counts().idxmax()
+                            major_value = result["ABBREV"].value_counts().idxmax()  # type: ignore
                             all_labels.append(major_value)
                             break
                     if not major_value:
@@ -55,7 +54,7 @@ class Lexicon:
                 else:
                     all_labels.append("O")
             else:
-                major_value = result["ABBREV"].value_counts().idxmax()
+                major_value = result["ABBREV"].value_counts().idxmax()  # type: ignore
                 all_labels.append(major_value)
         return all_labels
 
@@ -82,4 +81,3 @@ class Lexicon:
 
 if __name__ == "__main__":
     print(Lexicon().run(["hei", "på"]))
-
