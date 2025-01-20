@@ -8,11 +8,14 @@ from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
 from structure.enum import Dataset
 
-SAVE_DIRECTORY = "./src/textmining/ner"
-
 
 class NERecognition:
-    def __init__(self, config_file: str, manager: DatasetManager):
+    def __init__(
+        self,
+        config_file: str,
+        manager: DatasetManager,
+        save_directory: str = "./src/textmining/ner",
+    ):
         self.__config = configparser.ConfigParser()
         self.__config.read(config_file)
 
@@ -31,9 +34,9 @@ class NERecognition:
         tags = list(tags)
         self.label2id, self.id2label = Util().get_tags("token", tags)
 
-        # checkpoint = "ltg/norbert3-large"
-        checkpoint = "ltg/norbert3-small"
-        self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+        self.tokenizer = AutoTokenizer.from_pretrained(
+            self.__config["pretrain"]["name"]
+        )
 
         train_parameters = {
             "train_batch_size": self.__config.getint(
@@ -53,12 +56,13 @@ class NERecognition:
 
         self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
             load,
-            SAVE_DIRECTORY,
+            save_directory,
             dataset,
             tags,
             parameters=train_parameters,
             tokenizer=self.tokenizer,
             project_name=self.__config["GENERAL"]["name"],
+            pretrain=self.__config["pretrain"]["name"],
         )
 
     def get_tokenizer(self):

@@ -8,19 +8,22 @@ from preprocess.setup import Preprocess
 import random
 from structure.enum import Dataset
 
-SAVE_DIRECTORY = "./src/textmining/tre"
-
 
 class TRExtract:
-    def __init__(self, config_file: str, manager: DatasetManager):
+    def __init__(
+        self,
+        config_file: str,
+        manager: DatasetManager,
+        save_directory: str = "./src/textmining/tre",
+    ):
         self.__config = configparser.ConfigParser()
         self.__config.read(config_file)
 
         load = self.__config["MODEL"].getboolean("load")
 
-        # checkpoint = "ltg/norbert3-large"
-        checkpoint = "ltg/norbert3-small"
-        self.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+        self.tokenizer = AutoTokenizer.from_pretrained(
+            self.__config["pretrain"]["name"]
+        )
 
         train_parameters = {
             "train_batch_size": self.__config.getint(
@@ -76,12 +79,13 @@ class TRExtract:
 
         self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
             load,
-            SAVE_DIRECTORY,
+            save_directory,
             dataset,
             tags,
             train_parameters,
             self.tokenizer,
             self.__config["GENERAL"]["name"],
+            self.__config["pretrain"]["name"],
         )
 
     def get_tokenizer(self):
