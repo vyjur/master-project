@@ -131,7 +131,7 @@ class BERT:
                     lr_scheduler,
                     loss_fn,
                 )
-            wandb.log({"loss": loss, "accuracy": acc})
+            wandb.log({"loss": loss, "accuracy": acc})  # type: ignore
 
             labels, predictions = self.__valid(
                 testing_loader, self.__device, processed["id2label"]
