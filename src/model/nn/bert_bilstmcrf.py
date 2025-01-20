@@ -4,13 +4,6 @@ from model.base.nn import NN
 from structure.enum import Task
 
 
-class Model(BaseModel):
-    def __init__(self):
-        # TODO: add config
-        bert_model = BertModel.from_pretrained("bert-base-uncased")
-        self.word_embeds = bert_model
-
-
 class BERTBiLSTMCRF:
     def __init__(
         self,
@@ -21,7 +14,13 @@ class BERTBiLSTMCRF:
         parameters: dict = {},
         tokenizer=None,
         project_name: str | None = None,
+        pretrain: str | None = None,
     ):
+        class Model(BaseModel):
+            def __init__(self):
+                bert_model = BertModel.from_pretrained(pretrain)
+                self.word_embeds = bert_model
+
         self.__model = NN(
             Model,  # type: ignore
             Task.TOKEN,
@@ -32,6 +31,7 @@ class BERTBiLSTMCRF:
             parameters,
             tokenizer,
             project_name,
+            pretrain,
         )
         self.tokenizer = self.__model.tokenizer
 

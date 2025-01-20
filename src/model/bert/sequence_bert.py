@@ -15,9 +15,18 @@ class SequenceBERT:
         parameters: dict = {},
         tokenizer=None,
         project_name: str | None = None,
+        pretrain: str | None = None,
     ):
         self.__bert = BERT(
-            TASK, load, save, dataset, tags_name, parameters, tokenizer, project_name
+            TASK,
+            load,
+            save,
+            dataset,
+            tags_name,
+            parameters,
+            tokenizer,
+            project_name,
+            pretrain,
         )
         self.tokenizer = self.__bert.tokenizer
 

@@ -30,6 +30,7 @@ class BERT:
         parameters: dict = {},
         tokenizer=None,
         project_name: str | None = None,
+        pretrain: str | None = None,
     ):
         self.__device = "cuda" if cuda.is_available() else "cpu"
         print("Using:", self.__device, "with BERT")
@@ -90,16 +91,14 @@ class BERT:
             num_training_steps = len(training_loader)
 
             if task == Task.TOKEN:
-                # self.__model = AutoModelForTokenClassification.from_pretrained('ltg/norbert3-large', trust_remote_code=True, num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
                 self.__model = AutoModelForTokenClassification.from_pretrained(
-                    "ltg/norbert3-xs",
+                    pretrain,
                     trust_remote_code=True,
                     num_labels=len(processed["id2label"]),
                     id2label=processed["id2label"],
                     label2id=processed["label2id"],
                 )
             else:
-                # self.__model = AutoModelForSequenceClassification.from_pretrained('ltg/norbert3-large', trust_remote_code=True, num_labels=len(processed['id2label']), id2label=processed['id2label'], label2id = processed['label2id'])
                 self.__model = AutoModelForSequenceClassification.from_pretrained(
                     "ltg/norbert3-xs",
                     trust_remote_code=True,

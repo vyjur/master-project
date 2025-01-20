@@ -1,4 +1,4 @@
-from model.nn.bertbilstmcrf import BERTBiLSTMCRF
+from model.nn.bert_bilstmcrf import BERTBiLSTMCRF
 from model.nn.bilstmcrf import BiLSTMCRF
 from model.base.bilstm import BiLSTM
 from model.base.bert import BERT
@@ -15,4 +15,3 @@ MODEL_MAP = {
     "BiLSTM": BiLSTM,
     "LLM": LLM,
 }
-

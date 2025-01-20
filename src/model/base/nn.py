@@ -24,6 +24,7 @@ class NN:
         parameters: dict = {},
         tokenizer=None,
         project_name: str | None = None,
+        pretrain: str | None = None,
     ):
         self.__device = "cuda" if cuda.is_available() else "cpu"
         print("Using:", self.__device)

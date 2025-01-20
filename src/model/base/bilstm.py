@@ -51,6 +51,7 @@ class BiLSTM:
         parameters: dict = {},
         tokenizer=None,
         project_name: str | None = None,
+        pretrain: str | None = None,
     ):
         self.__model = NN(
             Model,  # type: ignore
