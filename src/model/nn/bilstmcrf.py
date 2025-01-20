@@ -1,9 +1,11 @@
+# Note: Similar to BiLSTM file but includes CRF. Did not base this on BiLSTM because it
 import torch
 import torch.nn as nn
 from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
 from model.base.nn import NN
 from structure.enum import Task
+from model.base.bilstm import Model as BaseModel
 
 START_TAG = "<START>"
 STOP_TAG = "<STOP>"
@@ -27,30 +29,11 @@ def log_sum_exp(vec):
     return max_score + torch.log(torch.sum(torch.exp(vec - max_score_broadcast)))
 
 
-class Model(nn.Module):
+class Model(BaseModel):
     def __init__(self, batch, vocab_size, tag_to_ix, embedding_dim, hidden_dim):
-        super(Model, self).__init__()
-
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-        self.embedding_dim = embedding_dim
-        self.hidden_dim = hidden_dim
-        self.vocab_size = vocab_size
-        self.tag_to_ix = tag_to_ix
-        self.tagset_size = len(tag_to_ix)
-
-        self.batch = batch
-        self.word_embeds = nn.Embedding(vocab_size, embedding_dim)
-        self.lstm = nn.LSTM(
-            embedding_dim,
-            hidden_dim // 2,
-            num_layers=1,
-            bidirectional=True,
-            batch_first=True,
+        super(Model, self).__init__(
+            batch, vocab_size, tag_to_ix, embedding_dim, hidden_dim
         )
-
-        # Maps the output of the LSTM into tag space.
-        self.hidden2tag = nn.Linear(hidden_dim, self.tagset_size)
 
         # Matrix of transition parameters.  Entry i,j is the score of
         # transitioning *to* i *from* j.
@@ -98,13 +81,6 @@ class Model(nn.Module):
         terminal_var = forward_var + self.transitions[self.tag_to_ix[STOP_TAG]]
         alpha = log_sum_exp(terminal_var)
         return alpha
-
-    def _get_lstm_features(self, sentences):
-        self.hidden = self.init_hidden()
-        embeds = self.word_embeds(sentences)
-        lstm_out, self.hidden = self.lstm(embeds, self.hidden)
-        lstm_feats = self.hidden2tag(lstm_out)
-        return lstm_feats
 
     def _score_sentence(self, feats, tags):
         # Gives the score of a provided tag sequence
@@ -174,8 +150,15 @@ class Model(nn.Module):
             gold_score
         )
 
+    def _get_lstm_features(self, sentences):
+        self.hidden = self.init_hidden()
+        embeds = self.word_embeds(sentences)
+        lstm_out, self.hidden = self.lstm(embeds, self.hidden)
+        lstm_feats = self.hidden2tag(lstm_out)
+        return lstm_feats
+
     def forward(self, sentence):  # dont confuse this with _forward_alg above.
-        # Get the emission scores from the BiLSTM
+        # Get the emissiwn scores from the BiLSTM
         lstm_feats = self._get_lstm_features(sentence)
 
         # Find the best path, given the features.
