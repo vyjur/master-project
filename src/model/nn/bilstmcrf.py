@@ -194,6 +194,7 @@ class BiLSTMCRF:
         parameters: dict = {},
         tokenizer=None,
         project_name: str | None = None,
+        pretrain: str | None = None,
     ):
         self.__model = NN(
             Model,  # type: ignore
@@ -205,6 +206,7 @@ class BiLSTMCRF:
             parameters,
             tokenizer,
             project_name,
+            pretrain,
         )
         self.tokenizer = self.__model.tokenizer
 
