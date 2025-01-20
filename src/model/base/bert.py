@@ -193,7 +193,7 @@ class BERT:
             targets = batch["targets"].to(self.__device, dtype=torch.long)
             outputs = self.__model(input_ids=ids, attention_mask=mask, labels=targets)
             loss, tr_logits = outputs.loss, outputs.logits
-            tr_loss += loss.item()
+            # tr_loss += loss.item()
 
             nb_tr_steps += 1
             nb_tr_examples += targets.size(0)
@@ -206,6 +206,7 @@ class BERT:
 
             loss = loss_fn(active_logits, flattened_targets)  # type: ignore
 
+            tr_loss += loss
             # Now compute predictions based on the probabilities
             flattened_predictions = torch.argmax(
                 active_logits,

@@ -3,8 +3,7 @@ import torch.nn as nn
 from torch import cuda
 from torch.utils.data import DataLoader
 from preprocess.setup import Preprocess
-from sklearn.metrics import accuracy_score
-from model.util import Util
+from sklearn.metrics import accuracy_score from model.util import Util
 from structure.enum import Task
 import wandb
 
@@ -88,7 +87,7 @@ class NN:
                 embedding_dim,
                 hidden_dim,
             ).to(self.__device)
-            print(class_weights)
+
             loss_fn = nn.CrossEntropyLoss(weight=class_weights)
             optimizer = torch.optim.Adam(  # type: ignore
                 self.__model.parameters(),
@@ -98,8 +97,8 @@ class NN:
 
             for t in range(parameters["epochs"]):
                 print(f"Epoch {t + 1}\n-------------------------------")
-                loss = self.__train(training_loader, loss_fn, optimizer)
-                wandb.log({"loss": loss.item()})  # type: ignore
+                loss, acc= self.__train(training_loader, loss_fn, optimizer)
+                wandb.log({"loss": loss.item(), "accuracy": acc})  # type: ignore
 
             labels, predictions = self.__valid(
                 testing_loader, self.__device, processed["id2label"]
@@ -119,7 +118,7 @@ class NN:
 
     def __train(self, training_loader, loss_fn, optimizer):
         self.__model.train()
-
+        tr_loss, tr_accuracy = 0, 0
         for idx, batch in enumerate(training_loader):
             ids = batch["ids"].to(self.__device, dtype=torch.long)
             targets = batch["targets"].to(self.__device, dtype=torch.long)
@@ -128,18 +127,31 @@ class NN:
             self.__model.zero_grad()
             if self.__task == Task.TOKEN:
                 loss = self.__model.neg_log_likelihood(ids, targets)
+                with torch.no_grad():
+                    outputs = self.__model(ids)
+                    flattened_targets = targets.view(
+                        -1
+                    )  # shape (batch_size * seq_len,)
+                    curr_loss = loss_fn(outputs, flattened_targets)
+                    predictions = outputs
             else:
                 outputs = self.__model(ids)
                 flattened_targets = targets.view(-1)  # shape (batch_size * seq_len,)
                 loss = loss_fn(outputs, flattened_targets)
+                predictions = outputs
+                with torch.no_grad():
+                    curr_loss = loss
 
+            tr_loss += curr_loss
+            tr_accuracy += accuracy_score(
+                targets.cpu().numpy(), predictions.cpu().numpy()
+            )
             optimizer.step()
             loss.backward()
-
             if idx % 100 == 0:
                 print(f"Batch {idx}, Loss: {loss.item()}")
 
-            return loss
+        return tr_loss, tr_accuracy
 
     def __valid(self, testing_loader, device, id2label):
         # put model in evaluation mode
