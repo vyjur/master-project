@@ -1,3 +1,4 @@
+import os
 import torch
 import torch.nn as nn
 from torch import cuda
@@ -106,6 +107,8 @@ class NN:
             )
             Util().validate_report(labels, predictions)
 
+            if not os.path.exists(save):
+                os.makedirs(save)
             torch.save(self.__model.state_dict(), save + "/model.pth")
 
     def predict(self, data, pipeline=False):
@@ -130,10 +133,14 @@ class NN:
                 loss = self.__model.neg_log_likelihood(ids, targets)
                 with torch.no_grad():
                     outputs = self.__model(ids)
-                    flattened_targets = targets.view(
-                        -1
-                    )  # shape (batch_size * seq_len,)
-                    curr_loss = loss_fn(outputs, flattened_targets)
+                    flattened_targets = targets
+                    # shape (batch_size * seq_len,)
+
+                    # print("outputs", outputs.shape)
+                    # print("flattened_targets", flattened_targets.shape)
+                    # curr_loss = loss_fn(outputs, flattened_targets)
+                    # TODO: fix here
+                    curr_loss = loss
                     predictions = outputs
             else:
                 outputs = self.__model(ids)
@@ -144,8 +151,10 @@ class NN:
                     curr_loss = loss
 
             tr_loss += curr_loss
+            print("targets", targets.shape)
+            print("Predictions", predictions.shape)
             tr_accuracy += accuracy_score(
-                targets.cpu().numpy(), predictions.cpu().numpy()
+                targets.view(-1).cpu().numpy(), predictions.view(-1).cpu().numpy()
             )
             optimizer.step()
             loss.backward()

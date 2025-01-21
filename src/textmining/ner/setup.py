@@ -16,7 +16,7 @@ class NERecognition:
         manager: DatasetManager,
         save_directory: str = "./src/textmining/ner",
     ):
-        self.__config = configparser.ConfigParser()
+        self.__config = configparser.ConfigParser(allow_no_value=True)
         self.__config.read(config_file)
 
         load = self.__config["MODEL"].getboolean("load")
