@@ -4,57 +4,63 @@ from torch.utils.data import Dataset
 from sklearn.model_selection import train_test_split
 from model.util import Util
 from structure.enum import Task
+
+
 class CustomDataset(Dataset):
     def __init__(self, tokenized_data, tokenizer, label2id):
         self.tokenized_data = tokenized_data
         self.tokenizer = tokenizer
         self.label2id = label2id
 
-    def __len__(self):
-        # Return the number of samples
+    def __len__(self):  # Return the number of samples
         return len(self.tokenized_data)
 
     def __getitem__(self, idx):
         # Get a single sample of data
         tokenized = self.tokenized_data[idx]
-        if 'tokens' in tokenized: 
-            tokenized_sentence = tokenized['tokens']
+        if "tokens" in tokenized:
+            tokenized_sentence = tokenized["tokens"]
         else:
             tokenized_sentence = tokenized.tokens()
-        labels = tokenized['labels']
+        labels = tokenized["labels"]
         ids = self.tokenizer.convert_tokens_to_ids(tokenized_sentence)
-        attn_mask = [1 if tok != '[PAD]' else 0 for tok in tokenized_sentence]
-        if type(labels) != list:
+        attn_mask = [1 if tok != "[PAD]" else 0 for tok in tokenized_sentence]
+        if type(labels) is not list:
             label_ids = self.label2id[labels]
         else:
             label_ids = [self.label2id[label] for label in labels]
-        
-        return {
-              'ids': torch.tensor(ids, dtype=torch.long),
-              'mask': torch.tensor(attn_mask, dtype=torch.long),
-              'targets': torch.tensor(label_ids, dtype=torch.long)
-        }
-    
-    def __len__(self):
-        return len(self.tokenized_data)
-    
-class Preprocess:
 
-    def __init__(self, tokenizer, max_length:int=512, train_size:float=0.8):
+        return {
+            "ids": torch.tensor(ids, dtype=torch.long),
+            "mask": torch.tensor(attn_mask, dtype=torch.long),
+            "targets": torch.tensor(label_ids, dtype=torch.long),
+        }
+
+
+class Preprocess:
+    def __init__(self, tokenizer, max_length: int = 512, train_size: float = 0.8):
         self.__tokenizer = tokenizer
         self.__max_length = max_length
         self.__train_size = train_size
-        
+
         self.__config = configparser.ConfigParser()
-        self.__config.read('./src/preprocess/config.ini')
-        
-    def run(self, data:str):
-        tokenized_dataset = self.__tokenizer(data, padding="max_length", stride=0, max_length=self.__max_length, truncation=True, return_offsets_mapping=True, return_overflowing_tokens=True).encodings
+        self.__config.read("./src/preprocess/config.ini")
+
+    def run(self, data: str):
+        tokenized_dataset = self.__tokenizer(
+            data,
+            padding="max_length",
+            stride=0,
+            max_length=self.__max_length,
+            truncation=True,
+            return_offsets_mapping=True,
+            return_overflowing_tokens=True,
+        ).encodings
         return tokenized_dataset
-    
-    def decode(self, data:list):
+
+    def decode(self, data: list):
         return self.__tokenizer.decode(data)
-    
+
     def sliding_window(self, data, window_size=128, stride=64):
         """
         Window-size: sequence length
@@ -70,43 +76,62 @@ class Preprocess:
                     merged_dict[key].extend(value)
                 else:
                     merged_dict[key] = value
-                    
-            if 'tokens' in merged_dict:
-                merged_dict['tokens'].extend(value)
+
+            if "tokens" in merged_dict:
+                merged_dict["tokens"].extend(value)  # type: ignore
             else:
-                merged_dict['tokens'] = value
+                merged_dict["tokens"] = value  # type: ignore
 
         windowed_sequences = []
-        
-        for i in range(0, len(merged_dict['input_ids']), stride):
-            curr_dict = {}
-            
-            for key, value in merged_dict.items():
-                curr_dict[key] = merged_dict[key][i:i + window_size]
-            windowed_sequences.append(curr_dict)
-            
-        return windowed_sequences 
 
-    def run_train_test_split(self, task, data:list=[], tags_name:list = [], window_size:int=128, stride:int=16):
+        for i in range(0, len(merged_dict["input_ids"]), stride):
+            curr_dict = {}
+
+            for key, value in merged_dict.items():
+                curr_dict[key] = merged_dict[key][i : i + window_size]
+            windowed_sequences.append(curr_dict)
+
+        return windowed_sequences
+
+    def run_train_test_split(
+        self,
+        task,
+        data: list = [],
+        tags_name: list = [],
+        window_size: int = 128,
+        stride: int = 16,
+    ):
         label2id, id2label = Util().get_tags(task, tags_name)
         tokenized_dataset = []
-        
+
         for row in data:
             if task == Task.TOKEN:
                 words = [val[0] for val in row]
                 annot = [val[1] for val in row]
-                split_into_words=True
+                split_into_words = True
             else:
                 words = f"{row['i']}: {row['context_i']} [SEP] {row['j']}: {row['context_j']}"
-                split_into_words=False
-            
-            tokenized = self.__tokenizer(words, padding="max_length", stride=3, max_length=self.__max_length, is_split_into_words=split_into_words, truncation=True, return_offsets_mapping=True, return_overflowing_tokens=True)
-            
+                split_into_words = False
+
+            tokenized = self.__tokenizer(
+                words,
+                padding="max_length",
+                stride=3,
+                max_length=self.__max_length,
+                is_split_into_words=split_into_words,
+                truncation=True,
+                return_offsets_mapping=True,
+                return_overflowing_tokens=True,
+            )
+
             for encoding in tokenized.encodings:
                 if task == Task.TOKEN:
-                    curr_annot = [annot[i] if i is not None else 'O' for i in encoding.word_ids]
+                    curr_annot = [
+                        annot[i] if i is not None else "O"  # type: ignore
+                        for i in encoding.word_ids
+                    ]
                     tokens_annot = self.tokens_mapping(encoding, curr_annot)
-                
+
                 encoding_dict = {
                     "ids": encoding.ids,
                     "type_ids": encoding.type_ids,
@@ -116,17 +141,19 @@ class Preprocess:
                     "special_tokens_mask": encoding.special_tokens_mask,
                     "overflowing": encoding.overflowing,
                 }
-                encoding_dict['words'] = words
+                encoding_dict["words"] = words
                 if task == Task.TOKEN:
-                    encoding_dict['labels'] = tokens_annot
+                    encoding_dict["labels"] = tokens_annot  # type: ignore
                 else:
-                    encoding_dict['labels'] = row['relation']
+                    encoding_dict["labels"] = row["relation"]
                 tokenized_dataset.append(encoding_dict)
-            
-        train, test = train_test_split(tokenized_dataset, train_size=self.__train_size, random_state=42)
-        
-        if self.__config.getboolean('main', 'window'):
-            train  = self.sliding_window(train, window_size=window_size, stride=stride)
+
+        train, test = train_test_split(
+            tokenized_dataset, train_size=self.__train_size, random_state=42
+        )
+
+        if self.__config.getboolean("main", "window"):
+            train = self.sliding_window(train, window_size=window_size, stride=stride)
 
         train_dataset = CustomDataset(train, self.__tokenizer, label2id)
         test_dataset = CustomDataset(test, self.__tokenizer, label2id)
@@ -135,12 +162,12 @@ class Preprocess:
             "train_raw": train,
             "test_raw": test,
             "dataset": tokenized_dataset,
-            'train': train_dataset,
-            'test': test_dataset,
-            'label2id': label2id,
-            'id2label': id2label
+            "train": train_dataset,
+            "test": test_dataset,
+            "label2id": label2id,
+            "id2label": id2label,
         }
-        
+
     def tokens_mapping(self, tokenized, annot):
         tokens_annot = []
         for i in range(len(tokenized.ids)):
@@ -155,15 +182,13 @@ class Preprocess:
                 else:
                     tokens_annot.append(annot[i])
             else:
-                
                 if annot[i] != "O":
                     tokens_annot.append(f"I-{annot[i]}")
                 else:
                     tokens_annot.append(annot[i])
         return tokens_annot
-    
-    
-    
+
+
 if __name__ == "__main__":
     text = journal = """
         Dato: 02.10.2024

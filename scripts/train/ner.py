@@ -1,0 +1,27 @@
+import os
+from textmining.ner.setup import NERecognition
+from preprocess.dataset import DatasetManager
+
+print("##### Start training for NER... ######")
+
+folder = "./scripts/train/config/ner/"
+configs = os.listdir(folder)
+folder_path = "./data/annotated/"
+files = [
+    folder_path + f
+    for f in os.listdir(folder_path)
+    if os.path.isfile(os.path.join(folder_path, f))
+]
+manager = DatasetManager(files)
+
+for i, conf in enumerate(configs):
+    print(f"###### ({i}) Training for configuration file: {conf}")
+    save_directory = "./models/ner/" + conf.replace(".ini", "")
+    ner = NERecognition(
+        config_file=folder + conf,
+        manager=manager,
+        save_directory=save_directory,
+    )
+    print("Finished with this task.")
+
+print("Process finished!")
