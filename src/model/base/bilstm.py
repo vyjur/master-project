@@ -48,9 +48,6 @@ class Model(nn.Module):
         embeds = self.word_embeds(sentences)  # type: ignore
         if self.bert:
             embeds = embeds.last_hidden_state
-            
-            print(embeds.shape)
-
         lstm_out, (hidden, _) = self.lstm(embeds)
         lstm_out = torch.mean(lstm_out, dim=1).to(self.device)
         lstm_feats = self.hidden2tag(lstm_out)
