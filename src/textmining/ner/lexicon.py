@@ -1,4 +1,5 @@
 # INFO: Baseline model. Currently fixing!
+import re
 import nltk
 from collections import Counter
 from nltk.stem import SnowballStemmer
@@ -23,11 +24,13 @@ class Lexicon:
         
         temp = self.lexicon[['a.', "ABBREV"]].values
 
-        words = {   
-}
+        words = {}
+        
+        self.pattern = r"[`,~,!@#$%^&*\(\)_\-\+=\{\[\}\]\|\\:;\"'<,>\.\?/]+"
         for item in temp:
             curr = item[0].split()
             for word in curr:
+                word = re.sub(self.pattern, "", word)
                 word = self.stemmer.stem(word)
                 if word not in words:
                     words[word] = {}
@@ -55,9 +58,11 @@ class Lexicon:
     def run(self, data):
         words = data.strip().split()
         
+        print("RUN", len(words))
         predictions = []
         
         for word in words:
+            word = re.sub(self.pattern, "", word)
             word = self.stemmer.stem(str(word).lower())
             if word in self.common:
                 predictions.append("O")
@@ -72,7 +77,65 @@ class Lexicon:
             
 
 if __name__ == "__main__":
+    import os
+    from preprocess.dataset import DatasetManager
+    from sklearn.model_selection import train_test_split
+    from sklearn.metrics import classification_report
+    from structure.enum import Dataset
+    from model.util import Util
+    
+    folder_path = "./data/annotated/"
+    files = [
+        folder_path + f
+        for f in os.listdir(folder_path)
+        if os.path.isfile(os.path.join(folder_path, f))
+    ]
+    manager = DatasetManager(files)
+    raw_dataset = manager.get(Dataset.NER)
+    
+    dataset = []
+    tags = set()
+    for doc in raw_dataset:
+        curr_doc = []
+        for row in doc.itertuples(index=False):
+            curr_doc.append((row[2], row[3]))  # Add (row[1], row[2]) tuple to list
+            tags.add(row[3])  # Add row[2] to the set
+
+        dataset.append(curr_doc)
+
+    train, test = train_test_split(
+        # TODO: train_size
+        dataset, train_size=0.8, random_state=42
+    )
+    
+    print(test)
+    
+    sentences = []
+    
+    for sentence in test:
+        curr_sentence = []
+        target = []
+        for term in sentence:
+            splitted_term = term[0].split()
+            for _ in range(len(splitted_term)):
+                target.append(term[1])
+            curr_sentence.extend(splitted_term)
+        sentences.append({'sentence': " ".join(curr_sentence), "words": curr_sentence, 'target': target})
+        
+    print("TARGET", len(sentences[0]['target']))
+            
     lex = Lexicon()
+    
+    result = lex.run(sentences[0]['sentence'])
+    
+    for i, cat in enumerate(result):
+        print(cat, sentences[0]['words'][i], sentences[0]['target'][i])
+        
+    
+    target = [targ.replace('SYMPTOM', 'CONDITION').replace('EVENT', 'TREATMENT') for targ in sentences[0]['target']]
+    print(classification_report(target, result, labels=list(tags)))
+    
     text = "Pasienten har også opplevd økt tungpust de siste månedene, noe som har begrenset aktivitetsnivået hans og hadde hjerteinfarkt ifjor."
 
     print(lex.run(text))
+    
