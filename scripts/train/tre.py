@@ -15,6 +15,8 @@ files = [
 manager = DatasetManager(files)
 
 for i, conf in enumerate(configs):
+    if conf != 'c-bert-bilstm.ini':
+        continue
     print(f"###### ({i}) Training for configuration file: {conf}")
     save_directory = "./models/tre/" + conf.replace(".ini", "")
     ner = TRExtract(

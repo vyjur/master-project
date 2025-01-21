@@ -1,4 +1,5 @@
 # NOTE: Similar to BiLSTM file but includes CRF. Did not base this on BiLSTM because it
+# Based on https://pytorch.org/tutorials/beginner/nlp/advanced_tutorial.html
 import torch
 import torch.nn as nn
 from transformers import AutoTokenizer
@@ -30,9 +31,9 @@ def log_sum_exp(vec):
 
 
 class Model(BaseModel):
-    def __init__(self, batch, vocab_size, tag_to_ix, embedding_dim, hidden_dim):
+    def __init__(self, batch, vocab_size, tag_to_ix, embedding_dim, hidden_dim, bert_model=None):
         super(Model, self).__init__(
-            batch, vocab_size, tag_to_ix, embedding_dim, hidden_dim
+            batch, vocab_size, tag_to_ix, embedding_dim, hidden_dim, bert_model
         )
 
         # Matrix of transition parameters.  Entry i,j is the score of
@@ -153,6 +154,8 @@ class Model(BaseModel):
     def _get_lstm_features(self, sentences):
         self.hidden = self.init_hidden()
         embeds = self.word_embeds(sentences)
+        if self.bert:
+            embeds = embeds.last_hidden_state
         lstm_out, self.hidden = self.lstm(embeds, self.hidden)
         lstm_feats = self.hidden2tag(lstm_out)
         return lstm_feats
