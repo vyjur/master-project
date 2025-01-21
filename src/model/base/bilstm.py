@@ -25,7 +25,7 @@ class Model(nn.Module):
         if bert_model is not None:
             self.word_embeds = bert_model
             self.lstm = nn.LSTM(
-                embedding_dim,
+                self.word_embeds.config.hidden_size,
                 hidden_dim // 2,
                 num_layers=1,
                 bidirectional=True,
@@ -33,7 +33,6 @@ class Model(nn.Module):
             )
         else:
             self.word_embeds = nn.Embedding(vocab_size, embedding_dim)
-
             self.lstm = nn.LSTM(
                 embedding_dim,
                 hidden_dim // 2,
@@ -47,9 +46,10 @@ class Model(nn.Module):
 
     def _get_lstm_features(self, sentences):
         embeds = self.word_embeds(sentences)  # type: ignore
-
         if self.bert:
             embeds = embeds.last_hidden_state
+            
+            print(embeds.shape)
 
         lstm_out, (hidden, _) = self.lstm(embeds)
         lstm_out = torch.mean(lstm_out, dim=1).to(self.device)
