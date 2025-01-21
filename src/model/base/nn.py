@@ -60,11 +60,14 @@ class NN:
                 torch.load(save + "/model.pth", weights_only=True)
             )
         else:
-            wandb.init(project=f"{project_name}-{task}-bert-model")
+            wandb.init(project=f"{project_name}-{task}-nn-model".replace('"', ""))  # type: ignore
             wandb.config = {
                 "learning_rate": parameters["learning_rate"],
                 "epochs": parameters["epochs"],
                 "batch_size": parameters["train_batch_size"],
+                "evaluation_strategy": "epoch",
+                "save_strategy": "epoch",
+                "logging_strategy": "epoch",
             }
 
             train_params = {
@@ -90,6 +93,8 @@ class NN:
                 hidden_dim,
             ).to(self.__device)
 
+            self.__model.num_labels = len(processed["id2label"])
+
             loss_fn = nn.CrossEntropyLoss(weight=class_weights)
             optimizer = torch.optim.Adam(  # type: ignore
                 self.__model.parameters(),
@@ -110,6 +115,7 @@ class NN:
             if not os.path.exists(save):
                 os.makedirs(save)
             torch.save(self.__model.state_dict(), save + "/model.pth")
+            wandb.finish()
 
     def predict(self, data, pipeline=False):
         data_tensor = torch.tensor(data, dtype=torch.long).to(self.__device)
@@ -133,15 +139,15 @@ class NN:
                 loss = self.__model.neg_log_likelihood(ids, targets)
                 with torch.no_grad():
                     outputs = self.__model(ids)
-                    flattened_targets = targets
+                    flattened_targets = targets.view(-1)
                     # shape (batch_size * seq_len,)
 
-                    # print("outputs", outputs.shape)
-                    # print("flattened_targets", flattened_targets.shape)
-                    # curr_loss = loss_fn(outputs, flattened_targets)
-                    # TODO: fix here
                     curr_loss = loss
                     predictions = outputs
+                    tr_accuracy += accuracy_score(
+                        targets.view(-1).cpu().numpy(),
+                        predictions.view(-1).cpu().numpy(),
+                    )
             else:
                 outputs = self.__model(ids)
                 flattened_targets = targets.view(-1)  # shape (batch_size * seq_len,)
@@ -149,13 +155,18 @@ class NN:
                 predictions = outputs
                 with torch.no_grad():
                     curr_loss = loss
+                    print("target", targets.view(-1).shape)
+                    print("predictions", predictions.view(-1).shape)
+                    flattened_predictions = torch.argmax(
+                        outputs,
+                        axis=1,  # type: ignore
+                    )
+                    tr_accuracy += accuracy_score(
+                        targets.view(-1).cpu().numpy(), flattened_predictions
+                    )  # shape (batch_size * seq_len,)
 
             tr_loss += curr_loss
-            print("targets", targets.shape)
-            print("Predictions", predictions.shape)
-            tr_accuracy += accuracy_score(
-                targets.view(-1).cpu().numpy(), predictions.view(-1).cpu().numpy()
-            )
+
             optimizer.step()
             loss.backward()
             if idx % 100 == 0:

@@ -3,8 +3,9 @@ from textmining.ner.setup import NERecognition
 from preprocess.dataset import DatasetManager
 
 print("##### Start training for NER... ######")
-configs = os.listdir("./scripts/train/config/ner")
 
+folder = "./scripts/train/config/ner/"
+configs = os.listdir(folder)
 folder_path = "./data/annotated/"
 files = [
     folder_path + f
@@ -13,12 +14,11 @@ files = [
 ]
 manager = DatasetManager(files)
 
-
 for i, conf in enumerate(configs):
     print(f"###### ({i}) Training for configuration file: {conf}")
-    save_directory = "./models/" + conf.replace(".ini", "")
+    save_directory = "./models/ner/" + conf.replace(".ini", "")
     ner = NERecognition(
-        config_file="./scripts/train/config/ner/" + conf,
+        config_file=folder + conf,
         manager=manager,
         save_directory=save_directory,
     )
