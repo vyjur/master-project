@@ -1,4 +1,4 @@
-# Note: Similar to BiLSTM file but includes CRF. Did not base this on BiLSTM because it
+# NOTE: Similar to BiLSTM file but includes CRF. Did not base this on BiLSTM because it
 import torch
 import torch.nn as nn
 from transformers import AutoTokenizer
