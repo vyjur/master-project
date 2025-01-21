@@ -1,5 +1,6 @@
 # INFO: Baseline model. Currently fixing!
 import nltk
+from collections import Counter
 from nltk.stem import SnowballStemmer
 import pandas as pd
 from preprocess.setup import Preprocess
@@ -9,75 +10,74 @@ nltk.download("punkt")
 
 class Lexicon:
     def __init__(self):
-        df = pd.read_csv("./data/NorMedTerm.csv", delimiter="\t")
-        self.lexicon = df[(df["ABBREV"] == "CONDITION")]
-        self.lexicon["ABBREV"].replace("PROCEDURE", "EVENT", inplace=True)  # type: ignore
-        self.lexicon = self.lexicon[["a.", "ABBREV"]]
         self.stemmer = SnowballStemmer("norwegian")
 
-    def run(self, data, exact=True):
-        all_labels = []
-        for term in data:
-            if exact:
-                result = self.lexicon[
-                    self.lexicon["a."].str.lower() == str(term).lower()  # type: ignore
-                ]
+        ### Import dictionary data
+        df = pd.read_csv("./data/NorMedTerm.csv", delimiter="\t")
+        self.lexicon = df[["a.", "ABBREV"]]
+        self.lexicon["ABBREV"] = self.lexicon["ABBREV"].apply(lambda x: 'TREATMENT' if x in ['PROCEDURE', 'SUBSTANCE'] 
+                                   else 'CONDITION' if x == 'CONDITION' 
+                                   else 'O')
+        self.lexicon["Length"] = self.lexicon["ABBREV"].apply(lambda x: len(x.split()))
+        self.lexicon = self.lexicon[self.lexicon["Length"] < 4]
+        
+        temp = self.lexicon[['a.', "ABBREV"]].values
+
+        words = {   
+}
+        for item in temp:
+            curr = item[0].split()
+            for word in curr:
+                word = self.stemmer.stem(word)
+                if word not in words:
+                    words[word] = {}
+                    words[word]['Count'] = 0
+                    words[word]['Category'] = set()
+                words[word]['Category'].add(item[1])
+                words[word]['Count'] += 1
+
+        temp_df = pd.DataFrame(columns=['Word', 'Category', 'Count'])
+        temp_df['Word'] = words.keys()
+        temp_df['Category'] = [ list(words[word]['Category'])[0] if len(words[word]['Category']) == 1 else 'O' for word in words]
+        temp_df['Count'] = [words[word]['Count'] for word in words]
+
+        # Sort by count (optional)
+        temp_df = temp_df.sort_values(by='Count', ascending=False)
+        temp_df['Word-Length']= temp_df['Word'].apply(lambda x: len(x))
+        temp_df['Word'] = temp_df['Word'].apply(lambda x: self.stemmer.stem(x.lower()))
+
+        self.lexicon = temp_df[temp_df["Word-Length"] > 2] 
+        
+        common = pd.read_csv("./data/common.csv", header=None, delimiter=",")
+        self.common = common.values
+        self.common = [self.stemmer.stem(str(word[0])) for word in self.common]
+    
+    def run(self, data):
+        words = data.strip().split()
+        
+        predictions = []
+        
+        for word in words:
+            word = self.stemmer.stem(str(word).lower())
+            print(word)
+            print(self.common)
+            if word in self.common:
+                print("common")
+                predictions.append("O")
             else:
-                result = self.lexicon[
-                    self.lexicon["a."].str.contains(  # type: ignore
-                        str(term), case=False, na=False, regex=False
-                    )
-                ]
-            if len(result) == 0:
-                terms = term.split()
-                if len(terms) > 0:
-                    major_value = None
-                    for t in terms:
-                        if exact:
-                            result = self.lexicon[
-                                self.lexicon["a."].str.lower() == t.lower()  # type: ignore
-                            ]
-                        else:
-                            result = self.lexicon[
-                                self.lexicon["a."].str.contains(  # type: ignore
-                                    t, case=False, na=False, regex=False
-                                )
-                            ]
-                        if len(result) == 0:
-                            continue
-                        else:
-                            major_value = result["ABBREV"].value_counts().idxmax()  # type: ignore
-                            all_labels.append(major_value)
-                            break
-                    if not major_value:
-                        all_labels.append("O")
+                result = self.lexicon[self.lexicon['Word'] == word]
+                if len(result) < 1:
+                    print("NONE")
+                    predictions.append("O")
                 else:
-                    all_labels.append("O")
-            else:
-                major_value = result["ABBREV"].value_counts().idxmax()  # type: ignore
-                all_labels.append(major_value)
-        return all_labels
-
-    def predict(self, dataset, tokenizer):
-        if len(dataset) == 1:
-            dataset = [dataset]
-        lexi_predictions = []
-        for tokenized in dataset:
-            words = tokenizer.decode(tokenized["input_ids"]).split()
-            annot = self.run(words)
-            tokens_annot = Preprocess(tokenizer).tokens_mapping(tokenized, annot)
-            lexi_predictions.extend(tokens_annot)
-        return lexi_predictions
-
-    def merge(self, lexi_pred, pred):
-        new_pred = list()
-        for i, val in enumerate(pred):
-            if val == "O" and lexi_pred[i] != "O":
-                new_pred.append(lexi_pred[i])
-            else:
-                new_pred.append(val)
-        return new_pred
-
+                    predictions.append(result.to_numpy()[0][1])
+                    print(result)
+        
+        return predictions
+            
 
 if __name__ == "__main__":
-    print(Lexicon().run(["hei", "på"]))
+    lex = Lexicon()
+    text = "Pasienten har også opplevd økt tungpust de siste månedene, noe som har begrenset aktivitetsnivået hans og hadde hjerteinfarkt ifjor."
+
+    print(lex.run(text))
