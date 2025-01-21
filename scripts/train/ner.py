@@ -16,9 +16,11 @@ manager = DatasetManager(files)
 
 for i, conf in enumerate(configs):
     print(f"###### ({i}) Training for configuration file: {conf}")
-    save_directory = conf.replace(".ini", "")
+    save_directory = "./models/" + conf.replace(".ini", "")
     ner = NERecognition(
-        config_file=conf, manager=manager, save_directory=save_directory
+        config_file="./scripts/train/config/ner/" + conf,
+        manager=manager,
+        save_directory=save_directory,
     )
     print("Finished with this task.")
 

@@ -1,3 +1,4 @@
+import os
 from transformers import (
     AutoModelForTokenClassification,
     AutoModelForSequenceClassification,
@@ -138,6 +139,8 @@ class BERT:
             Util().validate_report(labels, predictions)
 
             # Save the model
+            if not os.path.exists(save):
+                os.makedirs(save)
             self.__model.save_pretrained(save)
 
             # Save the tokenizer
