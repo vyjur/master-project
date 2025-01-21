@@ -33,7 +33,7 @@ class NN:
         self.tokenizer = tokenizer
         self.__task = task
 
-        # TODO
+        # TODO:
         # embedding_dim = self.tokenizer.model_max_length
         embedding_dim = 300
         processed = Preprocess(
@@ -141,7 +141,6 @@ class NN:
                     outputs = self.__model(ids)
                     flattened_targets = targets.view(-1)
                     # shape (batch_size * seq_len,)
-
                     curr_loss = loss
                     predictions = outputs
                     tr_accuracy += accuracy_score(
@@ -155,8 +154,6 @@ class NN:
                 predictions = outputs
                 with torch.no_grad():
                     curr_loss = loss
-                    print("target", targets.view(-1).shape)
-                    print("predictions", predictions.view(-1).shape)
                     flattened_predictions = torch.argmax(
                         outputs,
                         axis=1,  # type: ignore

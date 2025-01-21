@@ -18,11 +18,16 @@ class BERTBiLSTM:
     ):
         class Model(BaseModel):
             def __init__(self, batch, vocab_size, tag_to_ix, embedding_dim, hidden_dim):
-                BaseModel.__init__(
-                    self, batch, vocab_size, tag_to_ix, embedding_dim, hidden_dim
-                )
                 bert_model = AutoModel.from_pretrained(pretrain, trust_remote_code=True)
-                self.word_embeds = bert_model
+                BaseModel.__init__(
+                    self,
+                    batch,
+                    vocab_size,
+                    tag_to_ix,
+                    embedding_dim,
+                    hidden_dim,
+                    bert_model,
+                )
 
         self.__model = NN(
             Model,  # type: ignore
