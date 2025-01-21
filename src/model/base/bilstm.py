@@ -5,7 +5,9 @@ from structure.enum import Task
 
 
 class Model(nn.Module):
-    def __init__(self, batch, vocab_size, tag_to_ix, embedding_dim, hidden_dim):
+    def __init__(
+        self, batch, vocab_size, tag_to_ix, embedding_dim, hidden_dim, bert_model=None
+    ):
         super(Model, self).__init__()
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -17,20 +19,38 @@ class Model(nn.Module):
         self.tagset_size = len(tag_to_ix)
 
         self.batch = batch
-        self.word_embeds = nn.Embedding(vocab_size, embedding_dim)
-        self.lstm = nn.LSTM(
-            embedding_dim,
-            hidden_dim // 2,
-            num_layers=1,
-            bidirectional=True,
-            batch_first=True,
-        )
+
+        self.bert = bert_model is not None
+
+        if bert_model is not None:
+            self.word_embeds = bert_model
+            self.lstm = nn.LSTM(
+                embedding_dim,
+                hidden_dim // 2,
+                num_layers=1,
+                bidirectional=True,
+                batch_first=True,
+            )
+        else:
+            self.word_embeds = nn.Embedding(vocab_size, embedding_dim)
+
+            self.lstm = nn.LSTM(
+                embedding_dim,
+                hidden_dim // 2,
+                num_layers=1,
+                bidirectional=True,
+                batch_first=True,
+            )
 
         # Maps the output of the LSTM into tag space.
         self.hidden2tag = nn.Linear(hidden_dim, self.tagset_size)
 
     def _get_lstm_features(self, sentences):
-        embeds = self.word_embeds(sentences)
+        embeds = self.word_embeds(sentences)  # type: ignore
+
+        if self.bert:
+            embeds = embeds.last_hidden_state
+
         lstm_out, (hidden, _) = self.lstm(embeds)
         lstm_out = torch.mean(lstm_out, dim=1).to(self.device)
         lstm_feats = self.hidden2tag(lstm_out)

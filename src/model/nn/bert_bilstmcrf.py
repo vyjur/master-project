@@ -2,6 +2,7 @@ from transformers import AutoModel
 from model.nn.bilstmcrf import Model as BaseModel
 from model.base.nn import NN
 from structure.enum import Task
+import torch as nn
 
 
 class BERTBiLSTMCRF:
