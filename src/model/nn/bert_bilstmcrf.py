@@ -1,4 +1,4 @@
-from transformers import BertModel
+from transformers import AutoModel
 from model.nn.bilstmcrf import Model as BaseModel
 from model.base.nn import NN
 from structure.enum import Task
@@ -17,8 +17,11 @@ class BERTBiLSTMCRF:
         pretrain: str | None = None,
     ):
         class Model(BaseModel):
-            def __init__(self):
-                bert_model = BertModel.from_pretrained(pretrain)
+            def __init__(self, batch, vocab_size, tag_to_ix, embedding_dim, hidden_dim):
+                BaseModel.__init__(
+                    self, batch, vocab_size, tag_to_ix, embedding_dim, hidden_dim
+                )
+                bert_model = AutoModel.from_pretrained(pretrain, trust_remote_code=True)
                 self.word_embeds = bert_model
 
         self.__model = NN(

@@ -59,11 +59,14 @@ class BERT:
 
             print("Model and tokenizer loaded successfully.")
         else:
-            wandb.init(project=f"{project_name}-{task}-bert-model")
+            wandb.init(project=f"{project_name}-{task}-bert-model".replace('"', ""))  # type: ignore
             wandb.config = {
                 "learning_rate": parameters["learning_rate"],
                 "epochs": parameters["epochs"],
                 "batch_size": parameters["train_batch_size"],
+                "evaluation_strategy": "epoch",
+                "save_strategy": "epoch",
+                "logging_strategy": "epoch",
             }
 
             processed = Preprocess(
@@ -131,7 +134,7 @@ class BERT:
                     lr_scheduler,
                     loss_fn,
                 )
-            wandb.log({"loss": loss, "accuracy": acc})  # type: ignore
+                wandb.log({"loss": loss, "accuracy": acc})  # type: ignore
 
             labels, predictions = self.__valid(
                 testing_loader, self.__device, processed["id2label"]
@@ -145,6 +148,7 @@ class BERT:
 
             # Save the tokenizer
             self.tokenizer.save_pretrained(save)  # type:ignore
+            wandb.finish()
 
         if task == Task.SEQUENCE:
             task_text = "text"

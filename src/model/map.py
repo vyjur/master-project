@@ -1,4 +1,5 @@
 from model.nn.bert_bilstmcrf import BERTBiLSTMCRF
+from model.nn.bert_bilstm import BERTBiLSTM
 from model.nn.bilstmcrf import BiLSTMCRF
 from model.base.bilstm import BiLSTM
 from model.base.bert import BERT
@@ -10,6 +11,7 @@ MODEL_MAP = {
     "BERT": BERT,
     "TokenBERT": TokenBERT,
     "SequenceBERT": SequenceBERT,
+    "BERTBiLSTM": BERTBiLSTM,
     "BERTBiLSTMCRF": BERTBiLSTMCRF,
     "BiLSTMCRF": BiLSTMCRF,
     "BiLSTM": BiLSTM,
