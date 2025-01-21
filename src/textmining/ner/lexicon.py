@@ -59,19 +59,14 @@ class Lexicon:
         
         for word in words:
             word = self.stemmer.stem(str(word).lower())
-            print(word)
-            print(self.common)
             if word in self.common:
-                print("common")
                 predictions.append("O")
             else:
                 result = self.lexicon[self.lexicon['Word'] == word]
                 if len(result) < 1:
-                    print("NONE")
                     predictions.append("O")
                 else:
                     predictions.append(result.to_numpy()[0][1])
-                    print(result)
         
         return predictions
             
