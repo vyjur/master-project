@@ -2,20 +2,23 @@ from enum import Enum
 
 class Dataset(Enum):
     NER = 1
-    TFE = 2
-    TRE = 3
-    ERE = 4
-    SENTENCES = 5
+    TRE_DCT = 2
+    TRE_TLINK = 3
+    SENTENCES = 4
 
 class Task(Enum):
     TOKEN = 1
     SEQUENCE = 2
     
-class TR(Enum):
+class TR_DCT(Enum):
     XAFTERY = 1
     XBEFOREY = 2
     XDURINGY = 3
     
+class TR_TLINK(Enum):
+    XAFTERY = 1
+    XBEFOREY = 2
+    XDURINGY = 3
 class ME(Enum):
     CONDITION = 1
     SYMPTOM = 2

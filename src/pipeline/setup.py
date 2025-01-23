@@ -1,7 +1,6 @@
 import os
 import configparser
 from preprocess.util import majority_element
-from transformers import AutoTokenizer
 from textmining.ner.setup import NERecognition
 
 # from textmining.ere.setup import ERExtract
@@ -13,6 +12,9 @@ from preprocess.setup import Preprocess
 from structure.relation import Relation
 from visualization.setup import VizTool
 from pipeline.util import remove_duplicates, find_duplicates
+
+from structure.enum import Dataset, TR_DCT, TR_TLINK
+from structure.node import Node
 
 
 class Pipeline:
@@ -35,7 +37,8 @@ class Pipeline:
         ### Initialize text mining modules ###
         self.__ner = NERecognition(self.__config["CONFIGS"]["ner"], manager)
         # self.__ere = ERExtract(self.__config['CONFIGS']['ere'], manager)
-        self.__tre = TRExtract(self.__config["CONFIGS"]["tre"], manager)
+        self.__tre_dct = TRExtract(self.__config["CONFIGS"]["tre"], manager, Dataset.TRE_DCT)
+        self.__tre_tlink = TRExtract(self.__config["CONFIGS"]["tre"], manager, Dataset.TRE_DCT)
 
         ### Initialize preprocessing module ###
         self.__preprocess = Preprocess(
@@ -76,6 +79,9 @@ class Pipeline:
         for doc in documents:
             output = self.__preprocess.run(doc)
             ### Text Mining ###
+            
+            
+            ##### Perform Medical Entity Extraction
             ner_output = self.__ner.run(output)
             entities = []
             for i, _ in enumerate(output):
@@ -106,29 +112,42 @@ class Pipeline:
                         .replace("[SEP]", "")
                         .replace("[PAD]", "")
                     )
-                    entities.append((entity, context, entype))
+                    entities.append(Node(entity, entype, None, context, None, []))
 
-            ### TODO: choose candidate pairs
-            for i, e_i in enumerate(entities):
-                for j, e_j in enumerate(entities):
-                    if i == j:
-                        continue
-                    relation = (
-                        f"{e_i.value}: {e_i.context} [SEP] {e_j.value}: {e_j.context}"
-                    )
-                    tokenized_relation = relation
-                    tre_output = majority_element(self.__tre.run(tokenized_relation))
-                    # ere_output = majority_element(self.__ere.run(tokenized_relation))
-                    if tre_output != "O":
-                        e_i.relations.append(Relation(e_i, e_j, tre_output, ""))
+            ### Temporal Relation Extraction
+            
+            ### DocTimeRel Extraction
+            dcts = {}
+            
+            ##### Initialize groups for selecting candidate pairs
+            for cat in TR_DCT:
+                dcts[cat] = []
+            
+            ##### Predicting each entities' group
+            for e in entities:
+                cat = self.__tre_dct.run(e_i)
+                e_i.dct = cat
+                dcts[cat].append(e)
+           
+            ##### The candidate pairs are pairs within a group
+            ##### Although triple loop, this should be quicker than checking all entities
+            ##### O(N^2)>O(len(dcts)*(N_i^2)) where N_i < N
+            for cat in dcts:
+                for i, e_i in enumerate(dcts[cat]):
+                    for j, e_j in enumerate(dcts[cat]):
+                        if i == j:
+                            continue
+                        tre_output = self.__tre_tlink.run(e_i, e_j)
+                        if tre_output != "O":
+                            e_i.relations.append(Relation(e_i, e_j, tre_output, ""))
 
-            ### Remove local duplicates
+            ### TODO: fix this Remove local duplicates
             duplicates = find_duplicates(entities)
             entities = remove_duplicates(entities, duplicates)
 
             rel_entities.append(entities)
 
-        ### Constructing trajectory ###
+        ### TODO: (THIS NEEDS TO BE FIXED) Constructing trajectory across documents ###
         ### Add edges between duplicates across documents
         for i in range(len(rel_entities) - 1):
             check_entities = []

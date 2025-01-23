@@ -104,15 +104,15 @@ class DatasetManager:
                 return self.__get_docs_by_cols(
                     ["id", "sentence_id", "Text", "Medical Entity"]
                 )
-            case Dataset.TFE:
-                return self.__get_docs_by_cols(["id", "Text", "Temporal Feature"])
-            case Dataset.TRE:
+            case Dataset.TRE_DCT:
+                # TODO: fix here
                 return self.__get_docs_by_cols(
                     ["id", "Text", "Temporal Relation", "fk_id"]
                 )
-            case Dataset.ERE:
+            case Dataset.TRE_TLINK:
+                # TODO: fix here
                 return self.__get_docs_by_cols(
-                    ["id", "Text", "Entity Relation", "fk_id"]
+                    ["id", "Text", "Temporal Relation", "fk_id"]
                 )
             case Dataset.SENTENCES:
                 return self.__get_sentences()
@@ -134,5 +134,5 @@ if __name__ == "__main__":
         ["./data/annotated/journal.tsv", "./data/annotated/journal-2.tsv"]
     )
 
-    print(manager.get(Dataset.NER))
+    print(manager.get(Dataset.TRE_DCT))
 

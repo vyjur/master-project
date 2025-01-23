@@ -42,7 +42,12 @@ class NN:
         class_weights = Util().class_weights(task, processed["dataset"], self.__device)
 
         tag_to_ix = processed["label2id"]
-        # self.__tag_to_ix = tag_to_ix
+        
+        if len(tag_to_ix) != len(class_weights):
+            del tag_to_ix['O']
+            for tag in tag_to_ix:
+                tag_to_ix[tag] -= 1
+
         if task == Task.TOKEN:
             START_ID = max(processed["id2label"].keys()) + 1
             STOP_ID = max(processed["id2label"].keys()) + 2

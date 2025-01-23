@@ -15,12 +15,12 @@ class Util:
         cat_labels = [ lab.replace("B-", "").replace("I-", "") for lab in labels]
         cat_predictions = [ lab.replace("B-", "").replace("I-", "") for lab in predictions]
         
-        tags = set(cat_labels).union(set(cat_predictions))
+        tags = list(set(cat_labels).union(set(cat_predictions)))
 
         print("### Summary")
-        print(classification_report(cat_labels, cat_predictions), labels=tags) 
+        print(classification_report(cat_labels, cat_predictions, labels=tags)) 
         
-    def get_tags(self, task, tags_name):
+    def get_tags(self, task, tags_name, default=True):
         tags = set()
         
         
@@ -36,11 +36,15 @@ class Util:
                 
         tags = list(tags)
 
-        label2id = {k: v+1 for v, k in enumerate(tags)}
-        id2label = {v+1: k for v, k in enumerate(tags)}
+        if default:
+            label2id = {k: v+1 for v, k in enumerate(tags)}
+            id2label = {v+1: k for v, k in enumerate(tags)}
 
-        label2id['O'] = 0
-        id2label[0]='O'
+            label2id['O'] = 0
+            id2label[0]='O'
+        else:
+            label2id = {k: v for v, k in enumerate(tags)}
+            id2label = {v: k for v, k in enumerate(tags)}
         
         return label2id, id2label
     
