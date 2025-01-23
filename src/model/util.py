@@ -20,7 +20,7 @@ class Util:
         print("### Summary")
         print(classification_report(cat_labels, cat_predictions, labels=tags)) 
         
-    def get_tags(self, task, tags_name, default=True):
+    def get_tags(self, task:Task, tags_name: [], default=True):
         tags = set()
         
         

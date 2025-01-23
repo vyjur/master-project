@@ -8,12 +8,15 @@ class Node:
         self.id = id
         self.value = value
         
+        self.type = None
+        
         # TODO: should this be in here or move to pipeline? and let this be dummy class?
         for me in ME:
             if type == me.name:
                 self.type = me
                 break
         
+        self.dct = None
         for tr in TR_DCT:
             if dct == tr.name:
                 self.dct = tr

@@ -20,7 +20,10 @@ class VizTool:
 
     def clear(self):
         # TODO: fix this
-        self.net = Network(*self.config)  # type: ignore
+        if self.config == None:
+            self.net = Network()
+        else:
+            self.net = Network(*self.config)  # type: ignore
 
     def create(self, entities):
         self.clear()
@@ -34,7 +37,8 @@ class VizTool:
                     color = "#FAC748"
                 case _:
                     color = "grey"
-
+                    
+            print(entity.id, entity.value, entity.type.name)
             self.net.add_node(
                 entity.id, entity.value, color=color, title=entity.type.name
             )

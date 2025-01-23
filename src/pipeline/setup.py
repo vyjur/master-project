@@ -72,7 +72,7 @@ class Pipeline:
 
     def run(self, documents):
         ### Extract text from PDF ###
-        # TODO: add document logic
+        # TODO: add document logic, is this necessary?
 
         rel_entities = []
 
@@ -121,12 +121,11 @@ class Pipeline:
             
             ##### Initialize groups for selecting candidate pairs
             for cat in TR_DCT:
-                dcts[cat] = []
-            
+                dcts[cat.name] = []
             ##### Predicting each entities' group
             for e in entities:
-                cat = self.__tre_dct.run(e_i)
-                e_i.dct = cat
+                cat = self.__tre_dct.run(e)
+                e.dct = cat
                 dcts[cat].append(e)
            
             ##### The candidate pairs are pairs within a group
@@ -141,13 +140,13 @@ class Pipeline:
                         if tre_output != "O":
                             e_i.relations.append(Relation(e_i, e_j, tre_output, ""))
 
-            ### TODO: fix this Remove local duplicates
+            ### Remove local duplicates (document-level)
             duplicates = find_duplicates(entities)
             entities = remove_duplicates(entities, duplicates)
 
             rel_entities.append(entities)
 
-        ### TODO: (THIS NEEDS TO BE FIXED) Constructing trajectory across documents ###
+        ### TODO: (THIS NEEDS TO BE FIXED?) Constructing trajectory across documents ###
         ### Add edges between duplicates across documents
         for i in range(len(rel_entities) - 1):
             check_entities = []
