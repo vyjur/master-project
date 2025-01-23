@@ -112,7 +112,7 @@ class DatasetManager:
             case Dataset.TRE_TLINK:
                 # TODO: fix here
                 return self.__get_docs_by_cols(
-                    ["id", "Text", "Entity Relation", "fk_id"]
+                    ["id", "Text", "Temporal Relation", "fk_id"]
                 )
             case Dataset.SENTENCES:
                 return self.__get_sentences()
@@ -134,5 +134,5 @@ if __name__ == "__main__":
         ["./data/annotated/journal.tsv", "./data/annotated/journal-2.tsv"]
     )
 
-    print(manager.get(Dataset.NER))
+    print(manager.get(Dataset.TRE_DCT))
 

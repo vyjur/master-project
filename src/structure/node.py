@@ -1,23 +1,23 @@
-from structure.enum import ME
+from structure.enum import ME, TR_DCT
 
-
+# TODO: change name?
 class Node:
     def __init__(
-        self, value: str, type: str, context: str, date, relations: list = [], id=None
+        self, value: str, type: str, dct: str, context: str, date, relations: list = [], id=None
     ):
         self.id = id
         self.value = value
-
-        match type:
-            case "CONDITION":
-                self.type = ME.CONDITION
-            case "SYMPTOM":
-                self.type = ME.SYMPTOM
-            case "EVENT":
-                self.type = ME.EVENT
-            case _:
-                self.type = None
-
+        
+        # TODO: should this be in here or move to pipeline? and let this be dummy class?
+        for me in ME:
+            if type == me.name:
+                self.type = me
+                break
+        
+        for tr in TR_DCT:
+            if dct == tr.name:
+                self.dct = tr
+            
         self.date = date
         self.context = context
         self.relations = relations

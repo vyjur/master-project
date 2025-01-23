@@ -15,10 +15,10 @@ class Util:
         cat_labels = [ lab.replace("B-", "").replace("I-", "") for lab in labels]
         cat_predictions = [ lab.replace("B-", "").replace("I-", "") for lab in predictions]
         
-        tags = set(cat_labels).union(set(cat_predictions))
+        tags = list(set(cat_labels).union(set(cat_predictions)))
 
         print("### Summary")
-        print(classification_report(cat_labels, cat_predictions), labels=tags) 
+        print(classification_report(cat_labels, cat_predictions, labels=tags)) 
         
     def get_tags(self, task, tags_name):
         tags = set()
