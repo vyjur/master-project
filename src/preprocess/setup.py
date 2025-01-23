@@ -110,9 +110,11 @@ class Preprocess:
                 annot = [val[1] for val in row]
                 split_into_words = True
             else:
-                words = f"{row['i']}: {row['context_i']} [SEP] {row['j']}: {row['context_j']}"
+                # TODO: how to move this out
+                words = row["sentence"] 
                 split_into_words = False
-
+                
+            # TODO: fix max_length here, sentence boundary
             tokenized = self.__tokenizer(
                 words,
                 padding="max_length",

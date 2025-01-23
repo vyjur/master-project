@@ -4,7 +4,10 @@ from preprocess.dataset import DatasetManager
 
 print("##### Start training for TRE... ######")
 
-folder = "./scripts/train/config/tre/"
+# Info: Change here
+TRE_TYPE = "tlink"
+
+folder = f"./scripts/train/config/tre/{TRE_TYPE}"
 configs = os.listdir(folder)
 folder_path = "./data/annotated/"
 files = [
@@ -18,7 +21,7 @@ for i, conf in enumerate(configs):
     if conf != 'c-bert-bilstm.ini':
         continue
     print(f"###### ({i}) Training for configuration file: {conf}")
-    save_directory = "./models/tre/" + conf.replace(".ini", "")
+    save_directory = f"./models/tre/{TRE_TYPE}/" + conf.replace(".ini", "")
     ner = TRExtract(
         config_file=folder + conf,
         manager=manager,

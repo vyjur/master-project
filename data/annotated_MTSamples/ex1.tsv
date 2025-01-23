@@ -1,0 +1,314 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MER|DCT|NER
+
+
+#Text=SUBJEKTIV: Denne 23 år gamle, hvite kvinnen klager over allergi.
+1-1	0-9	SUBJEKTIV	_	_	
+1-2	9-10	:	_	_	
+1-3	11-16	Denne	_	_	
+1-4	17-19	23	_	_	
+1-5	20-22	år	_	_	
+1-6	23-28	gamle	_	_	
+1-7	28-29	,	_	_	
+1-8	30-35	hvite	_	_	
+1-9	36-43	kvinnen	_	_	
+1-10	44-50	klager	_	_	
+1-11	51-55	over	_	_	
+1-12	56-63	allergi	DURING	DISEASE	
+1-13	63-64	.	_	_	
+
+#Text=Hun pleide å ha allergi da hun bodde i Seattle, men hun synes det er verre her.
+2-1	65-68	Hun	_	_	
+2-2	69-75	pleide	_	_	
+2-3	76-77	å	_	_	
+2-4	78-80	ha	_	_	
+2-5	81-88	allergi	_	_	
+2-6	89-91	da	_	_	
+2-7	92-95	hun	_	_	
+2-8	96-101	bodde	_	_	
+2-9	102-103	i	_	_	
+2-10	104-111	Seattle	_	_	
+2-11	111-112	,	_	_	
+2-12	113-116	men	_	_	
+2-13	117-120	hun	_	_	
+2-14	121-126	synes	_	_	
+2-15	127-130	det	_	_	
+2-16	131-133	er	_	_	
+2-17	134-139	verre	_	_	
+2-18	140-143	her	_	_	
+2-19	143-144	.	_	_	
+
+#Text=Tidligere har hun prøvd Claritin og Zyrtec.
+3-1	145-154	Tidligere	_	_	
+3-2	155-158	har	_	_	
+3-3	159-162	hun	_	_	
+3-4	163-168	prøvd	_	_	
+3-5	169-177	Claritin	BEFORE	TREATMENT	
+3-6	178-180	og	_	_	
+3-7	181-187	Zyrtec	BEFORE	TREATMENT	
+3-8	187-188	.	_	_	
+
+#Text=Begge virket i en kort periode, men så så det ut til at de mistet effekten.
+4-1	189-194	Begge	_	_	
+4-2	195-201	virket	_	_	
+4-3	202-203	i	_	_	
+4-4	204-206	en	_	_	
+4-5	207-211	kort	_	_	
+4-6	212-219	periode	_	_	
+4-7	219-220	,	_	_	
+4-8	221-224	men	_	_	
+4-9	225-227	så	_	_	
+4-10	228-230	så	_	_	
+4-11	231-234	det	_	_	
+4-12	235-237	ut	_	_	
+4-13	238-241	til	_	_	
+4-14	242-244	at	_	_	
+4-15	245-247	de	_	_	
+4-16	248-254	mistet	_	_	
+4-17	255-263	effekten	_	_	
+4-18	263-264	.	_	_	
+
+#Text=Hun har også brukt Allegra.
+5-1	265-268	Hun	_	_	
+5-2	269-272	har	_	_	
+5-3	273-277	også	_	_	
+5-4	278-283	brukt	_	_	
+5-5	284-291	Allegra	BEFORE	TREATMENT	
+5-6	291-292	.	_	_	
+
+#Text=Hun brukte det i fjor sommer, og hun begynte å bruke det igjen for to uker siden.
+6-1	293-296	Hun	_	_	
+6-2	297-303	brukte	_	_	
+6-3	304-307	det	_	_	
+6-4	308-309	i	_	_	
+6-5	310-314	fjor	_	_	
+6-6	315-321	sommer	_	_	
+6-7	321-322	,	_	_	
+6-8	323-325	og	_	_	
+6-9	326-329	hun	_	_	
+6-10	330-337	begynte	_	_	
+6-11	338-339	å	_	_	
+6-12	340-345	bruke	_	_	
+6-13	346-349	det	_	_	
+6-14	350-355	igjen	_	_	
+6-15	356-359	for	_	_	
+6-16	360-362	to	_	_	
+6-17	363-367	uker	_	_	
+6-18	368-373	siden	_	_	
+6-19	373-374	.	_	_	
+
+#Text=Det ser ikke ut til å fungere særlig godt.
+7-1	375-378	Det	_	_	
+7-2	379-382	ser	_	_	
+7-3	383-387	ikke	_	_	
+7-4	388-390	ut	_	_	
+7-5	391-394	til	_	_	
+7-6	395-396	å	_	_	
+7-7	397-404	fungere	_	_	
+7-8	405-411	særlig	_	_	
+7-9	412-416	godt	_	_	
+7-10	416-417	.	_	_	
+
+#Text=Hun har brukt reseptfrie sprayer, men ingen reseptbelagte nesesprayer.
+8-1	418-421	Hun	_	_	
+8-2	422-425	har	_	_	
+8-3	426-431	brukt	_	_	
+8-4	432-442	reseptfrie	BEFORE[1]	TREATMENT[1]	
+8-5	443-450	sprayer	BEFORE[1]	TREATMENT[1]	
+8-6	450-451	,	_	_	
+8-7	452-455	men	_	_	
+8-8	456-461	ingen	_	_	
+8-9	462-475	reseptbelagte	_	_	
+8-10	476-487	nesesprayer	_	_	
+8-11	487-488	.	_	_	
+
+#Text=Hun har astma, men trenger ikke daglig medisinering for dette og tror ikke at det blusser opp.
+9-1	489-492	Hun	_	_	
+9-2	493-496	har	_	_	
+9-3	497-502	astma	BEFORE/OVERLAP	*	
+9-4	502-503	,	_	_	
+9-5	504-507	men	_	_	
+9-6	508-515	trenger	_	_	
+9-7	516-520	ikke	_	_	
+9-8	521-527	daglig	_	_	
+9-9	528-540	medisinering	_	_	
+9-10	541-544	for	_	_	
+9-11	545-550	dette	_	_	
+9-12	551-553	og	_	_	
+9-13	554-558	tror	_	_	
+9-14	559-563	ikke	_	_	
+9-15	564-566	at	_	_	
+9-16	567-570	det	_	_	
+9-17	571-578	blusser	_	_	
+9-18	579-582	opp	_	_	
+9-19	582-583	.	_	_	
+
+#Text=MEDISINER: Hennes eneste medisiner for tiden er Ortho Tri-Cyclen og Allegra.
+10-1	585-594	MEDISINER	_	_	
+10-2	594-595	:	_	_	
+10-3	596-602	Hennes	_	_	
+10-4	603-609	eneste	_	_	
+10-5	610-619	medisiner	_	_	
+10-6	620-623	for	_	_	
+10-7	624-629	tiden	_	_	
+10-8	630-632	er	_	_	
+10-9	633-638	Ortho	BEFORE/OVERLAP[2]	*[2]	
+10-10	639-649	Tri-Cyclen	BEFORE/OVERLAP[2]	*[2]	
+10-11	650-652	og	_	_	
+10-12	653-660	Allegra	_	_	
+10-13	660-661	.	_	_	
+
+#Text=ALLERGIER: Hun har ingen kjente medisinallergier.
+11-1	663-672	ALLERGIER	_	_	
+11-2	672-673	:	_	_	
+11-3	674-677	Hun	_	_	
+11-4	678-681	har	_	_	
+11-5	682-687	ingen	_	_	
+11-6	688-694	kjente	_	_	
+11-7	695-711	medisinallergier	_	_	
+11-8	711-712	.	_	_	
+
+#Text=MÅLSETTING
+#Text=Vitale tegn: Vekten var 130 pund og blodtrykket 124/78.
+12-1	714-724	MÅLSETTING	_	_	
+12-2	725-731	Vitale	_	_	
+12-3	732-736	tegn	_	_	
+12-4	736-737	:	_	_	
+12-5	738-744	Vekten	_	_	
+12-6	745-748	var	_	_	
+12-7	749-752	130	_	_	
+12-8	753-757	pund	_	_	
+12-9	758-760	og	_	_	
+12-10	761-772	blodtrykket	_	_	
+12-11	773-776	124	_	_	
+12-12	776-777	/	_	_	
+12-13	777-779	78	_	_	
+12-14	779-780	.	_	_	
+
+#Text=HJERTE: Halsen var lett erytematøs uten eksudat.
+13-1	781-787	HJERTE	_	_	
+13-2	787-788	:	_	_	
+13-3	789-795	Halsen	_	_	
+13-4	796-799	var	_	_	
+13-5	800-804	lett	_	_	
+13-6	805-815	erytematøs	_	_	
+13-7	816-820	uten	_	_	
+13-8	821-828	eksudat	_	_	
+13-9	828-829	.	_	_	
+
+#Text=Neseslimhinnen var erytematøs og hoven.
+14-1	830-844	Neseslimhinnen	_	_	
+14-2	845-848	var	_	_	
+14-3	849-859	erytematøs	DURING	SYMPTOM	
+14-4	860-862	og	_	_	
+14-5	863-868	hoven	_	_	
+14-6	868-869	.	_	_	
+
+#Text=Kun klar drenasje ble sett.
+15-1	870-873	Kun	_	_	
+15-2	874-878	klar	_	_	
+15-3	879-887	drenasje	_	_	
+15-4	888-891	ble	_	_	
+15-5	892-896	sett	_	_	
+15-6	896-897	.	_	_	
+
+#Text=TM-ene var klare.
+16-1	898-904	TM-ene	_	_	
+16-2	905-908	var	_	_	
+16-3	909-914	klare	_	_	
+16-4	914-915	.	_	_	
+
+#Text=Hals: Smidig uten adenopati.
+17-1	916-920	Hals	_	_	
+17-2	920-921	:	_	_	
+17-3	922-928	Smidig	_	_	
+17-4	929-933	uten	_	_	
+17-5	934-943	adenopati	_	_	
+17-6	943-944	.	_	_	
+
+#Text=Lungene: Klare.
+18-1	945-952	Lungene	_	_	
+18-2	952-953	:	_	_	
+18-3	954-959	Klare	_	_	
+18-4	959-960	.	_	_	
+
+#Text=VURDERING: Allergisk rhinitt.
+19-1	962-971	VURDERING	_	_	
+19-2	971-972	:	_	_	
+19-3	973-982	Allergisk	_	_	
+19-4	983-990	rhinitt	_	_	
+19-5	990-991	.	_	_	
+
+#Text=PLAN:
+#Text=1.
+20-1	993-997	PLAN	_	_	
+20-2	997-998	:	_	_	
+20-3	999-1000	1	_	_	
+20-4	1000-1001	.	_	_	
+
+#Text=Hun vil prøve Zyrtec i stedet for Allegra igjen.
+21-1	1002-1005	Hun	_	_	
+21-2	1006-1009	vil	_	_	
+21-3	1010-1015	prøve	_	_	
+21-4	1016-1022	Zyrtec	AFTER	TREATMENT	
+21-5	1023-1024	i	_	_	
+21-6	1025-1031	stedet	_	_	
+21-7	1032-1035	for	_	_	
+21-8	1036-1043	Allegra	_	_	
+21-9	1044-1049	igjen	_	_	
+21-10	1049-1050	.	_	_	
+
+#Text=Et annet alternativ vil være å bruke loratadin.
+22-1	1051-1053	Et	_	_	
+22-2	1054-1059	annet	_	_	
+22-3	1060-1070	alternativ	_	_	
+22-4	1071-1074	vil	_	_	
+22-5	1075-1079	være	_	_	
+22-6	1080-1081	å	_	_	
+22-7	1082-1087	bruke	_	_	
+22-8	1088-1097	loratadin	_	_	
+22-9	1097-1098	.	_	_	
+
+#Text=Hun tror ikke hun har reseptbelagt dekning, så det kan være billigere.
+#Text=2.
+23-1	1099-1102	Hun	_	_	
+23-2	1103-1107	tror	_	_	
+23-3	1108-1112	ikke	_	_	
+23-4	1113-1116	hun	_	_	
+23-5	1117-1120	har	_	_	
+23-6	1121-1133	reseptbelagt	_	_	
+23-7	1134-1141	dekning	_	_	
+23-8	1141-1142	,	_	_	
+23-9	1143-1145	så	_	_	
+23-10	1146-1149	det	_	_	
+23-11	1150-1153	kan	_	_	
+23-12	1154-1158	være	_	_	
+23-13	1159-1168	billigere	_	_	
+23-14	1168-1169	.	_	_	
+23-15	1170-1171	2	_	_	
+23-16	1171-1172	.	_	_	
+
+#Text=Prøver av Nasonex to spray i hvert nesebor gitt i tre uker.
+24-1	1173-1179	Prøver	_	_	
+24-2	1180-1182	av	_	_	
+24-3	1183-1190	Nasonex	AFTER	TREATMENT	
+24-4	1191-1193	to	_	_	
+24-5	1194-1199	spray	_	_	
+24-6	1200-1201	i	_	_	
+24-7	1202-1207	hvert	_	_	
+24-8	1208-1215	nesebor	_	_	
+24-9	1216-1220	gitt	_	_	
+24-10	1221-1222	i	_	_	
+24-11	1223-1226	tre	_	_	
+24-12	1227-1231	uker	_	_	
+24-13	1231-1232	.	_	_	
+
+#Text=Det ble også skrevet ut en resept.
+25-1	1233-1236	Det	_	_	
+25-2	1237-1240	ble	_	_	
+25-3	1241-1245	også	_	_	
+25-4	1246-1253	skrevet	_	_	
+25-5	1254-1256	ut	_	_	
+25-6	1257-1259	en	_	_	
+25-7	1260-1266	resept	_	_	
+25-8	1266-1267	.	_	_	
