@@ -14,6 +14,7 @@ from visualization.setup import VizTool
 from pipeline.util import remove_duplicates, find_duplicates
 
 from structure.enum import Dataset, TR_DCT, TR_TLINK
+from structure.node import Node
 
 
 class Pipeline:
@@ -111,9 +112,9 @@ class Pipeline:
                         .replace("[SEP]", "")
                         .replace("[PAD]", "")
                     )
-                    entities.append((entity, context, entype))
+                    entities.append(Node(entity, entype, None, context, None, []))
 
-            ### TODO: choose candidate pairs
+            ### Temporal Relation Extraction
             
             ### DocTimeRel Extraction
             dcts = {}
@@ -124,8 +125,8 @@ class Pipeline:
             
             ##### Predicting each entities' group
             for e in entities:
-                # TODO: fix here how to insert this and what do we get back from the code should we move this inside
-                cat = self.__tre_dct.run(f"{e_i.value}: {e_i.context}")
+                cat = self.__tre_dct.run(e_i)
+                e_i.dct = cat
                 dcts[cat].append(e)
            
             ##### The candidate pairs are pairs within a group
@@ -136,24 +137,17 @@ class Pipeline:
                     for j, e_j in enumerate(dcts[cat]):
                         if i == j:
                             continue
-                        
-                        ### TODO: should we move this inside the model instead?
-                        relation = (
-                            f"{e_i.value}: {e_i.context} [SEP] {e_j.value}: {e_j.context}"
-                        )
-                        tokenized_relation = relation
-                        tre_output = majority_element(self.__tre_tlink.run(tokenized_relation))
-                        # ere_output = majority_element(self.__ere.run(tokenized_relation))
+                        tre_output = self.__tre_tlink.run(e_i, e_j)
                         if tre_output != "O":
                             e_i.relations.append(Relation(e_i, e_j, tre_output, ""))
 
-            ### Remove local duplicates
+            ### TODO: fix this Remove local duplicates
             duplicates = find_duplicates(entities)
             entities = remove_duplicates(entities, duplicates)
 
             rel_entities.append(entities)
 
-        ### Constructing trajectory ###
+        ### TODO: (THIS NEEDS TO BE FIXED) Constructing trajectory across documents ###
         ### Add edges between duplicates across documents
         for i in range(len(rel_entities) - 1):
             check_entities = []

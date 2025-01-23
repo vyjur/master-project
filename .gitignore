@@ -166,8 +166,9 @@ cython_debug/
 
 # Models
 /notebooks/saved_model/
-/src/ner/saved/*
-!/src/ner/saved/.gitkeep
+/src/textmining/ner/model
+/src/textmining/tre/model
+
 output.*
 script.slurm
 .DS__Store

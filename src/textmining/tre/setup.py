@@ -15,8 +15,9 @@ class TRExtract:
         config_file: str,
         manager: DatasetManager,
         task: Dataset,
-        save_directory: str = "./src/textmining/tre",
+        save_directory: str = "./src/textmining/tre/model",
     ):
+        self.task = task
         self.__config = configparser.ConfigParser()
         self.__config.read(config_file)
 
@@ -43,38 +44,48 @@ class TRExtract:
         }
 
         dataset_ner = manager.get(Dataset.NER)
-        dataset_tre = manager.get(Dataset.TRE)
+
+        # TODO: fix here
+        dataset_tre = manager.get(task)
         sentences = manager.get(Dataset.SENTENCES)
 
         dataset = []
         tags = set()
         for k, doc in enumerate(dataset_ner):
             for i, e_i in enumerate(doc.itertuples()):
-                for j, e_j in enumerate(doc.itertuples()):
-                    if i == j:
-                        continue
-                    relations = dataset_tre[k][
-                        (dataset_tre[k]["fk_id"] == e_i[1])
-                        & (dataset_tre[k]["id"] == e_j[1])
-                    ]
-
-                    if len(relations) == 1:
-                        relation = relations.iloc[0]["Temporal Relation"]
-                    else:
-                        relation = "O"
-
-                        # TODO: downsample majority class
-                        if random.random() < 0.999:
+                if task == Dataset.TRE_TLINK:
+                    for j, e_j in enumerate(doc.itertuples()):
+                        if i == j:
                             continue
-                    relation_pair = {
-                        "i": e_i[3],
-                        "context_i": sentences[k].loc[e_i[2]],
-                        "context_j": sentences[k].loc[e_j[2]],
-                        "j": e_j[3],
-                        "relation": relation,
-                    }
-                    dataset.append(relation_pair)
-                    tags.add(relation)
+                        relations = dataset_tre[k][
+                            (dataset_tre[k]["fk_id"] == e_i[1])
+                            & (dataset_tre[k]["id"] == e_j[1])
+                        ]
+
+                        if len(relations) == 1:
+                            relation = relations.iloc[0]["Temporal Relation"]
+                        else:
+                            relation = "O"
+
+                            # TODO: downsample majority class
+                            if random.random() < 0.999:
+                                continue
+
+                        # TODO: change setup of input with XML tags?
+                        words = f"{e_i[3]}: {sentences[k].loc[e_i[2]]} [SEP] {sentences[k].loc[e_j[2]]}: {e_j[3]}"
+
+                        relation_pair = {
+                            "sentence": words,
+                            "relation": relation,
+                        }
+                        dataset.append(relation_pair)
+                        tags.add(relation)
+                else:
+                    dataset.append(sentences[k].loc[e_i[2]].replace(e_i[3], f"<TAG>{e_i[3]}</TAG>"))
+                    # TODO: add relation what index is this?
+                    tags.add()
+                    
+                    
         tags = list(tags)
         self.label2id, self.id2label = Util().get_tags("sequence", tags)
 
@@ -89,19 +100,35 @@ class TRExtract:
             self.__config["pretrain"]["name"],
         )
 
+        self.preprocess = Preprocess(self.get_tokenizer(), self.get_max_length())
+
     def get_tokenizer(self):
         return self.__model.tokenizer
 
     def get_max_length(self):
         return self.__config.getint("MODEL", "max_length")
 
-    def run(self, data):
+    def __run(self, data):
+        # TODO: fix here
         output = self.__model.predict([val.ids for val in data])
         predictions = [self.id2label[i] for i in output]
-        return predictions
+        return predictions[0]
+
+    def run(self, e_i, e_j):
+        # TODO: fix setuP?
+        if self.task == Dataset.TRE_DCT:
+            text = e_i.context.replace(e_i.value, f"<TAG>{e_i[3]}</TAG>")
+        else:
+            text = (
+                f"{e_i.value}: {e_i.context} [SEP] {e_j.value}: {e_j.context}"
+            )
+        return self.__run(self.preprocess.run(text))
 
 
 if __name__ == "__main__":
+    from structure.enum import Dataset
+    from structure.node import Node
+
     folder_path = "./data/annotated/"
     files = [
         folder_path + f
@@ -110,9 +137,9 @@ if __name__ == "__main__":
     ]
     manager = DatasetManager(files)
 
-    reg = TRExtract("./src/textmining/tre/config.ini", manager)
-    preprocess = Preprocess(reg.get_tokenizer(), reg.get_max_length())
+    reg = TRExtract("./src/textmining/tre/config.ini", manager, Dataset.TRE_TLINK)
 
-    text = "Hei på deg!"
+    e_i = Node("tungpust", None, None, "Han har tungpust", None)
+    e_j = Node("brystsmerter", None, None, "Brystsmertene har vart en stund.", None)
 
-    print(reg.run(preprocess.run(text)))
+    print(reg.run(e_i, e_j))

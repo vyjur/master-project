@@ -15,7 +15,7 @@ class TR_DCT(Enum):
     XBEFOREY = 2
     XDURINGY = 3
     
-class TR_DCT(Enum):
+class TR_TLINK(Enum):
     XAFTERY = 1
     XBEFOREY = 2
     XDURINGY = 3
