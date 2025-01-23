@@ -113,6 +113,7 @@ class Preprocess:
                 words = f"{row['i']}: {row['context_i']} [SEP] {row['j']}: {row['context_j']}"
                 split_into_words = False
 
+            # TODO: fix max_length here, sentence boundary
             tokenized = self.__tokenizer(
                 words,
                 padding="max_length",
