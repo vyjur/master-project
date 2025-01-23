@@ -81,13 +81,19 @@ class TRExtract:
                         dataset.append(relation_pair)
                         tags.add(relation)
                 else:
-                    dataset.append(sentences[k].loc[e_i[2]].replace(e_i[3], f"<TAG>{e_i[3]}</TAG>"))
                     # TODO: add relation what index is this?
-                    tags.add()
                     
+                    test = ["HEY", "YO"]
+                    dataset.append({"sentence": sentences[k].loc[e_i[2]].replace(e_i[3], f"<TAG>{e_i[3]}</TAG>"), "relation": test[i%len(test)]})
+                    tags.add(test[i%len(test)])
                     
         tags = list(tags)
-        self.label2id, self.id2label = Util().get_tags("sequence", tags)
+        self.label2id, self.id2label = Util().get_tags("sequence", tags, task!=Dataset.TRE_DCT)
+        
+        if task == Dataset.TRE_DCT and save_directory == './src/textmining/tre/model':
+            save_directory += "/dct"
+        elif task == Dataset.TRE_TLINK and save_directory == './src/textmining/tre/model':
+            save_directory += "/tlink"
 
         self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
             load,
@@ -117,7 +123,7 @@ class TRExtract:
     def run(self, e_i, e_j):
         # TODO: fix setuP?
         if self.task == Dataset.TRE_DCT:
-            text = e_i.context.replace(e_i.value, f"<TAG>{e_i[3]}</TAG>")
+            text = e_i.context.replace(e_i.value, f"<TAG>{e_i.value}</TAG>")
         else:
             text = (
                 f"{e_i.value}: {e_i.context} [SEP] {e_j.value}: {e_j.context}"
@@ -137,7 +143,7 @@ if __name__ == "__main__":
     ]
     manager = DatasetManager(files)
 
-    reg = TRExtract("./src/textmining/tre/config.ini", manager, Dataset.TRE_TLINK)
+    reg = TRExtract("./src/textmining/tre/config.ini", manager, Dataset.TRE_DCT)
 
     e_i = Node("tungpust", None, None, "Han har tungpust", None)
     e_j = Node("brystsmerter", None, None, "Brystsmertene har vart en stund.", None)
