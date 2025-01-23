@@ -1,5 +1,5 @@
 from pyvis.network import Network
-from structure.enum import ME, TR, ER
+from structure.enum import ME, TR_TLINK, ER
 
 
 class VizTool:
@@ -41,7 +41,7 @@ class VizTool:
 
         for entity in entities:
             for rel in entity.relations:
-                if rel.tr != TR.XDURINGY:
+                if rel.tr != TR_TLINK.XDURINGY:
                     self.net.add_edge(
                         entity.id,
                         rel.y.id,
