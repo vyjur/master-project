@@ -1,0 +1,553 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MER|DCT|NER
+#T_RL=webanno.custom.TRE|TLINK|BT_webanno.custom.MER
+
+
+#Text=HOVEDKLAGE: Kvalme.
+1-1	0-10	HOVEDKLAGE	_	_	_	_	
+1-2	10-11	:	_	_	_	_	
+1-3	12-18	Kvalme	DURING	SYMPTOM	_	_	
+1-4	18-19	.	_	_	_	_	
+
+#Text=PRESENT SYKDOM: Pasienten er en 28 år gammel mann som har status etter en gastrisk bypassoperasjon for snart ett år siden.
+2-1	21-28	PRESENT	_	_	_	_	
+2-2	29-35	SYKDOM	_	_	_	_	
+2-3	35-36	:	_	_	_	_	
+2-4	37-46	Pasienten	_	_	_	_	
+2-5	47-49	er	_	_	_	_	
+2-6	50-52	en	_	_	_	_	
+2-7	53-55	28	_	_	_	_	
+2-8	56-58	år	_	_	_	_	
+2-9	59-65	gammel	_	_	_	_	
+2-10	66-70	mann	_	_	_	_	
+2-11	71-74	som	_	_	_	_	
+2-12	75-78	har	_	_	_	_	
+2-13	79-85	status	_	_	_	_	
+2-14	86-91	etter	_	_	_	_	
+2-15	92-94	en	_	_	_	_	
+2-16	95-103	gastrisk	BEFORE[1]	TREATMENT[1]	AFTER	3-30[2_1]	
+2-17	104-119	bypassoperasjon	BEFORE[1]	TREATMENT[1]	_	_	
+2-18	120-123	for	_	_	_	_	
+2-19	124-129	snart	_	_	_	_	
+2-20	130-133	ett	_	_	_	_	
+2-21	134-136	år	_	_	_	_	
+2-22	137-142	siden	_	_	_	_	
+2-23	142-143	.	_	_	_	_	
+
+#Text=Han har gått ned ca. 90 kilo og hadde det ellers bra frem til i går kveld ved 19-20-tiden da han fikk kvalme og smerter i høyre øvre kvadrant, som tilsynelatende gikk rundt mot høyre side og rygg.
+3-1	144-147	Han	_	_	_	_	
+3-2	148-151	har	_	_	_	_	
+3-3	152-156	gått	_	_	_	_	
+3-4	157-160	ned	_	_	_	_	
+3-5	161-163	ca	_	_	_	_	
+3-6	163-164	.	_	_	_	_	
+3-7	165-167	90	_	_	_	_	
+3-8	168-172	kilo	_	_	_	_	
+3-9	173-175	og	_	_	_	_	
+3-10	176-181	hadde	_	_	_	_	
+3-11	182-185	det	_	_	_	_	
+3-12	186-192	ellers	_	_	_	_	
+3-13	193-196	bra	_	_	_	_	
+3-14	197-201	frem	_	_	_	_	
+3-15	202-205	til	_	_	_	_	
+3-16	206-207	i	_	_	_	_	
+3-17	208-211	går	_	_	_	_	
+3-18	212-217	kveld	_	_	_	_	
+3-19	218-221	ved	_	_	_	_	
+3-20	222-224	19	_	_	_	_	
+3-21	224-225	-	_	_	_	_	
+3-22	225-227	20	_	_	_	_	
+3-23	227-228	-	_	_	_	_	
+3-24	228-233	tiden	_	_	_	_	
+3-25	234-236	da	_	_	_	_	
+3-26	237-240	han	_	_	_	_	
+3-27	241-245	fikk	_	_	_	_	
+3-28	246-252	kvalme	_	_	_	_	
+3-29	253-255	og	_	_	_	_	
+3-30	256-263	smerter	BEFORE[2]	SYMPTOM[2]	BEFORE|BEFORE	2-16[1_2]|10-5[3_2]	
+3-31	264-265	i	BEFORE[2]	SYMPTOM[2]	_	_	
+3-32	266-271	høyre	BEFORE[2]	SYMPTOM[2]	_	_	
+3-33	272-276	øvre	BEFORE[2]	SYMPTOM[2]	_	_	
+3-34	277-285	kvadrant	BEFORE[2]	SYMPTOM[2]	_	_	
+3-35	285-286	,	_	_	_	_	
+3-36	287-290	som	_	_	_	_	
+3-37	291-305	tilsynelatende	_	_	_	_	
+3-38	306-310	gikk	_	_	_	_	
+3-39	311-316	rundt	_	_	_	_	
+3-40	317-320	mot	_	_	_	_	
+3-41	321-326	høyre	_	_	_	_	
+3-42	327-331	side	_	_	_	_	
+3-43	332-334	og	_	_	_	_	
+3-44	335-339	rygg	_	_	_	_	
+3-45	339-340	.	_	_	_	_	
+
+#Text=Han føler at han var på det, men har ikke gjort det.
+4-1	341-344	Han	_	_	_	_	
+4-2	345-350	føler	_	_	_	_	
+4-3	351-353	at	_	_	_	_	
+4-4	354-357	han	_	_	_	_	
+4-5	358-361	var	_	_	_	_	
+4-6	362-364	på	_	_	_	_	
+4-7	365-368	det	_	_	_	_	
+4-8	368-369	,	_	_	_	_	
+4-9	370-373	men	_	_	_	_	
+4-10	374-377	har	_	_	_	_	
+4-11	378-382	ikke	_	_	_	_	
+4-12	383-388	gjort	_	_	_	_	
+4-13	389-392	det	_	_	_	_	
+4-14	392-393	.	_	_	_	_	
+
+#Text=Han er generelt uvel og har en lav temperatur på 100,3 grader.
+5-1	394-397	Han	_	_	_	_	
+5-2	398-400	er	_	_	_	_	
+5-3	401-409	generelt	_	_	_	_	
+5-4	410-414	uvel	_	_	_	_	
+5-5	415-417	og	_	_	_	_	
+5-6	418-421	har	_	_	_	_	
+5-7	422-424	en	_	_	_	_	
+5-8	425-428	lav	_	_	_	_	
+5-9	429-439	temperatur	_	_	_	_	
+5-10	440-442	på	_	_	_	_	
+5-11	443-448	100,3	_	_	_	_	
+5-12	449-455	grader	_	_	_	_	
+5-13	455-456	.	_	_	_	_	
+
+#Text=Han benekter å ha hatt lignende eller mindre symptomer tidligere.
+6-1	457-460	Han	_	_	_	_	
+6-2	461-469	benekter	_	_	_	_	
+6-3	470-471	å	_	_	_	_	
+6-4	472-474	ha	_	_	_	_	
+6-5	475-479	hatt	_	_	_	_	
+6-6	480-488	lignende	_	_	_	_	
+6-7	489-494	eller	_	_	_	_	
+6-8	495-501	mindre	_	_	_	_	
+6-9	502-511	symptomer	_	_	_	_	
+6-10	512-521	tidligere	_	_	_	_	
+6-11	521-522	.	_	_	_	_	
+
+#Text=Han hadde normal avføring sist i går.
+7-1	523-526	Han	_	_	_	_	
+7-2	527-532	hadde	_	_	_	_	
+7-3	533-539	normal	_	_	_	_	
+7-4	540-548	avføring	_	_	_	_	
+7-5	549-553	sist	_	_	_	_	
+7-6	554-555	i	_	_	_	_	
+7-7	556-559	går	_	_	_	_	
+7-8	559-560	.	_	_	_	_	
+
+#Text=Han benekter direkte frysninger eller blod per rektum.
+8-1	561-564	Han	_	_	_	_	
+8-2	565-573	benekter	_	_	_	_	
+8-3	574-581	direkte	_	_	_	_	
+8-4	582-592	frysninger	_	_	_	_	
+8-5	593-598	eller	_	_	_	_	
+8-6	599-603	blod	_	_	_	_	
+8-7	604-607	per	_	_	_	_	
+8-8	608-614	rektum	_	_	_	_	
+8-9	614-615	.	_	_	_	_	
+
+#Text=Tidligere medisinsk historie: Betydelig for hypertensjon og sykelig fedme, nå løst.
+9-1	617-626	Tidligere	_	_	_	_	
+9-2	627-636	medisinsk	_	_	_	_	
+9-3	637-645	historie	_	_	_	_	
+9-4	645-646	:	_	_	_	_	
+9-5	647-656	Betydelig	_	_	_	_	
+9-6	657-660	for	_	_	_	_	
+9-7	661-673	hypertensjon	BEFORE	SYMPTOM	_	_	
+9-8	674-676	og	_	_	_	_	
+9-9	677-684	sykelig	_	_	_	_	
+9-10	685-690	fedme	BEFORE	CONDITION	_	_	
+9-11	690-691	,	_	_	_	_	
+9-12	692-694	nå	_	_	_	_	
+9-13	695-699	løst	_	_	_	_	
+9-14	699-700	.	_	_	_	_	
+
+#Text=TIDLIGERE KIRURGISK HISTORIE: Gastrisk bypassoperasjon i desember 2007.
+10-1	702-711	TIDLIGERE	_	_	_	_	
+10-2	712-721	KIRURGISK	_	_	_	_	
+10-3	722-730	HISTORIE	_	_	_	_	
+10-4	730-731	:	_	_	_	_	
+10-5	732-740	Gastrisk	BEFORE[3]	TREATMENT[3]	AFTER	3-30[2_3]	
+10-6	741-756	bypassoperasjon	BEFORE[3]	TREATMENT[3]	_	_	
+10-7	757-758	i	_	_	_	_	
+10-8	759-767	desember	_	_	_	_	
+10-9	768-772	2007	_	_	_	_	
+10-10	772-773	.	_	_	_	_	
+
+#Text=MEDISINER: Multivitaminer og kalsium.
+11-1	775-784	MEDISINER	_	_	_	_	
+11-2	784-785	:	_	_	_	_	
+11-3	786-800	Multivitaminer	BEFORE/OVERLAP	TREATMENT	_	_	
+11-4	801-803	og	_	_	_	_	
+11-5	804-811	kalsium	BEFORE/OVERLAP	TREATMENT	_	_	
+11-6	811-812	.	_	_	_	_	
+
+#Text=ALLERGIER: Ingen kjente.
+12-1	814-823	ALLERGIER	_	_	_	_	
+12-2	823-824	:	_	_	_	_	
+12-3	825-830	Ingen	_	_	_	_	
+12-4	831-837	kjente	_	_	_	_	
+12-5	837-838	.	_	_	_	_	
+
+#Text=FAMILIEHISTORIE: Positiv for diabetes mellitus hos faren, som nå er død.
+13-1	840-855	FAMILIEHISTORIE	_	_	_	_	
+13-2	855-856	:	_	_	_	_	
+13-3	857-864	Positiv	_	_	_	_	
+13-4	865-868	for	_	_	_	_	
+13-5	869-877	diabetes	_	_	_	_	
+13-6	878-886	mellitus	_	_	_	_	
+13-7	887-890	hos	_	_	_	_	
+13-8	891-896	faren	_	_	_	_	
+13-9	896-897	,	_	_	_	_	
+13-10	898-901	som	_	_	_	_	
+13-11	902-904	nå	_	_	_	_	
+13-12	905-907	er	_	_	_	_	
+13-13	908-911	død	_	_	_	_	
+13-14	911-912	.	_	_	_	_	
+
+#Text=SOSIAL HISTORIE: Han benekter bruk av tobakk eller alkohol.
+14-1	914-920	SOSIAL	_	_	_	_	
+14-2	921-929	HISTORIE	_	_	_	_	
+14-3	929-930	:	_	_	_	_	
+14-4	931-934	Han	_	_	_	_	
+14-5	935-943	benekter	_	_	_	_	
+14-6	944-948	bruk	_	_	_	_	
+14-7	949-951	av	_	_	_	_	
+14-8	952-958	tobakk	_	_	_	_	
+14-9	959-964	eller	_	_	_	_	
+14-10	965-972	alkohol	_	_	_	_	
+14-11	972-973	.	_	_	_	_	
+
+#Text=Han har noe som høres ut som en dataregistreringsjobb.
+15-1	974-977	Han	_	_	_	_	
+15-2	978-981	har	_	_	_	_	
+15-3	982-985	noe	_	_	_	_	
+15-4	986-989	som	_	_	_	_	
+15-5	990-995	høres	_	_	_	_	
+15-6	996-998	ut	_	_	_	_	
+15-7	999-1002	som	_	_	_	_	
+15-8	1003-1005	en	_	_	_	_	
+15-9	1006-1027	dataregistreringsjobb	_	_	_	_	
+15-10	1027-1028	.	_	_	_	_	
+
+#Text=GJENNOMGANG AV SYSTEMER: Ellers negativ.
+16-1	1030-1041	GJENNOMGANG	_	_	_	_	
+16-2	1042-1044	AV	_	_	_	_	
+16-3	1045-1053	SYSTEMER	_	_	_	_	
+16-4	1053-1054	:	_	_	_	_	
+16-5	1055-1061	Ellers	_	_	_	_	
+16-6	1062-1069	negativ	_	_	_	_	
+16-7	1069-1070	.	_	_	_	_	
+
+#Text=FYSISK UNDERSØKELSE: Temperaturen er 100,3, blodtrykket 129/59, respirasjon 16, hjertefrekvens 84.
+17-1	1072-1078	FYSISK	_	_	_	_	
+17-2	1079-1091	UNDERSØKELSE	_	_	_	_	
+17-3	1091-1092	:	_	_	_	_	
+17-4	1093-1105	Temperaturen	_	_	_	_	
+17-5	1106-1108	er	_	_	_	_	
+17-6	1109-1114	100,3	_	_	_	_	
+17-7	1114-1115	,	_	_	_	_	
+17-8	1116-1127	blodtrykket	_	_	_	_	
+17-9	1128-1131	129	_	_	_	_	
+17-10	1131-1132	/	_	_	_	_	
+17-11	1132-1134	59	_	_	_	_	
+17-12	1134-1135	,	_	_	_	_	
+17-13	1136-1147	respirasjon	_	_	_	_	
+17-14	1148-1150	16	_	_	_	_	
+17-15	1150-1151	,	_	_	_	_	
+17-16	1152-1166	hjertefrekvens	_	_	_	_	
+17-17	1167-1169	84	_	_	_	_	
+17-18	1169-1170	.	_	_	_	_	
+
+#Text=Han er døsig, men lett å vekke og deltar i samtale.
+18-1	1171-1174	Han	_	_	_	_	
+18-2	1175-1177	er	_	_	_	_	
+18-3	1178-1183	døsig	_	_	_	_	
+18-4	1183-1184	,	_	_	_	_	
+18-5	1185-1188	men	_	_	_	_	
+18-6	1189-1193	lett	_	_	_	_	
+18-7	1194-1195	å	_	_	_	_	
+18-8	1196-1201	vekke	_	_	_	_	
+18-9	1202-1204	og	_	_	_	_	
+18-10	1205-1211	deltar	_	_	_	_	
+18-11	1212-1213	i	_	_	_	_	
+18-12	1214-1221	samtale	_	_	_	_	
+18-13	1221-1222	.	_	_	_	_	
+
+#Text=Han er orientert etter person, sted og situasjon.
+19-1	1223-1226	Han	_	_	_	_	
+19-2	1227-1229	er	_	_	_	_	
+19-3	1230-1239	orientert	_	_	_	_	
+19-4	1240-1245	etter	_	_	_	_	
+19-5	1246-1252	person	_	_	_	_	
+19-6	1252-1253	,	_	_	_	_	
+19-7	1254-1258	sted	_	_	_	_	
+19-8	1259-1261	og	_	_	_	_	
+19-9	1262-1271	situasjon	_	_	_	_	
+19-10	1271-1272	.	_	_	_	_	
+
+#Text=Han er normocephalisk, atraumatisk.
+20-1	1273-1276	Han	_	_	_	_	
+20-2	1277-1279	er	_	_	_	_	
+20-3	1280-1294	normocephalisk	_	_	_	_	
+20-4	1294-1295	,	_	_	_	_	
+20-5	1296-1307	atraumatisk	_	_	_	_	
+20-6	1307-1308	.	_	_	_	_	
+
+#Text=Skleraene er anikteriske.
+21-1	1309-1318	Skleraene	_	_	_	_	
+21-2	1319-1321	er	_	_	_	_	
+21-3	1322-1333	anikteriske	_	_	_	_	
+21-4	1333-1334	.	_	_	_	_	
+
+#Text=Slimhinnene er noe klebrige.
+22-1	1335-1346	Slimhinnene	_	_	_	_	
+22-2	1347-1349	er	_	_	_	_	
+22-3	1350-1353	noe	_	_	_	_	
+22-4	1354-1362	klebrige	_	_	_	_	
+22-5	1362-1363	.	_	_	_	_	
+
+#Text=Halsen er smidig og symmetrisk.
+23-1	1364-1370	Halsen	_	_	_	_	
+23-2	1371-1373	er	_	_	_	_	
+23-3	1374-1380	smidig	_	_	_	_	
+23-4	1381-1383	og	_	_	_	_	
+23-5	1384-1394	symmetrisk	_	_	_	_	
+23-6	1394-1395	.	_	_	_	_	
+
+#Text=Han puster uanstrengt og klart.
+24-1	1396-1399	Han	_	_	_	_	
+24-2	1400-1406	puster	_	_	_	_	
+24-3	1407-1417	uanstrengt	_	_	_	_	
+24-4	1418-1420	og	_	_	_	_	
+24-5	1421-1426	klart	_	_	_	_	
+24-6	1426-1427	.	_	_	_	_	
+
+#Text=Han har en regelmessig frekvens og rytme.
+25-1	1428-1431	Han	_	_	_	_	
+25-2	1432-1435	har	_	_	_	_	
+25-3	1436-1438	en	_	_	_	_	
+25-4	1439-1450	regelmessig	_	_	_	_	
+25-5	1451-1459	frekvens	_	_	_	_	
+25-6	1460-1462	og	_	_	_	_	
+25-7	1463-1468	rytme	_	_	_	_	
+25-8	1468-1469	.	_	_	_	_	
+
+#Text=Abdomen er myk.
+26-1	1470-1477	Abdomen	_	_	_	_	
+26-2	1478-1480	er	_	_	_	_	
+26-3	1481-1484	myk	_	_	_	_	
+26-4	1484-1485	.	_	_	_	_	
+
+#Text=Han har diffus ømhet i høyre øvre kvadrant, verre fokalt, men ingen rebound eller guarding.
+27-1	1486-1489	Han	_	_	_	_	
+27-2	1490-1493	har	_	_	_	_	
+27-3	1494-1500	diffus	_	_	_	_	
+27-4	1501-1506	ømhet	_	_	_	_	
+27-5	1507-1508	i	_	_	_	_	
+27-6	1509-1514	høyre	_	_	_	_	
+27-7	1515-1519	øvre	_	_	_	_	
+27-8	1520-1528	kvadrant	_	_	_	_	
+27-9	1528-1529	,	_	_	_	_	
+27-10	1530-1535	verre	_	_	_	_	
+27-11	1536-1542	fokalt	_	_	_	_	
+27-12	1542-1543	,	_	_	_	_	
+27-13	1544-1547	men	_	_	_	_	
+27-14	1548-1553	ingen	_	_	_	_	
+27-15	1554-1561	rebound	_	_	_	_	
+27-16	1562-1567	eller	_	_	_	_	
+27-17	1568-1576	guarding	_	_	_	_	
+27-18	1576-1577	.	_	_	_	_	
+
+#Text=Han har ellers ingen organomegali, oppfylninger eller tydelige bukhernier.
+28-1	1578-1581	Han	_	_	_	_	
+28-2	1582-1585	har	_	_	_	_	
+28-3	1586-1592	ellers	_	_	_	_	
+28-4	1593-1598	ingen	_	_	_	_	
+28-5	1599-1611	organomegali	_	_	_	_	
+28-6	1611-1612	,	_	_	_	_	
+28-7	1613-1625	oppfylninger	_	_	_	_	
+28-8	1626-1631	eller	_	_	_	_	
+28-9	1632-1640	tydelige	_	_	_	_	
+28-10	1641-1651	bukhernier	_	_	_	_	
+28-11	1651-1652	.	_	_	_	_	
+
+#Text=Ekstremitetene er symmetriske og uten ødemer.
+29-1	1653-1667	Ekstremitetene	_	_	_	_	
+29-2	1668-1670	er	_	_	_	_	
+29-3	1671-1682	symmetriske	_	_	_	_	
+29-4	1683-1685	og	_	_	_	_	
+29-5	1686-1690	uten	_	_	_	_	
+29-6	1691-1697	ødemer	_	_	_	_	
+29-7	1697-1698	.	_	_	_	_	
+
+#Text=Han har palpable og symmetriske pulser i bakre tibia.
+30-1	1699-1702	Han	_	_	_	_	
+30-2	1703-1706	har	_	_	_	_	
+30-3	1707-1715	palpable	_	_	_	_	
+30-4	1716-1718	og	_	_	_	_	
+30-5	1719-1730	symmetriske	_	_	_	_	
+30-6	1731-1737	pulser	_	_	_	_	
+30-7	1738-1739	i	_	_	_	_	
+30-8	1740-1745	bakre	_	_	_	_	
+30-9	1746-1751	tibia	_	_	_	_	
+30-10	1751-1752	.	_	_	_	_	
+
+#Text=Nevrologisk er han ikke fokal.
+31-1	1753-1764	Nevrologisk	_	_	_	_	
+31-2	1765-1767	er	_	_	_	_	
+31-3	1768-1771	han	_	_	_	_	
+31-4	1772-1776	ikke	_	_	_	_	
+31-5	1777-1782	fokal	_	_	_	_	
+31-6	1782-1783	.	_	_	_	_	
+
+#Text=UNDERSØKELSER: Antallet hvite blodlegemer er 8,4 med 79 segs.
+32-1	1785-1798	UNDERSØKELSER	_	_	_	_	
+32-2	1798-1799	:	_	_	_	_	
+32-3	1800-1808	Antallet	_	_	_	_	
+32-4	1809-1814	hvite	_	_	_	_	
+32-5	1815-1826	blodlegemer	_	_	_	_	
+32-6	1827-1829	er	_	_	_	_	
+32-7	1830-1833	8,4	_	_	_	_	
+32-8	1834-1837	med	_	_	_	_	
+32-9	1838-1840	79	_	_	_	_	
+32-10	1841-1845	segs	_	_	_	_	
+32-11	1845-1846	.	_	_	_	_	
+
+#Text=Hematokriten er 41.
+33-1	1847-1859	Hematokriten	_	_	_	_	
+33-2	1860-1862	er	_	_	_	_	
+33-3	1863-1865	41	_	_	_	_	
+33-4	1865-1866	.	_	_	_	_	
+
+#Text=Elektrolyttene er normale.
+34-1	1867-1881	Elektrolyttene	_	_	_	_	
+34-2	1882-1884	er	_	_	_	_	
+34-3	1885-1892	normale	_	_	_	_	
+34-4	1892-1893	.	_	_	_	_	
+
+#Text=Bilirubin er 2,8.
+35-1	1894-1903	Bilirubin	_	_	_	_	
+35-2	1904-1906	er	_	_	_	_	
+35-3	1907-1910	2,8	_	_	_	_	
+35-4	1910-1911	.	_	_	_	_	
+
+#Text=ASAT 349, ALAT 186, alk-phos 138 og lipase er normal på 239.
+36-1	1912-1916	ASAT	_	_	_	_	
+36-2	1917-1920	349	_	_	_	_	
+36-3	1920-1921	,	_	_	_	_	
+36-4	1922-1926	ALAT	_	_	_	_	
+36-5	1927-1930	186	_	_	_	_	
+36-6	1930-1931	,	_	_	_	_	
+36-7	1932-1940	alk-phos	_	_	_	_	
+36-8	1941-1944	138	_	_	_	_	
+36-9	1945-1947	og	_	_	_	_	
+36-10	1948-1954	lipase	_	_	_	_	
+36-11	1955-1957	er	_	_	_	_	
+36-12	1958-1964	normal	_	_	_	_	
+36-13	1965-1967	på	_	_	_	_	
+36-14	1968-1971	239	_	_	_	_	
+36-15	1971-1972	.	_	_	_	_	
+
+#Text=VURDERING: Koledocholithiasis, ?
+37-1	1974-1983	VURDERING	_	_	_	_	
+37-2	1983-1984	:	_	_	_	_	
+37-3	1985-2003	Koledocholithiasis	_	_	_	_	
+37-4	2003-2004	,	_	_	_	_	
+37-5	2005-2006	?	_	_	_	_	
+
+#Text=kolecystitt.
+38-1	2007-2018	kolecystitt	_	_	_	_	
+38-2	2018-2019	.	_	_	_	_	
+
+#Text=PLAN: Han blir innlagt og satt på intravenøs antibiotika.
+39-1	2021-2025	PLAN	_	_	_	_	
+39-2	2025-2026	:	_	_	_	_	
+39-3	2027-2030	Han	_	_	_	_	
+39-4	2031-2035	blir	_	_	_	_	
+39-5	2036-2043	innlagt	_	_	_	_	
+39-6	2044-2046	og	_	_	_	_	
+39-7	2047-2051	satt	_	_	_	_	
+39-8	2052-2054	på	_	_	_	_	
+39-9	2055-2065	intravenøs	_	_	_	_	
+39-10	2066-2077	antibiotika	AFTER	TREATMENT	_	_	
+39-11	2077-2078	.	_	_	_	_	
+
+#Text=Vi tar ultralyd i morgen tidlig.
+40-1	2079-2081	Vi	_	_	_	_	
+40-2	2082-2085	tar	_	_	_	_	
+40-3	2086-2094	ultralyd	AFTER	TREATMENT	_	_	
+40-4	2095-2096	i	_	_	_	_	
+40-5	2097-2103	morgen	_	_	_	_	
+40-6	2104-2110	tidlig	_	_	_	_	
+40-7	2110-2111	.	_	_	_	_	
+
+#Text=Galleblæren må fjernes, sannsynligvis med intraoperativt kolangiogram.
+41-1	2112-2123	Galleblæren	_	_	_	_	
+41-2	2124-2126	må	_	_	_	_	
+41-3	2127-2134	fjernes	_	_	_	_	
+41-4	2134-2135	,	_	_	_	_	
+41-5	2136-2149	sannsynligvis	_	_	_	_	
+41-6	2150-2153	med	_	_	_	_	
+41-7	2154-2168	intraoperativt	_	_	_	_	
+41-8	2169-2181	kolangiogram	_	_	_	_	
+41-9	2181-2182	.	_	_	_	_	
+
+#Text=Forhåpentligvis vil steinen passere på denne måten.
+42-1	2183-2198	Forhåpentligvis	_	_	_	_	
+42-2	2199-2202	vil	_	_	_	_	
+42-3	2203-2210	steinen	_	_	_	_	
+42-4	2211-2218	passere	_	_	_	_	
+42-5	2219-2221	på	_	_	_	_	
+42-6	2222-2227	denne	_	_	_	_	
+42-7	2228-2233	måten	_	_	_	_	
+42-8	2233-2234	.	_	_	_	_	
+
+#Text=På grunn av hans anatomi vil en ERCP vise seg å være ganske vanskelig, om ikke umulig, med mindre laparoskopisk assistert.
+43-1	2235-2237	På	_	_	_	_	
+43-2	2238-2243	grunn	_	_	_	_	
+43-3	2244-2246	av	_	_	_	_	
+43-4	2247-2251	hans	_	_	_	_	
+43-5	2252-2259	anatomi	_	_	_	_	
+43-6	2260-2263	vil	_	_	_	_	
+43-7	2264-2266	en	_	_	_	_	
+43-8	2267-2271	ERCP	_	_	_	_	
+43-9	2272-2276	vise	_	_	_	_	
+43-10	2277-2280	seg	_	_	_	_	
+43-11	2281-2282	å	_	_	_	_	
+43-12	2283-2287	være	_	_	_	_	
+43-13	2288-2294	ganske	_	_	_	_	
+43-14	2295-2304	vanskelig	_	_	_	_	
+43-15	2304-2305	,	_	_	_	_	
+43-16	2306-2308	om	_	_	_	_	
+43-17	2309-2313	ikke	_	_	_	_	
+43-18	2314-2320	umulig	_	_	_	_	
+43-19	2320-2321	,	_	_	_	_	
+43-20	2322-2325	med	_	_	_	_	
+43-21	2326-2332	mindre	_	_	_	_	
+43-22	2333-2346	laparoskopisk	_	_	_	_	
+43-23	2347-2356	assistert	_	_	_	_	
+43-24	2356-2357	.	_	_	_	_	
+
+#Text=Dr.
+44-1	2358-2360	Dr	_	_	_	_	
+44-2	2360-2361	.	_	_	_	_	
+
+#Text=X vil treffe ham senere i formiddag og diskutere planen videre.
+45-1	2362-2363	X	_	_	_	_	
+45-2	2364-2367	vil	_	_	_	_	
+45-3	2368-2374	treffe	_	_	_	_	
+45-4	2375-2378	ham	_	_	_	_	
+45-5	2379-2385	senere	_	_	_	_	
+45-6	2386-2387	i	_	_	_	_	
+45-7	2388-2397	formiddag	_	_	_	_	
+45-8	2398-2400	og	_	_	_	_	
+45-9	2401-2410	diskutere	_	_	_	_	
+45-10	2411-2417	planen	_	_	_	_	
+45-11	2418-2424	videre	_	_	_	_	
+45-12	2424-2425	.	_	_	_	_	
+
+#Text=Pasienten forstår.
+46-1	2426-2435	Pasienten	_	_	_	_	
+46-2	2436-2443	forstår	_	_	_	_	
+46-3	2443-2444	.	_	_	_	_	
