@@ -1,7 +1,6 @@
 import os
 import configparser
 from preprocess.util import majority_element
-from transformers import AutoTokenizer
 from textmining.ner.setup import NERecognition
 
 # from textmining.ere.setup import ERExtract
@@ -13,6 +12,8 @@ from preprocess.setup import Preprocess
 from structure.relation import Relation
 from visualization.setup import VizTool
 from pipeline.util import remove_duplicates, find_duplicates
+
+from structure.enum import Dataset, TR_DCT, TR_TLINK
 
 
 class Pipeline:
@@ -35,7 +36,8 @@ class Pipeline:
         ### Initialize text mining modules ###
         self.__ner = NERecognition(self.__config["CONFIGS"]["ner"], manager)
         # self.__ere = ERExtract(self.__config['CONFIGS']['ere'], manager)
-        self.__tre = TRExtract(self.__config["CONFIGS"]["tre"], manager)
+        self.__tre_dct = TRExtract(self.__config["CONFIGS"]["tre"], manager, Dataset.TRE_DCT)
+        self.__tre_tlink = TRExtract(self.__config["CONFIGS"]["tre"], manager, Dataset.TRE_DCT)
 
         ### Initialize preprocessing module ###
         self.__preprocess = Preprocess(
@@ -76,6 +78,9 @@ class Pipeline:
         for doc in documents:
             output = self.__preprocess.run(doc)
             ### Text Mining ###
+            
+            
+            ##### Perform Medical Entity Extraction
             ner_output = self.__ner.run(output)
             entities = []
             for i, _ in enumerate(output):
@@ -109,18 +114,38 @@ class Pipeline:
                     entities.append((entity, context, entype))
 
             ### TODO: choose candidate pairs
-            for i, e_i in enumerate(entities):
-                for j, e_j in enumerate(entities):
-                    if i == j:
-                        continue
-                    relation = (
-                        f"{e_i.value}: {e_i.context} [SEP] {e_j.value}: {e_j.context}"
-                    )
-                    tokenized_relation = relation
-                    tre_output = majority_element(self.__tre.run(tokenized_relation))
-                    # ere_output = majority_element(self.__ere.run(tokenized_relation))
-                    if tre_output != "O":
-                        e_i.relations.append(Relation(e_i, e_j, tre_output, ""))
+            
+            ### DocTimeRel Extraction
+            dcts = {}
+            
+            ##### Initialize groups for selecting candidate pairs
+            for cat in TR_DCT:
+                dcts[cat] = []
+            
+            ##### Predicting each entities' group
+            for e in entities:
+                # TODO: fix here how to insert this and what do we get back from the code should we move this inside
+                cat = self.__tre_dct.run(f"{e_i.value}: {e_i.context}")
+                dcts[cat].append(e)
+           
+            ##### The candidate pairs are pairs within a group
+            ##### Although triple loop, this should be quicker than checking all entities
+            ##### O(N^2)>O(len(dcts)*(N_i^2)) where N_i < N
+            for cat in dcts:
+                for i, e_i in enumerate(dcts[cat]):
+                    for j, e_j in enumerate(dcts[cat]):
+                        if i == j:
+                            continue
+                        
+                        ### TODO: should we move this inside the model instead?
+                        relation = (
+                            f"{e_i.value}: {e_i.context} [SEP] {e_j.value}: {e_j.context}"
+                        )
+                        tokenized_relation = relation
+                        tre_output = majority_element(self.__tre_tlink.run(tokenized_relation))
+                        # ere_output = majority_element(self.__ere.run(tokenized_relation))
+                        if tre_output != "O":
+                            e_i.relations.append(Relation(e_i, e_j, tre_output, ""))
 
             ### Remove local duplicates
             duplicates = find_duplicates(entities)
