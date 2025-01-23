@@ -83,7 +83,7 @@ class TRExtract:
                 else:
                     # TODO: add relation what index is this?
                     
-                    test = ["HEY", "YO"]
+                    test = ["XAFTERY", "XBEFOREY"]
                     dataset.append({"sentence": sentences[k].loc[e_i[2]].replace(e_i[3], f"<TAG>{e_i[3]}</TAG>"), "relation": test[i%len(test)]})
                     tags.add(test[i%len(test)])
                     
@@ -120,11 +120,13 @@ class TRExtract:
         predictions = [self.id2label[i] for i in output]
         return predictions[0]
 
-    def run(self, e_i, e_j):
+    def run(self, e_i, e_j = None):
         # TODO: fix setuP?
         if self.task == Dataset.TRE_DCT:
             text = e_i.context.replace(e_i.value, f"<TAG>{e_i.value}</TAG>")
         else:
+            if e_j is None:
+                raise ValueError("Missing value for e_j")
             text = (
                 f"{e_i.value}: {e_i.context} [SEP] {e_j.value}: {e_j.context}"
             )
