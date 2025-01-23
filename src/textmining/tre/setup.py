@@ -14,6 +14,7 @@ class TRExtract:
         self,
         config_file: str,
         manager: DatasetManager,
+        task: Dataset,
         save_directory: str = "./src/textmining/tre",
     ):
         self.__config = configparser.ConfigParser()
