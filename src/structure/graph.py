@@ -16,7 +16,7 @@ class Graph:
                 if self.__is_cyclic_util(neighbor, visited, recursion_stack):
                     return True
             elif neighbor in recursion_stack and recursion_stack[neighbor]:
-                return True  # Back edge detected
+                return True 
 
         recursion_stack[v] = False
         return False
