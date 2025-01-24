@@ -15,6 +15,7 @@ from pipeline.util import remove_duplicates, find_duplicates
 
 from structure.enum import Dataset, TR_DCT, TR_TLINK
 from structure.node import Node
+from structure.graph import Graph
 
 
 class Pipeline:
@@ -74,7 +75,7 @@ class Pipeline:
         ### Extract text from PDF ###
         # TODO: add document logic, is this necessary?
 
-        rel_entities = []
+        all_entities, all_relations = [], []
 
         for doc in documents:
             output = self.__preprocess.run(doc)
@@ -84,6 +85,7 @@ class Pipeline:
             ##### Perform Medical Entity Extraction
             ner_output = self.__ner.run(output)
             entities = []
+            
             for i, _ in enumerate(output):
                 result = self.__get_non_o_intervals(ner_output[i])
                 start = 0
@@ -112,30 +114,32 @@ class Pipeline:
                         .replace("[SEP]", "")
                         .replace("[PAD]", "")
                     )
-                    entities.append(Node(entity, entype, None, context, None, []))
+                    entities.append(Node(entity, entype, None, context, None))
 
             ### Temporal Relation Extraction
             
-            ### DocTimeRel Extraction
+            #### DocTimeRel Extraction
             dcts = {}
             
-            ##### Initialize groups for selecting candidate pairs
+            ###### Initialize groups for selecting candidate pairs
             for cat in TR_DCT:
                 dcts[cat.name] = []
                 
-            ### Remove local duplicates (document-level)
+            #### Remove local duplicates (document-level)
             duplicates = find_duplicates(entities)
             entities = remove_duplicates(entities, duplicates)        
         
-            ##### Predicting each entities' DCT group
+            ###### Predicting each entities' DCT group
             for e in entities:
                 cat, _ = self.__tre_dct.run(e)
                 e.dct = cat
                 dcts[cat].append(e)
            
-            ##### The candidate pairs are pairs within a group
-            ##### Although triple loop, this should be quicker than checking all entities
-            ##### O(N^2)>O(len(dcts)*(N_i^2)) where N_i < N
+            ###### The candidate pairs are pairs within a group##### O(N^2)>O(len(dcts)*(N_i^2)) where N_i < N
+            ###### Although triple loop, this should be quicker than checking all entities
+            ###### O(N^2)>O(len(dcts)*(N_i^2)) where N_i < N
+            
+            graph = Graph()
             
             relations = []
             for cat in dcts:
@@ -147,57 +151,63 @@ class Pipeline:
                         ### TODO: GET PROBABILITY
                         tre_output = self.__tre_tlink.run(e_i, e_j)
                         
-                        # TODO: check that theres no cycle when added
-                        if tre_output != "O":
-                            #e_i.relations.append(Relation(e_i, e_j, tre_output, ""))
-                            relations.append(Relation(e_i, e_j, tre_output, None))
+                        relation = tre_output[0]
+                        prob = tre_output[1][0]
+                        
+                        if relation != "O":
+                            relations.append(Relation(e_i, e_j, relation, prob))
+                            
+            ##### Sort relations after probability
+            #relations = sorted(relations, key=lambda r: r.prob, reverse=True)
 
-            #### Sort relations after probability
+            ##### Add relations one after one, make rules for consistency??!?
+            for rel in relations[:]:
+                graph.add_edge(rel.x.id, rel.y.id)
+                if graph.is_cyclic():
+                    relations.remove(rel)
+
             
-            #### Add relations one after one, make rules for consistency??!?
-            
-            # TODO
+            all_entities.append(entities)
+            all_relations.append(relations)
 
-            rel_entities.append(entities)
-
-        ### TODO: (THIS NEEDS TO BE FIXED?) Constructing trajectory across documents ###
+        ## TODO: (THIS NEEDS TO BE FIXED?) Constructing trajectory across documents ###
         ### Add edges between duplicates across documents
-        for i in range(len(rel_entities) - 1):
+        for i in range(len(all_entities) - 1):
             check_entities = []
             if i != 0:
-                check_entities = rel_entities[i - 1]
-                check_entities = check_entities + rel_entities[i]
+                check_entities = all_entities[i - 1]
+                check_entities = check_entities + all_entities[i]
                 duplicates = find_duplicates(check_entities, False)
-                rel_entities[i - 1] = remove_duplicates(
-                    rel_entities[i - 1],
-                    [j for j in duplicates if j < len(rel_entities[i - 1])],
+                all_entities[i - 1] = remove_duplicates(
+                    all_entities[i - 1],
+                    [j for j in duplicates if j < len(all_entities[i - 1])],
                 )
-                rel_entities[i] = remove_duplicates(
-                    rel_entities[i],
+                all_entities[i] = remove_duplicates(
+                    all_entities[i],
                     [
-                        j - len(rel_entities[i - 1])
+                        j - len(all_entities[i - 1])
                         for j in duplicates
-                        if j >= len(rel_entities[i - 1])
+                        if j >= len(all_entities[i - 1])
                     ],
                 )
 
-            check_entities = rel_entities[i] + rel_entities[i + 1]
+            check_entities = all_entities[i] + all_entities[i + 1]
             duplicates = find_duplicates(check_entities, False)
-            rel_entities[i] = remove_duplicates(
-                rel_entities[i], [j for j in duplicates if j < len(rel_entities[i])]
+            all_entities[i] = remove_duplicates(
+                all_entities[i], [j for j in duplicates if j < len(all_entities[i])]
             )
-            rel_entities[i + 1] = remove_duplicates(
-                rel_entities[i + 1],
+            all_entities[i + 1] = remove_duplicates(
+                all_entities[i + 1],
                 [
-                    j - len(rel_entities[i])
+                    j - len(all_entities[i])
                     for j in duplicates
-                    if j >= len(rel_entities[i])
+                    if j >= len(all_entities[i])
                 ],
             )
 
-        all_entities = []
-        for doc in rel_entities:
-            all_entities = all_entities + doc
+        res_entities = []
+        for doc in all_entities:
+            res_entities = res_entities + doc
 
         ### Visualize ###
         self.viz.create(all_entities)
@@ -206,4 +216,5 @@ class Pipeline:
 if __name__ == "__main__":
     pipeline = Pipeline("./src/pipeline/config.ini")
     text = "Hei på deg!"
-    print(pipeline.run([text]))
+    text2 = "Vi snakkes"
+    print(pipeline.run([text, text2]))

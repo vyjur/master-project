@@ -69,5 +69,5 @@ class VizTool:
 
         # Show the graph and embed it in the notebook
         html_file = "output.html"
-        self.net.show(html_file)
+        self.net.show(html_file, notebook=False)
 

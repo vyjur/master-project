@@ -8,7 +8,7 @@ class Node:
     id_iter = itertools.count()
 
     def __init__(
-        self, value: str, type: str, dct: str, context: str, date, relations: list = []
+        self, value: str, type: str, dct: str, context: str, date
     ):
         self.id = next(self.id_iter)
         self.value = value
@@ -28,10 +28,7 @@ class Node:
 
         self.date = date
         self.context = context
-        
-        # TODO: remove this or?
-        self.relations = relations
-
+    
     def __str__(self):
         text = f"Node: {self.value} - {self.type} ({self.date})"
 
