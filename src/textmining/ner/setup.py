@@ -6,7 +6,7 @@ from preprocess.dataset import DatasetManager
 from model.map import MODEL_MAP
 from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
-from structure.enum import Dataset
+from structure.enum import Dataset, Task
 
 
 class NERecognition:
@@ -32,7 +32,7 @@ class NERecognition:
 
             dataset.append(curr_doc)
         tags = list(tags)
-        self.label2id, self.id2label = Util().get_tags("token", tags)
+        self.label2id, self.id2label = Util().get_tags(Task.TOKEN, tags)
 
         self.tokenizer = AutoTokenizer.from_pretrained(
             self.__config["pretrain"]["name"]
@@ -73,6 +73,7 @@ class NERecognition:
 
     def run(self, data):
         output = self.__model.predict([val.ids for val in data])
+        print(self.id2label)
         predictions = [[self.id2label[int(j.cpu().numpy())] for j in i] for i in output]
         if self.__config.getboolean("MODEL", "lexicon"):
             lexi_predictions = Lexicon().predict(data, self.tokenizer)

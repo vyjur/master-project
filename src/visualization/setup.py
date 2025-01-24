@@ -20,7 +20,10 @@ class VizTool:
 
     def clear(self):
         # TODO: fix this
-        self.net = Network(*self.config)  # type: ignore
+        if self.config == None:
+            self.net = Network()
+        else:
+            self.net = Network(*self.config)  # type: ignore
 
     def create(self, entities):
         self.clear()
@@ -34,7 +37,9 @@ class VizTool:
                     color = "#FAC748"
                 case _:
                     color = "grey"
-
+                   
+            if entity.type is None:
+                continue
             self.net.add_node(
                 entity.id, entity.value, color=color, title=entity.type.name
             )
@@ -64,5 +69,5 @@ class VizTool:
 
         # Show the graph and embed it in the notebook
         html_file = "output.html"
-        self.net.show(html_file)
+        self.net.show(html_file, notebook=False)
 
