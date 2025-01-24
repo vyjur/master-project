@@ -44,8 +44,6 @@ class TRExtract:
         }
 
         dataset_ner = manager.get(Dataset.NER)
-
-        # TODO: fix here
         dataset_tre = manager.get(task)
         sentences = manager.get(Dataset.SENTENCES)
 
@@ -117,8 +115,8 @@ class TRExtract:
     def __run(self, data):
         # TODO: fix here
         output = self.__model.predict([val.ids for val in data])
-        predictions = [self.id2label[i] for i in output]
-        return predictions[0]
+        predictions = [self.id2label[i] for i in output[0]]
+        return predictions[0], output[1]
 
     def run(self, e_i, e_j = None):
         # TODO: fix setuP?
@@ -144,10 +142,10 @@ if __name__ == "__main__":
         if os.path.isfile(os.path.join(folder_path, f))
     ]
     manager = DatasetManager(files)
-
+    
     reg = TRExtract("./src/textmining/tre/config.ini", manager, Dataset.TRE_DCT)
 
     e_i = Node("tungpust", None, None, "Han har tungpust", None)
     e_j = Node("brystsmerter", None, None, "Brystsmertene har vart en stund.", None)
 
-    print(reg.run(e_i, e_j))
+    print("Result:", reg.run(e_i, e_j))

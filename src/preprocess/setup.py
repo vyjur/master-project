@@ -103,14 +103,13 @@ class Preprocess:
     ):
         label2id, id2label = Util().get_tags(task, tags_name)
         tokenized_dataset = []
-
+        
         for row in data:
             if task == Task.TOKEN:
                 words = [val[0] for val in row]
                 annot = [val[1] for val in row]
                 split_into_words = True
             else:
-                # TODO: how to move this out
                 words = row["sentence"] 
                 split_into_words = False
                 

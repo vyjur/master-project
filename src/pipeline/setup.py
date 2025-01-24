@@ -122,27 +122,41 @@ class Pipeline:
             ##### Initialize groups for selecting candidate pairs
             for cat in TR_DCT:
                 dcts[cat.name] = []
-            ##### Predicting each entities' group
+                
+            ### Remove local duplicates (document-level)
+            duplicates = find_duplicates(entities)
+            entities = remove_duplicates(entities, duplicates)        
+        
+            ##### Predicting each entities' DCT group
             for e in entities:
-                cat = self.__tre_dct.run(e)
+                cat, _ = self.__tre_dct.run(e)
                 e.dct = cat
                 dcts[cat].append(e)
            
             ##### The candidate pairs are pairs within a group
             ##### Although triple loop, this should be quicker than checking all entities
             ##### O(N^2)>O(len(dcts)*(N_i^2)) where N_i < N
+            
+            relations = []
             for cat in dcts:
                 for i, e_i in enumerate(dcts[cat]):
                     for j, e_j in enumerate(dcts[cat]):
                         if i == j:
                             continue
+                        
+                        ### TODO: GET PROBABILITY
                         tre_output = self.__tre_tlink.run(e_i, e_j)
+                        
+                        # TODO: check that theres no cycle when added
                         if tre_output != "O":
-                            e_i.relations.append(Relation(e_i, e_j, tre_output, ""))
+                            #e_i.relations.append(Relation(e_i, e_j, tre_output, ""))
+                            relations.append(Relation(e_i, e_j, tre_output, None))
 
-            ### Remove local duplicates (document-level)
-            duplicates = find_duplicates(entities)
-            entities = remove_duplicates(entities, duplicates)
+            #### Sort relations after probability
+            
+            #### Add relations one after one, make rules for consistency??!?
+            
+            # TODO
 
             rel_entities.append(entities)
 
