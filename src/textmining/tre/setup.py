@@ -79,6 +79,7 @@ class TRExtract:
                         dataset.append(relation_pair)
                         tags.add(relation)
                 else:
+                    ### This is for TRE_DCT
                     # TODO: add relation what index is this?
                     
                     test = ["XAFTERY", "XBEFOREY"]

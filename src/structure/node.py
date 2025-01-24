@@ -1,8 +1,5 @@
 import itertools
 from structure.enum import ME, TR_DCT
-
-
-# TODO: change name?
 class Node:
 
     id_iter = itertools.count()
@@ -15,7 +12,6 @@ class Node:
 
         self.type = None
 
-        # TODO: should this be in here or move to pipeline? and let this be dummy class?
         for me in ME:
             if type == me.name:
                 self.type = me

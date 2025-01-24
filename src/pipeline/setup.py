@@ -158,7 +158,7 @@ class Pipeline:
                             relations.append(Relation(e_i, e_j, relation, prob))
                             
             ##### Sort relations after probability
-            #relations = sorted(relations, key=lambda r: r.prob, reverse=True)
+            relations = sorted(relations, key=lambda r: r.prob, reverse=True)
 
             ##### Add relations one after one, make rules for consistency??!?
             for rel in relations[:]:
