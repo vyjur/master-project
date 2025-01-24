@@ -1,5 +1,5 @@
 from transformers import AutoModel
-from model.base.bilstm import Model as BaseModel
+from model.nn.bilstm import Model as BaseModel
 from model.base.nn import NN
 from structure.enum import Task
 

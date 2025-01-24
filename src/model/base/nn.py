@@ -129,8 +129,10 @@ class NN:
         if self.__task == Task.TOKEN:
             return outputs
         else:
-            return torch.argmax(outputs, axis=1).tolist()  # type: ignore
+            pred = torch.argmax(outputs, axis=1).tolist()  # type: ignore
+            prob = [max(all_prob)for all_prob in nn.functional.softmax(outputs, dim=-1)]
 
+            return pred, prob  # type: ignore
     def __train(self, training_loader, loss_fn, optimizer):
         self.__model.train()
         tr_loss, tr_accuracy = 0, 0

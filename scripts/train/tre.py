@@ -1,6 +1,7 @@
 import os
 from textmining.tre.setup import TRExtract
 from preprocess.dataset import DatasetManager
+from structure.enum import Dataset
 
 print("##### Start training for TRE... ######")
 
@@ -26,6 +27,7 @@ for i, conf in enumerate(configs):
         config_file=folder + conf,
         manager=manager,
         save_directory=save_directory,
+        task=Dataset.TRE_TLINK
     )
     print("Finished with this task.")
 
