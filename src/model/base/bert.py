@@ -16,7 +16,6 @@ from tqdm.auto import tqdm
 import numpy as np
 from model.util import Util
 import wandb
-
 from structure.enum import Task
 
 
@@ -93,6 +92,19 @@ class BERT:
             testing_loader = DataLoader(processed["test"], **test_params)
 
             num_training_steps = len(training_loader)
+
+            if len(processed['id2label']) != len(class_weights):
+                # Original dictionary
+                # Remove the key-value pair with key 0
+                processed['id2label'].pop(0)
+
+                # Update the keys to reduce them by 1
+                processed['id2label'] = {key - 1: value for key, value in processed['id2label'].items()}
+                
+                del processed['label2id']['O']
+                for tag in processed["label2id"]:
+                    processed['label2id'][tag] -= 1  
+                    
 
             if task == Task.TOKEN:
                 self.__model = AutoModelForTokenClassification.from_pretrained(
@@ -177,7 +189,9 @@ class BERT:
                 pred = torch.argmax(outputs.logits, dim=2)
             else:
                 pred = torch.argmax(outputs.logits, dim=1).tolist()
-            return pred
+                prob = [max(all_prob) for all_prob in nn.functional.softmax(outputs.logits, dim=-1)]
+                return pred, prob
+        return pred
 
     def __train(
         self,
@@ -220,7 +234,7 @@ class BERT:
                 axis=1,  # type: ignore
             )  # shape (batch_size * seq_len,)
             # now, use mask to determine where we should compare predictions with targets (includes [CLS] and [SEP] token predictions)
-
+            
             if self.__task == Task.TOKEN:
                 active_accuracy = (
                     mask.view(-1) == 1

@@ -6,7 +6,7 @@ from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
 from model.base.nn import NN
 from structure.enum import Task
-from model.base.bilstm import Model as BaseModel
+from model.nn.bilstm import Model as BaseModel
 
 START_TAG = "<START>"
 STOP_TAG = "<STOP>"

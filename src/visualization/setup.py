@@ -37,8 +37,9 @@ class VizTool:
                     color = "#FAC748"
                 case _:
                     color = "grey"
-                    
-            print(entity.id, entity.value, entity.type.name)
+                   
+            if entity.type is None:
+                continue
             self.net.add_node(
                 entity.id, entity.value, color=color, title=entity.type.name
             )

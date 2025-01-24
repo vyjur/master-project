@@ -23,7 +23,6 @@ class Util:
     def get_tags(self, task:Task, tags_name: [], default=True):
         tags = set()
         
-        
         for tag in tags_name:
             if tag == "O":
                 continue
