@@ -34,12 +34,11 @@ class Graph:
 
 
 if __name__ == "__main__":
-    # Example Usage
     g = Graph()
     g.add_edge(0, 1)
     g.add_edge(1, 2)
     g.add_edge(2, 3)
-    g.add_edge(3, 0)  # Cycle
+    g.add_edge(3, 0) 
 
     if g.is_cyclic():
         print("Cycle detected")
