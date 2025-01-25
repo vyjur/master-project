@@ -37,7 +37,6 @@ class Pipeline:
 
         ### Initialize text mining modules ###
         self.__ner = NERecognition(self.__config["CONFIGS"]["ner"], manager)
-        # self.__ere = ERExtract(self.__config['CONFIGS']['ere'], manager)
         self.__tre_dct = TRExtract(self.__config["CONFIGS"]["tre_dct"], manager, Dataset.TRE_DCT)
         self.__tre_tlink = TRExtract(self.__config["CONFIGS"]["tre_tlink"], manager, Dataset.TRE_DCT)
 
