@@ -7,19 +7,23 @@ class Graph:
     def add_edge(self, u, v):
         self.graph[u].append(v)
         
-    def dfs_enumerate_levels(self, start):
-        levels = {} 
+    def enumerate_levels(self):
+        levels = {}  # To store levels of each node
         visited = set()
 
         def dfs(node, current_level):
             visited.add(node)
-            levels[node] = current_level 
+            levels[node] = current_level  # Assign the current level to the node
 
             for neighbor in self.graph[node]:
                 if neighbor not in visited:
                     dfs(neighbor, current_level + 1)
 
-        dfs(start, 0)
+        # Handle disconnected graph
+        for node in list(self.graph.keys()):  # Use list(self.graph.keys()) to avoid RuntimeError
+            if node not in visited:
+                dfs(node, 0)  # Start DFS for unvisited components
+
         return levels
 
     def __is_cyclic_util(self, v, visited, recursion_stack):
