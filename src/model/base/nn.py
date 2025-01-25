@@ -27,8 +27,12 @@ class NN:
         project_name: str | None = None,
         pretrain: str | None = None,
     ):
-        self.__device = "cuda" if cuda.is_available() else "cpu"
-        print("Using:", self.__device)
+        self.__device = "cuda:0" if cuda.is_available() else "cpu"
+        
+        if self.__device != "cpu":
+            torch.cuda.set_device(self.__device)
+
+        print("Using:", self.__device, "with NN")
 
         self.tokenizer = tokenizer
         self.__task = task
@@ -151,8 +155,8 @@ class NN:
                     curr_loss = loss
                     predictions = outputs
                     tr_accuracy += accuracy_score(
-                        targets.view(-1).cpu().numpy(),
-                        predictions.view(-1).cpu().numpy(),
+                        targets.view(-1).numpy(),
+                        predictions.view(-1).numpy(),
                     )
             else:
                 outputs = self.__model(ids)
@@ -166,7 +170,7 @@ class NN:
                         axis=1,  # type: ignore
                     )
                     tr_accuracy += accuracy_score(
-                        targets.view(-1).cpu().numpy(), flattened_predictions
+                        targets.view(-1).numpy(), flattened_predictions
                     )  # shape (batch_size * seq_len,)
 
             tr_loss += curr_loss

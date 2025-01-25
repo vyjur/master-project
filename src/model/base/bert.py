@@ -32,10 +32,11 @@ class BERT:
         project_name: str | None = None,
         pretrain: str | None = None,
     ):
-        self.__device = "cuda" if cuda.is_available() else "cpu"
+        self.__device = "cuda:0" if cuda.is_available() else "cpu"
+        
+        if self.__device != "cpu":
+            torch.cuda.set_device(self.__device)      
         print("Using:", self.__device, "with BERT")
-
-        print("Parameters:", parameters)
 
         self.tokenizer = tokenizer
         self.__task = task
@@ -249,7 +250,7 @@ class BERT:
             tr_labels.extend(targets)
 
             tmp_tr_accuracy = accuracy_score(
-                targets.cpu().numpy(), predictions.cpu().numpy()
+                targets.numpy(), predictions.numpy()
             )
             tr_accuracy += tmp_tr_accuracy
 
