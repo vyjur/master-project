@@ -1,5 +1,5 @@
 from structure.node import Node
-from structure.enum import TR_TLINK, ER
+from structure.enum import TR_TLINK
 
 
 class Relation:
