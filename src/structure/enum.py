@@ -11,27 +11,15 @@ class Task(Enum):
     SEQUENCE = 2
     
 class TR_DCT(Enum):
-    XAFTERY = 1
-    XBEFOREY = 2
-    XDURINGY = 3
+    AFTER = 1
+    BEFORE = 2
+    DURING = 3 # TODO: Change this out later
     
 class TR_TLINK(Enum):
-    XAFTERY = 1
-    XBEFOREY = 2
-    XDURINGY = 3
+    AFTER = 1
+    BEFORE = 2
+    DURING = 3 #TODO: change this out later
 class ME(Enum):
-    CONDITION = 1
+    DISEASE = 1
     SYMPTOM = 2
-    EVENT = 3
-    
-class ER(Enum):
-    DISEASETODISEASE = 1
-    DISEASETOEVENT = 2
-    DISEASETOSYMPTOM = 3
-    EVENTTODISEASE = 4
-    EVENTTOEVENT = 5
-    EVENTTOSYMPTOM = 6
-    SYMTPOMTODISEASE = 7
-    SYMPTOMTOEVENT = 8
-    SYMTPOMTOSYMPTOM = 9
-    EQUAL = 10
+    TREATMENT = 3
