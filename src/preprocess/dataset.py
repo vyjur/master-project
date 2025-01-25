@@ -2,6 +2,7 @@ import pandas as pd
 from typing import List
 from structure.enum import Dataset
 
+### Info: This is old version in annotated folder
 COLUMN_NAMES = [
     "id",  # 0
     "sentence_id",
@@ -16,6 +17,17 @@ COLUMN_NAMES = [
     "fk_id",  # 14
 ]
 
+COLUMN_NAMES = [
+    "id", # 0,
+    "sentence_id"
+    "Offset",  # 1
+    "Text",  # 2
+    "MER",  # 4 ,
+    "TRE_DCT",  # 3,
+    "TRE_TLINK",  # 5,
+    "fk_id",  # 6
+]
+
 
 class DatasetManager:
     def __init__(self, files: List[str]):
@@ -27,29 +39,24 @@ class DatasetManager:
                 connect = False
                 prev_id = -1
                 for i, line in enumerate(f):
-                    if i in range(7) or line.strip() in ["\n", ""]:
+                    if i in range(6) or line.strip() in ["\n", ""]:
                         continue
 
                     if line.startswith("#"):
                         continue
                     sentence = line.split("\t")
 
-                    offset = 0
-                    if len(sentence) != 16:
-                        offset = -2
-
-                    fk_id = sentence[14 + offset]
+                    fk_id = sentence[6]
                     clip = fk_id.find("[")
                     if clip != -1:
                         fk_id = fk_id[:clip]
 
                     fk_id = fk_id.split("|")
-                    t_relation = sentence[13 + offset].split("|")
-                    e_relation = sentence[12 + offset].split("|")
+                    t_relation = sentence[5].split("|")
 
-                    clip = sentence[10 + offset].find("[")
+                    clip = sentence[4].find("[")
                     if clip == -1:
-                        clipper = len(sentence[10 + offset])
+                        clipper = len(sentence[4])
                     else:
                         clipper = clip
 
@@ -74,22 +81,13 @@ class DatasetManager:
                                 if sentence[1] != "_"
                                 else "O",  # 1
                                 "Text": sentence[2] if sentence[2] != "_" else "O",  # 1
-                                "Modality": sentence[8 + offset]
-                                if sentence[8 + offset] != "_"
-                                else "O",  # 8
-                                "Polarity": sentence[9 + offset]
-                                if sentence[9 + offset] != "_"
-                                else "O",  # 9,
-                                "Medical Entity": sentence[10 + offset][:clipper]
-                                if sentence[10 + offset] != "_"
-                                else "O",  # 10,
-                                "Temporal Feature": sentence[11 + offset]
-                                if sentence[11 + offset] != "_"
-                                else "O",  # 11,
-                                "Entity Relation": e_relation[i]
-                                if e_relation[i] != "_"
-                                else "O",  # 12,
-                                "Temporal Relation": t_relation[i]
+                                "MER": sentence[4][:clipper]
+                                if sentence[4j] != "_"
+                                else "O",  # 4
+                                "TRE_DCT": sentence[3]
+                                if sentence[3] != "_"
+                                else "O",  # 3,
+                                "TLINK": t_relation[i]
                                 if t_relation[i] != "_"
                                 else None,  # 13,
                                 "fk_id": id if id != "_" else None,  # 14
@@ -102,17 +100,15 @@ class DatasetManager:
         match task:
             case Dataset.NER:
                 return self.__get_docs_by_cols(
-                    ["id", "sentence_id", "Text", "Medical Entity"]
+                    ["id", "sentence_id", "Text", "MER"]
                 )
             case Dataset.TRE_DCT:
-                # TODO: fix here
                 return self.__get_docs_by_cols(
-                    ["id", "Text", "Temporal Relation", "fk_id"]
+                    ["id", "Text", "TRE_DCT"]
                 )
             case Dataset.TRE_TLINK:
-                # TODO: fix here
                 return self.__get_docs_by_cols(
-                    ["id", "Text", "Temporal Relation", "fk_id"]
+                    ["id", "Text", "TRE_TLINK", "fk_id"]
                 )
             case Dataset.SENTENCES:
                 return self.__get_sentences()
