@@ -73,7 +73,6 @@ class NERecognition:
 
     def run(self, data):
         output = self.__model.predict([val.ids for val in data])
-        print(self.id2label)
         predictions = [[self.id2label[int(j.cpu().numpy())] for j in i] for i in output]
         if self.__config.getboolean("MODEL", "lexicon"):
             lexi_predictions = Lexicon().predict(data, self.tokenizer)
@@ -89,7 +88,7 @@ if __name__ == "__main__":
         for f in os.listdir(folder_path)
         if os.path.isfile(os.path.join(folder_path, f))
     ]
-    manager = DatasetManager(files)
+    manager = DatasetManager(['./data/annotated_MTSamples/ex13.tsv'])
 
     reg = NERecognition("./src/textmining/ner/config.ini", manager)
     preprocess = Preprocess(reg.get_tokenizer(), reg.get_max_length())
