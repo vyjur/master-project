@@ -61,7 +61,7 @@ class TRExtract:
                         ]
 
                         if len(relations) == 1:
-                            relation = relations.iloc[0]["Temporal Relation"]
+                            relation = relations.iloc[0]["TRE_TLINK"]
                         else:
                             relation = "O"
 
@@ -79,12 +79,10 @@ class TRExtract:
                         dataset.append(relation_pair)
                         tags.add(relation)
                 else:
-                    ### This is for TRE_DCT
-                    # TODO: add relation what index is this?
-                    
-                    test = ["XAFTERY", "XBEFOREY"]
-                    dataset.append({"sentence": sentences[k].loc[e_i[2]].replace(e_i[3], f"<TAG>{e_i[3]}</TAG>"), "relation": test[i%len(test)]})
-                    tags.add(test[i%len(test)])
+                    ### Info: This is for TRE_DCT
+                    dct = dataset_tre[k]['TRE_DCT']
+                    dataset.append({"sentence": sentences[k].loc[e_i[2]].replace(e_i[3], f"<TAG>{e_i[3]}</TAG>"), "relation": dct})
+                    tags.add(dct)
                     
         tags = list(tags)
         self.label2id, self.id2label = Util().get_tags("sequence", tags, task!=Dataset.TRE_DCT)
