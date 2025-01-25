@@ -1,5 +1,5 @@
 from pyvis.network import Network
-from structure.enum import ME, TR_TLINK, ER
+from structure.enum import ME, TR_TLINK
 
 
 class VizTool:
