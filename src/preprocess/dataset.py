@@ -19,7 +19,7 @@ COLUMN_NAMES = [
 
 COLUMN_NAMES = [
     "id", # 0,
-    "sentence_id"
+    "sentence_id",
     "Offset",  # 1
     "Text",  # 2
     "MER",  # 4 ,
@@ -82,7 +82,7 @@ class DatasetManager:
                                 else "O",  # 1
                                 "Text": sentence[2] if sentence[2] != "_" else "O",  # 1
                                 "MER": sentence[4][:clipper]
-                                if sentence[4j] != "_"
+                                if sentence[4] != "_"
                                 else "O",  # 4
                                 "TRE_DCT": sentence[3]
                                 if sentence[3] != "_"

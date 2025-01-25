@@ -155,8 +155,8 @@
 9-6	657-660	for	_	_	_	_	
 9-7	661-673	hypertensjon	BEFORE	SYMPTOM	_	_	
 9-8	674-676	og	_	_	_	_	
-9-9	677-684	sykelig	_	_	_	_	
-9-10	685-690	fedme	BEFORE	CONDITION	_	_	
+9-9	677-684	sykelig	BEFORE[1]	CONDITION[1]	_	_	
+9-10	685-690	fedme	BEFORE[1]	CONDITION[1]	_	_	
 9-11	690-691	,	_	_	_	_	
 9-12	692-694	nå	_	_	_	_	
 9-13	695-699	løst	_	_	_	_	

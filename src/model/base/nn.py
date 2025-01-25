@@ -27,7 +27,11 @@ class NN:
         project_name: str | None = None,
         pretrain: str | None = None,
     ):
-        self.__device = "cuda" if cuda.is_available() else "cpu"
+        self.__device = "cuda:0" if cuda.is_available() else "cpu"
+        
+        if self.__device != "cpu":
+            torch.cuda.set_device(self.__device)
+
         print("Using:", self.__device)
 
         self.tokenizer = tokenizer
