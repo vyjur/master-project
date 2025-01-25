@@ -250,7 +250,7 @@ class BERT:
             tr_labels.extend(targets)
 
             tmp_tr_accuracy = accuracy_score(
-                targets.cpu().numpy(), predictions.cpu().numpy()
+                targets.numpy(), predictions.numpy()
             )
             tr_accuracy += tmp_tr_accuracy
 
