@@ -24,6 +24,8 @@ class Node:
 
         self.date = date
         self.context = context
+        
+        self.level = None
     
     def __str__(self):
         text = f"Node: {self.value} - {self.type} ({self.date})"

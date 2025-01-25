@@ -165,7 +165,29 @@ class Pipeline:
                 if graph.is_cyclic():
                     relations.remove(rel)
 
+            ##### Get the level ordering for the graph
+            levels = graph.enumerate_levels()
             
+            def get_dct(id):
+                for e in entities:
+                    if e.id == id:
+                        return e.dct
+            
+            ##### Center the level ordering to the DURING group
+            center = {'id': None, 'lvl': None}
+            for node in levels:
+                for e in entities:
+                    if e.id == id:
+                        e.level = levels[node]
+
+                        if e.dct == TR_DCT.DURING:
+                            center['id'] = node
+                            center['lvl'] = levels[node]
+                
+            #TODO: HOW TO MERGE THIS INTO DOCUMENT LEVEL
+            # do we need to center it or just add on the previous document?
+            updated_levels = {node: level - center["id"] for node, level in levels.items()}
+                        
             all_entities.append(entities)
             all_relations.append(relations)
 

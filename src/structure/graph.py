@@ -6,6 +6,21 @@ class Graph:
     
     def add_edge(self, u, v):
         self.graph[u].append(v)
+        
+    def dfs_enumerate_levels(self, start):
+        levels = {} 
+        visited = set()
+
+        def dfs(node, current_level):
+            visited.add(node)
+            levels[node] = current_level 
+
+            for neighbor in self.graph[node]:
+                if neighbor not in visited:
+                    dfs(neighbor, current_level + 1)
+
+        dfs(start, 0)
+        return levels
 
     def __is_cyclic_util(self, v, visited, recursion_stack):
         visited[v] = True
