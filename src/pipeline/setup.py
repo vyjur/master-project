@@ -1,6 +1,5 @@
 import os
 import configparser
-from preprocess.util import majority_element
 from textmining.ner.setup import NERecognition
 
 # from textmining.ere.setup import ERExtract
