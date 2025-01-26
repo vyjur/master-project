@@ -24,6 +24,8 @@ nltk = "^3.9.1"
 matplotlib = "^3.9.2"
 pypdf = "^5.1.0"
 wandb = "^0.19.1"
+plotly = "^5.24.1"
+nbformat = "^5.10.4"
 
 
 [build-system]

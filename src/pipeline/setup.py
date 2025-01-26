@@ -73,8 +73,12 @@ class Pipeline:
     def run(self, documents):
         ### Extract text from PDF ###
         # TODO: add document logic, is this necessary?
-
-        all_entities, all_relations = [], []
+        
+        all_info = {
+            'entities': [],
+            'relations': [],
+            'graphs': []
+        }
 
         for doc in documents:
             output = self.__preprocess.run(doc)
@@ -168,11 +172,6 @@ class Pipeline:
             ##### Get the level ordering for the graph
             levels = graph.enumerate_levels()
             
-            def get_dct(id):
-                for e in entities:
-                    if e.id == id:
-                        return e.dct
-            
             ##### Center the level ordering to the DURING group
             center = {'id': None, 'lvl': None}
             for node in levels:
@@ -188,50 +187,52 @@ class Pipeline:
             # do we need to center it or just add on the previous document?
             updated_levels = {node: level - center["id"] for node, level in levels.items()}
                         
-            all_entities.append(entities)
-            all_relations.append(relations)
+            all_info["entities"].append(entities)
+            
+            # TODO: what do we use relations for
+            all_info["relations"].append(relations)
 
         ## TODO: (THIS NEEDS TO BE FIXED?) Constructing trajectory across documents ###
         ### Add edges between duplicates across documents
-        for i in range(len(all_entities) - 1):
+        for i in range(len(all_info["entities"]) - 1):
             check_entities = []
             if i != 0:
-                check_entities = all_entities[i - 1]
-                check_entities = check_entities + all_entities[i]
+                check_entities = all_info["entities"][i - 1]
+                check_entities = check_entities + all_info["entities"][i]
                 duplicates = find_duplicates(check_entities, False)
-                all_entities[i - 1] = remove_duplicates(
-                    all_entities[i - 1],
-                    [j for j in duplicates if j < len(all_entities[i - 1])],
+                all_info["entities"][i - 1] = remove_duplicates(
+                    all_info["entities"][i - 1],
+                    [j for j in duplicates if j < len(all_info["entities"][i - 1])],
                 )
-                all_entities[i] = remove_duplicates(
-                    all_entities[i],
+                all_info["entities"][i] = remove_duplicates(
+                    all_info["entities"][i],
                     [
-                        j - len(all_entities[i - 1])
+                        j - len(all_info["entities"][i - 1])
                         for j in duplicates
-                        if j >= len(all_entities[i - 1])
+                        if j >= len(all_info["entities"][i - 1])
                     ],
                 )
 
-            check_entities = all_entities[i] + all_entities[i + 1]
+            check_entities = all_info["entities"][i] + all_info["entities"][i + 1]
             duplicates = find_duplicates(check_entities, False)
-            all_entities[i] = remove_duplicates(
-                all_entities[i], [j for j in duplicates if j < len(all_entities[i])]
+            all_info["entities"][i] = remove_duplicates(
+                all_info["entities"][i], [j for j in duplicates if j < len(all_info["entities"][i])]
             )
-            all_entities[i + 1] = remove_duplicates(
-                all_entities[i + 1],
+            all_info["entities"][i + 1] = remove_duplicates(
+                all_info["entities"][i + 1],
                 [
-                    j - len(all_entities[i])
+                    j - len(all_info["entities"][i])
                     for j in duplicates
-                    if j >= len(all_entities[i])
+                    if j >= len(all_info["entities"][i])
                 ],
             )
 
         res_entities = []
-        for doc in all_entities:
+        for doc in all_info["entities"]:
             res_entities = res_entities + doc
 
         ### Visualize ###
-        self.viz.create(all_entities)
+        self.viz.create(all_info["entities"])
 
 
 if __name__ == "__main__":
