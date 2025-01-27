@@ -6,12 +6,13 @@ from structure.enum import ME, TR_DCT
 class Node:
     id_iter = itertools.count()
 
-    def __init__(self, value: str, type: str, dct: str, context: str, date:datetime):
+    def __init__(
+        self, value: str, type: str, dct: str | None, context: str, date: datetime
+    ):
         self.id = next(self.id_iter)
         self.value = value
 
         self.type = None
-        
 
         for me in ME:
             if type == me.name:
