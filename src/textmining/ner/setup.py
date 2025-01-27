@@ -73,7 +73,7 @@ class NERecognition:
 
     def run(self, data):
         output = self.__model.predict([val.ids for val in data])
-        predictions = [[self.id2label[int(j.cpu().numpy())] for j in i] for i in output]
+        predictions = [[self.id2label[int(j.numpy())] for j in i] for i in output]
         if self.__config.getboolean("MODEL", "lexicon"):
             lexi_predictions = Lexicon().predict(data, self.tokenizer)
             output = Lexicon().merge(lexi_predictions, predictions)

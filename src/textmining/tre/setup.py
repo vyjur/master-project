@@ -125,7 +125,6 @@ class TRExtract:
         return self.__config.getint("MODEL", "max_length")
 
     def __run(self, data):
-        # TODO: fix here
         output = self.__model.predict([val.ids for val in data])
         predictions = [self.id2label[i] for i in output[0]]
         return predictions[0], output[1]
