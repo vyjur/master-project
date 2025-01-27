@@ -160,7 +160,6 @@ class Pipeline:
                         if i == j:
                             continue
 
-                        ### TODO: GET PROBABILITY
                         tre_output = self.__tre_tlink.run(e_i, e_j)
 
                         relation = tre_output[0]
@@ -180,12 +179,14 @@ class Pipeline:
 
             ##### Get the level ordering for the graph
             levels = graph.enumerate_levels()
+            
+            print("NY", levels)
 
             ##### Center the level ordering to the DURING group
             center = {"id": None, "lvl": 100}
             for node in levels:
                 for e in entities:
-                    if e.id == id:
+                    if e.id == node:
                         e.level = levels[node]
 
                         if e.dct == TR_DCT.DURING and e.level < center["lvl"]:
@@ -193,7 +194,7 @@ class Pipeline:
                             center["lvl"] = levels[node]
 
             updated_levels = {
-                node: level - center["id"] for node, level in levels.items()
+                node: level - center["lvl"] for node, level in levels.items()
             }
 
             for node in updated_levels:

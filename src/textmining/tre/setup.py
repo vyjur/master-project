@@ -6,7 +6,7 @@ from model.map import MODEL_MAP
 from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
 import random
-from structure.enum import Dataset
+from structure.enum import Dataset, Task
 
 
 class TRExtract:
@@ -22,6 +22,7 @@ class TRExtract:
         self.__config.read(config_file)
 
         load = self.__config["MODEL"].getboolean("load")
+        print("LOAD", load)
 
         self.tokenizer = AutoTokenizer.from_pretrained(
             self.__config["pretrain"]["name"]
@@ -82,7 +83,11 @@ class TRExtract:
                     ### Info: This is for TRE_DCT
                     dct = list(
                         set(dataset_tre[k][dataset_tre[k]["id"] == e_i[1]]["TRE_DCT"])
-                    )[0]
+                    )
+                    if len(dct) > 0:
+                        dct = dct[0]
+                    else:
+                        continue
                     dataset.append(
                         {
                             "sentence": sentences[k]
@@ -95,7 +100,7 @@ class TRExtract:
 
         tags = list(tags)
         self.label2id, self.id2label = Util().get_tags(
-            "sequence", tags, task != Dataset.TRE_DCT
+            Task.SEQUENCE, tags, task != Dataset.TRE_DCT
         )
 
         if task == Dataset.TRE_DCT and save_directory == "./src/textmining/tre/model":
@@ -125,6 +130,7 @@ class TRExtract:
         return self.__config.getint("MODEL", "max_length")
 
     def __run(self, data):
+        # TODO: fix here
         output = self.__model.predict([val.ids for val in data])
         predictions = [self.id2label[i] for i in output[0]]
         return predictions[0], output[1]
@@ -144,7 +150,7 @@ if __name__ == "__main__":
     from structure.enum import Dataset
     from structure.node import Node
 
-    folder_path = "./data/annotated/"
+    folder_path = "./data/annotated_MTSamples"
     files = [
         folder_path + f
         for f in os.listdir(folder_path)

@@ -135,7 +135,7 @@ class NN:
         else:
             pred = torch.argmax(outputs, axis=1).tolist()  # type: ignore
             prob = [
-                max(all_prob)
+                max(all_prob)  # type: ignore
                 for all_prob in nn.functional.softmax(outputs, dim=-1)  # type:ignore
             ]
 
