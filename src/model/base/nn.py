@@ -28,7 +28,7 @@ class NN:
         pretrain: str | None = None,
     ):
         self.__device = "cuda:0" if cuda.is_available() else "cpu"
-        
+
         if self.__device != "cpu":
             torch.cuda.set_device(self.__device)
 
@@ -46,9 +46,9 @@ class NN:
         class_weights = Util().class_weights(task, processed["dataset"], self.__device)
 
         tag_to_ix = processed["label2id"]
-        
+
         if len(tag_to_ix) != len(class_weights):
-            del tag_to_ix['O']
+            del tag_to_ix["O"]
             for tag in tag_to_ix:
                 tag_to_ix[tag] -= 1
 
@@ -134,9 +134,13 @@ class NN:
             return outputs
         else:
             pred = torch.argmax(outputs, axis=1).tolist()  # type: ignore
-            prob = [max(all_prob)for all_prob in nn.functional.softmax(outputs, dim=-1)]
+            prob = [
+                max(all_prob)
+                for all_prob in nn.functional.softmax(outputs, dim=-1)  # type:ignore
+            ]
 
             return pred, prob  # type: ignore
+
     def __train(self, training_loader, loss_fn, optimizer):
         self.__model.train()
         tr_loss, tr_accuracy = 0, 0

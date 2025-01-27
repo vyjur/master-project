@@ -1,0 +1,540 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MER|DCT|NER
+#T_RL=webanno.custom.TRE|TLINK|BT_webanno.custom.MER
+
+
+#Text=SUBJEKTIV:
+#Text=Pasienten henvendte seg med smerter i korsryggen som hadde oppstått etter trening.
+1-1	0-9	SUBJEKTIV	_	_	_	_	
+1-2	9-10	:	_	_	_	_	
+1-3	11-20	Pasienten	_	_	_	_	
+1-4	21-30	henvendte	_	_	_	_	
+1-5	31-34	seg	_	_	_	_	
+1-6	35-38	med	_	_	_	_	
+1-7	39-46	smerter	DURING[1]	SYMPTOM[1]	AFTER|AFTER|AFTER	5-4[2_1]|5-8[3_1]|7-1[0_1]	
+1-8	47-48	i	DURING[1]	SYMPTOM[1]	_	_	
+1-9	49-59	korsryggen	DURING[1]	SYMPTOM[1]	_	_	
+1-10	60-63	som	_	_	_	_	
+1-11	64-69	hadde	_	_	_	_	
+1-12	70-78	oppstått	_	_	_	_	
+1-13	79-84	etter	_	_	_	_	
+1-14	85-92	trening	_	_	_	_	
+1-15	92-93	.	_	_	_	_	
+
+#Text=Smertene var primært lokalisert til korsryggen og ble beskrevet som en dump smerte som forverret seg ved bevegelse.
+2-1	94-102	Smertene	_	_	_	_	
+2-2	103-106	var	_	_	_	_	
+2-3	107-114	primært	_	_	_	_	
+2-4	115-125	lokalisert	_	_	_	_	
+2-5	126-129	til	_	_	_	_	
+2-6	130-140	korsryggen	_	_	_	_	
+2-7	141-143	og	_	_	_	_	
+2-8	144-147	ble	_	_	_	_	
+2-9	148-157	beskrevet	_	_	_	_	
+2-10	158-161	som	_	_	_	_	
+2-11	162-164	en	_	_	_	_	
+2-12	165-169	dump	_	_	_	_	
+2-13	170-176	smerte	_	_	_	_	
+2-14	177-180	som	_	_	_	_	
+2-15	181-190	forverret	_	_	_	_	
+2-16	191-194	seg	_	_	_	_	
+2-17	195-198	ved	_	_	_	_	
+2-18	199-208	bevegelse	_	_	_	_	
+2-19	208-209	.	_	_	_	_	
+
+#Text=Pasienten fortalte at smertene startet for omtrent tre dager siden etter å ha utført en rekke vektløftingsøvelser på treningssenteret.
+3-1	210-219	Pasienten	_	_	_	_	
+3-2	220-228	fortalte	_	_	_	_	
+3-3	229-231	at	_	_	_	_	
+3-4	232-240	smertene	_	_	_	_	
+3-5	241-248	startet	_	_	_	_	
+3-6	249-252	for	_	_	_	_	
+3-7	253-260	omtrent	_	_	_	_	
+3-8	261-264	tre	_	_	_	_	
+3-9	265-270	dager	_	_	_	_	
+3-10	271-276	siden	_	_	_	_	
+3-11	277-282	etter	_	_	_	_	
+3-12	283-284	å	_	_	_	_	
+3-13	285-287	ha	_	_	_	_	
+3-14	288-294	utført	_	_	_	_	
+3-15	295-297	en	_	_	_	_	
+3-16	298-303	rekke	_	_	_	_	
+3-17	304-323	vektløftingsøvelser	_	_	_	_	
+3-18	324-326	på	_	_	_	_	
+3-19	327-343	treningssenteret	_	_	_	_	
+3-20	343-344	.	_	_	_	_	
+
+#Text=Han opplyste at han ikke hadde hatt betydelige korsryggsmerter tidligere.
+4-1	345-348	Han	_	_	_	_	
+4-2	349-357	opplyste	_	_	_	_	
+4-3	358-360	at	_	_	_	_	
+4-4	361-364	han	_	_	_	_	
+4-5	365-369	ikke	_	_	_	_	
+4-6	370-375	hadde	_	_	_	_	
+4-7	376-380	hatt	_	_	_	_	
+4-8	381-391	betydelige	_	_	_	_	
+4-9	392-407	korsryggsmerter	_	_	_	_	
+4-10	408-417	tidligere	_	_	_	_	
+4-11	417-418	.	_	_	_	_	
+
+#Text=MÅLSETTING:
+#Text=Ved fysisk undersøkelse viste pasienten ømhet og lette muskelspasmer i korsryggen.
+5-1	420-430	MÅLSETTING	_	_	_	_	
+5-2	430-431	:	_	_	_	_	
+5-3	432-435	Ved	_	_	_	_	
+5-4	436-442	fysisk	DURING[2]	TREATMENT[2]	BEFORE	1-7[1_2]	
+5-5	443-455	undersøkelse	DURING[2]	TREATMENT[2]	_	_	
+5-6	456-461	viste	_	_	_	_	
+5-7	462-471	pasienten	_	_	_	_	
+5-8	472-477	ømhet	DURING[3]	SYMPTOM[3]	BEFORE	5-4[2_3]	
+5-9	478-480	og	DURING[3]	SYMPTOM[3]	_	_	
+5-10	481-486	lette	DURING[3]	SYMPTOM[3]	_	_	
+5-11	487-500	muskelspasmer	DURING[3]	SYMPTOM[3]	_	_	
+5-12	501-502	i	DURING[3]	SYMPTOM[3]	_	_	
+5-13	503-513	korsryggen	DURING[3]	SYMPTOM[3]	_	_	
+5-14	513-514	.	_	_	_	_	
+
+#Text=Det ble ikke observert tegn på betennelse eller rødhet.
+6-1	515-518	Det	_	_	_	_	
+6-2	519-522	ble	_	_	_	_	
+6-3	523-527	ikke	_	_	_	_	
+6-4	528-537	observert	_	_	_	_	
+6-5	538-542	tegn	_	_	_	_	
+6-6	543-545	på	_	_	_	_	
+6-7	546-556	betennelse	_	_	_	_	
+6-8	557-562	eller	_	_	_	_	
+6-9	563-569	rødhet	_	_	_	_	
+6-10	569-570	.	_	_	_	_	
+
+#Text=Bevegelighetstester viste nedsatt evne til å flektere korsryggen og utføre foroverbøyning uten ubehag.
+7-1	571-590	Bevegelighetstester	DURING	TREATMENT	BEFORE|AFTER	1-7[1_0]|8-4[4_0]	
+7-2	591-596	viste	_	_	_	_	
+7-3	597-604	nedsatt	_	_	_	_	
+7-4	605-609	evne	_	_	_	_	
+7-5	610-613	til	_	_	_	_	
+7-6	614-615	å	_	_	_	_	
+7-7	616-624	flektere	_	_	_	_	
+7-8	625-635	korsryggen	_	_	_	_	
+7-9	636-638	og	_	_	_	_	
+7-10	639-645	utføre	_	_	_	_	
+7-11	646-660	foroverbøyning	_	_	_	_	
+7-12	661-665	uten	_	_	_	_	
+7-13	666-672	ubehag	_	_	_	_	
+7-14	672-673	.	_	_	_	_	
+
+#Text=Pasienten rapporterte også smerter ved palpasjon av paraspinalmuskulaturen i korsryggen.
+8-1	674-683	Pasienten	_	_	_	_	
+8-2	684-695	rapporterte	_	_	_	_	
+8-3	696-700	også	_	_	_	_	
+8-4	701-708	smerter	DURING[4]	SYMPTOM[4]	BEFORE	7-1[0_4]	
+8-5	709-712	ved	DURING[4]	SYMPTOM[4]	_	_	
+8-6	713-722	palpasjon	DURING[4]	SYMPTOM[4]	_	_	
+8-7	723-725	av	DURING[4]	SYMPTOM[4]	_	_	
+8-8	726-748	paraspinalmuskulaturen	DURING[4]	SYMPTOM[4]	_	_	
+8-9	749-750	i	DURING[4]	SYMPTOM[4]	_	_	
+8-10	751-761	korsryggen	DURING[4]	SYMPTOM[4]	_	_	
+8-11	761-762	.	_	_	_	_	
+
+#Text=VURDERING:
+#Text=Basert på de subjektive og objektive funnene er det sannsynlig at pasienten har akutte smerter i korsryggen, muligens på grunn av overanstrengelse under trening.
+9-1	764-773	VURDERING	_	_	_	_	
+9-2	773-774	:	_	_	_	_	
+9-3	775-781	Basert	_	_	_	_	
+9-4	782-784	på	_	_	_	_	
+9-5	785-787	de	_	_	_	_	
+9-6	788-798	subjektive	_	_	_	_	
+9-7	799-801	og	_	_	_	_	
+9-8	802-811	objektive	_	_	_	_	
+9-9	812-819	funnene	_	_	_	_	
+9-10	820-822	er	_	_	_	_	
+9-11	823-826	det	_	_	_	_	
+9-12	827-837	sannsynlig	_	_	_	_	
+9-13	838-840	at	_	_	_	_	
+9-14	841-850	pasienten	_	_	_	_	
+9-15	851-854	har	_	_	_	_	
+9-16	855-861	akutte	_	_	_	_	
+9-17	862-869	smerter	_	_	_	_	
+9-18	870-871	i	_	_	_	_	
+9-19	872-882	korsryggen	_	_	_	_	
+9-20	882-883	,	_	_	_	_	
+9-21	884-892	muligens	_	_	_	_	
+9-22	893-895	på	_	_	_	_	
+9-23	896-901	grunn	_	_	_	_	
+9-24	902-904	av	_	_	_	_	
+9-25	905-921	overanstrengelse	_	_	_	_	
+9-26	922-927	under	_	_	_	_	
+9-27	928-935	trening	_	_	_	_	
+9-28	935-936	.	_	_	_	_	
+
+#Text=Smertene er forenlige med en muskulær belastning eller forstuing i korsryggen.
+10-1	937-945	Smertene	_	_	_	_	
+10-2	946-948	er	_	_	_	_	
+10-3	949-958	forenlige	_	_	_	_	
+10-4	959-962	med	_	_	_	_	
+10-5	963-965	en	_	_	_	_	
+10-6	966-974	muskulær	_	_	_	_	
+10-7	975-985	belastning	_	_	_	_	
+10-8	986-991	eller	_	_	_	_	
+10-9	992-1001	forstuing	_	_	_	_	
+10-10	1002-1003	i	_	_	_	_	
+10-11	1004-1014	korsryggen	_	_	_	_	
+10-12	1014-1015	.	_	_	_	_	
+
+#Text=Ytterligere diagnostiske tester, som for eksempel bildediagnostiske undersøkelser, kan vurderes hvis symptomene vedvarer eller forverres.
+11-1	1016-1027	Ytterligere	_	_	_	_	
+11-2	1028-1040	diagnostiske	_	_	_	_	
+11-3	1041-1047	tester	_	_	_	_	
+11-4	1047-1048	,	_	_	_	_	
+11-5	1049-1052	som	_	_	_	_	
+11-6	1053-1056	for	_	_	_	_	
+11-7	1057-1065	eksempel	_	_	_	_	
+11-8	1066-1083	bildediagnostiske	_	_	_	_	
+11-9	1084-1097	undersøkelser	_	_	_	_	
+11-10	1097-1098	,	_	_	_	_	
+11-11	1099-1102	kan	_	_	_	_	
+11-12	1103-1111	vurderes	_	_	_	_	
+11-13	1112-1116	hvis	_	_	_	_	
+11-14	1117-1127	symptomene	_	_	_	_	
+11-15	1128-1136	vedvarer	_	_	_	_	
+11-16	1137-1142	eller	_	_	_	_	
+11-17	1143-1152	forverres	_	_	_	_	
+11-18	1152-1153	.	_	_	_	_	
+
+#Text=PLAN:
+#Text=1.
+12-1	1155-1159	PLAN	_	_	_	_	
+12-2	1159-1160	:	_	_	_	_	
+12-3	1161-1162	1	_	_	_	_	
+12-4	1162-1163	.	_	_	_	_	
+
+#Text=Smertebehandling: Pasienten vil bli rådet til å bruke reseptfrie ikke-steroide antiinflammatoriske legemidler (NSAIDs), som ibuprofen eller naproksen, for å lindre ubehag og redusere betennelse etter behov.
+13-1	1164-1180	Smertebehandling	_	_	_	_	
+13-2	1180-1181	:	_	_	_	_	
+13-3	1182-1191	Pasienten	_	_	_	_	
+13-4	1192-1195	vil	_	_	_	_	
+13-5	1196-1199	bli	_	_	_	_	
+13-6	1200-1205	rådet	_	_	_	_	
+13-7	1206-1209	til	_	_	_	_	
+13-8	1210-1211	å	_	_	_	_	
+13-9	1212-1217	bruke	_	_	_	_	
+13-10	1218-1228	reseptfrie	_	_	_	_	
+13-11	1229-1242	ikke-steroide	_	_	_	_	
+13-12	1243-1262	antiinflammatoriske	_	_	_	_	
+13-13	1263-1273	legemidler	_	_	_	_	
+13-14	1274-1275	(	_	_	_	_	
+13-15	1275-1281	NSAIDs	_	_	_	_	
+13-16	1281-1282	)	_	_	_	_	
+13-17	1282-1283	,	_	_	_	_	
+13-18	1284-1287	som	_	_	_	_	
+13-19	1288-1297	ibuprofen	AFTER	TREATMENT	_	_	
+13-20	1298-1303	eller	_	_	_	_	
+13-21	1304-1313	naproksen	AFTER	TREATMENT	_	_	
+13-22	1313-1314	,	_	_	_	_	
+13-23	1315-1318	for	_	_	_	_	
+13-24	1319-1320	å	_	_	_	_	
+13-25	1321-1327	lindre	_	_	_	_	
+13-26	1328-1334	ubehag	_	_	_	_	
+13-27	1335-1337	og	_	_	_	_	
+13-28	1338-1346	redusere	_	_	_	_	
+13-29	1347-1357	betennelse	_	_	_	_	
+13-30	1358-1363	etter	_	_	_	_	
+13-31	1364-1369	behov	_	_	_	_	
+13-32	1369-1370	.	_	_	_	_	
+
+#Text=Paracetamol kan også brukes for smertelindring, etter passende doseringsanvisninger.
+14-1	1371-1382	Paracetamol	_	_	_	_	
+14-2	1383-1386	kan	_	_	_	_	
+14-3	1387-1391	også	_	_	_	_	
+14-4	1392-1398	brukes	_	_	_	_	
+14-5	1399-1402	for	_	_	_	_	
+14-6	1403-1417	smertelindring	_	_	_	_	
+14-7	1417-1418	,	_	_	_	_	
+14-8	1419-1424	etter	_	_	_	_	
+14-9	1425-1433	passende	_	_	_	_	
+14-10	1434-1454	doseringsanvisninger	_	_	_	_	
+14-11	1454-1455	.	_	_	_	_	
+
+#Text=I tillegg kan lokalanalgetika som inneholder mentol eller capsaicin gi lokal lindring.
+#Text=
+#Text=2.
+15-1	1456-1457	I	_	_	_	_	
+15-2	1458-1465	tillegg	_	_	_	_	
+15-3	1466-1469	kan	_	_	_	_	
+15-4	1470-1485	lokalanalgetika	_	_	_	_	
+15-5	1486-1489	som	_	_	_	_	
+15-6	1490-1500	inneholder	_	_	_	_	
+15-7	1501-1507	mentol	_	_	_	_	
+15-8	1508-1513	eller	_	_	_	_	
+15-9	1514-1523	capsaicin	_	_	_	_	
+15-10	1524-1526	gi	_	_	_	_	
+15-11	1527-1532	lokal	_	_	_	_	
+15-12	1533-1541	lindring	_	_	_	_	
+15-13	1541-1542	.	_	_	_	_	
+15-14	1544-1545	2	_	_	_	_	
+15-15	1545-1546	.	_	_	_	_	
+
+#Text=Modifisering av hvile og aktivitet: Pasienten vil bli rådet til midlertidig å unngå aktiviteter som forverrer smertene, inkludert de spesifikke øvelsene som utløste symptomene.
+16-1	1547-1559	Modifisering	_	_	_	_	
+16-2	1560-1562	av	_	_	_	_	
+16-3	1563-1568	hvile	_	_	_	_	
+16-4	1569-1571	og	_	_	_	_	
+16-5	1572-1581	aktivitet	_	_	_	_	
+16-6	1581-1582	:	_	_	_	_	
+16-7	1583-1592	Pasienten	_	_	_	_	
+16-8	1593-1596	vil	_	_	_	_	
+16-9	1597-1600	bli	_	_	_	_	
+16-10	1601-1606	rådet	_	_	_	_	
+16-11	1607-1610	til	_	_	_	_	
+16-12	1611-1622	midlertidig	_	_	_	_	
+16-13	1623-1624	å	_	_	_	_	
+16-14	1625-1630	unngå	_	_	_	_	
+16-15	1631-1642	aktiviteter	_	_	_	_	
+16-16	1643-1646	som	_	_	_	_	
+16-17	1647-1656	forverrer	_	_	_	_	
+16-18	1657-1665	smertene	_	_	_	_	
+16-19	1665-1666	,	_	_	_	_	
+16-20	1667-1676	inkludert	_	_	_	_	
+16-21	1677-1679	de	_	_	_	_	
+16-22	1680-1690	spesifikke	_	_	_	_	
+16-23	1691-1699	øvelsene	_	_	_	_	
+16-24	1700-1703	som	_	_	_	_	
+16-25	1704-1711	utløste	_	_	_	_	
+16-26	1712-1722	symptomene	_	_	_	_	
+16-27	1722-1723	.	_	_	_	_	
+
+#Text=Tilstrekkelig hvile og unngåelse av anstrengende aktiviteter vil gi det skadede vevet tid til å leges.
+17-1	1724-1737	Tilstrekkelig	_	_	_	_	
+17-2	1738-1743	hvile	_	_	_	_	
+17-3	1744-1746	og	_	_	_	_	
+17-4	1747-1756	unngåelse	_	_	_	_	
+17-5	1757-1759	av	_	_	_	_	
+17-6	1760-1772	anstrengende	_	_	_	_	
+17-7	1773-1784	aktiviteter	_	_	_	_	
+17-8	1785-1788	vil	_	_	_	_	
+17-9	1789-1791	gi	_	_	_	_	
+17-10	1792-1795	det	_	_	_	_	
+17-11	1796-1803	skadede	_	_	_	_	
+17-12	1804-1809	vevet	_	_	_	_	
+17-13	1810-1813	tid	_	_	_	_	
+17-14	1814-1817	til	_	_	_	_	
+17-15	1818-1819	å	_	_	_	_	
+17-16	1820-1825	leges	_	_	_	_	
+17-17	1825-1826	.	_	_	_	_	
+
+#Text=Øvelser med lav belastning, som svømming, sykling eller bruk av ellipsemaskin, kan anbefales for å opprettholde kondisjonen uten å forverre korsryggsmertene.
+#Text=
+#Text=3.
+18-1	1827-1834	Øvelser	_	_	_	_	
+18-2	1835-1838	med	_	_	_	_	
+18-3	1839-1842	lav	_	_	_	_	
+18-4	1843-1853	belastning	_	_	_	_	
+18-5	1853-1854	,	_	_	_	_	
+18-6	1855-1858	som	_	_	_	_	
+18-7	1859-1867	svømming	_	_	_	_	
+18-8	1867-1868	,	_	_	_	_	
+18-9	1869-1876	sykling	_	_	_	_	
+18-10	1877-1882	eller	_	_	_	_	
+18-11	1883-1887	bruk	_	_	_	_	
+18-12	1888-1890	av	_	_	_	_	
+18-13	1891-1904	ellipsemaskin	_	_	_	_	
+18-14	1904-1905	,	_	_	_	_	
+18-15	1906-1909	kan	_	_	_	_	
+18-16	1910-1919	anbefales	_	_	_	_	
+18-17	1920-1923	for	_	_	_	_	
+18-18	1924-1925	å	_	_	_	_	
+18-19	1926-1938	opprettholde	_	_	_	_	
+18-20	1939-1950	kondisjonen	_	_	_	_	
+18-21	1951-1955	uten	_	_	_	_	
+18-22	1956-1957	å	_	_	_	_	
+18-23	1958-1966	forverre	_	_	_	_	
+18-24	1967-1983	korsryggsmertene	_	_	_	_	
+18-25	1983-1984	.	_	_	_	_	
+18-26	1986-1987	3	_	_	_	_	
+18-27	1987-1988	.	_	_	_	_	
+
+#Text=Fysioterapi: Henvisning til fysioterapeut for videre evaluering og utarbeidelse av et tilpasset treningsprogram.
+19-1	1989-2000	Fysioterapi	AFTER	TREATMENT	_	_	
+19-2	2000-2001	:	_	_	_	_	
+19-3	2002-2012	Henvisning	_	_	_	_	
+19-4	2013-2016	til	_	_	_	_	
+19-5	2017-2030	fysioterapeut	AFTER	TREATMENT	_	_	
+19-6	2031-2034	for	_	_	_	_	
+19-7	2035-2041	videre	_	_	_	_	
+19-8	2042-2052	evaluering	_	_	_	_	
+19-9	2053-2055	og	_	_	_	_	
+19-10	2056-2068	utarbeidelse	_	_	_	_	
+19-11	2069-2071	av	_	_	_	_	
+19-12	2072-2074	et	_	_	_	_	
+19-13	2075-2084	tilpasset	_	_	_	_	
+19-14	2085-2100	treningsprogram	_	_	_	_	
+19-15	2100-2101	.	_	_	_	_	
+
+#Text=Programmet vil fokusere på å styrke kjernemuskulaturen og støttemuskulaturen, forbedre fleksibiliteten og fremme riktig kroppsmekanikk for å forebygge fremtidige skader.
+20-1	2102-2112	Programmet	_	_	_	_	
+20-2	2113-2116	vil	_	_	_	_	
+20-3	2117-2125	fokusere	_	_	_	_	
+20-4	2126-2128	på	_	_	_	_	
+20-5	2129-2130	å	_	_	_	_	
+20-6	2131-2137	styrke	_	_	_	_	
+20-7	2138-2156	kjernemuskulaturen	_	_	_	_	
+20-8	2157-2159	og	_	_	_	_	
+20-9	2160-2178	støttemuskulaturen	_	_	_	_	
+20-10	2178-2179	,	_	_	_	_	
+20-11	2180-2188	forbedre	_	_	_	_	
+20-12	2189-2204	fleksibiliteten	_	_	_	_	
+20-13	2205-2207	og	_	_	_	_	
+20-14	2208-2214	fremme	_	_	_	_	
+20-15	2215-2221	riktig	_	_	_	_	
+20-16	2222-2236	kroppsmekanikk	_	_	_	_	
+20-17	2237-2240	for	_	_	_	_	
+20-18	2241-2242	å	_	_	_	_	
+20-19	2243-2252	forebygge	_	_	_	_	
+20-20	2253-2263	fremtidige	_	_	_	_	
+20-21	2264-2270	skader	_	_	_	_	
+20-22	2270-2271	.	_	_	_	_	
+
+#Text=Treningsprogrammet vil omfatte øvelser for å styrke kjernemuskulaturen, for eksempel planke, bro og magestrekk, samt bevegelighetsøvelser rettet mot hamstrings, hoftebøyere og korsryggmuskulatur.
+#Text=
+#Text=4.
+21-1	2272-2290	Treningsprogrammet	_	_	_	_	
+21-2	2291-2294	vil	_	_	_	_	
+21-3	2295-2302	omfatte	_	_	_	_	
+21-4	2303-2310	øvelser	_	_	_	_	
+21-5	2311-2314	for	_	_	_	_	
+21-6	2315-2316	å	_	_	_	_	
+21-7	2317-2323	styrke	_	_	_	_	
+21-8	2324-2342	kjernemuskulaturen	_	_	_	_	
+21-9	2342-2343	,	_	_	_	_	
+21-10	2344-2347	for	_	_	_	_	
+21-11	2348-2356	eksempel	_	_	_	_	
+21-12	2357-2363	planke	_	_	_	_	
+21-13	2363-2364	,	_	_	_	_	
+21-14	2365-2368	bro	_	_	_	_	
+21-15	2369-2371	og	_	_	_	_	
+21-16	2372-2382	magestrekk	_	_	_	_	
+21-17	2382-2383	,	_	_	_	_	
+21-18	2384-2388	samt	_	_	_	_	
+21-19	2389-2409	bevegelighetsøvelser	_	_	_	_	
+21-20	2410-2416	rettet	_	_	_	_	
+21-21	2417-2420	mot	_	_	_	_	
+21-22	2421-2431	hamstrings	_	_	_	_	
+21-23	2431-2432	,	_	_	_	_	
+21-24	2433-2444	hoftebøyere	_	_	_	_	
+21-25	2445-2447	og	_	_	_	_	
+21-26	2448-2466	korsryggmuskulatur	_	_	_	_	
+21-27	2466-2467	.	_	_	_	_	
+21-28	2469-2470	4	_	_	_	_	
+21-29	2470-2471	.	_	_	_	_	
+
+#Text=Opplæring: Pasienten vil bli informert om viktigheten av å opprettholde en god holdning, bruke riktige løfteteknikker og gradvis øke intensiteten og varigheten av treningen for å forebygge tilbakefall av korsryggsmerter.
+22-1	2472-2481	Opplæring	_	_	_	_	
+22-2	2481-2482	:	_	_	_	_	
+22-3	2483-2492	Pasienten	_	_	_	_	
+22-4	2493-2496	vil	_	_	_	_	
+22-5	2497-2500	bli	_	_	_	_	
+22-6	2501-2510	informert	_	_	_	_	
+22-7	2511-2513	om	_	_	_	_	
+22-8	2514-2525	viktigheten	_	_	_	_	
+22-9	2526-2528	av	_	_	_	_	
+22-10	2529-2530	å	_	_	_	_	
+22-11	2531-2543	opprettholde	_	_	_	_	
+22-12	2544-2546	en	_	_	_	_	
+22-13	2547-2550	god	_	_	_	_	
+22-14	2551-2559	holdning	_	_	_	_	
+22-15	2559-2560	,	_	_	_	_	
+22-16	2561-2566	bruke	_	_	_	_	
+22-17	2567-2574	riktige	_	_	_	_	
+22-18	2575-2589	løfteteknikker	_	_	_	_	
+22-19	2590-2592	og	_	_	_	_	
+22-20	2593-2600	gradvis	_	_	_	_	
+22-21	2601-2604	øke	_	_	_	_	
+22-22	2605-2617	intensiteten	_	_	_	_	
+22-23	2618-2620	og	_	_	_	_	
+22-24	2621-2631	varigheten	_	_	_	_	
+22-25	2632-2634	av	_	_	_	_	
+22-26	2635-2644	treningen	_	_	_	_	
+22-27	2645-2648	for	_	_	_	_	
+22-28	2649-2650	å	_	_	_	_	
+22-29	2651-2660	forebygge	_	_	_	_	
+22-30	2661-2672	tilbakefall	_	_	_	_	
+22-31	2673-2675	av	_	_	_	_	
+22-32	2676-2691	korsryggsmerter	_	_	_	_	
+22-33	2691-2692	.	_	_	_	_	
+
+#Text=De vil også få råd om å rådføre seg med helsepersonell før de gjenopptar treningsaktiviteter.
+23-1	2693-2695	De	_	_	_	_	
+23-2	2696-2699	vil	_	_	_	_	
+23-3	2700-2704	også	_	_	_	_	
+23-4	2705-2707	få	_	_	_	_	
+23-5	2708-2711	råd	_	_	_	_	
+23-6	2712-2714	om	_	_	_	_	
+23-7	2715-2716	å	_	_	_	_	
+23-8	2717-2724	rådføre	_	_	_	_	
+23-9	2725-2728	seg	_	_	_	_	
+23-10	2729-2732	med	_	_	_	_	
+23-11	2733-2747	helsepersonell	_	_	_	_	
+23-12	2748-2751	før	_	_	_	_	
+23-13	2752-2754	de	_	_	_	_	
+23-14	2755-2765	gjenopptar	_	_	_	_	
+23-15	2766-2785	treningsaktiviteter	_	_	_	_	
+23-16	2785-2786	.	_	_	_	_	
+
+#Text=Riktig løfteteknikk, inkludert å bøye i knærne, holde ryggen rett og løfte med beina, vil bli vektlagt for å forhindre ytterligere belastning på korsryggen.
+#Text=
+#Text=5.
+24-1	2787-2793	Riktig	_	_	_	_	
+24-2	2794-2806	løfteteknikk	_	_	_	_	
+24-3	2806-2807	,	_	_	_	_	
+24-4	2808-2817	inkludert	_	_	_	_	
+24-5	2818-2819	å	_	_	_	_	
+24-6	2820-2824	bøye	_	_	_	_	
+24-7	2825-2826	i	_	_	_	_	
+24-8	2827-2833	knærne	_	_	_	_	
+24-9	2833-2834	,	_	_	_	_	
+24-10	2835-2840	holde	_	_	_	_	
+24-11	2841-2847	ryggen	_	_	_	_	
+24-12	2848-2852	rett	_	_	_	_	
+24-13	2853-2855	og	_	_	_	_	
+24-14	2856-2861	løfte	_	_	_	_	
+24-15	2862-2865	med	_	_	_	_	
+24-16	2866-2871	beina	_	_	_	_	
+24-17	2871-2872	,	_	_	_	_	
+24-18	2873-2876	vil	_	_	_	_	
+24-19	2877-2880	bli	_	_	_	_	
+24-20	2881-2889	vektlagt	_	_	_	_	
+24-21	2890-2893	for	_	_	_	_	
+24-22	2894-2895	å	_	_	_	_	
+24-23	2896-2905	forhindre	_	_	_	_	
+24-24	2906-2917	ytterligere	_	_	_	_	
+24-25	2918-2928	belastning	_	_	_	_	
+24-26	2929-2931	på	_	_	_	_	
+24-27	2932-2942	korsryggen	_	_	_	_	
+24-28	2942-2943	.	_	_	_	_	
+24-29	2945-2946	5	_	_	_	_	
+24-30	2946-2947	.	_	_	_	_	
+
+#Text=Oppfølging: En oppfølgingstime vil bli avtalt om tre uker for å vurdere pasientens fremgang, revurdere symptomene og endre behandlingsplanen om nødvendig.
+25-1	2948-2958	Oppfølging	_	_	_	_	
+25-2	2958-2959	:	_	_	_	_	
+25-3	2960-2962	En	_	_	_	_	
+25-4	2963-2978	oppfølgingstime	_	_	_	_	
+25-5	2979-2982	vil	_	_	_	_	
+25-6	2983-2986	bli	_	_	_	_	
+25-7	2987-2993	avtalt	_	_	_	_	
+25-8	2994-2996	om	_	_	_	_	
+25-9	2997-3000	tre	_	_	_	_	
+25-10	3001-3005	uker	_	_	_	_	
+25-11	3006-3009	for	_	_	_	_	
+25-12	3010-3011	å	_	_	_	_	
+25-13	3012-3019	vurdere	_	_	_	_	
+25-14	3020-3030	pasientens	_	_	_	_	
+25-15	3031-3039	fremgang	_	_	_	_	
+25-16	3039-3040	,	_	_	_	_	
+25-17	3041-3050	revurdere	_	_	_	_	
+25-18	3051-3061	symptomene	_	_	_	_	
+25-19	3062-3064	og	_	_	_	_	
+25-20	3065-3070	endre	_	_	_	_	
+25-21	3071-3088	behandlingsplanen	_	_	_	_	
+25-22	3089-3091	om	_	_	_	_	
+25-23	3092-3101	nødvendig	_	_	_	_	
+25-24	3101-3102	.	_	_	_	_	
