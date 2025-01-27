@@ -106,7 +106,8 @@ class DatasetManager:
             case Dataset.NER:
                 return self.__get_docs_by_cols(["id", "sentence_id", "Text", "MER"])
             case Dataset.TRE_DCT:
-                return self.__get_docs_by_cols(["id", "Text", "TRE_DCT"])
+                result = self.__get_docs_by_cols(["id", "Text", "TRE_DCT"])
+                return [doc[doc["TRE_DCT"] != "O"] for doc in result]
             case Dataset.TRE_TLINK:
                 return self.__get_docs_by_cols(["id", "Text", "TRE_TLINK", "fk_id"])
             case Dataset.SENTENCES:

@@ -20,6 +20,7 @@ class NERecognition:
         self.__config.read(config_file)
 
         load = self.__config["MODEL"].getboolean("load")
+        print("LOAD", load)
         raw_dataset = manager.get(Dataset.NER)
 
         dataset = []
