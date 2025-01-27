@@ -88,6 +88,7 @@ class Pipeline:
         all_info = []
 
         for doc in documents:
+            # TODO: fix this so its not a constant
             dct = datetime(2025, 1, 25, 00, 00, 00)
 
             output = self.__preprocess.run(doc)
