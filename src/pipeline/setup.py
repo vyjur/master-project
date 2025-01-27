@@ -104,8 +104,12 @@ class Pipeline:
                 for int in result:
                     entity = self.__preprocess.decode(
                         output[i].ids[int[0] : int[1]]
-                    ).strip()
+                    ).replace("[CLS]", "").replace("[PAD]", "").replace("[SEP]", "").strip()
+
                     entype = ner_output[i][int[0]].replace("B-", "")
+                    if len(entity) == 0 or entype == "O":
+                        continue
+                    
                     found = -1
                     while found == -1 and len(
                         output[0].ids[0 : int[1] + offset]
@@ -125,8 +129,8 @@ class Pipeline:
                         .replace("[SEP]", "")
                         .replace("[PAD]", "")
                     )
-                    entities.append(Node(entity, entype, dct, context, None))
-
+                    entities.append(Node(entity, entype, None, context, dct))
+                    
             ### Temporal Relation Extraction
 
             #### DocTimeRel Extraction
@@ -180,8 +184,6 @@ class Pipeline:
             ##### Get the level ordering for the graph
             levels = graph.enumerate_levels()
             
-            print("NY", levels)
-
             ##### Center the level ordering to the DURING group
             center = {"id": None, "lvl": 100}
             for node in levels:
@@ -201,7 +203,7 @@ class Pipeline:
                 for e in entities:
                     if e.id == id:
                         e.level = updated_levels[node]
-
+                        
             all_info.append(
                 {
                     "dct": dct,
