@@ -1,0 +1,728 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MER|DCT|NER
+#T_RL=webanno.custom.TRE|TLINK|BT_webanno.custom.MER
+
+
+#Text=SYKDOMSHISTORIE: Denne 59 år gamle, hvite mannen kommer til en omfattende årlig helseundersøkelse den 19.02.08, selv om pasienten generelt er ved utmerket helse.
+1-1	0-15	SYKDOMSHISTORIE	_	_	_	_	
+1-2	15-16	:	_	_	_	_	
+1-3	17-22	Denne	_	_	_	_	
+1-4	23-25	59	_	_	_	_	
+1-5	26-28	år	_	_	_	_	
+1-6	29-34	gamle	_	_	_	_	
+1-7	34-35	,	_	_	_	_	
+1-8	36-41	hvite	_	_	_	_	
+1-9	42-48	mannen	_	_	_	_	
+1-10	49-55	kommer	_	_	_	_	
+1-11	56-59	til	_	_	_	_	
+1-12	60-62	en	_	_	_	_	
+1-13	63-73	omfattende	_	_	_	_	
+1-14	74-79	årlig	_	_	_	_	
+1-15	80-97	helseundersøkelse	_	_	_	_	
+1-16	98-101	den	_	_	_	_	
+1-17	102-110	19.02.08	_	_	_	_	
+1-18	110-111	,	_	_	_	_	
+1-19	112-116	selv	_	_	_	_	
+1-20	117-119	om	_	_	_	_	
+1-21	120-129	pasienten	_	_	_	_	
+1-22	130-138	generelt	_	_	_	_	
+1-23	139-141	er	_	_	_	_	
+1-24	142-145	ved	_	_	_	_	
+1-25	146-154	utmerket	_	_	_	_	
+1-26	155-160	helse	_	_	_	_	
+1-27	160-161	.	_	_	_	_	
+
+#Text=Medisinske problemer inkluderer kronisk tinnitus i venstre øre med moderat hørselstap i mange år uten noen nylig endring, dyslipidemi godt kontrollert med niacin, historie med hemoroider med sporadiske ytre blødninger, men ingen problemer de siste 6 månedene, og også historie med concha bullosa i venstre nesebor, etterfulgt av ØNH assosiert med lett septumdeviasjon.
+2-1	162-172	Medisinske	_	_	_	_	
+2-2	173-182	problemer	_	_	_	_	
+2-3	183-193	inkluderer	_	_	_	_	
+2-4	194-201	kronisk	BEFORE/OVERLAP[1]	DISEASE[1]	_	_	
+2-5	202-210	tinnitus	BEFORE/OVERLAP[1]	DISEASE[1]	_	_	
+2-6	211-212	i	_	_	_	_	
+2-7	213-220	venstre	_	_	_	_	
+2-8	221-224	øre	_	_	_	_	
+2-9	225-228	med	_	_	_	_	
+2-10	229-236	moderat	_	_	_	_	
+2-11	237-247	hørselstap	BEFORE/OVERLAP	SYMPTOM	_	_	
+2-12	248-249	i	_	_	_	_	
+2-13	250-255	mange	_	_	_	_	
+2-14	256-258	år	_	_	_	_	
+2-15	259-263	uten	_	_	_	_	
+2-16	264-268	noen	_	_	_	_	
+2-17	269-274	nylig	_	_	_	_	
+2-18	275-282	endring	_	_	_	_	
+2-19	282-283	,	_	_	_	_	
+2-20	284-295	dyslipidemi	_	_	_	_	
+2-21	296-300	godt	_	_	_	_	
+2-22	301-312	kontrollert	_	_	_	_	
+2-23	313-316	med	_	_	_	_	
+2-24	317-323	niacin	_	_	_	_	
+2-25	323-324	,	_	_	_	_	
+2-26	325-333	historie	_	_	_	_	
+2-27	334-337	med	_	_	_	_	
+2-28	338-348	hemoroider	_	_	_	_	
+2-29	349-352	med	_	_	_	_	
+2-30	353-363	sporadiske	_	_	_	_	
+2-31	364-368	ytre	_	_	_	_	
+2-32	369-379	blødninger	_	_	_	_	
+2-33	379-380	,	_	_	_	_	
+2-34	381-384	men	_	_	_	_	
+2-35	385-390	ingen	_	_	_	_	
+2-36	391-400	problemer	_	_	_	_	
+2-37	401-403	de	_	_	_	_	
+2-38	404-409	siste	_	_	_	_	
+2-39	410-411	6	_	_	_	_	
+2-40	412-420	månedene	_	_	_	_	
+2-41	420-421	,	_	_	_	_	
+2-42	422-424	og	_	_	_	_	
+2-43	425-429	også	_	_	_	_	
+2-44	430-438	historie	_	_	_	_	
+2-45	439-442	med	_	_	_	_	
+2-46	443-449	concha	BEFORE[2]	*[2]	AFTER	2-58[0_2]	
+2-47	450-457	bullosa	BEFORE[2]	*[2]	_	_	
+2-48	458-459	i	_	_	_	_	
+2-49	460-467	venstre	_	_	_	_	
+2-50	468-475	nesebor	_	_	_	_	
+2-51	475-476	,	_	_	_	_	
+2-52	477-487	etterfulgt	_	_	_	_	
+2-53	488-490	av	_	_	_	_	
+2-54	491-494	ØNH	_	_	_	_	
+2-55	495-504	assosiert	_	_	_	_	
+2-56	505-508	med	_	_	_	_	
+2-57	509-513	lett	_	_	_	_	
+2-58	514-529	septumdeviasjon	BEFORE	DISEASE	BEFORE	2-46[2_0]	
+2-59	529-530	.	_	_	_	_	
+
+#Text=Det er ingen andre medisinske problemer.
+3-1	531-534	Det	_	_	_	_	
+3-2	535-537	er	_	_	_	_	
+3-3	538-543	ingen	_	_	_	_	
+3-4	544-549	andre	_	_	_	_	
+3-5	550-560	medisinske	_	_	_	_	
+3-6	561-570	problemer	_	_	_	_	
+3-7	570-571	.	_	_	_	_	
+
+#Text=Han har ingen symptomer på dette tidspunktet og er fortsatt ved utmerket helse.
+4-1	572-575	Han	_	_	_	_	
+4-2	576-579	har	_	_	_	_	
+4-3	580-585	ingen	_	_	_	_	
+4-4	586-595	symptomer	_	_	_	_	
+4-5	596-598	på	_	_	_	_	
+4-6	599-604	dette	_	_	_	_	
+4-7	605-616	tidspunktet	_	_	_	_	
+4-8	617-619	og	_	_	_	_	
+4-9	620-622	er	_	_	_	_	
+4-10	623-631	fortsatt	_	_	_	_	
+4-11	632-635	ved	_	_	_	_	
+4-12	636-644	utmerket	_	_	_	_	
+4-13	645-650	helse	_	_	_	_	
+4-14	650-651	.	_	_	_	_	
+
+#Text=TIDLIGERE SYKEHISTORIE: Ellers ikke medvirkende.
+5-1	653-662	TIDLIGERE	_	_	_	_	
+5-2	663-675	SYKEHISTORIE	_	_	_	_	
+5-3	675-676	:	_	_	_	_	
+5-4	677-683	Ellers	_	_	_	_	
+5-5	684-688	ikke	_	_	_	_	
+5-6	689-700	medvirkende	_	_	_	_	
+5-7	700-701	.	_	_	_	_	
+
+#Text=Det foreligger ingen operasjoner, alvorlig sykdom eller skade utover det som er nevnt ovenfor.
+6-1	702-705	Det	_	_	_	_	
+6-2	706-716	foreligger	_	_	_	_	
+6-3	717-722	ingen	_	_	_	_	
+6-4	723-734	operasjoner	_	_	_	_	
+6-5	734-735	,	_	_	_	_	
+6-6	736-744	alvorlig	_	_	_	_	
+6-7	745-751	sykdom	_	_	_	_	
+6-8	752-757	eller	_	_	_	_	
+6-9	758-763	skade	_	_	_	_	
+6-10	764-770	utover	_	_	_	_	
+6-11	771-774	det	_	_	_	_	
+6-12	775-778	som	_	_	_	_	
+6-13	779-781	er	_	_	_	_	
+6-14	782-787	nevnt	_	_	_	_	
+6-15	788-795	ovenfor	_	_	_	_	
+6-16	795-796	.	_	_	_	_	
+
+#Text=ALLERGIER: Det er ingen kjente allergier.
+7-1	798-807	ALLERGIER	_	_	_	_	
+7-2	807-808	:	_	_	_	_	
+7-3	809-812	Det	_	_	_	_	
+7-4	813-815	er	_	_	_	_	
+7-5	816-821	ingen	_	_	_	_	
+7-6	822-828	kjente	_	_	_	_	
+7-7	829-838	allergier	_	_	_	_	
+7-8	838-839	.	_	_	_	_	
+
+#Text=FAMILIEHISTORIE: Far døde av hjerteinfarkt i en alder av 67 år med KOLS og var storrøyker.
+8-1	841-856	FAMILIEHISTORIE	_	_	_	_	
+8-2	856-857	:	_	_	_	_	
+8-3	858-861	Far	_	_	_	_	
+8-4	862-866	døde	_	_	_	_	
+8-5	867-869	av	_	_	_	_	
+8-6	870-883	hjerteinfarkt	_	_	_	_	
+8-7	884-885	i	_	_	_	_	
+8-8	886-888	en	_	_	_	_	
+8-9	889-894	alder	_	_	_	_	
+8-10	895-897	av	_	_	_	_	
+8-11	898-900	67	_	_	_	_	
+8-12	901-903	år	_	_	_	_	
+8-13	904-907	med	_	_	_	_	
+8-14	908-912	KOLS	_	_	_	_	
+8-15	913-915	og	_	_	_	_	
+8-16	916-919	var	_	_	_	_	
+8-17	920-930	storrøyker	_	_	_	_	
+8-18	930-931	.	_	_	_	_	
+
+#Text=Moren er 88 år, i live og frisk, status etter lungekreftreseksjon.
+9-1	932-937	Moren	_	_	_	_	
+9-2	938-940	er	_	_	_	_	
+9-3	941-943	88	_	_	_	_	
+9-4	944-946	år	_	_	_	_	
+9-5	946-947	,	_	_	_	_	
+9-6	948-949	i	_	_	_	_	
+9-7	950-954	live	_	_	_	_	
+9-8	955-957	og	_	_	_	_	
+9-9	958-963	frisk	_	_	_	_	
+9-10	963-964	,	_	_	_	_	
+9-11	965-971	status	_	_	_	_	
+9-12	972-977	etter	_	_	_	_	
+9-13	978-997	lungekreftreseksjon	_	_	_	_	
+9-14	997-998	.	_	_	_	_	
+
+#Text=To brødre, i live og friske.
+10-1	999-1001	To	_	_	_	_	
+10-2	1002-1008	brødre	_	_	_	_	
+10-3	1008-1009	,	_	_	_	_	
+10-4	1010-1011	i	_	_	_	_	
+10-5	1012-1016	live	_	_	_	_	
+10-6	1017-1019	og	_	_	_	_	
+10-7	1020-1026	friske	_	_	_	_	
+10-8	1026-1027	.	_	_	_	_	
+
+#Text=En søster døde 20 måneder gammel av lungebetennelse.
+11-1	1028-1030	En	_	_	_	_	
+11-2	1031-1037	søster	_	_	_	_	
+11-3	1038-1042	døde	_	_	_	_	
+11-4	1043-1045	20	_	_	_	_	
+11-5	1046-1053	måneder	_	_	_	_	
+11-6	1054-1060	gammel	_	_	_	_	
+11-7	1061-1063	av	_	_	_	_	
+11-8	1064-1079	lungebetennelse	_	_	_	_	
+11-9	1079-1080	.	_	_	_	_	
+
+#Text=Sosialhistorie: Pasienten er gift.
+12-1	1082-1096	Sosialhistorie	_	_	_	_	
+12-2	1096-1097	:	_	_	_	_	
+12-3	1098-1107	Pasienten	_	_	_	_	
+12-4	1108-1110	er	_	_	_	_	
+12-5	1111-1115	gift	_	_	_	_	
+12-6	1115-1116	.	_	_	_	_	
+
+#Text=Kona lever og har det bra.
+13-1	1117-1121	Kona	_	_	_	_	
+13-2	1122-1127	lever	_	_	_	_	
+13-3	1128-1130	og	_	_	_	_	
+13-4	1131-1134	har	_	_	_	_	
+13-5	1135-1138	det	_	_	_	_	
+13-6	1139-1142	bra	_	_	_	_	
+13-7	1142-1143	.	_	_	_	_	
+
+#Text=Han jogger eller trener langrenn 5 ganger i uken, og styrketrening 2 ganger i uken.
+14-1	1144-1147	Han	_	_	_	_	
+14-2	1148-1154	jogger	_	_	_	_	
+14-3	1155-1160	eller	_	_	_	_	
+14-4	1161-1167	trener	_	_	_	_	
+14-5	1168-1176	langrenn	_	_	_	_	
+14-6	1177-1178	5	_	_	_	_	
+14-7	1179-1185	ganger	_	_	_	_	
+14-8	1186-1187	i	_	_	_	_	
+14-9	1188-1192	uken	_	_	_	_	
+14-10	1192-1193	,	_	_	_	_	
+14-11	1194-1196	og	_	_	_	_	
+14-12	1197-1210	styrketrening	_	_	_	_	
+14-13	1211-1212	2	_	_	_	_	
+14-14	1213-1219	ganger	_	_	_	_	
+14-15	1220-1221	i	_	_	_	_	
+14-16	1222-1226	uken	_	_	_	_	
+14-17	1226-1227	.	_	_	_	_	
+
+#Text=Ingen røyking eller betydelig alkoholinntak.
+15-1	1228-1233	Ingen	_	_	_	_	
+15-2	1234-1241	røyking	_	_	_	_	
+15-3	1242-1247	eller	_	_	_	_	
+15-4	1248-1257	betydelig	_	_	_	_	
+15-5	1258-1271	alkoholinntak	_	_	_	_	
+15-6	1271-1272	.	_	_	_	_	
+
+#Text=Han er lege i allergi/immunologi.
+16-1	1273-1276	Han	_	_	_	_	
+16-2	1277-1279	er	_	_	_	_	
+16-3	1280-1284	lege	_	_	_	_	
+16-4	1285-1286	i	_	_	_	_	
+16-5	1287-1294	allergi	_	_	_	_	
+16-6	1294-1295	/	_	_	_	_	
+16-7	1295-1305	immunologi	_	_	_	_	
+16-8	1305-1306	.	_	_	_	_	
+
+#Text=GJENNOMGANG AV SYSTEMER: Ellers ikke medvirkende.
+17-1	1308-1319	GJENNOMGANG	_	_	_	_	
+17-2	1320-1322	AV	_	_	_	_	
+17-3	1323-1331	SYSTEMER	_	_	_	_	
+17-4	1331-1332	:	_	_	_	_	
+17-5	1333-1339	Ellers	_	_	_	_	
+17-6	1340-1344	ikke	_	_	_	_	
+17-7	1345-1356	medvirkende	_	_	_	_	
+17-8	1356-1357	.	_	_	_	_	
+
+#Text=Han har ingen gastrointestinale, kardiopulmonale, genitourinære eller muskuloskeletale symptomer.
+18-1	1358-1361	Han	_	_	_	_	
+18-2	1362-1365	har	_	_	_	_	
+18-3	1366-1371	ingen	_	_	_	_	
+18-4	1372-1389	gastrointestinale	_	_	_	_	
+18-5	1389-1390	,	_	_	_	_	
+18-6	1391-1406	kardiopulmonale	_	_	_	_	
+18-7	1406-1407	,	_	_	_	_	
+18-8	1408-1421	genitourinære	_	_	_	_	
+18-9	1422-1427	eller	_	_	_	_	
+18-10	1428-1444	muskuloskeletale	_	_	_	_	
+18-11	1445-1454	symptomer	_	_	_	_	
+18-12	1454-1455	.	_	_	_	_	
+
+#Text=Ingen andre symptomer enn de som er beskrevet ovenfor.
+19-1	1456-1461	Ingen	_	_	_	_	
+19-2	1462-1467	andre	_	_	_	_	
+19-3	1468-1477	symptomer	_	_	_	_	
+19-4	1478-1481	enn	_	_	_	_	
+19-5	1482-1484	de	_	_	_	_	
+19-6	1485-1488	som	_	_	_	_	
+19-7	1489-1491	er	_	_	_	_	
+19-8	1492-1501	beskrevet	_	_	_	_	
+19-9	1502-1509	ovenfor	_	_	_	_	
+19-10	1509-1510	.	_	_	_	_	
+
+#Text=FYSISK UNDERSØKELSE:
+#Text=GENERELT: Han virker våken, orientert og uten akutte plager med utmerket kognitiv funksjon.
+20-1	1512-1518	FYSISK	_	_	_	_	
+20-2	1519-1531	UNDERSØKELSE	_	_	_	_	
+20-3	1531-1532	:	_	_	_	_	
+20-4	1533-1541	GENERELT	_	_	_	_	
+20-5	1541-1542	:	_	_	_	_	
+20-6	1543-1546	Han	_	_	_	_	
+20-7	1547-1553	virker	_	_	_	_	
+20-8	1554-1559	våken	_	_	_	_	
+20-9	1559-1560	,	_	_	_	_	
+20-10	1561-1570	orientert	_	_	_	_	
+20-11	1571-1573	og	_	_	_	_	
+20-12	1574-1578	uten	_	_	_	_	
+20-13	1579-1585	akutte	_	_	_	_	
+20-14	1586-1592	plager	_	_	_	_	
+20-15	1593-1596	med	_	_	_	_	
+20-16	1597-1605	utmerket	_	_	_	_	
+20-17	1606-1614	kognitiv	_	_	_	_	
+20-18	1615-1623	funksjon	_	_	_	_	
+20-19	1623-1624	.	_	_	_	_	
+
+#Text=VITALTEKNOTER: Han er 1,80 m høy, vekten er 181,2 kg, blodtrykket er 126/80 i høyre arm og 122/78 i venstre arm, pulsen er 68 og regelmessig, og respirasjonen er 16.
+21-1	1625-1638	VITALTEKNOTER	_	_	_	_	
+21-2	1638-1639	:	_	_	_	_	
+21-3	1640-1643	Han	_	_	_	_	
+21-4	1644-1646	er	_	_	_	_	
+21-5	1647-1651	1,80	_	_	_	_	
+21-6	1652-1653	m	_	_	_	_	
+21-7	1654-1657	høy	_	_	_	_	
+21-8	1657-1658	,	_	_	_	_	
+21-9	1659-1665	vekten	_	_	_	_	
+21-10	1666-1668	er	_	_	_	_	
+21-11	1669-1674	181,2	_	_	_	_	
+21-12	1675-1677	kg	_	_	_	_	
+21-13	1677-1678	,	_	_	_	_	
+21-14	1679-1690	blodtrykket	_	_	_	_	
+21-15	1691-1693	er	_	_	_	_	
+21-16	1694-1697	126	_	_	_	_	
+21-17	1697-1698	/	_	_	_	_	
+21-18	1698-1700	80	_	_	_	_	
+21-19	1701-1702	i	_	_	_	_	
+21-20	1703-1708	høyre	_	_	_	_	
+21-21	1709-1712	arm	_	_	_	_	
+21-22	1713-1715	og	_	_	_	_	
+21-23	1716-1719	122	_	_	_	_	
+21-24	1719-1720	/	_	_	_	_	
+21-25	1720-1722	78	_	_	_	_	
+21-26	1723-1724	i	_	_	_	_	
+21-27	1725-1732	venstre	_	_	_	_	
+21-28	1733-1736	arm	_	_	_	_	
+21-29	1736-1737	,	_	_	_	_	
+21-30	1738-1744	pulsen	_	_	_	_	
+21-31	1745-1747	er	_	_	_	_	
+21-32	1748-1750	68	_	_	_	_	
+21-33	1751-1753	og	_	_	_	_	
+21-34	1754-1765	regelmessig	_	_	_	_	
+21-35	1765-1766	,	_	_	_	_	
+21-36	1767-1769	og	_	_	_	_	
+21-37	1770-1783	respirasjonen	_	_	_	_	
+21-38	1784-1786	er	_	_	_	_	
+21-39	1787-1789	16	_	_	_	_	
+21-40	1789-1790	.	_	_	_	_	
+
+#Text=HUD: Varm og tørr.
+22-1	1791-1794	HUD	_	_	_	_	
+22-2	1794-1795	:	_	_	_	_	
+22-3	1796-1800	Varm	_	_	_	_	
+22-4	1801-1803	og	_	_	_	_	
+22-5	1804-1808	tørr	_	_	_	_	
+22-6	1808-1809	.	_	_	_	_	
+
+#Text=Ingen blekhet, cyanose eller ikterus.
+23-1	1810-1815	Ingen	_	_	_	_	
+23-2	1816-1823	blekhet	_	_	_	_	
+23-3	1823-1824	,	_	_	_	_	
+23-4	1825-1832	cyanose	_	_	_	_	
+23-5	1833-1838	eller	_	_	_	_	
+23-6	1839-1846	ikterus	_	_	_	_	
+23-7	1846-1847	.	_	_	_	_	
+
+#Text=HJERTE: Trommehinnene er godartede.
+24-1	1848-1854	HJERTE	_	_	_	_	
+24-2	1854-1855	:	_	_	_	_	
+24-3	1856-1869	Trommehinnene	_	_	_	_	
+24-4	1870-1872	er	_	_	_	_	
+24-5	1873-1882	godartede	_	_	_	_	
+24-6	1882-1883	.	_	_	_	_	
+
+#Text=Svelget er godartet.
+25-1	1884-1891	Svelget	_	_	_	_	
+25-2	1892-1894	er	_	_	_	_	
+25-3	1895-1903	godartet	_	_	_	_	
+25-4	1903-1904	.	_	_	_	_	
+
+#Text=Neseslimhinnen er intakt.
+26-1	1905-1919	Neseslimhinnen	_	_	_	_	
+26-2	1920-1922	er	_	_	_	_	
+26-3	1923-1929	intakt	_	_	_	_	
+26-4	1929-1930	.	_	_	_	_	
+
+#Text=Pupillene er runde, regelmessige og like, og reagerer likt på lys og akkomodasjon.
+27-1	1931-1940	Pupillene	_	_	_	_	
+27-2	1941-1943	er	_	_	_	_	
+27-3	1944-1949	runde	_	_	_	_	
+27-4	1949-1950	,	_	_	_	_	
+27-5	1951-1963	regelmessige	_	_	_	_	
+27-6	1964-1966	og	_	_	_	_	
+27-7	1967-1971	like	_	_	_	_	
+27-8	1971-1972	,	_	_	_	_	
+27-9	1973-1975	og	_	_	_	_	
+27-10	1976-1984	reagerer	_	_	_	_	
+27-11	1985-1989	likt	_	_	_	_	
+27-12	1990-1992	på	_	_	_	_	
+27-13	1993-1996	lys	_	_	_	_	
+27-14	1997-1999	og	_	_	_	_	
+27-15	2000-2012	akkomodasjon	_	_	_	_	
+27-16	2012-2013	.	_	_	_	_	
+
+#Text=EOM er intakt.
+28-1	2014-2017	EOM	_	_	_	_	
+28-2	2018-2020	er	_	_	_	_	
+28-3	2021-2027	intakt	_	_	_	_	
+28-4	2027-2028	.	_	_	_	_	
+
+#Text=Fundi viser flate skiver med klare marginer.
+29-1	2029-2034	Fundi	_	_	_	_	
+29-2	2035-2040	viser	_	_	_	_	
+29-3	2041-2046	flate	_	_	_	_	
+29-4	2047-2053	skiver	_	_	_	_	
+29-5	2054-2057	med	_	_	_	_	
+29-6	2058-2063	klare	_	_	_	_	
+29-7	2064-2072	marginer	_	_	_	_	
+29-8	2072-2073	.	_	_	_	_	
+
+#Text=Normal vaskulatur.
+30-1	2074-2080	Normal	_	_	_	_	
+30-2	2081-2091	vaskulatur	_	_	_	_	
+30-3	2091-2092	.	_	_	_	_	
+
+#Text=Ingen blødninger, ekssudater eller mikroaneurismer.
+31-1	2093-2098	Ingen	_	_	_	_	
+31-2	2099-2109	blødninger	_	_	_	_	
+31-3	2109-2110	,	_	_	_	_	
+31-4	2111-2121	ekssudater	_	_	_	_	
+31-5	2122-2127	eller	_	_	_	_	
+31-6	2128-2143	mikroaneurismer	_	_	_	_	
+31-7	2143-2144	.	_	_	_	_	
+
+#Text=Ingen forstørrelse av skjoldbruskkjertelen.
+32-1	2145-2150	Ingen	_	_	_	_	
+32-2	2151-2163	forstørrelse	_	_	_	_	
+32-3	2164-2166	av	_	_	_	_	
+32-4	2167-2187	skjoldbruskkjertelen	_	_	_	_	
+32-5	2187-2188	.	_	_	_	_	
+
+#Text=Det er ingen lymfadenopati.
+33-1	2189-2192	Det	_	_	_	_	
+33-2	2193-2195	er	_	_	_	_	
+33-3	2196-2201	ingen	_	_	_	_	
+33-4	2202-2215	lymfadenopati	_	_	_	_	
+33-5	2215-2216	.	_	_	_	_	
+
+#Text=LUNGER: Klare ved perkusjon og auskultasjon.
+34-1	2217-2223	LUNGER	_	_	_	_	
+34-2	2223-2224	:	_	_	_	_	
+34-3	2225-2230	Klare	_	_	_	_	
+34-4	2231-2234	ved	_	_	_	_	
+34-5	2235-2244	perkusjon	_	_	_	_	
+34-6	2245-2247	og	_	_	_	_	
+34-7	2248-2260	auskultasjon	_	_	_	_	
+34-8	2260-2261	.	_	_	_	_	
+
+#Text=Normal sinusrytme.
+35-1	2262-2268	Normal	_	_	_	_	
+35-2	2269-2279	sinusrytme	_	_	_	_	
+35-3	2279-2280	.	_	_	_	_	
+
+#Text=Ingen premature slag, bilyd, S3 eller S4.
+36-1	2281-2286	Ingen	_	_	_	_	
+36-2	2287-2296	premature	_	_	_	_	
+36-3	2297-2301	slag	_	_	_	_	
+36-4	2301-2302	,	_	_	_	_	
+36-5	2303-2308	bilyd	_	_	_	_	
+36-6	2308-2309	,	_	_	_	_	
+36-7	2310-2312	S3	_	_	_	_	
+36-8	2313-2318	eller	_	_	_	_	
+36-9	2319-2321	S4	_	_	_	_	
+36-10	2321-2322	.	_	_	_	_	
+
+#Text=Hjertelydene er av god kvalitet og intensitet.
+37-1	2323-2335	Hjertelydene	_	_	_	_	
+37-2	2336-2338	er	_	_	_	_	
+37-3	2339-2341	av	_	_	_	_	
+37-4	2342-2345	god	_	_	_	_	
+37-5	2346-2354	kvalitet	_	_	_	_	
+37-6	2355-2357	og	_	_	_	_	
+37-7	2358-2368	intensitet	_	_	_	_	
+37-8	2368-2369	.	_	_	_	_	
+
+#Text=Karotider, femoralis, dorsalis pedis og tibialis posterior pulserer raskt, likt og aktivt bilateralt.
+38-1	2370-2379	Karotider	_	_	_	_	
+38-2	2379-2380	,	_	_	_	_	
+38-3	2381-2390	femoralis	_	_	_	_	
+38-4	2390-2391	,	_	_	_	_	
+38-5	2392-2400	dorsalis	_	_	_	_	
+38-6	2401-2406	pedis	_	_	_	_	
+38-7	2407-2409	og	_	_	_	_	
+38-8	2410-2418	tibialis	_	_	_	_	
+38-9	2419-2428	posterior	_	_	_	_	
+38-10	2429-2437	pulserer	_	_	_	_	
+38-11	2438-2443	raskt	_	_	_	_	
+38-12	2443-2444	,	_	_	_	_	
+38-13	2445-2449	likt	_	_	_	_	
+38-14	2450-2452	og	_	_	_	_	
+38-15	2453-2459	aktivt	_	_	_	_	
+38-16	2460-2470	bilateralt	_	_	_	_	
+38-17	2470-2471	.	_	_	_	_	
+
+#Text=ABDOMEN: Godartet uten vaktsomhet, stivhet, ømhet, masse eller organomegali.
+39-1	2472-2479	ABDOMEN	_	_	_	_	
+39-2	2479-2480	:	_	_	_	_	
+39-3	2481-2489	Godartet	_	_	_	_	
+39-4	2490-2494	uten	_	_	_	_	
+39-5	2495-2505	vaktsomhet	_	_	_	_	
+39-6	2505-2506	,	_	_	_	_	
+39-7	2507-2514	stivhet	_	_	_	_	
+39-8	2514-2515	,	_	_	_	_	
+39-9	2516-2521	ømhet	_	_	_	_	
+39-10	2521-2522	,	_	_	_	_	
+39-11	2523-2528	masse	_	_	_	_	
+39-12	2529-2534	eller	_	_	_	_	
+39-13	2535-2547	organomegali	_	_	_	_	
+39-14	2547-2548	.	_	_	_	_	
+
+#Text=NEUROLOGISK: Grovt intakt.
+40-1	2549-2560	NEUROLOGISK	_	_	_	_	
+40-2	2560-2561	:	_	_	_	_	
+40-3	2562-2567	Grovt	_	_	_	_	
+40-4	2568-2574	intakt	_	_	_	_	
+40-5	2574-2575	.	_	_	_	_	
+
+#Text=EKSTREMITETER: Normale.
+41-1	2576-2589	EKSTREMITETER	_	_	_	_	
+41-2	2589-2590	:	_	_	_	_	
+41-3	2591-2598	Normale	_	_	_	_	
+41-4	2598-2599	.	_	_	_	_	
+
+#Text=GU: Genitalia normale.
+42-1	2600-2602	GU	_	_	_	_	
+42-2	2602-2603	:	_	_	_	_	
+42-3	2604-2613	Genitalia	_	_	_	_	
+42-4	2614-2621	normale	_	_	_	_	
+42-5	2621-2622	.	_	_	_	_	
+
+#Text=Ingen lyskebrokk.
+43-1	2623-2628	Ingen	_	_	_	_	
+43-2	2629-2639	lyskebrokk	_	_	_	_	
+43-3	2639-2640	.	_	_	_	_	
+
+#Text=Det er milde hemoroider i analkanalen.
+44-1	2641-2644	Det	_	_	_	_	
+44-2	2645-2647	er	_	_	_	_	
+44-3	2648-2653	milde	_	_	_	_	
+44-4	2654-2664	hemoroider	DURING	DISEASE	_	_	
+44-5	2665-2666	i	_	_	_	_	
+44-6	2667-2678	analkanalen	_	_	_	_	
+44-7	2678-2679	.	_	_	_	_	
+
+#Text=Prostata er liten, om noen normal til svakt forstørret med diskrete marginer, symmetrisk uten signifikant palpabel abnormalitet.
+45-1	2680-2688	Prostata	_	_	_	_	
+45-2	2689-2691	er	_	_	_	_	
+45-3	2692-2697	liten	_	_	_	_	
+45-4	2697-2698	,	_	_	_	_	
+45-5	2699-2701	om	_	_	_	_	
+45-6	2702-2706	noen	_	_	_	_	
+45-7	2707-2713	normal	_	_	_	_	
+45-8	2714-2717	til	_	_	_	_	
+45-9	2718-2723	svakt	_	_	_	_	
+45-10	2724-2734	forstørret	_	_	_	_	
+45-11	2735-2738	med	_	_	_	_	
+45-12	2739-2747	diskrete	_	_	_	_	
+45-13	2748-2756	marginer	_	_	_	_	
+45-14	2756-2757	,	_	_	_	_	
+45-15	2758-2768	symmetrisk	_	_	_	_	
+45-16	2769-2773	uten	_	_	_	_	
+45-17	2774-2785	signifikant	_	_	_	_	
+45-18	2786-2794	palpabel	_	_	_	_	
+45-19	2795-2807	abnormalitet	_	_	_	_	
+45-20	2807-2808	.	_	_	_	_	
+
+#Text=Det er ingen rektal masse.
+46-1	2809-2812	Det	_	_	_	_	
+46-2	2813-2815	er	_	_	_	_	
+46-3	2816-2821	ingen	_	_	_	_	
+46-4	2822-2828	rektal	_	_	_	_	
+46-5	2829-2834	masse	_	_	_	_	
+46-6	2834-2835	.	_	_	_	_	
+
+#Text=Avføringen er Hemoccult-negativ.
+47-1	2836-2846	Avføringen	_	_	_	_	
+47-2	2847-2849	er	_	_	_	_	
+47-3	2850-2867	Hemoccult-negativ	_	_	_	_	
+47-4	2867-2868	.	_	_	_	_	
+
+#Text=INNTRYKK:
+#Text=1.
+48-1	2870-2878	INNTRYKK	_	_	_	_	
+48-2	2878-2879	:	_	_	_	_	
+48-3	2880-2881	1	_	_	_	_	
+48-4	2881-2882	.	_	_	_	_	
+
+#Text=Omfattende årlig helseundersøkelse.
+#Text=2.
+49-1	2883-2893	Omfattende	_	_	_	_	
+49-2	2894-2899	årlig	_	_	_	_	
+49-3	2900-2917	helseundersøkelse	_	_	_	_	
+49-4	2917-2918	.	_	_	_	_	
+49-5	2919-2920	2	_	_	_	_	
+49-6	2920-2921	.	_	_	_	_	
+
+#Text=Dyslipidemi.
+#Text=3.
+50-1	2922-2933	Dyslipidemi	DURING	DISEASE	_	_	
+50-2	2933-2934	.	_	_	_	_	
+50-3	2935-2936	3	_	_	_	_	
+50-4	2936-2937	.	_	_	_	_	
+
+#Text=Tinnitus, venstre øre.
+#Text=4.
+51-1	2938-2946	Tinnitus	DURING	DISEASE	_	_	
+51-2	2946-2947	,	_	_	_	_	
+51-3	2948-2955	venstre	_	_	_	_	
+51-4	2956-2959	øre	_	_	_	_	
+51-5	2959-2960	.	_	_	_	_	
+51-6	2961-2962	4	_	_	_	_	
+51-7	2962-2963	.	_	_	_	_	
+
+#Text=Hemoroider.
+52-1	2964-2974	Hemoroider	DURING	DISEASE	_	_	
+52-2	2974-2975	.	_	_	_	_	
+
+#Text=PLAN: På dette tidspunktet, fortsett med niacin 1000 mg om morgenen, 500 mg ved middagstid og 1000 mg om kvelden; aspirin 81 mg daglig; multivitaminer; vitamin E 400 enheter daglig; og vitamin C 500 mg daglig.
+53-1	2977-2981	PLAN	_	_	_	_	
+53-2	2981-2982	:	_	_	_	_	
+53-3	2983-2985	På	_	_	_	_	
+53-4	2986-2991	dette	_	_	_	_	
+53-5	2992-3003	tidspunktet	_	_	_	_	
+53-6	3003-3004	,	_	_	_	_	
+53-7	3005-3013	fortsett	_	_	_	_	
+53-8	3014-3017	med	_	_	_	_	
+53-9	3018-3024	niacin	AFTER	TREATMENT	AFTER|AFTER	56-4|56-6	
+53-10	3025-3029	1000	_	_	_	_	
+53-11	3030-3032	mg	_	_	_	_	
+53-12	3033-3035	om	_	_	_	_	
+53-13	3036-3044	morgenen	_	_	_	_	
+53-14	3044-3045	,	_	_	_	_	
+53-15	3046-3049	500	_	_	_	_	
+53-16	3050-3052	mg	_	_	_	_	
+53-17	3053-3056	ved	_	_	_	_	
+53-18	3057-3067	middagstid	_	_	_	_	
+53-19	3068-3070	og	_	_	_	_	
+53-20	3071-3075	1000	_	_	_	_	
+53-21	3076-3078	mg	_	_	_	_	
+53-22	3079-3081	om	_	_	_	_	
+53-23	3082-3089	kvelden	_	_	_	_	
+53-24	3089-3090	;	_	_	_	_	
+53-25	3091-3098	aspirin	AFTER	TREATMENT	AFTER|AFTER	56-4|56-6	
+53-26	3099-3101	81	_	_	_	_	
+53-27	3102-3104	mg	_	_	_	_	
+53-28	3105-3111	daglig	_	_	_	_	
+53-29	3111-3112	;	_	_	_	_	
+53-30	3113-3127	multivitaminer	_	_	_	_	
+53-31	3127-3128	;	_	_	_	_	
+53-32	3129-3136	vitamin	AFTER[3]	TREATMENT[3]	AFTER|BEFORE	56-4[0_3]|56-6[0_3]	
+53-33	3137-3138	E	AFTER[3]	TREATMENT[3]	_	_	
+53-34	3139-3142	400	_	_	_	_	
+53-35	3143-3150	enheter	_	_	_	_	
+53-36	3151-3157	daglig	_	_	_	_	
+53-37	3157-3158	;	_	_	_	_	
+53-38	3159-3161	og	_	_	_	_	
+53-39	3162-3169	vitamin	AFTER[4]	TREATMENT[4]	AFTER|AFTER	56-4[0_4]|56-6[0_4]	
+53-40	3170-3171	C	AFTER[4]	TREATMENT[4]	_	_	
+53-41	3172-3175	500	_	_	_	_	
+53-42	3176-3178	mg	_	_	_	_	
+53-43	3179-3185	daglig	_	_	_	_	
+53-44	3185-3186	.	_	_	_	_	
+
+#Text=Vurder å legge til lykopen, selen og linfrø i behandlingen.
+54-1	3187-3193	Vurder	_	_	_	_	
+54-2	3194-3195	å	_	_	_	_	
+54-3	3196-3201	legge	_	_	_	_	
+54-4	3202-3205	til	_	_	_	_	
+54-5	3206-3213	lykopen	_	_	_	_	
+54-6	3213-3214	,	_	_	_	_	
+54-7	3215-3220	selen	_	_	_	_	
+54-8	3221-3223	og	_	_	_	_	
+54-9	3224-3230	linfrø	_	_	_	_	
+54-10	3231-3232	i	_	_	_	_	
+54-11	3233-3245	behandlingen	_	_	_	_	
+54-12	3245-3246	.	_	_	_	_	
+
+#Text=Alle relevante prøver vil bli tatt i dag.
+55-1	3247-3251	Alle	_	_	_	_	
+55-2	3252-3261	relevante	_	_	_	_	
+55-3	3262-3268	prøver	_	_	_	_	
+55-4	3269-3272	vil	_	_	_	_	
+55-5	3273-3276	bli	_	_	_	_	
+55-6	3277-3281	tatt	_	_	_	_	
+55-7	3282-3283	i	_	_	_	_	
+55-8	3284-3287	dag	_	_	_	_	
+55-9	3287-3288	.	_	_	_	_	
+
+#Text=Oppfølging av fastende lipidprofil og ALAT om 6 måneder.
+56-1	3289-3299	Oppfølging	_	_	_	_	
+56-2	3300-3302	av	_	_	_	_	
+56-3	3303-3311	fastende	_	_	_	_	
+56-4	3312-3323	lipidprofil	AFTER	TREATMENT	BEFORE|BEFORE|BEFORE	53-9|53-25|53-32[3_0]	
+56-5	3324-3326	og	_	_	_	_	
+56-6	3327-3331	ALAT	AFTER	TREATMENT	BEFORE|BEFORE|BEFORE|BEFORE	53-9|53-25|53-32[3_0]|53-39[4_0]	
+56-7	3332-3334	om	_	_	_	_	
+56-8	3335-3336	6	_	_	_	_	
+56-9	3337-3344	måneder	_	_	_	_	
+56-10	3344-3345	.	_	_	_	_	

@@ -1,8 +1,9 @@
+import re
 import pandas as pd
 from typing import List
 from structure.enum import Dataset
 
-### Info: This is old version in annotated folder
+### INFO: This is old version in annotated folder
 COLUMN_NAMES = [
     "id",  # 0
     "sentence_id",
@@ -17,8 +18,9 @@ COLUMN_NAMES = [
     "fk_id",  # 14
 ]
 
+### INFO: New annotated_MTSamples
 COLUMN_NAMES = [
-    "id", # 0,
+    "id",  # 0,
     "sentence_id",
     "Offset",  # 1
     "Text",  # 2
@@ -32,8 +34,11 @@ COLUMN_NAMES = [
 class DatasetManager:
     def __init__(self, files: List[str]):
         self.__documents = []
+
+        print("### Processing the files:")
         for file in files:
             document = pd.DataFrame(columns=COLUMN_NAMES)  # type: ignore
+            print(file)
 
             with open(file, encoding="UTF-8") as f:
                 connect = False
@@ -84,10 +89,10 @@ class DatasetManager:
                                 "MER": sentence[4][:clipper]
                                 if sentence[4] != "_"
                                 else "O",  # 4
-                                "TRE_DCT": sentence[3]
+                                "TRE_DCT": re.sub(r"\[.*?\]", "", sentence[3])
                                 if sentence[3] != "_"
                                 else "O",  # 3,
-                                "TLINK": t_relation[i]
+                                "TRE_TLINK": re.sub(r"\[.*?\]", "", t_relation[i])
                                 if t_relation[i] != "_"
                                 else None,  # 13,
                                 "fk_id": id if id != "_" else None,  # 14
@@ -99,21 +104,14 @@ class DatasetManager:
     def get(self, task: Dataset):
         match task:
             case Dataset.NER:
-                return self.__get_docs_by_cols(
-                    ["id", "sentence_id", "Text", "MER"]
-                )
+                return self.__get_docs_by_cols(["id", "sentence_id", "Text", "MER"])
             case Dataset.TRE_DCT:
-                return self.__get_docs_by_cols(
-                    ["id", "Text", "TRE_DCT"]
-                )
+                result = self.__get_docs_by_cols(["id", "Text", "TRE_DCT"])
+                return [doc[doc["TRE_DCT"] != "O"] for doc in result]
             case Dataset.TRE_TLINK:
-                return self.__get_docs_by_cols(
-                    ["id", "Text", "TRE_TLINK", "fk_id"]
-                )
+                return self.__get_docs_by_cols(["id", "Text", "TRE_TLINK", "fk_id"])
             case Dataset.SENTENCES:
                 return self.__get_sentences()
-            case _:
-                return None
 
     def __get_docs_by_cols(self, cols: List[str]):
         return [doc[cols].drop_duplicates() for doc in self.__documents]
@@ -131,4 +129,3 @@ if __name__ == "__main__":
     )
 
     print(manager.get(Dataset.TRE_DCT))
-

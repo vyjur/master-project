@@ -1,0 +1,1034 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MER|DCT|NER
+#T_RL=webanno.custom.TRE|TLINK|BT_webanno.custom.MER
+
+
+#Text=HISTORIE: Jeg har hatt gleden av å møte og vurdere pasienten som i dag er henvist for utredning og behandling av kronisk bihulebetennelse.
+1-1	0-8	HISTORIE	_	_	_	_	
+1-2	8-9	:	_	_	_	_	
+1-3	10-13	Jeg	_	_	_	_	
+1-4	14-17	har	_	_	_	_	
+1-5	18-22	hatt	_	_	_	_	
+1-6	23-29	gleden	_	_	_	_	
+1-7	30-32	av	_	_	_	_	
+1-8	33-34	å	_	_	_	_	
+1-9	35-39	møte	_	_	_	_	
+1-10	40-42	og	_	_	_	_	
+1-11	43-50	vurdere	_	_	_	_	
+1-12	51-60	pasienten	_	_	_	_	
+1-13	61-64	som	_	_	_	_	
+1-14	65-66	i	_	_	_	_	
+1-15	67-70	dag	_	_	_	_	
+1-16	71-73	er	_	_	_	_	
+1-17	74-81	henvist	_	_	_	_	
+1-18	82-85	for	_	_	_	_	
+1-19	86-95	utredning	_	_	_	_	
+1-20	96-98	og	_	_	_	_	
+1-21	99-109	behandling	_	_	_	_	
+1-22	110-112	av	_	_	_	_	
+1-23	113-120	kronisk	DURING[1]	DISEASE[1]	AFTER	4-4[0_1]	
+1-24	121-137	bihulebetennelse	DURING[1]	DISEASE[1]	_	_	
+1-25	137-138	.	_	_	_	_	
+
+#Text=Som du vet, er hun en hyggelig kvinne på 50 år som sier at hun begynte å få alvorlig bihulebetennelse for to til tre måneder siden, med ubehag i ansiktet, tett nese, smerter i øynene og symptomer på drypp etter nesen.
+2-1	139-142	Som	_	_	_	_	
+2-2	143-145	du	_	_	_	_	
+2-3	146-149	vet	_	_	_	_	
+2-4	149-150	,	_	_	_	_	
+2-5	151-153	er	_	_	_	_	
+2-6	154-157	hun	_	_	_	_	
+2-7	158-160	en	_	_	_	_	
+2-8	161-169	hyggelig	_	_	_	_	
+2-9	170-176	kvinne	_	_	_	_	
+2-10	177-179	på	_	_	_	_	
+2-11	180-182	50	_	_	_	_	
+2-12	183-185	år	_	_	_	_	
+2-13	186-189	som	_	_	_	_	
+2-14	190-194	sier	_	_	_	_	
+2-15	195-197	at	_	_	_	_	
+2-16	198-201	hun	_	_	_	_	
+2-17	202-209	begynte	_	_	_	_	
+2-18	210-211	å	_	_	_	_	
+2-19	212-214	få	_	_	_	_	
+2-20	215-223	alvorlig	_	_	_	_	
+2-21	224-240	bihulebetennelse	_	_	_	_	
+2-22	241-244	for	_	_	_	_	
+2-23	245-247	to	_	_	_	_	
+2-24	248-251	til	_	_	_	_	
+2-25	252-255	tre	_	_	_	_	
+2-26	256-263	måneder	_	_	_	_	
+2-27	264-269	siden	_	_	_	_	
+2-28	269-270	,	_	_	_	_	
+2-29	271-274	med	_	_	_	_	
+2-30	275-281	ubehag	_	_	_	_	
+2-31	282-283	i	_	_	_	_	
+2-32	284-292	ansiktet	_	_	_	_	
+2-33	292-293	,	_	_	_	_	
+2-34	294-298	tett	_	_	_	_	
+2-35	299-303	nese	_	_	_	_	
+2-36	303-304	,	_	_	_	_	
+2-37	305-312	smerter	_	_	_	_	
+2-38	313-314	i	_	_	_	_	
+2-39	315-321	øynene	_	_	_	_	
+2-40	322-324	og	_	_	_	_	
+2-41	325-334	symptomer	_	_	_	_	
+2-42	335-337	på	_	_	_	_	
+2-43	338-343	drypp	_	_	_	_	
+2-44	344-349	etter	_	_	_	_	
+2-45	350-355	nesen	_	_	_	_	
+2-46	355-356	.	_	_	_	_	
+
+#Text=Hun sier at hun egentlig har problemer med bihulene, men at denne infeksjonen har vært ganske alvorlig, og hun bemerker at hun ikke har hatt særlig bedring med antibiotika.
+3-1	357-360	Hun	_	_	_	_	
+3-2	361-365	sier	_	_	_	_	
+3-3	366-368	at	_	_	_	_	
+3-4	369-372	hun	_	_	_	_	
+3-5	373-381	egentlig	_	_	_	_	
+3-6	382-385	har	_	_	_	_	
+3-7	386-395	problemer	_	_	_	_	
+3-8	396-399	med	_	_	_	_	
+3-9	400-408	bihulene	_	_	_	_	
+3-10	408-409	,	_	_	_	_	
+3-11	410-413	men	_	_	_	_	
+3-12	414-416	at	_	_	_	_	
+3-13	417-422	denne	_	_	_	_	
+3-14	423-434	infeksjonen	BEFORE	DISEASE	AFTER	3-31	
+3-15	435-438	har	_	_	_	_	
+3-16	439-443	vært	_	_	_	_	
+3-17	444-450	ganske	_	_	_	_	
+3-18	451-459	alvorlig	_	_	_	_	
+3-19	459-460	,	_	_	_	_	
+3-20	461-463	og	_	_	_	_	
+3-21	464-467	hun	_	_	_	_	
+3-22	468-476	bemerker	_	_	_	_	
+3-23	477-479	at	_	_	_	_	
+3-24	480-483	hun	_	_	_	_	
+3-25	484-488	ikke	_	_	_	_	
+3-26	489-492	har	_	_	_	_	
+3-27	493-497	hatt	_	_	_	_	
+3-28	498-504	særlig	_	_	_	_	
+3-29	505-512	bedring	_	_	_	_	
+3-30	513-516	med	_	_	_	_	
+3-31	517-528	antibiotika	BEFORE	TREATMENT	BEFORE	3-14	
+3-32	528-529	.	_	_	_	_	
+
+#Text=Hun har tatt CT av bihulene, som viser en mild fortykkelse av slimhinnen i høyre bihule med okklusjon av det ostiomeatale komplekset på høyre side, og det ble også observert turbinathypertrofi da jeg gjennomgikk bildene, og det er en minimal avvikelse av neseskilleveggen mot venstre.
+4-1	530-533	Hun	_	_	_	_	
+4-2	534-537	har	_	_	_	_	
+4-3	538-542	tatt	_	_	_	_	
+4-4	543-545	CT	DURING	TREATMENT	BEFORE	1-23[1_0]	
+4-5	546-548	av	_	_	_	_	
+4-6	549-557	bihulene	_	_	_	_	
+4-7	557-558	,	_	_	_	_	
+4-8	559-562	som	_	_	_	_	
+4-9	563-568	viser	_	_	_	_	
+4-10	569-571	en	_	_	_	_	
+4-11	572-576	mild	_	_	_	_	
+4-12	577-588	fortykkelse	DURING[2]	SYMPTOM[2]	_	_	
+4-13	589-591	av	DURING[2]	SYMPTOM[2]	_	_	
+4-14	592-602	slimhinnen	DURING[2]	SYMPTOM[2]	_	_	
+4-15	603-604	i	_	_	_	_	
+4-16	605-610	høyre	_	_	_	_	
+4-17	611-617	bihule	_	_	_	_	
+4-18	618-621	med	_	_	_	_	
+4-19	622-631	okklusjon	DURING[3]	SYMPTOM[3]	_	_	
+4-20	632-634	av	DURING[3]	SYMPTOM[3]	_	_	
+4-21	635-638	det	DURING[3]	SYMPTOM[3]	_	_	
+4-22	639-651	ostiomeatale	DURING[3]	SYMPTOM[3]	_	_	
+4-23	652-662	komplekset	DURING[3]	SYMPTOM[3]	_	_	
+4-24	663-665	på	_	_	_	_	
+4-25	666-671	høyre	_	_	_	_	
+4-26	672-676	side	_	_	_	_	
+4-27	676-677	,	_	_	_	_	
+4-28	678-680	og	_	_	_	_	
+4-29	681-684	det	_	_	_	_	
+4-30	685-688	ble	_	_	_	_	
+4-31	689-693	også	_	_	_	_	
+4-32	694-703	observert	_	_	_	_	
+4-33	704-722	turbinathypertrofi	DURING	TREATMENT	_	_	
+4-34	723-725	da	_	_	_	_	
+4-35	726-729	jeg	_	_	_	_	
+4-36	730-741	gjennomgikk	_	_	_	_	
+4-37	742-749	bildene	_	_	_	_	
+4-38	749-750	,	_	_	_	_	
+4-39	751-753	og	_	_	_	_	
+4-40	754-757	det	_	_	_	_	
+4-41	758-760	er	_	_	_	_	
+4-42	761-763	en	_	_	_	_	
+4-43	764-771	minimal	_	_	_	_	
+4-44	772-781	avvikelse	_	_	_	_	
+4-45	782-784	av	_	_	_	_	
+4-46	785-801	neseskilleveggen	_	_	_	_	
+4-47	802-805	mot	_	_	_	_	
+4-48	806-813	venstre	_	_	_	_	
+4-49	813-814	.	_	_	_	_	
+
+#Text=Hun tar for tiden ingen medisiner for bihulene.
+5-1	815-818	Hun	_	_	_	_	
+5-2	819-822	tar	_	_	_	_	
+5-3	823-826	for	_	_	_	_	
+5-4	827-832	tiden	_	_	_	_	
+5-5	833-838	ingen	_	_	_	_	
+5-6	839-848	medisiner	_	_	_	_	
+5-7	849-852	for	_	_	_	_	
+5-8	853-861	bihulene	_	_	_	_	
+5-9	861-862	.	_	_	_	_	
+
+#Text=Hun har også bemerket at hun har noen problemer med balansen og mulig hørselstap, eller i det minste øresus og fylde i øret.
+6-1	863-866	Hun	_	_	_	_	
+6-2	867-870	har	_	_	_	_	
+6-3	871-875	også	_	_	_	_	
+6-4	876-884	bemerket	_	_	_	_	
+6-5	885-887	at	_	_	_	_	
+6-6	888-891	hun	_	_	_	_	
+6-7	892-895	har	_	_	_	_	
+6-8	896-900	noen	_	_	_	_	
+6-9	901-910	problemer	DURING[4]	SYMPTOM[4]	_	_	
+6-10	911-914	med	DURING[4]	SYMPTOM[4]	_	_	
+6-11	915-923	balansen	DURING[4]	SYMPTOM[4]	_	_	
+6-12	924-926	og	_	_	_	_	
+6-13	927-932	mulig	_	_	_	_	
+6-14	933-943	hørselstap	DURING	SYMPTOM	_	_	
+6-15	943-944	,	_	_	_	_	
+6-16	945-950	eller	_	_	_	_	
+6-17	951-952	i	_	_	_	_	
+6-18	953-956	det	_	_	_	_	
+6-19	957-963	minste	_	_	_	_	
+6-20	964-970	øresus	_	_	_	_	
+6-21	971-973	og	_	_	_	_	
+6-22	974-979	fylde	_	_	_	_	
+6-23	980-981	i	_	_	_	_	
+6-24	982-986	øret	_	_	_	_	
+6-25	986-987	.	_	_	_	_	
+
+#Text=Audiogrammet hennes i dag viste et mildt høyfrekvent sensorinevralt hørselstap, normal tympanometri og normal talediskriminering.
+7-1	988-1000	Audiogrammet	_	_	_	_	
+7-2	1001-1007	hennes	_	_	_	_	
+7-3	1008-1009	i	_	_	_	_	
+7-4	1010-1013	dag	_	_	_	_	
+7-5	1014-1019	viste	_	_	_	_	
+7-6	1020-1022	et	_	_	_	_	
+7-7	1023-1028	mildt	_	_	_	_	
+7-8	1029-1040	høyfrekvent	_	_	_	_	
+7-9	1041-1055	sensorinevralt	_	_	_	_	
+7-10	1056-1066	hørselstap	_	_	_	_	
+7-11	1066-1067	,	_	_	_	_	
+7-12	1068-1074	normal	_	_	_	_	
+7-13	1075-1087	tympanometri	_	_	_	_	
+7-14	1088-1090	og	_	_	_	_	
+7-15	1091-1097	normal	_	_	_	_	
+7-16	1098-1116	talediskriminering	_	_	_	_	
+7-17	1116-1117	.	_	_	_	_	
+
+#Text=Hun har forsøkt lokalbehandling med kortikosteroider i nesen uten særlig bedring.
+8-1	1118-1121	Hun	_	_	_	_	
+8-2	1122-1125	har	_	_	_	_	
+8-3	1126-1133	forsøkt	_	_	_	_	
+8-4	1134-1149	lokalbehandling	_	_	_	_	
+8-5	1150-1153	med	_	_	_	_	
+8-6	1154-1170	kortikosteroider	BEFORE	TREATMENT	_	_	
+8-7	1171-1172	i	_	_	_	_	
+8-8	1173-1178	nesen	_	_	_	_	
+8-9	1179-1183	uten	_	_	_	_	
+8-10	1184-1190	særlig	_	_	_	_	
+8-11	1191-1198	bedring	_	_	_	_	
+8-12	1198-1199	.	_	_	_	_	
+
+#Text=Hun har prøvd Allegra uten særlig bedring, og hun tror Allegra kan ha ført til at balanseproblemene har forverret seg.
+9-1	1200-1203	Hun	_	_	_	_	
+9-2	1204-1207	har	_	_	_	_	
+9-3	1208-1213	prøvd	_	_	_	_	
+9-4	1214-1221	Allegra	BEFORE	TREATMENT	_	_	
+9-5	1222-1226	uten	_	_	_	_	
+9-6	1227-1233	særlig	_	_	_	_	
+9-7	1234-1241	bedring	_	_	_	_	
+9-8	1241-1242	,	_	_	_	_	
+9-9	1243-1245	og	_	_	_	_	
+9-10	1246-1249	hun	_	_	_	_	
+9-11	1250-1254	tror	_	_	_	_	
+9-12	1255-1262	Allegra	_	_	_	_	
+9-13	1263-1266	kan	_	_	_	_	
+9-14	1267-1269	ha	_	_	_	_	
+9-15	1270-1274	ført	_	_	_	_	
+9-16	1275-1278	til	_	_	_	_	
+9-17	1279-1281	at	_	_	_	_	
+9-18	1282-1299	balanseproblemene	_	_	_	_	
+9-19	1300-1303	har	_	_	_	_	
+9-20	1304-1313	forverret	_	_	_	_	
+9-21	1314-1317	seg	_	_	_	_	
+9-22	1317-1318	.	_	_	_	_	
+
+#Text=Hun bemerker at svimmelheten blir mye verre hvis hun gjør raske stillingsendringer, for eksempel snur hodet eller gjør plutselige bevegelser, og hun har ikke merket noe trykk, summing, brumming eller brøl i ørene.
+10-1	1319-1322	Hun	_	_	_	_	
+10-2	1323-1331	bemerker	_	_	_	_	
+10-3	1332-1334	at	_	_	_	_	
+10-4	1335-1347	svimmelheten	DURING	SYMPTOM	_	_	
+10-5	1348-1352	blir	_	_	_	_	
+10-6	1353-1356	mye	_	_	_	_	
+10-7	1357-1362	verre	_	_	_	_	
+10-8	1363-1367	hvis	_	_	_	_	
+10-9	1368-1371	hun	_	_	_	_	
+10-10	1372-1376	gjør	_	_	_	_	
+10-11	1377-1382	raske	_	_	_	_	
+10-12	1383-1401	stillingsendringer	_	_	_	_	
+10-13	1401-1402	,	_	_	_	_	
+10-14	1403-1406	for	_	_	_	_	
+10-15	1407-1415	eksempel	_	_	_	_	
+10-16	1416-1420	snur	_	_	_	_	
+10-17	1421-1426	hodet	_	_	_	_	
+10-18	1427-1432	eller	_	_	_	_	
+10-19	1433-1437	gjør	_	_	_	_	
+10-20	1438-1448	plutselige	_	_	_	_	
+10-21	1449-1459	bevegelser	_	_	_	_	
+10-22	1459-1460	,	_	_	_	_	
+10-23	1461-1463	og	_	_	_	_	
+10-24	1464-1467	hun	_	_	_	_	
+10-25	1468-1471	har	_	_	_	_	
+10-26	1472-1476	ikke	_	_	_	_	
+10-27	1477-1483	merket	_	_	_	_	
+10-28	1484-1487	noe	_	_	_	_	
+10-29	1488-1493	trykk	_	_	_	_	
+10-30	1493-1494	,	_	_	_	_	
+10-31	1495-1502	summing	_	_	_	_	
+10-32	1502-1503	,	_	_	_	_	
+10-33	1504-1512	brumming	_	_	_	_	
+10-34	1513-1518	eller	_	_	_	_	
+10-35	1519-1523	brøl	_	_	_	_	
+10-36	1524-1525	i	_	_	_	_	
+10-37	1526-1531	ørene	_	_	_	_	
+10-38	1531-1532	.	_	_	_	_	
+
+#Text=Hun benekter at hun tidligere har gjennomgått bihuleoperasjoner eller hatt neseskader.
+11-1	1533-1536	Hun	_	_	_	_	
+11-2	1537-1545	benekter	_	_	_	_	
+11-3	1546-1548	at	_	_	_	_	
+11-4	1549-1552	hun	_	_	_	_	
+11-5	1553-1562	tidligere	_	_	_	_	
+11-6	1563-1566	har	_	_	_	_	
+11-7	1567-1578	gjennomgått	_	_	_	_	
+11-8	1579-1596	bihuleoperasjoner	_	_	_	_	
+11-9	1597-1602	eller	_	_	_	_	
+11-10	1603-1607	hatt	_	_	_	_	
+11-11	1608-1618	neseskader	_	_	_	_	
+11-12	1618-1619	.	_	_	_	_	
+
+#Text=Hun mener at hun har en viss grad av allergisymptomer.
+12-1	1620-1623	Hun	_	_	_	_	
+12-2	1624-1629	mener	_	_	_	_	
+12-3	1630-1632	at	_	_	_	_	
+12-4	1633-1636	hun	_	_	_	_	
+12-5	1637-1640	har	_	_	_	_	
+12-6	1641-1643	en	_	_	_	_	
+12-7	1644-1648	viss	_	_	_	_	
+12-8	1649-1653	grad	_	_	_	_	
+12-9	1654-1656	av	_	_	_	_	
+12-10	1657-1673	allergisymptomer	BEFORE/OVERLAP	SYMPTOM	_	_	
+12-11	1673-1674	.	_	_	_	_	
+
+#Text=Tidligere sykehistorie: Sesongallergi, mulig matallergi, kronisk bihulebetennelse, høyt blodtrykk og vektendring.
+13-1	1676-1685	Tidligere	_	_	_	_	
+13-2	1686-1698	sykehistorie	_	_	_	_	
+13-3	1698-1699	:	_	_	_	_	
+13-4	1700-1713	Sesongallergi	BEFORE	DISEASE	_	_	
+13-5	1713-1714	,	_	_	_	_	
+13-6	1715-1720	mulig	_	_	_	_	
+13-7	1721-1731	matallergi	BEFORE	DISEASE	_	_	
+13-8	1731-1732	,	_	_	_	_	
+13-9	1733-1740	kronisk	BEFORE[5]	TREATMENT[5]	_	_	
+13-10	1741-1757	bihulebetennelse	BEFORE[5]	TREATMENT[5]	_	_	
+13-11	1757-1758	,	_	_	_	_	
+13-12	1759-1763	høyt	BEFORE[6]	SYMPTOM[6]	_	_	
+13-13	1764-1773	blodtrykk	BEFORE[6]	SYMPTOM[6]	_	_	
+13-14	1774-1776	og	_	_	_	_	
+13-15	1777-1788	vektendring	_	_	_	_	
+13-16	1788-1789	.	_	_	_	_	
+
+#Text=Hun veier for tiden 80 kilo.
+14-1	1790-1793	Hun	_	_	_	_	
+14-2	1794-1799	veier	_	_	_	_	
+14-3	1800-1803	for	_	_	_	_	
+14-4	1804-1809	tiden	_	_	_	_	
+14-5	1810-1812	80	_	_	_	_	
+14-6	1813-1817	kilo	_	_	_	_	
+14-7	1817-1818	.	_	_	_	_	
+
+#Text=TIDLIGERE KIRURGISK HISTORIE: Stripping av vener i underekstremitetene, tonsillektomi og adenoidektomi.
+15-1	1820-1829	TIDLIGERE	_	_	_	_	
+15-2	1830-1839	KIRURGISK	_	_	_	_	
+15-3	1840-1848	HISTORIE	_	_	_	_	
+15-4	1848-1849	:	_	_	_	_	
+15-5	1850-1859	Stripping	BEFORE[7]	TREATMENT[7]	_	_	
+15-6	1860-1862	av	BEFORE[7]	TREATMENT[7]	_	_	
+15-7	1863-1868	vener	BEFORE[7]	TREATMENT[7]	_	_	
+15-8	1869-1870	i	_	_	_	_	
+15-9	1871-1890	underekstremitetene	_	_	_	_	
+15-10	1890-1891	,	_	_	_	_	
+15-11	1892-1905	tonsillektomi	_	_	_	_	
+15-12	1906-1908	og	_	_	_	_	
+15-13	1909-1922	adenoidektomi	_	_	_	_	
+15-14	1922-1923	.	_	_	_	_	
+
+#Text=FAMILIEHISTORIE: Sterk for hjertesykdom og alkoholisme.
+16-1	1925-1940	FAMILIEHISTORIE	_	_	_	_	
+16-2	1940-1941	:	_	_	_	_	
+16-3	1942-1947	Sterk	_	_	_	_	
+16-4	1948-1951	for	_	_	_	_	
+16-5	1952-1964	hjertesykdom	_	_	_	_	
+16-6	1965-1967	og	_	_	_	_	
+16-7	1968-1979	alkoholisme	_	_	_	_	
+16-8	1979-1980	.	_	_	_	_	
+
+#Text=NÅVÆRENDE MEDISINER: DynaCirc.
+17-1	1982-1991	NÅVÆRENDE	_	_	_	_	
+17-2	1992-2001	MEDISINER	_	_	_	_	
+17-3	2001-2002	:	_	_	_	_	
+17-4	2003-2011	DynaCirc	_	_	_	_	
+17-5	2011-2012	.	_	_	_	_	
+
+#Text=ALLERGIER: Eggbaserte produkter forårsaker elveblest.
+18-1	2014-2023	ALLERGIER	_	_	_	_	
+18-2	2023-2024	:	_	_	_	_	
+18-3	2025-2035	Eggbaserte	_	_	_	_	
+18-4	2036-2045	produkter	_	_	_	_	
+18-5	2046-2056	forårsaker	_	_	_	_	
+18-6	2057-2066	elveblest	_	_	_	_	
+18-7	2066-2067	.	_	_	_	_	
+
+#Text=SOSIAL HISTORIE: Pasienten pleide å røyke sigaretter i omtrent 20 år, en halv pakke om dagen.
+19-1	2069-2075	SOSIAL	_	_	_	_	
+19-2	2076-2084	HISTORIE	_	_	_	_	
+19-3	2084-2085	:	_	_	_	_	
+19-4	2086-2095	Pasienten	_	_	_	_	
+19-5	2096-2102	pleide	_	_	_	_	
+19-6	2103-2104	å	_	_	_	_	
+19-7	2105-2110	røyke	_	_	_	_	
+19-8	2111-2121	sigaretter	_	_	_	_	
+19-9	2122-2123	i	_	_	_	_	
+19-10	2124-2131	omtrent	_	_	_	_	
+19-11	2132-2134	20	_	_	_	_	
+19-12	2135-2137	år	_	_	_	_	
+19-13	2137-2138	,	_	_	_	_	
+19-14	2139-2141	en	_	_	_	_	
+19-15	2142-2146	halv	_	_	_	_	
+19-16	2147-2152	pakke	_	_	_	_	
+19-17	2153-2155	om	_	_	_	_	
+19-18	2156-2161	dagen	_	_	_	_	
+19-19	2161-2162	.	_	_	_	_	
+
+#Text=Hun røyker ikke for tiden, noe hun ble oppfordret til å fortsette med.
+20-1	2163-2166	Hun	_	_	_	_	
+20-2	2167-2173	røyker	_	_	_	_	
+20-3	2174-2178	ikke	_	_	_	_	
+20-4	2179-2182	for	_	_	_	_	
+20-5	2183-2188	tiden	_	_	_	_	
+20-6	2188-2189	,	_	_	_	_	
+20-7	2190-2193	noe	_	_	_	_	
+20-8	2194-2197	hun	_	_	_	_	
+20-9	2198-2201	ble	_	_	_	_	
+20-10	2202-2212	oppfordret	_	_	_	_	
+20-11	2213-2216	til	_	_	_	_	
+20-12	2217-2218	å	_	_	_	_	
+20-13	2219-2228	fortsette	_	_	_	_	
+20-14	2229-2232	med	_	_	_	_	
+20-15	2232-2233	.	_	_	_	_	
+
+#Text=Hun drikker sjelden alkoholholdige drikkevarer.
+21-1	2234-2237	Hun	_	_	_	_	
+21-2	2238-2245	drikker	_	_	_	_	
+21-3	2246-2253	sjelden	_	_	_	_	
+21-4	2254-2268	alkoholholdige	_	_	_	_	
+21-5	2269-2280	drikkevarer	_	_	_	_	
+21-6	2280-2281	.	_	_	_	_	
+
+#Text=FYSISK UNDERSØKELSE:
+#Text=VITALTEKNOTER: Alder 50 år, blodtrykk 136/74, puls 84, temperatur 98,4, vekt 180 pund og høyde 1,75 meter.
+22-1	2283-2289	FYSISK	_	_	_	_	
+22-2	2290-2302	UNDERSØKELSE	_	_	_	_	
+22-3	2302-2303	:	_	_	_	_	
+22-4	2304-2317	VITALTEKNOTER	_	_	_	_	
+22-5	2317-2318	:	_	_	_	_	
+22-6	2319-2324	Alder	_	_	_	_	
+22-7	2325-2327	50	_	_	_	_	
+22-8	2328-2330	år	_	_	_	_	
+22-9	2330-2331	,	_	_	_	_	
+22-10	2332-2341	blodtrykk	_	_	_	_	
+22-11	2342-2345	136	_	_	_	_	
+22-12	2345-2346	/	_	_	_	_	
+22-13	2346-2348	74	_	_	_	_	
+22-14	2348-2349	,	_	_	_	_	
+22-15	2350-2354	puls	_	_	_	_	
+22-16	2355-2357	84	_	_	_	_	
+22-17	2357-2358	,	_	_	_	_	
+22-18	2359-2369	temperatur	_	_	_	_	
+22-19	2370-2374	98,4	_	_	_	_	
+22-20	2374-2375	,	_	_	_	_	
+22-21	2376-2380	vekt	_	_	_	_	
+22-22	2381-2384	180	_	_	_	_	
+22-23	2385-2389	pund	_	_	_	_	
+22-24	2390-2392	og	_	_	_	_	
+22-25	2393-2398	høyde	_	_	_	_	
+22-26	2399-2403	1,75	_	_	_	_	
+22-27	2404-2409	meter	_	_	_	_	
+22-28	2409-2410	.	_	_	_	_	
+
+#Text=ALLMENNT: Pasienten ser frisk ut; våken og orientert i forhold til person, sted og tid; reagerer hensiktsmessig; ikke i akutt nød.
+23-1	2411-2419	ALLMENNT	_	_	_	_	
+23-2	2419-2420	:	_	_	_	_	
+23-3	2421-2430	Pasienten	_	_	_	_	
+23-4	2431-2434	ser	_	_	_	_	
+23-5	2435-2440	frisk	_	_	_	_	
+23-6	2441-2443	ut	_	_	_	_	
+23-7	2443-2444	;	_	_	_	_	
+23-8	2445-2450	våken	_	_	_	_	
+23-9	2451-2453	og	_	_	_	_	
+23-10	2454-2463	orientert	_	_	_	_	
+23-11	2464-2465	i	_	_	_	_	
+23-12	2466-2473	forhold	_	_	_	_	
+23-13	2474-2477	til	_	_	_	_	
+23-14	2478-2484	person	_	_	_	_	
+23-15	2484-2485	,	_	_	_	_	
+23-16	2486-2490	sted	_	_	_	_	
+23-17	2491-2493	og	_	_	_	_	
+23-18	2494-2497	tid	_	_	_	_	
+23-19	2497-2498	;	_	_	_	_	
+23-20	2499-2507	reagerer	_	_	_	_	
+23-21	2508-2522	hensiktsmessig	_	_	_	_	
+23-22	2522-2523	;	_	_	_	_	
+23-23	2524-2528	ikke	_	_	_	_	
+23-24	2529-2530	i	_	_	_	_	
+23-25	2531-2536	akutt	_	_	_	_	
+23-26	2537-2540	nød	_	_	_	_	
+23-27	2540-2541	.	_	_	_	_	
+
+#Text=HODET: Normocephalt.
+24-1	2542-2547	HODET	_	_	_	_	
+24-2	2547-2548	:	_	_	_	_	
+24-3	2549-2561	Normocephalt	_	_	_	_	
+24-4	2561-2562	.	_	_	_	_	
+
+#Text=Ingen oppfylninger eller lesjoner.
+25-1	2563-2568	Ingen	_	_	_	_	
+25-2	2569-2581	oppfylninger	_	_	_	_	
+25-3	2582-2587	eller	_	_	_	_	
+25-4	2588-2596	lesjoner	_	_	_	_	
+25-5	2596-2597	.	_	_	_	_	
+
+#Text=ANSIKT: Ingen ømhet eller asymmetri i ansiktet.
+26-1	2598-2604	ANSIKT	_	_	_	_	
+26-2	2604-2605	:	_	_	_	_	
+26-3	2606-2611	Ingen	_	_	_	_	
+26-4	2612-2617	ømhet	_	_	_	_	
+26-5	2618-2623	eller	_	_	_	_	
+26-6	2624-2633	asymmetri	_	_	_	_	
+26-7	2634-2635	i	_	_	_	_	
+26-8	2636-2644	ansiktet	_	_	_	_	
+26-9	2644-2645	.	_	_	_	_	
+
+#Text=ØYENE: Pupillene er like, runde og reagerer bilateralt på lys og akkomodasjon.
+27-1	2646-2651	ØYENE	_	_	_	_	
+27-2	2651-2652	:	_	_	_	_	
+27-3	2653-2662	Pupillene	_	_	_	_	
+27-4	2663-2665	er	_	_	_	_	
+27-5	2666-2670	like	_	_	_	_	
+27-6	2670-2671	,	_	_	_	_	
+27-7	2672-2677	runde	_	_	_	_	
+27-8	2678-2680	og	_	_	_	_	
+27-9	2681-2689	reagerer	_	_	_	_	
+27-10	2690-2700	bilateralt	_	_	_	_	
+27-11	2701-2703	på	_	_	_	_	
+27-12	2704-2707	lys	_	_	_	_	
+27-13	2708-2710	og	_	_	_	_	
+27-14	2711-2723	akkomodasjon	_	_	_	_	
+27-15	2723-2724	.	_	_	_	_	
+
+#Text=Ekstraokulære bevegelser er intakte bilateralt.
+28-1	2725-2738	Ekstraokulære	_	_	_	_	
+28-2	2739-2749	bevegelser	_	_	_	_	
+28-3	2750-2752	er	_	_	_	_	
+28-4	2753-2760	intakte	_	_	_	_	
+28-5	2761-2771	bilateralt	_	_	_	_	
+28-6	2771-2772	.	_	_	_	_	
+
+#Text=Ingen nystagmus.
+29-1	2773-2778	Ingen	_	_	_	_	
+29-2	2779-2788	nystagmus	_	_	_	_	
+29-3	2788-2789	.	_	_	_	_	
+
+#Text=ØRNENE: Under Hallpike-undersøkelsen ble pasienten ikke svimmel før hun ble plassert tilbake i sittende i oppreist stilling.
+30-1	2790-2796	ØRNENE	_	_	_	_	
+30-2	2796-2797	:	_	_	_	_	
+30-3	2798-2803	Under	_	_	_	_	
+30-4	2804-2826	Hallpike-undersøkelsen	_	_	_	_	
+30-5	2827-2830	ble	_	_	_	_	
+30-6	2831-2840	pasienten	_	_	_	_	
+30-7	2841-2845	ikke	_	_	_	_	
+30-8	2846-2853	svimmel	_	_	_	_	
+30-9	2854-2857	før	_	_	_	_	
+30-10	2858-2861	hun	_	_	_	_	
+30-11	2862-2865	ble	_	_	_	_	
+30-12	2866-2874	plassert	_	_	_	_	
+30-13	2875-2882	tilbake	_	_	_	_	
+30-14	2883-2884	i	_	_	_	_	
+30-15	2885-2893	sittende	_	_	_	_	
+30-16	2894-2895	i	_	_	_	_	
+30-17	2896-2904	oppreist	_	_	_	_	
+30-18	2905-2913	stilling	_	_	_	_	
+30-19	2913-2914	.	_	_	_	_	
+
+#Text=Ingen nystagmus ble registrert, men pasienten rapporterte subjektivt om svimmelhet, noe som ble gjentatt to ganger.
+31-1	2915-2920	Ingen	_	_	_	_	
+31-2	2921-2930	nystagmus	_	_	_	_	
+31-3	2931-2934	ble	_	_	_	_	
+31-4	2935-2945	registrert	_	_	_	_	
+31-5	2945-2946	,	_	_	_	_	
+31-6	2947-2950	men	_	_	_	_	
+31-7	2951-2960	pasienten	_	_	_	_	
+31-8	2961-2972	rapporterte	_	_	_	_	
+31-9	2973-2983	subjektivt	_	_	_	_	
+31-10	2984-2986	om	_	_	_	_	
+31-11	2987-2997	svimmelhet	_	_	_	_	
+31-12	2997-2998	,	_	_	_	_	
+31-13	2999-3002	noe	_	_	_	_	
+31-14	3003-3006	som	_	_	_	_	
+31-15	3007-3010	ble	_	_	_	_	
+31-16	3011-3019	gjentatt	_	_	_	_	
+31-17	3020-3022	to	_	_	_	_	
+31-18	3023-3029	ganger	_	_	_	_	
+31-19	3029-3030	.	_	_	_	_	
+
+#Text=Det ble ikke funnet tegn til ortostatisk hypotensjon under undersøkelsen.
+32-1	3031-3034	Det	_	_	_	_	
+32-2	3035-3038	ble	_	_	_	_	
+32-3	3039-3043	ikke	_	_	_	_	
+32-4	3044-3050	funnet	_	_	_	_	
+32-5	3051-3055	tegn	_	_	_	_	
+32-6	3056-3059	til	_	_	_	_	
+32-7	3060-3071	ortostatisk	_	_	_	_	
+32-8	3072-3083	hypotensjon	_	_	_	_	
+32-9	3084-3089	under	_	_	_	_	
+32-10	3090-3103	undersøkelsen	_	_	_	_	
+32-11	3103-3104	.	_	_	_	_	
+
+#Text=Trommehinnene var intakte.
+33-1	3105-3118	Trommehinnene	_	_	_	_	
+33-2	3119-3122	var	_	_	_	_	
+33-3	3123-3130	intakte	_	_	_	_	
+33-4	3130-3131	.	_	_	_	_	
+
+#Text=Ingen tegn på mellomøreeffusjon eller øregangsbetennelse.
+34-1	3132-3137	Ingen	_	_	_	_	
+34-2	3138-3142	tegn	_	_	_	_	
+34-3	3143-3145	på	_	_	_	_	
+34-4	3146-3163	mellomøreeffusjon	_	_	_	_	
+34-5	3164-3169	eller	_	_	_	_	
+34-6	3170-3188	øregangsbetennelse	_	_	_	_	
+34-7	3188-3189	.	_	_	_	_	
+
+#Text=NESE: Pasienten virker tett.
+35-1	3190-3194	NESE	_	_	_	_	
+35-2	3194-3195	:	_	_	_	_	
+35-3	3196-3205	Pasienten	_	_	_	_	
+35-4	3206-3212	virker	_	_	_	_	
+35-5	3213-3217	tett	_	_	_	_	
+35-6	3217-3218	.	_	_	_	_	
+
+#Text=Det er notert hypertrofi i nesehinnen.
+36-1	3219-3222	Det	_	_	_	_	
+36-2	3223-3225	er	_	_	_	_	
+36-3	3226-3232	notert	_	_	_	_	
+36-4	3233-3243	hypertrofi	_	_	_	_	
+36-5	3244-3245	i	_	_	_	_	
+36-6	3246-3256	nesehinnen	_	_	_	_	
+36-7	3256-3257	.	_	_	_	_	
+
+#Text=Det er ingen tegn på akutt bihulebetennelse.
+37-1	3258-3261	Det	_	_	_	_	
+37-2	3262-3264	er	_	_	_	_	
+37-3	3265-3270	ingen	_	_	_	_	
+37-4	3271-3275	tegn	_	_	_	_	
+37-5	3276-3278	på	_	_	_	_	
+37-6	3279-3284	akutt	_	_	_	_	
+37-7	3285-3301	bihulebetennelse	_	_	_	_	
+37-8	3301-3302	.	_	_	_	_	
+
+#Text=Septum er midtlinjeformet, lett deviert mot venstre.
+38-1	3303-3309	Septum	_	_	_	_	
+38-2	3310-3312	er	_	_	_	_	
+38-3	3313-3328	midtlinjeformet	_	_	_	_	
+38-4	3328-3329	,	_	_	_	_	
+38-5	3330-3334	lett	_	_	_	_	
+38-6	3335-3342	deviert	_	_	_	_	
+38-7	3343-3346	mot	_	_	_	_	
+38-8	3347-3354	venstre	_	_	_	_	
+38-9	3354-3355	.	_	_	_	_	
+
+#Text=RÅTE: Det er tydelig postnasalt drypp.
+39-1	3356-3360	RÅTE	_	_	_	_	
+39-2	3360-3361	:	_	_	_	_	
+39-3	3362-3365	Det	_	_	_	_	
+39-4	3366-3368	er	_	_	_	_	
+39-5	3369-3376	tydelig	_	_	_	_	
+39-6	3377-3387	postnasalt	_	_	_	_	
+39-7	3388-3393	drypp	_	_	_	_	
+39-8	3393-3394	.	_	_	_	_	
+
+#Text=Munnhygienen er god.
+40-1	3395-3407	Munnhygienen	_	_	_	_	
+40-2	3408-3410	er	_	_	_	_	
+40-3	3411-3414	god	_	_	_	_	
+40-4	3414-3415	.	_	_	_	_	
+
+#Text=Ingen oppfylninger eller lesjoner.
+41-1	3416-3421	Ingen	_	_	_	_	
+41-2	3422-3434	oppfylninger	_	_	_	_	
+41-3	3435-3440	eller	_	_	_	_	
+41-4	3441-3449	lesjoner	_	_	_	_	
+41-5	3449-3450	.	_	_	_	_	
+
+#Text=Begge stemmebåndene beveger seg godt mot midtlinjen.
+42-1	3451-3456	Begge	_	_	_	_	
+42-2	3457-3470	stemmebåndene	_	_	_	_	
+42-3	3471-3478	beveger	_	_	_	_	
+42-4	3479-3482	seg	_	_	_	_	
+42-5	3483-3487	godt	_	_	_	_	
+42-6	3488-3491	mot	_	_	_	_	
+42-7	3492-3502	midtlinjen	_	_	_	_	
+42-8	3502-3503	.	_	_	_	_	
+
+#Text=Nakke: Halsen er smidig uten adenopati eller oppfylninger.
+43-1	3504-3509	Nakke	_	_	_	_	
+43-2	3509-3510	:	_	_	_	_	
+43-3	3511-3517	Halsen	_	_	_	_	
+43-4	3518-3520	er	_	_	_	_	
+43-5	3521-3527	smidig	_	_	_	_	
+43-6	3528-3532	uten	_	_	_	_	
+43-7	3533-3542	adenopati	_	_	_	_	
+43-8	3543-3548	eller	_	_	_	_	
+43-9	3549-3561	oppfylninger	_	_	_	_	
+43-10	3561-3562	.	_	_	_	_	
+
+#Text=Luftrøret ligger på midtlinjen.
+44-1	3563-3572	Luftrøret	_	_	_	_	
+44-2	3573-3579	ligger	_	_	_	_	
+44-3	3580-3582	på	_	_	_	_	
+44-4	3583-3593	midtlinjen	_	_	_	_	
+44-5	3593-3594	.	_	_	_	_	
+
+#Text=Skjoldbruskkjertelen er av normal størrelse uten knuter.
+45-1	3595-3615	Skjoldbruskkjertelen	_	_	_	_	
+45-2	3616-3618	er	_	_	_	_	
+45-3	3619-3621	av	_	_	_	_	
+45-4	3622-3628	normal	_	_	_	_	
+45-5	3629-3638	størrelse	_	_	_	_	
+45-6	3639-3643	uten	_	_	_	_	
+45-7	3644-3650	knuter	_	_	_	_	
+45-8	3650-3651	.	_	_	_	_	
+
+#Text=LUNGER: Klare ved auskultasjon bilateralt.
+46-1	3652-3658	LUNGER	_	_	_	_	
+46-2	3658-3659	:	_	_	_	_	
+46-3	3660-3665	Klare	_	_	_	_	
+46-4	3666-3669	ved	_	_	_	_	
+46-5	3670-3682	auskultasjon	_	_	_	_	
+46-6	3683-3693	bilateralt	_	_	_	_	
+46-7	3693-3694	.	_	_	_	_	
+
+#Text=Ingen tungpustethet.
+47-1	3695-3700	Ingen	_	_	_	_	
+47-2	3701-3714	tungpustethet	_	_	_	_	
+47-3	3714-3715	.	_	_	_	_	
+
+#Text=HJERTET: Regelmessig puls og rytme.
+48-1	3716-3723	HJERTET	_	_	_	_	
+48-2	3723-3724	:	_	_	_	_	
+48-3	3725-3736	Regelmessig	_	_	_	_	
+48-4	3737-3741	puls	_	_	_	_	
+48-5	3742-3744	og	_	_	_	_	
+48-6	3745-3750	rytme	_	_	_	_	
+48-7	3750-3751	.	_	_	_	_	
+
+#Text=Ingen bilyd notert.
+49-1	3752-3757	Ingen	_	_	_	_	
+49-2	3758-3763	bilyd	_	_	_	_	
+49-3	3764-3770	notert	_	_	_	_	
+49-4	3770-3771	.	_	_	_	_	
+
+#Text=NEUROLOGISK: Ansiktsnerven er intakt bilateralt.
+50-1	3772-3783	NEUROLOGISK	_	_	_	_	
+50-2	3783-3784	:	_	_	_	_	
+50-3	3785-3798	Ansiktsnerven	_	_	_	_	
+50-4	3799-3801	er	_	_	_	_	
+50-5	3802-3808	intakt	_	_	_	_	
+50-6	3809-3819	bilateralt	_	_	_	_	
+50-7	3819-3820	.	_	_	_	_	
+
+#Text=De øvrige hjernenerver er intakte uten fokale utfall.
+51-1	3821-3823	De	_	_	_	_	
+51-2	3824-3830	øvrige	_	_	_	_	
+51-3	3831-3843	hjernenerver	_	_	_	_	
+51-4	3844-3846	er	_	_	_	_	
+51-5	3847-3854	intakte	_	_	_	_	
+51-6	3855-3859	uten	_	_	_	_	
+51-7	3860-3866	fokale	_	_	_	_	
+51-8	3867-3873	utfall	_	_	_	_	
+51-9	3873-3874	.	_	_	_	_	
+
+#Text=PROSEDYRE: Fiberoptisk nasofaryngoskopi som identifiserer turbinathypertrofi og avvik av neseskilleveggen mot venstre, mer signifikant posteriort.
+52-1	3876-3885	PROSEDYRE	_	_	_	_	
+52-2	3885-3886	:	_	_	_	_	
+52-3	3887-3898	Fiberoptisk	_	_	_	_	
+52-4	3899-3915	nasofaryngoskopi	_	_	_	_	
+52-5	3916-3919	som	_	_	_	_	
+52-6	3920-3933	identifiserer	_	_	_	_	
+52-7	3934-3952	turbinathypertrofi	_	_	_	_	
+52-8	3953-3955	og	_	_	_	_	
+52-9	3956-3961	avvik	_	_	_	_	
+52-10	3962-3964	av	_	_	_	_	
+52-11	3965-3981	neseskilleveggen	_	_	_	_	
+52-12	3982-3985	mot	_	_	_	_	
+52-13	3986-3993	venstre	_	_	_	_	
+52-14	3993-3994	,	_	_	_	_	
+52-15	3995-3998	mer	_	_	_	_	
+52-16	3999-4010	signifikant	_	_	_	_	
+52-17	4011-4021	posteriort	_	_	_	_	
+52-18	4021-4022	.	_	_	_	_	
+
+#Text=INNTRYKK:
+#Text=1.
+53-1	4024-4032	INNTRYKK	_	_	_	_	
+53-2	4032-4033	:	_	_	_	_	
+53-3	4034-4035	1	_	_	_	_	
+53-4	4035-4036	.	_	_	_	_	
+
+#Text=Sannsynligvis økende problemer med allergisk rhinitt og kronisk bihulebetennelse, som begge bidrar til pasientens symptomer.
+#Text=2.
+54-1	4037-4050	Sannsynligvis	_	_	_	_	
+54-2	4051-4057	økende	_	_	_	_	
+54-3	4058-4067	problemer	_	_	_	_	
+54-4	4068-4071	med	_	_	_	_	
+54-5	4072-4081	allergisk	_	_	_	_	
+54-6	4082-4089	rhinitt	_	_	_	_	
+54-7	4090-4092	og	_	_	_	_	
+54-8	4093-4100	kronisk	_	_	_	_	
+54-9	4101-4117	bihulebetennelse	_	_	_	_	
+54-10	4117-4118	,	_	_	_	_	
+54-11	4119-4122	som	_	_	_	_	
+54-12	4123-4128	begge	_	_	_	_	
+54-13	4129-4135	bidrar	_	_	_	_	
+54-14	4136-4139	til	_	_	_	_	
+54-15	4140-4150	pasientens	_	_	_	_	
+54-16	4151-4160	symptomer	_	_	_	_	
+54-17	4160-4161	.	_	_	_	_	
+54-18	4162-4163	2	_	_	_	_	
+54-19	4163-4164	.	_	_	_	_	
+
+#Text=Subjektiv svimmelhet, usikker etiologi; vurder imidlertid posisjonell vertigo versus vestibulær nevronitt som mulige øreårsaker til svimmelhet, kan ikke utelukke systemiske, sentrale eller medikamentelle årsaker eller årsaker på dette tidspunktet.
+#Text=3.
+55-1	4165-4174	Subjektiv	_	_	_	_	
+55-2	4175-4185	svimmelhet	_	_	_	_	
+55-3	4185-4186	,	_	_	_	_	
+55-4	4187-4194	usikker	_	_	_	_	
+55-5	4195-4203	etiologi	_	_	_	_	
+55-6	4203-4204	;	_	_	_	_	
+55-7	4205-4211	vurder	_	_	_	_	
+55-8	4212-4222	imidlertid	_	_	_	_	
+55-9	4223-4234	posisjonell	_	_	_	_	
+55-10	4235-4242	vertigo	_	_	_	_	
+55-11	4243-4249	versus	_	_	_	_	
+55-12	4250-4260	vestibulær	_	_	_	_	
+55-13	4261-4270	nevronitt	_	_	_	_	
+55-14	4271-4274	som	_	_	_	_	
+55-15	4275-4281	mulige	_	_	_	_	
+55-16	4282-4292	øreårsaker	_	_	_	_	
+55-17	4293-4296	til	_	_	_	_	
+55-18	4297-4307	svimmelhet	_	_	_	_	
+55-19	4307-4308	,	_	_	_	_	
+55-20	4309-4312	kan	_	_	_	_	
+55-21	4313-4317	ikke	_	_	_	_	
+55-22	4318-4326	utelukke	_	_	_	_	
+55-23	4327-4337	systemiske	_	_	_	_	
+55-24	4337-4338	,	_	_	_	_	
+55-25	4339-4347	sentrale	_	_	_	_	
+55-26	4348-4353	eller	_	_	_	_	
+55-27	4354-4368	medikamentelle	_	_	_	_	
+55-28	4369-4376	årsaker	_	_	_	_	
+55-29	4377-4382	eller	_	_	_	_	
+55-30	4383-4390	årsaker	_	_	_	_	
+55-31	4391-4393	på	_	_	_	_	
+55-32	4394-4399	dette	_	_	_	_	
+55-33	4400-4411	tidspunktet	_	_	_	_	
+55-34	4411-4412	.	_	_	_	_	
+55-35	4413-4414	3	_	_	_	_	
+55-36	4414-4415	.	_	_	_	_	
+
+#Text=Hypertrofi i nedre del av nesehinnen.
+#Text=4.
+56-1	4416-4426	Hypertrofi	_	_	_	_	
+56-2	4427-4428	i	_	_	_	_	
+56-3	4429-4434	nedre	_	_	_	_	
+56-4	4435-4438	del	_	_	_	_	
+56-5	4439-4441	av	_	_	_	_	
+56-6	4442-4452	nesehinnen	_	_	_	_	
+56-7	4452-4453	.	_	_	_	_	
+56-8	4454-4455	4	_	_	_	_	
+56-9	4455-4456	.	_	_	_	_	
+
+#Text=Deformitet i neseskilleveggen.
+57-1	4457-4467	Deformitet	_	_	_	_	
+57-2	4468-4469	i	_	_	_	_	
+57-3	4470-4486	neseskilleveggen	_	_	_	_	
+57-4	4486-4487	.	_	_	_	_	
+
+#Text=ANBEFALINGER: Det ble bestilt en ENG for å evaluere vestibularisfunksjonen.
+58-1	4489-4501	ANBEFALINGER	_	_	_	_	
+58-2	4501-4502	:	_	_	_	_	
+58-3	4503-4506	Det	_	_	_	_	
+58-4	4507-4510	ble	_	_	_	_	
+58-5	4511-4518	bestilt	_	_	_	_	
+58-6	4519-4521	en	_	_	_	_	
+58-7	4522-4525	ENG	AFTER	TREATMENT	_	_	
+58-8	4526-4529	for	_	_	_	_	
+58-9	4530-4531	å	_	_	_	_	
+58-10	4532-4540	evaluere	_	_	_	_	
+58-11	4541-4563	vestibularisfunksjonen	_	_	_	_	
+58-12	4563-4564	.	_	_	_	_	
+
+#Text=Hun ble satt på Veramyst nesespray, to spray i hvert nesebor daglig og to ganger daglig hvis symptomene forverres.
+59-1	4565-4568	Hun	_	_	_	_	
+59-2	4569-4572	ble	_	_	_	_	
+59-3	4573-4577	satt	_	_	_	_	
+59-4	4578-4580	på	_	_	_	_	
+59-5	4581-4589	Veramyst	AFTER	TREATMENT	_	_	
+59-6	4590-4599	nesespray	_	_	_	_	
+59-7	4599-4600	,	_	_	_	_	
+59-8	4601-4603	to	_	_	_	_	
+59-9	4604-4609	spray	_	_	_	_	
+59-10	4610-4611	i	_	_	_	_	
+59-11	4612-4617	hvert	_	_	_	_	
+59-12	4618-4625	nesebor	_	_	_	_	
+59-13	4626-4632	daglig	_	_	_	_	
+59-14	4633-4635	og	_	_	_	_	
+59-15	4636-4638	to	_	_	_	_	
+59-16	4639-4645	ganger	_	_	_	_	
+59-17	4646-4652	daglig	_	_	_	_	
+59-18	4653-4657	hvis	_	_	_	_	
+59-19	4658-4668	symptomene	_	_	_	_	
+59-20	4669-4678	forverres	_	_	_	_	
+59-21	4678-4679	.	_	_	_	_	
+
+#Text=En Medrol Dosepak ble foreskrevet som anvist.
+60-1	4680-4682	En	_	_	_	_	
+60-2	4683-4689	Medrol	AFTER[8]	TREATMENT[8]	_	_	
+60-3	4690-4697	Dosepak	AFTER[8]	TREATMENT[8]	_	_	
+60-4	4698-4701	ble	_	_	_	_	
+60-5	4702-4713	foreskrevet	_	_	_	_	
+60-6	4714-4717	som	_	_	_	_	
+60-7	4718-4724	anvist	_	_	_	_	
+60-8	4724-4725	.	_	_	_	_	
+
+#Text=Pasienten ble instruert i bruk av nasal saltvannsskylling to ganger daglig, og Clarinex 5 mg daglig ble anbefalt.
+61-1	4726-4735	Pasienten	_	_	_	_	
+61-2	4736-4739	ble	_	_	_	_	
+61-3	4740-4749	instruert	_	_	_	_	
+61-4	4750-4751	i	_	_	_	_	
+61-5	4752-4756	bruk	_	_	_	_	
+61-6	4757-4759	av	_	_	_	_	
+61-7	4760-4765	nasal	_	_	_	_	
+61-8	4766-4783	saltvannsskylling	_	_	_	_	
+61-9	4784-4786	to	_	_	_	_	
+61-10	4787-4793	ganger	_	_	_	_	
+61-11	4794-4800	daglig	_	_	_	_	
+61-12	4800-4801	,	_	_	_	_	
+61-13	4802-4804	og	_	_	_	_	
+61-14	4805-4813	Clarinex	_	_	_	_	
+61-15	4814-4815	5	_	_	_	_	
+61-16	4816-4818	mg	_	_	_	_	
+61-17	4819-4825	daglig	_	_	_	_	
+61-18	4826-4829	ble	_	_	_	_	
+61-19	4830-4838	anbefalt	_	_	_	_	
+61-20	4838-4839	.	_	_	_	_	
+
+#Text=Etter pasientens ENG-undersøkelse vil vi ta pasienten tilbake for videre evaluering og behandlingsanbefalinger.
+62-1	4840-4845	Etter	_	_	_	_	
+62-2	4846-4856	pasientens	_	_	_	_	
+62-3	4857-4873	ENG-undersøkelse	_	_	_	_	
+62-4	4874-4877	vil	_	_	_	_	
+62-5	4878-4880	vi	_	_	_	_	
+62-6	4881-4883	ta	_	_	_	_	
+62-7	4884-4893	pasienten	_	_	_	_	
+62-8	4894-4901	tilbake	_	_	_	_	
+62-9	4902-4905	for	_	_	_	_	
+62-10	4906-4912	videre	_	_	_	_	
+62-11	4913-4923	evaluering	_	_	_	_	
+62-12	4924-4926	og	_	_	_	_	
+62-13	4927-4950	behandlingsanbefalinger	_	_	_	_	
+62-14	4950-4951	.	_	_	_	_	
+
+#Text=I lys av pasientens atypiske svimmelhetssymptomer kan jeg ikke utelukke annen patologi på dette tidspunktet, og jeg informerte henne om at hvis det oppstår akutte endringer eller problemer med balansen eller andre akutte endringer som hun setter i sammenheng med svimmelheten, bør hun mest sannsynlig oppsøke legevakten.
+63-1	4952-4953	I	_	_	_	_	
+63-2	4954-4957	lys	_	_	_	_	
+63-3	4958-4960	av	_	_	_	_	
+63-4	4961-4971	pasientens	_	_	_	_	
+63-5	4972-4980	atypiske	_	_	_	_	
+63-6	4981-5001	svimmelhetssymptomer	_	_	_	_	
+63-7	5002-5005	kan	_	_	_	_	
+63-8	5006-5009	jeg	_	_	_	_	
+63-9	5010-5014	ikke	_	_	_	_	
+63-10	5015-5023	utelukke	_	_	_	_	
+63-11	5024-5029	annen	_	_	_	_	
+63-12	5030-5038	patologi	_	_	_	_	
+63-13	5039-5041	på	_	_	_	_	
+63-14	5042-5047	dette	_	_	_	_	
+63-15	5048-5059	tidspunktet	_	_	_	_	
+63-16	5059-5060	,	_	_	_	_	
+63-17	5061-5063	og	_	_	_	_	
+63-18	5064-5067	jeg	_	_	_	_	
+63-19	5068-5078	informerte	_	_	_	_	
+63-20	5079-5084	henne	_	_	_	_	
+63-21	5085-5087	om	_	_	_	_	
+63-22	5088-5090	at	_	_	_	_	
+63-23	5091-5095	hvis	_	_	_	_	
+63-24	5096-5099	det	_	_	_	_	
+63-25	5100-5107	oppstår	_	_	_	_	
+63-26	5108-5114	akutte	_	_	_	_	
+63-27	5115-5124	endringer	_	_	_	_	
+63-28	5125-5130	eller	_	_	_	_	
+63-29	5131-5140	problemer	_	_	_	_	
+63-30	5141-5144	med	_	_	_	_	
+63-31	5145-5153	balansen	_	_	_	_	
+63-32	5154-5159	eller	_	_	_	_	
+63-33	5160-5165	andre	_	_	_	_	
+63-34	5166-5172	akutte	_	_	_	_	
+63-35	5173-5182	endringer	_	_	_	_	
+63-36	5183-5186	som	_	_	_	_	
+63-37	5187-5190	hun	_	_	_	_	
+63-38	5191-5197	setter	_	_	_	_	
+63-39	5198-5199	i	_	_	_	_	
+63-40	5200-5210	sammenheng	_	_	_	_	
+63-41	5211-5214	med	_	_	_	_	
+63-42	5215-5227	svimmelheten	_	_	_	_	
+63-43	5227-5228	,	_	_	_	_	
+63-44	5229-5232	bør	_	_	_	_	
+63-45	5233-5236	hun	_	_	_	_	
+63-46	5237-5241	mest	_	_	_	_	
+63-47	5242-5252	sannsynlig	_	_	_	_	
+63-48	5253-5260	oppsøke	_	_	_	_	
+63-49	5261-5271	legevakten	_	_	_	_	
+63-50	5271-5272	.	_	_	_	_	
+
+#Text=Takk for at jeg fikk lov til å delta i behandlingen av pasienten din.
+64-1	5274-5278	Takk	_	_	_	_	
+64-2	5279-5282	for	_	_	_	_	
+64-3	5283-5285	at	_	_	_	_	
+64-4	5286-5289	jeg	_	_	_	_	
+64-5	5290-5294	fikk	_	_	_	_	
+64-6	5295-5298	lov	_	_	_	_	
+64-7	5299-5302	til	_	_	_	_	
+64-8	5303-5304	å	_	_	_	_	
+64-9	5305-5310	delta	_	_	_	_	
+64-10	5311-5312	i	_	_	_	_	
+64-11	5313-5325	behandlingen	_	_	_	_	
+64-12	5326-5328	av	_	_	_	_	
+64-13	5329-5338	pasienten	_	_	_	_	
+64-14	5339-5342	din	_	_	_	_	
+64-15	5342-5343	.	_	_	_	_	

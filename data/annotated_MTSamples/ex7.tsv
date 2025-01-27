@@ -1,0 +1,1023 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MER|DCT|NER
+#T_RL=webanno.custom.TRE|TLINK|BT_webanno.custom.MER
+
+
+#Text=SUBJEKTIV: Dette er en 42 år gammel hvit kvinne som kommer inn i dag for en fullstendig undersøkelse og oppfølging av astma.
+1-1	0-9	SUBJEKTIV	_	_	_	_	
+1-2	9-10	:	_	_	_	_	
+1-3	11-16	Dette	_	_	_	_	
+1-4	17-19	er	_	_	_	_	
+1-5	20-22	en	_	_	_	_	
+1-6	23-25	42	_	_	_	_	
+1-7	26-28	år	_	_	_	_	
+1-8	29-35	gammel	_	_	_	_	
+1-9	36-40	hvit	_	_	_	_	
+1-10	41-47	kvinne	_	_	_	_	
+1-11	48-51	som	_	_	_	_	
+1-12	52-58	kommer	_	_	_	_	
+1-13	59-62	inn	_	_	_	_	
+1-14	63-64	i	_	_	_	_	
+1-15	65-68	dag	_	_	_	_	
+1-16	69-72	for	_	_	_	_	
+1-17	73-75	en	_	_	_	_	
+1-18	76-87	fullstendig	_	_	_	_	
+1-19	88-100	undersøkelse	_	_	_	_	
+1-20	101-103	og	_	_	_	_	
+1-21	104-114	oppfølging	_	_	_	_	
+1-22	115-117	av	_	_	_	_	
+1-23	118-123	astma	BEFORE/OVERLAP	DISEASE	_	_	
+1-24	123-124	.	_	_	_	_	
+
+#Text=Hun sier at astmaen hennes har blitt verre de siste tre månedene.
+2-1	125-128	Hun	_	_	_	_	
+2-2	129-133	sier	_	_	_	_	
+2-3	134-136	at	_	_	_	_	
+2-4	137-144	astmaen	_	_	_	_	
+2-5	145-151	hennes	_	_	_	_	
+2-6	152-155	har	_	_	_	_	
+2-7	156-161	blitt	_	_	_	_	
+2-8	162-167	verre	_	_	_	_	
+2-9	168-170	de	_	_	_	_	
+2-10	171-176	siste	_	_	_	_	
+2-11	177-180	tre	_	_	_	_	
+2-12	181-189	månedene	_	_	_	_	
+2-13	189-190	.	_	_	_	_	
+
+#Text=Hun har brukt inhalatoren sin daglig.
+3-1	191-194	Hun	_	_	_	_	
+3-2	195-198	har	_	_	_	_	
+3-3	199-204	brukt	_	_	_	_	
+3-4	205-216	inhalatoren	BEFORE/OVERLAP	TREATMENT	_	_	
+3-5	217-220	sin	_	_	_	_	
+3-6	221-227	daglig	_	_	_	_	
+3-7	227-228	.	_	_	_	_	
+
+#Text=Allergiene hennes ser også ut til å være litt verre.
+4-1	229-239	Allergiene	_	_	_	_	
+4-2	240-246	hennes	_	_	_	_	
+4-3	247-250	ser	_	_	_	_	
+4-4	251-255	også	_	_	_	_	
+4-5	256-258	ut	_	_	_	_	
+4-6	259-262	til	_	_	_	_	
+4-7	263-264	å	_	_	_	_	
+4-8	265-269	være	_	_	_	_	
+4-9	270-274	litt	_	_	_	_	
+4-10	275-280	verre	_	_	_	_	
+4-11	280-281	.	_	_	_	_	
+
+#Text=Mannen hennes har kjørt korn, og dette ser ut til å forverre situasjonen.
+5-1	282-288	Mannen	_	_	_	_	
+5-2	289-295	hennes	_	_	_	_	
+5-3	296-299	har	_	_	_	_	
+5-4	300-305	kjørt	_	_	_	_	
+5-5	306-310	korn	_	_	_	_	
+5-6	310-311	,	_	_	_	_	
+5-7	312-314	og	_	_	_	_	
+5-8	315-320	dette	_	_	_	_	
+5-9	321-324	ser	_	_	_	_	
+5-10	325-327	ut	_	_	_	_	
+5-11	328-331	til	_	_	_	_	
+5-12	332-333	å	_	_	_	_	
+5-13	334-342	forverre	_	_	_	_	
+5-14	343-354	situasjonen	_	_	_	_	
+5-15	354-355	.	_	_	_	_	
+
+#Text=Hun har ikke tatt Allegra daglig, men når hun tar det, ser det ut til å hjelpe noe.
+6-1	356-359	Hun	_	_	_	_	
+6-2	360-363	har	_	_	_	_	
+6-3	364-368	ikke	_	_	_	_	
+6-4	369-373	tatt	_	_	_	_	
+6-5	374-381	Allegra	BEFORE	TREATMENT	_	_	
+6-6	382-388	daglig	_	_	_	_	
+6-7	388-389	,	_	_	_	_	
+6-8	390-393	men	_	_	_	_	
+6-9	394-397	når	_	_	_	_	
+6-10	398-401	hun	_	_	_	_	
+6-11	402-405	tar	_	_	_	_	
+6-12	406-409	det	_	_	_	_	
+6-13	409-410	,	_	_	_	_	
+6-14	411-414	ser	_	_	_	_	
+6-15	415-418	det	_	_	_	_	
+6-16	419-421	ut	_	_	_	_	
+6-17	422-425	til	_	_	_	_	
+6-18	426-427	å	_	_	_	_	
+6-19	428-434	hjelpe	_	_	_	_	
+6-20	435-438	noe	_	_	_	_	
+6-21	438-439	.	_	_	_	_	
+
+#Text=Hun har ikke tatt Flonase, noe som har hjulpet henne tidligere.
+7-1	440-443	Hun	_	_	_	_	
+7-2	444-447	har	_	_	_	_	
+7-3	448-452	ikke	_	_	_	_	
+7-4	453-457	tatt	_	_	_	_	
+7-5	458-465	Flonase	_	_	_	_	
+7-6	465-466	,	_	_	_	_	
+7-7	467-470	noe	_	_	_	_	
+7-8	471-474	som	_	_	_	_	
+7-9	475-478	har	_	_	_	_	
+7-10	479-486	hjulpet	_	_	_	_	
+7-11	487-492	henne	_	_	_	_	
+7-12	493-502	tidligere	_	_	_	_	
+7-13	502-503	.	_	_	_	_	
+
+#Text=Hun bemerker også at hun tidligere har tatt Advair, men at hun fikk en del vaginal irritasjon med det.
+8-1	504-507	Hun	_	_	_	_	
+8-2	508-516	bemerker	_	_	_	_	
+8-3	517-521	også	_	_	_	_	
+8-4	522-524	at	_	_	_	_	
+8-5	525-528	hun	_	_	_	_	
+8-6	529-538	tidligere	_	_	_	_	
+8-7	539-542	har	_	_	_	_	
+8-8	543-547	tatt	_	_	_	_	
+8-9	548-554	Advair	BEFORE	TREATMENT	AFTER|AFTER	9-7|9-9	
+8-10	554-555	,	_	_	_	_	
+8-11	556-559	men	_	_	_	_	
+8-12	560-562	at	_	_	_	_	
+8-13	563-566	hun	_	_	_	_	
+8-14	567-571	fikk	_	_	_	_	
+8-15	572-574	en	_	_	_	_	
+8-16	575-578	del	_	_	_	_	
+8-17	579-586	vaginal	_	_	_	_	
+8-18	587-597	irritasjon	_	_	_	_	
+8-19	598-601	med	_	_	_	_	
+8-20	602-605	det	_	_	_	_	
+8-21	605-606	.	_	_	_	_	
+
+#Text=Hun hadde merket økende symptomer på irritabilitet og PMS rundt menstruasjonssyklusen.
+9-1	608-611	Hun	_	_	_	_	
+9-2	612-617	hadde	_	_	_	_	
+9-3	618-624	merket	_	_	_	_	
+9-4	625-631	økende	_	_	_	_	
+9-5	632-641	symptomer	_	_	_	_	
+9-6	642-644	på	_	_	_	_	
+9-7	645-658	irritabilitet	BEFORE	SYMPTOM	BEFORE	8-9	
+9-8	659-661	og	_	_	_	_	
+9-9	662-665	PMS	BEFORE	SYMPTOM	BEFORE	8-9	
+9-10	666-671	rundt	_	_	_	_	
+9-11	672-693	menstruasjonssyklusen	_	_	_	_	
+9-12	693-694	.	_	_	_	_	
+
+#Text=Hun har vært mer utålmodig på den tiden.
+10-1	695-698	Hun	_	_	_	_	
+10-2	699-702	har	_	_	_	_	
+10-3	703-707	vært	_	_	_	_	
+10-4	708-711	mer	_	_	_	_	
+10-5	712-721	utålmodig	_	_	_	_	
+10-6	722-724	på	_	_	_	_	
+10-7	725-728	den	_	_	_	_	
+10-8	729-734	tiden	_	_	_	_	
+10-9	734-735	.	_	_	_	_	
+
+#Text=Hun sier at humøret ellers er normalt resten av måneden.
+11-1	736-739	Hun	_	_	_	_	
+11-2	740-744	sier	_	_	_	_	
+11-3	745-747	at	_	_	_	_	
+11-4	748-755	humøret	_	_	_	_	
+11-5	756-762	ellers	_	_	_	_	
+11-6	763-765	er	_	_	_	_	
+11-7	766-773	normalt	_	_	_	_	
+11-8	774-780	resten	_	_	_	_	
+11-9	781-783	av	_	_	_	_	
+11-10	784-791	måneden	_	_	_	_	
+11-11	791-792	.	_	_	_	_	
+
+#Text=Det pleier å være verre uken før syklusen og bedre den dagen menstruasjonssyklusen starter.
+12-1	793-796	Det	_	_	_	_	
+12-2	797-803	pleier	_	_	_	_	
+12-3	804-805	å	_	_	_	_	
+12-4	806-810	være	_	_	_	_	
+12-5	811-816	verre	_	_	_	_	
+12-6	817-821	uken	_	_	_	_	
+12-7	822-825	før	_	_	_	_	
+12-8	826-834	syklusen	_	_	_	_	
+12-9	835-837	og	_	_	_	_	
+12-10	838-843	bedre	_	_	_	_	
+12-11	844-847	den	_	_	_	_	
+12-12	848-853	dagen	_	_	_	_	
+12-13	854-875	menstruasjonssyklusen	_	_	_	_	
+12-14	876-883	starter	_	_	_	_	
+12-15	883-884	.	_	_	_	_	
+
+#Text=Menstruasjonene har vært regelmessige, men noe kortere enn tidligere.
+13-1	885-900	Menstruasjonene	_	_	_	_	
+13-2	901-904	har	_	_	_	_	
+13-3	905-909	vært	_	_	_	_	
+13-4	910-922	regelmessige	_	_	_	_	
+13-5	922-923	,	_	_	_	_	
+13-6	924-927	men	_	_	_	_	
+13-7	928-931	noe	_	_	_	_	
+13-8	932-939	kortere	_	_	_	_	
+13-9	940-943	enn	_	_	_	_	
+13-10	944-953	tidligere	_	_	_	_	
+13-11	953-954	.	_	_	_	_	
+
+#Text=Av og til får hun litt spotting etter syklusene.
+14-1	955-957	Av	_	_	_	_	
+14-2	958-960	og	_	_	_	_	
+14-3	961-964	til	_	_	_	_	
+14-4	965-968	får	_	_	_	_	
+14-5	969-972	hun	_	_	_	_	
+14-6	973-977	litt	_	_	_	_	
+14-7	978-986	spotting	_	_	_	_	
+14-8	987-992	etter	_	_	_	_	
+14-9	993-1002	syklusene	_	_	_	_	
+14-10	1002-1003	.	_	_	_	_	
+
+#Text=Hun benekter at hun har hatt hetetokter eller nattesvette i forbindelse med dette.
+15-1	1004-1007	Hun	_	_	_	_	
+15-2	1008-1016	benekter	_	_	_	_	
+15-3	1017-1019	at	_	_	_	_	
+15-4	1020-1023	hun	_	_	_	_	
+15-5	1024-1027	har	_	_	_	_	
+15-6	1028-1032	hatt	_	_	_	_	
+15-7	1033-1043	hetetokter	_	_	_	_	
+15-8	1044-1049	eller	_	_	_	_	
+15-9	1050-1061	nattesvette	_	_	_	_	
+15-10	1062-1063	i	_	_	_	_	
+15-11	1064-1075	forbindelse	_	_	_	_	
+15-12	1076-1079	med	_	_	_	_	
+15-13	1080-1085	dette	_	_	_	_	
+15-14	1085-1086	.	_	_	_	_	
+
+#Text=Ved gjennomgang av journalen bemerkes det at hun tidligere har hatt 3+ blod med det som så ut til å være en urinveisinfeksjon.
+16-1	1087-1090	Ved	_	_	_	_	
+16-2	1091-1102	gjennomgang	_	_	_	_	
+16-3	1103-1105	av	_	_	_	_	
+16-4	1106-1115	journalen	_	_	_	_	
+16-5	1116-1124	bemerkes	_	_	_	_	
+16-6	1125-1128	det	_	_	_	_	
+16-7	1129-1131	at	_	_	_	_	
+16-8	1132-1135	hun	_	_	_	_	
+16-9	1136-1145	tidligere	_	_	_	_	
+16-10	1146-1149	har	_	_	_	_	
+16-11	1150-1154	hatt	_	_	_	_	
+16-12	1155-1156	3	_	_	_	_	
+16-13	1156-1157	+	_	_	_	_	
+16-14	1158-1162	blod	_	_	_	_	
+16-15	1163-1166	med	_	_	_	_	
+16-16	1167-1170	det	_	_	_	_	
+16-17	1171-1174	som	_	_	_	_	
+16-18	1175-1177	så	_	_	_	_	
+16-19	1178-1180	ut	_	_	_	_	
+16-20	1181-1184	til	_	_	_	_	
+16-21	1185-1186	å	_	_	_	_	
+16-22	1187-1191	være	_	_	_	_	
+16-23	1192-1194	en	_	_	_	_	
+16-24	1195-1212	urinveisinfeksjon	BEFORE	DISEASE	_	_	
+16-25	1212-1213	.	_	_	_	_	
+
+#Text=Urinen hennes har ikke blitt kontrollert på nytt.
+17-1	1214-1220	Urinen	_	_	_	_	
+17-2	1221-1227	hennes	_	_	_	_	
+17-3	1228-1231	har	_	_	_	_	
+17-4	1232-1236	ikke	_	_	_	_	
+17-5	1237-1242	blitt	_	_	_	_	
+17-6	1243-1254	kontrollert	_	_	_	_	
+17-7	1255-1257	på	_	_	_	_	
+17-8	1258-1262	nytt	_	_	_	_	
+17-9	1262-1263	.	_	_	_	_	
+
+#Text=Hun har nylig fått tatt laboratorieprøver og kolesterolverdier i forbindelse med en livsforsikringssøknad, og hun kommer til å sende meg resultatene når de foreligger.
+18-1	1264-1267	Hun	_	_	_	_	
+18-2	1268-1271	har	_	_	_	_	
+18-3	1272-1277	nylig	_	_	_	_	
+18-4	1278-1282	fått	_	_	_	_	
+18-5	1283-1287	tatt	_	_	_	_	
+18-6	1288-1305	laboratorieprøver	_	_	_	_	
+18-7	1306-1308	og	_	_	_	_	
+18-8	1309-1326	kolesterolverdier	_	_	_	_	
+18-9	1327-1328	i	_	_	_	_	
+18-10	1329-1340	forbindelse	_	_	_	_	
+18-11	1341-1344	med	_	_	_	_	
+18-12	1345-1347	en	_	_	_	_	
+18-13	1348-1369	livsforsikringssøknad	_	_	_	_	
+18-14	1369-1370	,	_	_	_	_	
+18-15	1371-1373	og	_	_	_	_	
+18-16	1374-1377	hun	_	_	_	_	
+18-17	1378-1384	kommer	_	_	_	_	
+18-18	1385-1388	til	_	_	_	_	
+18-19	1389-1390	å	_	_	_	_	
+18-20	1391-1396	sende	_	_	_	_	
+18-21	1397-1400	meg	_	_	_	_	
+18-22	1401-1412	resultatene	_	_	_	_	
+18-23	1413-1416	når	_	_	_	_	
+18-24	1417-1419	de	_	_	_	_	
+18-25	1420-1430	foreligger	_	_	_	_	
+18-26	1430-1431	.	_	_	_	_	
+
+#Text=GJENNOMGANG AV SYSTEMER: Som ovenfor.
+19-1	1433-1444	GJENNOMGANG	_	_	_	_	
+19-2	1445-1447	AV	_	_	_	_	
+19-3	1448-1456	SYSTEMER	_	_	_	_	
+19-4	1456-1457	:	_	_	_	_	
+19-5	1458-1461	Som	_	_	_	_	
+19-6	1462-1469	ovenfor	_	_	_	_	
+19-7	1469-1470	.	_	_	_	_	
+
+#Text=Ingen feber, ingen hodepine, ingen kortpustethet for øyeblikket.
+20-1	1471-1476	Ingen	_	_	_	_	
+20-2	1477-1482	feber	_	_	_	_	
+20-3	1482-1483	,	_	_	_	_	
+20-4	1484-1489	ingen	_	_	_	_	
+20-5	1490-1498	hodepine	_	_	_	_	
+20-6	1498-1499	,	_	_	_	_	
+20-7	1500-1505	ingen	_	_	_	_	
+20-8	1506-1519	kortpustethet	_	_	_	_	
+20-9	1520-1523	for	_	_	_	_	
+20-10	1524-1534	øyeblikket	_	_	_	_	
+20-11	1534-1535	.	_	_	_	_	
+
+#Text=Ingen smerter eller tetthet i brystet.
+21-1	1536-1541	Ingen	_	_	_	_	
+21-2	1542-1549	smerter	_	_	_	_	
+21-3	1550-1555	eller	_	_	_	_	
+21-4	1556-1563	tetthet	_	_	_	_	
+21-5	1564-1565	i	_	_	_	_	
+21-6	1566-1573	brystet	_	_	_	_	
+21-7	1573-1574	.	_	_	_	_	
+
+#Text=Ingen magesmerter, ingen halsbrann, ingen forstoppelse, diaré eller dysuri.
+22-1	1575-1580	Ingen	_	_	_	_	
+22-2	1581-1592	magesmerter	_	_	_	_	
+22-3	1592-1593	,	_	_	_	_	
+22-4	1594-1599	ingen	_	_	_	_	
+22-5	1600-1609	halsbrann	_	_	_	_	
+22-6	1609-1610	,	_	_	_	_	
+22-7	1611-1616	ingen	_	_	_	_	
+22-8	1617-1629	forstoppelse	_	_	_	_	
+22-9	1629-1630	,	_	_	_	_	
+22-10	1631-1636	diaré	_	_	_	_	
+22-11	1637-1642	eller	_	_	_	_	
+22-12	1643-1649	dysuri	_	_	_	_	
+22-13	1649-1650	.	_	_	_	_	
+
+#Text=Sporadisk stressinkontinens.
+23-1	1651-1660	Sporadisk	_	_	_	_	
+23-2	1661-1678	stressinkontinens	_	_	_	_	
+23-3	1678-1679	.	_	_	_	_	
+
+#Text=Ingen muskel- eller leddsmerter.
+24-1	1680-1685	Ingen	_	_	_	_	
+24-2	1686-1692	muskel	_	_	_	_	
+24-3	1692-1693	-	_	_	_	_	
+24-4	1694-1699	eller	_	_	_	_	
+24-5	1700-1711	leddsmerter	_	_	_	_	
+24-6	1711-1712	.	_	_	_	_	
+
+#Text=Ingen hudproblemer.
+25-1	1713-1718	Ingen	_	_	_	_	
+25-2	1719-1731	hudproblemer	_	_	_	_	
+25-3	1731-1732	.	_	_	_	_	
+
+#Text=Ingen polyfagi, polydipsi eller polyuri.
+26-1	1733-1738	Ingen	_	_	_	_	
+26-2	1739-1747	polyfagi	_	_	_	_	
+26-3	1747-1748	,	_	_	_	_	
+26-4	1749-1758	polydipsi	_	_	_	_	
+26-5	1759-1764	eller	_	_	_	_	
+26-6	1765-1772	polyuri	_	_	_	_	
+26-7	1772-1773	.	_	_	_	_	
+
+#Text=Tidligere sykehistorie: Betydelig for astma, allergisk rhinitt og cervikal dysplasi.
+27-1	1775-1784	Tidligere	_	_	_	_	
+27-2	1785-1797	sykehistorie	_	_	_	_	
+27-3	1797-1798	:	_	_	_	_	
+27-4	1799-1808	Betydelig	_	_	_	_	
+27-5	1809-1812	for	_	_	_	_	
+27-6	1813-1818	astma	_	_	_	_	
+27-7	1818-1819	,	_	_	_	_	
+27-8	1820-1829	allergisk	BEFORE[1]	DISEASE[1]	_	_	
+27-9	1830-1837	rhinitt	BEFORE[1]	DISEASE[1]	_	_	
+27-10	1838-1840	og	BEFORE[1]	DISEASE[1]	_	_	
+27-11	1841-1849	cervikal	BEFORE[1]	DISEASE[1]	_	_	
+27-12	1850-1858	dysplasi	BEFORE[1]	DISEASE[1]	_	_	
+27-13	1858-1859	.	_	_	_	_	
+
+#Text=SOSIAL HISTORIE: Hun er gift.
+28-1	1861-1867	SOSIAL	_	_	_	_	
+28-2	1868-1876	HISTORIE	_	_	_	_	
+28-3	1876-1877	:	_	_	_	_	
+28-4	1878-1881	Hun	_	_	_	_	
+28-5	1882-1884	er	_	_	_	_	
+28-6	1885-1889	gift	_	_	_	_	
+28-7	1889-1890	.	_	_	_	_	
+
+#Text=Hun er ikke-røyker.
+29-1	1891-1894	Hun	_	_	_	_	
+29-2	1895-1897	er	_	_	_	_	
+29-3	1898-1909	ikke-røyker	_	_	_	_	
+29-4	1909-1910	.	_	_	_	_	
+
+#Text=MEDISINER: Proventil og Allegra.
+30-1	1912-1921	MEDISINER	_	_	_	_	
+30-2	1921-1922	:	_	_	_	_	
+30-3	1923-1932	Proventil	BEFORE/OVERLAP	TREATMENT	_	_	
+30-4	1933-1935	og	_	_	_	_	
+30-5	1936-1943	Allegra	BEFORE/OVERLAP	TREATMENT	_	_	
+30-6	1943-1944	.	_	_	_	_	
+
+#Text=ALLERGIER: Sulfa.
+31-1	1946-1955	ALLERGIER	_	_	_	_	
+31-2	1955-1956	:	_	_	_	_	
+31-3	1957-1962	Sulfa	_	_	_	_	
+31-4	1962-1963	.	_	_	_	_	
+
+#Text=MÅLSETTING:
+#Text=Vitale tegn: Vekten hennes er 151 pund.
+32-1	1965-1975	MÅLSETTING	_	_	_	_	
+32-2	1975-1976	:	_	_	_	_	
+32-3	1977-1983	Vitale	_	_	_	_	
+32-4	1984-1988	tegn	_	_	_	_	
+32-5	1988-1989	:	_	_	_	_	
+32-6	1990-1996	Vekten	_	_	_	_	
+32-7	1997-2003	hennes	_	_	_	_	
+32-8	2004-2006	er	_	_	_	_	
+32-9	2007-2010	151	_	_	_	_	
+32-10	2011-2015	pund	_	_	_	_	
+32-11	2015-2016	.	_	_	_	_	
+
+#Text=Blodtrykket er 110/60.
+33-1	2017-2028	Blodtrykket	_	_	_	_	
+33-2	2029-2031	er	_	_	_	_	
+33-3	2032-2035	110	_	_	_	_	
+33-4	2035-2036	/	_	_	_	_	
+33-5	2036-2038	60	_	_	_	_	
+33-6	2038-2039	.	_	_	_	_	
+
+#Text=Pulsen er 72.
+34-1	2040-2046	Pulsen	_	_	_	_	
+34-2	2047-2049	er	_	_	_	_	
+34-3	2050-2052	72	_	_	_	_	
+34-4	2052-2053	.	_	_	_	_	
+
+#Text=Temperaturen er 97,1 grader.
+35-1	2054-2066	Temperaturen	_	_	_	_	
+35-2	2067-2069	er	_	_	_	_	
+35-3	2070-2074	97,1	_	_	_	_	
+35-4	2075-2081	grader	_	_	_	_	
+35-5	2081-2082	.	_	_	_	_	
+
+#Text=Respirasjon er 20.
+36-1	2083-2094	Respirasjon	_	_	_	_	
+36-2	2095-2097	er	_	_	_	_	
+36-3	2098-2100	20	_	_	_	_	
+36-4	2100-2101	.	_	_	_	_	
+
+#Text=Generelt: Dette er en velutviklet, velnært 42 år gammel hvit kvinne, våken og orientert uten akutte plager.
+37-1	2102-2110	Generelt	_	_	_	_	
+37-2	2110-2111	:	_	_	_	_	
+37-3	2112-2117	Dette	_	_	_	_	
+37-4	2118-2120	er	_	_	_	_	
+37-5	2121-2123	en	_	_	_	_	
+37-6	2124-2135	velutviklet	_	_	_	_	
+37-7	2135-2136	,	_	_	_	_	
+37-8	2137-2144	velnært	_	_	_	_	
+37-9	2145-2147	42	_	_	_	_	
+37-10	2148-2150	år	_	_	_	_	
+37-11	2151-2157	gammel	_	_	_	_	
+37-12	2158-2162	hvit	_	_	_	_	
+37-13	2163-2169	kvinne	_	_	_	_	
+37-14	2169-2170	,	_	_	_	_	
+37-15	2171-2176	våken	_	_	_	_	
+37-16	2177-2179	og	_	_	_	_	
+37-17	2180-2189	orientert	_	_	_	_	
+37-18	2190-2194	uten	_	_	_	_	
+37-19	2195-2201	akutte	_	_	_	_	
+37-20	2202-2208	plager	_	_	_	_	
+37-21	2208-2209	.	_	_	_	_	
+
+#Text=Affekten er passende og behagelig.
+38-1	2210-2218	Affekten	_	_	_	_	
+38-2	2219-2221	er	_	_	_	_	
+38-3	2222-2230	passende	_	_	_	_	
+38-4	2231-2233	og	_	_	_	_	
+38-5	2234-2243	behagelig	_	_	_	_	
+38-6	2243-2244	.	_	_	_	_	
+
+#Text=HJERTE: Normocefalisk, atraumatisk.
+39-1	2245-2251	HJERTE	_	_	_	_	
+39-2	2251-2252	:	_	_	_	_	
+39-3	2253-2266	Normocefalisk	_	_	_	_	
+39-4	2266-2267	,	_	_	_	_	
+39-5	2268-2279	atraumatisk	_	_	_	_	
+39-6	2279-2280	.	_	_	_	_	
+
+#Text=Trommehinnene er klare.
+40-1	2281-2294	Trommehinnene	_	_	_	_	
+40-2	2295-2297	er	_	_	_	_	
+40-3	2298-2303	klare	_	_	_	_	
+40-4	2303-2304	.	_	_	_	_	
+
+#Text=Konjunktiva er klare.
+41-1	2305-2316	Konjunktiva	_	_	_	_	
+41-2	2317-2319	er	_	_	_	_	
+41-3	2320-2325	klare	_	_	_	_	
+41-4	2325-2326	.	_	_	_	_	
+
+#Text=Pupillene er like, runde og reagerer på lys.
+42-1	2327-2336	Pupillene	_	_	_	_	
+42-2	2337-2339	er	_	_	_	_	
+42-3	2340-2344	like	_	_	_	_	
+42-4	2344-2345	,	_	_	_	_	
+42-5	2346-2351	runde	_	_	_	_	
+42-6	2352-2354	og	_	_	_	_	
+42-7	2355-2363	reagerer	_	_	_	_	
+42-8	2364-2366	på	_	_	_	_	
+42-9	2367-2370	lys	_	_	_	_	
+42-10	2370-2371	.	_	_	_	_	
+
+#Text=Nares uten ødem i nesehinnen.
+43-1	2372-2377	Nares	_	_	_	_	
+43-2	2378-2382	uten	_	_	_	_	
+43-3	2383-2387	ødem	_	_	_	_	
+43-4	2388-2389	i	_	_	_	_	
+43-5	2390-2400	nesehinnen	_	_	_	_	
+43-6	2400-2401	.	_	_	_	_	
+
+#Text=Oropharynx er ikke-erytematøs.
+44-1	2402-2412	Oropharynx	_	_	_	_	
+44-2	2413-2415	er	_	_	_	_	
+44-3	2416-2431	ikke-erytematøs	_	_	_	_	
+44-4	2431-2432	.	_	_	_	_	
+
+#Text=Nakke: Smidig uten lymfadenopati, tyromegali, carotis bruit eller JVD.
+45-1	2433-2438	Nakke	_	_	_	_	
+45-2	2438-2439	:	_	_	_	_	
+45-3	2440-2446	Smidig	_	_	_	_	
+45-4	2447-2451	uten	_	_	_	_	
+45-5	2452-2465	lymfadenopati	_	_	_	_	
+45-6	2465-2466	,	_	_	_	_	
+45-7	2467-2477	tyromegali	_	_	_	_	
+45-8	2477-2478	,	_	_	_	_	
+45-9	2479-2486	carotis	_	_	_	_	
+45-10	2487-2492	bruit	_	_	_	_	
+45-11	2493-2498	eller	_	_	_	_	
+45-12	2499-2502	JVD	_	_	_	_	
+45-13	2502-2503	.	_	_	_	_	
+
+#Text=Brystet: Klar til auskultasjon bilateralt.
+46-1	2504-2511	Brystet	_	_	_	_	
+46-2	2511-2512	:	_	_	_	_	
+46-3	2513-2517	Klar	_	_	_	_	
+46-4	2518-2521	til	_	_	_	_	
+46-5	2522-2534	auskultasjon	_	_	_	_	
+46-6	2535-2545	bilateralt	_	_	_	_	
+46-7	2545-2546	.	_	_	_	_	
+
+#Text=Kardiovaskulær: Regelmessig puls og rytme uten bilyd.
+47-1	2548-2562	Kardiovaskulær	_	_	_	_	
+47-2	2562-2563	:	_	_	_	_	
+47-3	2564-2575	Regelmessig	_	_	_	_	
+47-4	2576-2580	puls	_	_	_	_	
+47-5	2581-2583	og	_	_	_	_	
+47-6	2584-2589	rytme	_	_	_	_	
+47-7	2590-2594	uten	_	_	_	_	
+47-8	2595-2600	bilyd	_	_	_	_	
+47-9	2600-2601	.	_	_	_	_	
+
+#Text=Abdomen: Myk, ikke øm, ikke distendert.
+48-1	2602-2609	Abdomen	_	_	_	_	
+48-2	2609-2610	:	_	_	_	_	
+48-3	2611-2614	Myk	_	_	_	_	
+48-4	2614-2615	,	_	_	_	_	
+48-5	2616-2620	ikke	_	_	_	_	
+48-6	2621-2623	øm	_	_	_	_	
+48-7	2623-2624	,	_	_	_	_	
+48-8	2625-2629	ikke	_	_	_	_	
+48-9	2630-2640	distendert	_	_	_	_	
+48-10	2640-2641	.	_	_	_	_	
+
+#Text=Normoaktive tarmlyder.
+49-1	2642-2653	Normoaktive	_	_	_	_	
+49-2	2654-2663	tarmlyder	_	_	_	_	
+49-3	2663-2664	.	_	_	_	_	
+
+#Text=Ingen oppfylninger eller organomegali ved palpasjon.
+50-1	2665-2670	Ingen	_	_	_	_	
+50-2	2671-2683	oppfylninger	_	_	_	_	
+50-3	2684-2689	eller	_	_	_	_	
+50-4	2690-2702	organomegali	_	_	_	_	
+50-5	2703-2706	ved	_	_	_	_	
+50-6	2707-2716	palpasjon	_	_	_	_	
+50-7	2716-2717	.	_	_	_	_	
+
+#Text=Ekstremiteter: Uten cyanose eller ødemer.
+51-1	2718-2731	Ekstremiteter	_	_	_	_	
+51-2	2731-2732	:	_	_	_	_	
+51-3	2733-2737	Uten	_	_	_	_	
+51-4	2738-2745	cyanose	_	_	_	_	
+51-5	2746-2751	eller	_	_	_	_	
+51-6	2752-2758	ødemer	_	_	_	_	
+51-7	2758-2759	.	_	_	_	_	
+
+#Text=Hud: Uten abnormiteter.
+52-1	2760-2763	Hud	_	_	_	_	
+52-2	2763-2764	:	_	_	_	_	
+52-3	2765-2769	Uten	_	_	_	_	
+52-4	2770-2782	abnormiteter	_	_	_	_	
+52-5	2782-2783	.	_	_	_	_	
+
+#Text=Brystene: Normale, symmetriske bryster uten fordypning eller tilbaketrekning.
+53-1	2784-2792	Brystene	_	_	_	_	
+53-2	2792-2793	:	_	_	_	_	
+53-3	2794-2801	Normale	_	_	_	_	
+53-4	2801-2802	,	_	_	_	_	
+53-5	2803-2814	symmetriske	_	_	_	_	
+53-6	2815-2822	bryster	_	_	_	_	
+53-7	2823-2827	uten	_	_	_	_	
+53-8	2828-2838	fordypning	_	_	_	_	
+53-9	2839-2844	eller	_	_	_	_	
+53-10	2845-2860	tilbaketrekning	_	_	_	_	
+53-11	2860-2861	.	_	_	_	_	
+
+#Text=Ingen utflod fra brystvorten.
+54-1	2862-2867	Ingen	_	_	_	_	
+54-2	2868-2874	utflod	_	_	_	_	
+54-3	2875-2878	fra	_	_	_	_	
+54-4	2879-2890	brystvorten	_	_	_	_	
+54-5	2890-2891	.	_	_	_	_	
+
+#Text=Ingen oppfylninger eller lesjoner ved palpasjon.
+55-1	2892-2897	Ingen	_	_	_	_	
+55-2	2898-2910	oppfylninger	_	_	_	_	
+55-3	2911-2916	eller	_	_	_	_	
+55-4	2917-2925	lesjoner	_	_	_	_	
+55-5	2926-2929	ved	_	_	_	_	
+55-6	2930-2939	palpasjon	_	_	_	_	
+55-7	2939-2940	.	_	_	_	_	
+
+#Text=Ingen svulster eller lymfadenopati i armhulen.
+56-1	2941-2946	Ingen	_	_	_	_	
+56-2	2947-2955	svulster	_	_	_	_	
+56-3	2956-2961	eller	_	_	_	_	
+56-4	2962-2975	lymfadenopati	_	_	_	_	
+56-5	2976-2977	i	_	_	_	_	
+56-6	2978-2986	armhulen	_	_	_	_	
+56-7	2986-2987	.	_	_	_	_	
+
+#Text=Kjønnsorganer: Normale ytre genitalia.
+57-1	2988-3001	Kjønnsorganer	_	_	_	_	
+57-2	3001-3002	:	_	_	_	_	
+57-3	3003-3010	Normale	_	_	_	_	
+57-4	3011-3015	ytre	_	_	_	_	
+57-5	3016-3025	genitalia	_	_	_	_	
+57-6	3025-3026	.	_	_	_	_	
+
+#Text=Vaginalhvelvets vegger er visualisert med normale rosa rugae uten lesjoner.
+58-1	3027-3042	Vaginalhvelvets	_	_	_	_	
+58-2	3043-3049	vegger	_	_	_	_	
+58-3	3050-3052	er	_	_	_	_	
+58-4	3053-3064	visualisert	_	_	_	_	
+58-5	3065-3068	med	_	_	_	_	
+58-6	3069-3076	normale	_	_	_	_	
+58-7	3077-3081	rosa	_	_	_	_	
+58-8	3082-3087	rugae	_	_	_	_	
+58-9	3088-3092	uten	_	_	_	_	
+58-10	3093-3101	lesjoner	_	_	_	_	
+58-11	3101-3102	.	_	_	_	_	
+
+#Text=Livmorhalsen er visualisert uten lesjoner.
+59-1	3103-3115	Livmorhalsen	_	_	_	_	
+59-2	3116-3118	er	_	_	_	_	
+59-3	3119-3130	visualisert	_	_	_	_	
+59-4	3131-3135	uten	_	_	_	_	
+59-5	3136-3144	lesjoner	_	_	_	_	
+59-6	3144-3145	.	_	_	_	_	
+
+#Text=Hun har en moderat mengde tykk hvit/gul utflod i vaginalhvelvet.
+60-1	3146-3149	Hun	_	_	_	_	
+60-2	3150-3153	har	_	_	_	_	
+60-3	3154-3156	en	_	_	_	_	
+60-4	3157-3164	moderat	_	_	_	_	
+60-5	3165-3171	mengde	_	_	_	_	
+60-6	3172-3176	tykk	_	_	_	_	
+60-7	3177-3181	hvit	_	_	_	_	
+60-8	3181-3182	/	_	_	_	_	
+60-9	3182-3185	gul	_	_	_	_	
+60-10	3186-3192	utflod	_	_	_	_	
+60-11	3193-3194	i	_	_	_	_	
+60-12	3195-3209	vaginalhvelvet	_	_	_	_	
+60-13	3209-3210	.	_	_	_	_	
+
+#Text=Ingen ømhet ved cervikal bevegelse.
+61-1	3211-3216	Ingen	_	_	_	_	
+61-2	3217-3222	ømhet	_	_	_	_	
+61-3	3223-3226	ved	_	_	_	_	
+61-4	3227-3235	cervikal	_	_	_	_	
+61-5	3236-3245	bevegelse	_	_	_	_	
+61-6	3245-3246	.	_	_	_	_	
+
+#Text=Ingen ømhet eller fylde i adnex.
+62-1	3247-3252	Ingen	_	_	_	_	
+62-2	3253-3258	ømhet	_	_	_	_	
+62-3	3259-3264	eller	_	_	_	_	
+62-4	3265-3270	fylde	_	_	_	_	
+62-5	3271-3272	i	_	_	_	_	
+62-6	3273-3278	adnex	_	_	_	_	
+62-7	3278-3279	.	_	_	_	_	
+
+#Text=VURDERING/PLAN:
+#Text=1.
+63-1	3281-3290	VURDERING	_	_	_	_	
+63-2	3290-3291	/	_	_	_	_	
+63-3	3291-3295	PLAN	_	_	_	_	
+63-4	3295-3296	:	_	_	_	_	
+63-5	3297-3298	1	_	_	_	_	
+63-6	3298-3299	.	_	_	_	_	
+
+#Text=Astma.
+64-1	3300-3305	Astma	_	_	_	_	
+64-2	3305-3306	.	_	_	_	_	
+
+#Text=Virker verre enn tidligere.
+65-1	3307-3313	Virker	_	_	_	_	
+65-2	3314-3319	verre	_	_	_	_	
+65-3	3320-3323	enn	_	_	_	_	
+65-4	3324-3333	tidligere	_	_	_	_	
+65-5	3333-3334	.	_	_	_	_	
+
+#Text=Hun bruker bare Proventil-inhalatoren sin, men bruker den daglig.
+66-1	3335-3338	Hun	_	_	_	_	
+66-2	3339-3345	bruker	_	_	_	_	
+66-3	3346-3350	bare	_	_	_	_	
+66-4	3351-3372	Proventil-inhalatoren	_	_	_	_	
+66-5	3373-3376	sin	_	_	_	_	
+66-6	3376-3377	,	_	_	_	_	
+66-7	3378-3381	men	_	_	_	_	
+66-8	3382-3388	bruker	_	_	_	_	
+66-9	3389-3392	den	_	_	_	_	
+66-10	3393-3399	daglig	_	_	_	_	
+66-11	3399-3400	.	_	_	_	_	
+
+#Text=Vi vil legge til Flovent 44 mcg to pust p.o. b.i.d.
+67-1	3401-3403	Vi	_	_	_	_	
+67-2	3404-3407	vil	_	_	_	_	
+67-3	3408-3413	legge	_	_	_	_	
+67-4	3414-3417	til	_	_	_	_	
+67-5	3418-3425	Flovent	AFTER	TREATMENT	_	_	
+67-6	3426-3428	44	_	_	_	_	
+67-7	3429-3432	mcg	_	_	_	_	
+67-8	3433-3435	to	_	_	_	_	
+67-9	3436-3440	pust	_	_	_	_	
+67-10	3441-3444	p.o	_	_	_	_	
+67-11	3444-3445	.	_	_	_	_	
+67-12	3446-3451	b.i.d	_	_	_	_	
+67-13	3451-3452	.	_	_	_	_	
+
+#Text=Kanskje må dosen økes.
+68-1	3453-3460	Kanskje	_	_	_	_	
+68-2	3461-3463	må	_	_	_	_	
+68-3	3464-3469	dosen	_	_	_	_	
+68-4	3470-3474	økes	_	_	_	_	
+68-5	3474-3475	.	_	_	_	_	
+
+#Text=Hun fikk noe vaginal irritasjon med Advair tidligere, men hun er villig til å prøve det på nytt hvis det er nødvendig.
+69-1	3476-3479	Hun	_	_	_	_	
+69-2	3480-3484	fikk	_	_	_	_	
+69-3	3485-3488	noe	_	_	_	_	
+69-4	3489-3496	vaginal	_	_	_	_	
+69-5	3497-3507	irritasjon	_	_	_	_	
+69-6	3508-3511	med	_	_	_	_	
+69-7	3512-3518	Advair	_	_	_	_	
+69-8	3519-3528	tidligere	_	_	_	_	
+69-9	3528-3529	,	_	_	_	_	
+69-10	3530-3533	men	_	_	_	_	
+69-11	3534-3537	hun	_	_	_	_	
+69-12	3538-3540	er	_	_	_	_	
+69-13	3541-3547	villig	_	_	_	_	
+69-14	3548-3551	til	_	_	_	_	
+69-15	3552-3553	å	_	_	_	_	
+69-16	3554-3559	prøve	_	_	_	_	
+69-17	3560-3563	det	_	_	_	_	
+69-18	3564-3566	på	_	_	_	_	
+69-19	3567-3571	nytt	_	_	_	_	
+69-20	3572-3576	hvis	_	_	_	_	
+69-21	3577-3580	det	_	_	_	_	
+69-22	3581-3583	er	_	_	_	_	
+69-23	3584-3593	nødvendig	_	_	_	_	
+69-24	3593-3594	.	_	_	_	_	
+
+#Text=Kanskje hun også må vurdere Singulair.
+70-1	3595-3602	Kanskje	_	_	_	_	
+70-2	3603-3606	hun	_	_	_	_	
+70-3	3607-3611	også	_	_	_	_	
+70-4	3612-3614	må	_	_	_	_	
+70-5	3615-3622	vurdere	_	_	_	_	
+70-6	3623-3632	Singulair	_	_	_	_	
+70-7	3632-3633	.	_	_	_	_	
+
+#Text=Hun skal ringe meg hvis hun ikke blir bedre.
+71-1	3634-3637	Hun	_	_	_	_	
+71-2	3638-3642	skal	_	_	_	_	
+71-3	3643-3648	ringe	_	_	_	_	
+71-4	3649-3652	meg	_	_	_	_	
+71-5	3653-3657	hvis	_	_	_	_	
+71-6	3658-3661	hun	_	_	_	_	
+71-7	3662-3666	ikke	_	_	_	_	
+71-8	3667-3671	blir	_	_	_	_	
+71-9	3672-3677	bedre	_	_	_	_	
+71-10	3677-3678	.	_	_	_	_	
+
+#Text=Hvis pustebesværet forverres, skal hun ringe meg eller oppsøke legevakten.
+72-1	3679-3683	Hvis	_	_	_	_	
+72-2	3684-3697	pustebesværet	_	_	_	_	
+72-3	3698-3707	forverres	_	_	_	_	
+72-4	3707-3708	,	_	_	_	_	
+72-5	3709-3713	skal	_	_	_	_	
+72-6	3714-3717	hun	_	_	_	_	
+72-7	3718-3723	ringe	_	_	_	_	
+72-8	3724-3727	meg	_	_	_	_	
+72-9	3728-3733	eller	_	_	_	_	
+72-10	3734-3741	oppsøke	_	_	_	_	
+72-11	3742-3752	legevakten	_	_	_	_	
+72-12	3752-3753	.	_	_	_	_	
+
+#Text=Vi planlegger å følge henne opp for en ny evaluering om en måned.
+#Text=2.
+73-1	3754-3756	Vi	_	_	_	_	
+73-2	3757-3767	planlegger	_	_	_	_	
+73-3	3768-3769	å	_	_	_	_	
+73-4	3770-3775	følge	_	_	_	_	
+73-5	3776-3781	henne	_	_	_	_	
+73-6	3782-3785	opp	_	_	_	_	
+73-7	3786-3789	for	_	_	_	_	
+73-8	3790-3792	en	_	_	_	_	
+73-9	3793-3795	ny	_	_	_	_	
+73-10	3796-3806	evaluering	_	_	_	_	
+73-11	3807-3809	om	_	_	_	_	
+73-12	3810-3812	en	_	_	_	_	
+73-13	3813-3818	måned	_	_	_	_	
+73-14	3818-3819	.	_	_	_	_	
+73-15	3820-3821	2	_	_	_	_	
+73-16	3821-3822	.	_	_	_	_	
+
+#Text=Allergisk rhinitt.
+74-1	3823-3832	Allergisk	_	_	_	_	
+74-2	3833-3840	rhinitt	_	_	_	_	
+74-3	3840-3841	.	_	_	_	_	
+
+#Text=Vi planlegger å starte opp med Allegra og Flonase daglig inntil videre.
+#Text=3.
+75-1	3842-3844	Vi	_	_	_	_	
+75-2	3845-3855	planlegger	_	_	_	_	
+75-3	3856-3857	å	_	_	_	_	
+75-4	3858-3864	starte	_	_	_	_	
+75-5	3865-3868	opp	_	_	_	_	
+75-6	3869-3872	med	_	_	_	_	
+75-7	3873-3880	Allegra	_	_	_	_	
+75-8	3881-3883	og	_	_	_	_	
+75-9	3884-3891	Flonase	_	_	_	_	
+75-10	3892-3898	daglig	_	_	_	_	
+75-11	3899-3905	inntil	_	_	_	_	
+75-12	3906-3912	videre	_	_	_	_	
+75-13	3912-3913	.	_	_	_	_	
+75-14	3914-3915	3	_	_	_	_	
+75-15	3915-3916	.	_	_	_	_	
+
+#Text=Premenstruell dysforisk forstyrrelse.
+76-1	3917-3930	Premenstruell	_	_	_	_	
+76-2	3931-3940	dysforisk	_	_	_	_	
+76-3	3941-3953	forstyrrelse	_	_	_	_	
+76-4	3953-3954	.	_	_	_	_	
+
+#Text=Hun kan ha noen perimenopausale symptomer.
+77-1	3955-3958	Hun	_	_	_	_	
+77-2	3959-3962	kan	_	_	_	_	
+77-3	3963-3965	ha	_	_	_	_	
+77-4	3966-3970	noen	_	_	_	_	
+77-5	3971-3986	perimenopausale	AFTER[2]	SYMPTOM[2]	_	_	
+77-6	3987-3996	symptomer	AFTER[2]	SYMPTOM[2]	_	_	
+77-7	3996-3997	.	_	_	_	_	
+
+#Text=Vi vil sette henne på fluoksetin 20 mg én tablett p.o. hver dag.
+#Text=4.
+78-1	3998-4000	Vi	_	_	_	_	
+78-2	4001-4004	vil	_	_	_	_	
+78-3	4005-4010	sette	_	_	_	_	
+78-4	4011-4016	henne	_	_	_	_	
+78-5	4017-4019	på	_	_	_	_	
+78-6	4020-4030	fluoksetin	AFTER	TREATMENT	_	_	
+78-7	4031-4033	20	_	_	_	_	
+78-8	4034-4036	mg	_	_	_	_	
+78-9	4037-4039	én	_	_	_	_	
+78-10	4040-4047	tablett	_	_	_	_	
+78-11	4048-4051	p.o	_	_	_	_	
+78-12	4051-4052	.	_	_	_	_	
+78-13	4053-4057	hver	_	_	_	_	
+78-14	4058-4061	dag	_	_	_	_	
+78-15	4061-4062	.	_	_	_	_	
+78-16	4063-4064	4	_	_	_	_	
+78-17	4064-4065	.	_	_	_	_	
+
+#Text=Hematuri.
+79-1	4066-4074	Hematuri	_	_	_	_	
+79-2	4074-4075	.	_	_	_	_	
+
+#Text=Sannsynligvis er dette sekundært til urinveisinfeksjon, men vi vil ta en ny urinprøve for å dokumentere at den er borte.
+80-1	4076-4089	Sannsynligvis	_	_	_	_	
+80-2	4090-4092	er	_	_	_	_	
+80-3	4093-4098	dette	_	_	_	_	
+80-4	4099-4108	sekundært	_	_	_	_	
+80-5	4109-4112	til	_	_	_	_	
+80-6	4113-4130	urinveisinfeksjon	_	_	_	_	
+80-7	4130-4131	,	_	_	_	_	
+80-8	4132-4135	men	_	_	_	_	
+80-9	4136-4138	vi	_	_	_	_	
+80-10	4139-4142	vil	_	_	_	_	
+80-11	4143-4145	ta	_	_	_	_	
+80-12	4146-4148	en	_	_	_	_	
+80-13	4149-4151	ny	_	_	_	_	
+80-14	4152-4161	urinprøve	_	_	_	_	
+80-15	4162-4165	for	_	_	_	_	
+80-16	4166-4167	å	_	_	_	_	
+80-17	4168-4179	dokumentere	_	_	_	_	
+80-18	4180-4182	at	_	_	_	_	
+80-19	4183-4186	den	_	_	_	_	
+80-20	4187-4189	er	_	_	_	_	
+80-21	4190-4195	borte	_	_	_	_	
+80-22	4195-4196	.	_	_	_	_	
+
+#Text=Hun har hyppig dysuri, men har det ikke for øyeblikket.
+#Text=5.
+81-1	4197-4200	Hun	_	_	_	_	
+81-2	4201-4204	har	_	_	_	_	
+81-3	4205-4211	hyppig	_	_	_	_	
+81-4	4212-4218	dysuri	_	_	_	_	
+81-5	4218-4219	,	_	_	_	_	
+81-6	4220-4223	men	_	_	_	_	
+81-7	4224-4227	har	_	_	_	_	
+81-8	4228-4231	det	_	_	_	_	
+81-9	4232-4236	ikke	_	_	_	_	
+81-10	4237-4240	for	_	_	_	_	
+81-11	4241-4251	øyeblikket	_	_	_	_	
+81-12	4251-4252	.	_	_	_	_	
+81-13	4253-4254	5	_	_	_	_	
+81-14	4254-4255	.	_	_	_	_	
+
+#Text=Cervikal dysplasi.
+82-1	4256-4264	Cervikal	AFTER[3]	TREATMENT[3]	_	_	
+82-2	4265-4273	dysplasi	AFTER[3]	TREATMENT[3]	_	_	
+82-3	4273-4274	.	_	_	_	_	
+
+#Text=Det blir tatt celleprøve.
+83-1	4275-4278	Det	_	_	_	_	
+83-2	4279-4283	blir	_	_	_	_	
+83-3	4284-4288	tatt	_	_	_	_	
+83-4	4289-4299	celleprøve	DURING	TREATMENT	_	_	
+83-5	4299-4300	.	_	_	_	_	
+
+#Text=Vi gir pasienten beskjed om resultatet.
+84-1	4301-4303	Vi	_	_	_	_	
+84-2	4304-4307	gir	_	_	_	_	
+84-3	4308-4317	pasienten	_	_	_	_	
+84-4	4318-4325	beskjed	_	_	_	_	
+84-5	4326-4328	om	_	_	_	_	
+84-6	4329-4339	resultatet	_	_	_	_	
+84-7	4339-4340	.	_	_	_	_	
+
+#Text=Hvis det er normalt, går vi tilbake til årlig celleprøve.
+85-1	4341-4345	Hvis	_	_	_	_	
+85-2	4346-4349	det	_	_	_	_	
+85-3	4350-4352	er	_	_	_	_	
+85-4	4353-4360	normalt	_	_	_	_	
+85-5	4360-4361	,	_	_	_	_	
+85-6	4362-4365	går	_	_	_	_	
+85-7	4366-4368	vi	_	_	_	_	
+85-8	4369-4376	tilbake	_	_	_	_	
+85-9	4377-4380	til	_	_	_	_	
+85-10	4381-4386	årlig	_	_	_	_	
+85-11	4387-4397	celleprøve	_	_	_	_	
+85-12	4397-4398	.	_	_	_	_	
+
+#Text=Hun får time til mammografiscreening og instruksjon i månedlig selvundersøkelse av brystene.
+86-1	4399-4402	Hun	_	_	_	_	
+86-2	4403-4406	får	_	_	_	_	
+86-3	4407-4411	time	_	_	_	_	
+86-4	4412-4415	til	_	_	_	_	
+86-5	4416-4435	mammografiscreening	AFTER	TREATMENT	_	_	
+86-6	4436-4438	og	_	_	_	_	
+86-7	4439-4450	instruksjon	_	_	_	_	
+86-8	4451-4452	i	_	_	_	_	
+86-9	4453-4461	månedlig	_	_	_	_	
+86-10	4462-4478	selvundersøkelse	_	_	_	_	
+86-11	4479-4481	av	_	_	_	_	
+86-12	4482-4490	brystene	_	_	_	_	
+86-13	4490-4491	.	_	_	_	_	
+
+#Text=Anbefaler at hun får 1200 mg kalsium og 400 U vitamin D om dagen.
+87-1	4492-4501	Anbefaler	_	_	_	_	
+87-2	4502-4504	at	_	_	_	_	
+87-3	4505-4508	hun	_	_	_	_	
+87-4	4509-4512	får	_	_	_	_	
+87-5	4513-4517	1200	_	_	_	_	
+87-6	4518-4520	mg	_	_	_	_	
+87-7	4521-4528	kalsium	AFTER	TREATMENT	_	_	
+87-8	4529-4531	og	_	_	_	_	
+87-9	4532-4535	400	_	_	_	_	
+87-10	4536-4537	U	_	_	_	_	
+87-11	4538-4545	vitamin	AFTER[4]	TREATMENT[4]	_	_	
+87-12	4546-4547	D	AFTER[4]	TREATMENT[4]	_	_	
+87-13	4548-4550	om	_	_	_	_	
+87-14	4551-4556	dagen	_	_	_	_	
+87-15	4556-4557	.	_	_	_	_	
