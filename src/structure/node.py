@@ -1,16 +1,17 @@
 import itertools
+from datetime import datetime
 from structure.enum import ME, TR_DCT
-class Node:
 
+
+class Node:
     id_iter = itertools.count()
 
-    def __init__(
-        self, value: str, type: str, dct: str, context: str, date
-    ):
+    def __init__(self, value: str, type: str, dct: str, context: str, date:datetime):
         self.id = next(self.id_iter)
         self.value = value
 
         self.type = None
+        
 
         for me in ME:
             if type == me.name:
@@ -24,11 +25,9 @@ class Node:
 
         self.date = date
         self.context = context
-    
+
+        self.level = None
+
     def __str__(self):
         text = f"Node: {self.value} - {self.type} ({self.date})"
-
-        for rel in self.relations:
-            text += f"\n {rel}"
-
         return text

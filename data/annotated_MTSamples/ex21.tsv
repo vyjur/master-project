@@ -1,0 +1,376 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MER|DCT|NER
+#T_RL=webanno.custom.TRE|TLINK|BT_webanno.custom.MER
+
+
+#Text=UTSKRIVNINGSDIAGNOSE: Komplekst åpent sår i høyre underekstremitet komplisert av en meticillinresistent stafylokokk aureus-cellulitt.
+1-1	0-20	UTSKRIVNINGSDIAGNOSE	_	_	_	_	
+1-2	20-21	:	_	_	_	_	
+1-3	22-31	Komplekst	_	_	_	_	
+1-4	32-37	åpent	_	_	_	_	
+1-5	38-41	sår	_	_	_	_	
+1-6	42-43	i	_	_	_	_	
+1-7	44-49	høyre	_	_	_	_	
+1-8	50-66	underekstremitet	_	_	_	_	
+1-9	67-77	komplisert	_	_	_	_	
+1-10	78-80	av	_	_	_	_	
+1-11	81-83	en	_	_	_	_	
+1-12	84-103	meticillinresistent	_	_	_	_	
+1-13	104-115	stafylokokk	_	_	_	_	
+1-14	116-132	aureus-cellulitt	_	_	_	_	
+1-15	132-133	.	_	_	_	_	
+
+#Text=YTTERLIGERE UTSKRIVNINGSDIAGNOSER:
+#Text=1.
+2-1	135-146	YTTERLIGERE	_	_	_	_	
+2-2	147-168	UTSKRIVNINGSDIAGNOSER	_	_	_	_	
+2-3	168-169	:	_	_	_	_	
+2-4	170-171	1	_	_	_	_	
+2-5	171-172	.	_	_	_	_	
+
+#Text=Kronisk smerte.
+#Text=2.
+3-1	173-180	Kronisk	_	_	_	_	
+3-2	181-187	smerte	_	_	_	_	
+3-3	187-188	.	_	_	_	_	
+3-4	189-190	2	_	_	_	_	
+3-5	190-191	.	_	_	_	_	
+
+#Text=Tobakksbruk.
+#Text=3.
+4-1	192-203	Tobakksbruk	_	_	_	_	
+4-2	203-204	.	_	_	_	_	
+4-3	205-206	3	_	_	_	_	
+4-4	206-207	.	_	_	_	_	
+
+#Text=Hepatitt C i anamnesen.
+5-1	208-216	Hepatitt	_	_	_	_	
+5-2	217-218	C	_	_	_	_	
+5-3	219-220	i	_	_	_	_	
+5-4	221-230	anamnesen	_	_	_	_	
+5-5	230-231	.	_	_	_	_	
+
+#Text=INNLEGGELSESGRUNN: Pasienten er en 52 år gammel mann som har hatt et svært komplekst forløp sekundært til et komplekst åpent sår i høyre underekstremitet.
+6-1	233-250	INNLEGGELSESGRUNN	_	_	_	_	
+6-2	250-251	:	_	_	_	_	
+6-3	252-261	Pasienten	_	_	_	_	
+6-4	262-264	er	_	_	_	_	
+6-5	265-267	en	_	_	_	_	
+6-6	268-270	52	_	_	_	_	
+6-7	271-273	år	_	_	_	_	
+6-8	274-280	gammel	_	_	_	_	
+6-9	281-285	mann	_	_	_	_	
+6-10	286-289	som	_	_	_	_	
+6-11	290-293	har	_	_	_	_	
+6-12	294-298	hatt	_	_	_	_	
+6-13	299-301	et	_	_	_	_	
+6-14	302-307	svært	_	_	_	_	
+6-15	308-317	komplekst	_	_	_	_	
+6-16	318-324	forløp	_	_	_	_	
+6-17	325-334	sekundært	_	_	_	_	
+6-18	335-338	til	_	_	_	_	
+6-19	339-341	et	_	_	_	_	
+6-20	342-351	komplekst	_	_	_	_	
+6-21	352-357	åpent	BEFORE/OVERLAP[1]	DISEASE[1]	_	_	
+6-22	358-361	sår	BEFORE/OVERLAP[1]	DISEASE[1]	_	_	
+6-23	362-363	i	BEFORE/OVERLAP[1]	DISEASE[1]	_	_	
+6-24	364-369	høyre	BEFORE/OVERLAP[1]	DISEASE[1]	_	_	
+6-25	370-386	underekstremitet	BEFORE/OVERLAP[1]	DISEASE[1]	_	_	
+6-26	386-387	.	_	_	_	_	
+
+#Text=Han har hatt langvarige sykehusinnleggelser på grunn av dette problemet.
+7-1	388-391	Han	_	_	_	_	
+7-2	392-395	har	_	_	_	_	
+7-3	396-400	hatt	_	_	_	_	
+7-4	401-411	langvarige	_	_	_	_	
+7-5	412-431	sykehusinnleggelser	_	_	_	_	
+7-6	432-434	på	_	_	_	_	
+7-7	435-440	grunn	_	_	_	_	
+7-8	441-443	av	_	_	_	_	
+7-9	444-449	dette	_	_	_	_	
+7-10	450-459	problemet	_	_	_	_	
+7-11	459-460	.	_	_	_	_	
+
+#Text=Han ble nylig utskrevet da han poliklinisk ble observert med hovent, rødt og ømt ben.
+8-1	461-464	Han	_	_	_	_	
+8-2	465-468	ble	_	_	_	_	
+8-3	469-474	nylig	_	_	_	_	
+8-4	475-484	utskrevet	_	_	_	_	
+8-5	485-487	da	_	_	_	_	
+8-6	488-491	han	_	_	_	_	
+8-7	492-503	poliklinisk	_	_	_	_	
+8-8	504-507	ble	_	_	_	_	
+8-9	508-517	observert	_	_	_	_	
+8-10	518-521	med	_	_	_	_	
+8-11	522-528	hovent	DURING[2]	SYMPTOM[2]	_	_	
+8-12	528-529	,	DURING[2]	SYMPTOM[2]	_	_	
+8-13	530-534	rødt	DURING[2]	SYMPTOM[2]	_	_	
+8-14	535-537	og	DURING[2]	SYMPTOM[2]	_	_	
+8-15	538-541	ømt	DURING[2]	SYMPTOM[2]	_	_	
+8-16	542-545	ben	DURING[2]	SYMPTOM[2]	_	_	
+8-17	545-546	.	_	_	_	_	
+
+#Text=Undersøkelse på akuttmottaket avdekket betydelig bekymring for betydelig cellulitt.
+9-1	547-559	Undersøkelse	_	_	_	_	
+9-2	560-562	på	_	_	_	_	
+9-3	563-576	akuttmottaket	_	_	_	_	
+9-4	577-585	avdekket	_	_	_	_	
+9-5	586-595	betydelig	_	_	_	_	
+9-6	596-605	bekymring	_	_	_	_	
+9-7	606-609	for	_	_	_	_	
+9-8	610-619	betydelig	_	_	_	_	
+9-9	620-629	cellulitt	_	_	_	_	
+9-10	629-630	.	_	_	_	_	
+
+#Text=Det ble besluttet å legge ham inn på sykehuset.
+10-1	631-634	Det	_	_	_	_	
+10-2	635-638	ble	_	_	_	_	
+10-3	639-648	besluttet	_	_	_	_	
+10-4	649-650	å	_	_	_	_	
+10-5	651-656	legge	_	_	_	_	
+10-6	657-660	ham	_	_	_	_	
+10-7	661-664	inn	_	_	_	_	
+10-8	665-667	på	_	_	_	_	
+10-9	668-677	sykehuset	_	_	_	_	
+10-10	677-678	.	_	_	_	_	
+
+#Text=SYKEHUSFORLØP: Pasienten ble innlagt 26.03.08 og ble satt på intravenøs antibiotikabehandling, og fikk også råd om å minimere sigarettrøykingen.
+11-1	680-693	SYKEHUSFORLØP	_	_	_	_	
+11-2	693-694	:	_	_	_	_	
+11-3	695-704	Pasienten	_	_	_	_	
+11-4	705-708	ble	_	_	_	_	
+11-5	709-716	innlagt	_	_	_	_	
+11-6	717-725	26.03.08	_	_	_	_	
+11-7	726-728	og	_	_	_	_	
+11-8	729-732	ble	_	_	_	_	
+11-9	733-737	satt	_	_	_	_	
+11-10	738-740	på	_	_	_	_	
+11-11	741-751	intravenøs	_	_	_	_	
+11-12	752-773	antibiotikabehandling	AFTER	TREATMENT	AFTER|AFTER|AFTER|AFTER	24-8|24-6|18-5|17-5	
+11-13	773-774	,	_	_	_	_	
+11-14	775-777	og	_	_	_	_	
+11-15	778-782	fikk	_	_	_	_	
+11-16	783-787	også	_	_	_	_	
+11-17	788-791	råd	_	_	_	_	
+11-18	792-794	om	_	_	_	_	
+11-19	795-796	å	_	_	_	_	
+11-20	797-805	minimere	_	_	_	_	
+11-21	806-823	sigarettrøykingen	_	_	_	_	
+11-22	823-824	.	_	_	_	_	
+
+#Text=Pasienten hadde ødem i begge underekstremiteter.
+12-1	825-834	Pasienten	_	_	_	_	
+12-2	835-840	hadde	_	_	_	_	
+12-3	841-845	ødem	_	_	_	_	
+12-4	846-847	i	_	_	_	_	
+12-5	848-853	begge	_	_	_	_	
+12-6	854-872	underekstremiteter	_	_	_	_	
+12-7	872-873	.	_	_	_	_	
+
+#Text=Det ble også innhentet en sykehuskonsultasjon for å ta opp spørsmålet om ødemer i forbindelse med leverhepatitt C.
+13-1	874-877	Det	_	_	_	_	
+13-2	878-881	ble	_	_	_	_	
+13-3	882-886	også	_	_	_	_	
+13-4	887-896	innhentet	_	_	_	_	
+13-5	897-899	en	_	_	_	_	
+13-6	900-919	sykehuskonsultasjon	_	_	_	_	
+13-7	920-923	for	_	_	_	_	
+13-8	924-925	å	_	_	_	_	
+13-9	926-928	ta	_	_	_	_	
+13-10	929-932	opp	_	_	_	_	
+13-11	933-943	spørsmålet	_	_	_	_	
+13-12	944-946	om	_	_	_	_	
+13-13	947-953	ødemer	_	_	_	_	
+13-14	954-955	i	_	_	_	_	
+13-15	956-967	forbindelse	_	_	_	_	
+13-16	968-971	med	_	_	_	_	
+13-17	972-985	leverhepatitt	_	_	_	_	
+13-18	986-987	C	_	_	_	_	
+13-19	987-988	.	_	_	_	_	
+
+#Text=Det ble innhentet en sykehuskonsultasjon.
+14-1	989-992	Det	_	_	_	_	
+14-2	993-996	ble	_	_	_	_	
+14-3	997-1006	innhentet	_	_	_	_	
+14-4	1007-1009	en	_	_	_	_	
+14-5	1010-1029	sykehuskonsultasjon	_	_	_	_	
+14-6	1029-1030	.	_	_	_	_	
+
+#Text=Dette inkluderte en ultralyd av buken, som bare viste mild cirrhose.
+15-1	1031-1036	Dette	_	_	_	_	
+15-2	1037-1047	inkluderte	_	_	_	_	
+15-3	1048-1050	en	_	_	_	_	
+15-4	1051-1059	ultralyd	_	_	_	_	
+15-5	1060-1062	av	_	_	_	_	
+15-6	1063-1068	buken	_	_	_	_	
+15-7	1068-1069	,	_	_	_	_	
+15-8	1070-1073	som	_	_	_	_	
+15-9	1074-1078	bare	_	_	_	_	
+15-10	1079-1084	viste	_	_	_	_	
+15-11	1085-1089	mild	_	_	_	_	
+15-12	1090-1098	cirrhose	_	_	_	_	
+15-13	1098-1099	.	_	_	_	_	
+
+#Text=Hevelsen i bena ble antatt å være sekundær til kronisk venostase og sannsynligvis også med et visst bidrag fra leveren.
+16-1	1100-1108	Hevelsen	_	_	_	_	
+16-2	1109-1110	i	_	_	_	_	
+16-3	1111-1115	bena	_	_	_	_	
+16-4	1116-1119	ble	_	_	_	_	
+16-5	1120-1126	antatt	_	_	_	_	
+16-6	1127-1128	å	_	_	_	_	
+16-7	1129-1133	være	_	_	_	_	
+16-8	1134-1142	sekundær	_	_	_	_	
+16-9	1143-1146	til	_	_	_	_	
+16-10	1147-1154	kronisk	AFTER[3]	DISEASE[3]	AFTER|AFTER|AFTER|AFTER|AFTER	17-5[0_3]|18-5[0_3]|23-7[0_3]|24-6[0_3]|24-8[0_3]	
+16-11	1155-1164	venostase	AFTER[3]	DISEASE[3]	_	_	
+16-12	1165-1167	og	_	_	_	_	
+16-13	1168-1181	sannsynligvis	_	_	_	_	
+16-14	1182-1186	også	_	_	_	_	
+16-15	1187-1190	med	_	_	_	_	
+16-16	1191-1193	et	_	_	_	_	
+16-17	1194-1199	visst	_	_	_	_	
+16-18	1200-1206	bidrag	_	_	_	_	
+16-19	1207-1210	fra	_	_	_	_	
+16-20	1211-1218	leveren	_	_	_	_	
+16-21	1218-1219	.	_	_	_	_	
+
+#Text=Pasienten fikk etter hvert MRSA i moderat mengde.
+17-1	1220-1229	Pasienten	_	_	_	_	
+17-2	1230-1234	fikk	_	_	_	_	
+17-3	1235-1240	etter	_	_	_	_	
+17-4	1241-1246	hvert	_	_	_	_	
+17-5	1247-1251	MRSA	AFTER	TREATMENT	AFTER|BEFORE|BEFORE	23-7|16-10[3_0]|11-12	
+17-6	1252-1253	i	_	_	_	_	
+17-7	1254-1261	moderat	_	_	_	_	
+17-8	1262-1268	mengde	_	_	_	_	
+17-9	1268-1269	.	_	_	_	_	
+
+#Text=Han ble behandlet med vancomycin intravenøst.
+18-1	1270-1273	Han	_	_	_	_	
+18-2	1274-1277	ble	_	_	_	_	
+18-3	1278-1287	behandlet	_	_	_	_	
+18-4	1288-1291	med	_	_	_	_	
+18-5	1292-1302	vancomycin	AFTER	TREATMENT	AFTER|*|AFTER|BEFORE|BEFORE	24-6|24-8|23-7|16-10[3_0]|11-12	
+18-6	1303-1314	intravenøst	_	_	_	_	
+18-7	1314-1315	.	_	_	_	_	
+
+#Text=Lokal sårpleie og elevasjon.
+19-1	1316-1321	Lokal	_	_	_	_	
+19-2	1322-1330	sårpleie	_	_	_	_	
+19-3	1331-1333	og	_	_	_	_	
+19-4	1334-1343	elevasjon	_	_	_	_	
+19-5	1343-1344	.	_	_	_	_	
+
+#Text=Pasienten hadde langsom fremgang.
+20-1	1345-1354	Pasienten	_	_	_	_	
+20-2	1355-1360	hadde	_	_	_	_	
+20-3	1361-1368	langsom	_	_	_	_	
+20-4	1369-1377	fremgang	_	_	_	_	
+20-5	1377-1378	.	_	_	_	_	
+
+#Text=Han ble satt på kompresjon, og den 04.03.08 ble benet mye bedre, minimal rødhet og hevelse var redusert med kompresjon.
+21-1	1379-1382	Han	_	_	_	_	
+21-2	1383-1386	ble	_	_	_	_	
+21-3	1387-1391	satt	_	_	_	_	
+21-4	1392-1394	på	_	_	_	_	
+21-5	1395-1405	kompresjon	_	_	_	_	
+21-6	1405-1406	,	_	_	_	_	
+21-7	1407-1409	og	_	_	_	_	
+21-8	1410-1413	den	_	_	_	_	
+21-9	1414-1422	04.03.08	_	_	_	_	
+21-10	1423-1426	ble	_	_	_	_	
+21-11	1427-1432	benet	_	_	_	_	
+21-12	1433-1436	mye	_	_	_	_	
+21-13	1437-1442	bedre	_	_	_	_	
+21-14	1442-1443	,	_	_	_	_	
+21-15	1444-1451	minimal	_	_	_	_	
+21-16	1452-1458	rødhet	_	_	_	_	
+21-17	1459-1461	og	_	_	_	_	
+21-18	1462-1469	hevelse	_	_	_	_	
+21-19	1470-1473	var	_	_	_	_	
+21-20	1474-1482	redusert	_	_	_	_	
+21-21	1483-1486	med	_	_	_	_	
+21-22	1487-1497	kompresjon	_	_	_	_	
+21-23	1497-1498	.	_	_	_	_	
+
+#Text=Pasienten ble ansett som trygg å skrive ut til hjemmet.
+22-1	1499-1508	Pasienten	_	_	_	_	
+22-2	1509-1512	ble	_	_	_	_	
+22-3	1513-1519	ansett	_	_	_	_	
+22-4	1520-1523	som	_	_	_	_	
+22-5	1524-1529	trygg	_	_	_	_	
+22-6	1530-1531	å	_	_	_	_	
+22-7	1532-1538	skrive	_	_	_	_	
+22-8	1539-1541	ut	_	_	_	_	
+22-9	1542-1545	til	_	_	_	_	
+22-10	1546-1553	hjemmet	_	_	_	_	
+22-11	1553-1554	.	_	_	_	_	
+
+#Text=UTSKRIVNINGSINSTRUKSJONER: Pasienten ble utskrevet på doksycyklin 100 mg p.o. b.i.d. x10 dager.
+23-1	1556-1581	UTSKRIVNINGSINSTRUKSJONER	_	_	_	_	
+23-2	1581-1582	:	_	_	_	_	
+23-3	1583-1592	Pasienten	_	_	_	_	
+23-4	1593-1596	ble	_	_	_	_	
+23-5	1597-1606	utskrevet	_	_	_	_	
+23-6	1607-1609	på	_	_	_	_	
+23-7	1610-1621	doksycyklin	AFTER	TREATMENT	BEFORE|BEFORE|BEFORE	17-5|16-10[3_0]|11-12	
+23-8	1622-1625	100	_	_	_	_	
+23-9	1626-1628	mg	_	_	_	_	
+23-10	1629-1632	p.o	_	_	_	_	
+23-11	1632-1633	.	_	_	_	_	
+23-12	1634-1639	b.i.d	_	_	_	_	
+23-13	1639-1640	.	_	_	_	_	
+23-14	1641-1644	x10	_	_	_	_	
+23-15	1645-1650	dager	_	_	_	_	
+23-16	1650-1651	.	_	_	_	_	
+
+#Text=Han fikk også resept på Percocet og OxyContin, hentet på mitt kontor.
+24-1	1652-1655	Han	_	_	_	_	
+24-2	1656-1660	fikk	_	_	_	_	
+24-3	1661-1665	også	_	_	_	_	
+24-4	1666-1672	resept	_	_	_	_	
+24-5	1673-1675	på	_	_	_	_	
+24-6	1676-1684	Percocet	AFTER	TREATMENT	BEFORE|BEFORE|BEFORE|BEFORE	18-5|17-5|16-10[3_0]|11-12	
+24-7	1685-1687	og	_	_	_	_	
+24-8	1688-1697	OxyContin	AFTER	TREATMENT	BEFORE|BEFORE|BEFORE|BEFORE	18-5|17-5|16-10[3_0]|11-12	
+24-9	1697-1698	,	_	_	_	_	
+24-10	1699-1705	hentet	_	_	_	_	
+24-11	1706-1708	på	_	_	_	_	
+24-12	1709-1713	mitt	_	_	_	_	
+24-13	1714-1720	kontor	_	_	_	_	
+24-14	1720-1721	.	_	_	_	_	
+
+#Text=Han har fått beskjed om daglig sårstell og om å bandasjere benet med en Ace-bandasje.
+25-1	1722-1725	Han	_	_	_	_	
+25-2	1726-1729	har	_	_	_	_	
+25-3	1730-1734	fått	_	_	_	_	
+25-4	1735-1742	beskjed	_	_	_	_	
+25-5	1743-1745	om	_	_	_	_	
+25-6	1746-1752	daglig	_	_	_	_	
+25-7	1753-1761	sårstell	_	_	_	_	
+25-8	1762-1764	og	_	_	_	_	
+25-9	1765-1767	om	_	_	_	_	
+25-10	1768-1769	å	_	_	_	_	
+25-11	1770-1780	bandasjere	_	_	_	_	
+25-12	1781-1786	benet	_	_	_	_	
+25-13	1787-1790	med	_	_	_	_	
+25-14	1791-1793	en	_	_	_	_	
+25-15	1794-1806	Ace-bandasje	_	_	_	_	
+25-16	1806-1807	.	_	_	_	_	
+
+#Text=Det ble avtalt oppfølging om et par uker.
+26-1	1808-1811	Det	_	_	_	_	
+26-2	1812-1815	ble	_	_	_	_	
+26-3	1816-1822	avtalt	_	_	_	_	
+26-4	1823-1833	oppfølging	_	_	_	_	
+26-5	1834-1836	om	_	_	_	_	
+26-6	1837-1839	et	_	_	_	_	
+26-7	1840-1843	par	_	_	_	_	
+26-8	1844-1848	uker	_	_	_	_	
+26-9	1848-1849	.	_	_	_	_	
+
+#Text=UTSKRIVNINGSTILSTAND: Stabil.
+27-1	1851-1871	UTSKRIVNINGSTILSTAND	_	_	_	_	
+27-2	1871-1872	:	_	_	_	_	
+27-3	1873-1879	Stabil	_	_	_	_	
+27-4	1879-1880	.	_	_	_	_	
