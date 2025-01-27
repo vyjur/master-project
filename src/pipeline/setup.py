@@ -1,6 +1,5 @@
 import os
 import configparser
-from preprocess.util import majority_element
 from textmining.ner.setup import NERecognition
 
 # from textmining.ere.setup import ERExtract
@@ -10,10 +9,10 @@ from preprocess.setup import Preprocess
 
 # from structure.node import Node
 from structure.relation import Relation
-from visualization.setup import VizTool
+from visualization.setup import VizTool, Timeline
 from pipeline.util import remove_duplicates, find_duplicates
 
-from structure.enum import Dataset, TR_DCT, TR_TLINK
+from structure.enum import Dataset, TR_DCT
 from structure.node import Node
 from structure.graph import Graph
 
@@ -58,10 +57,10 @@ class Pipeline:
         )
 
         ### Initialize trajectory modules ###
-        # TODO
+        # TODO: should we move some of the tasks in pipeline method into a module?
 
         ### Initialize visualization module ###
-        self.viz = VizTool()
+        self.viz = Timeline()
 
     def __get_non_o_intervals(self, lst):
         intervals = []
@@ -126,7 +125,7 @@ class Pipeline:
                         .replace("[SEP]", "")
                         .replace("[PAD]", "")
                     )
-                    entities.append(Node(entity, entype, None, context, None))
+                    entities.append(Node(entity, entype, dct, context, None))
 
             ### Temporal Relation Extraction
 
@@ -144,6 +143,7 @@ class Pipeline:
             ###### Predicting each entities' DCT group
             for e in entities:
                 cat, _ = self.__tre_dct.run(e)
+                cat = cat.replace("/", "")
                 e.dct = cat
                 dcts[cat].append(e)
 

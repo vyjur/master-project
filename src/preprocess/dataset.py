@@ -3,7 +3,7 @@ import pandas as pd
 from typing import List
 from structure.enum import Dataset
 
-### Info: This is old version in annotated folder
+### INFO: This is old version in annotated folder
 COLUMN_NAMES = [
     "id",  # 0
     "sentence_id",
@@ -18,6 +18,7 @@ COLUMN_NAMES = [
     "fk_id",  # 14
 ]
 
+### INFO: New annotated_MTSamples
 COLUMN_NAMES = [
     "id",  # 0,
     "sentence_id",
@@ -33,8 +34,11 @@ COLUMN_NAMES = [
 class DatasetManager:
     def __init__(self, files: List[str]):
         self.__documents = []
+
+        print("### Processing the files:")
         for file in files:
             document = pd.DataFrame(columns=COLUMN_NAMES)  # type: ignore
+            print(file)
 
             with open(file, encoding="UTF-8") as f:
                 connect = False
@@ -107,8 +111,6 @@ class DatasetManager:
                 return self.__get_docs_by_cols(["id", "Text", "TRE_TLINK", "fk_id"])
             case Dataset.SENTENCES:
                 return self.__get_sentences()
-            case _:
-                return None
 
     def __get_docs_by_cols(self, cols: List[str]):
         return [doc[cols].drop_duplicates() for doc in self.__documents]
