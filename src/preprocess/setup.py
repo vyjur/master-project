@@ -47,6 +47,8 @@ class Preprocess:
         self.__config.read("./src/preprocess/config.ini")
 
     def run(self, data: str):
+        
+        # TODO:fix max-length split
         tokenized_dataset = self.__tokenizer(
             data,
             padding="max_length",
