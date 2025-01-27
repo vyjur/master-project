@@ -80,16 +80,29 @@ class TRExtract:
                         tags.add(relation)
                 else:
                     ### Info: This is for TRE_DCT
-                    dct = dataset_tre[k]['TRE_DCT']
-                    dataset.append({"sentence": sentences[k].loc[e_i[2]].replace(e_i[3], f"<TAG>{e_i[3]}</TAG>"), "relation": dct})
+                    dct = list(
+                        set(dataset_tre[k][dataset_tre[k]["id"] == e_i[1]]["TRE_DCT"])
+                    )[0]
+                    dataset.append(
+                        {
+                            "sentence": sentences[k]
+                            .loc[e_i[2]]
+                            .replace(e_i[3], f"<TAG>{e_i[3]}</TAG>"),
+                            "relation": dct,
+                        }
+                    )
                     tags.add(dct)
-                    
+
         tags = list(tags)
-        self.label2id, self.id2label = Util().get_tags("sequence", tags, task!=Dataset.TRE_DCT)
-        
-        if task == Dataset.TRE_DCT and save_directory == './src/textmining/tre/model':
+        self.label2id, self.id2label = Util().get_tags(
+            "sequence", tags, task != Dataset.TRE_DCT
+        )
+
+        if task == Dataset.TRE_DCT and save_directory == "./src/textmining/tre/model":
             save_directory += "/dct"
-        elif task == Dataset.TRE_TLINK and save_directory == './src/textmining/tre/model':
+        elif (
+            task == Dataset.TRE_TLINK and save_directory == "./src/textmining/tre/model"
+        ):
             save_directory += "/tlink"
 
         self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
@@ -117,16 +130,14 @@ class TRExtract:
         predictions = [self.id2label[i] for i in output[0]]
         return predictions[0], output[1]
 
-    def run(self, e_i, e_j = None):
+    def run(self, e_i, e_j=None):
         # TODO: fix setuP?
         if self.task == Dataset.TRE_DCT:
             text = e_i.context.replace(e_i.value, f"<TAG>{e_i.value}</TAG>")
         else:
             if e_j is None:
                 raise ValueError("Missing value for e_j")
-            text = (
-                f"{e_i.value}: {e_i.context} [SEP] {e_j.value}: {e_j.context}"
-            )
+            text = f"{e_i.value}: {e_i.context} [SEP] {e_j.value}: {e_j.context}"
         return self.__run(self.preprocess.run(text))
 
 
@@ -141,7 +152,7 @@ if __name__ == "__main__":
         if os.path.isfile(os.path.join(folder_path, f))
     ]
     manager = DatasetManager(files)
-    
+
     reg = TRExtract("./src/textmining/tre/config.ini", manager, Dataset.TRE_DCT)
 
     e_i = Node("tungpust", None, None, "Han har tungpust", None)

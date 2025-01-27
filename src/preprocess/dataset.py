@@ -1,3 +1,4 @@
+import re
 import pandas as pd
 from typing import List
 from structure.enum import Dataset
@@ -18,7 +19,7 @@ COLUMN_NAMES = [
 ]
 
 COLUMN_NAMES = [
-    "id", # 0,
+    "id",  # 0,
     "sentence_id",
     "Offset",  # 1
     "Text",  # 2
@@ -84,10 +85,10 @@ class DatasetManager:
                                 "MER": sentence[4][:clipper]
                                 if sentence[4] != "_"
                                 else "O",  # 4
-                                "TRE_DCT": sentence[3]
+                                "TRE_DCT": re.sub(r"\[.*?\]", "", sentence[3])
                                 if sentence[3] != "_"
                                 else "O",  # 3,
-                                "TLINK": t_relation[i]
+                                "TRE_TLINK": re.sub(r"\[.*?\]", "", t_relation[i])
                                 if t_relation[i] != "_"
                                 else None,  # 13,
                                 "fk_id": id if id != "_" else None,  # 14
@@ -99,17 +100,11 @@ class DatasetManager:
     def get(self, task: Dataset):
         match task:
             case Dataset.NER:
-                return self.__get_docs_by_cols(
-                    ["id", "sentence_id", "Text", "MER"]
-                )
+                return self.__get_docs_by_cols(["id", "sentence_id", "Text", "MER"])
             case Dataset.TRE_DCT:
-                return self.__get_docs_by_cols(
-                    ["id", "Text", "TRE_DCT"]
-                )
+                return self.__get_docs_by_cols(["id", "Text", "TRE_DCT"])
             case Dataset.TRE_TLINK:
-                return self.__get_docs_by_cols(
-                    ["id", "Text", "TRE_TLINK", "fk_id"]
-                )
+                return self.__get_docs_by_cols(["id", "Text", "TRE_TLINK", "fk_id"])
             case Dataset.SENTENCES:
                 return self.__get_sentences()
             case _:
@@ -131,4 +126,3 @@ if __name__ == "__main__":
     )
 
     print(manager.get(Dataset.TRE_DCT))
-
