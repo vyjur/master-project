@@ -1,0 +1,139 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Notat 1 - 21.10.2024:
+#Text=Pasienten kommer til konsultasjon grunnet økende følelse av nedstemthet og søvnproblemer de siste månedene.
+1-1	0-5	Notat	_	_	_	_	
+1-2	6-7	1	_	_	_	_	
+1-3	8-9	-	_	_	_	_	
+1-4	10-20	21.10.2024	_	_	_	_	
+1-5	20-21	:	_	_	_	_	
+1-6	22-31	Pasienten	_	_	_	_	
+1-7	32-38	kommer	_	_	_	_	
+1-8	39-42	til	_	_	_	_	
+1-9	43-55	konsultasjon	_	_	_	_	
+1-10	56-63	grunnet	_	_	_	_	
+1-11	64-70	økende	BEFOREOVERLAP[1]	CONDITION[1]	_	_	
+1-12	71-78	følelse	BEFOREOVERLAP[1]	CONDITION[1]	_	_	
+1-13	79-81	av	BEFOREOVERLAP[1]	CONDITION[1]	_	_	
+1-14	82-93	nedstemthet	BEFOREOVERLAP[1]	CONDITION[1]	_	_	
+1-15	94-96	og	_	_	_	_	
+1-16	97-110	søvnproblemer	BEFOREOVERLAP	CONDITION	_	_	
+1-17	111-113	de	_	_	_	_	
+1-18	114-119	siste	_	_	_	_	
+1-19	120-128	månedene	_	_	_	_	
+1-20	128-129	.	_	_	_	_	
+
+#Text=Han beskriver mangel på energi, konsentrasjonsvansker og manglende interesse for aktiviteter han tidligere har likt.
+2-1	130-133	Han	_	_	_	_	
+2-2	134-143	beskriver	_	_	_	_	
+2-3	144-150	mangel	OVERLAP[2]	CONDITION[2]	_	_	
+2-4	151-153	på	OVERLAP[2]	CONDITION[2]	_	_	
+2-5	154-160	energi	OVERLAP[2]	CONDITION[2]	_	_	
+2-6	160-161	,	_	_	_	_	
+2-7	162-183	konsentrasjonsvansker	OVERLAP	CONDITION	_	_	
+2-8	184-186	og	_	_	_	_	
+2-9	187-196	manglende	OVERLAP[3]	CONDITION[3]	_	_	
+2-10	197-206	interesse	OVERLAP[3]	CONDITION[3]	_	_	
+2-11	207-210	for	_	_	_	_	
+2-12	211-222	aktiviteter	_	_	_	_	
+2-13	223-226	han	_	_	_	_	
+2-14	227-236	tidligere	_	_	_	_	
+2-15	237-240	har	_	_	_	_	
+2-16	241-245	likt	_	_	_	_	
+2-17	245-246	.	_	_	_	_	
+
+#Text=Søvnen er urolig, og han våkner ofte om natten.
+3-1	247-253	Søvnen	_	_	_	_	
+3-2	254-256	er	_	_	_	_	
+3-3	257-263	urolig	_	_	_	_	
+3-4	263-264	,	_	_	_	_	
+3-5	265-267	og	_	_	_	_	
+3-6	268-271	han	_	_	_	_	
+3-7	272-278	våkner	_	_	_	_	
+3-8	279-283	ofte	_	_	_	_	
+3-9	284-286	om	_	_	_	_	
+3-10	287-293	natten	_	_	_	_	
+3-11	293-294	.	_	_	_	_	
+
+#Text=Han har ikke hatt selvmordstanker, men føler seg håpløs innimellom.
+4-1	295-298	Han	_	_	_	_	
+4-2	299-302	har	_	_	_	_	
+4-3	303-307	ikke	_	_	_	_	
+4-4	308-312	hatt	_	_	_	_	
+4-5	313-328	selvmordstanker	_	_	_	_	
+4-6	328-329	,	_	_	_	_	
+4-7	330-333	men	_	_	_	_	
+4-8	334-339	føler	OVERLAP[4]	CONDITION[4]	_	_	
+4-9	340-343	seg	OVERLAP[4]	CONDITION[4]	_	_	
+4-10	344-350	håpløs	OVERLAP[4]	CONDITION[4]	_	_	
+4-11	351-361	innimellom	_	_	_	_	
+4-12	361-362	.	_	_	_	_	
+
+#Text=Pasienten har hatt liknende episoder tidligere, men har aldri mottatt behandling.
+5-1	363-372	Pasienten	_	_	_	_	
+5-2	373-376	har	_	_	_	_	
+5-3	377-381	hatt	BEFORE[5]	CONDITION[5]	_	_	
+5-4	382-390	liknende	BEFORE[5]	CONDITION[5]	_	_	
+5-5	391-399	episoder	BEFORE[5]	CONDITION[5]	_	_	
+5-6	400-409	tidligere	_	_	_	_	
+5-7	409-410	,	_	_	_	_	
+5-8	411-414	men	_	_	_	_	
+5-9	415-418	har	_	_	_	_	
+5-10	419-424	aldri	_	_	_	_	
+5-11	425-432	mottatt	_	_	_	_	
+5-12	433-443	behandling	_	_	_	_	
+5-13	443-444	.	_	_	_	_	
+
+#Text=Vi tar en depresjonsscreening (MADRS) som viser en moderat grad av depresjon.
+6-1	445-447	Vi	_	_	_	_	
+6-2	448-451	tar	_	_	_	_	
+6-3	452-454	en	_	_	_	_	
+6-4	455-474	depresjonsscreening	OVERLAP[6]	TREATMENT[6]	BEFORE|BEFORE|BEFORE	2-3[2_6]|2-7[0_6]|2-9[3_6]	
+6-5	475-476	(	OVERLAP[6]	TREATMENT[6]	_	_	
+6-6	476-481	MADRS	OVERLAP[6]	TREATMENT[6]	_	_	
+6-7	481-482	)	OVERLAP[6]	TREATMENT[6]	_	_	
+6-8	483-486	som	_	_	_	_	
+6-9	487-492	viser	_	_	_	_	
+6-10	493-495	en	_	_	_	_	
+6-11	496-503	moderat	OVERLAP[7]	CONDITION[7]	BEFORE	6-4[6_7]	
+6-12	504-508	grad	OVERLAP[7]	CONDITION[7]	_	_	
+6-13	509-511	av	OVERLAP[7]	CONDITION[7]	_	_	
+6-14	512-521	depresjon	OVERLAP[7]	CONDITION[7]	_	_	
+6-15	521-522	.	_	_	_	_	
+
+#Text=Vi starter behandling med escitalopram 10 mg daglig og diskuterer samtidig muligheten for samtaleterapi hos psykolog.
+7-1	523-525	Vi	_	_	_	_	
+7-2	526-533	starter	_	_	_	_	
+7-3	534-544	behandling	_	_	_	_	
+7-4	545-548	med	_	_	_	_	
+7-5	549-561	escitalopram	AFTER[8]	TREATMENT[8]	_	_	
+7-6	562-564	10	AFTER[8]	TREATMENT[8]	_	_	
+7-7	565-567	mg	AFTER[8]	TREATMENT[8]	_	_	
+7-8	568-574	daglig	_	_	_	_	
+7-9	575-577	og	_	_	_	_	
+7-10	578-588	diskuterer	_	_	_	_	
+7-11	589-597	samtidig	_	_	_	_	
+7-12	598-608	muligheten	_	_	_	_	
+7-13	609-612	for	_	_	_	_	
+7-14	613-626	samtaleterapi	AFTER	TREATMENT	BEFORE	7-5[8_0]	
+7-15	627-630	hos	_	_	_	_	
+7-16	631-639	psykolog	_	_	_	_	
+7-17	639-640	.	_	_	_	_	
+
+#Text=Pasienten får også råd om søvnhygiene og å unngå koffein på kvelden.
+8-1	641-650	Pasienten	_	_	_	_	
+8-2	651-654	får	_	_	_	_	
+8-3	655-659	også	_	_	_	_	
+8-4	660-663	råd	_	_	_	_	
+8-5	664-666	om	_	_	_	_	
+8-6	667-678	søvnhygiene	AFTER	TREATMENT	_	_	
+8-7	679-681	og	_	_	_	_	
+8-8	682-683	å	_	_	_	_	
+8-9	684-689	unngå	AFTER[9]	TREATMENT[9]	_	_	
+8-10	690-697	koffein	AFTER[9]	TREATMENT[9]	_	_	
+8-11	698-700	på	_	_	_	_	
+8-12	701-708	kvelden	_	_	_	_	
+8-13	708-709	.	_	_	_	_	

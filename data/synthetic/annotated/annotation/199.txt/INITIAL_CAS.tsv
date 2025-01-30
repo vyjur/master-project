@@ -1,0 +1,107 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 4 (2023-12-05)
+#Text=Per kom inn til siste oppfølging i dag.
+1-1	0-12	Journalnotat	
+1-2	13-14	4	
+1-3	15-16	(	
+1-4	16-20	2023	
+1-5	20-21	-	
+1-6	21-23	12	
+1-7	23-24	-	
+1-8	24-26	05	
+1-9	26-27	)	
+1-10	28-31	Per	
+1-11	32-35	kom	
+1-12	36-39	inn	
+1-13	40-43	til	
+1-14	44-49	siste	
+1-15	50-60	oppfølging	
+1-16	61-62	i	
+1-17	63-66	dag	
+1-18	66-67	.	
+
+#Text=Han rapporterte at alt gikk bra, og at han ikke hadde opplevd noen nye infeksjoner.
+2-1	68-71	Han	
+2-2	72-83	rapporterte	
+2-3	84-86	at	
+2-4	87-90	alt	
+2-5	91-95	gikk	
+2-6	96-99	bra	
+2-7	99-100	,	
+2-8	101-103	og	
+2-9	104-106	at	
+2-10	107-110	han	
+2-11	111-115	ikke	
+2-12	116-121	hadde	
+2-13	122-129	opplevd	
+2-14	130-134	noen	
+2-15	135-138	nye	
+2-16	139-150	infeksjoner	
+2-17	150-151	.	
+
+#Text=Profilaktisk behandlingen hadde vært vellykket, og han hadde ikke opplevd noen store problemer.
+3-1	152-164	Profilaktisk	
+3-2	165-177	behandlingen	
+3-3	178-183	hadde	
+3-4	184-188	vært	
+3-5	189-198	vellykket	
+3-6	198-199	,	
+3-7	200-202	og	
+3-8	203-206	han	
+3-9	207-212	hadde	
+3-10	213-217	ikke	
+3-11	218-225	opplevd	
+3-12	226-230	noen	
+3-13	231-236	store	
+3-14	237-246	problemer	
+3-15	246-247	.	
+
+#Text=Vi diskuterede viktigheten av å holde seg fysisk aktiv og unngå stress.
+4-1	248-250	Vi	
+4-2	251-262	diskuterede	
+4-3	263-274	viktigheten	
+4-4	275-277	av	
+4-5	278-279	å	
+4-6	280-285	holde	
+4-7	286-289	seg	
+4-8	290-296	fysisk	
+4-9	297-302	aktiv	
+4-10	303-305	og	
+4-11	306-311	unngå	
+4-12	312-318	stress	
+4-13	318-319	.	
+
+#Text=Per var meget tilfreds med resultatet av behandlingen og takket meg for støtten.
+5-1	320-323	Per	
+5-2	324-327	var	
+5-3	328-333	meget	
+5-4	334-342	tilfreds	
+5-5	343-346	med	
+5-6	347-357	resultatet	
+5-7	358-360	av	
+5-8	361-373	behandlingen	
+5-9	374-376	og	
+5-10	377-383	takket	
+5-11	384-387	meg	
+5-12	388-391	for	
+5-13	392-399	støtten	
+5-14	399-400	.	
+
+#Text=Vi planla en oppfølging om ett år for å sikre at alt går godt.
+6-1	401-403	Vi	
+6-2	404-410	planla	
+6-3	411-413	en	
+6-4	414-424	oppfølging	
+6-5	425-427	om	
+6-6	428-431	ett	
+6-7	432-434	år	
+6-8	435-438	for	
+6-9	439-440	å	
+6-10	441-446	sikre	
+6-11	447-449	at	
+6-12	450-453	alt	
+6-13	454-457	går	
+6-14	458-462	godt	
+6-15	462-463	.	

@@ -1,0 +1,54 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+
+
+#Text=Journalnotat 2 - 22.04.2023**
+#Text=
+#Text=Pasienten kommer tilbake etter 1 uke med inhalasjonssteroid-behandling.
+1-1	0-12	Journalnotat	_	_	
+1-2	13-14	2	_	_	
+1-3	15-16	-	_	_	
+1-4	17-27	22.04.2023	_	_	
+1-5	27-28	*	_	_	
+1-6	28-29	*	_	_	
+1-7	31-40	Pasienten	_	_	
+1-8	41-47	kommer	_	_	
+1-9	48-55	tilbake	_	_	
+1-10	56-61	etter	_	_	
+1-11	62-63	1	_	_	
+1-12	64-67	uke	_	_	
+1-13	68-71	med	_	_	
+1-14	72-101	inhalasjonssteroid-behandling	BEFOREOVERLAP	TREATMENT	
+1-15	101-102	.	_	_	
+
+#Text=Hun rapporterer en forbedring i symptomer og en reduksjon i hosten.
+2-1	103-106	Hun	_	_	
+2-2	107-118	rapporterer	_	_	
+2-3	119-121	en	_	_	
+2-4	122-132	forbedring	OVERLAP[1]	CONDITION[1]	
+2-5	133-134	i	OVERLAP[1]	CONDITION[1]	
+2-6	135-144	symptomer	OVERLAP[1]	CONDITION[1]	
+2-7	145-147	og	_	_	
+2-8	148-150	en	_	_	
+2-9	151-160	reduksjon	OVERLAP[2]	CONDITION[2]	
+2-10	161-162	i	OVERLAP[2]	CONDITION[2]	
+2-11	163-169	hosten	OVERLAP[2]	CONDITION[2]	
+2-12	169-170	.	_	_	
+
+#Text=Jeg justerer inhalasjonssteroid-dosen og foreslår at pasienten begynner med en fysioterapibehandling for å forbedre lungfunksjonen.
+3-1	171-174	Jeg	_	_	
+3-2	175-183	justerer	AFTER[3]	TREATMENT[3]	
+3-3	184-208	inhalasjonssteroid-dosen	AFTER[3]	TREATMENT[3]	
+3-4	209-211	og	_	_	
+3-5	212-220	foreslår	_	_	
+3-6	221-223	at	_	_	
+3-7	224-233	pasienten	_	_	
+3-8	234-242	begynner	_	_	
+3-9	243-246	med	_	_	
+3-10	247-249	en	_	_	
+3-11	250-271	fysioterapibehandling	AFTER	TREATMENT	
+3-12	272-275	for	_	_	
+3-13	276-277	å	_	_	
+3-14	278-286	forbedre	_	_	
+3-15	287-301	lungfunksjonen	_	_	
+3-16	301-302	.	_	_	

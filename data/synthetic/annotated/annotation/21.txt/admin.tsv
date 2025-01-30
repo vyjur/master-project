@@ -1,0 +1,137 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Notat 3 - 01.11.2024:
+#Text=Pasienten er tilbake til kontroll.
+1-1	0-5	Notat	_	_	_	_	
+1-2	6-7	3	_	_	_	_	
+1-3	8-9	-	_	_	_	_	
+1-4	10-20	01.11.2024	_	_	_	_	
+1-5	20-21	:	_	_	_	_	
+1-6	22-31	Pasienten	_	_	_	_	
+1-7	32-34	er	_	_	_	_	
+1-8	35-42	tilbake	_	_	_	_	
+1-9	43-46	til	_	_	_	_	
+1-10	47-55	kontroll	OVERLAP	CONDITION	_	_	
+1-11	55-56	.	_	_	_	_	
+
+#Text=Såret har nå grodd betydelig, og det er kun et lite område med skorpe igjen.
+2-1	57-62	Såret	OVERLAP	CONDITION	_	_	
+2-2	63-66	har	_	_	_	_	
+2-3	67-69	nå	_	_	_	_	
+2-4	70-75	grodd	_	_	_	_	
+2-5	76-85	betydelig	_	_	_	_	
+2-6	85-86	,	_	_	_	_	
+2-7	87-89	og	_	_	_	_	
+2-8	90-93	det	_	_	_	_	
+2-9	94-96	er	_	_	_	_	
+2-10	97-100	kun	_	_	_	_	
+2-11	101-103	et	_	_	_	_	
+2-12	104-108	lite	OVERLAP[1]	CONDITION[1]	_	_	
+2-13	109-115	område	OVERLAP[1]	CONDITION[1]	_	_	
+2-14	116-119	med	OVERLAP[1]	CONDITION[1]	_	_	
+2-15	120-126	skorpe	OVERLAP[1]	CONDITION[1]	_	_	
+2-16	127-132	igjen	_	_	_	_	
+2-17	132-133	.	_	_	_	_	
+
+#Text=Ingen tegn til infeksjon, og pasienten er smertefri.
+3-1	134-139	Ingen	_	_	_	_	
+3-2	140-144	tegn	_	_	_	_	
+3-3	145-148	til	_	_	_	_	
+3-4	149-158	infeksjon	_	_	_	_	
+3-5	158-159	,	_	_	_	_	
+3-6	160-162	og	_	_	_	_	
+3-7	163-172	pasienten	_	_	_	_	
+3-8	173-175	er	_	_	_	_	
+3-9	176-185	smertefri	OVERLAP	CONDITION	_	_	
+3-10	185-186	.	_	_	_	_	
+
+#Text=Han har fått tilpasset fotsenger som avlaster foten godt, og han føler at han kan gå uten smerter.
+4-1	187-190	Han	_	_	_	_	
+4-2	191-194	har	_	_	_	_	
+4-3	195-199	fått	_	_	_	_	
+4-4	200-209	tilpasset	_	_	_	_	
+4-5	210-219	fotsenger	BEFORE	CONDITION	_	_	
+4-6	220-223	som	_	_	_	_	
+4-7	224-232	avlaster	_	_	_	_	
+4-8	233-238	foten	_	_	_	_	
+4-9	239-243	godt	_	_	_	_	
+4-10	243-244	,	_	_	_	_	
+4-11	245-247	og	_	_	_	_	
+4-12	248-251	han	_	_	_	_	
+4-13	252-257	føler	_	_	_	_	
+4-14	258-260	at	_	_	_	_	
+4-15	261-264	han	_	_	_	_	
+4-16	265-268	kan	_	_	_	_	
+4-17	269-271	gå	OVERLAP[2]	CONDITION[2]	_	_	
+4-18	272-276	uten	OVERLAP[2]	CONDITION[2]	_	_	
+4-19	277-284	smerter	OVERLAP[2]	CONDITION[2]	_	_	
+4-20	284-285	.	_	_	_	_	
+
+#Text=Blodsukkeret har stabilisert seg til rundt 7 mmol/L, og pasienten fortsetter med metformin og følger rådene fra diabetessykepleier.
+5-1	286-298	Blodsukkeret	OVERLAP	CONDITION	_	_	
+5-2	299-302	har	_	_	_	_	
+5-3	303-314	stabilisert	_	_	_	_	
+5-4	315-318	seg	_	_	_	_	
+5-5	319-322	til	_	_	_	_	
+5-6	323-328	rundt	_	_	_	_	
+5-7	329-330	7	_	_	_	_	
+5-8	331-335	mmol	_	_	_	_	
+5-9	335-336	/	_	_	_	_	
+5-10	336-337	L	_	_	_	_	
+5-11	337-338	,	_	_	_	_	
+5-12	339-341	og	_	_	_	_	
+5-13	342-351	pasienten	_	_	_	_	
+5-14	352-362	fortsetter	_	_	_	_	
+5-15	363-366	med	_	_	_	_	
+5-16	367-376	metformin	AFTER	TREATMENT	_	_	
+5-17	377-379	og	_	_	_	_	
+5-18	380-386	følger	_	_	_	_	
+5-19	387-393	rådene	AFTER[3]	TREATMENT[3]	_	_	
+5-20	394-397	fra	AFTER[3]	TREATMENT[3]	_	_	
+5-21	398-416	diabetessykepleier	AFTER[3]	TREATMENT[3]	_	_	
+5-22	416-417	.	_	_	_	_	
+
+#Text=Jeg gir videre råd om forebygging, inkludert bruk av gode sko og daglig fotsjekk.
+6-1	418-421	Jeg	_	_	_	_	
+6-2	422-425	gir	_	_	_	_	
+6-3	426-432	videre	_	_	_	_	
+6-4	433-436	råd	AFTER[4]	TREATMENT[4]	_	_	
+6-5	437-439	om	AFTER[4]	TREATMENT[4]	_	_	
+6-6	440-451	forebygging	AFTER[4]	TREATMENT[4]	_	_	
+6-7	451-452	,	_	_	_	_	
+6-8	453-462	inkludert	_	_	_	_	
+6-9	463-467	bruk	_	_	_	_	
+6-10	468-470	av	_	_	_	_	
+6-11	471-475	gode	_	_	_	_	
+6-12	476-479	sko	_	_	_	_	
+6-13	480-482	og	_	_	_	_	
+6-14	483-489	daglig	_	_	_	_	
+6-15	490-498	fotsjekk	_	_	_	_	
+6-16	498-499	.	_	_	_	_	
+
+#Text=Pasienten trenger ikke videre oppfølging hos sårpoliklinikk, men vi avtaler kontroll om 6 måneder for evaluering av diabetes og fotstatus.
+7-1	500-509	Pasienten	_	_	_	_	
+7-2	510-517	trenger	_	_	_	_	
+7-3	518-522	ikke	_	_	_	_	
+7-4	523-529	videre	_	_	_	_	
+7-5	530-540	oppfølging	_	_	_	_	
+7-6	541-544	hos	_	_	_	_	
+7-7	545-559	sårpoliklinikk	_	_	_	_	
+7-8	559-560	,	_	_	_	_	
+7-9	561-564	men	_	_	_	_	
+7-10	565-567	vi	_	_	_	_	
+7-11	568-575	avtaler	_	_	_	_	
+7-12	576-584	kontroll	AFTER	TREATMENT	BEFORE|BEFORE|BEFORE	6-4[4_0]|5-16|5-19[3_0]	
+7-13	585-587	om	_	_	_	_	
+7-14	588-589	6	_	_	_	_	
+7-15	590-597	måneder	_	_	_	_	
+7-16	598-601	for	_	_	_	_	
+7-17	602-612	evaluering	_	_	_	_	
+7-18	613-615	av	_	_	_	_	
+7-19	616-624	diabetes	_	_	_	_	
+7-20	625-627	og	_	_	_	_	
+7-21	628-637	fotstatus	_	_	_	_	
+7-22	637-638	.	_	_	_	_	

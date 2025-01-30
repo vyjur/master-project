@@ -1,0 +1,112 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 3 (2023-11-07)
+#Text=Per kom inn til oppfølging etter to måneder på profilaktisk behandling.
+1-1	0-12	Journalnotat	
+1-2	13-14	3	
+1-3	15-16	(	
+1-4	16-20	2023	
+1-5	20-21	-	
+1-6	21-23	11	
+1-7	23-24	-	
+1-8	24-26	07	
+1-9	26-27	)	
+1-10	28-31	Per	
+1-11	32-35	kom	
+1-12	36-39	inn	
+1-13	40-43	til	
+1-14	44-54	oppfølging	
+1-15	55-60	etter	
+1-16	61-63	to	
+1-17	64-71	måneder	
+1-18	72-74	på	
+1-19	75-87	profilaktisk	
+1-20	88-98	behandling	
+1-21	98-99	.	
+
+#Text=Han rapporterte at alt gikk bra, og at han ikke hadde opplevd noen nye infeksjoner.
+2-1	100-103	Han	
+2-2	104-115	rapporterte	
+2-3	116-118	at	
+2-4	119-122	alt	
+2-5	123-127	gikk	
+2-6	128-131	bra	
+2-7	131-132	,	
+2-8	133-135	og	
+2-9	136-138	at	
+2-10	139-142	han	
+2-11	143-147	ikke	
+2-12	148-153	hadde	
+2-13	154-161	opplevd	
+2-14	162-166	noen	
+2-15	167-170	nye	
+2-16	171-182	infeksjoner	
+2-17	182-183	.	
+
+#Text=Profilaktisk behandlingen hadde vært vellykket, og han hadde ikke opplevd noen store sidevirkninger.
+3-1	184-196	Profilaktisk	
+3-2	197-209	behandlingen	
+3-3	210-215	hadde	
+3-4	216-220	vært	
+3-5	221-230	vellykket	
+3-6	230-231	,	
+3-7	232-234	og	
+3-8	235-238	han	
+3-9	239-244	hadde	
+3-10	245-249	ikke	
+3-11	250-257	opplevd	
+3-12	258-262	noen	
+3-13	263-268	store	
+3-14	269-283	sidevirkninger	
+3-15	283-284	.	
+
+#Text=Vi diskuterte viktigheten av å holde seg fysisk aktiv og unngå stress.
+4-1	285-287	Vi	
+4-2	288-298	diskuterte	
+4-3	299-310	viktigheten	
+4-4	311-313	av	
+4-5	314-315	å	
+4-6	316-321	holde	
+4-7	322-325	seg	
+4-8	326-332	fysisk	
+4-9	333-338	aktiv	
+4-10	339-341	og	
+4-11	342-347	unngå	
+4-12	348-354	stress	
+4-13	354-355	.	
+
+#Text=Per var glad for resultatet av behandlingen og takket meg for støtten.
+5-1	356-359	Per	
+5-2	360-363	var	
+5-3	364-368	glad	
+5-4	369-372	for	
+5-5	373-383	resultatet	
+5-6	384-386	av	
+5-7	387-399	behandlingen	
+5-8	400-402	og	
+5-9	403-409	takket	
+5-10	410-413	meg	
+5-11	414-417	for	
+5-12	418-425	støtten	
+5-13	425-426	.	
+
+#Text=Vi planla en oppfølging om seks måneder for å se hvordan han reagerer på den nye behandlingen.
+6-1	427-429	Vi	
+6-2	430-436	planla	
+6-3	437-439	en	
+6-4	440-450	oppfølging	
+6-5	451-453	om	
+6-6	454-458	seks	
+6-7	459-466	måneder	
+6-8	467-470	for	
+6-9	471-472	å	
+6-10	473-475	se	
+6-11	476-483	hvordan	
+6-12	484-487	han	
+6-13	488-496	reagerer	
+6-14	497-499	på	
+6-15	500-503	den	
+6-16	504-507	nye	
+6-17	508-520	behandlingen	
+6-18	520-521	.	

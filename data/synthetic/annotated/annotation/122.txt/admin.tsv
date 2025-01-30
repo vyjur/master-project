@@ -1,0 +1,59 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+
+
+#Text=Journalnotat 3 - 24.01.2023**
+#Text=
+#Text=Pasienten kommer tilbake etter 1 uke med fysioterapibehandling.
+1-1	0-12	Journalnotat	_	_	
+1-2	13-14	3	_	_	
+1-3	15-16	-	_	_	
+1-4	17-27	24.01.2023	_	_	
+1-5	27-28	*	_	_	
+1-6	28-29	*	_	_	
+1-7	31-40	Pasienten	_	_	
+1-8	41-47	kommer	_	_	
+1-9	48-55	tilbake	_	_	
+1-10	56-61	etter	_	_	
+1-11	62-63	1	_	_	
+1-12	64-67	uke	_	_	
+1-13	68-71	med	_	_	
+1-14	72-93	fysioterapibehandling	BEFOREOVERLAP	CONDITION	
+1-15	93-94	.	_	_	
+
+#Text=Hun rapporterer en liten forbedring i bevegeligheten og en reduksjon i smertene.
+2-1	95-98	Hun	_	_	
+2-2	99-110	rapporterer	_	_	
+2-3	111-113	en	_	_	
+2-4	114-119	liten	OVERLAP[1]	CONDITION[1]	
+2-5	120-130	forbedring	OVERLAP[1]	CONDITION[1]	
+2-6	131-132	i	OVERLAP[1]	CONDITION[1]	
+2-7	133-147	bevegeligheten	OVERLAP[1]	CONDITION[1]	
+2-8	148-150	og	_	_	
+2-9	151-153	en	_	_	
+2-10	154-163	reduksjon	OVERLAP[2]	CONDITION[2]	
+2-11	164-165	i	OVERLAP[2]	CONDITION[2]	
+2-12	166-174	smertene	OVERLAP[2]	CONDITION[2]	
+2-13	174-175	.	_	_	
+
+#Text=Jeg fortsätter å justere opioid-dosen og foreslår at pasienten begynner med en antidepressiv medisin for å håndtere smertene bedre.
+3-1	176-179	Jeg	_	_	
+3-2	180-190	fortsätter	_	_	
+3-3	191-192	å	_	_	
+3-4	193-200	justere	AFTER[3]	TREATMENT[3]	
+3-5	201-213	opioid-dosen	AFTER[3]	TREATMENT[3]	
+3-6	214-216	og	_	_	
+3-7	217-225	foreslår	_	_	
+3-8	226-228	at	_	_	
+3-9	229-238	pasienten	_	_	
+3-10	239-247	begynner	_	_	
+3-11	248-251	med	_	_	
+3-12	252-254	en	_	_	
+3-13	255-268	antidepressiv	AFTER[4]	TREATMENT[4]	
+3-14	269-276	medisin	AFTER[4]	TREATMENT[4]	
+3-15	277-280	for	_	_	
+3-16	281-282	å	_	_	
+3-17	283-291	håndtere	_	_	
+3-18	292-300	smertene	_	_	
+3-19	301-306	bedre	_	_	
+3-20	306-307	.	_	_	

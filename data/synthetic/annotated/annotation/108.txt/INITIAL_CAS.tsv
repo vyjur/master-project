@@ -1,0 +1,42 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 1 - 03.05.2025
+#Text=Førstegangs gastroenterologisk konsultasjon vedrørende kroniske magesmerter og fordøyelsesproblemer.
+1-1	0-12	Journalnotat	
+1-2	13-14	1	
+1-3	15-16	-	
+1-4	17-27	03.05.2025	
+1-5	28-39	Førstegangs	
+1-6	40-58	gastroenterologisk	
+1-7	59-71	konsultasjon	
+1-8	72-82	vedrørende	
+1-9	83-91	kroniske	
+1-10	92-103	magesmerter	
+1-11	104-106	og	
+1-12	107-127	fordøyelsesproblemer	
+1-13	127-128	.	
+
+#Text=Detaljert sykehistorie avdekker vedvarende symptomer med vekslende diaré og forstoppelse.
+2-1	129-138	Detaljert	
+2-2	139-151	sykehistorie	
+2-3	152-160	avdekker	
+2-4	161-171	vedvarende	
+2-5	172-181	symptomer	
+2-6	182-185	med	
+2-7	186-195	vekslende	
+2-8	196-201	diaré	
+2-9	202-204	og	
+2-10	205-217	forstoppelse	
+2-11	217-218	.	
+
+#Text=Gjennomfører omfattende utredning for å utelukke alvorligere sykdommer.
+3-1	219-231	Gjennomfører	
+3-2	232-242	omfattende	
+3-3	243-252	utredning	
+3-4	253-256	for	
+3-5	257-258	å	
+3-6	259-267	utelukke	
+3-7	268-279	alvorligere	
+3-8	280-289	sykdommer	
+3-9	289-290	.	

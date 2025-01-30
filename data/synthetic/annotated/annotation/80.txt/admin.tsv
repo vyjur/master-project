@@ -1,0 +1,53 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=05.04.2023:
+#Text=Forbigående bedring på antibiotika.
+1-1	0-10	05.04.2023	_	_	_	_	
+1-2	10-11	:	_	_	_	_	
+1-3	12-23	Forbigående	_	_	_	_	
+1-4	24-31	bedring	OVERLAP	CONDITION	_	_	
+1-5	32-34	på	_	_	_	_	
+1-6	35-46	antibiotika	_	_	_	_	
+1-7	46-47	.	_	_	_	_	
+
+#Text=Ny forverring.
+2-1	48-50	Ny	OVERLAP[1]	CONDITION[1]	_	_	
+2-2	51-61	forverring	OVERLAP[1]	CONDITION[1]	_	_	
+2-3	61-62	.	_	_	_	_	
+
+#Text=Nasal endoskopi viser polypper.
+3-1	63-68	Nasal	OVERLAP[2]	TREATMENT[2]	_	_	
+3-2	69-78	endoskopi	OVERLAP[2]	TREATMENT[2]	_	_	
+3-3	79-84	viser	_	_	_	_	
+3-4	85-93	polypper	OVERLAP	CONDITION	BEFORE	3-1[2_0]	
+3-5	93-94	.	_	_	_	_	
+
+#Text=CRP 28.
+4-1	95-98	CRP	OVERLAP	CONDITION	_	_	
+4-2	99-101	28	_	_	_	_	
+4-3	101-102	.	_	_	_	_	
+
+#Text=Starter prednisolonkur og Avamys nesespray.
+5-1	103-110	Starter	_	_	_	_	
+5-2	111-125	prednisolonkur	AFTER	TREATMENT	_	_	
+5-3	126-128	og	_	_	_	_	
+5-4	129-135	Avamys	AFTER[3]	TREATMENT[3]	_	_	
+5-5	136-145	nesespray	AFTER[3]	TREATMENT[3]	_	_	
+5-6	145-146	.	_	_	_	_	
+
+#Text=Vurderer FESS-operasjon.
+6-1	147-155	Vurderer	_	_	_	_	
+6-2	156-170	FESS-operasjon	AFTER	TREATMENT	_	_	
+6-3	170-171	.	_	_	_	_	
+
+#Text=Ny kontroll ØNH om 4 uker.
+7-1	172-174	Ny	_	_	_	_	
+7-2	175-183	kontroll	AFTER[4]	TREATMENT[4]	BEFORE|BEFORE|BEFORE	5-2[0_4]|6-2[0_4]|5-4[3_4]	
+7-3	184-187	ØNH	AFTER[4]	TREATMENT[4]	_	_	
+7-4	188-190	om	_	_	_	_	
+7-5	191-192	4	_	_	_	_	
+7-6	193-197	uker	_	_	_	_	
+7-7	197-198	.	_	_	_	_	

@@ -1,0 +1,141 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Notat 1 - 12.08.2024:
+#Text=Pasienten kommer til konsultasjon grunnet plager med hetetokter, nattesvette og humørsvingninger de siste 6 månedene.
+1-1	0-5	Notat	
+1-2	6-7	1	
+1-3	8-9	-	
+1-4	10-20	12.08.2024	
+1-5	20-21	:	
+1-6	22-31	Pasienten	
+1-7	32-38	kommer	
+1-8	39-42	til	
+1-9	43-55	konsultasjon	
+1-10	56-63	grunnet	
+1-11	64-70	plager	
+1-12	71-74	med	
+1-13	75-85	hetetokter	
+1-14	85-86	,	
+1-15	87-98	nattesvette	
+1-16	99-101	og	
+1-17	102-118	humørsvingninger	
+1-18	119-121	de	
+1-19	122-127	siste	
+1-20	128-129	6	
+1-21	130-138	månedene	
+1-22	138-139	.	
+
+#Text=Hun er i overgangsalderen og har ikke hatt menstruasjon på 8 måneder.
+2-1	140-143	Hun	
+2-2	144-146	er	
+2-3	147-148	i	
+2-4	149-165	overgangsalderen	
+2-5	166-168	og	
+2-6	169-172	har	
+2-7	173-177	ikke	
+2-8	178-182	hatt	
+2-9	183-195	menstruasjon	
+2-10	196-198	på	
+2-11	199-200	8	
+2-12	201-208	måneder	
+2-13	208-209	.	
+
+#Text=I tillegg til hetetoktene klager hun over søvnvansker og økt irritabilitet.
+3-1	210-211	I	
+3-2	212-219	tillegg	
+3-3	220-223	til	
+3-4	224-235	hetetoktene	
+3-5	236-242	klager	
+3-6	243-246	hun	
+3-7	247-251	over	
+3-8	252-263	søvnvansker	
+3-9	264-266	og	
+3-10	267-270	økt	
+3-11	271-284	irritabilitet	
+3-12	284-285	.	
+
+#Text=Pasienten har forsøkt å håndtere symptomene med naturlige preparater, men merker ingen effekt.
+4-1	286-295	Pasienten	
+4-2	296-299	har	
+4-3	300-307	forsøkt	
+4-4	308-309	å	
+4-5	310-318	håndtere	
+4-6	319-329	symptomene	
+4-7	330-333	med	
+4-8	334-343	naturlige	
+4-9	344-354	preparater	
+4-10	354-355	,	
+4-11	356-359	men	
+4-12	360-366	merker	
+4-13	367-372	ingen	
+4-14	373-379	effekt	
+4-15	379-380	.	
+
+#Text=Vi diskuterer behandling med hormonsubstitusjon (HRT), og pasienten er positiv til å prøve dette.
+5-1	381-383	Vi	
+5-2	384-394	diskuterer	
+5-3	395-405	behandling	
+5-4	406-409	med	
+5-5	410-428	hormonsubstitusjon	
+5-6	429-430	(	
+5-7	430-433	HRT	
+5-8	433-434	)	
+5-9	434-435	,	
+5-10	436-438	og	
+5-11	439-448	pasienten	
+5-12	449-451	er	
+5-13	452-459	positiv	
+5-14	460-463	til	
+5-15	464-465	å	
+5-16	466-471	prøve	
+5-17	472-477	dette	
+5-18	477-478	.	
+
+#Text=Blodprøver tas for å sjekke hormonstatus, inkludert FSH, LH og østrogen.
+6-1	479-489	Blodprøver	
+6-2	490-493	tas	
+6-3	494-497	for	
+6-4	498-499	å	
+6-5	500-506	sjekke	
+6-6	507-519	hormonstatus	
+6-7	519-520	,	
+6-8	521-530	inkludert	
+6-9	531-534	FSH	
+6-10	534-535	,	
+6-11	536-538	LH	
+6-12	539-541	og	
+6-13	542-550	østrogen	
+6-14	550-551	.	
+
+#Text=Hun får også råd om kosthold og regelmessig fysisk aktivitet, som kan hjelpe mot noen av plagene.
+7-1	552-555	Hun	
+7-2	556-559	får	
+7-3	560-564	også	
+7-4	565-568	råd	
+7-5	569-571	om	
+7-6	572-580	kosthold	
+7-7	581-583	og	
+7-8	584-595	regelmessig	
+7-9	596-602	fysisk	
+7-10	603-612	aktivitet	
+7-11	612-613	,	
+7-12	614-617	som	
+7-13	618-621	kan	
+7-14	622-628	hjelpe	
+7-15	629-632	mot	
+7-16	633-637	noen	
+7-17	638-640	av	
+7-18	641-648	plagene	
+7-19	648-649	.	
+
+#Text=Vi avtaler ny time når prøvesvarene er klare.
+8-1	650-652	Vi	
+8-2	653-660	avtaler	
+8-3	661-663	ny	
+8-4	664-668	time	
+8-5	669-672	når	
+8-6	673-685	prøvesvarene	
+8-7	686-688	er	
+8-8	689-694	klare	
+8-9	694-695	.	

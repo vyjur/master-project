@@ -1,0 +1,163 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Notat 1 - 03.09.2024: 
+#Text=Pasienten kommer til kontroll i forbindelse med sin kjente KOLS-diagnose.
+1-1	0-5	Notat	
+1-2	6-7	1	
+1-3	8-9	-	
+1-4	10-20	03.09.2024	
+1-5	20-21	:	
+1-6	23-32	Pasienten	
+1-7	33-39	kommer	
+1-8	40-43	til	
+1-9	44-52	kontroll	
+1-10	53-54	i	
+1-11	55-66	forbindelse	
+1-12	67-70	med	
+1-13	71-74	sin	
+1-14	75-81	kjente	
+1-15	82-95	KOLS-diagnose	
+1-16	95-96	.	
+
+#Text=Han har hatt økende pustebesvær de siste ukene, spesielt ved anstrengelse.
+2-1	97-100	Han	
+2-2	101-104	har	
+2-3	105-109	hatt	
+2-4	110-116	økende	
+2-5	117-128	pustebesvær	
+2-6	129-131	de	
+2-7	132-137	siste	
+2-8	138-143	ukene	
+2-9	143-144	,	
+2-10	145-153	spesielt	
+2-11	154-157	ved	
+2-12	158-170	anstrengelse	
+2-13	170-171	.	
+
+#Text=Pasienten har også hatt hyppige hosteanfall med gulaktig ekspektorat, men ingen feber.
+3-1	172-181	Pasienten	
+3-2	182-185	har	
+3-3	186-190	også	
+3-4	191-195	hatt	
+3-5	196-203	hyppige	
+3-6	204-215	hosteanfall	
+3-7	216-219	med	
+3-8	220-228	gulaktig	
+3-9	229-240	ekspektorat	
+3-10	240-241	,	
+3-11	242-245	men	
+3-12	246-251	ingen	
+3-13	252-257	feber	
+3-14	257-258	.	
+
+#Text=Spirometri viser en FEV1 på 45 % av forventet, noe som indikerer moderat til alvorlig KOLS.
+4-1	259-269	Spirometri	
+4-2	270-275	viser	
+4-3	276-278	en	
+4-4	279-283	FEV1	
+4-5	284-286	på	
+4-6	287-289	45	
+4-7	290-291	%	
+4-8	292-294	av	
+4-9	295-304	forventet	
+4-10	304-305	,	
+4-11	306-309	noe	
+4-12	310-313	som	
+4-13	314-323	indikerer	
+4-14	324-331	moderat	
+4-15	332-335	til	
+4-16	336-344	alvorlig	
+4-17	345-349	KOLS	
+4-18	349-350	.	
+
+#Text=Oksygenmetningen er 92 % i hvile.
+5-1	351-367	Oksygenmetningen	
+5-2	368-370	er	
+5-3	371-373	92	
+5-4	374-375	%	
+5-5	376-377	i	
+5-6	378-383	hvile	
+5-7	383-384	.	
+
+#Text=Pasienten bruker daglig bronkodilator (Spiriva) og Ventoline ved behov.
+6-1	385-394	Pasienten	
+6-2	395-401	bruker	
+6-3	402-408	daglig	
+6-4	409-422	bronkodilator	
+6-5	423-424	(	
+6-6	424-431	Spiriva	
+6-7	431-432	)	
+6-8	433-435	og	
+6-9	436-445	Ventoline	
+6-10	446-449	ved	
+6-11	450-455	behov	
+6-12	455-456	.	
+
+#Text=Jeg mistenker en forverring av KOLS, muligens utløst av en luftveisinfeksjon.
+7-1	457-460	Jeg	
+7-2	461-470	mistenker	
+7-3	471-473	en	
+7-4	474-484	forverring	
+7-5	485-487	av	
+7-6	488-492	KOLS	
+7-7	492-493	,	
+7-8	494-502	muligens	
+7-9	503-509	utløst	
+7-10	510-512	av	
+7-11	513-515	en	
+7-12	516-533	luftveisinfeksjon	
+7-13	533-534	.	
+
+#Text=Vi starter behandling med antibiotika (Amoxicillin 500 mg x 3 i 7 dager) og øker dosen av inhalasjonssteroider.
+8-1	535-537	Vi	
+8-2	538-545	starter	
+8-3	546-556	behandling	
+8-4	557-560	med	
+8-5	561-572	antibiotika	
+8-6	573-574	(	
+8-7	574-585	Amoxicillin	
+8-8	586-589	500	
+8-9	590-592	mg	
+8-10	593-594	x	
+8-11	595-596	3	
+8-12	597-598	i	
+8-13	599-600	7	
+8-14	601-606	dager	
+8-15	606-607	)	
+8-16	608-610	og	
+8-17	611-615	øker	
+8-18	616-621	dosen	
+8-19	622-624	av	
+8-20	625-645	inhalasjonssteroider	
+8-21	645-646	.	
+
+#Text=Pasienten får også resept på kortison-tabletter (Prednisolon 30 mg daglig i 5 dager) for å dempe inflammasjonen.
+9-1	647-656	Pasienten	
+9-2	657-660	får	
+9-3	661-665	også	
+9-4	666-672	resept	
+9-5	673-675	på	
+9-6	676-694	kortison-tabletter	
+9-7	695-696	(	
+9-8	696-707	Prednisolon	
+9-9	708-710	30	
+9-10	711-713	mg	
+9-11	714-720	daglig	
+9-12	721-722	i	
+9-13	723-724	5	
+9-14	725-730	dager	
+9-15	730-731	)	
+9-16	732-735	for	
+9-17	736-737	å	
+9-18	738-743	dempe	
+9-19	744-758	inflammasjonen	
+9-20	758-759	.	
+
+#Text=Ny vurdering om 2 uker.
+10-1	760-762	Ny	
+10-2	763-772	vurdering	
+10-3	773-775	om	
+10-4	776-777	2	
+10-5	778-782	uker	
+10-6	782-783	.	

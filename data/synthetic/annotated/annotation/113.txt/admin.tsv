@@ -1,0 +1,48 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+
+
+#Text=Journalnotat 3 - 19.09.2025
+#Text=Kontroll etter iverksatte tiltak.
+1-1	0-12	Journalnotat	_	_	
+1-2	13-14	3	_	_	
+1-3	15-16	-	_	_	
+1-4	17-27	19.09.2025	_	_	
+1-5	28-36	Kontroll	OVERLAP	TREATMENT	
+1-6	37-42	etter	_	_	
+1-7	43-53	iverksatte	_	_	
+1-8	54-60	tiltak	_	_	
+1-9	60-61	.	_	_	
+
+#Text=Positiv utvikling med reduksjon i HbA1c til 7,6%.
+2-1	62-69	Positiv	OVERLAP[1]	CONDITION[1]	
+2-2	70-79	utvikling	OVERLAP[1]	CONDITION[1]	
+2-3	80-83	med	_	_	
+2-4	84-93	reduksjon	OVERLAP[2]	CONDITION[2]	
+2-5	94-95	i	OVERLAP[2]	CONDITION[2]	
+2-6	96-101	HbA1c	OVERLAP[2]	CONDITION[2]	
+2-7	102-105	til	_	_	
+2-8	106-110	7,6%	_	_	
+2-9	110-111	.	_	_	
+
+#Text=Henvist til nyreundersøkelse for å utelukke mulige diabetiske nyrekomplikasjoner.
+3-1	112-119	Henvist	_	_	
+3-2	120-123	til	_	_	
+3-3	124-140	nyreundersøkelse	AFTER	TREATMENT	
+3-4	141-144	for	_	_	
+3-5	145-146	å	_	_	
+3-6	147-155	utelukke	_	_	
+3-7	156-162	mulige	_	_	
+3-8	163-173	diabetiske	_	_	
+3-9	174-192	nyrekomplikasjoner	_	_	
+3-10	192-193	.	_	_	
+
+#Text=Fortsatt tett oppfølging med multidisiplinær tilnærming anbefales.
+4-1	194-202	Fortsatt	_	_	
+4-2	203-207	tett	AFTER[3]	TREATMENT[3]	
+4-3	208-218	oppfølging	AFTER[3]	TREATMENT[3]	
+4-4	219-222	med	_	_	
+4-5	223-238	multidisiplinær	_	_	
+4-6	239-249	tilnærming	_	_	
+4-7	250-259	anbefales	_	_	
+4-8	259-260	.	_	_	

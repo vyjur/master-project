@@ -1,0 +1,133 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 3 (2023-10-08)
+#Text=Liv rapporterte en viderebedring i søvnpatternen.
+1-1	0-12	Journalnotat	
+1-2	13-14	3	
+1-3	15-16	(	
+1-4	16-20	2023	
+1-5	20-21	-	
+1-6	21-23	10	
+1-7	23-24	-	
+1-8	24-26	08	
+1-9	26-27	)	
+1-10	28-31	Liv	
+1-11	32-43	rapporterte	
+1-12	44-46	en	
+1-13	47-60	viderebedring	
+1-14	61-62	i	
+1-15	63-76	søvnpatternen	
+1-16	76-77	.	
+
+#Text=Hun hadde brukt hypnotikum to ganger de siste to ukene, og det hadde hjulpet henne med å falne i søvn raskere.
+2-1	78-81	Hun	
+2-2	82-87	hadde	
+2-3	88-93	brukt	
+2-4	94-104	hypnotikum	
+2-5	105-107	to	
+2-6	108-114	ganger	
+2-7	115-117	de	
+2-8	118-123	siste	
+2-9	124-126	to	
+2-10	127-132	ukene	
+2-11	132-133	,	
+2-12	134-136	og	
+2-13	137-140	det	
+2-14	141-146	hadde	
+2-15	147-154	hjulpet	
+2-16	155-160	henne	
+2-17	161-164	med	
+2-18	165-166	å	
+2-19	167-172	falne	
+2-20	173-174	i	
+2-21	175-179	søvn	
+2-22	180-187	raskere	
+2-23	187-188	.	
+
+#Text=Hun hadde også mer kontroll over sine tanker når hun ligger i sengen, takket være CBT-I.
+3-1	189-192	Hun	
+3-2	193-198	hadde	
+3-3	199-203	også	
+3-4	204-207	mer	
+3-5	208-216	kontroll	
+3-6	217-221	over	
+3-7	222-226	sine	
+3-8	227-233	tanker	
+3-9	234-237	når	
+3-10	238-241	hun	
+3-11	242-248	ligger	
+3-12	249-250	i	
+3-13	251-257	sengen	
+3-14	257-258	,	
+3-15	259-265	takket	
+3-16	266-270	være	
+3-17	271-276	CBT-I	
+3-18	276-277	.	
+
+#Text=Vi diskuterede viktigheten av å holde seg fysisk aktiv og unngå stress.
+4-1	278-280	Vi	
+4-2	281-292	diskuterede	
+4-3	293-304	viktigheten	
+4-4	305-307	av	
+4-5	308-309	å	
+4-6	310-315	holde	
+4-7	316-319	seg	
+4-8	320-326	fysisk	
+4-9	327-332	aktiv	
+4-10	333-335	og	
+4-11	336-341	unngå	
+4-12	342-348	stress	
+4-13	348-349	.	
+
+#Text=Liv var glad for resultatet av behandlingen og takket meg for støtten.
+5-1	350-353	Liv	
+5-2	354-357	var	
+5-3	358-362	glad	
+5-4	363-366	for	
+5-5	367-377	resultatet	
+5-6	378-380	av	
+5-7	381-393	behandlingen	
+5-8	394-396	og	
+5-9	397-403	takket	
+5-10	404-407	meg	
+5-11	408-411	for	
+5-12	412-419	støtten	
+5-13	419-420	.	
+
+#Text=Vi bestemte oss for å fortsette med CBT-I og redusere bruk av hypnotikum gradvis.
+6-1	421-423	Vi	
+6-2	424-432	bestemte	
+6-3	433-436	oss	
+6-4	437-440	for	
+6-5	441-442	å	
+6-6	443-452	fortsette	
+6-7	453-456	med	
+6-8	457-462	CBT-I	
+6-9	463-465	og	
+6-10	466-474	redusere	
+6-11	475-479	bruk	
+6-12	480-482	av	
+6-13	483-493	hypnotikum	
+6-14	494-501	gradvis	
+6-15	501-502	.	
+
+#Text=Vi planla en oppfølging om to måneder for å se hvordan hun reagerer på den nye behandlingen.
+7-1	503-505	Vi	
+7-2	506-512	planla	
+7-3	513-515	en	
+7-4	516-526	oppfølging	
+7-5	527-529	om	
+7-6	530-532	to	
+7-7	533-540	måneder	
+7-8	541-544	for	
+7-9	545-546	å	
+7-10	547-549	se	
+7-11	550-557	hvordan	
+7-12	558-561	hun	
+7-13	562-570	reagerer	
+7-14	571-573	på	
+7-15	574-577	den	
+7-16	578-581	nye	
+7-17	582-594	behandlingen	
+7-18	594-595	.	

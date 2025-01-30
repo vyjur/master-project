@@ -1,0 +1,107 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 5 (2023-12-06)
+#Text=Liv kom inn til siste oppfølging i dag.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	5	_	_	_	_	
+1-3	15-16	(	_	_	_	_	
+1-4	16-20	2023	_	_	_	_	
+1-5	20-21	-	_	_	_	_	
+1-6	21-23	12	_	_	_	_	
+1-7	23-24	-	_	_	_	_	
+1-8	24-26	06	_	_	_	_	
+1-9	26-27	)	_	_	_	_	
+1-10	28-31	Liv	_	_	_	_	
+1-11	32-35	kom	_	_	_	_	
+1-12	36-39	inn	_	_	_	_	
+1-13	40-43	til	_	_	_	_	
+1-14	44-49	siste	_	_	_	_	
+1-15	50-60	oppfølging	OVERLAP	TREATMENT	_	_	
+1-16	61-62	i	_	_	_	_	
+1-17	63-66	dag	_	_	_	_	
+1-18	66-67	.	_	_	_	_	
+
+#Text=Hun rapporterte at alt gikk bra, og at hun kunne leve et nærmest normalt liv.
+2-1	68-71	Hun	_	_	_	_	
+2-2	72-83	rapporterte	_	_	_	_	
+2-3	84-86	at	_	_	_	_	
+2-4	87-90	alt	_	_	_	_	
+2-5	91-95	gikk	_	_	_	_	
+2-6	96-99	bra	_	_	_	_	
+2-7	99-100	,	_	_	_	_	
+2-8	101-103	og	_	_	_	_	
+2-9	104-106	at	_	_	_	_	
+2-10	107-110	hun	_	_	_	_	
+2-11	111-116	kunne	_	_	_	_	
+2-12	117-121	leve	_	_	_	_	
+2-13	122-124	et	_	_	_	_	
+2-14	125-132	nærmest	_	_	_	_	
+2-15	133-140	normalt	_	_	_	_	
+2-16	141-144	liv	_	_	_	_	
+2-17	144-145	.	_	_	_	_	
+
+#Text=Søvnpatternen var stabil, og hun hadde ikke opplevd noen nye problemer.
+3-1	146-159	Søvnpatternen	OVERLAP	TREATMENT	_	_	
+3-2	160-163	var	_	_	_	_	
+3-3	164-170	stabil	_	_	_	_	
+3-4	170-171	,	_	_	_	_	
+3-5	172-174	og	_	_	_	_	
+3-6	175-178	hun	_	_	_	_	
+3-7	179-184	hadde	_	_	_	_	
+3-8	185-189	ikke	_	_	_	_	
+3-9	190-197	opplevd	_	_	_	_	
+3-10	198-202	noen	_	_	_	_	
+3-11	203-206	nye	_	_	_	_	
+3-12	207-216	problemer	_	_	_	_	
+3-13	216-217	.	_	_	_	_	
+
+#Text=Vi diskuterede viktigheten av å holde seg fysisk aktiv og unngå stress.
+4-1	218-220	Vi	_	_	_	_	
+4-2	221-232	diskuterede	_	_	_	_	
+4-3	233-244	viktigheten	_	_	_	_	
+4-4	245-247	av	_	_	_	_	
+4-5	248-249	å	_	_	_	_	
+4-6	250-255	holde	_	_	_	_	
+4-7	256-259	seg	_	_	_	_	
+4-8	260-266	fysisk	AFTER[1]	TREATMENT[1]	_	_	
+4-9	267-272	aktiv	AFTER[1]	TREATMENT[1]	_	_	
+4-10	273-275	og	_	_	_	_	
+4-11	276-281	unngå	AFTER[2]	TREATMENT[2]	_	_	
+4-12	282-288	stress	AFTER[2]	TREATMENT[2]	_	_	
+4-13	288-289	.	_	_	_	_	
+
+#Text=Liv var meget tilfreds med resultatet av behandlingen og takket meg for støtten.
+5-1	290-293	Liv	_	_	_	_	
+5-2	294-297	var	_	_	_	_	
+5-3	298-303	meget	_	_	_	_	
+5-4	304-312	tilfreds	_	_	_	_	
+5-5	313-316	med	_	_	_	_	
+5-6	317-327	resultatet	_	_	_	_	
+5-7	328-330	av	_	_	_	_	
+5-8	331-343	behandlingen	_	_	_	_	
+5-9	344-346	og	_	_	_	_	
+5-10	347-353	takket	_	_	_	_	
+5-11	354-357	meg	_	_	_	_	
+5-12	358-361	for	_	_	_	_	
+5-13	362-369	støtten	_	_	_	_	
+5-14	369-370	.	_	_	_	_	
+
+#Text=Vi planla en oppfølging om ett år for å sikre at alt går godt.
+6-1	371-373	Vi	_	_	_	_	
+6-2	374-380	planla	_	_	_	_	
+6-3	381-383	en	_	_	_	_	
+6-4	384-394	oppfølging	AFTER	TREATMENT	BEFORE|BEFORE	4-8[1_0]|4-11[2_0]	
+6-5	395-397	om	_	_	_	_	
+6-6	398-401	ett	_	_	_	_	
+6-7	402-404	år	_	_	_	_	
+6-8	405-408	for	_	_	_	_	
+6-9	409-410	å	_	_	_	_	
+6-10	411-416	sikre	_	_	_	_	
+6-11	417-419	at	_	_	_	_	
+6-12	420-423	alt	_	_	_	_	
+6-13	424-427	går	_	_	_	_	
+6-14	428-432	godt	_	_	_	_	
+6-15	432-433	.	_	_	_	_	

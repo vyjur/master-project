@@ -1,0 +1,58 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 2 - 17.05.2023**
+#Text=
+#Text=Pasienten kommer tilbake etter 1 uke med triptan-behandling.
+1-1	0-12	Journalnotat	
+1-2	13-14	2	
+1-3	15-16	-	
+1-4	17-27	17.05.2023	
+1-5	27-28	*	
+1-6	28-29	*	
+1-7	31-40	Pasienten	
+1-8	41-47	kommer	
+1-9	48-55	tilbake	
+1-10	56-61	etter	
+1-11	62-63	1	
+1-12	64-67	uke	
+1-13	68-71	med	
+1-14	72-90	triptan-behandling	
+1-15	90-91	.	
+
+#Text=Han rapporterer en forbedring i symptomer og en reduksjon i frekvensen av migrèneanfall.
+2-1	92-95	Han	
+2-2	96-107	rapporterer	
+2-3	108-110	en	
+2-4	111-121	forbedring	
+2-5	122-123	i	
+2-6	124-133	symptomer	
+2-7	134-136	og	
+2-8	137-139	en	
+2-9	140-149	reduksjon	
+2-10	150-151	i	
+2-11	152-162	frekvensen	
+2-12	163-165	av	
+2-13	166-179	migrèneanfall	
+2-14	179-180	.	
+
+#Text=Jeg justerer triptan-dosen og foreslår at pasienten begynner med en profylaktisk behandling med betablokkere for å forebygge migrèneanfall.
+3-1	181-184	Jeg	
+3-2	185-193	justerer	
+3-3	194-207	triptan-dosen	
+3-4	208-210	og	
+3-5	211-219	foreslår	
+3-6	220-222	at	
+3-7	223-232	pasienten	
+3-8	233-241	begynner	
+3-9	242-245	med	
+3-10	246-248	en	
+3-11	249-261	profylaktisk	
+3-12	262-272	behandling	
+3-13	273-276	med	
+3-14	277-289	betablokkere	
+3-15	290-293	for	
+3-16	294-295	å	
+3-17	296-305	forebygge	
+3-18	306-319	migrèneanfall	
+3-19	319-320	.	

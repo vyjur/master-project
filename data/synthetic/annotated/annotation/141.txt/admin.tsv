@@ -1,0 +1,99 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 1 - 15.08.2023**
+#Text=
+#Text=Pasienten, en 40-årig mann, kommer til klinikken med symptomer på søvnvansker, inkludert vansker med å sove inn, urolig søvn og daglig trøtthet.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	1	_	_	_	_	
+1-3	15-16	-	_	_	_	_	
+1-4	17-27	15.08.2023	_	_	_	_	
+1-5	27-28	*	_	_	_	_	
+1-6	28-29	*	_	_	_	_	
+1-7	31-40	Pasienten	_	_	_	_	
+1-8	40-41	,	_	_	_	_	
+1-9	42-44	en	_	_	_	_	
+1-10	45-47	40	_	_	_	_	
+1-11	47-48	-	_	_	_	_	
+1-12	48-52	årig	_	_	_	_	
+1-13	53-57	mann	_	_	_	_	
+1-14	57-58	,	_	_	_	_	
+1-15	59-65	kommer	_	_	_	_	
+1-16	66-69	til	_	_	_	_	
+1-17	70-79	klinikken	_	_	_	_	
+1-18	80-83	med	_	_	_	_	
+1-19	84-93	symptomer	OVERLAP[1]	CONDITION[1]	_	_	
+1-20	94-96	på	OVERLAP[1]	CONDITION[1]	_	_	
+1-21	97-108	søvnvansker	OVERLAP[1]	CONDITION[1]	_	_	
+1-22	108-109	,	_	_	_	_	
+1-23	110-119	inkludert	_	_	_	_	
+1-24	120-127	vansker	OVERLAP[2]	CONDITION[2]	OVERLAP	1-19[1_2]	
+1-25	128-131	med	OVERLAP[2]	CONDITION[2]	_	_	
+1-26	132-133	å	OVERLAP[2]	CONDITION[2]	_	_	
+1-27	134-138	sove	OVERLAP[2]	CONDITION[2]	_	_	
+1-28	139-142	inn	OVERLAP[2]	CONDITION[2]	_	_	
+1-29	142-143	,	_	_	_	_	
+1-30	144-150	urolig	OVERLAP[3]	CONDITION[3]	OVERLAP	1-19[1_3]	
+1-31	151-155	søvn	OVERLAP[3]	CONDITION[3]	_	_	
+1-32	156-158	og	_	_	_	_	
+1-33	159-165	daglig	OVERLAP[4]	CONDITION[4]	OVERLAP	1-19[1_4]	
+1-34	166-174	trøtthet	OVERLAP[4]	CONDITION[4]	_	_	
+1-35	174-175	.	_	_	_	_	
+
+#Text=Han har tidligere vært frisk og aktiv, men har merket en gradvis forverring av symptomer over de siste månedene.
+2-1	176-179	Han	_	_	_	_	
+2-2	180-183	har	_	_	_	_	
+2-3	184-193	tidligere	_	_	_	_	
+2-4	194-198	vært	_	_	_	_	
+2-5	199-204	frisk	_	_	_	_	
+2-6	205-207	og	_	_	_	_	
+2-7	208-213	aktiv	_	_	_	_	
+2-8	213-214	,	_	_	_	_	
+2-9	215-218	men	_	_	_	_	
+2-10	219-222	har	_	_	_	_	
+2-11	223-229	merket	_	_	_	_	
+2-12	230-232	en	_	_	_	_	
+2-13	233-240	gradvis	_	_	_	_	
+2-14	241-251	forverring	_	_	_	_	
+2-15	252-254	av	_	_	_	_	
+2-16	255-264	symptomer	_	_	_	_	
+2-17	265-269	over	_	_	_	_	
+2-18	270-272	de	_	_	_	_	
+2-19	273-278	siste	_	_	_	_	
+2-20	279-287	månedene	_	_	_	_	
+2-21	287-288	.	_	_	_	_	
+
+#Text=Ved undersøkelse finner jeg en normal fysisk undersøkelse, men en øket Epworth Sleepiness Scale-nivå.
+3-1	289-292	Ved	_	_	_	_	
+3-2	293-305	undersøkelse	OVERLAP	TREATMENT	BEFORE	1-19[1_0]	
+3-3	306-312	finner	_	_	_	_	
+3-4	313-316	jeg	_	_	_	_	
+3-5	317-319	en	_	_	_	_	
+3-6	320-326	normal	OVERLAP[5]	CONDITION[5]	BEFORE	3-2[0_5]	
+3-7	327-333	fysisk	OVERLAP[5]	CONDITION[5]	_	_	
+3-8	334-346	undersøkelse	OVERLAP[5]	CONDITION[5]	_	_	
+3-9	346-347	,	_	_	_	_	
+3-10	348-351	men	_	_	_	_	
+3-11	352-354	en	_	_	_	_	
+3-12	355-359	øket	OVERLAP[6]	CONDITION[6]	BEFORE	3-2[0_6]	
+3-13	360-367	Epworth	OVERLAP[6]	CONDITION[6]	_	_	
+3-14	368-378	Sleepiness	OVERLAP[6]	CONDITION[6]	_	_	
+3-15	379-389	Scale-nivå	OVERLAP[6]	CONDITION[6]	_	_	
+3-16	389-390	.	_	_	_	_	
+
+#Text=Jeg starter pasienten på en behandling med melatonin for å kontrollere symptomer.
+4-1	391-394	Jeg	_	_	_	_	
+4-2	395-402	starter	_	_	_	_	
+4-3	403-412	pasienten	_	_	_	_	
+4-4	413-415	på	_	_	_	_	
+4-5	416-418	en	_	_	_	_	
+4-6	419-429	behandling	_	_	_	_	
+4-7	430-433	med	_	_	_	_	
+4-8	434-443	melatonin	AFTER	TREATMENT	_	_	
+4-9	444-447	for	_	_	_	_	
+4-10	448-449	å	_	_	_	_	
+4-11	450-461	kontrollere	_	_	_	_	
+4-12	462-471	symptomer	_	_	_	_	
+4-13	471-472	.	_	_	_	_	

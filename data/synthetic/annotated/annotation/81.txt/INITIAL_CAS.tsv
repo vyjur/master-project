@@ -1,0 +1,40 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=10.05.2023:
+#Text=Moderat effekt av behandling.
+1-1	0-10	10.05.2023	
+1-2	10-11	:	
+1-3	12-19	Moderat	
+1-4	20-26	effekt	
+1-5	27-29	av	
+1-6	30-40	behandling	
+1-7	40-41	.	
+
+#Text=Fortsatt tett nese og hodepine.
+2-1	42-50	Fortsatt	
+2-2	51-55	tett	
+2-3	56-60	nese	
+2-4	61-63	og	
+2-5	64-72	hodepine	
+2-6	72-73	.	
+
+#Text=Ny CT viser vedvarende slimhinnefortykkelse.
+3-1	74-76	Ny	
+3-2	77-79	CT	
+3-3	80-85	viser	
+3-4	86-96	vedvarende	
+3-5	97-117	slimhinnefortykkelse	
+3-6	117-118	.	
+
+#Text=Planlegger FESS-operasjon.
+4-1	119-129	Planlegger	
+4-2	130-144	FESS-operasjon	
+4-3	144-145	.	
+
+#Text=Optimaliserer medisinsk behandling preoperativt.
+5-1	146-159	Optimaliserer	
+5-2	160-169	medisinsk	
+5-3	170-180	behandling	
+5-4	181-193	preoperativt	
+5-5	193-194	.	

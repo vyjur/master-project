@@ -1,0 +1,126 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Notat 2 - 28.07.2024:
+#Text=MR-caput viser atrofiske forandringer i hippocampus, forenlig med Alzheimers sykdom i tidlig fase.
+1-1	0-5	Notat	
+1-2	6-7	2	
+1-3	8-9	-	
+1-4	10-20	28.07.2024	
+1-5	20-21	:	
+1-6	22-30	MR-caput	
+1-7	31-36	viser	
+1-8	37-46	atrofiske	
+1-9	47-59	forandringer	
+1-10	60-61	i	
+1-11	62-73	hippocampus	
+1-12	73-74	,	
+1-13	75-83	forenlig	
+1-14	84-87	med	
+1-15	88-98	Alzheimers	
+1-16	99-105	sykdom	
+1-17	106-107	i	
+1-18	108-114	tidlig	
+1-19	115-119	fase	
+1-20	119-120	.	
+
+#Text=Blodprøvene viste ingen avvik.
+2-1	121-132	Blodprøvene	
+2-2	133-138	viste	
+2-3	139-144	ingen	
+2-4	145-150	avvik	
+2-5	150-151	.	
+
+#Text=Pasienten og datteren er informert om funnene, og vi diskuterer videre behandling.
+3-1	152-161	Pasienten	
+3-2	162-164	og	
+3-3	165-173	datteren	
+3-4	174-176	er	
+3-5	177-186	informert	
+3-6	187-189	om	
+3-7	190-197	funnene	
+3-8	197-198	,	
+3-9	199-201	og	
+3-10	202-204	vi	
+3-11	205-215	diskuterer	
+3-12	216-222	videre	
+3-13	223-233	behandling	
+3-14	233-234	.	
+
+#Text=Jeg foreslår oppstart av kolinesterasehemmer (donepezil 5 mg daglig) for å bremse sykdomsutviklingen.
+4-1	235-238	Jeg	
+4-2	239-247	foreslår	
+4-3	248-256	oppstart	
+4-4	257-259	av	
+4-5	260-279	kolinesterasehemmer	
+4-6	280-281	(	
+4-7	281-290	donepezil	
+4-8	291-292	5	
+4-9	293-295	mg	
+4-10	296-302	daglig	
+4-11	302-303	)	
+4-12	304-307	for	
+4-13	308-309	å	
+4-14	310-316	bremse	
+4-15	317-335	sykdomsutviklingen	
+4-16	335-336	.	
+
+#Text=Pasienten er enig i å prøve dette, og hun får også informasjon om viktigheten av struktur i hverdagen og kognitiv stimulering.
+5-1	337-346	Pasienten	
+5-2	347-349	er	
+5-3	350-354	enig	
+5-4	355-356	i	
+5-5	357-358	å	
+5-6	359-364	prøve	
+5-7	365-370	dette	
+5-8	370-371	,	
+5-9	372-374	og	
+5-10	375-378	hun	
+5-11	379-382	får	
+5-12	383-387	også	
+5-13	388-399	informasjon	
+5-14	400-402	om	
+5-15	403-414	viktigheten	
+5-16	415-417	av	
+5-17	418-426	struktur	
+5-18	427-428	i	
+5-19	429-438	hverdagen	
+5-20	439-441	og	
+5-21	442-450	kognitiv	
+5-22	451-462	stimulering	
+5-23	462-463	.	
+
+#Text=Datteren er involvert i omsorgen og ønsker også mer informasjon om hva de kan forvente fremover.
+6-1	464-472	Datteren	
+6-2	473-475	er	
+6-3	476-485	involvert	
+6-4	486-487	i	
+6-5	488-496	omsorgen	
+6-6	497-499	og	
+6-7	500-506	ønsker	
+6-8	507-511	også	
+6-9	512-515	mer	
+6-10	516-527	informasjon	
+6-11	528-530	om	
+6-12	531-534	hva	
+6-13	535-537	de	
+6-14	538-541	kan	
+6-15	542-550	forvente	
+6-16	551-559	fremover	
+6-17	559-560	.	
+
+#Text=Vi avtaler kontroll om 3 måneder for vurdering av effekt og eventuelle bivirkninger.
+7-1	561-563	Vi	
+7-2	564-571	avtaler	
+7-3	572-580	kontroll	
+7-4	581-583	om	
+7-5	584-585	3	
+7-6	586-593	måneder	
+7-7	594-597	for	
+7-8	598-607	vurdering	
+7-9	608-610	av	
+7-10	611-617	effekt	
+7-11	618-620	og	
+7-12	621-631	eventuelle	
+7-13	632-644	bivirkninger	
+7-14	644-645	.	

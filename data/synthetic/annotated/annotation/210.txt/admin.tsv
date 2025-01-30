@@ -1,0 +1,185 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 1 (2023-09-15)
+#Text=Thomas møtte meg i dag med klagene om flashbacks, angst, og deprimerthed etter å ha opplevd en alvorlig bilulykke for tre år siden.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	1	_	_	_	_	
+1-3	15-16	(	_	_	_	_	
+1-4	16-20	2023	_	_	_	_	
+1-5	20-21	-	_	_	_	_	
+1-6	21-23	09	_	_	_	_	
+1-7	23-24	-	_	_	_	_	
+1-8	24-26	15	_	_	_	_	
+1-9	26-27	)	_	_	_	_	
+1-10	28-34	Thomas	_	_	_	_	
+1-11	35-40	møtte	_	_	_	_	
+1-12	41-44	meg	_	_	_	_	
+1-13	45-46	i	_	_	_	_	
+1-14	47-50	dag	_	_	_	_	
+1-15	51-54	med	_	_	_	_	
+1-16	55-62	klagene	_	_	_	_	
+1-17	63-65	om	_	_	_	_	
+1-18	66-76	flashbacks	OVERLAP	CONDITION	_	_	
+1-19	76-77	,	_	_	_	_	
+1-20	78-83	angst	OVERLAP	CONDITION	_	_	
+1-21	83-84	,	_	_	_	_	
+1-22	85-87	og	_	_	_	_	
+1-23	88-100	deprimerthed	OVERLAP	CONDITION	_	_	
+1-24	101-106	etter	_	_	_	_	
+1-25	107-108	å	_	_	_	_	
+1-26	109-111	ha	_	_	_	_	
+1-27	112-119	opplevd	_	_	_	_	
+1-28	120-122	en	_	_	_	_	
+1-29	123-131	alvorlig	BEFORE[1]	CONDITION[1]	_	_	
+1-30	132-141	bilulykke	BEFORE[1]	CONDITION[1]	_	_	
+1-31	142-145	for	_	_	_	_	
+1-32	146-149	tre	_	_	_	_	
+1-33	150-152	år	_	_	_	_	
+1-34	153-158	siden	_	_	_	_	
+1-35	158-159	.	_	_	_	_	
+
+#Text=Han har en kjent diagnose av posttraumatisk stressforstyrrelse (PTSD) og har tidligere blitt behandlet med antidepressiva og traumaopprør.
+2-1	160-163	Han	_	_	_	_	
+2-2	164-167	har	_	_	_	_	
+2-3	168-170	en	_	_	_	_	
+2-4	171-176	kjent	_	_	_	_	
+2-5	177-185	diagnose	_	_	_	_	
+2-6	186-188	av	_	_	_	_	
+2-7	189-203	posttraumatisk	BEFOREOVERLAP[2]	CONDITION[2]	_	_	
+2-8	204-222	stressforstyrrelse	BEFOREOVERLAP[2]	CONDITION[2]	_	_	
+2-9	223-224	(	BEFOREOVERLAP[2]	CONDITION[2]	_	_	
+2-10	224-228	PTSD	BEFOREOVERLAP[2]	CONDITION[2]	_	_	
+2-11	228-229	)	BEFOREOVERLAP[2]	CONDITION[2]	_	_	
+2-12	230-232	og	_	_	_	_	
+2-13	233-236	har	_	_	_	_	
+2-14	237-246	tidligere	_	_	_	_	
+2-15	247-252	blitt	_	_	_	_	
+2-16	253-262	behandlet	_	_	_	_	
+2-17	263-266	med	_	_	_	_	
+2-18	267-281	antidepressiva	BEFORE	TREATMENT	_	_	
+2-19	282-284	og	_	_	_	_	
+2-20	285-297	traumaopprør	BEFORE	TREATMENT	_	_	
+2-21	297-298	.	_	_	_	_	
+
+#Text=Symptometologi har vært verre de siste månedene, og han har vanskeligheter med å fungere i dagliglivet.
+3-1	299-313	Symptometologi	_	_	_	_	
+3-2	314-317	har	_	_	_	_	
+3-3	318-322	vært	_	_	_	_	
+3-4	323-328	verre	_	_	_	_	
+3-5	329-331	de	_	_	_	_	
+3-6	332-337	siste	_	_	_	_	
+3-7	338-346	månedene	_	_	_	_	
+3-8	346-347	,	_	_	_	_	
+3-9	348-350	og	_	_	_	_	
+3-10	351-354	han	_	_	_	_	
+3-11	355-358	har	_	_	_	_	
+3-12	359-373	vanskeligheter	OVERLAP[3]	CONDITION[3]	_	_	
+3-13	374-377	med	OVERLAP[3]	CONDITION[3]	_	_	
+3-14	378-379	å	OVERLAP[3]	CONDITION[3]	_	_	
+3-15	380-387	fungere	OVERLAP[3]	CONDITION[3]	_	_	
+3-16	388-389	i	_	_	_	_	
+3-17	390-401	dagliglivet	_	_	_	_	
+3-18	401-402	.	_	_	_	_	
+
+#Text=Ved undersøkelse noterte jeg en tydelig nedstemthet, og han hadde vanskeligheter med å koncentrere seg under samtalen.
+4-1	403-406	Ved	_	_	_	_	
+4-2	407-419	undersøkelse	OVERLAP	TREATMENT	BEFORE|BEFORE|BEFORE	1-18|1-20|1-23	
+4-3	420-427	noterte	_	_	_	_	
+4-4	428-431	jeg	_	_	_	_	
+4-5	432-434	en	_	_	_	_	
+4-6	435-442	tydelig	_	_	_	_	
+4-7	443-454	nedstemthet	OVERLAP	CONDITION	BEFORE	4-2	
+4-8	454-455	,	_	_	_	_	
+4-9	456-458	og	_	_	_	_	
+4-10	459-462	han	_	_	_	_	
+4-11	463-468	hadde	_	_	_	_	
+4-12	469-483	vanskeligheter	OVERLAP[4]	CONDITION[4]	BEFORE	4-2[0_4]	
+4-13	484-487	med	OVERLAP[4]	CONDITION[4]	_	_	
+4-14	488-489	å	OVERLAP[4]	CONDITION[4]	_	_	
+4-15	490-501	koncentrere	OVERLAP[4]	CONDITION[4]	_	_	
+4-16	502-505	seg	_	_	_	_	
+4-17	506-511	under	_	_	_	_	
+4-18	512-520	samtalen	_	_	_	_	
+4-19	520-521	.	_	_	_	_	
+
+#Text=Vi tok et PHQ-9-test (Patient Health Questionnaire) for å vurdere depresjonsnivået, som viste en score på 22, noe som indikerer alvorlig depresjon.
+5-1	522-524	Vi	_	_	_	_	
+5-2	525-528	tok	_	_	_	_	
+5-3	529-531	et	_	_	_	_	
+5-4	532-535	PHQ	OVERLAP[5]	TREATMENT[5]	OVERLAP	4-2[0_5]	
+5-5	535-536	-	OVERLAP[5]	TREATMENT[5]	_	_	
+5-6	536-537	9	OVERLAP[5]	TREATMENT[5]	_	_	
+5-7	537-538	-	OVERLAP[5]	TREATMENT[5]	_	_	
+5-8	538-542	test	OVERLAP[5]	TREATMENT[5]	_	_	
+5-9	543-544	(	OVERLAP[5]	TREATMENT[5]	_	_	
+5-10	544-551	Patient	OVERLAP[5]	TREATMENT[5]	_	_	
+5-11	552-558	Health	OVERLAP[5]	TREATMENT[5]	_	_	
+5-12	559-572	Questionnaire	OVERLAP[5]	TREATMENT[5]	_	_	
+5-13	572-573	)	OVERLAP[5]	TREATMENT[5]	_	_	
+5-14	574-577	for	_	_	_	_	
+5-15	578-579	å	_	_	_	_	
+5-16	580-587	vurdere	_	_	_	_	
+5-17	588-604	depresjonsnivået	_	_	_	_	
+5-18	604-605	,	_	_	_	_	
+5-19	606-609	som	_	_	_	_	
+5-20	610-615	viste	_	_	_	_	
+5-21	616-618	en	_	_	_	_	
+5-22	619-624	score	_	_	_	_	
+5-23	625-627	på	_	_	_	_	
+5-24	628-630	22	_	_	_	_	
+5-25	630-631	,	_	_	_	_	
+5-26	632-635	noe	_	_	_	_	
+5-27	636-639	som	_	_	_	_	
+5-28	640-649	indikerer	_	_	_	_	
+5-29	650-658	alvorlig	OVERLAP[6]	CONDITION[6]	BEFORE	5-4[5_6]	
+5-30	659-668	depresjon	OVERLAP[6]	CONDITION[6]	_	_	
+5-31	668-669	.	_	_	_	_	
+
+#Text=Vi diskuterte ulike behandlingsalternativer, inkludert kognitiv atferdsterapi (KAT) og EMDR (Eye Movement Desensitization and Reprocessing).
+6-1	670-672	Vi	_	_	_	_	
+6-2	673-683	diskuterte	_	_	_	_	
+6-3	684-689	ulike	_	_	_	_	
+6-4	690-713	behandlingsalternativer	_	_	_	_	
+6-5	713-714	,	_	_	_	_	
+6-6	715-724	inkludert	_	_	_	_	
+6-7	725-733	kognitiv	AFTER[7]	TREATMENT[7]	_	_	
+6-8	734-747	atferdsterapi	AFTER[7]	TREATMENT[7]	_	_	
+6-9	748-749	(	AFTER[7]	TREATMENT[7]	_	_	
+6-10	749-752	KAT	AFTER[7]	TREATMENT[7]	_	_	
+6-11	752-753	)	AFTER[7]	TREATMENT[7]	_	_	
+6-12	754-756	og	_	_	_	_	
+6-13	757-761	EMDR	AFTER[8]	TREATMENT[8]	_	_	
+6-14	762-763	(	AFTER[8]	TREATMENT[8]	_	_	
+6-15	763-766	Eye	AFTER[8]	TREATMENT[8]	_	_	
+6-16	767-775	Movement	AFTER[8]	TREATMENT[8]	_	_	
+6-17	776-791	Desensitization	AFTER[8]	TREATMENT[8]	_	_	
+6-18	792-795	and	AFTER[8]	TREATMENT[8]	_	_	
+6-19	796-808	Reprocessing	AFTER[8]	TREATMENT[8]	_	_	
+6-20	808-809	)	AFTER[8]	TREATMENT[8]	_	_	
+6-21	809-810	.	_	_	_	_	
+
+#Text=Thomas var opptatt av sidevirkninger, så vi bestemte oss for å starte med KAT og se hvordan han reagerer.
+7-1	811-817	Thomas	_	_	_	_	
+7-2	818-821	var	_	_	_	_	
+7-3	822-829	opptatt	_	_	_	_	
+7-4	830-832	av	_	_	_	_	
+7-5	833-847	sidevirkninger	_	_	_	_	
+7-6	847-848	,	_	_	_	_	
+7-7	849-851	så	_	_	_	_	
+7-8	852-854	vi	_	_	_	_	
+7-9	855-863	bestemte	_	_	_	_	
+7-10	864-867	oss	_	_	_	_	
+7-11	868-871	for	_	_	_	_	
+7-12	872-873	å	_	_	_	_	
+7-13	874-880	starte	_	_	_	_	
+7-14	881-884	med	_	_	_	_	
+7-15	885-888	KAT	_	_	_	_	
+7-16	889-891	og	_	_	_	_	
+7-17	892-894	se	_	_	_	_	
+7-18	895-902	hvordan	_	_	_	_	
+7-19	903-906	han	_	_	_	_	
+7-20	907-915	reagerer	_	_	_	_	
+7-21	915-916	.	_	_	_	_	

@@ -1,0 +1,118 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Notat 2 - 01.09.2024:
+#Text=Arbeids-EKG viser tegn til iskemiske forandringer ved moderat belastning.
+1-1	0-5	Notat	_	_	_	_	
+1-2	6-7	2	_	_	_	_	
+1-3	8-9	-	_	_	_	_	
+1-4	10-20	01.09.2024	_	_	_	_	
+1-5	20-21	:	_	_	_	_	
+1-6	22-33	Arbeids-EKG	OVERLAP	TREATMENT	_	_	
+1-7	34-39	viser	_	_	_	_	
+1-8	40-44	tegn	_	_	_	_	
+1-9	45-48	til	_	_	_	_	
+1-10	49-58	iskemiske	OVERLAP[1]	CONDITION[1]	_	_	
+1-11	59-71	forandringer	OVERLAP[1]	CONDITION[1]	_	_	
+1-12	72-75	ved	OVERLAP[1]	CONDITION[1]	_	_	
+1-13	76-83	moderat	OVERLAP[1]	CONDITION[1]	_	_	
+1-14	84-94	belastning	OVERLAP[1]	CONDITION[1]	_	_	
+1-15	94-95	.	_	_	_	_	
+
+#Text=Pasienten opplevde lignende brystsmerter som tidligere ved testen.
+2-1	96-105	Pasienten	_	_	_	_	
+2-2	106-114	opplevde	_	_	_	_	
+2-3	115-123	lignende	OVERLAP[2]	CONDITION[2]	_	_	
+2-4	124-136	brystsmerter	OVERLAP[2]	CONDITION[2]	_	_	
+2-5	137-140	som	_	_	_	_	
+2-6	141-150	tidligere	_	_	_	_	
+2-7	151-154	ved	_	_	_	_	
+2-8	155-161	testen	_	_	_	_	
+2-9	161-162	.	_	_	_	_	
+
+#Text=Vi diskuterer funnene sammen, og pasienten uttrykker bekymring for hjertehelsen.
+3-1	163-165	Vi	_	_	_	_	
+3-2	166-176	diskuterer	_	_	_	_	
+3-3	177-184	funnene	_	_	_	_	
+3-4	185-191	sammen	_	_	_	_	
+3-5	191-192	,	_	_	_	_	
+3-6	193-195	og	_	_	_	_	
+3-7	196-205	pasienten	_	_	_	_	
+3-8	206-215	uttrykker	_	_	_	_	
+3-9	216-225	bekymring	_	_	_	_	
+3-10	226-229	for	_	_	_	_	
+3-11	230-242	hjertehelsen	_	_	_	_	
+3-12	242-243	.	_	_	_	_	
+
+#Text=Han opplyser om at faren døde av hjerteinfarkt i 70-årene.
+4-1	244-247	Han	_	_	_	_	
+4-2	248-256	opplyser	_	_	_	_	
+4-3	257-259	om	_	_	_	_	
+4-4	260-262	at	_	_	_	_	
+4-5	263-268	faren	_	_	_	_	
+4-6	269-273	døde	_	_	_	_	
+4-7	274-276	av	_	_	_	_	
+4-8	277-290	hjerteinfarkt	_	_	_	_	
+4-9	291-292	i	_	_	_	_	
+4-10	293-295	70	_	_	_	_	
+4-11	295-296	-	_	_	_	_	
+4-12	296-301	årene	_	_	_	_	
+4-13	301-302	.	_	_	_	_	
+
+#Text=Jeg henviser pasienten til koronar angiografi for nærmere kartlegging av koronararteriene.
+5-1	303-306	Jeg	_	_	_	_	
+5-2	307-315	henviser	_	_	_	_	
+5-3	316-325	pasienten	_	_	_	_	
+5-4	326-329	til	_	_	_	_	
+5-5	330-337	koronar	AFTER[3]	TREATMENT[3]	_	_	
+5-6	338-348	angiografi	AFTER[3]	TREATMENT[3]	_	_	
+5-7	349-352	for	_	_	_	_	
+5-8	353-360	nærmere	_	_	_	_	
+5-9	361-372	kartlegging	_	_	_	_	
+5-10	373-375	av	_	_	_	_	
+5-11	376-392	koronararteriene	_	_	_	_	
+5-12	392-393	.	_	_	_	_	
+
+#Text=Inntil videre anbefaler jeg at han bruker nitroglyserin ved behov for å lindre anfallene.
+6-1	394-400	Inntil	_	_	_	_	
+6-2	401-407	videre	_	_	_	_	
+6-3	408-417	anbefaler	_	_	_	_	
+6-4	418-421	jeg	_	_	_	_	
+6-5	422-424	at	_	_	_	_	
+6-6	425-428	han	_	_	_	_	
+6-7	429-435	bruker	_	_	_	_	
+6-8	436-449	nitroglyserin	AFTER	TREATMENT	_	_	
+6-9	450-453	ved	_	_	_	_	
+6-10	454-459	behov	_	_	_	_	
+6-11	460-463	for	_	_	_	_	
+6-12	464-465	å	_	_	_	_	
+6-13	466-472	lindre	_	_	_	_	
+6-14	473-482	anfallene	_	_	_	_	
+6-15	482-483	.	_	_	_	_	
+
+#Text=Vi snakker også om viktigheten av å fortsette med antihypertensiv behandling og livsstilsendringer, særlig med tanke på kosthold og fysisk aktivitet.
+7-1	484-486	Vi	_	_	_	_	
+7-2	487-494	snakker	_	_	_	_	
+7-3	495-499	også	_	_	_	_	
+7-4	500-502	om	_	_	_	_	
+7-5	503-514	viktigheten	_	_	_	_	
+7-6	515-517	av	_	_	_	_	
+7-7	518-519	å	_	_	_	_	
+7-8	520-529	fortsette	_	_	_	_	
+7-9	530-533	med	_	_	_	_	
+7-10	534-549	antihypertensiv	AFTER[4]	TREATMENT[4]	_	_	
+7-11	550-560	behandling	AFTER[4]	TREATMENT[4]	_	_	
+7-12	561-563	og	_	_	_	_	
+7-13	564-582	livsstilsendringer	AFTER	TREATMENT	_	_	
+7-14	582-583	,	_	_	_	_	
+7-15	584-590	særlig	_	_	_	_	
+7-16	591-594	med	_	_	_	_	
+7-17	595-600	tanke	_	_	_	_	
+7-18	601-603	på	_	_	_	_	
+7-19	604-612	kosthold	AFTER	TREATMENT	OVERLAP	7-13	
+7-20	613-615	og	_	_	_	_	
+7-21	616-622	fysisk	AFTER[5]	TREATMENT[5]	OVERLAP	7-13[0_5]	
+7-22	623-632	aktivitet	AFTER[5]	TREATMENT[5]	_	_	
+7-23	632-633	.	_	_	_	_	

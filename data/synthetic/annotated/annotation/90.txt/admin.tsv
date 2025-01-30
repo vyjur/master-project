@@ -1,0 +1,49 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 1 - 10.01.2025
+#Text=Førstegangs konsultasjon vedrørende vedvarende tretthet og vektøkning.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	1	_	_	_	_	
+1-3	15-16	-	_	_	_	_	
+1-4	17-27	10.01.2025	_	_	_	_	
+1-5	28-39	Førstegangs	_	_	_	_	
+1-6	40-52	konsultasjon	OVERLAP	TREATMENT	_	_	
+1-7	53-63	vedrørende	_	_	_	_	
+1-8	64-74	vedvarende	OVERLAP[1]	CONDITION[1]	_	_	
+1-9	75-83	tretthet	OVERLAP[1]	CONDITION[1]	_	_	
+1-10	84-86	og	_	_	_	_	
+1-11	87-97	vektøkning	OVERLAP	CONDITION	_	_	
+1-12	97-98	.	_	_	_	_	
+
+#Text=Objektiv undersøkelse og blodprøver avdekker mistanke om autoimmun thyreoiditt.
+2-1	99-107	Objektiv	OVERLAP[2]	TREATMENT[2]	BEFORE	1-6[0_2]	
+2-2	108-120	undersøkelse	OVERLAP[2]	TREATMENT[2]	_	_	
+2-3	121-123	og	_	_	_	_	
+2-4	124-134	blodprøver	OVERLAP	TREATMENT	OVERLAP	2-1[2_0]	
+2-5	135-143	avdekker	_	_	_	_	
+2-6	144-152	mistanke	_	_	_	_	
+2-7	153-155	om	_	_	_	_	
+2-8	156-165	autoimmun	OVERLAP[3]	CONDITION[3]	BEFORE	2-4[0_3]	
+2-9	166-177	thyreoiditt	OVERLAP[3]	CONDITION[3]	_	_	
+2-10	177-178	.	_	_	_	_	
+
+#Text=Påvist lave T4-verdier og forhøyede thyreoidea-antistoffer.
+3-1	179-185	Påvist	_	_	_	_	
+3-2	186-190	lave	OVERLAP[4]	CONDITION[4]	OVERLAP	2-1[2_4]	
+3-3	191-193	T4	OVERLAP[4]	CONDITION[4]	_	_	
+3-4	193-194	-	OVERLAP[4]	CONDITION[4]	_	_	
+3-5	194-201	verdier	OVERLAP[4]	CONDITION[4]	_	_	
+3-6	202-204	og	_	_	_	_	
+3-7	205-214	forhøyede	OVERLAP[5]	CONDITION[5]	*	2-1[2_5]	
+3-8	215-237	thyreoidea-antistoffer	OVERLAP[5]	CONDITION[5]	_	_	
+3-9	237-238	.	_	_	_	_	
+
+#Text=Starter substitusjonsbehandling med levothyroxin.
+4-1	239-246	Starter	_	_	_	_	
+4-2	247-270	substitusjonsbehandling	AFTER[6]	TREATMENT[6]	_	_	
+4-3	271-274	med	AFTER[6]	TREATMENT[6]	_	_	
+4-4	275-287	levothyroxin	AFTER[6]	TREATMENT[6]	_	_	
+4-5	287-288	.	_	_	_	_	

@@ -1,0 +1,106 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 5 (2023-12-08)
+#Text=Kari kom inn til siste oppfølging i dag.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	5	_	_	_	_	
+1-3	15-16	(	_	_	_	_	
+1-4	16-20	2023	_	_	_	_	
+1-5	20-21	-	_	_	_	_	
+1-6	21-23	12	_	_	_	_	
+1-7	23-24	-	_	_	_	_	
+1-8	24-26	08	_	_	_	_	
+1-9	26-27	)	_	_	_	_	
+1-10	28-32	Kari	_	_	_	_	
+1-11	33-36	kom	_	_	_	_	
+1-12	37-40	inn	_	_	_	_	
+1-13	41-44	til	_	_	_	_	
+1-14	45-50	siste	_	_	_	_	
+1-15	51-61	oppfølging	OVERLAP	TREATMENT	_	_	
+1-16	62-63	i	_	_	_	_	
+1-17	64-67	dag	_	_	_	_	
+1-18	67-68	.	_	_	_	_	
+
+#Text=Hun rapporterte at alt gikk bra, og at hun kunne leve et nærmest normalt liv.
+2-1	69-72	Hun	_	_	_	_	
+2-2	73-84	rapporterte	_	_	_	_	
+2-3	85-87	at	_	_	_	_	
+2-4	88-91	alt	_	_	_	_	
+2-5	92-96	gikk	_	_	_	_	
+2-6	97-100	bra	_	_	_	_	
+2-7	100-101	,	_	_	_	_	
+2-8	102-104	og	_	_	_	_	
+2-9	105-107	at	_	_	_	_	
+2-10	108-111	hun	_	_	_	_	
+2-11	112-117	kunne	_	_	_	_	
+2-12	118-122	leve	_	_	_	_	
+2-13	123-125	et	_	_	_	_	
+2-14	126-133	nærmest	_	_	_	_	
+2-15	134-141	normalt	_	_	_	_	
+2-16	142-145	liv	_	_	_	_	
+2-17	145-146	.	_	_	_	_	
+
+#Text=Tumoren var nesten borte, og hun hadde fått bedre appetitt.
+3-1	147-154	Tumoren	OVERLAP	CONDITION	_	_	
+3-2	155-158	var	_	_	_	_	
+3-3	159-165	nesten	_	_	_	_	
+3-4	166-171	borte	_	_	_	_	
+3-5	171-172	,	_	_	_	_	
+3-6	173-175	og	_	_	_	_	
+3-7	176-179	hun	_	_	_	_	
+3-8	180-185	hadde	_	_	_	_	
+3-9	186-190	fått	_	_	_	_	
+3-10	191-196	bedre	OVERLAP[1]	CONDITION[1]	_	_	
+3-11	197-205	appetitt	OVERLAP[1]	CONDITION[1]	_	_	
+3-12	205-206	.	_	_	_	_	
+
+#Text=Vi diskuterede viktigheten av å holde seg fysisk aktiv og unngå stress.
+4-1	207-209	Vi	_	_	_	_	
+4-2	210-221	diskuterede	_	_	_	_	
+4-3	222-233	viktigheten	_	_	_	_	
+4-4	234-236	av	_	_	_	_	
+4-5	237-238	å	_	_	_	_	
+4-6	239-244	holde	_	_	_	_	
+4-7	245-248	seg	_	_	_	_	
+4-8	249-255	fysisk	AFTER[2]	TREATMENT[2]	_	_	
+4-9	256-261	aktiv	AFTER[2]	TREATMENT[2]	_	_	
+4-10	262-264	og	_	_	_	_	
+4-11	265-270	unngå	AFTER[3]	TREATMENT[3]	_	_	
+4-12	271-277	stress	AFTER[3]	TREATMENT[3]	_	_	
+4-13	277-278	.	_	_	_	_	
+
+#Text=Kari var meget tilfreds med resultatet av behandlingen og takket meg for støtten.
+5-1	279-283	Kari	_	_	_	_	
+5-2	284-287	var	_	_	_	_	
+5-3	288-293	meget	_	_	_	_	
+5-4	294-302	tilfreds	_	_	_	_	
+5-5	303-306	med	_	_	_	_	
+5-6	307-317	resultatet	_	_	_	_	
+5-7	318-320	av	_	_	_	_	
+5-8	321-333	behandlingen	_	_	_	_	
+5-9	334-336	og	_	_	_	_	
+5-10	337-343	takket	_	_	_	_	
+5-11	344-347	meg	_	_	_	_	
+5-12	348-351	for	_	_	_	_	
+5-13	352-359	støtten	_	_	_	_	
+5-14	359-360	.	_	_	_	_	
+
+#Text=Vi planla en oppfølging om ett år for å sikre at alt går godt.
+6-1	361-363	Vi	_	_	_	_	
+6-2	364-370	planla	_	_	_	_	
+6-3	371-373	en	_	_	_	_	
+6-4	374-384	oppfølging	AFTER	TREATMENT	BEFORE|BEFORE	4-8[2_0]|4-11[3_0]	
+6-5	385-387	om	_	_	_	_	
+6-6	388-391	ett	_	_	_	_	
+6-7	392-394	år	_	_	_	_	
+6-8	395-398	for	_	_	_	_	
+6-9	399-400	å	_	_	_	_	
+6-10	401-406	sikre	_	_	_	_	
+6-11	407-409	at	_	_	_	_	
+6-12	410-413	alt	_	_	_	_	
+6-13	414-417	går	_	_	_	_	
+6-14	418-422	godt	_	_	_	_	
+6-15	422-423	.	_	_	_	_	

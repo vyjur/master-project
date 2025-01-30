@@ -1,0 +1,94 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 1 - 10.07.2023**
+#Text=
+#Text=Pasienten, en 80-årig kvinne, kommer til klinikken med symptomer på demens, inkludert hukommelsesvansker, forvirring og vansker med å kommunisere.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	1	_	_	_	_	
+1-3	15-16	-	_	_	_	_	
+1-4	17-27	10.07.2023	_	_	_	_	
+1-5	27-28	*	_	_	_	_	
+1-6	28-29	*	_	_	_	_	
+1-7	31-40	Pasienten	_	_	_	_	
+1-8	40-41	,	_	_	_	_	
+1-9	42-44	en	_	_	_	_	
+1-10	45-47	80	_	_	_	_	
+1-11	47-48	-	_	_	_	_	
+1-12	48-52	årig	_	_	_	_	
+1-13	53-59	kvinne	_	_	_	_	
+1-14	59-60	,	_	_	_	_	
+1-15	61-67	kommer	_	_	_	_	
+1-16	68-71	til	_	_	_	_	
+1-17	72-81	klinikken	_	_	_	_	
+1-18	82-85	med	_	_	_	_	
+1-19	86-95	symptomer	OVERLAP[1]	CONDITION[1]	_	_	
+1-20	96-98	på	OVERLAP[1]	CONDITION[1]	_	_	
+1-21	99-105	demens	OVERLAP[1]	CONDITION[1]	_	_	
+1-22	105-106	,	_	_	_	_	
+1-23	107-116	inkludert	_	_	_	_	
+1-24	117-135	hukommelsesvansker	OVERLAP	CONDITION	OVERLAP	1-19[1_0]	
+1-25	135-136	,	_	_	_	_	
+1-26	137-147	forvirring	OVERLAP	CONDITION	OVERLAP	1-19[1_0]	
+1-27	148-150	og	_	_	_	_	
+1-28	151-158	vansker	OVERLAP[2]	CONDITION[2]	OVERLAP	1-19[1_2]	
+1-29	159-162	med	OVERLAP[2]	CONDITION[2]	_	_	
+1-30	163-164	å	OVERLAP[2]	CONDITION[2]	_	_	
+1-31	165-176	kommunisere	OVERLAP[2]	CONDITION[2]	_	_	
+1-32	176-177	.	_	_	_	_	
+
+#Text=Hun har tidligere vært frisk og aktiv, men har merket en gradvis forverring av symptomer over de siste årene.
+2-1	178-181	Hun	_	_	_	_	
+2-2	182-185	har	_	_	_	_	
+2-3	186-195	tidligere	_	_	_	_	
+2-4	196-200	vært	_	_	_	_	
+2-5	201-206	frisk	_	_	_	_	
+2-6	207-209	og	_	_	_	_	
+2-7	210-215	aktiv	_	_	_	_	
+2-8	215-216	,	_	_	_	_	
+2-9	217-220	men	_	_	_	_	
+2-10	221-224	har	_	_	_	_	
+2-11	225-231	merket	_	_	_	_	
+2-12	232-234	en	_	_	_	_	
+2-13	235-242	gradvis	_	_	_	_	
+2-14	243-253	forverring	_	_	_	_	
+2-15	254-256	av	_	_	_	_	
+2-16	257-266	symptomer	_	_	_	_	
+2-17	267-271	over	_	_	_	_	
+2-18	272-274	de	_	_	_	_	
+2-19	275-280	siste	_	_	_	_	
+2-20	281-286	årene	_	_	_	_	
+2-21	286-287	.	_	_	_	_	
+
+#Text=Ved undersøkelse finner jeg en reduksjon i kognitiv funksjon og en øket MMSE-nivå.
+3-1	288-291	Ved	_	_	_	_	
+3-2	292-304	undersøkelse	AFTER	TREATMENT	BEFORE	1-19[1_0]	
+3-3	305-311	finner	_	_	_	_	
+3-4	312-315	jeg	_	_	_	_	
+3-5	316-318	en	_	_	_	_	
+3-6	319-328	reduksjon	OVERLAP[3]	CONDITION[3]	BEFORE	3-2[0_3]	
+3-7	329-330	i	OVERLAP[3]	CONDITION[3]	_	_	
+3-8	331-339	kognitiv	OVERLAP[3]	CONDITION[3]	_	_	
+3-9	340-348	funksjon	OVERLAP[3]	CONDITION[3]	_	_	
+3-10	349-351	og	_	_	_	_	
+3-11	352-354	en	_	_	_	_	
+3-12	355-359	øket	OVERLAP[4]	CONDITION[4]	BEFORE	3-2[0_4]	
+3-13	360-369	MMSE-nivå	OVERLAP[4]	CONDITION[4]	_	_	
+3-14	369-370	.	_	_	_	_	
+
+#Text=Jeg starter pasienten på en behandling med kolinesteraseinhibitorer for å kontrollere symptomer.
+4-1	371-374	Jeg	_	_	_	_	
+4-2	375-382	starter	_	_	_	_	
+4-3	383-392	pasienten	_	_	_	_	
+4-4	393-395	på	_	_	_	_	
+4-5	396-398	en	_	_	_	_	
+4-6	399-409	behandling	AFTER	TREATMENT	_	_	
+4-7	410-413	med	_	_	_	_	
+4-8	414-438	kolinesteraseinhibitorer	AFTER	TREATMENT	OVERLAP	4-6	
+4-9	439-442	for	_	_	_	_	
+4-10	443-444	å	_	_	_	_	
+4-11	445-456	kontrollere	_	_	_	_	
+4-12	457-466	symptomer	_	_	_	_	
+4-13	466-467	.	_	_	_	_	

@@ -1,0 +1,146 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 2 (2023-09-26)
+#Text=Ingeborg kom inn til oppfølging etter mottak av röntgenresultater.
+1-1	0-12	Journalnotat	
+1-2	13-14	2	
+1-3	15-16	(	
+1-4	16-20	2023	
+1-5	20-21	-	
+1-6	21-23	09	
+1-7	23-24	-	
+1-8	24-26	26	
+1-9	26-27	)	
+1-10	28-36	Ingeborg	
+1-11	37-40	kom	
+1-12	41-44	inn	
+1-13	45-48	til	
+1-14	49-59	oppfølging	
+1-15	60-65	etter	
+1-16	66-72	mottak	
+1-17	73-75	av	
+1-18	76-93	röntgenresultater	
+1-19	93-94	.	
+
+#Text=Bildene viser fremskritt i osteoartritis, med tydelige tegn på degenerasjon av kneleddene.
+2-1	95-102	Bildene	
+2-2	103-108	viser	
+2-3	109-119	fremskritt	
+2-4	120-121	i	
+2-5	122-135	osteoartritis	
+2-6	135-136	,	
+2-7	137-140	med	
+2-8	141-149	tydelige	
+2-9	150-154	tegn	
+2-10	155-157	på	
+2-11	158-170	degenerasjon	
+2-12	171-173	av	
+2-13	174-184	kneleddene	
+2-14	184-185	.	
+
+#Text=Smertene var marginalt bedret, men hun hadde fortsatt vanskeligheter med å gå uten støtte.
+3-1	186-194	Smertene	
+3-2	195-198	var	
+3-3	199-208	marginalt	
+3-4	209-215	bedret	
+3-5	215-216	,	
+3-6	217-220	men	
+3-7	221-224	hun	
+3-8	225-230	hadde	
+3-9	231-239	fortsatt	
+3-10	240-254	vanskeligheter	
+3-11	255-258	med	
+3-12	259-260	å	
+3-13	261-263	gå	
+3-14	264-268	uten	
+3-15	269-275	støtte	
+3-16	275-276	.	
+
+#Text=Fysioterapeuten rapporterte at Ingeborg hadde gjort gode fremsteg med muskelstyrking, men at hun fortsatte å ha problemer med bevegelsesgraden.
+4-1	277-292	Fysioterapeuten	
+4-2	293-304	rapporterte	
+4-3	305-307	at	
+4-4	308-316	Ingeborg	
+4-5	317-322	hadde	
+4-6	323-328	gjort	
+4-7	329-333	gode	
+4-8	334-342	fremsteg	
+4-9	343-346	med	
+4-10	347-361	muskelstyrking	
+4-11	361-362	,	
+4-12	363-366	men	
+4-13	367-369	at	
+4-14	370-373	hun	
+4-15	374-383	fortsatte	
+4-16	384-385	å	
+4-17	386-388	ha	
+4-18	389-398	problemer	
+4-19	399-402	med	
+4-20	403-419	bevegelsesgraden	
+4-21	419-420	.	
+
+#Text=Vi diskuterede ulike behandlingsalternativer, inkludert bruk av hyaluronsyreinjeksjoner for å redusere smerte og inflammasjon.
+5-1	421-423	Vi	
+5-2	424-435	diskuterede	
+5-3	436-441	ulike	
+5-4	442-465	behandlingsalternativer	
+5-5	465-466	,	
+5-6	467-476	inkludert	
+5-7	477-481	bruk	
+5-8	482-484	av	
+5-9	485-508	hyaluronsyreinjeksjoner	
+5-10	509-512	for	
+5-11	513-514	å	
+5-12	515-523	redusere	
+5-13	524-530	smerte	
+5-14	531-533	og	
+5-15	534-546	inflammasjon	
+5-16	546-547	.	
+
+#Text=Ingeborg var positiv til dette, men hun uttrykte bekymring for sidevirkninger.
+6-1	548-556	Ingeborg	
+6-2	557-560	var	
+6-3	561-568	positiv	
+6-4	569-572	til	
+6-5	573-578	dette	
+6-6	578-579	,	
+6-7	580-583	men	
+6-8	584-587	hun	
+6-9	588-596	uttrykte	
+6-10	597-606	bekymring	
+6-11	607-610	for	
+6-12	611-625	sidevirkninger	
+6-13	625-626	.	
+
+#Text=Vi bestemte oss for å starte med en serie av injeksjoner over seks uker og se hvordan hun reagerer.
+7-1	627-629	Vi	
+7-2	630-638	bestemte	
+7-3	639-642	oss	
+7-4	643-646	for	
+7-5	647-648	å	
+7-6	649-655	starte	
+7-7	656-659	med	
+7-8	660-662	en	
+7-9	663-668	serie	
+7-10	669-671	av	
+7-11	672-683	injeksjoner	
+7-12	684-688	over	
+7-13	689-693	seks	
+7-14	694-698	uker	
+7-15	699-701	og	
+7-16	702-704	se	
+7-17	705-712	hvordan	
+7-18	713-716	hun	
+7-19	717-725	reagerer	
+7-20	725-726	.	
+
+#Text=Vi planla en oppfølging om fire uker.
+8-1	727-729	Vi	
+8-2	730-736	planla	
+8-3	737-739	en	
+8-4	740-750	oppfølging	
+8-5	751-753	om	
+8-6	754-758	fire	
+8-7	759-763	uker	
+8-8	763-764	.	

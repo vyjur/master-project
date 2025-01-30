@@ -1,0 +1,148 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 2 (2023-09-26)
+#Text=Ingeborg kom inn til oppfølging etter mottak av röntgenresultater.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	2	_	_	_	_	
+1-3	15-16	(	_	_	_	_	
+1-4	16-20	2023	_	_	_	_	
+1-5	20-21	-	_	_	_	_	
+1-6	21-23	09	_	_	_	_	
+1-7	23-24	-	_	_	_	_	
+1-8	24-26	26	_	_	_	_	
+1-9	26-27	)	_	_	_	_	
+1-10	28-36	Ingeborg	_	_	_	_	
+1-11	37-40	kom	_	_	_	_	
+1-12	41-44	inn	_	_	_	_	
+1-13	45-48	til	_	_	_	_	
+1-14	49-59	oppfølging	OVERLAP	TREATMENT	_	_	
+1-15	60-65	etter	_	_	_	_	
+1-16	66-72	mottak	BEFORE[1]	TREATMENT[1]	_	_	
+1-17	73-75	av	BEFORE[1]	TREATMENT[1]	_	_	
+1-18	76-93	röntgenresultater	BEFORE[1]	TREATMENT[1]	_	_	
+1-19	93-94	.	_	_	_	_	
+
+#Text=Bildene viser fremskritt i osteoartritis, med tydelige tegn på degenerasjon av kneleddene.
+2-1	95-102	Bildene	_	_	_	_	
+2-2	103-108	viser	_	_	_	_	
+2-3	109-119	fremskritt	OVERLAP[2]	CONDITION[2]	_	_	
+2-4	120-121	i	OVERLAP[2]	CONDITION[2]	_	_	
+2-5	122-135	osteoartritis	OVERLAP[2]	CONDITION[2]	_	_	
+2-6	135-136	,	_	_	_	_	
+2-7	137-140	med	_	_	_	_	
+2-8	141-149	tydelige	_	_	_	_	
+2-9	150-154	tegn	_	_	_	_	
+2-10	155-157	på	_	_	_	_	
+2-11	158-170	degenerasjon	OVERLAP[3]	CONDITION[3]	OVERLAP	2-3[2_3]	
+2-12	171-173	av	OVERLAP[3]	CONDITION[3]	_	_	
+2-13	174-184	kneleddene	OVERLAP[3]	CONDITION[3]	_	_	
+2-14	184-185	.	_	_	_	_	
+
+#Text=Smertene var marginalt bedret, men hun hadde fortsatt vanskeligheter med å gå uten støtte.
+3-1	186-194	Smertene	OVERLAP	CONDITION	_	_	
+3-2	195-198	var	_	_	_	_	
+3-3	199-208	marginalt	_	_	_	_	
+3-4	209-215	bedret	_	_	_	_	
+3-5	215-216	,	_	_	_	_	
+3-6	217-220	men	_	_	_	_	
+3-7	221-224	hun	_	_	_	_	
+3-8	225-230	hadde	_	_	_	_	
+3-9	231-239	fortsatt	_	_	_	_	
+3-10	240-254	vanskeligheter	OVERLAP[4]	CONDITION[4]	OVERLAP	4-18[5_4]	
+3-11	255-258	med	OVERLAP[4]	CONDITION[4]	_	_	
+3-12	259-260	å	OVERLAP[4]	CONDITION[4]	_	_	
+3-13	261-263	gå	OVERLAP[4]	CONDITION[4]	_	_	
+3-14	264-268	uten	_	_	_	_	
+3-15	269-275	støtte	_	_	_	_	
+3-16	275-276	.	_	_	_	_	
+
+#Text=Fysioterapeuten rapporterte at Ingeborg hadde gjort gode fremsteg med muskelstyrking, men at hun fortsatte å ha problemer med bevegelsesgraden.
+4-1	277-292	Fysioterapeuten	_	_	_	_	
+4-2	293-304	rapporterte	_	_	_	_	
+4-3	305-307	at	_	_	_	_	
+4-4	308-316	Ingeborg	_	_	_	_	
+4-5	317-322	hadde	_	_	_	_	
+4-6	323-328	gjort	_	_	_	_	
+4-7	329-333	gode	_	_	_	_	
+4-8	334-342	fremsteg	_	_	_	_	
+4-9	343-346	med	_	_	_	_	
+4-10	347-361	muskelstyrking	_	_	_	_	
+4-11	361-362	,	_	_	_	_	
+4-12	363-366	men	_	_	_	_	
+4-13	367-369	at	_	_	_	_	
+4-14	370-373	hun	_	_	_	_	
+4-15	374-383	fortsatte	_	_	_	_	
+4-16	384-385	å	_	_	_	_	
+4-17	386-388	ha	_	_	_	_	
+4-18	389-398	problemer	OVERLAP[5]	CONDITION[5]	_	_	
+4-19	399-402	med	OVERLAP[5]	CONDITION[5]	_	_	
+4-20	403-419	bevegelsesgraden	OVERLAP[5]	CONDITION[5]	_	_	
+4-21	419-420	.	_	_	_	_	
+
+#Text=Vi diskuterede ulike behandlingsalternativer, inkludert bruk av hyaluronsyreinjeksjoner for å redusere smerte og inflammasjon.
+5-1	421-423	Vi	_	_	_	_	
+5-2	424-435	diskuterede	_	_	_	_	
+5-3	436-441	ulike	_	_	_	_	
+5-4	442-465	behandlingsalternativer	_	_	_	_	
+5-5	465-466	,	_	_	_	_	
+5-6	467-476	inkludert	_	_	_	_	
+5-7	477-481	bruk	_	_	_	_	
+5-8	482-484	av	_	_	_	_	
+5-9	485-508	hyaluronsyreinjeksjoner	AFTER	TREATMENT	_	_	
+5-10	509-512	for	_	_	_	_	
+5-11	513-514	å	_	_	_	_	
+5-12	515-523	redusere	_	_	_	_	
+5-13	524-530	smerte	_	_	_	_	
+5-14	531-533	og	_	_	_	_	
+5-15	534-546	inflammasjon	_	_	_	_	
+5-16	546-547	.	_	_	_	_	
+
+#Text=Ingeborg var positiv til dette, men hun uttrykte bekymring for sidevirkninger.
+6-1	548-556	Ingeborg	_	_	_	_	
+6-2	557-560	var	_	_	_	_	
+6-3	561-568	positiv	_	_	_	_	
+6-4	569-572	til	_	_	_	_	
+6-5	573-578	dette	_	_	_	_	
+6-6	578-579	,	_	_	_	_	
+6-7	580-583	men	_	_	_	_	
+6-8	584-587	hun	_	_	_	_	
+6-9	588-596	uttrykte	_	_	_	_	
+6-10	597-606	bekymring	_	_	_	_	
+6-11	607-610	for	_	_	_	_	
+6-12	611-625	sidevirkninger	_	_	_	_	
+6-13	625-626	.	_	_	_	_	
+
+#Text=Vi bestemte oss for å starte med en serie av injeksjoner over seks uker og se hvordan hun reagerer.
+7-1	627-629	Vi	_	_	_	_	
+7-2	630-638	bestemte	_	_	_	_	
+7-3	639-642	oss	_	_	_	_	
+7-4	643-646	for	_	_	_	_	
+7-5	647-648	å	_	_	_	_	
+7-6	649-655	starte	_	_	_	_	
+7-7	656-659	med	_	_	_	_	
+7-8	660-662	en	_	_	_	_	
+7-9	663-668	serie	_	_	_	_	
+7-10	669-671	av	_	_	_	_	
+7-11	672-683	injeksjoner	_	_	_	_	
+7-12	684-688	over	_	_	_	_	
+7-13	689-693	seks	_	_	_	_	
+7-14	694-698	uker	_	_	_	_	
+7-15	699-701	og	_	_	_	_	
+7-16	702-704	se	_	_	_	_	
+7-17	705-712	hvordan	_	_	_	_	
+7-18	713-716	hun	_	_	_	_	
+7-19	717-725	reagerer	_	_	_	_	
+7-20	725-726	.	_	_	_	_	
+
+#Text=Vi planla en oppfølging om fire uker.
+8-1	727-729	Vi	_	_	_	_	
+8-2	730-736	planla	_	_	_	_	
+8-3	737-739	en	_	_	_	_	
+8-4	740-750	oppfølging	AFTER	TREATMENT	BEFORE	5-9	
+8-5	751-753	om	_	_	_	_	
+8-6	754-758	fire	_	_	_	_	
+8-7	759-763	uker	_	_	_	_	
+8-8	763-764	.	_	_	_	_	

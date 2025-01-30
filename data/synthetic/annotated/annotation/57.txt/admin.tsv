@@ -1,0 +1,52 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=20.07.2023:
+#Text=To episoder med palpitasjoner siste måned, selvkonverterende.
+1-1	0-10	20.07.2023	_	_	_	_	
+1-2	10-11	:	_	_	_	_	
+1-3	12-14	To	_	_	_	_	
+1-4	15-23	episoder	_	_	_	_	
+1-5	24-27	med	_	_	_	_	
+1-6	28-41	palpitasjoner	BEFOREOVERLAP	CONDITION	_	_	
+1-7	42-47	siste	_	_	_	_	
+1-8	48-53	måned	_	_	_	_	
+1-9	53-54	,	_	_	_	_	
+1-10	55-72	selvkonverterende	_	_	_	_	
+1-11	72-73	.	_	_	_	_	
+
+#Text=EKG i dag viser sinusrytme.
+2-1	74-77	EKG	OVERLAP	CONDITION	_	_	
+2-2	78-79	i	_	_	_	_	
+2-3	80-83	dag	_	_	_	_	
+2-4	84-89	viser	_	_	_	_	
+2-5	90-100	sinusrytme	OVERLAP	CONDITION	BEFORE	2-1	
+2-6	100-101	.	_	_	_	_	
+
+#Text=Øker Metoprolol til 100mg x1.
+3-1	102-106	Øker	AFTER[1]	TREATMENT[1]	OVERLAP	5-1[2_1]	
+3-2	107-117	Metoprolol	AFTER[1]	TREATMENT[1]	_	_	
+3-3	118-121	til	AFTER[1]	TREATMENT[1]	_	_	
+3-4	122-127	100mg	AFTER[1]	TREATMENT[1]	_	_	
+3-5	128-130	x1	_	_	_	_	
+3-6	130-131	.	_	_	_	_	
+
+#Text=Fortsetter Eliquis uendret.
+4-1	132-142	Fortsetter	_	_	_	_	
+4-2	143-150	Eliquis	AFTER	TREATMENT	OVERLAP|OVERLAP	3-1[1_0]|5-1[2_0]	
+4-3	151-158	uendret	_	_	_	_	
+4-4	158-159	.	_	_	_	_	
+
+#Text=Henviser til Holter-monitorering.
+5-1	160-168	Henviser	AFTER[2]	TREATMENT[2]	OVERLAP	4-2[0_2]	
+5-2	169-172	til	AFTER[2]	TREATMENT[2]	_	_	
+5-3	173-192	Holter-monitorering	AFTER[2]	TREATMENT[2]	_	_	
+5-4	192-193	.	_	_	_	_	
+
+#Text=Kontroll etter denne.
+6-1	194-202	Kontroll	AFTER	TREATMENT	OVERLAP	5-1[2_0]	
+6-2	203-208	etter	_	_	_	_	
+6-3	209-214	denne	_	_	_	_	
+6-4	214-215	.	_	_	_	_	

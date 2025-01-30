@@ -1,0 +1,48 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=30.07.2023:
+#Text=Vedvarende sykdomsaktivitet.
+1-1	0-10	30.07.2023	_	_	_	_	
+1-2	10-11	:	_	_	_	_	
+1-3	12-22	Vedvarende	OVERLAP[1]	CONDITION[1]	_	_	
+1-4	23-39	sykdomsaktivitet	OVERLAP[1]	CONDITION[1]	_	_	
+1-5	39-40	.	_	_	_	_	
+
+#Text=DAS28-score 4.2.
+2-1	41-46	DAS28	OVERLAP	CONDITION	_	_	
+2-2	46-47	-	_	_	_	_	
+2-3	47-52	score	_	_	_	_	
+2-4	53-56	4.2	_	_	_	_	
+2-5	56-57	.	_	_	_	_	
+
+#Text=Starter Humira etter negative screeningprøver.
+3-1	58-65	Starter	_	_	_	_	
+3-2	66-72	Humira	AFTER	TREATMENT	_	_	
+3-3	73-78	etter	_	_	_	_	
+3-4	79-87	negative	OVERLAP[2]	CONDITION[2]	_	_	
+3-5	88-103	screeningprøver	OVERLAP[2]	CONDITION[2]	_	_	
+3-6	103-104	.	_	_	_	_	
+
+#Text=Opprettholder Methotrexate.
+4-1	105-118	Opprettholder	AFTER[3]	TREATMENT[3]	_	_	
+4-2	119-131	Methotrexate	AFTER[3]	TREATMENT[3]	_	_	
+4-3	131-132	.	_	_	_	_	
+
+#Text=Prednisolon økes forbigående til 10mg.
+5-1	133-144	Prednisolon	AFTER[4]	TREATMENT[4]	_	_	
+5-2	145-149	økes	AFTER[4]	TREATMENT[4]	_	_	
+5-3	150-161	forbigående	_	_	_	_	
+5-4	162-165	til	_	_	_	_	
+5-5	166-170	10mg	_	_	_	_	
+5-6	170-171	.	_	_	_	_	
+
+#Text=Ny vurdering om 8 uker.
+6-1	172-174	Ny	_	_	_	_	
+6-2	175-184	vurdering	AFTER	TREATMENT	BEFORE|BEFORE|BEFORE	5-1[4_0]|4-1[3_0]|3-2	
+6-3	185-187	om	_	_	_	_	
+6-4	188-189	8	_	_	_	_	
+6-5	190-194	uker	_	_	_	_	
+6-6	194-195	.	_	_	_	_	

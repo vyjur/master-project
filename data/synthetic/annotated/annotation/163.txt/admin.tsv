@@ -1,0 +1,128 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 3 (2023-09-29)
+#Text=Ole rapporterte en viderebedring i symptombildet.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	3	_	_	_	_	
+1-3	15-16	(	_	_	_	_	
+1-4	16-20	2023	_	_	_	_	
+1-5	20-21	-	_	_	_	_	
+1-6	21-23	09	_	_	_	_	
+1-7	23-24	-	_	_	_	_	
+1-8	24-26	29	_	_	_	_	
+1-9	26-27	)	_	_	_	_	
+1-10	28-31	Ole	_	_	_	_	
+1-11	32-43	rapporterte	_	_	_	_	
+1-12	44-46	en	_	_	_	_	
+1-13	47-60	viderebedring	_	_	_	_	
+1-14	61-62	i	_	_	_	_	
+1-15	63-76	symptombildet	_	_	_	_	
+1-16	76-77	.	_	_	_	_	
+
+#Text=Svulsten i bena var nesten borte, og han hadde fått mindre pustesvighet når han beveger seg.
+2-1	78-86	Svulsten	OVERLAP[1]	CONDITION[1]	_	_	
+2-2	87-88	i	OVERLAP[1]	CONDITION[1]	_	_	
+2-3	89-93	bena	OVERLAP[1]	CONDITION[1]	_	_	
+2-4	94-97	var	_	_	_	_	
+2-5	98-104	nesten	_	_	_	_	
+2-6	105-110	borte	_	_	_	_	
+2-7	110-111	,	_	_	_	_	
+2-8	112-114	og	_	_	_	_	
+2-9	115-118	han	_	_	_	_	
+2-10	119-124	hadde	_	_	_	_	
+2-11	125-129	fått	_	_	_	_	
+2-12	130-136	mindre	OVERLAP[2]	CONDITION[2]	_	_	
+2-13	137-149	pustesvighet	OVERLAP[2]	CONDITION[2]	_	_	
+2-14	150-153	når	_	_	_	_	
+2-15	154-157	han	_	_	_	_	
+2-16	158-165	beveger	_	_	_	_	
+2-17	166-169	seg	_	_	_	_	
+2-18	169-170	.	_	_	_	_	
+
+#Text=Kaliumnivået var nå normalt, og han hadde ikke opplevd noen confusjon de siste nattene.
+3-1	171-183	Kaliumnivået	OVERLAP	CONDITION	_	_	
+3-2	184-187	var	_	_	_	_	
+3-3	188-190	nå	_	_	_	_	
+3-4	191-198	normalt	_	_	_	_	
+3-5	198-199	,	_	_	_	_	
+3-6	200-202	og	_	_	_	_	
+3-7	203-206	han	_	_	_	_	
+3-8	207-212	hadde	_	_	_	_	
+3-9	213-217	ikke	_	_	_	_	
+3-10	218-225	opplevd	_	_	_	_	
+3-11	226-230	noen	_	_	_	_	
+3-12	231-240	confusjon	_	_	_	_	
+3-13	241-243	de	_	_	_	_	
+3-14	244-249	siste	_	_	_	_	
+3-15	250-257	nattene	_	_	_	_	
+3-16	257-258	.	_	_	_	_	
+
+#Text=Vi diskuterte muligheten for å øke doseringen av beta-blokker for å sikre bedre kontroll over hjertefunksjonen.
+4-1	259-261	Vi	_	_	_	_	
+4-2	262-272	diskuterte	_	_	_	_	
+4-3	273-283	muligheten	_	_	_	_	
+4-4	284-287	for	_	_	_	_	
+4-5	288-289	å	_	_	_	_	
+4-6	290-293	øke	AFTER[3]	TREATMENT[3]	_	_	
+4-7	294-304	doseringen	AFTER[3]	TREATMENT[3]	_	_	
+4-8	305-307	av	AFTER[3]	TREATMENT[3]	_	_	
+4-9	308-320	beta-blokker	AFTER[3]	TREATMENT[3]	_	_	
+4-10	321-324	for	_	_	_	_	
+4-11	325-326	å	_	_	_	_	
+4-12	327-332	sikre	_	_	_	_	
+4-13	333-338	bedre	_	_	_	_	
+4-14	339-347	kontroll	_	_	_	_	
+4-15	348-352	over	_	_	_	_	
+4-16	353-369	hjertefunksjonen	_	_	_	_	
+4-17	369-370	.	_	_	_	_	
+
+#Text=Ole var positiv til dette, men han uttrykte bekymring for at han kunne bli trøtt av siden.
+5-1	371-374	Ole	_	_	_	_	
+5-2	375-378	var	_	_	_	_	
+5-3	379-386	positiv	_	_	_	_	
+5-4	387-390	til	_	_	_	_	
+5-5	391-396	dette	_	_	_	_	
+5-6	396-397	,	_	_	_	_	
+5-7	398-401	men	_	_	_	_	
+5-8	402-405	han	_	_	_	_	
+5-9	406-414	uttrykte	_	_	_	_	
+5-10	415-424	bekymring	_	_	_	_	
+5-11	425-428	for	_	_	_	_	
+5-12	429-431	at	_	_	_	_	
+5-13	432-435	han	_	_	_	_	
+5-14	436-441	kunne	_	_	_	_	
+5-15	442-445	bli	_	_	_	_	
+5-16	446-451	trøtt	_	_	_	_	
+5-17	452-454	av	_	_	_	_	
+5-18	455-460	siden	_	_	_	_	
+5-19	460-461	.	_	_	_	_	
+
+#Text=Vi bestemte oss for å øke doseringen gradvis over fem dager og planla en oppfølging om to uker for å se hvordan han reagerer.
+6-1	462-464	Vi	_	_	_	_	
+6-2	465-473	bestemte	_	_	_	_	
+6-3	474-477	oss	_	_	_	_	
+6-4	478-481	for	_	_	_	_	
+6-5	482-483	å	_	_	_	_	
+6-6	484-487	øke	_	_	_	_	
+6-7	488-498	doseringen	_	_	_	_	
+6-8	499-506	gradvis	_	_	_	_	
+6-9	507-511	over	_	_	_	_	
+6-10	512-515	fem	_	_	_	_	
+6-11	516-521	dager	_	_	_	_	
+6-12	522-524	og	_	_	_	_	
+6-13	525-531	planla	_	_	_	_	
+6-14	532-534	en	_	_	_	_	
+6-15	535-545	oppfølging	AFTER[4]	TREATMENT[4]	BEFORE	4-6[3_4]	
+6-16	546-548	om	AFTER[4]	TREATMENT[4]	_	_	
+6-17	549-551	to	AFTER[4]	TREATMENT[4]	_	_	
+6-18	552-556	uker	AFTER[4]	TREATMENT[4]	_	_	
+6-19	557-560	for	_	_	_	_	
+6-20	561-562	å	_	_	_	_	
+6-21	563-565	se	_	_	_	_	
+6-22	566-573	hvordan	_	_	_	_	
+6-23	574-577	han	_	_	_	_	
+6-24	578-586	reagerer	_	_	_	_	
+6-25	586-587	.	_	_	_	_	

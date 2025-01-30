@@ -1,0 +1,139 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 2 (2023-09-29)
+#Text=Ellen kom inn til oppfølging etter mottak av MR-resultater.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	2	_	_	_	_	
+1-3	15-16	(	_	_	_	_	
+1-4	16-20	2023	_	_	_	_	
+1-5	20-21	-	_	_	_	_	
+1-6	21-23	09	_	_	_	_	
+1-7	23-24	-	_	_	_	_	
+1-8	24-26	29	_	_	_	_	
+1-9	26-27	)	_	_	_	_	
+1-10	28-33	Ellen	_	_	_	_	
+1-11	34-37	kom	_	_	_	_	
+1-12	38-41	inn	_	_	_	_	
+1-13	42-45	til	_	_	_	_	
+1-14	46-56	oppfølging	OVERLAP	TREATMENT	_	_	
+1-15	57-62	etter	_	_	_	_	
+1-16	63-69	mottak	_	_	_	_	
+1-17	70-72	av	_	_	_	_	
+1-18	73-86	MR-resultater	BEFORE	TREATMENT	_	_	
+1-19	86-87	.	_	_	_	_	
+
+#Text=Bildene viste to nye leddformer i ryggmargen, noe som kan forklare de akutte symptomen.
+2-1	88-95	Bildene	_	_	_	_	
+2-2	96-101	viste	_	_	_	_	
+2-3	102-104	to	_	_	_	_	
+2-4	105-108	nye	OVERLAP[1]	CONDITION[1]	_	_	
+2-5	109-119	leddformer	OVERLAP[1]	CONDITION[1]	_	_	
+2-6	120-121	i	OVERLAP[1]	CONDITION[1]	_	_	
+2-7	122-132	ryggmargen	OVERLAP[1]	CONDITION[1]	_	_	
+2-8	132-133	,	_	_	_	_	
+2-9	134-137	noe	_	_	_	_	
+2-10	138-141	som	_	_	_	_	
+2-11	142-145	kan	_	_	_	_	
+2-12	146-154	forklare	_	_	_	_	
+2-13	155-157	de	_	_	_	_	
+2-14	158-164	akutte	_	_	_	_	
+2-15	165-174	symptomen	_	_	_	_	
+2-16	174-175	.	_	_	_	_	
+
+#Text=Neurologen foreslo at vi prøver en kort serie med intravenøs methylprednisolon for å redusere inflammasjonen.
+3-1	176-186	Neurologen	_	_	_	_	
+3-2	187-194	foreslo	_	_	_	_	
+3-3	195-197	at	_	_	_	_	
+3-4	198-200	vi	_	_	_	_	
+3-5	201-207	prøver	_	_	_	_	
+3-6	208-210	en	_	_	_	_	
+3-7	211-215	kort	_	_	_	_	
+3-8	216-221	serie	_	_	_	_	
+3-9	222-225	med	_	_	_	_	
+3-10	226-236	intravenøs	AFTER[2]	TREATMENT[2]	_	_	
+3-11	237-254	methylprednisolon	AFTER[2]	TREATMENT[2]	_	_	
+3-12	255-258	for	_	_	_	_	
+3-13	259-260	å	_	_	_	_	
+3-14	261-269	redusere	_	_	_	_	
+3-15	270-284	inflammasjonen	_	_	_	_	
+3-16	284-285	.	_	_	_	_	
+
+#Text=Ellen var opptatt av sidevirkninger, så vi tok tid til å gjennomgå disse grundig.
+4-1	286-291	Ellen	_	_	_	_	
+4-2	292-295	var	_	_	_	_	
+4-3	296-303	opptatt	_	_	_	_	
+4-4	304-306	av	_	_	_	_	
+4-5	307-321	sidevirkninger	_	_	_	_	
+4-6	321-322	,	_	_	_	_	
+4-7	323-325	så	_	_	_	_	
+4-8	326-328	vi	_	_	_	_	
+4-9	329-332	tok	_	_	_	_	
+4-10	333-336	tid	_	_	_	_	
+4-11	337-340	til	_	_	_	_	
+4-12	341-342	å	_	_	_	_	
+4-13	343-352	gjennomgå	_	_	_	_	
+4-14	353-358	disse	_	_	_	_	
+4-15	359-366	grundig	_	_	_	_	
+4-16	366-367	.	_	_	_	_	
+
+#Text=Vi bestemte oss for å starte med tre dager av høy-dosert methylprednisolon, fulgt av en gradvis nedjustering over fire uker.
+5-1	368-370	Vi	_	_	_	_	
+5-2	371-379	bestemte	_	_	_	_	
+5-3	380-383	oss	_	_	_	_	
+5-4	384-387	for	_	_	_	_	
+5-5	388-389	å	_	_	_	_	
+5-6	390-396	starte	_	_	_	_	
+5-7	397-400	med	_	_	_	_	
+5-8	401-404	tre	_	_	_	_	
+5-9	405-410	dager	_	_	_	_	
+5-10	411-413	av	_	_	_	_	
+5-11	414-424	høy-dosert	AFTER[3]	TREATMENT[3]	OVERLAP	3-10[2_3]	
+5-12	425-442	methylprednisolon	AFTER[3]	TREATMENT[3]	_	_	
+5-13	442-443	,	_	_	_	_	
+5-14	444-449	fulgt	_	_	_	_	
+5-15	450-452	av	_	_	_	_	
+5-16	453-455	en	_	_	_	_	
+5-17	456-463	gradvis	_	_	_	_	
+5-18	464-476	nedjustering	_	_	_	_	
+5-19	477-481	over	_	_	_	_	
+5-20	482-486	fire	_	_	_	_	
+5-21	487-491	uker	_	_	_	_	
+5-22	491-492	.	_	_	_	_	
+
+#Text=Vi diskuterte også viktigheten av å holde seg fysisk aktiv, men unngå overtrenings.
+6-1	493-495	Vi	_	_	_	_	
+6-2	496-506	diskuterte	_	_	_	_	
+6-3	507-511	også	_	_	_	_	
+6-4	512-523	viktigheten	_	_	_	_	
+6-5	524-526	av	_	_	_	_	
+6-6	527-528	å	_	_	_	_	
+6-7	529-534	holde	_	_	_	_	
+6-8	535-538	seg	_	_	_	_	
+6-9	539-545	fysisk	AFTER[4]	TREATMENT[4]	_	_	
+6-10	546-551	aktiv	AFTER[4]	TREATMENT[4]	_	_	
+6-11	551-552	,	_	_	_	_	
+6-12	553-556	men	_	_	_	_	
+6-13	557-562	unngå	OVERLAP[5]	TREATMENT[5]	_	_	
+6-14	563-575	overtrenings	OVERLAP[5]	TREATMENT[5]	_	_	
+6-15	575-576	.	_	_	_	_	
+
+#Text=Vi planla en oppfølging om to uker for å se hvordan hun reagerer på behandlingen.
+7-1	577-579	Vi	_	_	_	_	
+7-2	580-586	planla	_	_	_	_	
+7-3	587-589	en	_	_	_	_	
+7-4	590-600	oppfølging	AFTER	TREATMENT	BEFORE|BEFORE|BEFORE	5-11[3_0]|6-9[4_0]|6-13[5_0]	
+7-5	601-603	om	_	_	_	_	
+7-6	604-606	to	_	_	_	_	
+7-7	607-611	uker	_	_	_	_	
+7-8	612-615	for	_	_	_	_	
+7-9	616-617	å	_	_	_	_	
+7-10	618-620	se	_	_	_	_	
+7-11	621-628	hvordan	_	_	_	_	
+7-12	629-632	hun	_	_	_	_	
+7-13	633-641	reagerer	_	_	_	_	
+7-14	642-644	på	_	_	_	_	
+7-15	645-657	behandlingen	_	_	_	_	
+7-16	657-658	.	_	_	_	_	

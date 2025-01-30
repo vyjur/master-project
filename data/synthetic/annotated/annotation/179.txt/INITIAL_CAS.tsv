@@ -1,0 +1,125 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 4 (2023-11-24)
+#Text=Maria kom inn til oppfølging etter to måneder på dagopphold og ergoterapi.
+1-1	0-12	Journalnotat	
+1-2	13-14	4	
+1-3	15-16	(	
+1-4	16-20	2023	
+1-5	20-21	-	
+1-6	21-23	11	
+1-7	23-24	-	
+1-8	24-26	24	
+1-9	26-27	)	
+1-10	28-33	Maria	
+1-11	34-37	kom	
+1-12	38-41	inn	
+1-13	42-45	til	
+1-14	46-56	oppfølging	
+1-15	57-62	etter	
+1-16	63-65	to	
+1-17	66-73	måneder	
+1-18	74-76	på	
+1-19	77-87	dagopphold	
+1-20	88-90	og	
+1-21	91-101	ergoterapi	
+1-22	101-102	.	
+
+#Text=Hun rapporterte at alt gikk bra, og at hun følte seg trygg og involvert.
+2-1	103-106	Hun	
+2-2	107-118	rapporterte	
+2-3	119-121	at	
+2-4	122-125	alt	
+2-5	126-130	gikk	
+2-6	131-134	bra	
+2-7	134-135	,	
+2-8	136-138	og	
+2-9	139-141	at	
+2-10	142-145	hun	
+2-11	146-151	følte	
+2-12	152-155	seg	
+2-13	156-161	trygg	
+2-14	162-164	og	
+2-15	165-174	involvert	
+2-16	174-175	.	
+
+#Text=Ergoterapeuten noterte at Maria hadde gjort gode fremsteg med å håndtere daglige oppgaver, og hun hadde lært å bruke enkalder for å minne seg om viktige hendelser.
+3-1	176-190	Ergoterapeuten	
+3-2	191-198	noterte	
+3-3	199-201	at	
+3-4	202-207	Maria	
+3-5	208-213	hadde	
+3-6	214-219	gjort	
+3-7	220-224	gode	
+3-8	225-233	fremsteg	
+3-9	234-237	med	
+3-10	238-239	å	
+3-11	240-248	håndtere	
+3-12	249-256	daglige	
+3-13	257-265	oppgaver	
+3-14	265-266	,	
+3-15	267-269	og	
+3-16	270-273	hun	
+3-17	274-279	hadde	
+3-18	280-284	lært	
+3-19	285-286	å	
+3-20	287-292	bruke	
+3-21	293-301	enkalder	
+3-22	302-305	for	
+3-23	306-307	å	
+3-24	308-313	minne	
+3-25	314-317	seg	
+3-26	318-320	om	
+3-27	321-328	viktige	
+3-28	329-338	hendelser	
+3-29	338-339	.	
+
+#Text=Vi diskuterte viktigheten av å holde Maria fysisk aktiv og involvert i sosiale aktiviteter.
+4-1	340-342	Vi	
+4-2	343-353	diskuterte	
+4-3	354-365	viktigheten	
+4-4	366-368	av	
+4-5	369-370	å	
+4-6	371-376	holde	
+4-7	377-382	Maria	
+4-8	383-389	fysisk	
+4-9	390-395	aktiv	
+4-10	396-398	og	
+4-11	399-408	involvert	
+4-12	409-410	i	
+4-13	411-418	sosiale	
+4-14	419-430	aktiviteter	
+4-15	430-431	.	
+
+#Text=Maria var glad for resultatet av behandlingen og takket meg for støtten.
+5-1	432-437	Maria	
+5-2	438-441	var	
+5-3	442-446	glad	
+5-4	447-450	for	
+5-5	451-461	resultatet	
+5-6	462-464	av	
+5-7	465-477	behandlingen	
+5-8	478-480	og	
+5-9	481-487	takket	
+5-10	488-491	meg	
+5-11	492-495	for	
+5-12	496-503	støtten	
+5-13	503-504	.	
+
+#Text=Vi planla en oppfølging om seks måneder for å sikre at alt går godt.
+6-1	505-507	Vi	
+6-2	508-514	planla	
+6-3	515-517	en	
+6-4	518-528	oppfølging	
+6-5	529-531	om	
+6-6	532-536	seks	
+6-7	537-544	måneder	
+6-8	545-548	for	
+6-9	549-550	å	
+6-10	551-556	sikre	
+6-11	557-559	at	
+6-12	560-563	alt	
+6-13	564-567	går	
+6-14	568-572	godt	
+6-15	572-573	.	

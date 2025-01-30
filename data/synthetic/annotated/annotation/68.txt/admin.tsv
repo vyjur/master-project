@@ -1,0 +1,46 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=01.06.2023:
+#Text=Noe stabilisering av symptomer ved konsekvent aktivitetsavpassing.
+1-1	0-10	01.06.2023	_	_	_	_	
+1-2	10-11	:	_	_	_	_	
+1-3	12-15	Noe	_	_	_	_	
+1-4	16-29	stabilisering	OVERLAP[1]	CONDITION[1]	_	_	
+1-5	30-32	av	OVERLAP[1]	CONDITION[1]	_	_	
+1-6	33-42	symptomer	OVERLAP[1]	CONDITION[1]	_	_	
+1-7	43-46	ved	_	_	_	_	
+1-8	47-57	konsekvent	_	_	_	_	
+1-9	58-77	aktivitetsavpassing	_	_	_	_	
+1-10	77-78	.	_	_	_	_	
+
+#Text=Fortsatt betydelig utmattet.
+2-1	79-87	Fortsatt	_	_	_	_	
+2-2	88-97	betydelig	_	_	_	_	
+2-3	98-106	utmattet	OVERLAP	CONDITION	OVERLAP	1-4[1_0]	
+2-4	106-107	.	_	_	_	_	
+
+#Text=Søvn noe bedret med melatonin.
+3-1	108-112	Søvn	*	CONDITION	OVERLAP	1-4[1_0]	
+3-2	113-116	noe	_	_	_	_	
+3-3	117-123	bedret	_	_	_	_	
+3-4	124-127	med	_	_	_	_	
+3-5	128-137	melatonin	_	_	_	_	
+3-6	137-138	.	_	_	_	_	
+
+#Text=Gradvis aktivitetsøkning forsøkes med støtte fra fysioterapeut.
+4-1	139-146	Gradvis	_	_	_	_	
+4-2	147-163	aktivitetsøkning	AFTER	TREATMENT	_	_	
+4-3	164-172	forsøkes	_	_	_	_	
+4-4	173-176	med	_	_	_	_	
+4-5	177-183	støtte	_	_	_	_	
+4-6	184-187	fra	_	_	_	_	
+4-7	188-201	fysioterapeut	AFTER	TREATMENT	OVERLAP	4-2	
+4-8	201-202	.	_	_	_	_	
+
+#Text=Fortsetter sykemelding.
+5-1	203-213	Fortsetter	AFTER[2]	TREATMENT[2]	OVERLAP	4-2[0_2]	
+5-2	214-225	sykemelding	AFTER[2]	TREATMENT[2]	_	_	
+5-3	225-226	.	_	_	_	_	

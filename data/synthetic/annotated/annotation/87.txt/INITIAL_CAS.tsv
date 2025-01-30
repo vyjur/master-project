@@ -1,0 +1,45 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 1 - 20.02.2025
+#Text=Pasient innlagt etter akutt brystsmertetilfelle.
+1-1	0-12	Journalnotat	
+1-2	13-14	1	
+1-3	15-16	-	
+1-4	17-27	20.02.2025	
+1-5	28-35	Pasient	
+1-6	36-43	innlagt	
+1-7	44-49	etter	
+1-8	50-55	akutt	
+1-9	56-75	brystsmertetilfelle	
+1-10	75-76	.	
+
+#Text=EKG og troponintester indikerer lett myokardiskemi.
+2-1	77-80	EKG	
+2-2	81-83	og	
+2-3	84-98	troponintester	
+2-4	99-108	indikerer	
+2-5	109-113	lett	
+2-6	114-127	myokardiskemi	
+2-7	127-128	.	
+
+#Text=Umiddelbar medisinsk intervensjon med blodfortynnende behandling og statinterapi iverksatt.
+3-1	129-139	Umiddelbar	
+3-2	140-149	medisinsk	
+3-3	150-162	intervensjon	
+3-4	163-166	med	
+3-5	167-182	blodfortynnende	
+3-6	183-193	behandling	
+3-7	194-196	og	
+3-8	197-209	statinterapi	
+3-9	210-219	iverksatt	
+3-10	219-220	.	
+
+#Text=Pasienten fremstår rolig, men bekymret.
+4-1	221-230	Pasienten	
+4-2	231-239	fremstår	
+4-3	240-245	rolig	
+4-4	245-246	,	
+4-5	247-250	men	
+4-6	251-259	bekymret	
+4-7	259-260	.	

@@ -1,0 +1,154 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 1 (2023-09-12)
+#Text=Ingeborg møtte meg i dag med klagene om voldsomme smertetilfeller i knær og ledd.
+1-1	0-12	Journalnotat	
+1-2	13-14	1	
+1-3	15-16	(	
+1-4	16-20	2023	
+1-5	20-21	-	
+1-6	21-23	09	
+1-7	23-24	-	
+1-8	24-26	12	
+1-9	26-27	)	
+1-10	28-36	Ingeborg	
+1-11	37-42	møtte	
+1-12	43-46	meg	
+1-13	47-48	i	
+1-14	49-52	dag	
+1-15	53-56	med	
+1-16	57-64	klagene	
+1-17	65-67	om	
+1-18	68-77	voldsomme	
+1-19	78-93	smertetilfeller	
+1-20	94-95	i	
+1-21	96-100	knær	
+1-22	101-103	og	
+1-23	104-108	ledd	
+1-24	108-109	.	
+
+#Text=Symptometologi har vært verre de siste månedene, og hun har vanskeligheter med å gå uten støtte.
+2-1	110-124	Symptometologi	
+2-2	125-128	har	
+2-3	129-133	vært	
+2-4	134-139	verre	
+2-5	140-142	de	
+2-6	143-148	siste	
+2-7	149-157	månedene	
+2-8	157-158	,	
+2-9	159-161	og	
+2-10	162-165	hun	
+2-11	166-169	har	
+2-12	170-184	vanskeligheter	
+2-13	185-188	med	
+2-14	189-190	å	
+2-15	191-193	gå	
+2-16	194-198	uten	
+2-17	199-205	støtte	
+2-18	205-206	.	
+
+#Text=Ingeborg har en kjent diagnose av osteoartritis, spesielt i kneleddene, og har tidligere blitt behandlet med smertestillende midler og fysioterapi.
+3-1	207-215	Ingeborg	
+3-2	216-219	har	
+3-3	220-222	en	
+3-4	223-228	kjent	
+3-5	229-237	diagnose	
+3-6	238-240	av	
+3-7	241-254	osteoartritis	
+3-8	254-255	,	
+3-9	256-264	spesielt	
+3-10	265-266	i	
+3-11	267-277	kneleddene	
+3-12	277-278	,	
+3-13	279-281	og	
+3-14	282-285	har	
+3-15	286-295	tidligere	
+3-16	296-301	blitt	
+3-17	302-311	behandlet	
+3-18	312-315	med	
+3-19	316-331	smertestillende	
+3-20	332-338	midler	
+3-21	339-341	og	
+3-22	342-353	fysioterapi	
+3-23	353-354	.	
+
+#Text=Ved undersøkelse noterte jeg en tydelig deformasjon av kneleddene, samt betennelser og redusert bevegelsesgrad.
+4-1	355-358	Ved	
+4-2	359-371	undersøkelse	
+4-3	372-379	noterte	
+4-4	380-383	jeg	
+4-5	384-386	en	
+4-6	387-394	tydelig	
+4-7	395-406	deformasjon	
+4-8	407-409	av	
+4-9	410-420	kneleddene	
+4-10	420-421	,	
+4-11	422-426	samt	
+4-12	427-438	betennelser	
+4-13	439-441	og	
+4-14	442-450	redusert	
+4-15	451-465	bevegelsesgrad	
+4-16	465-466	.	
+
+#Text=Vi tok et röntgenavbild for å sjekke for eventuelle nye skader eller fremskritt i sykdommen.
+5-1	467-469	Vi	
+5-2	470-473	tok	
+5-3	474-476	et	
+5-4	477-490	röntgenavbild	
+5-5	491-494	for	
+5-6	495-496	å	
+5-7	497-503	sjekke	
+5-8	504-507	for	
+5-9	508-518	eventuelle	
+5-10	519-522	nye	
+5-11	523-529	skader	
+5-12	530-535	eller	
+5-13	536-546	fremskritt	
+5-14	547-548	i	
+5-15	549-558	sykdommen	
+5-16	558-559	.	
+
+#Text=Vi ga henne et recept på NSAID (non-steroidale anti-inflammatoriske midler) for akut smertelindring og anbefalte at hun øker bruk av fysioterapi.
+6-1	560-562	Vi	
+6-2	563-565	ga	
+6-3	566-571	henne	
+6-4	572-574	et	
+6-5	575-581	recept	
+6-6	582-584	på	
+6-7	585-590	NSAID	
+6-8	591-592	(	
+6-9	592-606	non-steroidale	
+6-10	607-627	anti-inflammatoriske	
+6-11	628-634	midler	
+6-12	634-635	)	
+6-13	636-639	for	
+6-14	640-644	akut	
+6-15	645-659	smertelindring	
+6-16	660-662	og	
+6-17	663-672	anbefalte	
+6-18	673-675	at	
+6-19	676-679	hun	
+6-20	680-684	øker	
+6-21	685-689	bruk	
+6-22	690-692	av	
+6-23	693-704	fysioterapi	
+6-24	704-705	.	
+
+#Text=Vi planla en oppfølging om to uker for å se hvordan hun reagerer på behandlingen.
+7-1	706-708	Vi	
+7-2	709-715	planla	
+7-3	716-718	en	
+7-4	719-729	oppfølging	
+7-5	730-732	om	
+7-6	733-735	to	
+7-7	736-740	uker	
+7-8	741-744	for	
+7-9	745-746	å	
+7-10	747-749	se	
+7-11	750-757	hvordan	
+7-12	758-761	hun	
+7-13	762-770	reagerer	
+7-14	771-773	på	
+7-15	774-786	behandlingen	
+7-16	786-787	.	

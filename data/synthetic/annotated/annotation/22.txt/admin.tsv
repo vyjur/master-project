@@ -1,0 +1,143 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Notat 1 - 12.08.2024:
+#Text=Pasienten kommer til konsultasjon grunnet plager med hetetokter, nattesvette og humørsvingninger de siste 6 månedene.
+1-1	0-5	Notat	_	_	_	_	
+1-2	6-7	1	_	_	_	_	
+1-3	8-9	-	_	_	_	_	
+1-4	10-20	12.08.2024	_	_	_	_	
+1-5	20-21	:	_	_	_	_	
+1-6	22-31	Pasienten	_	_	_	_	
+1-7	32-38	kommer	_	_	_	_	
+1-8	39-42	til	_	_	_	_	
+1-9	43-55	konsultasjon	_	_	_	_	
+1-10	56-63	grunnet	_	_	_	_	
+1-11	64-70	plager	_	_	_	_	
+1-12	71-74	med	_	_	_	_	
+1-13	75-85	hetetokter	OVERLAP	CONDITION	_	_	
+1-14	85-86	,	_	_	_	_	
+1-15	87-98	nattesvette	OVERLAP	CONDITION	OVERLAP	1-13	
+1-16	99-101	og	_	_	_	_	
+1-17	102-118	humørsvingninger	OVERLAP	CONDITION	OVERLAP|OVERLAP	1-15|1-13	
+1-18	119-121	de	_	_	_	_	
+1-19	122-127	siste	_	_	_	_	
+1-20	128-129	6	_	_	_	_	
+1-21	130-138	månedene	_	_	_	_	
+1-22	138-139	.	_	_	_	_	
+
+#Text=Hun er i overgangsalderen og har ikke hatt menstruasjon på 8 måneder.
+2-1	140-143	Hun	_	_	_	_	
+2-2	144-146	er	_	_	_	_	
+2-3	147-148	i	_	_	_	_	
+2-4	149-165	overgangsalderen	OVERLAP	CONDITION	_	_	
+2-5	166-168	og	_	_	_	_	
+2-6	169-172	har	_	_	_	_	
+2-7	173-177	ikke	_	_	_	_	
+2-8	178-182	hatt	_	_	_	_	
+2-9	183-195	menstruasjon	_	_	_	_	
+2-10	196-198	på	_	_	_	_	
+2-11	199-200	8	_	_	_	_	
+2-12	201-208	måneder	_	_	_	_	
+2-13	208-209	.	_	_	_	_	
+
+#Text=I tillegg til hetetoktene klager hun over søvnvansker og økt irritabilitet.
+3-1	210-211	I	_	_	_	_	
+3-2	212-219	tillegg	_	_	_	_	
+3-3	220-223	til	_	_	_	_	
+3-4	224-235	hetetoktene	_	_	_	_	
+3-5	236-242	klager	_	_	_	_	
+3-6	243-246	hun	_	_	_	_	
+3-7	247-251	over	_	_	_	_	
+3-8	252-263	søvnvansker	OVERLAP	CONDITION	_	_	
+3-9	264-266	og	_	_	_	_	
+3-10	267-270	økt	OVERLAP[1]	CONDITION[1]	OVERLAP	3-8[0_1]	
+3-11	271-284	irritabilitet	OVERLAP[1]	CONDITION[1]	_	_	
+3-12	284-285	.	_	_	_	_	
+
+#Text=Pasienten har forsøkt å håndtere symptomene med naturlige preparater, men merker ingen effekt.
+4-1	286-295	Pasienten	_	_	_	_	
+4-2	296-299	har	_	_	_	_	
+4-3	300-307	forsøkt	_	_	_	_	
+4-4	308-309	å	_	_	_	_	
+4-5	310-318	håndtere	_	_	_	_	
+4-6	319-329	symptomene	_	_	_	_	
+4-7	330-333	med	_	_	_	_	
+4-8	334-343	naturlige	OVERLAP[2]	TREATMENT[2]	_	_	
+4-9	344-354	preparater	OVERLAP[2]	TREATMENT[2]	_	_	
+4-10	354-355	,	_	_	_	_	
+4-11	356-359	men	_	_	_	_	
+4-12	360-366	merker	_	_	_	_	
+4-13	367-372	ingen	_	_	_	_	
+4-14	373-379	effekt	_	_	_	_	
+4-15	379-380	.	_	_	_	_	
+
+#Text=Vi diskuterer behandling med hormonsubstitusjon (HRT), og pasienten er positiv til å prøve dette.
+5-1	381-383	Vi	_	_	_	_	
+5-2	384-394	diskuterer	_	_	_	_	
+5-3	395-405	behandling	_	_	_	_	
+5-4	406-409	med	_	_	_	_	
+5-5	410-428	hormonsubstitusjon	AFTER[3]	TREATMENT[3]	_	_	
+5-6	429-430	(	AFTER[3]	TREATMENT[3]	_	_	
+5-7	430-433	HRT	AFTER[3]	TREATMENT[3]	_	_	
+5-8	433-434	)	AFTER[3]	TREATMENT[3]	_	_	
+5-9	434-435	,	_	_	_	_	
+5-10	436-438	og	_	_	_	_	
+5-11	439-448	pasienten	_	_	_	_	
+5-12	449-451	er	_	_	_	_	
+5-13	452-459	positiv	_	_	_	_	
+5-14	460-463	til	_	_	_	_	
+5-15	464-465	å	_	_	_	_	
+5-16	466-471	prøve	_	_	_	_	
+5-17	472-477	dette	_	_	_	_	
+5-18	477-478	.	_	_	_	_	
+
+#Text=Blodprøver tas for å sjekke hormonstatus, inkludert FSH, LH og østrogen.
+6-1	479-489	Blodprøver	OVERLAP	CONDITION	_	_	
+6-2	490-493	tas	_	_	_	_	
+6-3	494-497	for	_	_	_	_	
+6-4	498-499	å	_	_	_	_	
+6-5	500-506	sjekke	_	_	_	_	
+6-6	507-519	hormonstatus	_	_	_	_	
+6-7	519-520	,	_	_	_	_	
+6-8	521-530	inkludert	_	_	_	_	
+6-9	531-534	FSH	_	_	_	_	
+6-10	534-535	,	_	_	_	_	
+6-11	536-538	LH	_	_	_	_	
+6-12	539-541	og	_	_	_	_	
+6-13	542-550	østrogen	_	_	_	_	
+6-14	550-551	.	_	_	_	_	
+
+#Text=Hun får også råd om kosthold og regelmessig fysisk aktivitet, som kan hjelpe mot noen av plagene.
+7-1	552-555	Hun	_	_	_	_	
+7-2	556-559	får	_	_	_	_	
+7-3	560-564	også	_	_	_	_	
+7-4	565-568	råd	AFTER[4]	TREATMENT[4]	_	_	
+7-5	569-571	om	AFTER[4]	TREATMENT[4]	_	_	
+7-6	572-580	kosthold	AFTER[4]	TREATMENT[4]	_	_	
+7-7	581-583	og	_	_	_	_	
+7-8	584-595	regelmessig	AFTER[5]	TREATMENT[5]	_	_	
+7-9	596-602	fysisk	AFTER[5]	TREATMENT[5]	_	_	
+7-10	603-612	aktivitet	AFTER[5]	TREATMENT[5]	_	_	
+7-11	612-613	,	_	_	_	_	
+7-12	614-617	som	_	_	_	_	
+7-13	618-621	kan	_	_	_	_	
+7-14	622-628	hjelpe	_	_	_	_	
+7-15	629-632	mot	_	_	_	_	
+7-16	633-637	noen	_	_	_	_	
+7-17	638-640	av	_	_	_	_	
+7-18	641-648	plagene	_	_	_	_	
+7-19	648-649	.	_	_	_	_	
+
+#Text=Vi avtaler ny time når prøvesvarene er klare.
+8-1	650-652	Vi	_	_	_	_	
+8-2	653-660	avtaler	_	_	_	_	
+8-3	661-663	ny	_	_	_	_	
+8-4	664-668	time	_	_	_	_	
+8-5	669-672	når	_	_	_	_	
+8-6	673-685	prøvesvarene	_	_	_	_	
+8-7	686-688	er	_	_	_	_	
+8-8	689-694	klare	_	_	_	_	
+8-9	694-695	.	_	_	_	_	

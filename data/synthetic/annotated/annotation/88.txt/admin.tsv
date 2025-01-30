@@ -1,0 +1,50 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 2 - 05.03.2025
+#Text=Poliklinisk oppfølging etter sykehusopphold.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	2	_	_	_	_	
+1-3	15-16	-	_	_	_	_	
+1-4	17-27	05.03.2025	_	_	_	_	
+1-5	28-39	Poliklinisk	OVERLAP[1]	TREATMENT[1]	_	_	
+1-6	40-50	oppfølging	OVERLAP[1]	TREATMENT[1]	_	_	
+1-7	51-56	etter	_	_	_	_	
+1-8	57-71	sykehusopphold	BEFORE	TREATMENT	_	_	
+1-9	71-72	.	_	_	_	_	
+
+#Text=Gjennomført grundig kardiovaskulær utredning.
+2-1	73-84	Gjennomført	_	_	_	_	
+2-2	85-92	grundig	OVERLAP[2]	TREATMENT[2]	_	_	
+2-3	93-107	kardiovaskulær	OVERLAP[2]	TREATMENT[2]	_	_	
+2-4	108-117	utredning	OVERLAP[2]	TREATMENT[2]	_	_	
+2-5	117-118	.	_	_	_	_	
+
+#Text=Påvist moderat koronar åreforkalkning.
+3-1	119-125	Påvist	_	_	_	_	
+3-2	126-133	moderat	_	_	_	_	
+3-3	134-141	koronar	OVERLAP[3]	CONDITION[3]	*	2-2[2_3]	
+3-4	142-156	åreforkalkning	OVERLAP[3]	CONDITION[3]	_	_	
+3-5	156-157	.	_	_	_	_	
+
+#Text=Oppstart av livsstilsendringsprogram med fokus på kosthold, mosjon og røykeslutt.
+4-1	158-166	Oppstart	_	_	_	_	
+4-2	167-169	av	_	_	_	_	
+4-3	170-194	livsstilsendringsprogram	AFTER	TREATMENT	_	_	
+4-4	195-198	med	_	_	_	_	
+4-5	199-204	fokus	_	_	_	_	
+4-6	205-207	på	_	_	_	_	
+4-7	208-216	kosthold	AFTER	TREATMENT	OVERLAP	4-3	
+4-8	216-217	,	_	_	_	_	
+4-9	218-224	mosjon	AFTER	TREATMENT	OVERLAP	4-3	
+4-10	225-227	og	_	_	_	_	
+4-11	228-238	røykeslutt	AFTER	TREATMENT	OVERLAP	4-3	
+4-12	238-239	.	_	_	_	_	
+
+#Text=Medikamentell behandling justeres.
+5-1	240-253	Medikamentell	AFTER[4]	TREATMENT[4]	_	_	
+5-2	254-264	behandling	AFTER[4]	TREATMENT[4]	_	_	
+5-3	265-273	justeres	AFTER[4]	TREATMENT[4]	_	_	
+5-4	273-274	.	_	_	_	_	

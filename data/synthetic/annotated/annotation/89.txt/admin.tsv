@@ -1,0 +1,50 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 3 - 19.03.2025
+#Text=Kontroll etter påbegynt rehabiliteringsforløp.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	3	_	_	_	_	
+1-3	15-16	-	_	_	_	_	
+1-4	17-27	19.03.2025	_	_	_	_	
+1-5	28-36	Kontroll	OVERLAP	TREATMENT	_	_	
+1-6	37-42	etter	_	_	_	_	
+1-7	43-51	påbegynt	_	_	_	_	
+1-8	52-73	rehabiliteringsforløp	BEFOREOVERLAP	TREATMENT	_	_	
+1-9	73-74	.	_	_	_	_	
+
+#Text=Positiv utvikling observert - pasienten har redusert vekt, sluttet å røyke og følger treningsprogram.
+2-1	75-82	Positiv	_	_	_	_	
+2-2	83-92	utvikling	_	_	_	_	
+2-3	93-102	observert	_	_	_	_	
+2-4	103-104	-	_	_	_	_	
+2-5	105-114	pasienten	_	_	_	_	
+2-6	115-118	har	_	_	_	_	
+2-7	119-127	redusert	OVERLAP[1]	CONDITION[1]	_	_	
+2-8	128-132	vekt	OVERLAP[1]	CONDITION[1]	_	_	
+2-9	132-133	,	_	_	_	_	
+2-10	134-141	sluttet	OVERLAP[2]	CONDITION[2]	OVERLAP	2-7[1_2]	
+2-11	142-143	å	OVERLAP[2]	CONDITION[2]	_	_	
+2-12	144-149	røyke	OVERLAP[2]	CONDITION[2]	_	_	
+2-13	150-152	og	_	_	_	_	
+2-14	153-159	følger	_	_	_	_	
+2-15	160-175	treningsprogram	OVERLAP	CONDITION	OVERLAP|OVERLAP	2-7[1_0]|2-10[2_0]	
+2-16	175-176	.	_	_	_	_	
+
+#Text=Blodtrykk og kolesterolverdier viser gradvis forbedring.
+3-1	177-186	Blodtrykk	OVERLAP	CONDITION	_	_	
+3-2	187-189	og	_	_	_	_	
+3-3	190-207	kolesterolverdier	OVERLAP	CONDITION	OVERLAP	3-1	
+3-4	208-213	viser	_	_	_	_	
+3-5	214-221	gradvis	_	_	_	_	
+3-6	222-232	forbedring	_	_	_	_	
+3-7	232-233	.	_	_	_	_	
+
+#Text=Fortsatt tett oppfølging anbefales.
+4-1	234-242	Fortsatt	_	_	_	_	
+4-2	243-247	tett	_	_	_	_	
+4-3	248-258	oppfølging	AFTER	*	_	_	
+4-4	259-268	anbefales	_	_	_	_	
+4-5	268-269	.	_	_	_	_	

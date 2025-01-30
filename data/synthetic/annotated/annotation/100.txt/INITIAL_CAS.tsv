@@ -1,0 +1,41 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 2 - 05.04.2025
+#Text=Gjennomgang av utredningsresultater.
+1-1	0-12	Journalnotat	
+1-2	13-14	2	
+1-3	15-16	-	
+1-4	17-27	05.04.2025	
+1-5	28-39	Gjennomgang	
+1-6	40-42	av	
+1-7	43-63	utredningsresultater	
+1-8	63-64	.	
+
+#Text=Påvist begynnende Alzheimers sykdom.
+2-1	65-71	Påvist	
+2-2	72-82	begynnende	
+2-3	83-93	Alzheimers	
+2-4	94-100	sykdom	
+2-5	100-101	.	
+
+#Text=Starter medikamentell behandling med acetylkolinesterasehemmer.
+3-1	102-109	Starter	
+3-2	110-123	medikamentell	
+3-3	124-134	behandling	
+3-4	135-138	med	
+3-5	139-164	acetylkolinesterasehemmer	
+3-6	164-165	.	
+
+#Text=Grundig informasjon til pasient og pårørende om sykdomsforløp og mestringsstrategier.
+4-1	166-173	Grundig	
+4-2	174-185	informasjon	
+4-3	186-189	til	
+4-4	190-197	pasient	
+4-5	198-200	og	
+4-6	201-210	pårørende	
+4-7	211-213	om	
+4-8	214-227	sykdomsforløp	
+4-9	228-230	og	
+4-10	231-250	mestringsstrategier	
+4-11	250-251	.	

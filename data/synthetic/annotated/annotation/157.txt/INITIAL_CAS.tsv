@@ -1,0 +1,120 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 2 (2023-09-22)
+#Text=Ingrid kom inn til oppfølging etter første röntgenundersøkelse.
+1-1	0-12	Journalnotat	
+1-2	13-14	2	
+1-3	15-16	(	
+1-4	16-20	2023	
+1-5	20-21	-	
+1-6	21-23	09	
+1-7	23-24	-	
+1-8	24-26	22	
+1-9	26-27	)	
+1-10	28-34	Ingrid	
+1-11	35-38	kom	
+1-12	39-42	inn	
+1-13	43-46	til	
+1-14	47-57	oppfølging	
+1-15	58-63	etter	
+1-16	64-70	første	
+1-17	71-90	röntgenundersøkelse	
+1-18	90-91	.	
+
+#Text=Röntgenbildene viser ingen tegn på brudd eller annen alvorlig skade, men det er en lett degenerasjon i diskene mellom vrikkbeinene.
+2-1	92-106	Röntgenbildene	
+2-2	107-112	viser	
+2-3	113-118	ingen	
+2-4	119-123	tegn	
+2-5	124-126	på	
+2-6	127-132	brudd	
+2-7	133-138	eller	
+2-8	139-144	annen	
+2-9	145-153	alvorlig	
+2-10	154-159	skade	
+2-11	159-160	,	
+2-12	161-164	men	
+2-13	165-168	det	
+2-14	169-171	er	
+2-15	172-174	en	
+2-16	175-179	lett	
+2-17	180-192	degenerasjon	
+2-18	193-194	i	
+2-19	195-202	diskene	
+2-20	203-209	mellom	
+2-21	210-222	vrikkbeinene	
+2-22	222-223	.	
+
+#Text=Smertene har ikke redusert seg betydelig, trods bruk av ibuprofen.
+3-1	224-232	Smertene	
+3-2	233-236	har	
+3-3	237-241	ikke	
+3-4	242-250	redusert	
+3-5	251-254	seg	
+3-6	255-264	betydelig	
+3-7	264-265	,	
+3-8	266-271	trods	
+3-9	272-276	bruk	
+3-10	277-279	av	
+3-11	280-289	ibuprofen	
+3-12	289-290	.	
+
+#Text=Vi diskuterte muligheten for å prøve en kort serie med steroidinjeksjoner i ryggen for å redusere inflammasjonen.
+4-1	291-293	Vi	
+4-2	294-304	diskuterte	
+4-3	305-315	muligheten	
+4-4	316-319	for	
+4-5	320-321	å	
+4-6	322-327	prøve	
+4-7	328-330	en	
+4-8	331-335	kort	
+4-9	336-341	serie	
+4-10	342-345	med	
+4-11	346-364	steroidinjeksjoner	
+4-12	365-366	i	
+4-13	367-373	ryggen	
+4-14	374-377	for	
+4-15	378-379	å	
+4-16	380-388	redusere	
+4-17	389-403	inflammasjonen	
+4-18	403-404	.	
+
+#Text=Ingrid var opptatt av sidevirkninger, så vi tok tid til å gjennomgå disse grundig.
+5-1	405-411	Ingrid	
+5-2	412-415	var	
+5-3	416-423	opptatt	
+5-4	424-426	av	
+5-5	427-441	sidevirkninger	
+5-6	441-442	,	
+5-7	443-445	så	
+5-8	446-448	vi	
+5-9	449-452	tok	
+5-10	453-456	tid	
+5-11	457-460	til	
+5-12	461-462	å	
+5-13	463-472	gjennomgå	
+5-14	473-478	disse	
+5-15	479-486	grundig	
+5-16	486-487	.	
+
+#Text=Vi bestemte oss for å vente med injeksjonene inntil vi ser hvordan hun reagerer på den økte fysioterapibehandlingen.
+6-1	488-490	Vi	
+6-2	491-499	bestemte	
+6-3	500-503	oss	
+6-4	504-507	for	
+6-5	508-509	å	
+6-6	510-515	vente	
+6-7	516-519	med	
+6-8	520-532	injeksjonene	
+6-9	533-539	inntil	
+6-10	540-542	vi	
+6-11	543-546	ser	
+6-12	547-554	hvordan	
+6-13	555-558	hun	
+6-14	559-567	reagerer	
+6-15	568-570	på	
+6-16	571-574	den	
+6-17	575-579	økte	
+6-18	580-603	fysioterapibehandlingen	
+6-19	603-604	.	

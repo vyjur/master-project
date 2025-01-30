@@ -1,0 +1,129 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Notat 2 - 05.10.2024:
+#Text=Pasienten har nå brukt topiramat i 6 uker og rapporterer en reduksjon i migreneanfallene til omtrent én gang per uke.
+1-1	0-5	Notat	_	_	_	_	
+1-2	6-7	2	_	_	_	_	
+1-3	8-9	-	_	_	_	_	
+1-4	10-20	05.10.2024	_	_	_	_	
+1-5	20-21	:	_	_	_	_	
+1-6	22-31	Pasienten	_	_	_	_	
+1-7	32-35	har	_	_	_	_	
+1-8	36-38	nå	_	_	_	_	
+1-9	39-44	brukt	_	_	_	_	
+1-10	45-54	topiramat	BEFOREOVERLAP	TREATMENT	_	_	
+1-11	55-56	i	_	_	_	_	
+1-12	57-58	6	_	_	_	_	
+1-13	59-63	uker	_	_	_	_	
+1-14	64-66	og	_	_	_	_	
+1-15	67-78	rapporterer	_	_	_	_	
+1-16	79-81	en	_	_	_	_	
+1-17	82-91	reduksjon	OVERLAP[1]	CONDITION[1]	_	_	
+1-18	92-93	i	OVERLAP[1]	CONDITION[1]	_	_	
+1-19	94-110	migreneanfallene	OVERLAP[1]	CONDITION[1]	_	_	
+1-20	111-114	til	_	_	_	_	
+1-21	115-122	omtrent	_	_	_	_	
+1-22	123-125	én	_	_	_	_	
+1-23	126-130	gang	_	_	_	_	
+1-24	131-134	per	_	_	_	_	
+1-25	135-138	uke	_	_	_	_	
+1-26	138-139	.	_	_	_	_	
+
+#Text=Hun har imidlertid hatt noen bivirkninger i form av prikking i hender og føtter, men disse har vært tolerable.
+2-1	140-143	Hun	_	_	_	_	
+2-2	144-147	har	_	_	_	_	
+2-3	148-158	imidlertid	_	_	_	_	
+2-4	159-163	hatt	_	_	_	_	
+2-5	164-168	noen	_	_	_	_	
+2-6	169-181	bivirkninger	OVERLAP	CONDITION	_	_	
+2-7	182-183	i	_	_	_	_	
+2-8	184-188	form	_	_	_	_	
+2-9	189-191	av	_	_	_	_	
+2-10	192-200	prikking	OVERLAP[2]	CONDITION[2]	_	_	
+2-11	201-202	i	OVERLAP[2]	CONDITION[2]	_	_	
+2-12	203-209	hender	OVERLAP[2]	CONDITION[2]	_	_	
+2-13	210-212	og	OVERLAP[2]	CONDITION[2]	_	_	
+2-14	213-219	føtter	OVERLAP[2]	CONDITION[2]	_	_	
+2-15	219-220	,	_	_	_	_	
+2-16	221-224	men	_	_	_	_	
+2-17	225-230	disse	_	_	_	_	
+2-18	231-234	har	_	_	_	_	
+2-19	235-239	vært	_	_	_	_	
+2-20	240-249	tolerable	_	_	_	_	
+2-21	249-250	.	_	_	_	_	
+
+#Text=Hun har også ført migrenedagbok, som viser at anfallene ofte kommer i forbindelse med stress og menstruasjon.
+3-1	251-254	Hun	_	_	_	_	
+3-2	255-258	har	_	_	_	_	
+3-3	259-263	også	_	_	_	_	
+3-4	264-268	ført	_	_	_	_	
+3-5	269-282	migrenedagbok	OVERLAP	CONDITION	_	_	
+3-6	282-283	,	_	_	_	_	
+3-7	284-287	som	_	_	_	_	
+3-8	288-293	viser	_	_	_	_	
+3-9	294-296	at	_	_	_	_	
+3-10	297-306	anfallene	_	_	_	_	
+3-11	307-311	ofte	_	_	_	_	
+3-12	312-318	kommer	_	_	_	_	
+3-13	319-320	i	_	_	_	_	
+3-14	321-332	forbindelse	_	_	_	_	
+3-15	333-336	med	_	_	_	_	
+3-16	337-343	stress	OVERLAP	CONDITION	BEFORE	3-5	
+3-17	344-346	og	_	_	_	_	
+3-18	347-359	menstruasjon	OVERLAP	CONDITION	BEFORE	3-5	
+3-19	359-360	.	_	_	_	_	
+
+#Text=Pasienten er fornøyd med effekten av topiramat, og vi fortsetter med dosen på 50 mg daglig.
+4-1	361-370	Pasienten	_	_	_	_	
+4-2	371-373	er	_	_	_	_	
+4-3	374-381	fornøyd	_	_	_	_	
+4-4	382-385	med	_	_	_	_	
+4-5	386-394	effekten	_	_	_	_	
+4-6	395-397	av	_	_	_	_	
+4-7	398-407	topiramat	_	_	_	_	
+4-8	407-408	,	_	_	_	_	
+4-9	409-411	og	_	_	_	_	
+4-10	412-414	vi	_	_	_	_	
+4-11	415-425	fortsetter	_	_	_	_	
+4-12	426-429	med	_	_	_	_	
+4-13	430-435	dosen	AFTER[3]	TREATMENT[3]	_	_	
+4-14	436-438	på	AFTER[3]	TREATMENT[3]	_	_	
+4-15	439-441	50	AFTER[3]	TREATMENT[3]	_	_	
+4-16	442-444	mg	AFTER[3]	TREATMENT[3]	_	_	
+4-17	445-451	daglig	_	_	_	_	
+4-18	451-452	.	_	_	_	_	
+
+#Text=Vi diskuterer også livsstilsendringer som stressmestring og regelmessig trening.
+5-1	453-455	Vi	_	_	_	_	
+5-2	456-466	diskuterer	_	_	_	_	
+5-3	467-471	også	_	_	_	_	
+5-4	472-490	livsstilsendringer	AFTER	TREATMENT	_	_	
+5-5	491-494	som	_	_	_	_	
+5-6	495-509	stressmestring	AFTER	TREATMENT	OVERLAP	5-4	
+5-7	510-512	og	_	_	_	_	
+5-8	513-524	regelmessig	AFTER[4]	TREATMENT[4]	OVERLAP	5-4[0_4]	
+5-9	525-532	trening	AFTER[4]	TREATMENT[4]	_	_	
+5-10	532-533	.	_	_	_	_	
+
+#Text=Fortsatt bruk av sumatriptan ved behov for akutte anfall.
+6-1	534-542	Fortsatt	_	_	_	_	
+6-2	543-547	bruk	_	_	_	_	
+6-3	548-550	av	_	_	_	_	
+6-4	551-562	sumatriptan	AFTER	TREATMENT	_	_	
+6-5	563-566	ved	_	_	_	_	
+6-6	567-572	behov	_	_	_	_	
+6-7	573-576	for	_	_	_	_	
+6-8	577-583	akutte	_	_	_	_	
+6-9	584-590	anfall	_	_	_	_	
+6-10	590-591	.	_	_	_	_	
+
+#Text=Ny oppfølging om 3 måneder.
+7-1	592-594	Ny	_	_	_	_	
+7-2	595-605	oppfølging	AFTER	TREATMENT	BEFORE|BEFORE|BEFORE	6-4|5-4|4-13[3_0]	
+7-3	606-608	om	_	_	_	_	
+7-4	609-610	3	_	_	_	_	
+7-5	611-618	måneder	_	_	_	_	
+7-6	618-619	.	_	_	_	_	
