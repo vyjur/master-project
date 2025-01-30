@@ -8,13 +8,14 @@ print("##### Start training for TRE... ######")
 # Info: Change here
 TRE_TYPE = "tlink"
 
-folder = f"./scripts/train/config/tre/{TRE_TYPE}"
+folder = f"./scripts/train/config/tre/{TRE_TYPE}/"
 configs = os.listdir(folder)
-folder_path = "./data/annotated/"
+folder_path = "./data/synthetic/annotated/annotation/"
+
 files = [
-    folder_path + f
+    folder_path + f + "/admin.tsv"
     for f in os.listdir(folder_path)
-    if os.path.isfile(os.path.join(folder_path, f))
+    if os.path.isfile(os.path.join(folder_path, f, "admin.tsv"))
 ]
 manager = DatasetManager(files)
 
