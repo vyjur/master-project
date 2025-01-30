@@ -1,0 +1,127 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 3 (2023-10-13)
+#Text=Ellen rapporterte en marginal bedring i symptonforvaltningen.
+1-1	0-12	Journalnotat	
+1-2	13-14	3	
+1-3	15-16	(	
+1-4	16-20	2023	
+1-5	20-21	-	
+1-6	21-23	10	
+1-7	23-24	-	
+1-8	24-26	13	
+1-9	26-27	)	
+1-10	28-33	Ellen	
+1-11	34-45	rapporterte	
+1-12	46-48	en	
+1-13	49-57	marginal	
+1-14	58-65	bedring	
+1-15	66-67	i	
+1-16	68-88	symptonforvaltningen	
+1-17	88-89	.	
+
+#Text=Svimmelheten var nesten borte, og hun kunne nå gå uten store problemer.
+2-1	90-102	Svimmelheten	
+2-2	103-106	var	
+2-3	107-113	nesten	
+2-4	114-119	borte	
+2-5	119-120	,	
+2-6	121-123	og	
+2-7	124-127	hun	
+2-8	128-133	kunne	
+2-9	134-136	nå	
+2-10	137-139	gå	
+2-11	140-144	uten	
+2-12	145-150	store	
+2-13	151-160	problemer	
+2-14	160-161	.	
+
+#Text=Dobbeltsynet var fortsatt til stede, men det var mindre intens.
+3-1	162-174	Dobbeltsynet	
+3-2	175-178	var	
+3-3	179-187	fortsatt	
+3-4	188-191	til	
+3-5	192-197	stede	
+3-6	197-198	,	
+3-7	199-202	men	
+3-8	203-206	det	
+3-9	207-210	var	
+3-10	211-217	mindre	
+3-11	218-224	intens	
+3-12	224-225	.	
+
+#Text=Vi diskuterte ulike behandlingsalternativer for dobbeltsynet, inkludert bruk av prismebriller eller øyenmuskelkirurgi hvis problemet skulle fortsette.
+4-1	226-228	Vi	
+4-2	229-239	diskuterte	
+4-3	240-245	ulike	
+4-4	246-269	behandlingsalternativer	
+4-5	270-273	for	
+4-6	274-286	dobbeltsynet	
+4-7	286-287	,	
+4-8	288-297	inkludert	
+4-9	298-302	bruk	
+4-10	303-305	av	
+4-11	306-319	prismebriller	
+4-12	320-325	eller	
+4-13	326-343	øyenmuskelkirurgi	
+4-14	344-348	hvis	
+4-15	349-358	problemet	
+4-16	359-365	skulle	
+4-17	366-375	fortsette	
+4-18	375-376	.	
+
+#Text=Ellen var positiv til dette, men hun uttrykte bekymring for at det kunne ta tid før hun ser effekten.
+5-1	377-382	Ellen	
+5-2	383-386	var	
+5-3	387-394	positiv	
+5-4	395-398	til	
+5-5	399-404	dette	
+5-6	404-405	,	
+5-7	406-409	men	
+5-8	410-413	hun	
+5-9	414-422	uttrykte	
+5-10	423-432	bekymring	
+5-11	433-436	for	
+5-12	437-439	at	
+5-13	440-443	det	
+5-14	444-449	kunne	
+5-15	450-452	ta	
+5-16	453-456	tid	
+5-17	457-460	før	
+5-18	461-464	hun	
+5-19	465-468	ser	
+5-20	469-477	effekten	
+5-21	477-478	.	
+
+#Text=Vi bestemte oss for å vente med ytterligere behandling inntil vi ser hvordan hun reagerer på den nåværende behandlingen.
+6-1	479-481	Vi	
+6-2	482-490	bestemte	
+6-3	491-494	oss	
+6-4	495-498	for	
+6-5	499-500	å	
+6-6	501-506	vente	
+6-7	507-510	med	
+6-8	511-522	ytterligere	
+6-9	523-533	behandling	
+6-10	534-540	inntil	
+6-11	541-543	vi	
+6-12	544-547	ser	
+6-13	548-555	hvordan	
+6-14	556-559	hun	
+6-15	560-568	reagerer	
+6-16	569-571	på	
+6-17	572-575	den	
+6-18	576-585	nåværende	
+6-19	586-598	behandlingen	
+6-20	598-599	.	
+
+#Text=Vi planla en oppfølging om to måneder.
+7-1	600-602	Vi	
+7-2	603-609	planla	
+7-3	610-612	en	
+7-4	613-623	oppfølging	
+7-5	624-626	om	
+7-6	627-629	to	
+7-7	630-637	måneder	
+7-8	637-638	.	

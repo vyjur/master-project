@@ -1,0 +1,126 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 4 (2023-11-24)
+#Text=Ellen kom inn til oppfølging etter to måneder på methylprednisolon.
+1-1	0-12	Journalnotat	
+1-2	13-14	4	
+1-3	15-16	(	
+1-4	16-20	2023	
+1-5	20-21	-	
+1-6	21-23	11	
+1-7	23-24	-	
+1-8	24-26	24	
+1-9	26-27	)	
+1-10	28-33	Ellen	
+1-11	34-37	kom	
+1-12	38-41	inn	
+1-13	42-45	til	
+1-14	46-56	oppfølging	
+1-15	57-62	etter	
+1-16	63-65	to	
+1-17	66-73	måneder	
+1-18	74-76	på	
+1-19	77-94	methylprednisolon	
+1-20	94-95	.	
+
+#Text=Symptometologi var viderebedret, og hun kunne nå utføre daglige aktiviteter uten store problemer.
+2-1	96-110	Symptometologi	
+2-2	111-114	var	
+2-3	115-127	viderebedret	
+2-4	127-128	,	
+2-5	129-131	og	
+2-6	132-135	hun	
+2-7	136-141	kunne	
+2-8	142-144	nå	
+2-9	145-151	utføre	
+2-10	152-159	daglige	
+2-11	160-171	aktiviteter	
+2-12	172-176	uten	
+2-13	177-182	store	
+2-14	183-192	problemer	
+2-15	192-193	.	
+
+#Text=Dobbeltsynet var nesten borte, og hun hadde fått bedre kontroll over bevegelsene.
+3-1	194-206	Dobbeltsynet	
+3-2	207-210	var	
+3-3	211-217	nesten	
+3-4	218-223	borte	
+3-5	223-224	,	
+3-6	225-227	og	
+3-7	228-231	hun	
+3-8	232-237	hadde	
+3-9	238-242	fått	
+3-10	243-248	bedre	
+3-11	249-257	kontroll	
+3-12	258-262	over	
+3-13	263-274	bevegelsene	
+3-14	274-275	.	
+
+#Text=Vi diskuterte muligheten for å prøve et nytt immunmodulator for å forebygge fremtidige eksaserbasjoner.
+4-1	276-278	Vi	
+4-2	279-289	diskuterte	
+4-3	290-300	muligheten	
+4-4	301-304	for	
+4-5	305-306	å	
+4-6	307-312	prøve	
+4-7	313-315	et	
+4-8	316-320	nytt	
+4-9	321-335	immunmodulator	
+4-10	336-339	for	
+4-11	340-341	å	
+4-12	342-351	forebygge	
+4-13	352-362	fremtidige	
+4-14	363-378	eksaserbasjoner	
+4-15	378-379	.	
+
+#Text=Ellen var positiv til dette, men hun uttrykte bekymring for sidevirkninger.
+5-1	380-385	Ellen	
+5-2	386-389	var	
+5-3	390-397	positiv	
+5-4	398-401	til	
+5-5	402-407	dette	
+5-6	407-408	,	
+5-7	409-412	men	
+5-8	413-416	hun	
+5-9	417-425	uttrykte	
+5-10	426-435	bekymring	
+5-11	436-439	for	
+5-12	440-454	sidevirkninger	
+5-13	454-455	.	
+
+#Text=Vi bestemte oss for å starte med en lav dosering av dimethylfumarat og se hvordan hun reagerer.
+6-1	456-458	Vi	
+6-2	459-467	bestemte	
+6-3	468-471	oss	
+6-4	472-475	for	
+6-5	476-477	å	
+6-6	478-484	starte	
+6-7	485-488	med	
+6-8	489-491	en	
+6-9	492-495	lav	
+6-10	496-504	dosering	
+6-11	505-507	av	
+6-12	508-523	dimethylfumarat	
+6-13	524-526	og	
+6-14	527-529	se	
+6-15	530-537	hvordan	
+6-16	538-541	hun	
+6-17	542-550	reagerer	
+6-18	550-551	.	
+
+#Text=Vi planla en oppfølging om seks måneder for å evaluere effekten av behandlingen.
+7-1	552-554	Vi	
+7-2	555-561	planla	
+7-3	562-564	en	
+7-4	565-575	oppfølging	
+7-5	576-578	om	
+7-6	579-583	seks	
+7-7	584-591	måneder	
+7-8	592-595	for	
+7-9	596-597	å	
+7-10	598-606	evaluere	
+7-11	607-615	effekten	
+7-12	616-618	av	
+7-13	619-631	behandlingen	
+7-14	631-632	.	

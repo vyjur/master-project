@@ -1,0 +1,158 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 1 (2023-09-15)
+#Text=Ellen møtte meg i dag med klagene om økte svimmelhet, dobbeltsyn og vanskeligheter med å gå rett.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	1	_	_	_	_	
+1-3	15-16	(	_	_	_	_	
+1-4	16-20	2023	_	_	_	_	
+1-5	20-21	-	_	_	_	_	
+1-6	21-23	09	_	_	_	_	
+1-7	23-24	-	_	_	_	_	
+1-8	24-26	15	_	_	_	_	
+1-9	26-27	)	_	_	_	_	
+1-10	28-33	Ellen	_	_	_	_	
+1-11	34-39	møtte	_	_	_	_	
+1-12	40-43	meg	_	_	_	_	
+1-13	44-45	i	_	_	_	_	
+1-14	46-49	dag	_	_	_	_	
+1-15	50-53	med	_	_	_	_	
+1-16	54-61	klagene	_	_	_	_	
+1-17	62-64	om	_	_	_	_	
+1-18	65-69	økte	_	_	_	_	
+1-19	70-80	svimmelhet	OVERLAP	CONDITION	_	_	
+1-20	80-81	,	_	_	_	_	
+1-21	82-92	dobbeltsyn	OVERLAP	CONDITION	_	_	
+1-22	93-95	og	_	_	_	_	
+1-23	96-110	vanskeligheter	OVERLAP[1]	CONDITION[1]	_	_	
+1-24	111-114	med	OVERLAP[1]	CONDITION[1]	_	_	
+1-25	115-116	å	OVERLAP[1]	CONDITION[1]	_	_	
+1-26	117-119	gå	OVERLAP[1]	CONDITION[1]	_	_	
+1-27	120-124	rett	OVERLAP[1]	CONDITION[1]	_	_	
+1-28	124-125	.	_	_	_	_	
+
+#Text=Hun har en kjent diagnose av multipel sklerose (MS) og har tidligere blitt behandlet med immunmodulatorer.
+2-1	126-129	Hun	_	_	_	_	
+2-2	130-133	har	_	_	_	_	
+2-3	134-136	en	_	_	_	_	
+2-4	137-142	kjent	_	_	_	_	
+2-5	143-151	diagnose	_	_	_	_	
+2-6	152-154	av	_	_	_	_	
+2-7	155-163	multipel	BEFOREOVERLAP[2]	CONDITION[2]	_	_	
+2-8	164-172	sklerose	BEFOREOVERLAP[2]	CONDITION[2]	_	_	
+2-9	173-174	(	BEFOREOVERLAP[2]	CONDITION[2]	_	_	
+2-10	174-176	MS	BEFOREOVERLAP[2]	CONDITION[2]	_	_	
+2-11	176-177	)	BEFOREOVERLAP[2]	CONDITION[2]	_	_	
+2-12	178-180	og	_	_	_	_	
+2-13	181-184	har	_	_	_	_	
+2-14	185-194	tidligere	_	_	_	_	
+2-15	195-200	blitt	_	_	_	_	
+2-16	201-210	behandlet	_	_	_	_	
+2-17	211-214	med	_	_	_	_	
+2-18	215-231	immunmodulatorer	BEFORE	TREATMENT	_	_	
+2-19	231-232	.	_	_	_	_	
+
+#Text=Symptometologi var verre de siste uken, og hun hadde begynt å oppleve episoder med tap av balanse og svikt i bena.
+3-1	233-247	Symptometologi	_	_	_	_	
+3-2	248-251	var	_	_	_	_	
+3-3	252-257	verre	_	_	_	_	
+3-4	258-260	de	_	_	_	_	
+3-5	261-266	siste	_	_	_	_	
+3-6	267-271	uken	_	_	_	_	
+3-7	271-272	,	_	_	_	_	
+3-8	273-275	og	_	_	_	_	
+3-9	276-279	hun	_	_	_	_	
+3-10	280-285	hadde	_	_	_	_	
+3-11	286-292	begynt	_	_	_	_	
+3-12	293-294	å	_	_	_	_	
+3-13	295-302	oppleve	_	_	_	_	
+3-14	303-311	episoder	_	_	_	_	
+3-15	312-315	med	_	_	_	_	
+3-16	316-319	tap	OVERLAP[3]	CONDITION[3]	_	_	
+3-17	320-322	av	OVERLAP[3]	CONDITION[3]	_	_	
+3-18	323-330	balanse	OVERLAP[3]	CONDITION[3]	_	_	
+3-19	331-333	og	_	_	_	_	
+3-20	334-339	svikt	OVERLAP[4]	CONDITION[4]	_	_	
+3-21	340-341	i	OVERLAP[4]	CONDITION[4]	_	_	
+3-22	342-346	bena	OVERLAP[4]	CONDITION[4]	_	_	
+3-23	346-347	.	_	_	_	_	
+
+#Text=Ved undersøkelse noterte jeg en tydelig nystagmus (øynervesvikt), og hun hadde vanskeligheter med å følge objekter med øynene.
+4-1	348-351	Ved	_	_	_	_	
+4-2	352-364	undersøkelse	OVERLAP	TREATMENT	_	_	
+4-3	365-372	noterte	_	_	_	_	
+4-4	373-376	jeg	_	_	_	_	
+4-5	377-379	en	_	_	_	_	
+4-6	380-387	tydelig	_	_	_	_	
+4-7	388-397	nystagmus	OVERLAP[5]	CONDITION[5]	BEFORE	4-2[0_5]	
+4-8	398-399	(	OVERLAP[5]	CONDITION[5]	_	_	
+4-9	399-411	øynervesvikt	OVERLAP[5]	CONDITION[5]	_	_	
+4-10	411-412	)	OVERLAP[5]	CONDITION[5]	_	_	
+4-11	412-413	,	_	_	_	_	
+4-12	414-416	og	_	_	_	_	
+4-13	417-420	hun	_	_	_	_	
+4-14	421-426	hadde	_	_	_	_	
+4-15	427-441	vanskeligheter	OVERLAP[6]	CONDITION[6]	BEFORE	4-2[0_6]	
+4-16	442-445	med	OVERLAP[6]	CONDITION[6]	_	_	
+4-17	446-447	å	OVERLAP[6]	CONDITION[6]	_	_	
+4-18	448-453	følge	OVERLAP[6]	CONDITION[6]	_	_	
+4-19	454-462	objekter	OVERLAP[6]	CONDITION[6]	_	_	
+4-20	463-466	med	OVERLAP[6]	CONDITION[6]	_	_	
+4-21	467-473	øynene	OVERLAP[6]	CONDITION[6]	_	_	
+4-22	473-474	.	_	_	_	_	
+
+#Text=Pulsfrekvensen var normal, men det var tegn på hyporeflexi i beina.
+5-1	475-489	Pulsfrekvensen	OVERLAP	CONDITION	BEFORE	4-2	
+5-2	490-493	var	_	_	_	_	
+5-3	494-500	normal	_	_	_	_	
+5-4	500-501	,	_	_	_	_	
+5-5	502-505	men	_	_	_	_	
+5-6	506-509	det	_	_	_	_	
+5-7	510-513	var	_	_	_	_	
+5-8	514-518	tegn	_	_	_	_	
+5-9	519-521	på	_	_	_	_	
+5-10	522-533	hyporeflexi	OVERLAP[7]	CONDITION[7]	BEFORE	4-2[0_7]	
+5-11	534-535	i	OVERLAP[7]	CONDITION[7]	_	_	
+5-12	536-541	beina	OVERLAP[7]	CONDITION[7]	_	_	
+5-13	541-542	.	_	_	_	_	
+
+#Text=Vi tok et MR-bilde for å sjekke for eventuelle nye leddformer i hjernen og ryggmargen.
+6-1	543-545	Vi	_	_	_	_	
+6-2	546-549	tok	_	_	_	_	
+6-3	550-552	et	_	_	_	_	
+6-4	553-561	MR-bilde	OVERLAP	TREATMENT	OVERLAP	4-2	
+6-5	562-565	for	_	_	_	_	
+6-6	566-567	å	_	_	_	_	
+6-7	568-574	sjekke	_	_	_	_	
+6-8	575-578	for	_	_	_	_	
+6-9	579-589	eventuelle	_	_	_	_	
+6-10	590-593	nye	_	_	_	_	
+6-11	594-604	leddformer	_	_	_	_	
+6-12	605-606	i	_	_	_	_	
+6-13	607-614	hjernen	_	_	_	_	
+6-14	615-617	og	_	_	_	_	
+6-15	618-628	ryggmargen	_	_	_	_	
+6-16	628-629	.	_	_	_	_	
+
+#Text=Vi planla også en henvisning til en neurologisk avdeling for videre utredning og mulig justering av behandlingen.
+7-1	630-632	Vi	_	_	_	_	
+7-2	633-639	planla	_	_	_	_	
+7-3	640-644	også	_	_	_	_	
+7-4	645-647	en	_	_	_	_	
+7-5	648-658	henvisning	AFTER[8]	TREATMENT[8]	_	_	
+7-6	659-662	til	AFTER[8]	TREATMENT[8]	_	_	
+7-7	663-665	en	AFTER[8]	TREATMENT[8]	_	_	
+7-8	666-677	neurologisk	AFTER[8]	TREATMENT[8]	_	_	
+7-9	678-686	avdeling	AFTER[8]	TREATMENT[8]	_	_	
+7-10	687-690	for	_	_	_	_	
+7-11	691-697	videre	_	_	_	_	
+7-12	698-707	utredning	_	_	_	_	
+7-13	708-710	og	_	_	_	_	
+7-14	711-716	mulig	_	_	_	_	
+7-15	717-726	justering	_	_	_	_	
+7-16	727-729	av	_	_	_	_	
+7-17	730-742	behandlingen	_	_	_	_	
+7-18	742-743	.	_	_	_	_	

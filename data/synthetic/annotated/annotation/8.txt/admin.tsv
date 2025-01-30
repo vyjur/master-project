@@ -1,0 +1,124 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Pasienten er tilbake for oppfølging etter 6 ukers behandling med Levaxin.
+1-1	0-9	Pasienten	_	_	_	_	
+1-2	10-12	er	_	_	_	_	
+1-3	13-20	tilbake	_	_	_	_	
+1-4	21-24	for	_	_	_	_	
+1-5	25-35	oppfølging	OVERLAP	TREATMENT	_	_	
+1-6	36-41	etter	_	_	_	_	
+1-7	42-43	6	_	_	_	_	
+1-8	44-49	ukers	_	_	_	_	
+1-9	50-60	behandling	BEFOREOVERLAP[1]	TREATMENT[1]	_	_	
+1-10	61-64	med	BEFOREOVERLAP[1]	TREATMENT[1]	_	_	
+1-11	65-72	Levaxin	BEFOREOVERLAP[1]	TREATMENT[1]	_	_	
+1-12	72-73	.	_	_	_	_	
+
+#Text=Hun har opplevd en gradvis bedring i energinivå og føler seg mer våken i hverdagen.
+2-1	74-77	Hun	_	_	_	_	
+2-2	78-81	har	_	_	_	_	
+2-3	82-89	opplevd	_	_	_	_	
+2-4	90-92	en	_	_	_	_	
+2-5	93-100	gradvis	_	_	_	_	
+2-6	101-108	bedring	OVERLAP[2]	CONDITION[2]	_	_	
+2-7	109-110	i	OVERLAP[2]	CONDITION[2]	_	_	
+2-8	111-121	energinivå	OVERLAP[2]	CONDITION[2]	_	_	
+2-9	122-124	og	_	_	_	_	
+2-10	125-130	føler	OVERLAP[3]	CONDITION[3]	_	_	
+2-11	131-134	seg	OVERLAP[3]	CONDITION[3]	_	_	
+2-12	135-138	mer	OVERLAP[3]	CONDITION[3]	_	_	
+2-13	139-144	våken	OVERLAP[3]	CONDITION[3]	_	_	
+2-14	145-146	i	_	_	_	_	
+2-15	147-156	hverdagen	_	_	_	_	
+2-16	156-157	.	_	_	_	_	
+
+#Text=Vektøkningen har stoppet opp, men hun har foreløpig ikke gått ned i vekt.
+3-1	158-170	Vektøkningen	_	_	_	_	
+3-2	171-174	har	_	_	_	_	
+3-3	175-182	stoppet	_	_	_	_	
+3-4	183-186	opp	_	_	_	_	
+3-5	186-187	,	_	_	_	_	
+3-6	188-191	men	_	_	_	_	
+3-7	192-195	hun	_	_	_	_	
+3-8	196-199	har	_	_	_	_	
+3-9	200-209	foreløpig	_	_	_	_	
+3-10	210-214	ikke	_	_	_	_	
+3-11	215-219	gått	_	_	_	_	
+3-12	220-223	ned	_	_	_	_	
+3-13	224-225	i	_	_	_	_	
+3-14	226-230	vekt	_	_	_	_	
+3-15	230-231	.	_	_	_	_	
+
+#Text=Hun rapporterer ingen bivirkninger av medisinen.
+4-1	232-235	Hun	_	_	_	_	
+4-2	236-247	rapporterer	_	_	_	_	
+4-3	248-253	ingen	_	_	_	_	
+4-4	254-266	bivirkninger	_	_	_	_	
+4-5	267-269	av	_	_	_	_	
+4-6	270-279	medisinen	_	_	_	_	
+4-7	279-280	.	_	_	_	_	
+
+#Text=Nye blodprøvesvar viser at TSH har falt til 3,1 mIE/L, og fritt T4 er nå innenfor normalområdet.
+5-1	281-284	Nye	_	_	_	_	
+5-2	285-298	blodprøvesvar	OVERLAP	TREATMENT	_	_	
+5-3	299-304	viser	_	_	_	_	
+5-4	305-307	at	_	_	_	_	
+5-5	308-311	TSH	OVERLAP[4]	CONDITION[4]	_	_	
+5-6	312-315	har	OVERLAP[4]	CONDITION[4]	_	_	
+5-7	316-320	falt	OVERLAP[4]	CONDITION[4]	_	_	
+5-8	321-324	til	_	_	_	_	
+5-9	325-328	3,1	_	_	_	_	
+5-10	329-332	mIE	_	_	_	_	
+5-11	332-333	/	_	_	_	_	
+5-12	333-334	L	_	_	_	_	
+5-13	334-335	,	_	_	_	_	
+5-14	336-338	og	_	_	_	_	
+5-15	339-344	fritt	OVERLAP[5]	*[5]	_	_	
+5-16	345-347	T4	OVERLAP[5]	*[5]	_	_	
+5-17	348-350	er	_	_	_	_	
+5-18	351-353	nå	_	_	_	_	
+5-19	354-362	innenfor	_	_	_	_	
+5-20	363-376	normalområdet	_	_	_	_	
+5-21	376-377	.	_	_	_	_	
+
+#Text=Vi fortsetter med samme Levaxin-dose (50 mcg daglig), men planlegger ny kontroll om 3 måneder for videre vurdering.
+6-1	378-380	Vi	_	_	_	_	
+6-2	381-391	fortsetter	_	_	_	_	
+6-3	392-395	med	_	_	_	_	
+6-4	396-401	samme	AFTER[6]	TREATMENT[6]	_	_	
+6-5	402-414	Levaxin-dose	AFTER[6]	TREATMENT[6]	_	_	
+6-6	415-416	(	AFTER[6]	TREATMENT[6]	_	_	
+6-7	416-418	50	AFTER[6]	TREATMENT[6]	_	_	
+6-8	419-422	mcg	AFTER[6]	TREATMENT[6]	_	_	
+6-9	423-429	daglig	_	_	_	_	
+6-10	429-430	)	_	_	_	_	
+6-11	430-431	,	_	_	_	_	
+6-12	432-435	men	_	_	_	_	
+6-13	436-446	planlegger	_	_	_	_	
+6-14	447-449	ny	_	_	_	_	
+6-15	450-458	kontroll	AFTER	TREATMENT	BEFORE	6-4[6_0]	
+6-16	459-461	om	_	_	_	_	
+6-17	462-463	3	_	_	_	_	
+6-18	464-471	måneder	_	_	_	_	
+6-19	472-475	for	_	_	_	_	
+6-20	476-482	videre	_	_	_	_	
+6-21	483-492	vurdering	_	_	_	_	
+6-22	492-493	.	_	_	_	_	
+
+#Text=Pasienten rådes også til å opprettholde et balansert kosthold og fysisk aktivitet.
+7-1	494-503	Pasienten	_	_	_	_	
+7-2	504-509	rådes	_	_	_	_	
+7-3	510-514	også	_	_	_	_	
+7-4	515-518	til	_	_	_	_	
+7-5	519-520	å	_	_	_	_	
+7-6	521-533	opprettholde	_	_	_	_	
+7-7	534-536	et	_	_	_	_	
+7-8	537-546	balansert	AFTER[7]	TREATMENT[7]	_	_	
+7-9	547-555	kosthold	AFTER[7]	TREATMENT[7]	_	_	
+7-10	556-558	og	_	_	_	_	
+7-11	559-565	fysisk	AFTER[8]	TREATMENT[8]	OVERLAP	7-8[7_8]	
+7-12	566-575	aktivitet	AFTER[8]	TREATMENT[8]	_	_	
+7-13	575-576	.	_	_	_	_	

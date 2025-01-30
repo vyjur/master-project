@@ -1,0 +1,59 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 1 - 10.07.2025
+#Text=Ny pasient til førstegangs revmatologisk vurdering.
+1-1	0-12	Journalnotat	
+1-2	13-14	1	
+1-3	15-16	-	
+1-4	17-27	10.07.2025	
+1-5	28-30	Ny	
+1-6	31-38	pasient	
+1-7	39-42	til	
+1-8	43-54	førstegangs	
+1-9	55-68	revmatologisk	
+1-10	69-78	vurdering	
+1-11	78-79	.	
+
+#Text=Uttalt leddsmerter og morgenstivhet i håndledd og fingre.
+2-1	80-86	Uttalt	
+2-2	87-98	leddsmerter	
+2-3	99-101	og	
+2-4	102-115	morgenstivhet	
+2-5	116-117	i	
+2-6	118-126	håndledd	
+2-7	127-129	og	
+2-8	130-136	fingre	
+2-9	136-137	.	
+
+#Text=Blodprøver viser forhøyede betennelsesmarkører og positiv RF-faktor.
+3-1	138-148	Blodprøver	
+3-2	149-154	viser	
+3-3	155-164	forhøyede	
+3-4	165-184	betennelsesmarkører	
+3-5	185-187	og	
+3-6	188-195	positiv	
+3-7	196-205	RF-faktor	
+3-8	205-206	.	
+
+#Text=Klinisk undersøkelse avdekker hevelse og ømhet i mehrfingerledd.
+4-1	207-214	Klinisk	
+4-2	215-227	undersøkelse	
+4-3	228-236	avdekker	
+4-4	237-244	hevelse	
+4-5	245-247	og	
+4-6	248-253	ømhet	
+4-7	254-255	i	
+4-8	256-270	mehrfingerledd	
+4-9	270-271	.	
+
+#Text=Starter utredning for revmatoid artritt med umiddelbar prøvebehandling.
+5-1	272-279	Starter	
+5-2	280-289	utredning	
+5-3	290-293	for	
+5-4	294-303	revmatoid	
+5-5	304-311	artritt	
+5-6	312-315	med	
+5-7	316-326	umiddelbar	
+5-8	327-342	prøvebehandling	
+5-9	342-343	.	

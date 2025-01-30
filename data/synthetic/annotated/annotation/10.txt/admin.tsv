@@ -1,0 +1,165 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Notat 1 - 03.09.2024: 
+#Text=Pasienten kommer til kontroll i forbindelse med sin kjente KOLS-diagnose.
+1-1	0-5	Notat	_	_	_	_	
+1-2	6-7	1	_	_	_	_	
+1-3	8-9	-	_	_	_	_	
+1-4	10-20	03.09.2024	_	_	_	_	
+1-5	20-21	:	_	_	_	_	
+1-6	23-32	Pasienten	_	_	_	_	
+1-7	33-39	kommer	_	_	_	_	
+1-8	40-43	til	_	_	_	_	
+1-9	44-52	kontroll	_	_	_	_	
+1-10	53-54	i	_	_	_	_	
+1-11	55-66	forbindelse	_	_	_	_	
+1-12	67-70	med	_	_	_	_	
+1-13	71-74	sin	_	_	_	_	
+1-14	75-81	kjente	_	_	_	_	
+1-15	82-95	KOLS-diagnose	BEFOREOVERLAP	CONDITION	_	_	
+1-16	95-96	.	_	_	_	_	
+
+#Text=Han har hatt økende pustebesvær de siste ukene, spesielt ved anstrengelse.
+2-1	97-100	Han	_	_	_	_	
+2-2	101-104	har	_	_	_	_	
+2-3	105-109	hatt	_	_	_	_	
+2-4	110-116	økende	OVERLAP[1]	CONDITION[1]	_	_	
+2-5	117-128	pustebesvær	OVERLAP[1]	CONDITION[1]	_	_	
+2-6	129-131	de	_	_	_	_	
+2-7	132-137	siste	_	_	_	_	
+2-8	138-143	ukene	_	_	_	_	
+2-9	143-144	,	_	_	_	_	
+2-10	145-153	spesielt	_	_	_	_	
+2-11	154-157	ved	_	_	_	_	
+2-12	158-170	anstrengelse	_	_	_	_	
+2-13	170-171	.	_	_	_	_	
+
+#Text=Pasienten har også hatt hyppige hosteanfall med gulaktig ekspektorat, men ingen feber.
+3-1	172-181	Pasienten	_	_	_	_	
+3-2	182-185	har	_	_	_	_	
+3-3	186-190	også	_	_	_	_	
+3-4	191-195	hatt	_	_	_	_	
+3-5	196-203	hyppige	OVERLAP[2]	CONDITION[2]	_	_	
+3-6	204-215	hosteanfall	OVERLAP[2]	CONDITION[2]	_	_	
+3-7	216-219	med	OVERLAP[2]	CONDITION[2]	_	_	
+3-8	220-228	gulaktig	OVERLAP[2]	CONDITION[2]	_	_	
+3-9	229-240	ekspektorat	OVERLAP[2]	CONDITION[2]	_	_	
+3-10	240-241	,	_	_	_	_	
+3-11	242-245	men	_	_	_	_	
+3-12	246-251	ingen	_	_	_	_	
+3-13	252-257	feber	_	_	_	_	
+3-14	257-258	.	_	_	_	_	
+
+#Text=Spirometri viser en FEV1 på 45 % av forventet, noe som indikerer moderat til alvorlig KOLS.
+4-1	259-269	Spirometri	OVERLAP	TREATMENT	_	_	
+4-2	270-275	viser	_	_	_	_	
+4-3	276-278	en	_	_	_	_	
+4-4	279-283	FEV1	_	_	_	_	
+4-5	284-286	på	_	_	_	_	
+4-6	287-289	45	_	_	_	_	
+4-7	290-291	%	_	_	_	_	
+4-8	292-294	av	_	_	_	_	
+4-9	295-304	forventet	_	_	_	_	
+4-10	304-305	,	_	_	_	_	
+4-11	306-309	noe	_	_	_	_	
+4-12	310-313	som	_	_	_	_	
+4-13	314-323	indikerer	_	_	_	_	
+4-14	324-331	moderat	OVERLAP[3]	CONDITION[3]	BEFORE	4-1[0_3]	
+4-15	332-335	til	OVERLAP[3]	CONDITION[3]	_	_	
+4-16	336-344	alvorlig	OVERLAP[3]	CONDITION[3]	_	_	
+4-17	345-349	KOLS	OVERLAP[3]	CONDITION[3]	_	_	
+4-18	349-350	.	_	_	_	_	
+
+#Text=Oksygenmetningen er 92 % i hvile.
+5-1	351-367	Oksygenmetningen	_	_	_	_	
+5-2	368-370	er	_	_	_	_	
+5-3	371-373	92	_	_	_	_	
+5-4	374-375	%	_	_	_	_	
+5-5	376-377	i	_	_	_	_	
+5-6	378-383	hvile	_	_	_	_	
+5-7	383-384	.	_	_	_	_	
+
+#Text=Pasienten bruker daglig bronkodilator (Spiriva) og Ventoline ved behov.
+6-1	385-394	Pasienten	_	_	_	_	
+6-2	395-401	bruker	_	_	_	_	
+6-3	402-408	daglig	_	_	_	_	
+6-4	409-422	bronkodilator	BEFOREOVERLAP[4]	TREATMENT[4]	_	_	
+6-5	423-424	(	BEFOREOVERLAP[4]	TREATMENT[4]	_	_	
+6-6	424-431	Spiriva	BEFOREOVERLAP[4]	TREATMENT[4]	_	_	
+6-7	431-432	)	BEFOREOVERLAP[4]	TREATMENT[4]	_	_	
+6-8	433-435	og	_	_	_	_	
+6-9	436-445	Ventoline	BEFOREOVERLAP	TREATMENT	OVERLAP	6-4[4_0]	
+6-10	446-449	ved	_	_	_	_	
+6-11	450-455	behov	_	_	_	_	
+6-12	455-456	.	_	_	_	_	
+
+#Text=Jeg mistenker en forverring av KOLS, muligens utløst av en luftveisinfeksjon.
+7-1	457-460	Jeg	_	_	_	_	
+7-2	461-470	mistenker	_	_	_	_	
+7-3	471-473	en	_	_	_	_	
+7-4	474-484	forverring	OVERLAP[5]	CONDITION[5]	_	_	
+7-5	485-487	av	OVERLAP[5]	CONDITION[5]	_	_	
+7-6	488-492	KOLS	OVERLAP[5]	CONDITION[5]	_	_	
+7-7	492-493	,	_	_	_	_	
+7-8	494-502	muligens	_	_	_	_	
+7-9	503-509	utløst	_	_	_	_	
+7-10	510-512	av	_	_	_	_	
+7-11	513-515	en	_	_	_	_	
+7-12	516-533	luftveisinfeksjon	OVERLAP	CONDITION	_	_	
+7-13	533-534	.	_	_	_	_	
+
+#Text=Vi starter behandling med antibiotika (Amoxicillin 500 mg x 3 i 7 dager) og øker dosen av inhalasjonssteroider.
+8-1	535-537	Vi	_	_	_	_	
+8-2	538-545	starter	_	_	_	_	
+8-3	546-556	behandling	_	_	_	_	
+8-4	557-560	med	_	_	_	_	
+8-5	561-572	antibiotika	AFTER[6]	TREATMENT[6]	_	_	
+8-6	573-574	(	AFTER[6]	TREATMENT[6]	_	_	
+8-7	574-585	Amoxicillin	AFTER[6]	TREATMENT[6]	_	_	
+8-8	586-589	500	AFTER[6]	TREATMENT[6]	_	_	
+8-9	590-592	mg	AFTER[6]	TREATMENT[6]	_	_	
+8-10	593-594	x	AFTER[6]	TREATMENT[6]	_	_	
+8-11	595-596	3	AFTER[6]	TREATMENT[6]	_	_	
+8-12	597-598	i	_	_	_	_	
+8-13	599-600	7	_	_	_	_	
+8-14	601-606	dager	_	_	_	_	
+8-15	606-607	)	_	_	_	_	
+8-16	608-610	og	_	_	_	_	
+8-17	611-615	øker	AFTER[7]	TREATMENT[7]	OVERLAP	8-5[6_7]	
+8-18	616-621	dosen	AFTER[7]	TREATMENT[7]	_	_	
+8-19	622-624	av	AFTER[7]	TREATMENT[7]	_	_	
+8-20	625-645	inhalasjonssteroider	AFTER[7]	TREATMENT[7]	_	_	
+8-21	645-646	.	_	_	_	_	
+
+#Text=Pasienten får også resept på kortison-tabletter (Prednisolon 30 mg daglig i 5 dager) for å dempe inflammasjonen.
+9-1	647-656	Pasienten	_	_	_	_	
+9-2	657-660	får	_	_	_	_	
+9-3	661-665	også	_	_	_	_	
+9-4	666-672	resept	_	_	_	_	
+9-5	673-675	på	_	_	_	_	
+9-6	676-694	kortison-tabletter	AFTER[8]	TREATMENT[8]	_	_	
+9-7	695-696	(	AFTER[8]	TREATMENT[8]	_	_	
+9-8	696-707	Prednisolon	AFTER[8]	TREATMENT[8]	_	_	
+9-9	708-710	30	AFTER[8]	TREATMENT[8]	_	_	
+9-10	711-713	mg	AFTER[8]	TREATMENT[8]	_	_	
+9-11	714-720	daglig	_	_	_	_	
+9-12	721-722	i	_	_	_	_	
+9-13	723-724	5	_	_	_	_	
+9-14	725-730	dager	_	_	_	_	
+9-15	730-731	)	_	_	_	_	
+9-16	732-735	for	_	_	_	_	
+9-17	736-737	å	_	_	_	_	
+9-18	738-743	dempe	_	_	_	_	
+9-19	744-758	inflammasjonen	_	_	_	_	
+9-20	758-759	.	_	_	_	_	
+
+#Text=Ny vurdering om 2 uker.
+10-1	760-762	Ny	_	_	_	_	
+10-2	763-772	vurdering	AFTER	TREATMENT	BEFORE|BEFORE|BEFORE	9-6[8_0]|8-5[6_0]|8-17[7_0]	
+10-3	773-775	om	_	_	_	_	
+10-4	776-777	2	_	_	_	_	
+10-5	778-782	uker	_	_	_	_	
+10-6	782-783	.	_	_	_	_	

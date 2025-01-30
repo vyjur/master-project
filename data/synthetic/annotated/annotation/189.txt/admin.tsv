@@ -1,0 +1,128 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 4 (2023-11-24)
+#Text=Ellen kom inn til oppfølging etter to måneder på methylprednisolon.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	4	_	_	_	_	
+1-3	15-16	(	_	_	_	_	
+1-4	16-20	2023	_	_	_	_	
+1-5	20-21	-	_	_	_	_	
+1-6	21-23	11	_	_	_	_	
+1-7	23-24	-	_	_	_	_	
+1-8	24-26	24	_	_	_	_	
+1-9	26-27	)	_	_	_	_	
+1-10	28-33	Ellen	_	_	_	_	
+1-11	34-37	kom	_	_	_	_	
+1-12	38-41	inn	_	_	_	_	
+1-13	42-45	til	_	_	_	_	
+1-14	46-56	oppfølging	OVERLAP	TREATMENT	_	_	
+1-15	57-62	etter	_	_	_	_	
+1-16	63-65	to	_	_	_	_	
+1-17	66-73	måneder	_	_	_	_	
+1-18	74-76	på	_	_	_	_	
+1-19	77-94	methylprednisolon	AFTER	TREATMENT	_	_	
+1-20	94-95	.	_	_	_	_	
+
+#Text=Symptometologi var viderebedret, og hun kunne nå utføre daglige aktiviteter uten store problemer.
+2-1	96-110	Symptometologi	OVERLAP	*	_	_	
+2-2	111-114	var	_	_	_	_	
+2-3	115-127	viderebedret	_	_	_	_	
+2-4	127-128	,	_	_	_	_	
+2-5	129-131	og	_	_	_	_	
+2-6	132-135	hun	_	_	_	_	
+2-7	136-141	kunne	_	_	_	_	
+2-8	142-144	nå	_	_	_	_	
+2-9	145-151	utføre	_	_	_	_	
+2-10	152-159	daglige	_	_	_	_	
+2-11	160-171	aktiviteter	_	_	_	_	
+2-12	172-176	uten	_	_	_	_	
+2-13	177-182	store	_	_	_	_	
+2-14	183-192	problemer	_	_	_	_	
+2-15	192-193	.	_	_	_	_	
+
+#Text=Dobbeltsynet var nesten borte, og hun hadde fått bedre kontroll over bevegelsene.
+3-1	194-206	Dobbeltsynet	OVERLAP	CONDITION	_	_	
+3-2	207-210	var	_	_	_	_	
+3-3	211-217	nesten	_	_	_	_	
+3-4	218-223	borte	_	_	_	_	
+3-5	223-224	,	_	_	_	_	
+3-6	225-227	og	_	_	_	_	
+3-7	228-231	hun	_	_	_	_	
+3-8	232-237	hadde	_	_	_	_	
+3-9	238-242	fått	_	_	_	_	
+3-10	243-248	bedre	OVERLAP[1]	CONDITION[1]	_	_	
+3-11	249-257	kontroll	OVERLAP[1]	CONDITION[1]	_	_	
+3-12	258-262	over	OVERLAP[1]	CONDITION[1]	_	_	
+3-13	263-274	bevegelsene	OVERLAP[1]	CONDITION[1]	_	_	
+3-14	274-275	.	_	_	_	_	
+
+#Text=Vi diskuterte muligheten for å prøve et nytt immunmodulator for å forebygge fremtidige eksaserbasjoner.
+4-1	276-278	Vi	_	_	_	_	
+4-2	279-289	diskuterte	_	_	_	_	
+4-3	290-300	muligheten	_	_	_	_	
+4-4	301-304	for	_	_	_	_	
+4-5	305-306	å	_	_	_	_	
+4-6	307-312	prøve	_	_	_	_	
+4-7	313-315	et	_	_	_	_	
+4-8	316-320	nytt	_	_	_	_	
+4-9	321-335	immunmodulator	_	_	_	_	
+4-10	336-339	for	_	_	_	_	
+4-11	340-341	å	_	_	_	_	
+4-12	342-351	forebygge	_	_	_	_	
+4-13	352-362	fremtidige	_	_	_	_	
+4-14	363-378	eksaserbasjoner	_	_	_	_	
+4-15	378-379	.	_	_	_	_	
+
+#Text=Ellen var positiv til dette, men hun uttrykte bekymring for sidevirkninger.
+5-1	380-385	Ellen	_	_	_	_	
+5-2	386-389	var	_	_	_	_	
+5-3	390-397	positiv	_	_	_	_	
+5-4	398-401	til	_	_	_	_	
+5-5	402-407	dette	_	_	_	_	
+5-6	407-408	,	_	_	_	_	
+5-7	409-412	men	_	_	_	_	
+5-8	413-416	hun	_	_	_	_	
+5-9	417-425	uttrykte	_	_	_	_	
+5-10	426-435	bekymring	_	_	_	_	
+5-11	436-439	for	_	_	_	_	
+5-12	440-454	sidevirkninger	_	_	_	_	
+5-13	454-455	.	_	_	_	_	
+
+#Text=Vi bestemte oss for å starte med en lav dosering av dimethylfumarat og se hvordan hun reagerer.
+6-1	456-458	Vi	_	_	_	_	
+6-2	459-467	bestemte	_	_	_	_	
+6-3	468-471	oss	_	_	_	_	
+6-4	472-475	for	_	_	_	_	
+6-5	476-477	å	_	_	_	_	
+6-6	478-484	starte	_	_	_	_	
+6-7	485-488	med	_	_	_	_	
+6-8	489-491	en	_	_	_	_	
+6-9	492-495	lav	AFTER[2]	TREATMENT[2]	_	_	
+6-10	496-504	dosering	AFTER[2]	TREATMENT[2]	_	_	
+6-11	505-507	av	AFTER[2]	TREATMENT[2]	_	_	
+6-12	508-523	dimethylfumarat	AFTER[2]	TREATMENT[2]	_	_	
+6-13	524-526	og	_	_	_	_	
+6-14	527-529	se	_	_	_	_	
+6-15	530-537	hvordan	_	_	_	_	
+6-16	538-541	hun	_	_	_	_	
+6-17	542-550	reagerer	_	_	_	_	
+6-18	550-551	.	_	_	_	_	
+
+#Text=Vi planla en oppfølging om seks måneder for å evaluere effekten av behandlingen.
+7-1	552-554	Vi	_	_	_	_	
+7-2	555-561	planla	_	_	_	_	
+7-3	562-564	en	_	_	_	_	
+7-4	565-575	oppfølging	AFTER	TREATMENT	BEFORE	6-9[2_0]	
+7-5	576-578	om	_	_	_	_	
+7-6	579-583	seks	_	_	_	_	
+7-7	584-591	måneder	_	_	_	_	
+7-8	592-595	for	_	_	_	_	
+7-9	596-597	å	_	_	_	_	
+7-10	598-606	evaluere	_	_	_	_	
+7-11	607-615	effekten	_	_	_	_	
+7-12	616-618	av	_	_	_	_	
+7-13	619-631	behandlingen	_	_	_	_	
+7-14	631-632	.	_	_	_	_	

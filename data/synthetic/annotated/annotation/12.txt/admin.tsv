@@ -1,0 +1,129 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Notat 3 - 10.10.2024:
+#Text=Pasienten har nå tatt influensavaksinen og rapporterer om stabil tilstand.
+1-1	0-5	Notat	_	_	_	_	
+1-2	6-7	3	_	_	_	_	
+1-3	8-9	-	_	_	_	_	
+1-4	10-20	10.10.2024	_	_	_	_	
+1-5	20-21	:	_	_	_	_	
+1-6	22-31	Pasienten	_	_	_	_	
+1-7	32-35	har	_	_	_	_	
+1-8	36-38	nå	_	_	_	_	
+1-9	39-43	tatt	_	_	_	_	
+1-10	44-61	influensavaksinen	BEFORE	TREATMENT	_	_	
+1-11	62-64	og	_	_	_	_	
+1-12	65-76	rapporterer	_	_	_	_	
+1-13	77-79	om	_	_	_	_	
+1-14	80-86	stabil	OVERLAP[1]	CONDITION[1]	_	_	
+1-15	87-95	tilstand	OVERLAP[1]	CONDITION[1]	_	_	
+1-16	95-96	.	_	_	_	_	
+
+#Text=Han har ikke hatt noen nye episoder med tungpust eller infeksjoner.
+2-1	97-100	Han	_	_	_	_	
+2-2	101-104	har	_	_	_	_	
+2-3	105-109	ikke	_	_	_	_	
+2-4	110-114	hatt	_	_	_	_	
+2-5	115-119	noen	_	_	_	_	
+2-6	120-123	nye	_	_	_	_	
+2-7	124-132	episoder	_	_	_	_	
+2-8	133-136	med	_	_	_	_	
+2-9	137-145	tungpust	_	_	_	_	
+2-10	146-151	eller	_	_	_	_	
+2-11	152-163	infeksjoner	_	_	_	_	
+2-12	163-164	.	_	_	_	_	
+
+#Text=Hoste er minimal, og han klarer nå korte spaserturer uten å måtte stoppe.
+3-1	165-170	Hoste	OVERLAP	CONDITION	_	_	
+3-2	171-173	er	_	_	_	_	
+3-3	174-181	minimal	_	_	_	_	
+3-4	181-182	,	_	_	_	_	
+3-5	183-185	og	_	_	_	_	
+3-6	186-189	han	_	_	_	_	
+3-7	190-196	klarer	_	_	_	_	
+3-8	197-199	nå	_	_	_	_	
+3-9	200-205	korte	_	_	_	_	
+3-10	206-217	spaserturer	_	_	_	_	
+3-11	218-222	uten	_	_	_	_	
+3-12	223-224	å	_	_	_	_	
+3-13	225-230	måtte	_	_	_	_	
+3-14	231-237	stoppe	_	_	_	_	
+3-15	237-238	.	_	_	_	_	
+
+#Text=Spirometri viser ingen signifikant forbedring, med FEV1 fortsatt på 45 %, men klinisk opplever han en subjektiv bedring.
+4-1	239-249	Spirometri	OVERLAP	TREATMENT	_	_	
+4-2	250-255	viser	_	_	_	_	
+4-3	256-261	ingen	_	_	_	_	
+4-4	262-273	signifikant	_	_	_	_	
+4-5	274-284	forbedring	_	_	_	_	
+4-6	284-285	,	_	_	_	_	
+4-7	286-289	med	_	_	_	_	
+4-8	290-294	FEV1	*	CONDITION	BEFORE	4-1	
+4-9	295-303	fortsatt	_	_	_	_	
+4-10	304-306	på	_	_	_	_	
+4-11	307-309	45	_	_	_	_	
+4-12	310-311	%	_	_	_	_	
+4-13	311-312	,	_	_	_	_	
+4-14	313-316	men	_	_	_	_	
+4-15	317-324	klinisk	_	_	_	_	
+4-16	325-333	opplever	_	_	_	_	
+4-17	334-337	han	_	_	_	_	
+4-18	338-340	en	_	_	_	_	
+4-19	341-350	subjektiv	*[2]	CONDITION[2]	_	_	
+4-20	351-358	bedring	*[2]	CONDITION[2]	_	_	
+4-21	358-359	.	_	_	_	_	
+
+#Text=Oksygenmetningen er stabil på 93 %.
+5-1	360-376	Oksygenmetningen	OVERLAP	CONDITION	_	_	
+5-2	377-379	er	_	_	_	_	
+5-3	380-386	stabil	_	_	_	_	
+5-4	387-389	på	_	_	_	_	
+5-5	390-392	93	_	_	_	_	
+5-6	393-394	%	_	_	_	_	
+5-7	394-395	.	_	_	_	_	
+
+#Text=Vi diskuterer også muligheten for bruk av oksygen hjemme ved videre forverring, men pasienten er foreløpig ikke interessert i dette.
+6-1	396-398	Vi	_	_	_	_	
+6-2	399-409	diskuterer	_	_	_	_	
+6-3	410-414	også	_	_	_	_	
+6-4	415-425	muligheten	_	_	_	_	
+6-5	426-429	for	_	_	_	_	
+6-6	430-434	bruk	_	_	_	_	
+6-7	435-437	av	_	_	_	_	
+6-8	438-445	oksygen	_	_	_	_	
+6-9	446-452	hjemme	_	_	_	_	
+6-10	453-456	ved	_	_	_	_	
+6-11	457-463	videre	_	_	_	_	
+6-12	464-474	forverring	_	_	_	_	
+6-13	474-475	,	_	_	_	_	
+6-14	476-479	men	_	_	_	_	
+6-15	480-489	pasienten	_	_	_	_	
+6-16	490-492	er	_	_	_	_	
+6-17	493-502	foreløpig	_	_	_	_	
+6-18	503-507	ikke	_	_	_	_	
+6-19	508-519	interessert	_	_	_	_	
+6-20	520-521	i	_	_	_	_	
+6-21	522-527	dette	_	_	_	_	
+6-22	527-528	.	_	_	_	_	
+
+#Text=Han fortsetter med nåværende behandling, med ny kontroll om 3 måneder eller tidligere ved behov.
+7-1	529-532	Han	_	_	_	_	
+7-2	533-543	fortsetter	_	_	_	_	
+7-3	544-547	med	_	_	_	_	
+7-4	548-557	nåværende	_	_	_	_	
+7-5	558-568	behandling	AFTER	CONDITION	_	_	
+7-6	568-569	,	_	_	_	_	
+7-7	570-573	med	_	_	_	_	
+7-8	574-576	ny	_	_	_	_	
+7-9	577-585	kontroll	AFTER	TREATMENT	BEFORE	7-5	
+7-10	586-588	om	_	_	_	_	
+7-11	589-590	3	_	_	_	_	
+7-12	591-598	måneder	_	_	_	_	
+7-13	599-604	eller	_	_	_	_	
+7-14	605-614	tidligere	_	_	_	_	
+7-15	615-618	ved	_	_	_	_	
+7-16	619-624	behov	_	_	_	_	
+7-17	624-625	.	_	_	_	_	

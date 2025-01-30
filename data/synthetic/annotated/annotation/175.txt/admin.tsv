@@ -1,0 +1,116 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 5 (2023-10-31)
+#Text=Lars kom inn til siste oppfølging i dag.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	5	_	_	_	_	
+1-3	15-16	(	_	_	_	_	
+1-4	16-20	2023	_	_	_	_	
+1-5	20-21	-	_	_	_	_	
+1-6	21-23	10	_	_	_	_	
+1-7	23-24	-	_	_	_	_	
+1-8	24-26	31	_	_	_	_	
+1-9	26-27	)	_	_	_	_	
+1-10	28-32	Lars	_	_	_	_	
+1-11	33-36	kom	_	_	_	_	
+1-12	37-40	inn	_	_	_	_	
+1-13	41-44	til	_	_	_	_	
+1-14	45-50	siste	_	_	_	_	
+1-15	51-61	oppfølging	OVERLAP	TREATMENT	_	_	
+1-16	62-63	i	_	_	_	_	
+1-17	64-67	dag	_	_	_	_	
+1-18	67-68	.	_	_	_	_	
+
+#Text=Han rapporterte at alt gikk bra, og at han kunne leve et nærmest normalt liv.
+2-1	69-72	Han	_	_	_	_	
+2-2	73-84	rapporterte	_	_	_	_	
+2-3	85-87	at	_	_	_	_	
+2-4	88-91	alt	_	_	_	_	
+2-5	92-96	gikk	_	_	_	_	
+2-6	97-100	bra	_	_	_	_	
+2-7	100-101	,	_	_	_	_	
+2-8	102-104	og	_	_	_	_	
+2-9	105-107	at	_	_	_	_	
+2-10	108-111	han	_	_	_	_	
+2-11	112-117	kunne	_	_	_	_	
+2-12	118-122	leve	_	_	_	_	
+2-13	123-125	et	_	_	_	_	
+2-14	126-133	nærmest	_	_	_	_	
+2-15	134-141	normalt	_	_	_	_	
+2-16	142-145	liv	_	_	_	_	
+2-17	145-146	.	_	_	_	_	
+
+#Text=Han hadde fortsatt følt seg sterkere og hadde ikke opplevd noen akutt eksaserbasjon de siste månedene.
+3-1	147-150	Han	_	_	_	_	
+3-2	151-156	hadde	_	_	_	_	
+3-3	157-165	fortsatt	_	_	_	_	
+3-4	166-170	følt	_	_	_	_	
+3-5	171-174	seg	_	_	_	_	
+3-6	175-183	sterkere	_	_	_	_	
+3-7	184-186	og	_	_	_	_	
+3-8	187-192	hadde	_	_	_	_	
+3-9	193-197	ikke	_	_	_	_	
+3-10	198-205	opplevd	_	_	_	_	
+3-11	206-210	noen	_	_	_	_	
+3-12	211-216	akutt	_	_	_	_	
+3-13	217-230	eksaserbasjon	_	_	_	_	
+3-14	231-233	de	_	_	_	_	
+3-15	234-239	siste	_	_	_	_	
+3-16	240-248	månedene	_	_	_	_	
+3-17	248-249	.	_	_	_	_	
+
+#Text=Vi diskuterte viktigheten av å holde seg fysisk aktiv og unngå eksponering for røyk og andre irritanter.
+4-1	250-252	Vi	_	_	_	_	
+4-2	253-263	diskuterte	_	_	_	_	
+4-3	264-275	viktigheten	_	_	_	_	
+4-4	276-278	av	_	_	_	_	
+4-5	279-280	å	_	_	_	_	
+4-6	281-286	holde	_	_	_	_	
+4-7	287-290	seg	_	_	_	_	
+4-8	291-297	fysisk	_	_	_	_	
+4-9	298-303	aktiv	_	_	_	_	
+4-10	304-306	og	_	_	_	_	
+4-11	307-312	unngå	AFTER[1]	CONDITION[1]	_	_	
+4-12	313-324	eksponering	AFTER[1]	CONDITION[1]	_	_	
+4-13	325-328	for	AFTER[1]	CONDITION[1]	_	_	
+4-14	329-333	røyk	AFTER[1]	CONDITION[1]	_	_	
+4-15	334-336	og	_	_	_	_	
+4-16	337-342	andre	_	_	_	_	
+4-17	343-353	irritanter	_	_	_	_	
+4-18	353-354	.	_	_	_	_	
+
+#Text=Lars var meget tilfreds med resultatet av behandlingen og takket meg for støtten.
+5-1	355-359	Lars	_	_	_	_	
+5-2	360-363	var	_	_	_	_	
+5-3	364-369	meget	_	_	_	_	
+5-4	370-378	tilfreds	_	_	_	_	
+5-5	379-382	med	_	_	_	_	
+5-6	383-393	resultatet	_	_	_	_	
+5-7	394-396	av	_	_	_	_	
+5-8	397-409	behandlingen	_	_	_	_	
+5-9	410-412	og	_	_	_	_	
+5-10	413-419	takket	_	_	_	_	
+5-11	420-423	meg	_	_	_	_	
+5-12	424-427	for	_	_	_	_	
+5-13	428-435	støtten	_	_	_	_	
+5-14	435-436	.	_	_	_	_	
+
+#Text=Vi planla en oppfølging om ett år for å sikre at alt går godt.
+6-1	437-439	Vi	_	_	_	_	
+6-2	440-446	planla	_	_	_	_	
+6-3	447-449	en	_	_	_	_	
+6-4	450-460	oppfølging	AFTER	TREATMENT	BEFORE	4-11[1_0]	
+6-5	461-463	om	_	_	_	_	
+6-6	464-467	ett	_	_	_	_	
+6-7	468-470	år	_	_	_	_	
+6-8	471-474	for	_	_	_	_	
+6-9	475-476	å	_	_	_	_	
+6-10	477-482	sikre	_	_	_	_	
+6-11	483-485	at	_	_	_	_	
+6-12	486-489	alt	_	_	_	_	
+6-13	490-493	går	_	_	_	_	
+6-14	494-498	godt	_	_	_	_	
+6-15	498-499	.	_	_	_	_	

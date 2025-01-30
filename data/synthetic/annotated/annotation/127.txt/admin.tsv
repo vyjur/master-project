@@ -1,0 +1,57 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 2 - 27.03.2023**
+#Text=
+#Text=Pasienten kommer tilbake etter 1 uke med tyroksin-behandling.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	2	_	_	_	_	
+1-3	15-16	-	_	_	_	_	
+1-4	17-27	27.03.2023	_	_	_	_	
+1-5	27-28	*	_	_	_	_	
+1-6	28-29	*	_	_	_	_	
+1-7	31-40	Pasienten	_	_	_	_	
+1-8	41-47	kommer	_	_	_	_	
+1-9	48-55	tilbake	_	_	_	_	
+1-10	56-61	etter	_	_	_	_	
+1-11	62-63	1	_	_	_	_	
+1-12	64-67	uke	_	_	_	_	
+1-13	68-71	med	_	_	_	_	
+1-14	72-91	tyroksin-behandling	BEFOREOVERLAP	TREATMENT	_	_	
+1-15	91-92	.	_	_	_	_	
+
+#Text=Hun rapporterer en forbedring i energinivået og en reduksjon i trettheten.
+2-1	93-96	Hun	_	_	_	_	
+2-2	97-108	rapporterer	_	_	_	_	
+2-3	109-111	en	_	_	_	_	
+2-4	112-122	forbedring	OVERLAP[1]	CONDITION[1]	_	_	
+2-5	123-124	i	OVERLAP[1]	CONDITION[1]	_	_	
+2-6	125-137	energinivået	OVERLAP[1]	CONDITION[1]	_	_	
+2-7	138-140	og	_	_	_	_	
+2-8	141-143	en	_	_	_	_	
+2-9	144-153	reduksjon	OVERLAP[2]	CONDITION[2]	OVERLAP	2-4[1_2]	
+2-10	154-155	i	OVERLAP[2]	CONDITION[2]	_	_	
+2-11	156-166	trettheten	OVERLAP[2]	CONDITION[2]	_	_	
+2-12	166-167	.	_	_	_	_	
+
+#Text=Jeg justerer tyroksin-dosen og foreslår at pasienten begynner med en jern-supplement for å korrigere en eventuell jernmangel.
+3-1	168-171	Jeg	_	_	_	_	
+3-2	172-180	justerer	AFTER[3]	TREATMENT[3]	_	_	
+3-3	181-195	tyroksin-dosen	AFTER[3]	TREATMENT[3]	_	_	
+3-4	196-198	og	_	_	_	_	
+3-5	199-207	foreslår	_	_	_	_	
+3-6	208-210	at	_	_	_	_	
+3-7	211-220	pasienten	_	_	_	_	
+3-8	221-229	begynner	_	_	_	_	
+3-9	230-233	med	_	_	_	_	
+3-10	234-236	en	_	_	_	_	
+3-11	237-252	jern-supplement	AFTER	TREATMENT	_	_	
+3-12	253-256	for	_	_	_	_	
+3-13	257-258	å	_	_	_	_	
+3-14	259-268	korrigere	_	_	_	_	
+3-15	269-271	en	_	_	_	_	
+3-16	272-281	eventuell	_	_	_	_	
+3-17	282-292	jernmangel	_	_	_	_	
+3-18	292-293	.	_	_	_	_	

@@ -1,0 +1,181 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Notat 1 - 04.10.2024:
+#Text=Pasienten kommer til time grunnet et sår under høyre fot som har vært til stede i cirka 2 uker.
+1-1	0-5	Notat	
+1-2	6-7	1	
+1-3	8-9	-	
+1-4	10-20	04.10.2024	
+1-5	20-21	:	
+1-6	22-31	Pasienten	
+1-7	32-38	kommer	
+1-8	39-42	til	
+1-9	43-47	time	
+1-10	48-55	grunnet	
+1-11	56-58	et	
+1-12	59-62	sår	
+1-13	63-68	under	
+1-14	69-74	høyre	
+1-15	75-78	fot	
+1-16	79-82	som	
+1-17	83-86	har	
+1-18	87-91	vært	
+1-19	92-95	til	
+1-20	96-101	stede	
+1-21	102-103	i	
+1-22	104-109	cirka	
+1-23	110-111	2	
+1-24	112-116	uker	
+1-25	116-117	.	
+
+#Text=Han har diabetes type 2, diagnostisert for 8 år siden, og bruker metformin 1000 mg x 2 daglig.
+2-1	118-121	Han	
+2-2	122-125	har	
+2-3	126-134	diabetes	
+2-4	135-139	type	
+2-5	140-141	2	
+2-6	141-142	,	
+2-7	143-156	diagnostisert	
+2-8	157-160	for	
+2-9	161-162	8	
+2-10	163-165	år	
+2-11	166-171	siden	
+2-12	171-172	,	
+2-13	173-175	og	
+2-14	176-182	bruker	
+2-15	183-192	metformin	
+2-16	193-197	1000	
+2-17	198-200	mg	
+2-18	201-202	x	
+2-19	203-204	2	
+2-20	205-211	daglig	
+2-21	211-212	.	
+
+#Text=Såret er rundt 2 cm i diameter, lokalisert på metatarsalhodet, og ser infisert ut med rødhet og pussdannelse.
+3-1	213-218	Såret	
+3-2	219-221	er	
+3-3	222-227	rundt	
+3-4	228-229	2	
+3-5	230-232	cm	
+3-6	233-234	i	
+3-7	235-243	diameter	
+3-8	243-244	,	
+3-9	245-255	lokalisert	
+3-10	256-258	på	
+3-11	259-274	metatarsalhodet	
+3-12	274-275	,	
+3-13	276-278	og	
+3-14	279-282	ser	
+3-15	283-291	infisert	
+3-16	292-294	ut	
+3-17	295-298	med	
+3-18	299-305	rødhet	
+3-19	306-308	og	
+3-20	309-321	pussdannelse	
+3-21	321-322	.	
+
+#Text=Pasienten har ikke hatt feber, men klager over smerter i foten når han går.
+4-1	323-332	Pasienten	
+4-2	333-336	har	
+4-3	337-341	ikke	
+4-4	342-346	hatt	
+4-5	347-352	feber	
+4-6	352-353	,	
+4-7	354-357	men	
+4-8	358-364	klager	
+4-9	365-369	over	
+4-10	370-377	smerter	
+4-11	378-379	i	
+4-12	380-385	foten	
+4-13	386-389	når	
+4-14	390-393	han	
+4-15	394-397	går	
+4-16	397-398	.	
+
+#Text=Blodsukker er målt til 13 mmol/L i dag, noe forhøyet.
+5-1	399-409	Blodsukker	
+5-2	410-412	er	
+5-3	413-417	målt	
+5-4	418-421	til	
+5-5	422-424	13	
+5-6	425-429	mmol	
+5-7	429-430	/	
+5-8	430-431	L	
+5-9	432-433	i	
+5-10	434-437	dag	
+5-11	437-438	,	
+5-12	439-442	noe	
+5-13	443-451	forhøyet	
+5-14	451-452	.	
+
+#Text=Klinisk undersøkelse viser svekket sensibilitet under foten, men ingen tegn til dyp infeksjon eller osteomyelitt.
+6-1	453-460	Klinisk	
+6-2	461-473	undersøkelse	
+6-3	474-479	viser	
+6-4	480-487	svekket	
+6-5	488-500	sensibilitet	
+6-6	501-506	under	
+6-7	507-512	foten	
+6-8	512-513	,	
+6-9	514-517	men	
+6-10	518-523	ingen	
+6-11	524-528	tegn	
+6-12	529-532	til	
+6-13	533-536	dyp	
+6-14	537-546	infeksjon	
+6-15	547-552	eller	
+6-16	553-565	osteomyelitt	
+6-17	565-566	.	
+
+#Text=Såret renses, og vi starter med antibiotika (dikloksacillin 500 mg x 3 i 10 dager).
+7-1	567-572	Såret	
+7-2	573-579	renses	
+7-3	579-580	,	
+7-4	581-583	og	
+7-5	584-586	vi	
+7-6	587-594	starter	
+7-7	595-598	med	
+7-8	599-610	antibiotika	
+7-9	611-612	(	
+7-10	612-626	dikloksacillin	
+7-11	627-630	500	
+7-12	631-633	mg	
+7-13	634-635	x	
+7-14	636-637	3	
+7-15	638-639	i	
+7-16	640-642	10	
+7-17	643-648	dager	
+7-18	648-649	)	
+7-19	649-650	.	
+
+#Text=Pasienten henvises til sårpoliklinikk for videre oppfølging.
+8-1	651-660	Pasienten	
+8-2	661-669	henvises	
+8-3	670-673	til	
+8-4	674-688	sårpoliklinikk	
+8-5	689-692	for	
+8-6	693-699	videre	
+8-7	700-710	oppfølging	
+8-8	710-711	.	
+
+#Text=Vi diskuterer også bedre blodsukkerkontroll, og pasienten får time hos diabetessykepleier for gjennomgang av kosthold og medisiner.
+9-1	712-714	Vi	
+9-2	715-725	diskuterer	
+9-3	726-730	også	
+9-4	731-736	bedre	
+9-5	737-755	blodsukkerkontroll	
+9-6	755-756	,	
+9-7	757-759	og	
+9-8	760-769	pasienten	
+9-9	770-773	får	
+9-10	774-778	time	
+9-11	779-782	hos	
+9-12	783-801	diabetessykepleier	
+9-13	802-805	for	
+9-14	806-817	gjennomgang	
+9-15	818-820	av	
+9-16	821-829	kosthold	
+9-17	830-832	og	
+9-18	833-842	medisiner	
+9-19	842-843	.	

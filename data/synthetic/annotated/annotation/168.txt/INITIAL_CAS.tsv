@@ -1,0 +1,137 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 3 (2023-11-12)
+#Text=Anne kom inn til oppfølging etter to måneder på oralkontraseptiva.
+1-1	0-12	Journalnotat	
+1-2	13-14	3	
+1-3	15-16	(	
+1-4	16-20	2023	
+1-5	20-21	-	
+1-6	21-23	11	
+1-7	23-24	-	
+1-8	24-26	12	
+1-9	26-27	)	
+1-10	28-32	Anne	
+1-11	33-36	kom	
+1-12	37-40	inn	
+1-13	41-44	til	
+1-14	45-55	oppfølging	
+1-15	56-61	etter	
+1-16	62-64	to	
+1-17	65-72	måneder	
+1-18	73-75	på	
+1-19	76-93	oralkontraseptiva	
+1-20	93-94	.	
+
+#Text=Hun rapporterte en marginal bedring i menstruasjonsregelmessigheten, men aknen hadde ikke forbedret seg betydelig.
+2-1	95-98	Hun	
+2-2	99-110	rapporterte	
+2-3	111-113	en	
+2-4	114-122	marginal	
+2-5	123-130	bedring	
+2-6	131-132	i	
+2-7	133-162	menstruasjonsregelmessigheten	
+2-8	162-163	,	
+2-9	164-167	men	
+2-10	168-173	aknen	
+2-11	174-179	hadde	
+2-12	180-184	ikke	
+2-13	185-194	forbedret	
+2-14	195-198	seg	
+2-15	199-208	betydelig	
+2-16	208-209	.	
+
+#Text=Overvekten var fortsatt et problem, selv om hun hadde prøvd å følge det lav-GI-kostholdet.
+3-1	210-220	Overvekten	
+3-2	221-224	var	
+3-3	225-233	fortsatt	
+3-4	234-236	et	
+3-5	237-244	problem	
+3-6	244-245	,	
+3-7	246-250	selv	
+3-8	251-253	om	
+3-9	254-257	hun	
+3-10	258-263	hadde	
+3-11	264-269	prøvd	
+3-12	270-271	å	
+3-13	272-277	følge	
+3-14	278-281	det	
+3-15	282-299	lav-GI-kostholdet	
+3-16	299-300	.	
+
+#Text=Vi diskuterte muligheten for å prøve metformin for å hjelpe med insulinresistensen og reduksjon av overvekten.
+4-1	301-303	Vi	
+4-2	304-314	diskuterte	
+4-3	315-325	muligheten	
+4-4	326-329	for	
+4-5	330-331	å	
+4-6	332-337	prøve	
+4-7	338-347	metformin	
+4-8	348-351	for	
+4-9	352-353	å	
+4-10	354-360	hjelpe	
+4-11	361-364	med	
+4-12	365-383	insulinresistensen	
+4-13	384-386	og	
+4-14	387-396	reduksjon	
+4-15	397-399	av	
+4-16	400-410	overvekten	
+4-17	410-411	.	
+
+#Text=Anne var positiv til dette, men hun uttrykte bekymring for sidevirkninger som diarré.
+5-1	412-416	Anne	
+5-2	417-420	var	
+5-3	421-428	positiv	
+5-4	429-432	til	
+5-5	433-438	dette	
+5-6	438-439	,	
+5-7	440-443	men	
+5-8	444-447	hun	
+5-9	448-456	uttrykte	
+5-10	457-466	bekymring	
+5-11	467-470	for	
+5-12	471-485	sidevirkninger	
+5-13	486-489	som	
+5-14	490-496	diarré	
+5-15	496-497	.	
+
+#Text=Vi bestemte oss for å starte med en lav dosering av metformin og øke doseringen gradvis over fire uker.
+6-1	498-500	Vi	
+6-2	501-509	bestemte	
+6-3	510-513	oss	
+6-4	514-517	for	
+6-5	518-519	å	
+6-6	520-526	starte	
+6-7	527-530	med	
+6-8	531-533	en	
+6-9	534-537	lav	
+6-10	538-546	dosering	
+6-11	547-549	av	
+6-12	550-559	metformin	
+6-13	560-562	og	
+6-14	563-566	øke	
+6-15	567-577	doseringen	
+6-16	578-585	gradvis	
+6-17	586-590	over	
+6-18	591-595	fire	
+6-19	596-600	uker	
+6-20	600-601	.	
+
+#Text=Vi planla en oppfølging om to uker for å se hvordan hun reagerer på behandlingen.
+7-1	602-604	Vi	
+7-2	605-611	planla	
+7-3	612-614	en	
+7-4	615-625	oppfølging	
+7-5	626-628	om	
+7-6	629-631	to	
+7-7	632-636	uker	
+7-8	637-640	for	
+7-9	641-642	å	
+7-10	643-645	se	
+7-11	646-653	hvordan	
+7-12	654-657	hun	
+7-13	658-666	reagerer	
+7-14	667-669	på	
+7-15	670-682	behandlingen	
+7-16	682-683	.	

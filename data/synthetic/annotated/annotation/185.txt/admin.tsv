@@ -1,0 +1,108 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 5 (2023-12-06)
+#Text=Sindre kom inn til siste oppfølging i dag.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	5	_	_	_	_	
+1-3	15-16	(	_	_	_	_	
+1-4	16-20	2023	_	_	_	_	
+1-5	20-21	-	_	_	_	_	
+1-6	21-23	12	_	_	_	_	
+1-7	23-24	-	_	_	_	_	
+1-8	24-26	06	_	_	_	_	
+1-9	26-27	)	_	_	_	_	
+1-10	28-34	Sindre	_	_	_	_	
+1-11	35-38	kom	_	_	_	_	
+1-12	39-42	inn	_	_	_	_	
+1-13	43-46	til	_	_	_	_	
+1-14	47-52	siste	_	_	_	_	
+1-15	53-63	oppfølging	OVERLAP	TREATMENT	_	_	
+1-16	64-65	i	_	_	_	_	
+1-17	66-69	dag	_	_	_	_	
+1-18	69-70	.	_	_	_	_	
+
+#Text=Han rapporterte at alt gikk bra, og at han kunne leve et nærmest normalt liv.
+2-1	71-74	Han	_	_	_	_	
+2-2	75-86	rapporterte	_	_	_	_	
+2-3	87-89	at	_	_	_	_	
+2-4	90-93	alt	_	_	_	_	
+2-5	94-98	gikk	_	_	_	_	
+2-6	99-102	bra	_	_	_	_	
+2-7	102-103	,	_	_	_	_	
+2-8	104-106	og	_	_	_	_	
+2-9	107-109	at	_	_	_	_	
+2-10	110-113	han	_	_	_	_	
+2-11	114-119	kunne	_	_	_	_	
+2-12	120-124	leve	_	_	_	_	
+2-13	125-127	et	_	_	_	_	
+2-14	128-135	nærmest	_	_	_	_	
+2-15	136-143	normalt	_	_	_	_	
+2-16	144-147	liv	_	_	_	_	
+2-17	147-148	.	_	_	_	_	
+
+#Text=Han hadde fortsatt følt seg stabil og hadde ikke opplevd noen store problemer.
+3-1	149-152	Han	_	_	_	_	
+3-2	153-158	hadde	_	_	_	_	
+3-3	159-167	fortsatt	_	_	_	_	
+3-4	168-172	følt	_	_	_	_	
+3-5	173-176	seg	_	_	_	_	
+3-6	177-183	stabil	OVERLAP	CONDITION	_	_	
+3-7	184-186	og	_	_	_	_	
+3-8	187-192	hadde	_	_	_	_	
+3-9	193-197	ikke	_	_	_	_	
+3-10	198-205	opplevd	_	_	_	_	
+3-11	206-210	noen	_	_	_	_	
+3-12	211-216	store	_	_	_	_	
+3-13	217-226	problemer	_	_	_	_	
+3-14	226-227	.	_	_	_	_	
+
+#Text=Vi diskuterte viktigheten av å holde seg fysisk aktiv og unngå isolasjon.
+4-1	228-230	Vi	_	_	_	_	
+4-2	231-241	diskuterte	_	_	_	_	
+4-3	242-253	viktigheten	_	_	_	_	
+4-4	254-256	av	_	_	_	_	
+4-5	257-258	å	_	_	_	_	
+4-6	259-264	holde	_	_	_	_	
+4-7	265-268	seg	_	_	_	_	
+4-8	269-275	fysisk	AFTER[1]	CONDITION[1]	_	_	
+4-9	276-281	aktiv	AFTER[1]	CONDITION[1]	_	_	
+4-10	282-284	og	_	_	_	_	
+4-11	285-290	unngå	AFTER[2]	CONDITION[2]	_	_	
+4-12	291-300	isolasjon	AFTER[2]	CONDITION[2]	_	_	
+4-13	300-301	.	_	_	_	_	
+
+#Text=Sindre var meget tilfreds med resultatet av behandlingen og takket meg for støtten.
+5-1	302-308	Sindre	_	_	_	_	
+5-2	309-312	var	_	_	_	_	
+5-3	313-318	meget	_	_	_	_	
+5-4	319-327	tilfreds	_	_	_	_	
+5-5	328-331	med	_	_	_	_	
+5-6	332-342	resultatet	_	_	_	_	
+5-7	343-345	av	_	_	_	_	
+5-8	346-358	behandlingen	_	_	_	_	
+5-9	359-361	og	_	_	_	_	
+5-10	362-368	takket	_	_	_	_	
+5-11	369-372	meg	_	_	_	_	
+5-12	373-376	for	_	_	_	_	
+5-13	377-384	støtten	_	_	_	_	
+5-14	384-385	.	_	_	_	_	
+
+#Text=Vi planla en oppfølging om ett år for å sikre at alt går godt.
+6-1	386-388	Vi	_	_	_	_	
+6-2	389-395	planla	_	_	_	_	
+6-3	396-398	en	_	_	_	_	
+6-4	399-409	oppfølging	AFTER	CONDITION	BEFORE|BEFORE	4-8[1_0]|4-11[2_0]	
+6-5	410-412	om	_	_	_	_	
+6-6	413-416	ett	_	_	_	_	
+6-7	417-419	år	_	_	_	_	
+6-8	420-423	for	_	_	_	_	
+6-9	424-425	å	_	_	_	_	
+6-10	426-431	sikre	_	_	_	_	
+6-11	432-434	at	_	_	_	_	
+6-12	435-438	alt	_	_	_	_	
+6-13	439-442	går	_	_	_	_	
+6-14	443-447	godt	_	_	_	_	
+6-15	447-448	.	_	_	_	_	

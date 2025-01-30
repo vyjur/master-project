@@ -1,0 +1,56 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 3 - 24.05.2023**
+#Text=
+#Text=Pasienten kommer tilbake etter 2 uker med triptan-behandling.
+1-1	0-12	Journalnotat	
+1-2	13-14	3	
+1-3	15-16	-	
+1-4	17-27	24.05.2023	
+1-5	27-28	*	
+1-6	28-29	*	
+1-7	31-40	Pasienten	
+1-8	41-47	kommer	
+1-9	48-55	tilbake	
+1-10	56-61	etter	
+1-11	62-63	2	
+1-12	64-68	uker	
+1-13	69-72	med	
+1-14	73-91	triptan-behandling	
+1-15	91-92	.	
+
+#Text=Han rapporterer en ytterligere forbedring i symptomer og en reduksjon i kvalmen.
+2-1	93-96	Han	
+2-2	97-108	rapporterer	
+2-3	109-111	en	
+2-4	112-123	ytterligere	
+2-5	124-134	forbedring	
+2-6	135-136	i	
+2-7	137-146	symptomer	
+2-8	147-149	og	
+2-9	150-152	en	
+2-10	153-162	reduksjon	
+2-11	163-164	i	
+2-12	165-172	kvalmen	
+2-13	172-173	.	
+
+#Text=Jeg fortsätter å justere triptan-dosen og foreslår at pasienten begynner med en stresshåndteringsbehandling for å reducere stressnivået.
+3-1	174-177	Jeg	
+3-2	178-188	fortsätter	
+3-3	189-190	å	
+3-4	191-198	justere	
+3-5	199-212	triptan-dosen	
+3-6	213-215	og	
+3-7	216-224	foreslår	
+3-8	225-227	at	
+3-9	228-237	pasienten	
+3-10	238-246	begynner	
+3-11	247-250	med	
+3-12	251-253	en	
+3-13	254-281	stresshåndteringsbehandling	
+3-14	282-285	for	
+3-15	286-287	å	
+3-16	288-296	reducere	
+3-17	297-309	stressnivået	
+3-18	309-310	.	

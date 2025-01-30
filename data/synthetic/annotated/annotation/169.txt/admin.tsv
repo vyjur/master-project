@@ -1,0 +1,142 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+
+
+#Text=Journalnotat 4 (2023-11-26)
+#Text=Anne rapporterte en viderebedring i menstruasjonsregelmessigheten, og hun hadde også mistet noen kilo.
+1-1	0-12	Journalnotat	_	_	
+1-2	13-14	4	_	_	
+1-3	15-16	(	_	_	
+1-4	16-20	2023	_	_	
+1-5	20-21	-	_	_	
+1-6	21-23	11	_	_	
+1-7	23-24	-	_	_	
+1-8	24-26	26	_	_	
+1-9	26-27	)	_	_	
+1-10	28-32	Anne	_	_	
+1-11	33-44	rapporterte	_	_	
+1-12	45-47	en	_	_	
+1-13	48-61	viderebedring	OVERLAP[1]	CONDITION[1]	
+1-14	62-63	i	OVERLAP[1]	CONDITION[1]	
+1-15	64-93	menstruasjonsregelmessigheten	OVERLAP[1]	CONDITION[1]	
+1-16	93-94	,	_	_	
+1-17	95-97	og	_	_	
+1-18	98-101	hun	_	_	
+1-19	102-107	hadde	_	_	
+1-20	108-112	også	_	_	
+1-21	113-119	mistet	OVERLAP[2]	CONDITION[2]	
+1-22	120-124	noen	OVERLAP[2]	CONDITION[2]	
+1-23	125-129	kilo	OVERLAP[2]	CONDITION[2]	
+1-24	129-130	.	_	_	
+
+#Text=Aknen var fortsatt et problem, men hun hadde begynt å bruke en hudpleieprodukt som inneholder salicylsyre, noe som hadde hjulpet litt.
+2-1	131-136	Aknen	OVERLAP	CONDITION	
+2-2	137-140	var	_	_	
+2-3	141-149	fortsatt	_	_	
+2-4	150-152	et	_	_	
+2-5	153-160	problem	_	_	
+2-6	160-161	,	_	_	
+2-7	162-165	men	_	_	
+2-8	166-169	hun	_	_	
+2-9	170-175	hadde	_	_	
+2-10	176-182	begynt	_	_	
+2-11	183-184	å	_	_	
+2-12	185-190	bruke	_	_	
+2-13	191-193	en	_	_	
+2-14	194-209	hudpleieprodukt	OVERLAP	TREATMENT	
+2-15	210-213	som	_	_	
+2-16	214-224	inneholder	_	_	
+2-17	225-236	salicylsyre	_	_	
+2-18	236-237	,	_	_	
+2-19	238-241	noe	_	_	
+2-20	242-245	som	_	_	
+2-21	246-251	hadde	_	_	
+2-22	252-259	hjulpet	_	_	
+2-23	260-264	litt	_	_	
+2-24	264-265	.	_	_	
+
+#Text=Metformin hadde ikke gitt noen store sidevirkninger, og hun følte seg generelt bedre.
+3-1	266-275	Metformin	OVERLAP	TREATMENT	
+3-2	276-281	hadde	_	_	
+3-3	282-286	ikke	_	_	
+3-4	287-291	gitt	_	_	
+3-5	292-296	noen	_	_	
+3-6	297-302	store	_	_	
+3-7	303-317	sidevirkninger	_	_	
+3-8	317-318	,	_	_	
+3-9	319-321	og	_	_	
+3-10	322-325	hun	_	_	
+3-11	326-331	følte	_	_	
+3-12	332-335	seg	_	_	
+3-13	336-344	generelt	_	_	
+3-14	345-350	bedre	_	_	
+3-15	350-351	.	_	_	
+
+#Text=Vi diskuterte muligheten for å prøve en anden type oralkontraseptiva for å se om dette kunne hjelpe med aknen.
+4-1	352-354	Vi	_	_	
+4-2	355-365	diskuterte	_	_	
+4-3	366-376	muligheten	_	_	
+4-4	377-380	for	_	_	
+4-5	381-382	å	_	_	
+4-6	383-388	prøve	_	_	
+4-7	389-391	en	_	_	
+4-8	392-397	anden	_	_	
+4-9	398-402	type	_	_	
+4-10	403-420	oralkontraseptiva	_	_	
+4-11	421-424	for	_	_	
+4-12	425-426	å	_	_	
+4-13	427-429	se	_	_	
+4-14	430-432	om	_	_	
+4-15	433-438	dette	_	_	
+4-16	439-444	kunne	_	_	
+4-17	445-451	hjelpe	_	_	
+4-18	452-455	med	_	_	
+4-19	456-461	aknen	_	_	
+4-20	461-462	.	_	_	
+
+#Text=Anne var positiv til dette, så vi bestemte oss for å bytte ut den nåværende kontraseptiva mot en annen som inneholder andres hormoner.
+5-1	463-467	Anne	_	_	
+5-2	468-471	var	_	_	
+5-3	472-479	positiv	_	_	
+5-4	480-483	til	_	_	
+5-5	484-489	dette	_	_	
+5-6	489-490	,	_	_	
+5-7	491-493	så	_	_	
+5-8	494-496	vi	_	_	
+5-9	497-505	bestemte	_	_	
+5-10	506-509	oss	_	_	
+5-11	510-513	for	_	_	
+5-12	514-515	å	_	_	
+5-13	516-521	bytte	AFTER[3]	TREATMENT[3]	
+5-14	522-524	ut	AFTER[3]	TREATMENT[3]	
+5-15	525-528	den	AFTER[3]	TREATMENT[3]	
+5-16	529-538	nåværende	AFTER[3]	TREATMENT[3]	
+5-17	539-552	kontraseptiva	AFTER[3]	TREATMENT[3]	
+5-18	553-556	mot	_	_	
+5-19	557-559	en	_	_	
+5-20	560-565	annen	_	_	
+5-21	566-569	som	_	_	
+5-22	570-580	inneholder	_	_	
+5-23	581-587	andres	_	_	
+5-24	588-596	hormoner	_	_	
+5-25	596-597	.	_	_	
+
+#Text=Vi planla en oppfølging om to måneder for å se hvordan hun reagerer på den nye behandlingen.
+6-1	598-600	Vi	_	_	
+6-2	601-607	planla	_	_	
+6-3	608-610	en	_	_	
+6-4	611-621	oppfølging	_	_	
+6-5	622-624	om	_	_	
+6-6	625-627	to	_	_	
+6-7	628-635	måneder	_	_	
+6-8	636-639	for	_	_	
+6-9	640-641	å	_	_	
+6-10	642-644	se	_	_	
+6-11	645-652	hvordan	_	_	
+6-12	653-656	hun	_	_	
+6-13	657-665	reagerer	_	_	
+6-14	666-668	på	_	_	
+6-15	669-672	den	_	_	
+6-16	673-676	nye	_	_	
+6-17	677-689	behandlingen	_	_	
+6-18	689-690	.	_	_	

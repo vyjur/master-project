@@ -1,0 +1,119 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Notat 4 - 01.12.2024:
+#Text=Pasienten kommer til kontroll, og hun rapporterer fortsatt god effekt av Levaxin.
+1-1	0-5	Notat	
+1-2	6-7	4	
+1-3	8-9	-	
+1-4	10-20	01.12.2024	
+1-5	20-21	:	
+1-6	22-31	Pasienten	
+1-7	32-38	kommer	
+1-8	39-42	til	
+1-9	43-51	kontroll	
+1-10	51-52	,	
+1-11	53-55	og	
+1-12	56-59	hun	
+1-13	60-71	rapporterer	
+1-14	72-80	fortsatt	
+1-15	81-84	god	
+1-16	85-91	effekt	
+1-17	92-94	av	
+1-18	95-102	Levaxin	
+1-19	102-103	.	
+
+#Text=Energien er nå på et mer normalt nivå, og hun har klart å gå ned 2 kg siden sist.
+2-1	104-112	Energien	
+2-2	113-115	er	
+2-3	116-118	nå	
+2-4	119-121	på	
+2-5	122-124	et	
+2-6	125-128	mer	
+2-7	129-136	normalt	
+2-8	137-141	nivå	
+2-9	141-142	,	
+2-10	143-145	og	
+2-11	146-149	hun	
+2-12	150-153	har	
+2-13	154-159	klart	
+2-14	160-161	å	
+2-15	162-164	gå	
+2-16	165-168	ned	
+2-17	169-170	2	
+2-18	171-173	kg	
+2-19	174-179	siden	
+2-20	180-184	sist	
+2-21	184-185	.	
+
+#Text=Vektreduksjonen er ikke dramatisk, men hun føler at kroppen fungerer bedre.
+3-1	186-201	Vektreduksjonen	
+3-2	202-204	er	
+3-3	205-209	ikke	
+3-4	210-219	dramatisk	
+3-5	219-220	,	
+3-6	221-224	men	
+3-7	225-228	hun	
+3-8	229-234	føler	
+3-9	235-237	at	
+3-10	238-245	kroppen	
+3-11	246-254	fungerer	
+3-12	255-260	bedre	
+3-13	260-261	.	
+
+#Text=Hun har ingen nye symptomer, og blodprøvene viser stabile verdier med TSH på 2,5 mIE/L.
+4-1	262-265	Hun	
+4-2	266-269	har	
+4-3	270-275	ingen	
+4-4	276-279	nye	
+4-5	280-289	symptomer	
+4-6	289-290	,	
+4-7	291-293	og	
+4-8	294-305	blodprøvene	
+4-9	306-311	viser	
+4-10	312-319	stabile	
+4-11	320-327	verdier	
+4-12	328-331	med	
+4-13	332-335	TSH	
+4-14	336-338	på	
+4-15	339-342	2,5	
+4-16	343-346	mIE	
+4-17	346-347	/	
+4-18	347-348	L	
+4-19	348-349	.	
+
+#Text=Pasienten er fornøyd med behandlingen og ønsker å fortsette som før.
+5-1	350-359	Pasienten	
+5-2	360-362	er	
+5-3	363-370	fornøyd	
+5-4	371-374	med	
+5-5	375-387	behandlingen	
+5-6	388-390	og	
+5-7	391-397	ønsker	
+5-8	398-399	å	
+5-9	400-409	fortsette	
+5-10	410-413	som	
+5-11	414-417	før	
+5-12	417-418	.	
+
+#Text=Vi avtaler årlig oppfølging med blodprøver, med beskjed om å ta kontakt tidligere dersom symptomene skulle endre seg.
+6-1	419-421	Vi	
+6-2	422-429	avtaler	
+6-3	430-435	årlig	
+6-4	436-446	oppfølging	
+6-5	447-450	med	
+6-6	451-461	blodprøver	
+6-7	461-462	,	
+6-8	463-466	med	
+6-9	467-474	beskjed	
+6-10	475-477	om	
+6-11	478-479	å	
+6-12	480-482	ta	
+6-13	483-490	kontakt	
+6-14	491-500	tidligere	
+6-15	501-507	dersom	
+6-16	508-518	symptomene	
+6-17	519-525	skulle	
+6-18	526-531	endre	
+6-19	532-535	seg	
+6-20	535-536	.	

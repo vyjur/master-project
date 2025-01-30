@@ -1,0 +1,124 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Notat 3 - 10.11.2024: 
+#Text=Pasienten er tilbake til kontroll og melder om betydelig bedring i både hodepine og nakkesmerter.
+1-1	0-5	Notat	
+1-2	6-7	3	
+1-3	8-9	-	
+1-4	10-20	10.11.2024	
+1-5	20-21	:	
+1-6	23-32	Pasienten	
+1-7	33-35	er	
+1-8	36-43	tilbake	
+1-9	44-47	til	
+1-10	48-56	kontroll	
+1-11	57-59	og	
+1-12	60-66	melder	
+1-13	67-69	om	
+1-14	70-79	betydelig	
+1-15	80-87	bedring	
+1-16	88-89	i	
+1-17	90-94	både	
+1-18	95-103	hodepine	
+1-19	104-106	og	
+1-20	107-119	nakkesmerter	
+1-21	119-120	.	
+
+#Text=Han har brukt muskelavslappende middel med god effekt og har fortsatt med fysioterapi.
+2-1	121-124	Han	
+2-2	125-128	har	
+2-3	129-134	brukt	
+2-4	135-152	muskelavslappende	
+2-5	153-159	middel	
+2-6	160-163	med	
+2-7	164-167	god	
+2-8	168-174	effekt	
+2-9	175-177	og	
+2-10	178-181	har	
+2-11	182-190	fortsatt	
+2-12	191-194	med	
+2-13	195-206	fysioterapi	
+2-14	206-207	.	
+
+#Text=Kiropraktoren har også gitt ham flere behandlinger, som han føler har hjulpet med å løsne spenningene i nakken.
+3-1	208-221	Kiropraktoren	
+3-2	222-225	har	
+3-3	226-230	også	
+3-4	231-235	gitt	
+3-5	236-239	ham	
+3-6	240-245	flere	
+3-7	246-258	behandlinger	
+3-8	258-259	,	
+3-9	260-263	som	
+3-10	264-267	han	
+3-11	268-273	føler	
+3-12	274-277	har	
+3-13	278-285	hjulpet	
+3-14	286-289	med	
+3-15	290-291	å	
+3-16	292-297	løsne	
+3-17	298-309	spenningene	
+3-18	310-311	i	
+3-19	312-318	nakken	
+3-20	318-319	.	
+
+#Text=Pasienten har også blitt mer bevisst på å ta pauser fra dataskjermen og gjøre strekkøvelser.
+4-1	320-329	Pasienten	
+4-2	330-333	har	
+4-3	334-338	også	
+4-4	339-344	blitt	
+4-5	345-348	mer	
+4-6	349-356	bevisst	
+4-7	357-359	på	
+4-8	360-361	å	
+4-9	362-364	ta	
+4-10	365-371	pauser	
+4-11	372-375	fra	
+4-12	376-388	dataskjermen	
+4-13	389-391	og	
+4-14	392-397	gjøre	
+4-15	398-411	strekkøvelser	
+4-16	411-412	.	
+
+#Text=Ingen nye symptomer, og han føler nå at han har bedre kontroll over plagene.
+5-1	413-418	Ingen	
+5-2	419-422	nye	
+5-3	423-432	symptomer	
+5-4	432-433	,	
+5-5	434-436	og	
+5-6	437-440	han	
+5-7	441-446	føler	
+5-8	447-449	nå	
+5-9	450-452	at	
+5-10	453-456	han	
+5-11	457-460	har	
+5-12	461-466	bedre	
+5-13	467-475	kontroll	
+5-14	476-480	over	
+5-15	481-488	plagene	
+5-16	488-489	.	
+
+#Text=Vi avslutter medikamentell behandling, men anbefaler videre fysioterapi og egeninnsats med øvelser.
+6-1	490-492	Vi	
+6-2	493-502	avslutter	
+6-3	503-516	medikamentell	
+6-4	517-527	behandling	
+6-5	527-528	,	
+6-6	529-532	men	
+6-7	533-542	anbefaler	
+6-8	543-549	videre	
+6-9	550-561	fysioterapi	
+6-10	562-564	og	
+6-11	565-576	egeninnsats	
+6-12	577-580	med	
+6-13	581-588	øvelser	
+6-14	588-589	.	
+
+#Text=Avtaler ny kontroll ved behov.
+7-1	590-597	Avtaler	
+7-2	598-600	ny	
+7-3	601-609	kontroll	
+7-4	610-613	ved	
+7-5	614-619	behov	
+7-6	619-620	.	

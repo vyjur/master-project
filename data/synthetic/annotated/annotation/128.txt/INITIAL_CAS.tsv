@@ -1,0 +1,58 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 3 - 03.04.2023**
+#Text=
+#Text=Pasienten kommer tilbake etter 2 uker med tyroksin-behandling.
+1-1	0-12	Journalnotat	
+1-2	13-14	3	
+1-3	15-16	-	
+1-4	17-27	03.04.2023	
+1-5	27-28	*	
+1-6	28-29	*	
+1-7	31-40	Pasienten	
+1-8	41-47	kommer	
+1-9	48-55	tilbake	
+1-10	56-61	etter	
+1-11	62-63	2	
+1-12	64-68	uker	
+1-13	69-72	med	
+1-14	73-92	tyroksin-behandling	
+1-15	92-93	.	
+
+#Text=Hun rapporterer en ytterligere forbedring i symptomer og en reduksjon i vektøkningen.
+2-1	94-97	Hun	
+2-2	98-109	rapporterer	
+2-3	110-112	en	
+2-4	113-124	ytterligere	
+2-5	125-135	forbedring	
+2-6	136-137	i	
+2-7	138-147	symptomer	
+2-8	148-150	og	
+2-9	151-153	en	
+2-10	154-163	reduksjon	
+2-11	164-165	i	
+2-12	166-178	vektøkningen	
+2-13	178-179	.	
+
+#Text=Jeg fortsätter å justere tyroksin-dosen og foreslår at pasienten begynner med en kalium-supplement for å korrigere en eventuell kaliummangel.
+3-1	180-183	Jeg	
+3-2	184-194	fortsätter	
+3-3	195-196	å	
+3-4	197-204	justere	
+3-5	205-219	tyroksin-dosen	
+3-6	220-222	og	
+3-7	223-231	foreslår	
+3-8	232-234	at	
+3-9	235-244	pasienten	
+3-10	245-253	begynner	
+3-11	254-257	med	
+3-12	258-260	en	
+3-13	261-278	kalium-supplement	
+3-14	279-282	for	
+3-15	283-284	å	
+3-16	285-294	korrigere	
+3-17	295-297	en	
+3-18	298-307	eventuell	
+3-19	308-320	kaliummangel	
+3-20	320-321	.	

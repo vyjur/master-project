@@ -1,0 +1,141 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 4 (2023-11-26)
+#Text=Anne rapporterte en viderebedring i menstruasjonsregelmessigheten, og hun hadde også mistet noen kilo.
+1-1	0-12	Journalnotat	
+1-2	13-14	4	
+1-3	15-16	(	
+1-4	16-20	2023	
+1-5	20-21	-	
+1-6	21-23	11	
+1-7	23-24	-	
+1-8	24-26	26	
+1-9	26-27	)	
+1-10	28-32	Anne	
+1-11	33-44	rapporterte	
+1-12	45-47	en	
+1-13	48-61	viderebedring	
+1-14	62-63	i	
+1-15	64-93	menstruasjonsregelmessigheten	
+1-16	93-94	,	
+1-17	95-97	og	
+1-18	98-101	hun	
+1-19	102-107	hadde	
+1-20	108-112	også	
+1-21	113-119	mistet	
+1-22	120-124	noen	
+1-23	125-129	kilo	
+1-24	129-130	.	
+
+#Text=Aknen var fortsatt et problem, men hun hadde begynt å bruke en hudpleieprodukt som inneholder salicylsyre, noe som hadde hjulpet litt.
+2-1	131-136	Aknen	
+2-2	137-140	var	
+2-3	141-149	fortsatt	
+2-4	150-152	et	
+2-5	153-160	problem	
+2-6	160-161	,	
+2-7	162-165	men	
+2-8	166-169	hun	
+2-9	170-175	hadde	
+2-10	176-182	begynt	
+2-11	183-184	å	
+2-12	185-190	bruke	
+2-13	191-193	en	
+2-14	194-209	hudpleieprodukt	
+2-15	210-213	som	
+2-16	214-224	inneholder	
+2-17	225-236	salicylsyre	
+2-18	236-237	,	
+2-19	238-241	noe	
+2-20	242-245	som	
+2-21	246-251	hadde	
+2-22	252-259	hjulpet	
+2-23	260-264	litt	
+2-24	264-265	.	
+
+#Text=Metformin hadde ikke gitt noen store sidevirkninger, og hun følte seg generelt bedre.
+3-1	266-275	Metformin	
+3-2	276-281	hadde	
+3-3	282-286	ikke	
+3-4	287-291	gitt	
+3-5	292-296	noen	
+3-6	297-302	store	
+3-7	303-317	sidevirkninger	
+3-8	317-318	,	
+3-9	319-321	og	
+3-10	322-325	hun	
+3-11	326-331	følte	
+3-12	332-335	seg	
+3-13	336-344	generelt	
+3-14	345-350	bedre	
+3-15	350-351	.	
+
+#Text=Vi diskuterte muligheten for å prøve en anden type oralkontraseptiva for å se om dette kunne hjelpe med aknen.
+4-1	352-354	Vi	
+4-2	355-365	diskuterte	
+4-3	366-376	muligheten	
+4-4	377-380	for	
+4-5	381-382	å	
+4-6	383-388	prøve	
+4-7	389-391	en	
+4-8	392-397	anden	
+4-9	398-402	type	
+4-10	403-420	oralkontraseptiva	
+4-11	421-424	for	
+4-12	425-426	å	
+4-13	427-429	se	
+4-14	430-432	om	
+4-15	433-438	dette	
+4-16	439-444	kunne	
+4-17	445-451	hjelpe	
+4-18	452-455	med	
+4-19	456-461	aknen	
+4-20	461-462	.	
+
+#Text=Anne var positiv til dette, så vi bestemte oss for å bytte ut den nåværende kontraseptiva mot en annen som inneholder andres hormoner.
+5-1	463-467	Anne	
+5-2	468-471	var	
+5-3	472-479	positiv	
+5-4	480-483	til	
+5-5	484-489	dette	
+5-6	489-490	,	
+5-7	491-493	så	
+5-8	494-496	vi	
+5-9	497-505	bestemte	
+5-10	506-509	oss	
+5-11	510-513	for	
+5-12	514-515	å	
+5-13	516-521	bytte	
+5-14	522-524	ut	
+5-15	525-528	den	
+5-16	529-538	nåværende	
+5-17	539-552	kontraseptiva	
+5-18	553-556	mot	
+5-19	557-559	en	
+5-20	560-565	annen	
+5-21	566-569	som	
+5-22	570-580	inneholder	
+5-23	581-587	andres	
+5-24	588-596	hormoner	
+5-25	596-597	.	
+
+#Text=Vi planla en oppfølging om to måneder for å se hvordan hun reagerer på den nye behandlingen.
+6-1	598-600	Vi	
+6-2	601-607	planla	
+6-3	608-610	en	
+6-4	611-621	oppfølging	
+6-5	622-624	om	
+6-6	625-627	to	
+6-7	628-635	måneder	
+6-8	636-639	for	
+6-9	640-641	å	
+6-10	642-644	se	
+6-11	645-652	hvordan	
+6-12	653-656	hun	
+6-13	657-665	reagerer	
+6-14	666-668	på	
+6-15	669-672	den	
+6-16	673-676	nye	
+6-17	677-689	behandlingen	
+6-18	689-690	.	

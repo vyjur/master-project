@@ -1,0 +1,154 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 1 (2023-09-08)
+#Text=Ole møtte meg i dag med klagene om pustesvighet og svimmelhet, spesielt når han beveger seg.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	1	_	_	_	_	
+1-3	15-16	(	_	_	_	_	
+1-4	16-20	2023	_	_	_	_	
+1-5	20-21	-	_	_	_	_	
+1-6	21-23	09	_	_	_	_	
+1-7	23-24	-	_	_	_	_	
+1-8	24-26	08	_	_	_	_	
+1-9	26-27	)	_	_	_	_	
+1-10	28-31	Ole	_	_	_	_	
+1-11	32-37	møtte	_	_	_	_	
+1-12	38-41	meg	_	_	_	_	
+1-13	42-43	i	_	_	_	_	
+1-14	44-47	dag	_	_	_	_	
+1-15	48-51	med	_	_	_	_	
+1-16	52-59	klagene	_	_	_	_	
+1-17	60-62	om	_	_	_	_	
+1-18	63-75	pustesvighet	OVERLAP	CONDITION	_	_	
+1-19	76-78	og	_	_	_	_	
+1-20	79-89	svimmelhet	OVERLAP	CONDITION	_	_	
+1-21	89-90	,	_	_	_	_	
+1-22	91-99	spesielt	_	_	_	_	
+1-23	100-103	når	_	_	_	_	
+1-24	104-107	han	_	_	_	_	
+1-25	108-115	beveger	_	_	_	_	
+1-26	116-119	seg	_	_	_	_	
+1-27	119-120	.	_	_	_	_	
+
+#Text=Han har også hatt svulst i bena de siste uker.
+2-1	121-124	Han	_	_	_	_	
+2-2	125-128	har	_	_	_	_	
+2-3	129-133	også	_	_	_	_	
+2-4	134-138	hatt	_	_	_	_	
+2-5	139-145	svulst	BEFOREOVERLAP[1]	CONDITION[1]	BEFORE	3-7[0_1]	
+2-6	146-147	i	BEFOREOVERLAP[1]	CONDITION[1]	_	_	
+2-7	148-152	bena	BEFOREOVERLAP[1]	CONDITION[1]	_	_	
+2-8	153-155	de	_	_	_	_	
+2-9	156-161	siste	_	_	_	_	
+2-10	162-166	uker	_	_	_	_	
+2-11	166-167	.	_	_	_	_	
+
+#Text=Ole har en kjent diagnose av hjertesvikt, og hans symptomer indikerer at sykdommen kan ha forverret seg.
+3-1	168-171	Ole	_	_	_	_	
+3-2	172-175	har	_	_	_	_	
+3-3	176-178	en	_	_	_	_	
+3-4	179-184	kjent	_	_	_	_	
+3-5	185-193	diagnose	_	_	_	_	
+3-6	194-196	av	_	_	_	_	
+3-7	197-208	hjertesvikt	BEFOREOVERLAP	CONDITION	_	_	
+3-8	208-209	,	_	_	_	_	
+3-9	210-212	og	_	_	_	_	
+3-10	213-217	hans	_	_	_	_	
+3-11	218-227	symptomer	_	_	_	_	
+3-12	228-237	indikerer	_	_	_	_	
+3-13	238-240	at	_	_	_	_	
+3-14	241-250	sykdommen	_	_	_	_	
+3-15	251-254	kan	_	_	_	_	
+3-16	255-257	ha	_	_	_	_	
+3-17	258-267	forverret	_	_	_	_	
+3-18	268-271	seg	_	_	_	_	
+3-19	271-272	.	_	_	_	_	
+
+#Text=Ved undersøkelse noterte jeg en tydelig perifer oedem, spesielt i venterne, og en høy puls.
+4-1	273-276	Ved	_	_	_	_	
+4-2	277-289	undersøkelse	OVERLAP	TREATMENT	BEFORE|BEFORE	1-18|1-20	
+4-3	290-297	noterte	_	_	_	_	
+4-4	298-301	jeg	_	_	_	_	
+4-5	302-304	en	_	_	_	_	
+4-6	305-312	tydelig	_	_	_	_	
+4-7	313-320	perifer	OVERLAP[2]	CONDITION[2]	BEFORE	4-2[0_2]	
+4-8	321-326	oedem	OVERLAP[2]	CONDITION[2]	_	_	
+4-9	326-327	,	_	_	_	_	
+4-10	328-336	spesielt	_	_	_	_	
+4-11	337-338	i	_	_	_	_	
+4-12	339-347	venterne	_	_	_	_	
+4-13	347-348	,	_	_	_	_	
+4-14	349-351	og	_	_	_	_	
+4-15	352-354	en	_	_	_	_	
+4-16	355-358	høy	OVERLAP[3]	CONDITION[3]	BEFORE	4-2[0_3]	
+4-17	359-363	puls	OVERLAP[3]	CONDITION[3]	_	_	
+4-18	363-364	.	_	_	_	_	
+
+#Text=Blodtrykket var litt lavt, noe som kan forklare svimmelheten.
+5-1	365-376	Blodtrykket	OVERLAP[4]	CONDITION[4]	BEFORE	4-2[0_4]	
+5-2	377-380	var	OVERLAP[4]	CONDITION[4]	_	_	
+5-3	381-385	litt	OVERLAP[4]	CONDITION[4]	_	_	
+5-4	386-390	lavt	OVERLAP[4]	CONDITION[4]	_	_	
+5-5	390-391	,	_	_	_	_	
+5-6	392-395	noe	_	_	_	_	
+5-7	396-399	som	_	_	_	_	
+5-8	400-403	kan	_	_	_	_	
+5-9	404-412	forklare	_	_	_	_	
+5-10	413-425	svimmelheten	_	_	_	_	
+5-11	425-426	.	_	_	_	_	
+
+#Text=Vi tok et EKG, som viste tegn på venstre ventrikelsvikt.
+6-1	427-429	Vi	_	_	_	_	
+6-2	430-433	tok	_	_	_	_	
+6-3	434-436	et	_	_	_	_	
+6-4	437-440	EKG	*	TREATMENT	OVERLAP	4-2	
+6-5	440-441	,	_	_	_	_	
+6-6	442-445	som	_	_	_	_	
+6-7	446-451	viste	_	_	_	_	
+6-8	452-456	tegn	_	_	_	_	
+6-9	457-459	på	_	_	_	_	
+6-10	460-467	venstre	*[5]	CONDITION[5]	BEFORE	6-4[0_5]	
+6-11	468-482	ventrikelsvikt	*[5]	CONDITION[5]	_	_	
+6-12	482-483	.	_	_	_	_	
+
+#Text=Jeg økte doseringen av diuretika for å redusere vannoppholdet og ga ham et recept på et nytt beta-blokker for å redusere belastningen på hjertet.
+7-1	484-487	Jeg	_	_	_	_	
+7-2	488-492	økte	AFTER[6]	TREATMENT[6]	_	_	
+7-3	493-503	doseringen	AFTER[6]	TREATMENT[6]	_	_	
+7-4	504-506	av	AFTER[6]	TREATMENT[6]	_	_	
+7-5	507-516	diuretika	AFTER[6]	TREATMENT[6]	_	_	
+7-6	517-520	for	_	_	_	_	
+7-7	521-522	å	_	_	_	_	
+7-8	523-531	redusere	_	_	_	_	
+7-9	532-545	vannoppholdet	_	_	_	_	
+7-10	546-548	og	_	_	_	_	
+7-11	549-551	ga	_	_	_	_	
+7-12	552-555	ham	_	_	_	_	
+7-13	556-558	et	_	_	_	_	
+7-14	559-565	recept	AFTER	TREATMENT	_	_	
+7-15	566-568	på	_	_	_	_	
+7-16	569-571	et	_	_	_	_	
+7-17	572-576	nytt	AFTER[7]	TREATMENT[7]	OVERLAP	7-14[0_7]	
+7-18	577-589	beta-blokker	AFTER[7]	TREATMENT[7]	_	_	
+7-19	590-593	for	_	_	_	_	
+7-20	594-595	å	_	_	_	_	
+7-21	596-604	redusere	_	_	_	_	
+7-22	605-617	belastningen	_	_	_	_	
+7-23	618-620	på	_	_	_	_	
+7-24	621-628	hjertet	_	_	_	_	
+7-25	628-629	.	_	_	_	_	
+
+#Text=Vi planla en henvisning til hjerteklinikken for videre utredning.
+8-1	630-632	Vi	_	_	_	_	
+8-2	633-639	planla	_	_	_	_	
+8-3	640-642	en	_	_	_	_	
+8-4	643-653	henvisning	AFTER[8]	TREATMENT[8]	_	_	
+8-5	654-657	til	AFTER[8]	TREATMENT[8]	_	_	
+8-6	658-673	hjerteklinikken	AFTER[8]	TREATMENT[8]	_	_	
+8-7	674-677	for	_	_	_	_	
+8-8	678-684	videre	_	_	_	_	
+8-9	685-694	utredning	_	_	_	_	
+8-10	694-695	.	_	_	_	_	

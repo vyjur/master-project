@@ -1,0 +1,139 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Notat 2 - 13.10.2024:  
+#Text=Pasienten har hatt fysioterapi 2 ganger i uken og rapporterer om noe bedring i nakkesmerter, men hodepinen er fortsatt til stede, spesielt på slutten av dagen.
+1-1	0-5	Notat	
+1-2	6-7	2	
+1-3	8-9	-	
+1-4	10-20	13.10.2024	
+1-5	20-21	:	
+1-6	24-33	Pasienten	
+1-7	34-37	har	
+1-8	38-42	hatt	
+1-9	43-54	fysioterapi	
+1-10	55-56	2	
+1-11	57-63	ganger	
+1-12	64-65	i	
+1-13	66-70	uken	
+1-14	71-73	og	
+1-15	74-85	rapporterer	
+1-16	86-88	om	
+1-17	89-92	noe	
+1-18	93-100	bedring	
+1-19	101-102	i	
+1-20	103-115	nakkesmerter	
+1-21	115-116	,	
+1-22	117-120	men	
+1-23	121-130	hodepinen	
+1-24	131-133	er	
+1-25	134-142	fortsatt	
+1-26	143-146	til	
+1-27	147-152	stede	
+1-28	152-153	,	
+1-29	154-162	spesielt	
+1-30	163-165	på	
+1-31	166-173	slutten	
+1-32	174-176	av	
+1-33	177-182	dagen	
+1-34	182-183	.	
+
+#Text=Han har gjort noen endringer på arbeidsplassen, inkludert justering av skjermhøyde og bruk av ergonomisk stol, men bruker fortsatt mye tid foran dataskjermen.
+2-1	184-187	Han	
+2-2	188-191	har	
+2-3	192-197	gjort	
+2-4	198-202	noen	
+2-5	203-212	endringer	
+2-6	213-215	på	
+2-7	216-230	arbeidsplassen	
+2-8	230-231	,	
+2-9	232-241	inkludert	
+2-10	242-251	justering	
+2-11	252-254	av	
+2-12	255-266	skjermhøyde	
+2-13	267-269	og	
+2-14	270-274	bruk	
+2-15	275-277	av	
+2-16	278-288	ergonomisk	
+2-17	289-293	stol	
+2-18	293-294	,	
+2-19	295-298	men	
+2-20	299-305	bruker	
+2-21	306-314	fortsatt	
+2-22	315-318	mye	
+2-23	319-322	tid	
+2-24	323-328	foran	
+2-25	329-341	dataskjermen	
+2-26	341-342	.	
+
+#Text=Klinisk undersøkelse viser fortsatt noe stramhet i nakkemuskulaturen, men bedre bevegelighet enn sist.
+3-1	343-350	Klinisk	
+3-2	351-363	undersøkelse	
+3-3	364-369	viser	
+3-4	370-378	fortsatt	
+3-5	379-382	noe	
+3-6	383-391	stramhet	
+3-7	392-393	i	
+3-8	394-411	nakkemuskulaturen	
+3-9	411-412	,	
+3-10	413-416	men	
+3-11	417-422	bedre	
+3-12	423-435	bevegelighet	
+3-13	436-439	enn	
+3-14	440-444	sist	
+3-15	444-445	.	
+
+#Text=Jeg anbefaler videre fysioterapi og foreslår å legge til daglige avspenningsøvelser for nakken.
+4-1	446-449	Jeg	
+4-2	450-459	anbefaler	
+4-3	460-466	videre	
+4-4	467-478	fysioterapi	
+4-5	479-481	og	
+4-6	482-490	foreslår	
+4-7	491-492	å	
+4-8	493-498	legge	
+4-9	499-502	til	
+4-10	503-510	daglige	
+4-11	511-529	avspenningsøvelser	
+4-12	530-533	for	
+4-13	534-540	nakken	
+4-14	540-541	.	
+
+#Text=Vi prøver kortvarig bruk av et muskelavslappende middel (Orphenadrin 100 mg x 2) i 10 dager for å redusere muskelspenningene.
+5-1	542-544	Vi	
+5-2	545-551	prøver	
+5-3	552-561	kortvarig	
+5-4	562-566	bruk	
+5-5	567-569	av	
+5-6	570-572	et	
+5-7	573-590	muskelavslappende	
+5-8	591-597	middel	
+5-9	598-599	(	
+5-10	599-610	Orphenadrin	
+5-11	611-614	100	
+5-12	615-617	mg	
+5-13	618-619	x	
+5-14	620-621	2	
+5-15	621-622	)	
+5-16	623-624	i	
+5-17	625-627	10	
+5-18	628-633	dager	
+5-19	634-637	for	
+5-20	638-639	å	
+5-21	640-648	redusere	
+5-22	649-666	muskelspenningene	
+5-23	666-667	.	
+
+#Text=Pasienten får også en henvisning til kiropraktor for vurdering av manipulasjonsterapi.
+6-1	668-677	Pasienten	
+6-2	678-681	får	
+6-3	682-686	også	
+6-4	687-689	en	
+6-5	690-700	henvisning	
+6-6	701-704	til	
+6-7	705-716	kiropraktor	
+6-8	717-720	for	
+6-9	721-730	vurdering	
+6-10	731-733	av	
+6-11	734-753	manipulasjonsterapi	
+6-12	753-754	.	

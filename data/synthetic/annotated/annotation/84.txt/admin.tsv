@@ -1,0 +1,61 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 1 - 15.03.2025
+#Text=Pasient møter til oppfølgingstime vedrørende kronisk utmattelsessyndrom.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	1	_	_	_	_	
+1-3	15-16	-	_	_	_	_	
+1-4	17-27	15.03.2025	_	_	_	_	
+1-5	28-35	Pasient	_	_	_	_	
+1-6	36-41	møter	_	_	_	_	
+1-7	42-45	til	_	_	_	_	
+1-8	46-61	oppfølgingstime	OVERLAP	TREATMENT	_	_	
+1-9	62-72	vedrørende	_	_	_	_	
+1-10	73-80	kronisk	BEFOREOVERLAP[1]	CONDITION[1]	_	_	
+1-11	81-99	utmattelsessyndrom	BEFOREOVERLAP[1]	CONDITION[1]	_	_	
+1-12	99-100	.	_	_	_	_	
+
+#Text=Fortsatt betydelig redusert arbeidskapasitet og vedvarende symptomer som inkluderer uttalt tretthet, muskelsmerter og kognitiv tåketilstand.
+2-1	101-109	Fortsatt	_	_	_	_	
+2-2	110-119	betydelig	_	_	_	_	
+2-3	120-128	redusert	OVERLAP[2]	CONDITION[2]	_	_	
+2-4	129-145	arbeidskapasitet	OVERLAP[2]	CONDITION[2]	_	_	
+2-5	146-148	og	_	_	_	_	
+2-6	149-159	vedvarende	OVERLAP[3]	CONDITION[3]	_	_	
+2-7	160-169	symptomer	OVERLAP[3]	CONDITION[3]	_	_	
+2-8	170-173	som	_	_	_	_	
+2-9	174-184	inkluderer	_	_	_	_	
+2-10	185-191	uttalt	OVERLAP[4]	CONDITION[4]	_	_	
+2-11	192-200	tretthet	OVERLAP[4]	CONDITION[4]	_	_	
+2-12	200-201	,	_	_	_	_	
+2-13	202-215	muskelsmerter	OVERLAP	CONDITION	_	_	
+2-14	216-218	og	_	_	_	_	
+2-15	219-227	kognitiv	OVERLAP[5]	CONDITION[5]	_	_	
+2-16	228-240	tåketilstand	OVERLAP[5]	CONDITION[5]	_	_	
+2-17	240-241	.	_	_	_	_	
+
+#Text=Objektiv undersøkelse viser ingen umiddelbare tegn til forverring.
+3-1	242-250	Objektiv	OVERLAP[6]	CONDITION[6]	_	_	
+3-2	251-263	undersøkelse	OVERLAP[6]	CONDITION[6]	_	_	
+3-3	264-269	viser	_	_	_	_	
+3-4	270-275	ingen	_	_	_	_	
+3-5	276-287	umiddelbare	_	_	_	_	
+3-6	288-292	tegn	_	_	_	_	
+3-7	293-296	til	_	_	_	_	
+3-8	297-307	forverring	_	_	_	_	
+3-9	307-308	.	_	_	_	_	
+
+#Text=Diskutert videre oppfølgingsplan med gradvis treningsprogram og kognitiv atferdsterapi.
+4-1	309-318	Diskutert	_	_	_	_	
+4-2	319-325	videre	_	_	_	_	
+4-3	326-341	oppfølgingsplan	AFTER	TREATMENT	_	_	
+4-4	342-345	med	_	_	_	_	
+4-5	346-353	gradvis	AFTER[7]	TREATMENT[7]	OVERLAP	4-3[0_7]	
+4-6	354-369	treningsprogram	AFTER[7]	TREATMENT[7]	_	_	
+4-7	370-372	og	_	_	_	_	
+4-8	373-381	kognitiv	_	_	_	_	
+4-9	382-395	atferdsterapi	AFTER	TREATMENT	OVERLAP	4-3	
+4-10	395-396	.	_	_	_	_	

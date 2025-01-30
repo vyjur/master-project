@@ -1,0 +1,138 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Notat 1 - 14.09.2024:  
+#Text=Pasienten kommer til legevakt etter å ha pådratt seg en skade i høyre kne under fotballspill.
+1-1	0-5	Notat	_	_	_	_	
+1-2	6-7	1	_	_	_	_	
+1-3	8-9	-	_	_	_	_	
+1-4	10-20	14.09.2024	_	_	_	_	
+1-5	20-21	:	_	_	_	_	
+1-6	24-33	Pasienten	_	_	_	_	
+1-7	34-40	kommer	_	_	_	_	
+1-8	41-44	til	_	_	_	_	
+1-9	45-53	legevakt	OVERLAP	TREATMENT	_	_	
+1-10	54-59	etter	_	_	_	_	
+1-11	60-61	å	_	_	_	_	
+1-12	62-64	ha	_	_	_	_	
+1-13	65-72	pådratt	_	_	_	_	
+1-14	73-76	seg	_	_	_	_	
+1-15	77-79	en	_	_	_	_	
+1-16	80-85	skade	OVERLAP[1]	CONDITION[1]	_	_	
+1-17	86-87	i	OVERLAP[1]	CONDITION[1]	_	_	
+1-18	88-93	høyre	OVERLAP[1]	CONDITION[1]	_	_	
+1-19	94-97	kne	OVERLAP[1]	CONDITION[1]	_	_	
+1-20	98-103	under	_	_	_	_	
+1-21	104-116	fotballspill	_	_	_	_	
+1-22	116-117	.	_	_	_	_	
+
+#Text=Han forteller at kneet «gav etter» etter en vridning, og han hørte et knepp.
+2-1	118-121	Han	_	_	_	_	
+2-2	122-131	forteller	_	_	_	_	
+2-3	132-134	at	_	_	_	_	
+2-4	135-140	kneet	_	_	_	_	
+2-5	141-142	«	_	_	_	_	
+2-6	142-145	gav	_	_	_	_	
+2-7	146-151	etter	_	_	_	_	
+2-8	151-152	»	_	_	_	_	
+2-9	153-158	etter	_	_	_	_	
+2-10	159-161	en	_	_	_	_	
+2-11	162-170	vridning	_	_	_	_	
+2-12	170-171	,	_	_	_	_	
+2-13	172-174	og	_	_	_	_	
+2-14	175-178	han	_	_	_	_	
+2-15	179-184	hørte	_	_	_	_	
+2-16	185-187	et	_	_	_	_	
+2-17	188-193	knepp	_	_	_	_	
+2-18	193-194	.	_	_	_	_	
+
+#Text=Umiddelbart etter skaden fikk han kraftige smerter og hevelse.
+3-1	195-206	Umiddelbart	_	_	_	_	
+3-2	207-212	etter	_	_	_	_	
+3-3	213-219	skaden	_	_	_	_	
+3-4	220-224	fikk	_	_	_	_	
+3-5	225-228	han	_	_	_	_	
+3-6	229-237	kraftige	OVERLAP[2]	CONDITION[2]	_	_	
+3-7	238-245	smerter	OVERLAP[2]	CONDITION[2]	_	_	
+3-8	246-248	og	OVERLAP[2]	CONDITION[2]	_	_	
+3-9	249-256	hevelse	OVERLAP[2]	CONDITION[2]	_	_	
+3-10	256-257	.	_	_	_	_	
+
+#Text=Pasienten klarer ikke å støtte på det skadede beinet.
+4-1	258-267	Pasienten	_	_	_	_	
+4-2	268-274	klarer	_	_	_	_	
+4-3	275-279	ikke	_	_	_	_	
+4-4	280-281	å	_	_	_	_	
+4-5	282-288	støtte	_	_	_	_	
+4-6	289-291	på	_	_	_	_	
+4-7	292-295	det	_	_	_	_	
+4-8	296-303	skadede	_	_	_	_	
+4-9	304-310	beinet	_	_	_	_	
+4-10	310-311	.	_	_	_	_	
+
+#Text=Klinisk undersøkelse viser betydelig hevelse i kneet, nedsatt bevegelighet, og positiv Lachmans test, hvilket gir mistanke om fremre korsbåndskade.
+5-1	312-319	Klinisk	OVERLAP[3]	CONDITION[3]	BEFORE	1-9[0_3]	
+5-2	320-332	undersøkelse	OVERLAP[3]	CONDITION[3]	_	_	
+5-3	333-338	viser	_	_	_	_	
+5-4	339-348	betydelig	_	_	_	_	
+5-5	349-356	hevelse	OVERLAP[4]	CONDITION[4]	BEFORE	5-1[3_4]	
+5-6	357-358	i	OVERLAP[4]	CONDITION[4]	_	_	
+5-7	359-364	kneet	OVERLAP[4]	CONDITION[4]	_	_	
+5-8	364-365	,	_	_	_	_	
+5-9	366-373	nedsatt	OVERLAP[5]	CONDITION[5]	BEFORE|OVERLAP	5-1[3_5]|5-5[4_5]	
+5-10	374-386	bevegelighet	OVERLAP[5]	CONDITION[5]	_	_	
+5-11	386-387	,	_	_	_	_	
+5-12	388-390	og	_	_	_	_	
+5-13	391-398	positiv	OVERLAP[6]	CONDITION[6]	BEFORE|OVERLAP|OVERLAP	5-1[3_6]|5-9[5_6]|5-5[4_6]	
+5-14	399-407	Lachmans	OVERLAP[6]	CONDITION[6]	_	_	
+5-15	408-412	test	OVERLAP[6]	CONDITION[6]	_	_	
+5-16	412-413	,	_	_	_	_	
+5-17	414-421	hvilket	_	_	_	_	
+5-18	422-425	gir	_	_	_	_	
+5-19	426-434	mistanke	_	_	_	_	
+5-20	435-437	om	_	_	_	_	
+5-21	438-444	fremre	OVERLAP[7]	CONDITION[7]	BEFORE	5-1[3_7]	
+5-22	445-458	korsbåndskade	OVERLAP[7]	CONDITION[7]	_	_	
+5-23	458-459	.	_	_	_	_	
+
+#Text=Pasienten henvises til MR av kneet for å vurdere skadeomfanget.
+6-1	460-469	Pasienten	_	_	_	_	
+6-2	470-478	henvises	AFTER[8]	TREATMENT[8]	_	_	
+6-3	479-482	til	AFTER[8]	TREATMENT[8]	_	_	
+6-4	483-485	MR	AFTER[8]	TREATMENT[8]	_	_	
+6-5	486-488	av	_	_	_	_	
+6-6	489-494	kneet	_	_	_	_	
+6-7	495-498	for	_	_	_	_	
+6-8	499-500	å	_	_	_	_	
+6-9	501-508	vurdere	_	_	_	_	
+6-10	509-522	skadeomfanget	_	_	_	_	
+6-11	522-523	.	_	_	_	_	
+
+#Text=I mellomtiden anbefales avlastning med krykker, ising av kneet og smertelindring med ibuprofen 400 mg x 3.
+7-1	524-525	I	_	_	_	_	
+7-2	526-537	mellomtiden	_	_	_	_	
+7-3	538-547	anbefales	_	_	_	_	
+7-4	548-558	avlastning	AFTER[9]	TREATMENT[9]	_	_	
+7-5	559-562	med	AFTER[9]	TREATMENT[9]	_	_	
+7-6	563-570	krykker	AFTER[9]	TREATMENT[9]	_	_	
+7-7	570-571	,	_	_	_	_	
+7-8	572-577	ising	AFTER[10]	TREATMENT[10]	OVERLAP	7-4[9_10]	
+7-9	578-580	av	AFTER[10]	TREATMENT[10]	_	_	
+7-10	581-586	kneet	AFTER[10]	TREATMENT[10]	_	_	
+7-11	587-589	og	_	_	_	_	
+7-12	590-604	smertelindring	AFTER[11]	TREATMENT[11]	OVERLAP|OVERLAP	7-8[10_11]|7-4[9_11]	
+7-13	605-608	med	AFTER[11]	TREATMENT[11]	_	_	
+7-14	609-618	ibuprofen	AFTER[11]	TREATMENT[11]	_	_	
+7-15	619-622	400	AFTER[11]	TREATMENT[11]	_	_	
+7-16	623-625	mg	AFTER[11]	TREATMENT[11]	_	_	
+7-17	626-627	x	_	_	_	_	
+7-18	628-629	3	_	_	_	_	
+7-19	629-630	.	_	_	_	_	
+
+#Text=Kontroll etter MR-resultatene.
+8-1	631-639	Kontroll	AFTER	TREATMENT	BEFORE	6-2[8_0]	
+8-2	640-645	etter	_	_	_	_	
+8-3	646-660	MR-resultatene	_	_	_	_	
+8-4	660-661	.	_	_	_	_	

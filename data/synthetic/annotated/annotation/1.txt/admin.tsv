@@ -1,0 +1,134 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Notat 2 - 28.09.2024:
+#Text=MR-undersøkelsen viser prolaps mellom L4 og L5 uten tegn til alvorlig nervetrykk.
+1-1	0-5	Notat	_	_	_	_	
+1-2	6-7	2	_	_	_	_	
+1-3	8-9	-	_	_	_	_	
+1-4	10-20	28.09.2024	_	_	_	_	
+1-5	20-21	:	_	_	_	_	
+1-6	22-38	MR-undersøkelsen	OVERLAP	TREATMENT	_	_	
+1-7	39-44	viser	_	_	_	_	
+1-8	45-52	prolaps	OVERLAP[1]	CONDITION[1]	BEFORE	1-6[0_1]	
+1-9	53-59	mellom	OVERLAP[1]	CONDITION[1]	_	_	
+1-10	60-62	L4	OVERLAP[1]	CONDITION[1]	_	_	
+1-11	63-65	og	OVERLAP[1]	CONDITION[1]	_	_	
+1-12	66-68	L5	OVERLAP[1]	CONDITION[1]	_	_	
+1-13	69-73	uten	_	_	_	_	
+1-14	74-78	tegn	_	_	_	_	
+1-15	79-82	til	_	_	_	_	
+1-16	83-91	alvorlig	_	_	_	_	
+1-17	92-102	nervetrykk	_	_	_	_	
+1-18	102-103	.	_	_	_	_	
+
+#Text=Pasienten opplever imidlertid fortsatt betydelige smerter, spesielt ved sitting og gange.
+2-1	104-113	Pasienten	_	_	_	_	
+2-2	114-122	opplever	_	_	_	_	
+2-3	123-133	imidlertid	_	_	_	_	
+2-4	134-142	fortsatt	_	_	_	_	
+2-5	143-153	betydelige	_	_	_	_	
+2-6	154-161	smerter	OVERLAP	CONDITION	_	_	
+2-7	161-162	,	_	_	_	_	
+2-8	163-171	spesielt	_	_	_	_	
+2-9	172-175	ved	_	_	_	_	
+2-10	176-183	sitting	_	_	_	_	
+2-11	184-186	og	_	_	_	_	
+2-12	187-192	gange	_	_	_	_	
+2-13	192-193	.	_	_	_	_	
+
+#Text=Hun har begynt med fysioterapi, men merker foreløpig ingen stor bedring.
+3-1	194-197	Hun	_	_	_	_	
+3-2	198-201	har	_	_	_	_	
+3-3	202-208	begynt	_	_	_	_	
+3-4	209-212	med	_	_	_	_	
+3-5	213-224	fysioterapi	OVERLAP	TREATMENT	_	_	
+3-6	224-225	,	_	_	_	_	
+3-7	226-229	men	_	_	_	_	
+3-8	230-236	merker	_	_	_	_	
+3-9	237-246	foreløpig	_	_	_	_	
+3-10	247-252	ingen	_	_	_	_	
+3-11	253-257	stor	_	_	_	_	
+3-12	258-265	bedring	_	_	_	_	
+3-13	265-266	.	_	_	_	_	
+
+#Text=Klinisk undersøkelse viser fortsatt nedsatt bevegelighet i korsryggen, men ingen tegn til alvorlig nevrologisk utfall.
+4-1	267-274	Klinisk	OVERLAP[2]	TREATMENT[2]	_	_	
+4-2	275-287	undersøkelse	OVERLAP[2]	TREATMENT[2]	_	_	
+4-3	288-293	viser	_	_	_	_	
+4-4	294-302	fortsatt	_	_	_	_	
+4-5	303-310	nedsatt	OVERLAP[3]	CONDITION[3]	BEFORE	4-1[2_3]	
+4-6	311-323	bevegelighet	OVERLAP[3]	CONDITION[3]	_	_	
+4-7	324-325	i	OVERLAP[3]	CONDITION[3]	_	_	
+4-8	326-336	korsryggen	OVERLAP[3]	CONDITION[3]	_	_	
+4-9	336-337	,	_	_	_	_	
+4-10	338-341	men	_	_	_	_	
+4-11	342-347	ingen	_	_	_	_	
+4-12	348-352	tegn	_	_	_	_	
+4-13	353-356	til	_	_	_	_	
+4-14	357-365	alvorlig	_	_	_	_	
+4-15	366-377	nevrologisk	_	_	_	_	
+4-16	378-384	utfall	_	_	_	_	
+4-17	384-385	.	_	_	_	_	
+
+#Text=Vi diskuterer muligheten for videre konservativ behandling med fysioterapi, samt at hun kan prøve kortvarig bruk av muskelavslappende medisiner (diazepam 5 mg ved behov).
+5-1	386-388	Vi	_	_	_	_	
+5-2	389-399	diskuterer	_	_	_	_	
+5-3	400-410	muligheten	_	_	_	_	
+5-4	411-414	for	_	_	_	_	
+5-5	415-421	videre	_	_	_	_	
+5-6	422-433	konservativ	_	_	_	_	
+5-7	434-444	behandling	_	_	_	_	
+5-8	445-448	med	_	_	_	_	
+5-9	449-460	fysioterapi	AFTER	TREATMENT	OVERLAP	5-19[4_0]	
+5-10	460-461	,	_	_	_	_	
+5-11	462-466	samt	_	_	_	_	
+5-12	467-469	at	_	_	_	_	
+5-13	470-473	hun	_	_	_	_	
+5-14	474-477	kan	_	_	_	_	
+5-15	478-483	prøve	_	_	_	_	
+5-16	484-493	kortvarig	_	_	_	_	
+5-17	494-498	bruk	_	_	_	_	
+5-18	499-501	av	_	_	_	_	
+5-19	502-519	muskelavslappende	AFTER[4]	TREATMENT[4]	OVERLAP|OVERLAP	5-9[0_4]|5-22[5_4]	
+5-20	520-529	medisiner	AFTER[4]	TREATMENT[4]	_	_	
+5-21	530-531	(	_	_	_	_	
+5-22	531-539	diazepam	AFTER[5]	TREATMENT[5]	OVERLAP	5-19[4_5]	
+5-23	540-541	5	AFTER[5]	TREATMENT[5]	_	_	
+5-24	542-544	mg	AFTER[5]	TREATMENT[5]	_	_	
+5-25	545-548	ved	_	_	_	_	
+5-26	549-554	behov	_	_	_	_	
+5-27	554-555	)	_	_	_	_	
+5-28	555-556	.	_	_	_	_	
+
+#Text=Pasienten uttrykker bekymring for å ikke kunne returnere til jobb, og vi søker om sykmelding i 3 uker til for å gi henne tid til rehabilitering.
+6-1	557-566	Pasienten	_	_	_	_	
+6-2	567-576	uttrykker	_	_	_	_	
+6-3	577-586	bekymring	_	_	_	_	
+6-4	587-590	for	_	_	_	_	
+6-5	591-592	å	_	_	_	_	
+6-6	593-597	ikke	_	_	_	_	
+6-7	598-603	kunne	_	_	_	_	
+6-8	604-613	returnere	_	_	_	_	
+6-9	614-617	til	_	_	_	_	
+6-10	618-622	jobb	_	_	_	_	
+6-11	622-623	,	_	_	_	_	
+6-12	624-626	og	_	_	_	_	
+6-13	627-629	vi	_	_	_	_	
+6-14	630-635	søker	_	_	_	_	
+6-15	636-638	om	_	_	_	_	
+6-16	639-649	sykmelding	AFTER	TREATMENT	_	_	
+6-17	650-651	i	_	_	_	_	
+6-18	652-653	3	_	_	_	_	
+6-19	654-658	uker	_	_	_	_	
+6-20	659-662	til	_	_	_	_	
+6-21	663-666	for	_	_	_	_	
+6-22	667-668	å	_	_	_	_	
+6-23	669-671	gi	_	_	_	_	
+6-24	672-677	henne	_	_	_	_	
+6-25	678-681	tid	_	_	_	_	
+6-26	682-685	til	_	_	_	_	
+6-27	686-700	rehabilitering	_	_	_	_	
+6-28	700-701	.	_	_	_	_	

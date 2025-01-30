@@ -1,0 +1,41 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+
+
+#Text=Journalnotat 3 - 12.04.2025
+#Text=Konsultasjon etter revmatologisk vurdering.
+1-1	0-12	Journalnotat	_	_	
+1-2	13-14	3	_	_	
+1-3	15-16	-	_	_	
+1-4	17-27	12.04.2025	_	_	
+1-5	28-40	Konsultasjon	OVERLAP	TREATMENT	
+1-6	41-46	etter	_	_	
+1-7	47-60	revmatologisk	BEFORE[1]	TREATMENT[1]	
+1-8	61-70	vurdering	BEFORE[1]	TREATMENT[1]	
+1-9	70-71	.	_	_	
+
+#Text=Kompletterende undersøkelser gjennomført.
+2-1	72-86	Kompletterende	_	_	
+2-2	87-100	undersøkelser	_	_	
+2-3	101-112	gjennomført	_	_	
+2-4	112-113	.	_	_	
+
+#Text=Bekreftet diagnose kronisk utmattelsessyndrom.
+3-1	114-123	Bekreftet	_	_	
+3-2	124-132	diagnose	_	_	
+3-3	133-140	kronisk	OVERLAP[2]	CONDITION[2]	
+3-4	141-159	utmattelsessyndrom	OVERLAP[2]	CONDITION[2]	
+3-5	159-160	.	_	_	
+
+#Text=Iverksetter tverrfaglig behandlingsplan inkludert fysioterapi, kostholdsveiledning og gradvis arbeidstrening.
+4-1	161-172	Iverksetter	_	_	
+4-2	173-184	tverrfaglig	_	_	
+4-3	185-200	behandlingsplan	AFTER	TREATMENT	
+4-4	201-210	inkludert	_	_	
+4-5	211-222	fysioterapi	AFTER	TREATMENT	
+4-6	222-223	,	_	_	
+4-7	224-243	kostholdsveiledning	AFTER	TREATMENT	
+4-8	244-246	og	_	_	
+4-9	247-254	gradvis	AFTER[3]	TREATMENT[3]	
+4-10	255-269	arbeidstrening	AFTER[3]	TREATMENT[3]	
+4-11	269-270	.	_	_	

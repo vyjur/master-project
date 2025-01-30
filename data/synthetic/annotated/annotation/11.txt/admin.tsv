@@ -1,0 +1,134 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Notat 2 - 17.09.2024:
+#Text=Pasienten rapporterer bedring etter antibiotikakuren og kortisonbruk.
+1-1	0-5	Notat	_	_	_	_	
+1-2	6-7	2	_	_	_	_	
+1-3	8-9	-	_	_	_	_	
+1-4	10-20	17.09.2024	_	_	_	_	
+1-5	20-21	:	_	_	_	_	
+1-6	22-31	Pasienten	_	_	_	_	
+1-7	32-43	rapporterer	_	_	_	_	
+1-8	44-51	bedring	OVERLAP	CONDITION	_	_	
+1-9	52-57	etter	_	_	_	_	
+1-10	58-74	antibiotikakuren	BEFORE	TREATMENT	_	_	
+1-11	75-77	og	_	_	_	_	
+1-12	78-90	kortisonbruk	BEFORE	TREATMENT	_	_	
+1-13	90-91	.	_	_	_	_	
+
+#Text=Hoste og ekspektorat har avtatt, og han opplever mindre tungpust.
+2-1	92-97	Hoste	OVERLAP[1]	CONDITION[1]	_	_	
+2-2	98-100	og	OVERLAP[1]	CONDITION[1]	_	_	
+2-3	101-112	ekspektorat	OVERLAP[1]	CONDITION[1]	_	_	
+2-4	113-116	har	OVERLAP[1]	CONDITION[1]	_	_	
+2-5	117-123	avtatt	OVERLAP[1]	CONDITION[1]	_	_	
+2-6	123-124	,	_	_	_	_	
+2-7	125-127	og	_	_	_	_	
+2-8	128-131	han	_	_	_	_	
+2-9	132-140	opplever	_	_	_	_	
+2-10	141-147	mindre	OVERLAP[2]	CONDITION[2]	_	_	
+2-11	148-156	tungpust	OVERLAP[2]	CONDITION[2]	_	_	
+2-12	156-157	.	_	_	_	_	
+
+#Text=Spirometri viser fortsatt FEV1 på 47 %, men subjektivt opplever pasienten seg i bedre form.
+3-1	158-168	Spirometri	OVERLAP	TREATMENT	_	_	
+3-2	169-174	viser	_	_	_	_	
+3-3	175-183	fortsatt	_	_	_	_	
+3-4	184-188	FEV1	OVERLAP[3]	*[3]	BEFORE	3-1[0_3]	
+3-5	189-191	på	OVERLAP[3]	*[3]	_	_	
+3-6	192-194	47	OVERLAP[3]	*[3]	_	_	
+3-7	195-196	%	OVERLAP[3]	*[3]	_	_	
+3-8	196-197	,	_	_	_	_	
+3-9	198-201	men	_	_	_	_	
+3-10	202-212	subjektivt	_	_	_	_	
+3-11	213-221	opplever	_	_	_	_	
+3-12	222-231	pasienten	_	_	_	_	
+3-13	232-235	seg	_	_	_	_	
+3-14	236-237	i	_	_	_	_	
+3-15	238-243	bedre	_	_	_	_	
+3-16	244-248	form	_	_	_	_	
+3-17	248-249	.	_	_	_	_	
+
+#Text=Oksygenmetningen er nå 93 % i hvile.
+4-1	250-266	Oksygenmetningen	_	_	_	_	
+4-2	267-269	er	_	_	_	_	
+4-3	270-272	nå	_	_	_	_	
+4-4	273-275	93	_	_	_	_	
+4-5	276-277	%	_	_	_	_	
+4-6	278-279	i	_	_	_	_	
+4-7	280-285	hvile	_	_	_	_	
+4-8	285-286	.	_	_	_	_	
+
+#Text=Vi diskuterer viktigheten av å holde seg unna triggere, spesielt i vintermånedene, og pasienten er enig i å ta influensavaksine og pneumokokkvaksine.
+5-1	287-289	Vi	_	_	_	_	
+5-2	290-300	diskuterer	_	_	_	_	
+5-3	301-312	viktigheten	_	_	_	_	
+5-4	313-315	av	_	_	_	_	
+5-5	316-317	å	_	_	_	_	
+5-6	318-323	holde	_	_	_	_	
+5-7	324-327	seg	_	_	_	_	
+5-8	328-332	unna	_	_	_	_	
+5-9	333-341	triggere	_	_	_	_	
+5-10	341-342	,	_	_	_	_	
+5-11	343-351	spesielt	_	_	_	_	
+5-12	352-353	i	_	_	_	_	
+5-13	354-368	vintermånedene	_	_	_	_	
+5-14	368-369	,	_	_	_	_	
+5-15	370-372	og	_	_	_	_	
+5-16	373-382	pasienten	_	_	_	_	
+5-17	383-385	er	_	_	_	_	
+5-18	386-390	enig	_	_	_	_	
+5-19	391-392	i	_	_	_	_	
+5-20	393-394	å	_	_	_	_	
+5-21	395-397	ta	_	_	_	_	
+5-22	398-414	influensavaksine	AFTER	TREATMENT	_	_	
+5-23	415-417	og	_	_	_	_	
+5-24	418-435	pneumokokkvaksine	AFTER	TREATMENT	_	_	
+5-25	435-436	.	_	_	_	_	
+
+#Text=Behandlingen med Spiriva og Ventoline fortsettes som før, men jeg foreslår å legge til en inhalasjonskombinasjon med ICS/LABA (Symbicort) for bedre langtidskontroll.
+6-1	437-449	Behandlingen	_	_	_	_	
+6-2	450-453	med	_	_	_	_	
+6-3	454-461	Spiriva	AFTER	TREATMENT	OVERLAP|OVERLAP	6-5|6-17[4_0]	
+6-4	462-464	og	_	_	_	_	
+6-5	465-474	Ventoline	AFTER	TREATMENT	OVERLAP|OVERLAP	6-3|6-17[4_0]	
+6-6	475-485	fortsettes	_	_	_	_	
+6-7	486-489	som	_	_	_	_	
+6-8	490-493	før	_	_	_	_	
+6-9	493-494	,	_	_	_	_	
+6-10	495-498	men	_	_	_	_	
+6-11	499-502	jeg	_	_	_	_	
+6-12	503-511	foreslår	_	_	_	_	
+6-13	512-513	å	_	_	_	_	
+6-14	514-519	legge	_	_	_	_	
+6-15	520-523	til	_	_	_	_	
+6-16	524-526	en	_	_	_	_	
+6-17	527-549	inhalasjonskombinasjon	AFTER[4]	TREATMENT[4]	OVERLAP|OVERLAP	6-3[0_4]|6-5[0_4]	
+6-18	550-553	med	AFTER[4]	TREATMENT[4]	_	_	
+6-19	554-557	ICS	AFTER[4]	TREATMENT[4]	_	_	
+6-20	557-558	/	AFTER[4]	TREATMENT[4]	_	_	
+6-21	558-562	LABA	AFTER[4]	TREATMENT[4]	_	_	
+6-22	563-564	(	AFTER[4]	TREATMENT[4]	_	_	
+6-23	564-573	Symbicort	AFTER[4]	TREATMENT[4]	_	_	
+6-24	573-574	)	AFTER[4]	TREATMENT[4]	_	_	
+6-25	575-578	for	_	_	_	_	
+6-26	579-584	bedre	_	_	_	_	
+6-27	585-601	langtidskontroll	_	_	_	_	
+6-28	601-602	.	_	_	_	_	
+
+#Text=Pasienten informeres om å kontakte lege ved tegn til ny forverring.
+7-1	603-612	Pasienten	_	_	_	_	
+7-2	613-623	informeres	_	_	_	_	
+7-3	624-626	om	_	_	_	_	
+7-4	627-628	å	_	_	_	_	
+7-5	629-637	kontakte	_	_	_	_	
+7-6	638-642	lege	_	_	_	_	
+7-7	643-646	ved	_	_	_	_	
+7-8	647-651	tegn	_	_	_	_	
+7-9	652-655	til	_	_	_	_	
+7-10	656-658	ny	_	_	_	_	
+7-11	659-669	forverring	_	_	_	_	
+7-12	669-670	.	_	_	_	_	
