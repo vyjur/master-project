@@ -8,6 +8,9 @@ class Graph:
             list
         )  # Reverse graph to track parent-child relationships
 
+    def add_node(self, u):
+        self.graph[u] = list()
+
     def add_edge(self, u, v):
         self.graph[u].append(v)  # Directed edge u -> v
         self.reverse_graph[v].append(u)  # Reverse edge v -> u (parent -> child)
