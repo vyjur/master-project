@@ -6,12 +6,15 @@ print("##### Start training for NER... ######")
 
 folder = "./scripts/train/config/ner/"
 configs = os.listdir(folder)
-folder_path = "./data/annotated/"
+
+folder_path = "./data/synthetic/annotated/annotation/"
+
 files = [
-    folder_path + f
+    folder_path + f + "/admin.tsv"
     for f in os.listdir(folder_path)
-    if os.path.isfile(os.path.join(folder_path, f))
+    if os.path.isfile(os.path.join(folder_path, f, "admin.tsv"))
 ]
+
 manager = DatasetManager(files)
 
 for i, conf in enumerate(configs):
