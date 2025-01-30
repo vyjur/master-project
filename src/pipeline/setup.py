@@ -12,7 +12,7 @@ from structure.relation import Relation
 from visualization.setup import VizTool, Timeline
 from pipeline.util import remove_duplicates, find_duplicates
 
-from structure.enum import Dataset, TR_DCT
+from structure.enum import Dataset, TR_DCT, TR_TLINK
 from structure.node import Node
 from structure.graph import Graph
 
@@ -97,6 +97,8 @@ class Pipeline:
             ##### Perform Medical Entity Extraction
             ner_output = self.__ner.run(output)
             entities = []
+            
+            graph = Graph()
 
             for i, _ in enumerate(output):
                 result = self.__get_non_o_intervals(ner_output[i])
@@ -134,7 +136,9 @@ class Pipeline:
                         .replace("[SEP]", "")
                         .replace("[PAD]", "")
                     )
-                    entities.append(Node(entity, entype, None, context, dct))
+                    curr_ent = Node(entity, entype, None, context, dct)
+                    entities.append(curr_ent)
+                    graph.add(curr_ent.id)
 
             ### Temporal Relation Extraction
 
@@ -160,7 +164,7 @@ class Pipeline:
             ###### Although triple loop, this should be quicker than checking all entities
             ###### O(N^2)>O(len(dcts)*(N_i^2)) where N_i < N
 
-            graph = Graph()
+            
 
             relations = []
             for cat in dcts:
@@ -182,21 +186,23 @@ class Pipeline:
 
             ##### Add relations one after one, make rules for consistency??!?
             for rel in relations[:]:
-                graph.add_edge(rel.x.id, rel.y.id)
+                if rel.tr == TR_TLINK.BEFORE: 
+                    graph.add_edge(rel.x.id, rel.y.id)
                 if graph.is_cyclic():
                     relations.remove(rel)
+                    graph.remove_edge(rel.x.id, rel.y.id)
 
             ##### Get the level ordering for the graph
             levels = graph.enumerate_levels()
 
-            ##### Center the level ordering to the DURING group
+            ##### Center the level ordering to the OVERLAP group
             center = {"id": None, "lvl": 100}
             for node in levels:
                 for e in entities:
                     if e.id == node:
                         e.level = levels[node]
 
-                        if e.dct == TR_DCT.DURING and e.level < center["lvl"]:
+                        if e.dct == TR_DCT.OVERLAP and e.level < center["lvl"]:
                             center["id"] = node
                             center["lvl"] = levels[node]
 

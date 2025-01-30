@@ -8,6 +8,8 @@ class Relation:
         self.y = y
         self.prob = prob
         
+        self.tr = None
+        
         for curr_tr in TR_TLINK:
             if tr == curr_tr.name:
                 self.tr = curr_tr
