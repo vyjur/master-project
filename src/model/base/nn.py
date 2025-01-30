@@ -159,8 +159,8 @@ class NN:
                     curr_loss = loss
                     predictions = outputs
                     tr_accuracy += accuracy_score(
-                        targets.view(-1).numpy(),
-                        predictions.view(-1).numpy(),
+                        targets.view(-1).cpu().numpy(),
+                        predictions.view(-1).cpu().numpy(),
                     )
             else:
                 outputs = self.__model(ids)
@@ -174,7 +174,7 @@ class NN:
                         axis=1,  # type: ignore
                     )
                     tr_accuracy += accuracy_score(
-                        targets.view(-1).numpy(), flattened_predictions
+                        targets.view(-1).cpu().numpy(), flattened_predictions
                     )  # shape (batch_size * seq_len,)
 
             tr_loss += curr_loss
