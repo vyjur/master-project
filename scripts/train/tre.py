@@ -20,7 +20,7 @@ files = [
 manager = DatasetManager(files)
 
 for i, conf in enumerate(configs):
-    if conf != 'c-bert-bilstm.ini':
+    if os.path.isdir(folder + conf):
         continue
     print(f"###### ({i}) Training for configuration file: {conf}")
     save_directory = f"./models/tre/{TRE_TYPE}/" + conf.replace(".ini", "")

@@ -213,6 +213,9 @@ class BERT:
             ids = batch["ids"].to(self.__device, dtype=torch.long)
             mask = batch["mask"].to(self.__device, dtype=torch.long)
             targets = batch["targets"].to(self.__device, dtype=torch.long)
+            
+            optimizer.zero_grad()
+            
             outputs = self.__model(input_ids=ids, attention_mask=mask, labels=targets)
             loss, tr_logits = outputs.loss, outputs.logits
             # tr_loss += loss.item()
@@ -259,7 +262,6 @@ class BERT:
             )
 
             # backward pass
-            optimizer.zero_grad()
             loss.backward()
             optimizer.step()
             # scheduler.step()
@@ -269,7 +271,7 @@ class BERT:
         tr_accuracy = tr_accuracy / nb_tr_steps
         print(f"Training loss epoch: {epoch_loss}")
         print(f"Training accuracy epoch: {tr_accuracy}")
-        return epoch_loss, tr_accuracy
+        return epoch_loss, accuracy_score(tr_labels, tr_preds)
 
     def __valid(self, testing_loader, device, id2label):
         # put model in evaluation mode
