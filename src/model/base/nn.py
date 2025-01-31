@@ -5,6 +5,7 @@ from torch import cuda
 from torch.utils.data import DataLoader
 from preprocess.setup import Preprocess
 from sklearn.metrics import accuracy_score
+from model.regularization.early_stopping import EarlyStopping
 from model.util import Util
 from structure.enum import Task
 import wandb
@@ -81,17 +82,18 @@ class NN:
 
             train_params = {
                 "batch_size": parameters["train_batch_size"],
-                "shuffle": True,
-                "num_workers": 0,
+                "shuffle": parameters["shuffle"],
+                "num_workers":parameters["num_workers"] ,
             }
 
             test_params = {
                 "batch_size": parameters["valid_batch_size"],
-                "shuffle": True,
-                "num_workers": 0,
+                "shuffle": parameters["shuffle"],
+                "num_workers": ["num_workers"],
             }
 
             training_loader = DataLoader(processed["train"], **train_params)
+            valid_loader = DataLoader(processed["valid"], **test_params)
             testing_loader = DataLoader(processed["test"], **test_params)
 
             self.__model = model(
@@ -111,11 +113,24 @@ class NN:
                 weight_decay=1e-4,
             )
 
+            early_stopping = EarlyStopping(patience=5, delta=0.01)
             for t in range(parameters["epochs"]):
                 print(f"Epoch {t + 1}\n-------------------------------")
                 loss, acc = self.__train(training_loader, loss_fn, optimizer)
                 wandb.log({"loss": loss, "accuracy": acc})  # type: ignore
+                early_stopping(loss, model)
+                if early_stopping.early_stop:
+                    print("Early stopping")
+                    break
+            
+            print("### Valid set performance:")
+            labels, predictions = self.__valid(
+                valid_loader, self.__device, processed["id2label"]
+            )
+            Util().validate_report(labels, predictions)
 
+
+            print("### Test set performance:")
             labels, predictions = self.__valid(
                 testing_loader, self.__device, processed["id2label"]
             )
