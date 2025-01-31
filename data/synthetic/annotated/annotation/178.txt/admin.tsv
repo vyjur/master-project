@@ -127,7 +127,7 @@
 7-1	614-616	Vi	_	_	_	_	
 7-2	617-623	planla	_	_	_	_	
 7-3	624-626	en	_	_	_	_	
-7-4	627-637	oppfølging	*	CONDITION	BEFORE|BEFORE|BEFORE	5-5[6_0]|4-6[4_0]|4-11[5_0]	
+7-4	627-637	oppfølging	AFTER	CONDITION	BEFORE|BEFORE|BEFORE	5-5[6_0]|4-6[4_0]|4-11[5_0]	
 7-5	638-640	om	_	_	_	_	
 7-6	641-643	to	_	_	_	_	
 7-7	644-651	måneder	_	_	_	_	

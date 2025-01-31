@@ -51,21 +51,21 @@
 3-5	232-233	.	_	_	_	_	
 
 #Text=Urinstix viser positivt utslag på leukocytter og nitritt, noe som bekrefter mistanken om UVI.
-4-1	234-242	Urinstix	*	TREATMENT	_	_	
+4-1	234-242	Urinstix	OVERLAP	TREATMENT	_	_	
 4-2	243-248	viser	_	_	_	_	
-4-3	249-257	positivt	*[5]	CONDITION[5]	BEFORE	4-1[0_5]	
-4-4	258-264	utslag	*[5]	CONDITION[5]	_	_	
-4-5	265-267	på	*[5]	CONDITION[5]	_	_	
-4-6	268-279	leukocytter	*[5]	CONDITION[5]	_	_	
-4-7	280-282	og	*[5]	CONDITION[5]	_	_	
-4-8	283-290	nitritt	*[5]	CONDITION[5]	_	_	
+4-3	249-257	positivt	OVERLAP[5]	CONDITION[5]	BEFORE	4-1[0_5]	
+4-4	258-264	utslag	OVERLAP[5]	CONDITION[5]	_	_	
+4-5	265-267	på	OVERLAP[5]	CONDITION[5]	_	_	
+4-6	268-279	leukocytter	OVERLAP[5]	CONDITION[5]	_	_	
+4-7	280-282	og	OVERLAP[5]	CONDITION[5]	_	_	
+4-8	283-290	nitritt	OVERLAP[5]	CONDITION[5]	_	_	
 4-9	290-291	,	_	_	_	_	
 4-10	292-295	noe	_	_	_	_	
 4-11	296-299	som	_	_	_	_	
 4-12	300-309	bekrefter	_	_	_	_	
 4-13	310-319	mistanken	_	_	_	_	
 4-14	320-322	om	_	_	_	_	
-4-15	323-326	UVI	*	CONDITION	BEFORE	4-1	
+4-15	323-326	UVI	OVERLAP	CONDITION	BEFORE	4-1	
 4-16	326-327	.	_	_	_	_	
 
 #Text=Pasienten har ingen kjent nyresykdom eller tidligere alvorlige urinveisinfeksjoner.

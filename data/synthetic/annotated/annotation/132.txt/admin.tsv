@@ -65,16 +65,16 @@
 3-3	283-289	finner	_	_	_	_	
 3-4	290-293	jeg	_	_	_	_	
 3-5	294-296	en	_	_	_	_	
-3-6	297-303	normal	*[2]	CONDITION[2]	BEFORE	3-2[0_2]	
-3-7	304-315	neurologisk	*[2]	CONDITION[2]	_	_	
-3-8	316-328	undersøkelse	*[2]	CONDITION[2]	_	_	
+3-6	297-303	normal	OVERLAP[2]	CONDITION[2]	BEFORE	3-2[0_2]	
+3-7	304-315	neurologisk	OVERLAP[2]	CONDITION[2]	_	_	
+3-8	316-328	undersøkelse	OVERLAP[2]	CONDITION[2]	_	_	
 3-9	328-329	,	_	_	_	_	
 3-10	330-333	men	_	_	_	_	
 3-11	334-336	en	_	_	_	_	
-3-12	337-341	øket	*[3]	CONDITION[3]	BEFORE	3-2[0_3]	
-3-13	342-350	frekvens	*[3]	CONDITION[3]	_	_	
-3-14	351-353	av	*[3]	CONDITION[3]	_	_	
-3-15	354-367	migrèneanfall	*[3]	CONDITION[3]	_	_	
+3-12	337-341	øket	OVERLAP[3]	CONDITION[3]	BEFORE	3-2[0_3]	
+3-13	342-350	frekvens	OVERLAP[3]	CONDITION[3]	_	_	
+3-14	351-353	av	OVERLAP[3]	CONDITION[3]	_	_	
+3-15	354-367	migrèneanfall	OVERLAP[3]	CONDITION[3]	_	_	
 3-16	367-368	.	_	_	_	_	
 
 #Text=Jeg starter pasienten på en behandling med triptaner for å kontrollere symptomer.

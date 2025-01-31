@@ -55,8 +55,8 @@
 3-7	196-199	han	_	_	_	_	
 3-8	200-205	hadde	_	_	_	_	
 3-9	206-210	fått	_	_	_	_	
-3-10	211-216	bedre	OVERLAP[1]	*[1]	_	_	
-3-11	217-225	kontroll	OVERLAP[1]	*[1]	_	_	
+3-10	211-216	bedre	OVERLAP[1]	CONDITION[1]	_	_	
+3-11	217-225	kontroll	OVERLAP[1]	CONDITION[1]	_	_	
 3-12	226-230	over	_	_	_	_	
 3-13	231-235	sine	_	_	_	_	
 3-14	236-242	tanker	_	_	_	_	

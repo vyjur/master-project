@@ -27,7 +27,7 @@
 1-20	94-95	.	_	_	_	_	
 
 #Text=Symptometologi var viderebedret, og hun kunne nå utføre daglige aktiviteter uten store problemer.
-2-1	96-110	Symptometologi	OVERLAP	*	_	_	
+2-1	96-110	Symptometologi	OVERLAP	CONDITION	_	_	
 2-2	111-114	var	_	_	_	_	
 2-3	115-127	viderebedret	_	_	_	_	
 2-4	127-128	,	_	_	_	_	

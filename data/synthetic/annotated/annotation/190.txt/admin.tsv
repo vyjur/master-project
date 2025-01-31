@@ -19,7 +19,7 @@
 1-12	38-41	inn	_	_	_	_	
 1-13	42-45	til	_	_	_	_	
 1-14	46-51	siste	_	_	_	_	
-1-15	52-62	oppfølging	OVERLAP	*	_	_	
+1-15	52-62	oppfølging	OVERLAP	TREATMENT	_	_	
 1-16	63-64	i	_	_	_	_	
 1-17	65-68	dag	_	_	_	_	
 1-18	68-69	.	_	_	_	_	

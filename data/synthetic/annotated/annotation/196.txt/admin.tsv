@@ -30,8 +30,8 @@
 1-23	90-98	frekvent	OVERLAP[2]	CONDITION[2]	_	_	
 1-24	99-110	pisongtvang	OVERLAP[2]	CONDITION[2]	_	_	
 1-25	111-113	og	_	_	_	_	
-1-26	114-119	tynne	OVERLAP[3]	*[3]	_	_	
-1-27	120-131	pisstrømmet	OVERLAP[3]	*[3]	_	_	
+1-26	114-119	tynne	OVERLAP[3]	CONDITION[3]	_	_	
+1-27	120-131	pisstrømmet	OVERLAP[3]	CONDITION[3]	_	_	
 1-28	131-132	.	_	_	_	_	
 
 #Text=Han har en historie av rekurrente urinveisinfeksjoner (UTI), spesielt cystitt, og har tidligere blitt behandlet med antibiotika.

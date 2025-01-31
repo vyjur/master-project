@@ -12,13 +12,13 @@
 1-5	20-22	år	_	_	_	_	
 1-6	23-26	med	_	_	_	_	
 1-7	27-37	nyoppdaget	_	_	_	_	
-1-8	38-46	diabetes	BEFOREOVERLAP[1]	*[1]	_	_	
-1-9	47-51	type	BEFOREOVERLAP[1]	*[1]	_	_	
-1-10	52-53	2	BEFOREOVERLAP[1]	*[1]	_	_	
+1-8	38-46	diabetes	BEFOREOVERLAP[1]	CONDITION[1]	_	_	
+1-9	47-51	type	BEFOREOVERLAP[1]	CONDITION[1]	_	_	
+1-10	52-53	2	BEFOREOVERLAP[1]	CONDITION[1]	_	_	
 1-11	53-54	.	_	_	_	_	
 
 #Text=HbA1c 8.9%.
-2-1	55-60	HbA1c	*	CONDITION	_	_	
+2-1	55-60	HbA1c	OVERLAP	CONDITION	_	_	
 2-2	61-65	8.9%	_	_	_	_	
 2-3	65-66	.	_	_	_	_	
 

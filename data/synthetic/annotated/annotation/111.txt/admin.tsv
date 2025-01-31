@@ -44,7 +44,7 @@
 #Text=Iverksetter intensivert behandlingsstrategi med kombinasjon av medikamentell terapi og livsstilsintervensjoner.
 4-1	244-255	Iverksetter	_	_	_	_	
 4-2	256-267	intensivert	_	_	_	_	
-4-3	268-287	behandlingsstrategi	AFTER	TREATMENT	OVERLAP|*	4-7[4_0]|4-10	
+4-3	268-287	behandlingsstrategi	AFTER	TREATMENT	OVERLAP	4-7[4_0]	
 4-4	288-291	med	_	_	_	_	
 4-5	292-303	kombinasjon	_	_	_	_	
 4-6	304-306	av	_	_	_	_	

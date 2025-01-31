@@ -104,14 +104,14 @@
 6-1	427-429	Vi	_	_	_	_	
 6-2	430-433	tok	_	_	_	_	
 6-3	434-436	et	_	_	_	_	
-6-4	437-440	EKG	*	TREATMENT	OVERLAP	4-2	
+6-4	437-440	EKG	OVERLAP	TREATMENT	OVERLAP	4-2	
 6-5	440-441	,	_	_	_	_	
 6-6	442-445	som	_	_	_	_	
 6-7	446-451	viste	_	_	_	_	
 6-8	452-456	tegn	_	_	_	_	
 6-9	457-459	på	_	_	_	_	
-6-10	460-467	venstre	*[5]	CONDITION[5]	BEFORE	6-4[0_5]	
-6-11	468-482	ventrikelsvikt	*[5]	CONDITION[5]	_	_	
+6-10	460-467	venstre	OVERLAP[5]	CONDITION[5]	BEFORE	6-4[0_5]	
+6-11	468-482	ventrikelsvikt	OVERLAP[5]	CONDITION[5]	_	_	
 6-12	482-483	.	_	_	_	_	
 
 #Text=Jeg økte doseringen av diuretika for å redusere vannoppholdet og ga ham et recept på et nytt beta-blokker for å redusere belastningen på hjertet.

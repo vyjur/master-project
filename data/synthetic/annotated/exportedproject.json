@@ -101,7 +101,7 @@
     "state" : "ANNOTATION_FINISHED",
     "timestamp" : null,
     "created" : 1738155299721,
-    "updated" : 1738223528026
+    "updated" : 1738331218610
   }, {
     "name" : "110.txt",
     "format" : "text",
@@ -112,17 +112,17 @@
   }, {
     "name" : "111.txt",
     "format" : "text",
-    "state" : "ANNOTATION_IN_PROGRESS",
+    "state" : "ANNOTATION_FINISHED",
     "timestamp" : null,
     "created" : 1738155307884,
-    "updated" : 1738157040944
+    "updated" : 1738269219692
   }, {
     "name" : "112.txt",
     "format" : "text",
-    "state" : "ANNOTATION_IN_PROGRESS",
+    "state" : "ANNOTATION_FINISHED",
     "timestamp" : null,
     "created" : 1738155307963,
-    "updated" : 1738157088234
+    "updated" : 1738269256127
   }, {
     "name" : "113.txt",
     "format" : "text",
@@ -178,14 +178,14 @@
     "state" : "ANNOTATION_FINISHED",
     "timestamp" : null,
     "created" : 1738155299824,
-    "updated" : 1738224598863
+    "updated" : 1738269411126
   }, {
     "name" : "120.txt",
     "format" : "text",
     "state" : "ANNOTATION_FINISHED",
     "timestamp" : null,
     "created" : 1738155308398,
-    "updated" : 1738224723778
+    "updated" : 1738269476124
   }, {
     "name" : "121.txt",
     "format" : "text",
@@ -224,10 +224,10 @@
   }, {
     "name" : "126.txt",
     "format" : "text",
-    "state" : "ANNOTATION_IN_PROGRESS",
+    "state" : "ANNOTATION_FINISHED",
     "timestamp" : null,
     "created" : 1738155308863,
-    "updated" : 1738158732914
+    "updated" : 1738269606125
   }, {
     "name" : "127.txt",
     "format" : "text",
@@ -388,7 +388,7 @@
     "state" : "ANNOTATION_FINISHED",
     "timestamp" : null,
     "created" : 1738155310083,
-    "updated" : 1738226658863
+    "updated" : 1738269696124
   }, {
     "name" : "148.txt",
     "format" : "text",
@@ -437,7 +437,7 @@
     "state" : "ANNOTATION_FINISHED",
     "timestamp" : null,
     "created" : 1738155310379,
-    "updated" : 1738226958408
+    "updated" : 1738269731123
   }, {
     "name" : "154.txt",
     "format" : "text",
@@ -500,7 +500,7 @@
     "state" : "ANNOTATION_FINISHED",
     "timestamp" : null,
     "created" : 1738155310811,
-    "updated" : 1738227598863
+    "updated" : 1738269766123
   }, {
     "name" : "162.txt",
     "format" : "text",
@@ -521,14 +521,14 @@
     "state" : "ANNOTATION_FINISHED",
     "timestamp" : null,
     "created" : 1738155311019,
-    "updated" : 1738227733862
+    "updated" : 1738269786123
   }, {
     "name" : "165.txt",
     "format" : "text",
     "state" : "ANNOTATION_FINISHED",
     "timestamp" : null,
     "created" : 1738155311132,
-    "updated" : 1738227762976
+    "updated" : 1738269801126
   }, {
     "name" : "166.txt",
     "format" : "text",
@@ -574,10 +574,10 @@
   }, {
     "name" : "171.txt",
     "format" : "text",
-    "state" : "ANNOTATION_FINISHED",
+    "state" : "ANNOTATION_IN_PROGRESS",
     "timestamp" : null,
     "created" : 1738155311523,
-    "updated" : 1738228152343
+    "updated" : 1738269861124
   }, {
     "name" : "172.txt",
     "format" : "text",
@@ -668,7 +668,7 @@
     "state" : "ANNOTATION_FINISHED",
     "timestamp" : null,
     "created" : 1738155312456,
-    "updated" : 1738229788863
+    "updated" : 1738269961122
   }, {
     "name" : "184.txt",
     "format" : "text",
@@ -707,17 +707,17 @@
   }, {
     "name" : "189.txt",
     "format" : "text",
-    "state" : "ANNOTATION_IN_PROGRESS",
+    "state" : "ANNOTATION_FINISHED",
     "timestamp" : null,
     "created" : 1738155312784,
-    "updated" : 1738230455438
+    "updated" : 1738270021122
   }, {
     "name" : "19.txt",
     "format" : "text",
     "state" : "ANNOTATION_FINISHED",
     "timestamp" : null,
     "created" : 1738155300398,
-    "updated" : 1738230696830
+    "updated" : 1738270051123
   }, {
     "name" : "190.txt",
     "format" : "text",
@@ -731,7 +731,7 @@
     "state" : "ANNOTATION_FINISHED",
     "timestamp" : null,
     "created" : 1738155312887,
-    "updated" : 1738230873864
+    "updated" : 1738270131122
   }, {
     "name" : "192.txt",
     "format" : "text",
@@ -752,7 +752,7 @@
     "state" : "ANNOTATION_FINISHED",
     "timestamp" : null,
     "created" : 1738155313627,
-    "updated" : 1738231215584
+    "updated" : 1738270151123
   }, {
     "name" : "195.txt",
     "format" : "text",
@@ -763,10 +763,10 @@
   }, {
     "name" : "196.txt",
     "format" : "text",
-    "state" : "ANNOTATION_IN_PROGRESS",
+    "state" : "ANNOTATION_FINISHED",
     "timestamp" : null,
     "created" : 1738155313739,
-    "updated" : 1738231278652
+    "updated" : 1738270171124
   }, {
     "name" : "197.txt",
     "format" : "text",
@@ -798,10 +798,10 @@
   }, {
     "name" : "20.txt",
     "format" : "text",
-    "state" : "ANNOTATION_IN_PROGRESS",
+    "state" : "ANNOTATION_FINISHED",
     "timestamp" : null,
     "created" : 1738155300483,
-    "updated" : 1738232346765
+    "updated" : 1738270220246
   }, {
     "name" : "200.txt",
     "format" : "text",
@@ -1137,7 +1137,7 @@
     "state" : "ANNOTATION_IN_PROGRESS",
     "timestamp" : null,
     "created" : 1738155303700,
-    "updated" : 1738238200540
+    "updated" : 1738270306123
   }, {
     "name" : "51.txt",
     "format" : "text",
@@ -1267,10 +1267,10 @@
   }, {
     "name" : "68.txt",
     "format" : "text",
-    "state" : "ANNOTATION_IN_PROGRESS",
+    "state" : "ANNOTATION_FINISHED",
     "timestamp" : null,
     "created" : 1738155305095,
-    "updated" : 1738240890911
+    "updated" : 1738270346123
   }, {
     "name" : "69.txt",
     "format" : "text",
@@ -1361,7 +1361,7 @@
     "state" : "ANNOTATION_FINISHED",
     "timestamp" : null,
     "created" : 1738155299468,
-    "updated" : 1738242188862
+    "updated" : 1738270366122
   }, {
     "name" : "80.txt",
     "format" : "text",
@@ -1428,17 +1428,17 @@
   }, {
     "name" : "89.txt",
     "format" : "text",
-    "state" : "ANNOTATION_FINISHED",
+    "state" : "ANNOTATION_IN_PROGRESS",
     "timestamp" : null,
     "created" : 1738155306398,
-    "updated" : 1738242673863
+    "updated" : 1738270399665
   }, {
     "name" : "9.txt",
     "format" : "text",
     "state" : "ANNOTATION_FINISHED",
     "timestamp" : null,
     "created" : 1738155299543,
-    "updated" : 1738242763863
+    "updated" : 1738270420828
   }, {
     "name" : "90.txt",
     "format" : "text",
@@ -1531,16 +1531,6 @@
     "created" : 1738155961754,
     "updated" : 1738222468363
   }, {
-    "name" : "102.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738222563660,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738156026644,
-    "updated" : 1738222654513
-  }, {
     "name" : "101.txt",
     "user" : "admin",
     "state" : "FINISHED",
@@ -1611,16 +1601,6 @@
     "created" : 1738156685064,
     "updated" : 1738223076409
   }, {
-    "name" : "11.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738223522464,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738156780347,
-    "updated" : 1738223525663
-  }, {
     "name" : "110.txt",
     "user" : "admin",
     "state" : "FINISHED",
@@ -1631,16 +1611,6 @@
     "created" : 1738157006769,
     "updated" : 1738223552202
   }, {
-    "name" : "111.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738223715848,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738157040880,
-    "updated" : 1738223717195
-  }, {
     "name" : "109.txt",
     "user" : "admin",
     "state" : "FINISHED",
@@ -1650,16 +1620,6 @@
     "sentence_accessed" : 0,
     "created" : 1738156749928,
     "updated" : 1738223780231
-  }, {
-    "name" : "112.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738223857226,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738157088161,
-    "updated" : 1738223857963
   }, {
     "name" : "113.txt",
     "user" : "admin",
@@ -1731,26 +1691,6 @@
     "created" : 1738158283277,
     "updated" : 1738224294159
   }, {
-    "name" : "12.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738224586391,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738158336948,
-    "updated" : 1738224595342
-  }, {
-    "name" : "120.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738224720033,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738158396419,
-    "updated" : 1738224721537
-  }, {
     "name" : "121.txt",
     "user" : "admin",
     "state" : "FINISHED",
@@ -1801,16 +1741,6 @@
     "created" : 1738158499973,
     "updated" : 1738225040276
   }, {
-    "name" : "126.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738225133371,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738158732861,
-    "updated" : 1738225137033
-  }, {
     "name" : "127.txt",
     "user" : "admin",
     "state" : "FINISHED",
@@ -1841,16 +1771,6 @@
     "created" : 1738158855988,
     "updated" : 1738225323219
   }, {
-    "name" : "13.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738225403318,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738158910080,
-    "updated" : 1738225406149
-  }, {
     "name" : "130.txt",
     "user" : "admin",
     "state" : "FINISHED",
@@ -1870,16 +1790,6 @@
     "sentence_accessed" : 0,
     "created" : 1738159050304,
     "updated" : 1738225488940
-  }, {
-    "name" : "132.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738225553366,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738159270034,
-    "updated" : 1738225554515
   }, {
     "name" : "133.txt",
     "user" : "admin",
@@ -2031,16 +1941,6 @@
     "created" : 1738160679933,
     "updated" : 1738226611026
   }, {
-    "name" : "147.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738226653587,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738160717966,
-    "updated" : 1738226654650
-  }, {
     "name" : "148.txt",
     "user" : "admin",
     "state" : "FINISHED",
@@ -2100,16 +2000,6 @@
     "sentence_accessed" : 0,
     "created" : 1738160980090,
     "updated" : 1738226841357
-  }, {
-    "name" : "153.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738226954987,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738160981628,
-    "updated" : 1738226956224
   }, {
     "name" : "154.txt",
     "user" : "admin",
@@ -2191,16 +2081,6 @@
     "created" : 1738218923414,
     "updated" : 1738227460752
   }, {
-    "name" : "161.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738227589199,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738218967833,
-    "updated" : 1738227595283
-  }, {
     "name" : "162.txt",
     "user" : "admin",
     "state" : "FINISHED",
@@ -2220,36 +2100,6 @@
     "sentence_accessed" : 0,
     "created" : 1738219084126,
     "updated" : 1738227678558
-  }, {
-    "name" : "164.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738227728869,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738219126305,
-    "updated" : 1738227729698
-  }, {
-    "name" : "165.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738227760164,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738219194573,
-    "updated" : 1738227760951
-  }, {
-    "name" : "166.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738227857975,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738219214556,
-    "updated" : 1738227859260
   }, {
     "name" : "167.txt",
     "user" : "admin",
@@ -2300,16 +2150,6 @@
     "sentence_accessed" : 0,
     "created" : 1738219583109,
     "updated" : 1738228077943
-  }, {
-    "name" : "171.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738228145321,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738219647920,
-    "updated" : 1738228149932
   }, {
     "name" : "172.txt",
     "user" : "admin",
@@ -2371,16 +2211,6 @@
     "created" : 1738229017461,
     "updated" : 1738229063854
   }, {
-    "name" : "178.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738229244363,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738229065627,
-    "updated" : 1738229245646
-  }, {
     "name" : "179.txt",
     "user" : "admin",
     "state" : "FINISHED",
@@ -2411,16 +2241,6 @@
     "created" : 1738229342190,
     "updated" : 1738229368576
   }, {
-    "name" : "181.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738229518173,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738229392116,
-    "updated" : 1738229520999
-  }, {
     "name" : "182.txt",
     "user" : "admin",
     "state" : "FINISHED",
@@ -2430,16 +2250,6 @@
     "sentence_accessed" : 0,
     "created" : 1738229523720,
     "updated" : 1738229649855
-  }, {
-    "name" : "183.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738229773969,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738229653396,
-    "updated" : 1738229785369
   }, {
     "name" : "184.txt",
     "user" : "admin",
@@ -2491,46 +2301,6 @@
     "created" : 1738230406745,
     "updated" : 1738230453264
   }, {
-    "name" : "189.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738230556175,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738230455356,
-    "updated" : 1738230557138
-  }, {
-    "name" : "19.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738230664282,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738230559043,
-    "updated" : 1738230694645
-  }, {
-    "name" : "190.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738230751626,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738230696751,
-    "updated" : 1738230752977
-  }, {
-    "name" : "191.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738230856019,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738230755770,
-    "updated" : 1738230871580
-  }, {
     "name" : "192.txt",
     "user" : "admin",
     "state" : "FINISHED",
@@ -2541,16 +2311,6 @@
     "created" : 1738230873400,
     "updated" : 1738231086748
   }, {
-    "name" : "194.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738231211296,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738231179145,
-    "updated" : 1738231212539
-  }, {
     "name" : "195.txt",
     "user" : "admin",
     "state" : "FINISHED",
@@ -2560,16 +2320,6 @@
     "sentence_accessed" : 0,
     "created" : 1738231215510,
     "updated" : 1738231276708
-  }, {
-    "name" : "196.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738231409188,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738231278591,
-    "updated" : 1738231418852
   }, {
     "name" : "197.txt",
     "user" : "admin",
@@ -2611,16 +2361,6 @@
     "created" : 1738231731134,
     "updated" : 1738232344902
   }, {
-    "name" : "20.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738232436649,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738232346630,
-    "updated" : 1738232437998
-  }, {
     "name" : "200.txt",
     "user" : "admin",
     "state" : "FINISHED",
@@ -2640,16 +2380,6 @@
     "sentence_accessed" : 0,
     "created" : 1738232532940,
     "updated" : 1738232590934
-  }, {
-    "name" : "202.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738232643470,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738232592910,
-    "updated" : 1738232644381
   }, {
     "name" : "203.txt",
     "user" : "admin",
@@ -2770,16 +2500,6 @@
     "sentence_accessed" : 0,
     "created" : 1738233932367,
     "updated" : 1738234016476
-  }, {
-    "name" : "213.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738234082108,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738234018318,
-    "updated" : 1738234083202
   }, {
     "name" : "214.txt",
     "user" : "admin",
@@ -3101,16 +2821,6 @@
     "created" : 1738238009661,
     "updated" : 1738238196960
   }, {
-    "name" : "50.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738238292570,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738238200395,
-    "updated" : 1738238306961
-  }, {
     "name" : "51.txt",
     "user" : "admin",
     "state" : "FINISHED",
@@ -3291,16 +3001,6 @@
     "created" : 1738240842783,
     "updated" : 1738240889140
   }, {
-    "name" : "68.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738240966544,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738240890849,
-    "updated" : 1738240967380
-  }, {
     "name" : "69.txt",
     "user" : "admin",
     "state" : "FINISHED",
@@ -3421,16 +3121,6 @@
     "created" : 1738242035518,
     "updated" : 1738242102182
   }, {
-    "name" : "8.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738242184468,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738242104111,
-    "updated" : 1738242185575
-  }, {
     "name" : "80.txt",
     "user" : "admin",
     "state" : "FINISHED",
@@ -3510,46 +3200,6 @@
     "sentence_accessed" : 0,
     "created" : 1738242518912,
     "updated" : 1738242566830
-  }, {
-    "name" : "88.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738242622371,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738242568512,
-    "updated" : 1738242623657
-  }, {
-    "name" : "89.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738242671207,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738242628219,
-    "updated" : 1738242671831
-  }, {
-    "name" : "9.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738242759533,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738242675047,
-    "updated" : 1738242761731
-  }, {
-    "name" : "90.txt",
-    "user" : "admin",
-    "state" : "FINISHED",
-    "timestamp" : 1738242881979,
-    "annotatorState" : "FINISHED",
-    "annotatorComment" : null,
-    "sentence_accessed" : 0,
-    "created" : 1738242763435,
-    "updated" : 1738242882726
   }, {
     "name" : "91.txt",
     "user" : "admin",
@@ -3660,6 +3310,356 @@
     "sentence_accessed" : 0,
     "created" : 1738155797155,
     "updated" : 1738243859300
+  }, {
+    "name" : "111.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738269214817,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738157040880,
+    "updated" : 1738269215749
+  }, {
+    "name" : "112.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738269243192,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738157088161,
+    "updated" : 1738269251667
+  }, {
+    "name" : "12.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738269406465,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738158336948,
+    "updated" : 1738269407893
+  }, {
+    "name" : "120.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738269454930,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738158396419,
+    "updated" : 1738269473672
+  }, {
+    "name" : "126.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738269601757,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738158732861,
+    "updated" : 1738269603959
+  }, {
+    "name" : "13.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738269629282,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738158910080,
+    "updated" : 1738269632147
+  }, {
+    "name" : "132.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738269666795,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738159270034,
+    "updated" : 1738269668295
+  }, {
+    "name" : "147.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738269690375,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738160717966,
+    "updated" : 1738269693912
+  }, {
+    "name" : "153.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738269723478,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738160981628,
+    "updated" : 1738269725214
+  }, {
+    "name" : "161.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738269762086,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738218967833,
+    "updated" : 1738269763591
+  }, {
+    "name" : "164.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738269778343,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738219126305,
+    "updated" : 1738269783001
+  }, {
+    "name" : "165.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738269796510,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738219194573,
+    "updated" : 1738269797992
+  }, {
+    "name" : "166.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738269815692,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738219214556,
+    "updated" : 1738269817166
+  }, {
+    "name" : "171.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738269872298,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738219647920,
+    "updated" : 1738269880572
+  }, {
+    "name" : "178.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738269914259,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738229065627,
+    "updated" : 1738269916869
+  }, {
+    "name" : "181.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738269937212,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738229392116,
+    "updated" : 1738269937991
+  }, {
+    "name" : "183.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738269954621,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738229653396,
+    "updated" : 1738269955842
+  }, {
+    "name" : "189.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738270015971,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738230455356,
+    "updated" : 1738270016958
+  }, {
+    "name" : "19.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738270040157,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738230559043,
+    "updated" : 1738270048343
+  }, {
+    "name" : "190.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738270078025,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738230696751,
+    "updated" : 1738270080090
+  }, {
+    "name" : "191.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738270120174,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738230755770,
+    "updated" : 1738270124552
+  }, {
+    "name" : "194.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738270147461,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738231179145,
+    "updated" : 1738270148656
+  }, {
+    "name" : "196.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738270163579,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738231278591,
+    "updated" : 1738270164716
+  }, {
+    "name" : "20.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738270183061,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738232346630,
+    "updated" : 1738270215659
+  }, {
+    "name" : "202.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738270231540,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738232592910,
+    "updated" : 1738270235610
+  }, {
+    "name" : "213.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738270252351,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738234018318,
+    "updated" : 1738270254939
+  }, {
+    "name" : "50.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738270311628,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738238200395,
+    "updated" : 1738270320769
+  }, {
+    "name" : "68.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738270341510,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738240890849,
+    "updated" : 1738270342817
+  }, {
+    "name" : "8.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738270359907,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738242104111,
+    "updated" : 1738270361335
+  }, {
+    "name" : "88.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738270382774,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738242568512,
+    "updated" : 1738270383778
+  }, {
+    "name" : "89.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738270399479,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738242628219,
+    "updated" : 1738270400315
+  }, {
+    "name" : "9.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738242759533,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738242675047,
+    "updated" : 1738270416534
+  }, {
+    "name" : "90.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738270433823,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738242763435,
+    "updated" : 1738270435238
+  }, {
+    "name" : "102.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738331180316,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738156026644,
+    "updated" : 1738331182750
+  }, {
+    "name" : "11.txt",
+    "user" : "admin",
+    "state" : "FINISHED",
+    "timestamp" : 1738331215085,
+    "annotatorState" : "FINISHED",
+    "annotatorComment" : null,
+    "sentence_accessed" : 0,
+    "created" : 1738156780347,
+    "updated" : 1738331216143
   } ],
   "project_permissions" : [ {
     "level" : "ADMIN",

@@ -25,13 +25,13 @@
 1-18	64-71	onormal	OVERLAP[1]	CONDITION[1]	_	_	
 1-19	72-79	vekttab	OVERLAP[1]	CONDITION[1]	_	_	
 1-20	79-80	,	_	_	_	_	
-1-21	81-88	onormal	*[2]	CONDITION[2]	_	_	
-1-22	89-99	brystsmert	*[2]	CONDITION[2]	_	_	
+1-21	81-88	onormal	OVERLAP[2]	CONDITION[2]	_	_	
+1-22	89-99	brystsmert	OVERLAP[2]	CONDITION[2]	_	_	
 1-23	99-100	,	_	_	_	_	
 1-24	101-103	og	_	_	_	_	
-1-25	104-110	ubehag	*[3]	CONDITION[3]	_	_	
-1-26	111-112	i	*[3]	CONDITION[3]	_	_	
-1-27	113-129	magespyttetarmen	*[3]	CONDITION[3]	_	_	
+1-25	104-110	ubehag	OVERLAP[3]	CONDITION[3]	_	_	
+1-26	111-112	i	OVERLAP[3]	CONDITION[3]	_	_	
+1-27	113-129	magespyttetarmen	OVERLAP[3]	CONDITION[3]	_	_	
 1-28	129-130	.	_	_	_	_	
 
 #Text=Hun hadde mistet 8 kilo de siste månedene, trods at hun ikke hadde endret kostholdet.
