@@ -1,0 +1,65 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=02.04.2023:
+#Text=Oppfølging migrene.
+1-1	0-10	02.04.2023	
+1-2	10-11	:	
+1-3	12-22	Oppfølging	
+1-4	23-30	migrene	
+1-5	30-31	.	
+
+#Text=Hodepinedagbok viser bedring med Sumatriptan, men fortsatt hyppige anfall.
+2-1	32-46	Hodepinedagbok	
+2-2	47-52	viser	
+2-3	53-60	bedring	
+2-4	61-64	med	
+2-5	65-76	Sumatriptan	
+2-6	76-77	,	
+2-7	78-81	men	
+2-8	82-90	fortsatt	
+2-9	91-98	hyppige	
+2-10	99-105	anfall	
+2-11	105-106	.	
+
+#Text=Nakkeproblematikk vedvarer tross fysioterapi.
+3-1	107-124	Nakkeproblematikk	
+3-2	125-133	vedvarer	
+3-3	134-139	tross	
+3-4	140-151	fysioterapi	
+3-5	151-152	.	
+
+#Text=Diskuterer forebyggende behandling.
+4-1	153-163	Diskuterer	
+4-2	164-176	forebyggende	
+4-3	177-187	behandling	
+4-4	187-188	.	
+
+#Text=Starter Candesartan 8mg x1 som migreneprofylakse.
+5-1	189-196	Starter	
+5-2	197-208	Candesartan	
+5-3	209-212	8mg	
+5-4	213-215	x1	
+5-5	216-219	som	
+5-6	220-237	migreneprofylakse	
+5-7	237-238	.	
+
+#Text=Planlegger MR caput og cervicalcolumna for å utelukke patologi.
+6-1	239-249	Planlegger	
+6-2	250-252	MR	
+6-3	253-258	caput	
+6-4	259-261	og	
+6-5	262-277	cervicalcolumna	
+6-6	278-281	for	
+6-7	282-283	å	
+6-8	284-292	utelukke	
+6-9	293-301	patologi	
+6-10	301-302	.	
+
+#Text=Ny kontroll om 4 uker.
+7-1	303-305	Ny	
+7-2	306-314	kontroll	
+7-3	315-317	om	
+7-4	318-319	4	
+7-5	320-324	uker	
+7-6	324-325	.	

@@ -1,0 +1,130 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Notat 3 - 15.09.2024: 
+#Text=Koronar angiografi viser moderat stenose i LAD (left anterior descending artery).
+1-1	0-5	Notat	_	_	_	_	
+1-2	6-7	3	_	_	_	_	
+1-3	8-9	-	_	_	_	_	
+1-4	10-20	15.09.2024	_	_	_	_	
+1-5	20-21	:	_	_	_	_	
+1-6	23-30	Koronar	BEFORE[1]	TREATMENT[1]	_	_	
+1-7	31-41	angiografi	BEFORE[1]	TREATMENT[1]	_	_	
+1-8	42-47	viser	_	_	_	_	
+1-9	48-55	moderat	OVERLAP[2]	CONDITION[2]	_	_	
+1-10	56-63	stenose	OVERLAP[2]	CONDITION[2]	_	_	
+1-11	64-65	i	OVERLAP[2]	CONDITION[2]	_	_	
+1-12	66-69	LAD	OVERLAP[2]	CONDITION[2]	_	_	
+1-13	70-71	(	_	_	_	_	
+1-14	71-75	left	_	_	_	_	
+1-15	76-84	anterior	_	_	_	_	
+1-16	85-95	descending	_	_	_	_	
+1-17	96-102	artery	_	_	_	_	
+1-18	102-103	)	_	_	_	_	
+1-19	103-104	.	_	_	_	_	
+
+#Text=Kardiolog anbefaler konservativ behandling med optimal medisinsk behandling, og pasienten er satt opp til oppfølging på hjertepoliklinikken.
+2-1	105-114	Kardiolog	_	_	_	_	
+2-2	115-124	anbefaler	_	_	_	_	
+2-3	125-136	konservativ	AFTER[3]	TREATMENT[3]	_	_	
+2-4	137-147	behandling	AFTER[3]	TREATMENT[3]	_	_	
+2-5	148-151	med	_	_	_	_	
+2-6	152-159	optimal	_	_	_	_	
+2-7	160-169	medisinsk	AFTER[4]	TREATMENT[4]	OVERLAP	2-3[3_4]	
+2-8	170-180	behandling	AFTER[4]	TREATMENT[4]	_	_	
+2-9	180-181	,	_	_	_	_	
+2-10	182-184	og	_	_	_	_	
+2-11	185-194	pasienten	_	_	_	_	
+2-12	195-197	er	_	_	_	_	
+2-13	198-202	satt	_	_	_	_	
+2-14	203-206	opp	_	_	_	_	
+2-15	207-210	til	_	_	_	_	
+2-16	211-221	oppfølging	AFTER[5]	TREATMENT[5]	_	_	
+2-17	222-224	på	AFTER[5]	TREATMENT[5]	_	_	
+2-18	225-244	hjertepoliklinikken	AFTER[5]	TREATMENT[5]	_	_	
+2-19	244-245	.	_	_	_	_	
+
+#Text=Han er i dag symptomfri i hvile, men opplever fortsatt noe ubehag ved kraftig fysisk aktivitet.
+3-1	246-249	Han	_	_	_	_	
+3-2	250-252	er	_	_	_	_	
+3-3	253-254	i	_	_	_	_	
+3-4	255-258	dag	_	_	_	_	
+3-5	259-269	symptomfri	OVERLAP	CONDITION	_	_	
+3-6	270-271	i	_	_	_	_	
+3-7	272-277	hvile	_	_	_	_	
+3-8	277-278	,	_	_	_	_	
+3-9	279-282	men	_	_	_	_	
+3-10	283-291	opplever	_	_	_	_	
+3-11	292-300	fortsatt	_	_	_	_	
+3-12	301-304	noe	_	_	_	_	
+3-13	305-311	ubehag	OVERLAP[6]	CONDITION[6]	_	_	
+3-14	312-315	ved	OVERLAP[6]	CONDITION[6]	_	_	
+3-15	316-323	kraftig	OVERLAP[6]	CONDITION[6]	_	_	
+3-16	324-330	fysisk	OVERLAP[6]	CONDITION[6]	_	_	
+3-17	331-340	aktivitet	OVERLAP[6]	CONDITION[6]	_	_	
+3-18	340-341	.	_	_	_	_	
+
+#Text=Vi justerer medikasjonen ved å legge til et lavdose ASA (75 mg daglig) samt atorvastatin 40 mg for å redusere kolesterolnivåene.
+4-1	342-344	Vi	_	_	_	_	
+4-2	345-353	justerer	AFTER[7]	TREATMENT[7]	_	_	
+4-3	354-366	medikasjonen	AFTER[7]	TREATMENT[7]	_	_	
+4-4	367-370	ved	_	_	_	_	
+4-5	371-372	å	_	_	_	_	
+4-6	373-378	legge	_	_	_	_	
+4-7	379-382	til	_	_	_	_	
+4-8	383-385	et	_	_	_	_	
+4-9	386-393	lavdose	AFTER[8]	TREATMENT[8]	_	_	
+4-10	394-397	ASA	AFTER[8]	TREATMENT[8]	_	_	
+4-11	398-399	(	AFTER[8]	TREATMENT[8]	_	_	
+4-12	399-401	75	AFTER[8]	TREATMENT[8]	_	_	
+4-13	402-404	mg	AFTER[8]	TREATMENT[8]	_	_	
+4-14	405-411	daglig	_	_	_	_	
+4-15	411-412	)	_	_	_	_	
+4-16	413-417	samt	_	_	_	_	
+4-17	418-430	atorvastatin	AFTER[9]	TREATMENT[9]	_	_	
+4-18	431-433	40	AFTER[9]	TREATMENT[9]	_	_	
+4-19	434-436	mg	AFTER[9]	TREATMENT[9]	_	_	
+4-20	437-440	for	_	_	_	_	
+4-21	441-442	å	_	_	_	_	
+4-22	443-451	redusere	_	_	_	_	
+4-23	452-469	kolesterolnivåene	_	_	_	_	
+4-24	469-470	.	_	_	_	_	
+
+#Text=Dessuten oppfordres pasienten til å fortsette med nitroglyserin ved behov og gradvis øke den fysiske aktiviteten i samråd med fysioterapeut.
+5-1	471-479	Dessuten	_	_	_	_	
+5-2	480-490	oppfordres	_	_	_	_	
+5-3	491-500	pasienten	_	_	_	_	
+5-4	501-504	til	_	_	_	_	
+5-5	505-506	å	_	_	_	_	
+5-6	507-516	fortsette	_	_	_	_	
+5-7	517-520	med	_	_	_	_	
+5-8	521-534	nitroglyserin	AFTER	TREATMENT	_	_	
+5-9	535-538	ved	_	_	_	_	
+5-10	539-544	behov	_	_	_	_	
+5-11	545-547	og	_	_	_	_	
+5-12	548-555	gradvis	_	_	_	_	
+5-13	556-559	øke	AFTER[10]	TREATMENT[10]	_	_	
+5-14	560-563	den	AFTER[10]	TREATMENT[10]	_	_	
+5-15	564-571	fysiske	AFTER[10]	TREATMENT[10]	_	_	
+5-16	572-583	aktiviteten	AFTER[10]	TREATMENT[10]	_	_	
+5-17	584-585	i	_	_	_	_	
+5-18	586-592	samråd	_	_	_	_	
+5-19	593-596	med	_	_	_	_	
+5-20	597-610	fysioterapeut	_	_	_	_	
+5-21	610-611	.	_	_	_	_	
+
+#Text=Ny kontroll om 6 uker for vurdering av blodtrykk og symptomer.
+6-1	612-614	Ny	_	_	_	_	
+6-2	615-623	kontroll	AFTER	TREATMENT	BEFORE|BEFORE|BEFORE|BEFORE|BEFORE	4-2[7_0]|4-9[8_0]|4-17[9_0]|5-8|5-13[10_0]	
+6-3	624-626	om	_	_	_	_	
+6-4	627-628	6	_	_	_	_	
+6-5	629-633	uker	_	_	_	_	
+6-6	634-637	for	_	_	_	_	
+6-7	638-647	vurdering	_	_	_	_	
+6-8	648-650	av	_	_	_	_	
+6-9	651-660	blodtrykk	_	_	_	_	
+6-10	661-663	og	_	_	_	_	
+6-11	664-673	symptomer	_	_	_	_	
+6-12	673-674	.	_	_	_	_	

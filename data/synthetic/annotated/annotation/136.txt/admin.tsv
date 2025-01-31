@@ -1,0 +1,57 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+
+
+#Text=Journalnotat 2 - 27.06.2023**
+#Text=
+#Text=Pasienten kommer tilbake etter 1 uke med antibiotika-behandling.
+1-1	0-12	Journalnotat	_	_	
+1-2	13-14	2	_	_	
+1-3	15-16	-	_	_	
+1-4	17-27	27.06.2023	_	_	
+1-5	27-28	*	_	_	
+1-6	28-29	*	_	_	
+1-7	31-40	Pasienten	_	_	
+1-8	41-47	kommer	_	_	
+1-9	48-55	tilbake	_	_	
+1-10	56-61	etter	_	_	
+1-11	62-63	1	_	_	
+1-12	64-67	uke	_	_	
+1-13	68-71	med	_	_	
+1-14	72-94	antibiotika-behandling	BEFOREOVERLAP	TREATMENT	
+1-15	94-95	.	_	_	
+
+#Text=Hun rapporterer en forbedring i symptomer og en reduksjon i dysurien.
+2-1	96-99	Hun	_	_	
+2-2	100-111	rapporterer	_	_	
+2-3	112-114	en	_	_	
+2-4	115-125	forbedring	OVERLAP[1]	CONDITION[1]	
+2-5	126-127	i	OVERLAP[1]	CONDITION[1]	
+2-6	128-137	symptomer	OVERLAP[1]	CONDITION[1]	
+2-7	138-140	og	_	_	
+2-8	141-143	en	_	_	
+2-9	144-153	reduksjon	OVERLAP[2]	CONDITION[2]	
+2-10	154-155	i	OVERLAP[2]	CONDITION[2]	
+2-11	156-164	dysurien	OVERLAP[2]	CONDITION[2]	
+2-12	164-165	.	_	_	
+
+#Text=Jeg justerer antibiotika-dosen og foreslår at pasienten begynner med en urinprøve for å sjekke om infeksjonen er helbredet.
+3-1	166-169	Jeg	_	_	
+3-2	170-178	justerer	AFTER[3]	TREATMENT[3]	
+3-3	179-196	antibiotika-dosen	AFTER[3]	TREATMENT[3]	
+3-4	197-199	og	_	_	
+3-5	200-208	foreslår	_	_	
+3-6	209-211	at	_	_	
+3-7	212-221	pasienten	_	_	
+3-8	222-230	begynner	_	_	
+3-9	231-234	med	_	_	
+3-10	235-237	en	_	_	
+3-11	238-247	urinprøve	AFTER	TREATMENT	
+3-12	248-251	for	_	_	
+3-13	252-253	å	_	_	
+3-14	254-260	sjekke	_	_	
+3-15	261-263	om	_	_	
+3-16	264-275	infeksjonen	_	_	
+3-17	276-278	er	_	_	
+3-18	279-288	helbredet	_	_	
+3-19	288-289	.	_	_	

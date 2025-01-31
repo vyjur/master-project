@@ -1,0 +1,140 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 2 (2023-09-29)
+#Text=Thomas kom inn til oppfølging etter to uker på KAT.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	2	_	_	_	_	
+1-3	15-16	(	_	_	_	_	
+1-4	16-20	2023	_	_	_	_	
+1-5	20-21	-	_	_	_	_	
+1-6	21-23	09	_	_	_	_	
+1-7	23-24	-	_	_	_	_	
+1-8	24-26	29	_	_	_	_	
+1-9	26-27	)	_	_	_	_	
+1-10	28-34	Thomas	_	_	_	_	
+1-11	35-38	kom	_	_	_	_	
+1-12	39-42	inn	_	_	_	_	
+1-13	43-46	til	_	_	_	_	
+1-14	47-57	oppfølging	OVERLAP	TREATMENT	_	_	
+1-15	58-63	etter	_	_	_	_	
+1-16	64-66	to	_	_	_	_	
+1-17	67-71	uker	_	_	_	_	
+1-18	72-74	på	_	_	_	_	
+1-19	75-78	KAT	BEFOREOVERLAP	TREATMENT	_	_	
+1-20	78-79	.	_	_	_	_	
+
+#Text=Han rapporterte en marginal bedring i symptonforvaltningen, men han hadde fortsatt problemer med å føle seg ansietøs og deprimerede.
+2-1	80-83	Han	_	_	_	_	
+2-2	84-95	rapporterte	_	_	_	_	
+2-3	96-98	en	_	_	_	_	
+2-4	99-107	marginal	_	_	_	_	
+2-5	108-115	bedring	OVERLAP[1]	CONDITION[1]	_	_	
+2-6	116-117	i	OVERLAP[1]	CONDITION[1]	_	_	
+2-7	118-138	symptonforvaltningen	OVERLAP[1]	CONDITION[1]	_	_	
+2-8	138-139	,	_	_	_	_	
+2-9	140-143	men	_	_	_	_	
+2-10	144-147	han	_	_	_	_	
+2-11	148-153	hadde	_	_	_	_	
+2-12	154-162	fortsatt	_	_	_	_	
+2-13	163-172	problemer	_	_	_	_	
+2-14	173-176	med	_	_	_	_	
+2-15	177-178	å	_	_	_	_	
+2-16	179-183	føle	_	_	_	_	
+2-17	184-187	seg	_	_	_	_	
+2-18	188-196	ansietøs	OVERLAP	CONDITION	_	_	
+2-19	197-199	og	_	_	_	_	
+2-20	200-211	deprimerede	OVERLAP	CONDITION	_	_	
+2-21	211-212	.	_	_	_	_	
+
+#Text=KAT-terapeuten noterte at Thomas hadde gjort gode fremsteg med å identifisere negative tanker og bytte dem ut med positive.
+3-1	213-227	KAT-terapeuten	_	_	_	_	
+3-2	228-235	noterte	_	_	_	_	
+3-3	236-238	at	_	_	_	_	
+3-4	239-245	Thomas	_	_	_	_	
+3-5	246-251	hadde	_	_	_	_	
+3-6	252-257	gjort	_	_	_	_	
+3-7	258-262	gode	_	_	_	_	
+3-8	263-271	fremsteg	_	_	_	_	
+3-9	272-275	med	_	_	_	_	
+3-10	276-277	å	_	_	_	_	
+3-11	278-290	identifisere	_	_	_	_	
+3-12	291-299	negative	_	_	_	_	
+3-13	300-306	tanker	_	_	_	_	
+3-14	307-309	og	_	_	_	_	
+3-15	310-315	bytte	_	_	_	_	
+3-16	316-319	dem	_	_	_	_	
+3-17	320-322	ut	_	_	_	_	
+3-18	323-326	med	_	_	_	_	
+3-19	327-335	positive	_	_	_	_	
+3-20	335-336	.	_	_	_	_	
+
+#Text=Vi diskuterede muligheten for å prøve EMDR for å hjelpe ham med å bearbeide traumatiske hendelser.
+4-1	337-339	Vi	_	_	_	_	
+4-2	340-351	diskuterede	_	_	_	_	
+4-3	352-362	muligheten	_	_	_	_	
+4-4	363-366	for	_	_	_	_	
+4-5	367-368	å	_	_	_	_	
+4-6	369-374	prøve	_	_	_	_	
+4-7	375-379	EMDR	AFTER	TREATMENT	_	_	
+4-8	380-383	for	_	_	_	_	
+4-9	384-385	å	_	_	_	_	
+4-10	386-392	hjelpe	_	_	_	_	
+4-11	393-396	ham	_	_	_	_	
+4-12	397-400	med	_	_	_	_	
+4-13	401-402	å	_	_	_	_	
+4-14	403-412	bearbeide	_	_	_	_	
+4-15	413-424	traumatiske	_	_	_	_	
+4-16	425-434	hendelser	_	_	_	_	
+4-17	434-435	.	_	_	_	_	
+
+#Text=Thomas var positiv til dette, men han uttrykte bekymring for at det kunne være tiringt.
+5-1	436-442	Thomas	_	_	_	_	
+5-2	443-446	var	_	_	_	_	
+5-3	447-454	positiv	_	_	_	_	
+5-4	455-458	til	_	_	_	_	
+5-5	459-464	dette	_	_	_	_	
+5-6	464-465	,	_	_	_	_	
+5-7	466-469	men	_	_	_	_	
+5-8	470-473	han	_	_	_	_	
+5-9	474-482	uttrykte	_	_	_	_	
+5-10	483-492	bekymring	_	_	_	_	
+5-11	493-496	for	_	_	_	_	
+5-12	497-499	at	_	_	_	_	
+5-13	500-503	det	_	_	_	_	
+5-14	504-509	kunne	_	_	_	_	
+5-15	510-514	være	_	_	_	_	
+5-16	515-522	tiringt	_	_	_	_	
+5-17	522-523	.	_	_	_	_	
+
+#Text=Vi bestemte oss for å starte med en kort serie av sesjoner og se hvordan han reagerer.
+6-1	524-526	Vi	_	_	_	_	
+6-2	527-535	bestemte	_	_	_	_	
+6-3	536-539	oss	_	_	_	_	
+6-4	540-543	for	_	_	_	_	
+6-5	544-545	å	_	_	_	_	
+6-6	546-552	starte	_	_	_	_	
+6-7	553-556	med	_	_	_	_	
+6-8	557-559	en	_	_	_	_	
+6-9	560-564	kort	_	_	_	_	
+6-10	565-570	serie	_	_	_	_	
+6-11	571-573	av	_	_	_	_	
+6-12	574-582	sesjoner	_	_	_	_	
+6-13	583-585	og	_	_	_	_	
+6-14	586-588	se	_	_	_	_	
+6-15	589-596	hvordan	_	_	_	_	
+6-16	597-600	han	_	_	_	_	
+6-17	601-609	reagerer	_	_	_	_	
+6-18	609-610	.	_	_	_	_	
+
+#Text=Vi planla en oppfølging om to uker.
+7-1	611-613	Vi	_	_	_	_	
+7-2	614-620	planla	_	_	_	_	
+7-3	621-623	en	_	_	_	_	
+7-4	624-634	oppfølging	AFTER	TREATMENT	BEFORE	4-7	
+7-5	635-637	om	_	_	_	_	
+7-6	638-640	to	_	_	_	_	
+7-7	641-645	uker	_	_	_	_	
+7-8	645-646	.	_	_	_	_	

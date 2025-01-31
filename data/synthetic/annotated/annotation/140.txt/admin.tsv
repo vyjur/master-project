@@ -1,0 +1,58 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+
+
+#Text=Journalnotat 3 - 24.07.2023**
+#Text=
+#Text=Pasienten kommer tilbake etter 2 uker med kolinesteraseinhibitor-behandling.
+1-1	0-12	Journalnotat	_	_	
+1-2	13-14	3	_	_	
+1-3	15-16	-	_	_	
+1-4	17-27	24.07.2023	_	_	
+1-5	27-28	*	_	_	
+1-6	28-29	*	_	_	
+1-7	31-40	Pasienten	_	_	
+1-8	41-47	kommer	_	_	
+1-9	48-55	tilbake	_	_	
+1-10	56-61	etter	_	_	
+1-11	62-63	2	_	_	
+1-12	64-68	uker	_	_	
+1-13	69-72	med	_	_	
+1-14	73-106	kolinesteraseinhibitor-behandling	BEFOREOVERLAP	TREATMENT	
+1-15	106-107	.	_	_	
+
+#Text=Hun rapporterer en ytterligere forbedring i symptomer og en reduksjon i hukommelsesvanskene.
+2-1	108-111	Hun	_	_	
+2-2	112-123	rapporterer	_	_	
+2-3	124-126	en	_	_	
+2-4	127-138	ytterligere	_	_	
+2-5	139-149	forbedring	OVERLAP[1]	CONDITION[1]	
+2-6	150-151	i	OVERLAP[1]	CONDITION[1]	
+2-7	152-161	symptomer	OVERLAP[1]	CONDITION[1]	
+2-8	162-164	og	_	_	
+2-9	165-167	en	_	_	
+2-10	168-177	reduksjon	OVERLAP[2]	CONDITION[2]	
+2-11	178-179	i	OVERLAP[2]	CONDITION[2]	
+2-12	180-199	hukommelsesvanskene	OVERLAP[2]	CONDITION[2]	
+2-13	199-200	.	_	_	
+
+#Text=Jeg fortsätter å justere kolinesteraseinhibitor-dosen og foreslår at pasienten begynner med en psykologisk behandling for å reducere stressnivået.
+3-1	201-204	Jeg	_	_	
+3-2	205-215	fortsätter	_	_	
+3-3	216-217	å	_	_	
+3-4	218-225	justere	AFTER[3]	TREATMENT[3]	
+3-5	226-254	kolinesteraseinhibitor-dosen	AFTER[3]	TREATMENT[3]	
+3-6	255-257	og	_	_	
+3-7	258-266	foreslår	_	_	
+3-8	267-269	at	_	_	
+3-9	270-279	pasienten	_	_	
+3-10	280-288	begynner	_	_	
+3-11	289-292	med	_	_	
+3-12	293-295	en	_	_	
+3-13	296-307	psykologisk	AFTER[4]	TREATMENT[4]	
+3-14	308-318	behandling	AFTER[4]	TREATMENT[4]	
+3-15	319-322	for	_	_	
+3-16	323-324	å	_	_	
+3-17	325-333	reducere	_	_	
+3-18	334-346	stressnivået	_	_	
+3-19	346-347	.	_	_	

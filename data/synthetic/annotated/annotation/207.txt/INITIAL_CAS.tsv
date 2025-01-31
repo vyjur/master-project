@@ -1,0 +1,124 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 3 (2023-10-24)
+#Text=Ingeborg rapporterte en viderebedring i symptombildet.
+1-1	0-12	Journalnotat	
+1-2	13-14	3	
+1-3	15-16	(	
+1-4	16-20	2023	
+1-5	20-21	-	
+1-6	21-23	10	
+1-7	23-24	-	
+1-8	24-26	24	
+1-9	26-27	)	
+1-10	28-36	Ingeborg	
+1-11	37-48	rapporterte	
+1-12	49-51	en	
+1-13	52-65	viderebedring	
+1-14	66-67	i	
+1-15	68-81	symptombildet	
+1-16	81-82	.	
+
+#Text=Smertene var nesten borte, og hun kunne nå gå uten støtte.
+2-1	83-91	Smertene	
+2-2	92-95	var	
+2-3	96-102	nesten	
+2-4	103-108	borte	
+2-5	108-109	,	
+2-6	110-112	og	
+2-7	113-116	hun	
+2-8	117-122	kunne	
+2-9	123-125	nå	
+2-10	126-128	gå	
+2-11	129-133	uten	
+2-12	134-140	støtte	
+2-13	140-141	.	
+
+#Text=Hyaluronsyreinjeksjonene hadde vært vellykket, og hun hadde ikke opplevd noen store sidevirkninger.
+3-1	142-166	Hyaluronsyreinjeksjonene	
+3-2	167-172	hadde	
+3-3	173-177	vært	
+3-4	178-187	vellykket	
+3-5	187-188	,	
+3-6	189-191	og	
+3-7	192-195	hun	
+3-8	196-201	hadde	
+3-9	202-206	ikke	
+3-10	207-214	opplevd	
+3-11	215-219	noen	
+3-12	220-225	store	
+3-13	226-240	sidevirkninger	
+3-14	240-241	.	
+
+#Text=Fysioterapeuten noterte at Ingeborg hadde gjort gode fremsteg med muskelstyrking og at hun hadde bedre kontroll over bevegelsene.
+4-1	242-257	Fysioterapeuten	
+4-2	258-265	noterte	
+4-3	266-268	at	
+4-4	269-277	Ingeborg	
+4-5	278-283	hadde	
+4-6	284-289	gjort	
+4-7	290-294	gode	
+4-8	295-303	fremsteg	
+4-9	304-307	med	
+4-10	308-322	muskelstyrking	
+4-11	323-325	og	
+4-12	326-328	at	
+4-13	329-332	hun	
+4-14	333-338	hadde	
+4-15	339-344	bedre	
+4-16	345-353	kontroll	
+4-17	354-358	over	
+4-18	359-370	bevegelsene	
+4-19	370-371	.	
+
+#Text=Vi diskuterede viktigheten av å holde seg fysisk aktiv, men unngå overtrenings.
+5-1	372-374	Vi	
+5-2	375-386	diskuterede	
+5-3	387-398	viktigheten	
+5-4	399-401	av	
+5-5	402-403	å	
+5-6	404-409	holde	
+5-7	410-413	seg	
+5-8	414-420	fysisk	
+5-9	421-426	aktiv	
+5-10	426-427	,	
+5-11	428-431	men	
+5-12	432-437	unngå	
+5-13	438-450	overtrenings	
+5-14	450-451	.	
+
+#Text=Ingeborg var glad for resultatet av behandlingen og takket meg for støtten.
+6-1	452-460	Ingeborg	
+6-2	461-464	var	
+6-3	465-469	glad	
+6-4	470-473	for	
+6-5	474-484	resultatet	
+6-6	485-487	av	
+6-7	488-500	behandlingen	
+6-8	501-503	og	
+6-9	504-510	takket	
+6-10	511-514	meg	
+6-11	515-518	for	
+6-12	519-526	støtten	
+6-13	526-527	.	
+
+#Text=Vi planla en oppfølging om seks måneder for å se hvordan hun reagerer på den nye behandlingen.
+7-1	528-530	Vi	
+7-2	531-537	planla	
+7-3	538-540	en	
+7-4	541-551	oppfølging	
+7-5	552-554	om	
+7-6	555-559	seks	
+7-7	560-567	måneder	
+7-8	568-571	for	
+7-9	572-573	å	
+7-10	574-576	se	
+7-11	577-584	hvordan	
+7-12	585-588	hun	
+7-13	589-597	reagerer	
+7-14	598-600	på	
+7-15	601-604	den	
+7-16	605-608	nye	
+7-17	609-621	behandlingen	
+7-18	621-622	.	

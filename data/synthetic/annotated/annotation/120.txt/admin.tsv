@@ -1,0 +1,115 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 1 - 10.01.2023**
+#Text=
+#Text=Pasienten, en 35-årig kvinne, kommer til klinikken med ryggsmerter som har vart i flere måneder.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	1	_	_	_	_	
+1-3	15-16	-	_	_	_	_	
+1-4	17-27	10.01.2023	_	_	_	_	
+1-5	27-28	*	_	_	_	_	
+1-6	28-29	*	_	_	_	_	
+1-7	31-40	Pasienten	_	_	_	_	
+1-8	40-41	,	_	_	_	_	
+1-9	42-44	en	_	_	_	_	
+1-10	45-47	35	_	_	_	_	
+1-11	47-48	-	_	_	_	_	
+1-12	48-52	årig	_	_	_	_	
+1-13	53-59	kvinne	_	_	_	_	
+1-14	59-60	,	_	_	_	_	
+1-15	61-67	kommer	_	_	_	_	
+1-16	68-71	til	_	_	_	_	
+1-17	72-81	klinikken	_	_	_	_	
+1-18	82-85	med	_	_	_	_	
+1-19	86-97	ryggsmerter	BEFOREOVERLAP	CONDITION	_	_	
+1-20	98-101	som	_	_	_	_	
+1-21	102-105	har	_	_	_	_	
+1-22	106-110	vart	_	_	_	_	
+1-23	111-112	i	_	_	_	_	
+1-24	113-118	flere	_	_	_	_	
+1-25	119-126	måneder	_	_	_	_	
+1-26	126-127	.	_	_	_	_	
+
+#Text=Hun beskriver smertene som en konstant, dovlig smerte i nedre del av ryggen, som forverres av fysisk aktivitet.
+2-1	128-131	Hun	_	_	_	_	
+2-2	132-141	beskriver	_	_	_	_	
+2-3	142-150	smertene	OVERLAP	CONDITION	_	_	
+2-4	151-154	som	_	_	_	_	
+2-5	155-157	en	_	_	_	_	
+2-6	158-166	konstant	_	_	_	_	
+2-7	166-167	,	_	_	_	_	
+2-8	168-174	dovlig	_	_	_	_	
+2-9	175-181	smerte	OVERLAP[1]	CONDITION[1]	OVERLAP	2-3[0_1]	
+2-10	182-183	i	OVERLAP[1]	CONDITION[1]	_	_	
+2-11	184-189	nedre	OVERLAP[1]	CONDITION[1]	_	_	
+2-12	190-193	del	OVERLAP[1]	CONDITION[1]	_	_	
+2-13	194-196	av	OVERLAP[1]	CONDITION[1]	_	_	
+2-14	197-203	ryggen	OVERLAP[1]	CONDITION[1]	_	_	
+2-15	203-204	,	_	_	_	_	
+2-16	205-208	som	_	_	_	_	
+2-17	209-218	forverres	_	_	_	_	
+2-18	219-221	av	_	_	_	_	
+2-19	222-228	fysisk	_	_	_	_	
+2-20	229-238	aktivitet	_	_	_	_	
+2-21	238-239	.	_	_	_	_	
+
+#Text=Pasienten har tidligere vært frisk og aktiv, men har måttet redusere sin fysiske aktivitet på grunn av smertene.
+3-1	240-249	Pasienten	_	_	_	_	
+3-2	250-253	har	_	_	_	_	
+3-3	254-263	tidligere	_	_	_	_	
+3-4	264-268	vært	_	_	_	_	
+3-5	269-274	frisk	_	_	_	_	
+3-6	275-277	og	_	_	_	_	
+3-7	278-283	aktiv	_	_	_	_	
+3-8	283-284	,	_	_	_	_	
+3-9	285-288	men	_	_	_	_	
+3-10	289-292	har	_	_	_	_	
+3-11	293-299	måttet	_	_	_	_	
+3-12	300-308	redusere	_	_	_	_	
+3-13	309-312	sin	_	_	_	_	
+3-14	313-320	fysiske	_	_	_	_	
+3-15	321-330	aktivitet	_	_	_	_	
+3-16	331-333	på	_	_	_	_	
+3-17	334-339	grunn	_	_	_	_	
+3-18	340-342	av	_	_	_	_	
+3-19	343-351	smertene	_	_	_	_	
+3-20	351-352	.	_	_	_	_	
+
+#Text=Ved undersøkelse finner jeg en begrenset bevegelighet i ryggen og ømhet over lumbosakral-området.
+4-1	353-356	Ved	_	_	_	_	
+4-2	357-369	undersøkelse	OVERLAP	TREATMENT	BEFORE|BEFORE	2-3|2-9[1_0]	
+4-3	370-376	finner	_	_	_	_	
+4-4	377-380	jeg	_	_	_	_	
+4-5	381-383	en	_	_	_	_	
+4-6	384-393	begrenset	OVERLAP[2]	CONDITION[2]	BEFORE	4-2[0_2]	
+4-7	394-406	bevegelighet	OVERLAP[2]	CONDITION[2]	_	_	
+4-8	407-408	i	OVERLAP[2]	CONDITION[2]	_	_	
+4-9	409-415	ryggen	OVERLAP[2]	CONDITION[2]	_	_	
+4-10	416-418	og	_	_	_	_	
+4-11	419-424	ømhet	OVERLAP[3]	CONDITION[3]	BEFORE	4-2[0_3]	
+4-12	425-429	over	OVERLAP[3]	CONDITION[3]	_	_	
+4-13	430-449	lumbosakral-området	OVERLAP[3]	CONDITION[3]	_	_	
+4-14	449-450	.	_	_	_	_	
+
+#Text=Jeg henviser pasienten til en MR-undersøkelse av ryggen for å utelukke en eventuell diskprolaps eller annen patologi.
+5-1	451-454	Jeg	_	_	_	_	
+5-2	455-463	henviser	_	_	_	_	
+5-3	464-473	pasienten	_	_	_	_	
+5-4	474-477	til	_	_	_	_	
+5-5	478-480	en	_	_	_	_	
+5-6	481-496	MR-undersøkelse	AFTER[4]	TREATMENT[4]	_	_	
+5-7	497-499	av	AFTER[4]	TREATMENT[4]	_	_	
+5-8	500-506	ryggen	AFTER[4]	TREATMENT[4]	_	_	
+5-9	507-510	for	_	_	_	_	
+5-10	511-512	å	_	_	_	_	
+5-11	513-521	utelukke	_	_	_	_	
+5-12	522-524	en	_	_	_	_	
+5-13	525-534	eventuell	_	_	_	_	
+5-14	535-546	diskprolaps	_	_	_	_	
+5-15	547-552	eller	_	_	_	_	
+5-16	553-558	annen	_	_	_	_	
+5-17	559-567	patologi	_	_	_	_	
+5-18	567-568	.	_	_	_	_	

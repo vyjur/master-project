@@ -1,0 +1,79 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 2 - 17.01.2023**
+#Text=
+#Text=Pasienten kommer tilbake etter å ha gjennomgått MR-undersøkelsen.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	2	_	_	_	_	
+1-3	15-16	-	_	_	_	_	
+1-4	17-27	17.01.2023	_	_	_	_	
+1-5	27-28	*	_	_	_	_	
+1-6	28-29	*	_	_	_	_	
+1-7	31-40	Pasienten	_	_	_	_	
+1-8	41-47	kommer	_	_	_	_	
+1-9	48-55	tilbake	_	_	_	_	
+1-10	56-61	etter	_	_	_	_	
+1-11	62-63	å	_	_	_	_	
+1-12	64-66	ha	_	_	_	_	
+1-13	67-78	gjennomgått	_	_	_	_	
+1-14	79-95	MR-undersøkelsen	BEFORE	TREATMENT	_	_	
+1-15	95-96	.	_	_	_	_	
+
+#Text=Resultatene viser en mindre diskprolaps i L4-L5-segmentet, men ingen andre tegn på patologi.
+2-1	97-108	Resultatene	_	_	_	_	
+2-2	109-114	viser	_	_	_	_	
+2-3	115-117	en	_	_	_	_	
+2-4	118-124	mindre	OVERLAP[1]	CONDITION[1]	_	_	
+2-5	125-136	diskprolaps	OVERLAP[1]	CONDITION[1]	_	_	
+2-6	137-138	i	OVERLAP[1]	CONDITION[1]	_	_	
+2-7	139-141	L4	OVERLAP[1]	CONDITION[1]	_	_	
+2-8	141-142	-	OVERLAP[1]	CONDITION[1]	_	_	
+2-9	142-144	L5	OVERLAP[1]	CONDITION[1]	_	_	
+2-10	144-145	-	OVERLAP[1]	CONDITION[1]	_	_	
+2-11	145-154	segmentet	OVERLAP[1]	CONDITION[1]	_	_	
+2-12	154-155	,	_	_	_	_	
+2-13	156-159	men	_	_	_	_	
+2-14	160-165	ingen	_	_	_	_	
+2-15	166-171	andre	_	_	_	_	
+2-16	172-176	tegn	_	_	_	_	
+2-17	177-179	på	_	_	_	_	
+2-18	180-188	patologi	_	_	_	_	
+2-19	188-189	.	_	_	_	_	
+
+#Text=Jeg starter pasienten på en fysioterapibehandling for å styrke muskulaturen i ryggen og bedre bevegeligheten.
+3-1	190-193	Jeg	_	_	_	_	
+3-2	194-201	starter	_	_	_	_	
+3-3	202-211	pasienten	_	_	_	_	
+3-4	212-214	på	_	_	_	_	
+3-5	215-217	en	_	_	_	_	
+3-6	218-239	fysioterapibehandling	AFTER	TREATMENT	OVERLAP	4-9[2_0]	
+3-7	240-243	for	_	_	_	_	
+3-8	244-245	å	_	_	_	_	
+3-9	246-252	styrke	_	_	_	_	
+3-10	253-265	muskulaturen	_	_	_	_	
+3-11	266-267	i	_	_	_	_	
+3-12	268-274	ryggen	_	_	_	_	
+3-13	275-277	og	_	_	_	_	
+3-14	278-283	bedre	_	_	_	_	
+3-15	284-298	bevegeligheten	_	_	_	_	
+3-16	298-299	.	_	_	_	_	
+
+#Text=Jeg foreslår også at pasienten begynner med en svak opioid for å kontrollere smertene.
+4-1	300-303	Jeg	_	_	_	_	
+4-2	304-312	foreslår	_	_	_	_	
+4-3	313-317	også	_	_	_	_	
+4-4	318-320	at	_	_	_	_	
+4-5	321-330	pasienten	_	_	_	_	
+4-6	331-339	begynner	_	_	_	_	
+4-7	340-343	med	_	_	_	_	
+4-8	344-346	en	_	_	_	_	
+4-9	347-351	svak	AFTER[2]	TREATMENT[2]	OVERLAP	3-6[0_2]	
+4-10	352-358	opioid	AFTER[2]	TREATMENT[2]	_	_	
+4-11	359-362	for	_	_	_	_	
+4-12	363-364	å	_	_	_	_	
+4-13	365-376	kontrollere	_	_	_	_	
+4-14	377-385	smertene	_	_	_	_	
+4-15	385-386	.	_	_	_	_	

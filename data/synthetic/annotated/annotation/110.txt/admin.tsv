@@ -1,0 +1,46 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+
+
+#Text=Journalnotat 3 - 31.05.2025
+#Text=Oppfølgingstime etter iverksatt behandling.
+1-1	0-12	Journalnotat	_	_	
+1-2	13-14	3	_	_	
+1-3	15-16	-	_	_	
+1-4	17-27	31.05.2025	_	_	
+1-5	28-43	Oppfølgingstime	_	_	
+1-6	44-49	etter	_	_	
+1-7	50-59	iverksatt	_	_	
+1-8	60-70	behandling	_	_	
+1-9	70-71	.	_	_	
+
+#Text=Pasienten rapporterer betydelig symptomlindring etter implementerte livsstilsendringer.
+2-1	72-81	Pasienten	_	_	
+2-2	82-93	rapporterer	_	_	
+2-3	94-103	betydelig	_	_	
+2-4	104-119	symptomlindring	OVERLAP	CONDITION	
+2-5	120-125	etter	_	_	
+2-6	126-139	implementerte	_	_	
+2-7	140-158	livsstilsendringer	_	_	
+2-8	158-159	.	_	_	
+
+#Text=Diskuterer videre mestringstrategier og betydningen av stressreduksjon.
+3-1	160-170	Diskuterer	_	_	
+3-2	171-177	videre	_	_	
+3-3	178-196	mestringstrategier	AFTER	TREATMENT	
+3-4	197-199	og	_	_	
+3-5	200-211	betydningen	_	_	
+3-6	212-214	av	_	_	
+3-7	215-230	stressreduksjon	AFTER	TREATMENT	
+3-8	230-231	.	_	_	
+
+#Text=Planlegger gradvis tilnærming for ytterligere forbedring av livskvalitet.
+4-1	232-242	Planlegger	_	_	
+4-2	243-250	gradvis	_	_	
+4-3	251-261	tilnærming	_	_	
+4-4	262-265	for	_	_	
+4-5	266-277	ytterligere	_	_	
+4-6	278-288	forbedring	_	_	
+4-7	289-291	av	_	_	
+4-8	292-304	livskvalitet	_	_	
+4-9	304-305	.	_	_	

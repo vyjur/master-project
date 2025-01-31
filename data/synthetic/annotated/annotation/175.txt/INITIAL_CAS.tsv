@@ -1,0 +1,114 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 5 (2023-10-31)
+#Text=Lars kom inn til siste oppfølging i dag.
+1-1	0-12	Journalnotat	
+1-2	13-14	5	
+1-3	15-16	(	
+1-4	16-20	2023	
+1-5	20-21	-	
+1-6	21-23	10	
+1-7	23-24	-	
+1-8	24-26	31	
+1-9	26-27	)	
+1-10	28-32	Lars	
+1-11	33-36	kom	
+1-12	37-40	inn	
+1-13	41-44	til	
+1-14	45-50	siste	
+1-15	51-61	oppfølging	
+1-16	62-63	i	
+1-17	64-67	dag	
+1-18	67-68	.	
+
+#Text=Han rapporterte at alt gikk bra, og at han kunne leve et nærmest normalt liv.
+2-1	69-72	Han	
+2-2	73-84	rapporterte	
+2-3	85-87	at	
+2-4	88-91	alt	
+2-5	92-96	gikk	
+2-6	97-100	bra	
+2-7	100-101	,	
+2-8	102-104	og	
+2-9	105-107	at	
+2-10	108-111	han	
+2-11	112-117	kunne	
+2-12	118-122	leve	
+2-13	123-125	et	
+2-14	126-133	nærmest	
+2-15	134-141	normalt	
+2-16	142-145	liv	
+2-17	145-146	.	
+
+#Text=Han hadde fortsatt følt seg sterkere og hadde ikke opplevd noen akutt eksaserbasjon de siste månedene.
+3-1	147-150	Han	
+3-2	151-156	hadde	
+3-3	157-165	fortsatt	
+3-4	166-170	følt	
+3-5	171-174	seg	
+3-6	175-183	sterkere	
+3-7	184-186	og	
+3-8	187-192	hadde	
+3-9	193-197	ikke	
+3-10	198-205	opplevd	
+3-11	206-210	noen	
+3-12	211-216	akutt	
+3-13	217-230	eksaserbasjon	
+3-14	231-233	de	
+3-15	234-239	siste	
+3-16	240-248	månedene	
+3-17	248-249	.	
+
+#Text=Vi diskuterte viktigheten av å holde seg fysisk aktiv og unngå eksponering for røyk og andre irritanter.
+4-1	250-252	Vi	
+4-2	253-263	diskuterte	
+4-3	264-275	viktigheten	
+4-4	276-278	av	
+4-5	279-280	å	
+4-6	281-286	holde	
+4-7	287-290	seg	
+4-8	291-297	fysisk	
+4-9	298-303	aktiv	
+4-10	304-306	og	
+4-11	307-312	unngå	
+4-12	313-324	eksponering	
+4-13	325-328	for	
+4-14	329-333	røyk	
+4-15	334-336	og	
+4-16	337-342	andre	
+4-17	343-353	irritanter	
+4-18	353-354	.	
+
+#Text=Lars var meget tilfreds med resultatet av behandlingen og takket meg for støtten.
+5-1	355-359	Lars	
+5-2	360-363	var	
+5-3	364-369	meget	
+5-4	370-378	tilfreds	
+5-5	379-382	med	
+5-6	383-393	resultatet	
+5-7	394-396	av	
+5-8	397-409	behandlingen	
+5-9	410-412	og	
+5-10	413-419	takket	
+5-11	420-423	meg	
+5-12	424-427	for	
+5-13	428-435	støtten	
+5-14	435-436	.	
+
+#Text=Vi planla en oppfølging om ett år for å sikre at alt går godt.
+6-1	437-439	Vi	
+6-2	440-446	planla	
+6-3	447-449	en	
+6-4	450-460	oppfølging	
+6-5	461-463	om	
+6-6	464-467	ett	
+6-7	468-470	år	
+6-8	471-474	for	
+6-9	475-476	å	
+6-10	477-482	sikre	
+6-11	483-485	at	
+6-12	486-489	alt	
+6-13	490-493	går	
+6-14	494-498	godt	
+6-15	498-499	.	

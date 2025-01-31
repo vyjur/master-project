@@ -1,0 +1,58 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 3 - 24.01.2023**
+#Text=
+#Text=Pasienten kommer tilbake etter 1 uke med fysioterapibehandling.
+1-1	0-12	Journalnotat	
+1-2	13-14	3	
+1-3	15-16	-	
+1-4	17-27	24.01.2023	
+1-5	27-28	*	
+1-6	28-29	*	
+1-7	31-40	Pasienten	
+1-8	41-47	kommer	
+1-9	48-55	tilbake	
+1-10	56-61	etter	
+1-11	62-63	1	
+1-12	64-67	uke	
+1-13	68-71	med	
+1-14	72-93	fysioterapibehandling	
+1-15	93-94	.	
+
+#Text=Hun rapporterer en liten forbedring i bevegeligheten og en reduksjon i smertene.
+2-1	95-98	Hun	
+2-2	99-110	rapporterer	
+2-3	111-113	en	
+2-4	114-119	liten	
+2-5	120-130	forbedring	
+2-6	131-132	i	
+2-7	133-147	bevegeligheten	
+2-8	148-150	og	
+2-9	151-153	en	
+2-10	154-163	reduksjon	
+2-11	164-165	i	
+2-12	166-174	smertene	
+2-13	174-175	.	
+
+#Text=Jeg fortsätter å justere opioid-dosen og foreslår at pasienten begynner med en antidepressiv medisin for å håndtere smertene bedre.
+3-1	176-179	Jeg	
+3-2	180-190	fortsätter	
+3-3	191-192	å	
+3-4	193-200	justere	
+3-5	201-213	opioid-dosen	
+3-6	214-216	og	
+3-7	217-225	foreslår	
+3-8	226-228	at	
+3-9	229-238	pasienten	
+3-10	239-247	begynner	
+3-11	248-251	med	
+3-12	252-254	en	
+3-13	255-268	antidepressiv	
+3-14	269-276	medisin	
+3-15	277-280	for	
+3-16	281-282	å	
+3-17	283-291	håndtere	
+3-18	292-300	smertene	
+3-19	301-306	bedre	
+3-20	306-307	.	

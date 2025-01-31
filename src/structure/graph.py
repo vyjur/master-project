@@ -8,35 +8,9 @@ class Graph:
             list
         )  # Reverse graph to track parent-child relationships
 
-    def add_edge(self, u, v):
-        self.graph[u].append(v)  # Directed edge u -> v
-        self.reverse_graph[v].append(u)  # Reverse edge v -> u (parent -> child)
-
-    def __is_cyclic_util(self, v, visited, recursion_stack):
-        visited[v] = True
-        recursion_stack[v] = True
-
-        for neighbor in self.graph[v]:
-            if neighbor in visited and not visited[neighbor]:
-                if self.__is_cyclic_util(neighbor, visited, recursion_stack):
-                    return True
-            elif neighbor in recursion_stack and recursion_stack[neighbor]:
-                return True
-
-        recursion_stack[v] = False
-        return False
-
-    def is_cyclic(self):
-        visited = {node: False for node in self.graph}
-        recursion_stack = {node: False for node in self.graph}
-
-        for node in self.graph:
-            if not visited[node]:
-                if self.__is_cyclic_util(node, visited, recursion_stack):
-                    return True
-
-        return False
-
+    def add_node(self, u):
+        self.graph[u] = list()
+        
     def remove_node(self, node):
         # Get all children of the node
         children = self.graph[node]
@@ -67,6 +41,41 @@ class Graph:
         for children in self.reverse_graph.values():
             if node in children:
                 children.remove(node)
+
+    def add_edge(self, u, v):
+        self.graph[u].append(v)  # Directed edge u -> v
+        self.reverse_graph[v].append(u)  # Reverse edge v -> u (parent -> child)
+        
+    def remove_edge(self, u, v):
+        if v in self.graph[u]:
+            self.graph[u].remove(v)
+        if u in self.reverse_graph[v]:
+            self.reverse_graph[v].remove(u)
+
+    def __is_cyclic_util(self, v, visited, recursion_stack):
+        visited[v] = True
+        recursion_stack[v] = True
+
+        for neighbor in self.graph[v]:
+            if neighbor in visited and not visited[neighbor]:
+                if self.__is_cyclic_util(neighbor, visited, recursion_stack):
+                    return True
+            elif neighbor in recursion_stack and recursion_stack[neighbor]:
+                return True
+
+        recursion_stack[v] = False
+        return False
+
+    def is_cyclic(self):
+        visited = {node: False for node in self.graph}
+        recursion_stack = {node: False for node in self.graph}
+
+        for node in self.graph:
+            if not visited[node]:
+                if self.__is_cyclic_util(node, visited, recursion_stack):
+                    return True
+
+        return False
 
     def enumerate_levels(self):
         levels = {}  # To store levels of each node

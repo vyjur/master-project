@@ -1,0 +1,49 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=30.09.2023:
+#Text=Stabilisert tilstand.
+1-1	0-10	30.09.2023	_	_	_	_	
+1-2	10-11	:	_	_	_	_	
+1-3	12-23	Stabilisert	OVERLAP[1]	CONDITION[1]	_	_	
+1-4	24-32	tilstand	OVERLAP[1]	CONDITION[1]	_	_	
+1-5	32-33	.	_	_	_	_	
+
+#Text=Starter 20% arbeid med tilrettelegging.
+2-1	34-41	Starter	_	_	_	_	
+2-2	42-45	20%	AFTER[2]	TREATMENT[2]	_	_	
+2-3	46-52	arbeid	AFTER[2]	TREATMENT[2]	_	_	
+2-4	53-56	med	AFTER[2]	TREATMENT[2]	_	_	
+2-5	57-72	tilrettelegging	AFTER[2]	TREATMENT[2]	_	_	
+2-6	72-73	.	_	_	_	_	
+
+#Text=PEM fortsatt til stede ved overanstrengelse.
+3-1	74-77	PEM	OVERLAP	CONDITION	OVERLAP	1-3[1_0]	
+3-2	78-86	fortsatt	_	_	_	_	
+3-3	87-90	til	_	_	_	_	
+3-4	91-96	stede	_	_	_	_	
+3-5	97-100	ved	_	_	_	_	
+3-6	101-117	overanstrengelse	_	_	_	_	
+3-7	117-118	.	_	_	_	_	
+
+#Text=Mestrer aktivitetsavpassing bedre.
+4-1	119-126	Mestrer	_	_	_	_	
+4-2	127-146	aktivitetsavpassing	_	_	_	_	
+4-3	147-152	bedre	_	_	_	_	
+4-4	152-153	.	_	_	_	_	
+
+#Text=Fokus på langsiktig rehabilitering.
+5-1	154-159	Fokus	_	_	_	_	
+5-2	160-162	på	_	_	_	_	
+5-3	163-173	langsiktig	AFTER[3]	TREATMENT[3]	_	_	
+5-4	174-188	rehabilitering	AFTER[3]	TREATMENT[3]	_	_	
+5-5	188-189	.	_	_	_	_	
+
+#Text=Avtaler månedlige kontroller fremover.
+6-1	190-197	Avtaler	_	_	_	_	
+6-2	198-207	månedlige	AFTER[4]	TREATMENT[4]	OVERLAP	5-3[3_4]	
+6-3	208-218	kontroller	AFTER[4]	TREATMENT[4]	_	_	
+6-4	219-227	fremover	_	_	_	_	
+6-5	227-228	.	_	_	_	_	

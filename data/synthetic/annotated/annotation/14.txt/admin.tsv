@@ -1,0 +1,131 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Notat 2 - 09.11.2024:  
+#Text=Pasienten kommer tilbake da hun fortsatt opplever svie ved vannlating, selv om de øvrige symptomene har avtatt noe.
+1-1	0-5	Notat	_	_	_	_	
+1-2	6-7	2	_	_	_	_	
+1-3	8-9	-	_	_	_	_	
+1-4	10-20	09.11.2024	_	_	_	_	
+1-5	20-21	:	_	_	_	_	
+1-6	24-33	Pasienten	_	_	_	_	
+1-7	34-40	kommer	_	_	_	_	
+1-8	41-48	tilbake	_	_	_	_	
+1-9	49-51	da	_	_	_	_	
+1-10	52-55	hun	_	_	_	_	
+1-11	56-64	fortsatt	_	_	_	_	
+1-12	65-73	opplever	_	_	_	_	
+1-13	74-78	svie	BEFOREOVERLAP[1]	CONDITION[1]	_	_	
+1-14	79-82	ved	BEFOREOVERLAP[1]	CONDITION[1]	_	_	
+1-15	83-93	vannlating	BEFOREOVERLAP[1]	CONDITION[1]	_	_	
+1-16	93-94	,	_	_	_	_	
+1-17	95-99	selv	_	_	_	_	
+1-18	100-102	om	_	_	_	_	
+1-19	103-105	de	_	_	_	_	
+1-20	106-112	øvrige	OVERLAP[2]	CONDITION[2]	_	_	
+1-21	113-123	symptomene	OVERLAP[2]	CONDITION[2]	_	_	
+1-22	124-127	har	OVERLAP[2]	CONDITION[2]	_	_	
+1-23	128-134	avtatt	OVERLAP[2]	CONDITION[2]	_	_	
+1-24	135-138	noe	OVERLAP[2]	CONDITION[2]	_	_	
+1-25	138-139	.	_	_	_	_	
+
+#Text=Hun har ikke feber, men beskriver lette smerter i flanken på høyre side.
+2-1	140-143	Hun	_	_	_	_	
+2-2	144-147	har	_	_	_	_	
+2-3	148-152	ikke	_	_	_	_	
+2-4	153-158	feber	_	_	_	_	
+2-5	158-159	,	_	_	_	_	
+2-6	160-163	men	_	_	_	_	
+2-7	164-173	beskriver	_	_	_	_	
+2-8	174-179	lette	OVERLAP[3]	CONDITION[3]	_	_	
+2-9	180-187	smerter	OVERLAP[3]	CONDITION[3]	_	_	
+2-10	188-189	i	OVERLAP[3]	CONDITION[3]	_	_	
+2-11	190-197	flanken	OVERLAP[3]	CONDITION[3]	_	_	
+2-12	198-200	på	OVERLAP[3]	CONDITION[3]	_	_	
+2-13	201-206	høyre	OVERLAP[3]	CONDITION[3]	_	_	
+2-14	207-211	side	OVERLAP[3]	CONDITION[3]	_	_	
+2-15	211-212	.	_	_	_	_	
+
+#Text=Urinstix viser fortsatt positiv utslag for leukocytter, men negativ for nitritt.
+3-1	213-221	Urinstix	OVERLAP	TREATMENT	BEFORE|BEFORE	1-20[2_0]|2-8[3_0]	
+3-2	222-227	viser	_	_	_	_	
+3-3	228-236	fortsatt	_	_	_	_	
+3-4	237-244	positiv	OVERLAP[4]	CONDITION[4]	BEFORE	3-1[0_4]	
+3-5	245-251	utslag	OVERLAP[4]	CONDITION[4]	_	_	
+3-6	252-255	for	OVERLAP[4]	CONDITION[4]	_	_	
+3-7	256-267	leukocytter	OVERLAP[4]	CONDITION[4]	_	_	
+3-8	267-268	,	_	_	_	_	
+3-9	269-272	men	_	_	_	_	
+3-10	273-280	negativ	OVERLAP[5]	CONDITION[5]	BEFORE	3-1[0_5]	
+3-11	281-284	for	OVERLAP[5]	CONDITION[5]	_	_	
+3-12	285-292	nitritt	OVERLAP[5]	CONDITION[5]	_	_	
+3-13	292-293	.	_	_	_	_	
+
+#Text=Jeg mistenker en vedvarende infeksjon eller mulig pyelonefritt.
+4-1	294-297	Jeg	_	_	_	_	
+4-2	298-307	mistenker	_	_	_	_	
+4-3	308-310	en	_	_	_	_	
+4-4	311-321	vedvarende	_	_	_	_	
+4-5	322-331	infeksjon	_	_	_	_	
+4-6	332-337	eller	_	_	_	_	
+4-7	338-343	mulig	_	_	_	_	
+4-8	344-356	pyelonefritt	_	_	_	_	
+4-9	356-357	.	_	_	_	_	
+
+#Text=Pasienten henvises til urinmikroskopi og dyrkning for å bekrefte resistensmønster.
+5-1	358-367	Pasienten	_	_	_	_	
+5-2	368-376	henvises	_	_	_	_	
+5-3	377-380	til	_	_	_	_	
+5-4	381-395	urinmikroskopi	AFTER	TREATMENT	BEFORE	6-10[6_0]	
+5-5	396-398	og	_	_	_	_	
+5-6	399-407	dyrkning	AFTER	TREATMENT	BEFORE	6-10[6_0]	
+5-7	408-411	for	_	_	_	_	
+5-8	412-413	å	_	_	_	_	
+5-9	414-422	bekrefte	_	_	_	_	
+5-10	423-439	resistensmønster	_	_	_	_	
+5-11	439-440	.	_	_	_	_	
+
+#Text=I mellomtiden starter vi med en ny kur, ciprofloxacin 500 mg x 2 i 7 dager, som dekker bredere spekter.
+6-1	441-442	I	_	_	_	_	
+6-2	443-454	mellomtiden	_	_	_	_	
+6-3	455-462	starter	_	_	_	_	
+6-4	463-465	vi	_	_	_	_	
+6-5	466-469	med	_	_	_	_	
+6-6	470-472	en	_	_	_	_	
+6-7	473-475	ny	_	_	_	_	
+6-8	476-479	kur	_	_	_	_	
+6-9	479-480	,	_	_	_	_	
+6-10	481-494	ciprofloxacin	AFTER[6]	TREATMENT[6]	_	_	
+6-11	495-498	500	AFTER[6]	TREATMENT[6]	_	_	
+6-12	499-501	mg	AFTER[6]	TREATMENT[6]	_	_	
+6-13	502-503	x	_	_	_	_	
+6-14	504-505	2	_	_	_	_	
+6-15	506-507	i	_	_	_	_	
+6-16	508-509	7	_	_	_	_	
+6-17	510-515	dager	_	_	_	_	
+6-18	515-516	,	_	_	_	_	
+6-19	517-520	som	_	_	_	_	
+6-20	521-527	dekker	_	_	_	_	
+6-21	528-535	bredere	_	_	_	_	
+6-22	536-543	spekter	_	_	_	_	
+6-23	543-544	.	_	_	_	_	
+
+#Text=Pasienten får råd om å kontakte oss dersom hun får feber eller dersom flankesmertene forverres.
+7-1	545-554	Pasienten	_	_	_	_	
+7-2	555-558	får	_	_	_	_	
+7-3	559-562	råd	_	_	_	_	
+7-4	563-565	om	_	_	_	_	
+7-5	566-567	å	_	_	_	_	
+7-6	568-576	kontakte	_	_	_	_	
+7-7	577-580	oss	_	_	_	_	
+7-8	581-587	dersom	_	_	_	_	
+7-9	588-591	hun	_	_	_	_	
+7-10	592-595	får	_	_	_	_	
+7-11	596-601	feber	_	_	_	_	
+7-12	602-607	eller	_	_	_	_	
+7-13	608-614	dersom	_	_	_	_	
+7-14	615-629	flankesmertene	_	_	_	_	
+7-15	630-639	forverres	_	_	_	_	
+7-16	639-640	.	_	_	_	_	

@@ -1,0 +1,47 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 3 - 19.04.2025
+#Text=Oppfølgingssamtale med pårørende.
+1-1	0-12	Journalnotat	
+1-2	13-14	3	
+1-3	15-16	-	
+1-4	17-27	19.04.2025	
+1-5	28-46	Oppfølgingssamtale	
+1-6	47-50	med	
+1-7	51-60	pårørende	
+1-8	60-61	.	
+
+#Text=Iverksetter kommunal omsorgsstøtte og vurderer behov for dagaktivitetstilbud.
+2-1	62-73	Iverksetter	
+2-2	74-82	kommunal	
+2-3	83-96	omsorgsstøtte	
+2-4	97-99	og	
+2-5	100-108	vurderer	
+2-6	109-114	behov	
+2-7	115-118	for	
+2-8	119-138	dagaktivitetstilbud	
+2-9	138-139	.	
+
+#Text=Diskuterer fremtidig hjelpebehov og juridiske forhold knyttet til samtykkekompetanse.
+3-1	140-150	Diskuterer	
+3-2	151-160	fremtidig	
+3-3	161-172	hjelpebehov	
+3-4	173-175	og	
+3-5	176-185	juridiske	
+3-6	186-193	forhold	
+3-7	194-201	knyttet	
+3-8	202-205	til	
+3-9	206-224	samtykkekompetanse	
+3-10	224-225	.	
+
+#Text=Anbefaler deltakelse i samtalegruppe for personer med demens.
+4-1	226-235	Anbefaler	
+4-2	236-246	deltakelse	
+4-3	247-248	i	
+4-4	249-262	samtalegruppe	
+4-5	263-266	for	
+4-6	267-275	personer	
+4-7	276-279	med	
+4-8	280-286	demens	
+4-9	286-287	.	

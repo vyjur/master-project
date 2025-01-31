@@ -1,0 +1,59 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=20.03.2023:
+#Text=Merkbar bedring.
+1-1	0-10	20.03.2023	_	_	_	_	
+1-2	10-11	:	_	_	_	_	
+1-3	12-19	Merkbar	_	_	_	_	
+1-4	20-27	bedring	OVERLAP	CONDITION	_	_	
+1-5	27-28	.	_	_	_	_	
+
+#Text=Sover bedre, økt appetitt.
+2-1	29-34	Sover	OVERLAP[1]	CONDITION[1]	_	_	
+2-2	35-40	bedre	OVERLAP[1]	CONDITION[1]	_	_	
+2-3	40-41	,	_	_	_	_	
+2-4	42-45	økt	OVERLAP[2]	CONDITION[2]	_	_	
+2-5	46-54	appetitt	OVERLAP[2]	CONDITION[2]	_	_	
+2-6	54-55	.	_	_	_	_	
+
+#Text=Mindre anspent.
+3-1	56-62	Mindre	OVERLAP[3]	CONDITION[3]	_	_	
+3-2	63-70	anspent	OVERLAP[3]	CONDITION[3]	_	_	
+3-3	70-71	.	_	_	_	_	
+
+#Text=Fortsetter psykologsamtaler.
+4-1	72-82	Fortsetter	AFTER[4]	TREATMENT[4]	_	_	
+4-2	83-99	psykologsamtaler	AFTER[4]	TREATMENT[4]	_	_	
+4-3	99-100	.	_	_	_	_	
+
+#Text=PHQ-9 score nå 12.
+5-1	101-104	PHQ	OVERLAP[5]	CONDITION[5]	_	_	
+5-2	104-105	-	OVERLAP[5]	CONDITION[5]	_	_	
+5-3	105-106	9	OVERLAP[5]	CONDITION[5]	_	_	
+5-4	107-112	score	_	_	_	_	
+5-5	113-115	nå	_	_	_	_	
+5-6	116-118	12	_	_	_	_	
+5-7	118-119	.	_	_	_	_	
+
+#Text=Planlegger arbeidsreturn neste uke.
+6-1	120-130	Planlegger	AFTER[6]	TREATMENT[6]	_	_	
+6-2	131-144	arbeidsreturn	AFTER[6]	TREATMENT[6]	_	_	
+6-3	145-150	neste	_	_	_	_	
+6-4	151-154	uke	_	_	_	_	
+6-5	154-155	.	_	_	_	_	
+
+#Text=Opprettholder dosering Cipralex.
+7-1	156-169	Opprettholder	_	_	_	_	
+7-2	170-178	dosering	_	_	_	_	
+7-3	179-187	Cipralex	AFTER	TREATMENT	_	_	
+7-4	187-188	.	_	_	_	_	
+
+#Text=Kontroll om 4 uker.
+8-1	189-197	Kontroll	AFTER	TREATMENT	BEFORE	6-1[6_0]	
+8-2	198-200	om	_	_	_	_	
+8-3	201-202	4	_	_	_	_	
+8-4	203-207	uker	_	_	_	_	
+8-5	207-208	.	_	_	_	_	

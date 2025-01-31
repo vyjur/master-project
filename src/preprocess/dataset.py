@@ -30,6 +30,29 @@ COLUMN_NAMES = [
     "fk_id",  # 6
 ]
 
+### INFO: New synthetic annotated cols
+COLUMN_NAMES = [
+    "id", # 0,
+    "sentence_id", 
+    "Offset", #1
+    "Text", #2
+    "TRE_DCT", #3
+    "MER", #4, 
+    "TRE_TLINK", #5
+    "fk_id", #6
+]
+
+COLUMN_NAMES_DICT = {
+    "id":0, # 0,
+    "sentence_id" : 0, 
+    "Offset": 1, #1
+    "Text": 2, #2
+    "TRE_DCT": 3, #3
+    "MER": 4, #4, 
+    "TRE_TLINK": 5, #5
+    "fk_id": 6, #6
+}
+
 
 class DatasetManager:
     def __init__(self, files: List[str]):
@@ -49,25 +72,27 @@ class DatasetManager:
 
                     if line.startswith("#"):
                         continue
-                    sentence = line.split("\t")
+                    sentence = line.split("\t")                    
+                    if len(sentence) > COLUMN_NAMES_DICT['fk_id']:
+                        fk_id = sentence[COLUMN_NAMES_DICT['fk_id']]
+                        clip = fk_id.find("[")
+                        if clip != -1:
+                            fk_id = fk_id[:clip]
 
-                    fk_id = sentence[6]
-                    clip = fk_id.find("[")
-                    if clip != -1:
-                        fk_id = fk_id[:clip]
+                        fk_id = fk_id.split("|")
+                    else:
+                        fk_id = [None]
+                    t_relation = sentence[COLUMN_NAMES_DICT['TRE_TLINK']].split("|")
 
-                    fk_id = fk_id.split("|")
-                    t_relation = sentence[5].split("|")
-
-                    clip = sentence[4].find("[")
+                    clip = sentence[COLUMN_NAMES_DICT['MER']].find("[")
                     if clip == -1:
-                        clipper = len(sentence[4])
+                        clipper = len(sentence[COLUMN_NAMES_DICT['MER']])
                     else:
                         clipper = clip
 
                     if not connect and clip != -1:
                         connect = True
-                        prev_id = sentence[0]
+                        prev_id = sentence[COLUMN_NAMES_DICT['id']]
                     elif clip == -1:
                         connect = False
 
@@ -75,22 +100,22 @@ class DatasetManager:
                         for i in range(len(document)):
                             if document.loc[i]["id"] == prev_id:
                                 document.loc[i, "Text"] = (
-                                    document.loc[i, "Text"] + " " + sentence[2]
+                                    document.loc[i, "Text"] + " " + sentence[COLUMN_NAMES_DICT['Text']]
                                 )
                     else:
                         for i, id in enumerate(fk_id):
                             row = {
-                                "id": sentence[0] if sentence[0] != "_" else "O",  # 0
-                                "sentence_id": int(sentence[0].split("-")[0]),
-                                "Offset": sentence[1]
-                                if sentence[1] != "_"
+                                "id": sentence[COLUMN_NAMES_DICT['id']] if sentence[COLUMN_NAMES_DICT['id']] != "_" else "O",  # 0
+                                "sentence_id": int(sentence[COLUMN_NAMES_DICT['id']].split("-")[0]),
+                                "Offset": sentence[COLUMN_NAMES_DICT['Offset']]
+                                if sentence[COLUMN_NAMES_DICT['Offset']] != "_"
                                 else "O",  # 1
-                                "Text": sentence[2] if sentence[2] != "_" else "O",  # 1
-                                "MER": sentence[4][:clipper]
-                                if sentence[4] != "_"
+                                "Text": sentence[COLUMN_NAMES_DICT['Text']] if sentence[COLUMN_NAMES_DICT['Text']] != "_" else "O",  # 1
+                                "MER": sentence[COLUMN_NAMES_DICT['MER']][:clipper]
+                                if sentence[COLUMN_NAMES_DICT['MER']] != "_"
                                 else "O",  # 4
-                                "TRE_DCT": re.sub(r"\[.*?\]", "", sentence[3])
-                                if sentence[3] != "_"
+                                "TRE_DCT": re.sub(r"\[.*?\]", "", sentence[COLUMN_NAMES_DICT['TRE_DCT']])
+                                if sentence[COLUMN_NAMES_DICT['TRE_DCT']] != "_"
                                 else "O",  # 3,
                                 "TRE_TLINK": re.sub(r"\[.*?\]", "", t_relation[i])
                                 if t_relation[i] != "_"

@@ -1,0 +1,47 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 1 - 10.01.2025
+#Text=Førstegangs konsultasjon vedrørende vedvarende tretthet og vektøkning.
+1-1	0-12	Journalnotat	
+1-2	13-14	1	
+1-3	15-16	-	
+1-4	17-27	10.01.2025	
+1-5	28-39	Førstegangs	
+1-6	40-52	konsultasjon	
+1-7	53-63	vedrørende	
+1-8	64-74	vedvarende	
+1-9	75-83	tretthet	
+1-10	84-86	og	
+1-11	87-97	vektøkning	
+1-12	97-98	.	
+
+#Text=Objektiv undersøkelse og blodprøver avdekker mistanke om autoimmun thyreoiditt.
+2-1	99-107	Objektiv	
+2-2	108-120	undersøkelse	
+2-3	121-123	og	
+2-4	124-134	blodprøver	
+2-5	135-143	avdekker	
+2-6	144-152	mistanke	
+2-7	153-155	om	
+2-8	156-165	autoimmun	
+2-9	166-177	thyreoiditt	
+2-10	177-178	.	
+
+#Text=Påvist lave T4-verdier og forhøyede thyreoidea-antistoffer.
+3-1	179-185	Påvist	
+3-2	186-190	lave	
+3-3	191-193	T4	
+3-4	193-194	-	
+3-5	194-201	verdier	
+3-6	202-204	og	
+3-7	205-214	forhøyede	
+3-8	215-237	thyreoidea-antistoffer	
+3-9	237-238	.	
+
+#Text=Starter substitusjonsbehandling med levothyroxin.
+4-1	239-246	Starter	
+4-2	247-270	substitusjonsbehandling	
+4-3	271-274	med	
+4-4	275-287	levothyroxin	
+4-5	287-288	.	

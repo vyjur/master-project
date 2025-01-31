@@ -1,0 +1,126 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 3 (2023-10-24)
+#Text=Ingeborg rapporterte en viderebedring i symptombildet.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	3	_	_	_	_	
+1-3	15-16	(	_	_	_	_	
+1-4	16-20	2023	_	_	_	_	
+1-5	20-21	-	_	_	_	_	
+1-6	21-23	10	_	_	_	_	
+1-7	23-24	-	_	_	_	_	
+1-8	24-26	24	_	_	_	_	
+1-9	26-27	)	_	_	_	_	
+1-10	28-36	Ingeborg	_	_	_	_	
+1-11	37-48	rapporterte	_	_	_	_	
+1-12	49-51	en	_	_	_	_	
+1-13	52-65	viderebedring	OVERLAP[1]	CONDITION[1]	_	_	
+1-14	66-67	i	OVERLAP[1]	CONDITION[1]	_	_	
+1-15	68-81	symptombildet	OVERLAP[1]	CONDITION[1]	_	_	
+1-16	81-82	.	_	_	_	_	
+
+#Text=Smertene var nesten borte, og hun kunne nå gå uten støtte.
+2-1	83-91	Smertene	OVERLAP	CONDITION	_	_	
+2-2	92-95	var	_	_	_	_	
+2-3	96-102	nesten	_	_	_	_	
+2-4	103-108	borte	_	_	_	_	
+2-5	108-109	,	_	_	_	_	
+2-6	110-112	og	_	_	_	_	
+2-7	113-116	hun	_	_	_	_	
+2-8	117-122	kunne	OVERLAP[2]	CONDITION[2]	_	_	
+2-9	123-125	nå	OVERLAP[2]	CONDITION[2]	_	_	
+2-10	126-128	gå	OVERLAP[2]	CONDITION[2]	_	_	
+2-11	129-133	uten	_	_	_	_	
+2-12	134-140	støtte	_	_	_	_	
+2-13	140-141	.	_	_	_	_	
+
+#Text=Hyaluronsyreinjeksjonene hadde vært vellykket, og hun hadde ikke opplevd noen store sidevirkninger.
+3-1	142-166	Hyaluronsyreinjeksjonene	_	_	_	_	
+3-2	167-172	hadde	_	_	_	_	
+3-3	173-177	vært	_	_	_	_	
+3-4	178-187	vellykket	_	_	_	_	
+3-5	187-188	,	_	_	_	_	
+3-6	189-191	og	_	_	_	_	
+3-7	192-195	hun	_	_	_	_	
+3-8	196-201	hadde	_	_	_	_	
+3-9	202-206	ikke	_	_	_	_	
+3-10	207-214	opplevd	_	_	_	_	
+3-11	215-219	noen	_	_	_	_	
+3-12	220-225	store	_	_	_	_	
+3-13	226-240	sidevirkninger	_	_	_	_	
+3-14	240-241	.	_	_	_	_	
+
+#Text=Fysioterapeuten noterte at Ingeborg hadde gjort gode fremsteg med muskelstyrking og at hun hadde bedre kontroll over bevegelsene.
+4-1	242-257	Fysioterapeuten	_	_	_	_	
+4-2	258-265	noterte	_	_	_	_	
+4-3	266-268	at	_	_	_	_	
+4-4	269-277	Ingeborg	_	_	_	_	
+4-5	278-283	hadde	_	_	_	_	
+4-6	284-289	gjort	_	_	_	_	
+4-7	290-294	gode	_	_	_	_	
+4-8	295-303	fremsteg	_	_	_	_	
+4-9	304-307	med	_	_	_	_	
+4-10	308-322	muskelstyrking	_	_	_	_	
+4-11	323-325	og	_	_	_	_	
+4-12	326-328	at	_	_	_	_	
+4-13	329-332	hun	_	_	_	_	
+4-14	333-338	hadde	_	_	_	_	
+4-15	339-344	bedre	OVERLAP[3]	CONDITION[3]	_	_	
+4-16	345-353	kontroll	OVERLAP[3]	CONDITION[3]	_	_	
+4-17	354-358	over	OVERLAP[3]	CONDITION[3]	_	_	
+4-18	359-370	bevegelsene	OVERLAP[3]	CONDITION[3]	_	_	
+4-19	370-371	.	_	_	_	_	
+
+#Text=Vi diskuterede viktigheten av å holde seg fysisk aktiv, men unngå overtrenings.
+5-1	372-374	Vi	_	_	_	_	
+5-2	375-386	diskuterede	_	_	_	_	
+5-3	387-398	viktigheten	_	_	_	_	
+5-4	399-401	av	_	_	_	_	
+5-5	402-403	å	_	_	_	_	
+5-6	404-409	holde	_	_	_	_	
+5-7	410-413	seg	_	_	_	_	
+5-8	414-420	fysisk	AFTER[4]	CONDITION[4]	_	_	
+5-9	421-426	aktiv	AFTER[4]	CONDITION[4]	_	_	
+5-10	426-427	,	_	_	_	_	
+5-11	428-431	men	_	_	_	_	
+5-12	432-437	unngå	AFTER[5]	CONDITION[5]	_	_	
+5-13	438-450	overtrenings	AFTER[5]	CONDITION[5]	_	_	
+5-14	450-451	.	_	_	_	_	
+
+#Text=Ingeborg var glad for resultatet av behandlingen og takket meg for støtten.
+6-1	452-460	Ingeborg	_	_	_	_	
+6-2	461-464	var	_	_	_	_	
+6-3	465-469	glad	_	_	_	_	
+6-4	470-473	for	_	_	_	_	
+6-5	474-484	resultatet	_	_	_	_	
+6-6	485-487	av	_	_	_	_	
+6-7	488-500	behandlingen	_	_	_	_	
+6-8	501-503	og	_	_	_	_	
+6-9	504-510	takket	_	_	_	_	
+6-10	511-514	meg	_	_	_	_	
+6-11	515-518	for	_	_	_	_	
+6-12	519-526	støtten	_	_	_	_	
+6-13	526-527	.	_	_	_	_	
+
+#Text=Vi planla en oppfølging om seks måneder for å se hvordan hun reagerer på den nye behandlingen.
+7-1	528-530	Vi	_	_	_	_	
+7-2	531-537	planla	_	_	_	_	
+7-3	538-540	en	_	_	_	_	
+7-4	541-551	oppfølging	AFTER	TREATMENT	BEFORE|BEFORE	5-8[4_0]|5-12[5_0]	
+7-5	552-554	om	_	_	_	_	
+7-6	555-559	seks	_	_	_	_	
+7-7	560-567	måneder	_	_	_	_	
+7-8	568-571	for	_	_	_	_	
+7-9	572-573	å	_	_	_	_	
+7-10	574-576	se	_	_	_	_	
+7-11	577-584	hvordan	_	_	_	_	
+7-12	585-588	hun	_	_	_	_	
+7-13	589-597	reagerer	_	_	_	_	
+7-14	598-600	på	_	_	_	_	
+7-15	601-604	den	_	_	_	_	
+7-16	605-608	nye	_	_	_	_	
+7-17	609-621	behandlingen	_	_	_	_	
+7-18	621-622	.	_	_	_	_	

@@ -1,0 +1,124 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Notat 1 - 05.07.2024
+#Text=Pasienten kommer til konsultasjon på grunn av vedvarende tretthet, vektøkning og konsentrasjonsvansker de siste 6 månedene.
+1-1	0-5	Notat	_	_	_	_	
+1-2	6-7	1	_	_	_	_	
+1-3	8-9	-	_	_	_	_	
+1-4	10-20	05.07.2024	_	_	_	_	
+1-5	21-30	Pasienten	_	_	_	_	
+1-6	31-37	kommer	_	_	_	_	
+1-7	38-41	til	_	_	_	_	
+1-8	42-54	konsultasjon	_	_	_	_	
+1-9	55-57	på	_	_	_	_	
+1-10	58-63	grunn	_	_	_	_	
+1-11	64-66	av	_	_	_	_	
+1-12	67-77	vedvarende	BEFOREOVERLAP[1]	CONDITION[1]	_	_	
+1-13	78-86	tretthet	BEFOREOVERLAP[1]	CONDITION[1]	_	_	
+1-14	86-87	,	_	_	_	_	
+1-15	88-98	vektøkning	BEFOREOVERLAP	CONDITION	_	_	
+1-16	99-101	og	_	_	_	_	
+1-17	102-123	konsentrasjonsvansker	BEFOREOVERLAP	CONDITION	_	_	
+1-18	124-126	de	_	_	_	_	
+1-19	127-132	siste	_	_	_	_	
+1-20	133-134	6	_	_	_	_	
+1-21	135-143	månedene	_	_	_	_	
+1-22	143-144	.	_	_	_	_	
+
+#Text=Hun forteller at hun har gått opp ca. 7 kg til tross for uendret kosthold og moderat fysisk aktivitet.
+2-1	145-148	Hun	_	_	_	_	
+2-2	149-158	forteller	_	_	_	_	
+2-3	159-161	at	_	_	_	_	
+2-4	162-165	hun	_	_	_	_	
+2-5	166-169	har	_	_	_	_	
+2-6	170-174	gått	OVERLAP[2]	CONDITION[2]	_	_	
+2-7	175-178	opp	OVERLAP[2]	CONDITION[2]	_	_	
+2-8	179-181	ca	OVERLAP[2]	CONDITION[2]	_	_	
+2-9	181-182	.	OVERLAP[2]	CONDITION[2]	_	_	
+2-10	183-184	7	OVERLAP[2]	CONDITION[2]	_	_	
+2-11	185-187	kg	OVERLAP[2]	CONDITION[2]	_	_	
+2-12	188-191	til	_	_	_	_	
+2-13	192-197	tross	_	_	_	_	
+2-14	198-201	for	_	_	_	_	
+2-15	202-209	uendret	_	_	_	_	
+2-16	210-218	kosthold	_	_	_	_	
+2-17	219-221	og	_	_	_	_	
+2-18	222-229	moderat	OVERLAP[3]	CONDITION[3]	_	_	
+2-19	230-236	fysisk	OVERLAP[3]	CONDITION[3]	_	_	
+2-20	237-246	aktivitet	OVERLAP[3]	CONDITION[3]	_	_	
+2-21	246-247	.	_	_	_	_	
+
+#Text=Hun klager også over tørr hud og hårtap.
+3-1	248-251	Hun	_	_	_	_	
+3-2	252-258	klager	_	_	_	_	
+3-3	259-263	også	_	_	_	_	
+3-4	264-268	over	_	_	_	_	
+3-5	269-273	tørr	OVERLAP[4]	CONDITION[4]	_	_	
+3-6	274-277	hud	OVERLAP[4]	CONDITION[4]	_	_	
+3-7	278-280	og	_	_	_	_	
+3-8	281-287	hårtap	OVERLAP	CONDITION	OVERLAP	3-5[4_0]	
+3-9	287-288	.	_	_	_	_	
+
+#Text=Ingen andre betydelige symptomer, men hun lurer på om stress kan være en medvirkende faktor.
+4-1	289-294	Ingen	_	_	_	_	
+4-2	295-300	andre	_	_	_	_	
+4-3	301-311	betydelige	_	_	_	_	
+4-4	312-321	symptomer	_	_	_	_	
+4-5	321-322	,	_	_	_	_	
+4-6	323-326	men	_	_	_	_	
+4-7	327-330	hun	_	_	_	_	
+4-8	331-336	lurer	_	_	_	_	
+4-9	337-339	på	_	_	_	_	
+4-10	340-342	om	_	_	_	_	
+4-11	343-349	stress	_	_	_	_	
+4-12	350-353	kan	_	_	_	_	
+4-13	354-358	være	_	_	_	_	
+4-14	359-361	en	_	_	_	_	
+4-15	362-373	medvirkende	_	_	_	_	
+4-16	374-380	faktor	_	_	_	_	
+4-17	380-381	.	_	_	_	_	
+
+#Text=Jeg mistenker mulighet for hypotyreose og tar blodprøver inkludert TSH, fritt T4 og anti-TPO.
+5-1	382-385	Jeg	_	_	_	_	
+5-2	386-395	mistenker	_	_	_	_	
+5-3	396-404	mulighet	_	_	_	_	
+5-4	405-408	for	_	_	_	_	
+5-5	409-420	hypotyreose	_	_	_	_	
+5-6	421-423	og	_	_	_	_	
+5-7	424-427	tar	_	_	_	_	
+5-8	428-438	blodprøver	OVERLAP	TREATMENT	_	_	
+5-9	439-448	inkludert	_	_	_	_	
+5-10	449-452	TSH	OVERLAP	TREATMENT	OVERLAP	5-8	
+5-11	452-453	,	_	_	_	_	
+5-12	454-459	fritt	OVERLAP[5]	TREATMENT[5]	OVERLAP|OVERLAP	5-10[0_5]|5-8[0_5]	
+5-13	460-462	T4	OVERLAP[5]	TREATMENT[5]	_	_	
+5-14	463-465	og	_	_	_	_	
+5-15	466-474	anti-TPO	OVERLAP	TREATMENT	OVERLAP|OVERLAP	5-10|5-8	
+5-16	474-475	.	_	_	_	_	
+
+#Text=Anbefaler også å ta jernstatus og vitamin D-nivåer, samt screening for diabetes.
+6-1	476-485	Anbefaler	_	_	_	_	
+6-2	486-490	også	_	_	_	_	
+6-3	491-492	å	_	_	_	_	
+6-4	493-495	ta	_	_	_	_	
+6-5	496-506	jernstatus	AFTER	TREATMENT	_	_	
+6-6	507-509	og	_	_	_	_	
+6-7	510-517	vitamin	AFTER[6]	TREATMENT[6]	OVERLAP	6-5[0_6]	
+6-8	518-526	D-nivåer	AFTER[6]	TREATMENT[6]	_	_	
+6-9	526-527	,	_	_	_	_	
+6-10	528-532	samt	_	_	_	_	
+6-11	533-542	screening	AFTER[7]	TREATMENT[7]	OVERLAP|OVERLAP	6-7[6_7]|6-5[0_7]	
+6-12	543-546	for	AFTER[7]	TREATMENT[7]	_	_	
+6-13	547-555	diabetes	AFTER[7]	TREATMENT[7]	_	_	
+6-14	555-556	.	_	_	_	_	
+
+#Text=Videre plan avhenger av prøvesvarene.
+7-1	557-563	Videre	_	_	_	_	
+7-2	564-568	plan	_	_	_	_	
+7-3	569-577	avhenger	_	_	_	_	
+7-4	578-580	av	_	_	_	_	
+7-5	581-593	prøvesvarene	_	_	_	_	
+7-6	593-594	.	_	_	_	_	

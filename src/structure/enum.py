@@ -7,7 +7,6 @@ class Dataset(Enum):
     TRE_TLINK = 3
     SENTENCES = 4
 
-
 class Task(Enum):
     TOKEN = 1
     SEQUENCE = 2
@@ -16,18 +15,17 @@ class Task(Enum):
 class TR_DCT(Enum):
     AFTER = 1
     BEFORE = 2
-    DURING = 3  # TODO: Change this out later
+    OVERLAP = 3 
     BEFOREOVERLAP = 4
 
 
 class TR_TLINK(Enum):
-    AFTER = 1
-    BEFORE = 2
-    DURING = 3  # TODO: change this out later
+    BEFORE = 1
+    OVERLAP = 2  
+    NONE = 3
 
 
 class ME(Enum):
-    DISEASE = 1
-    SYMPTOM = 2
-    TREATMENT = 3
+    CONDITION = 1
+    TREATMENT = 2
 

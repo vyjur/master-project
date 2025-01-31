@@ -1,0 +1,112 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 4 (2023-11-24)
+#Text=Kari kom inn til oppfølging etter å ha fullført den andre runden med kemoterapi.
+1-1	0-12	Journalnotat	
+1-2	13-14	4	
+1-3	15-16	(	
+1-4	16-20	2023	
+1-5	20-21	-	
+1-6	21-23	11	
+1-7	23-24	-	
+1-8	24-26	24	
+1-9	26-27	)	
+1-10	28-32	Kari	
+1-11	33-36	kom	
+1-12	37-40	inn	
+1-13	41-44	til	
+1-14	45-55	oppfølging	
+1-15	56-61	etter	
+1-16	62-63	å	
+1-17	64-66	ha	
+1-18	67-75	fullført	
+1-19	76-79	den	
+1-20	80-85	andre	
+1-21	86-92	runden	
+1-22	93-96	med	
+1-23	97-107	kemoterapi	
+1-24	107-108	.	
+
+#Text=Hun rapporterte at alt gikk bra, og at hun kunne leve et nærmest normalt liv.
+2-1	109-112	Hun	
+2-2	113-124	rapporterte	
+2-3	125-127	at	
+2-4	128-131	alt	
+2-5	132-136	gikk	
+2-6	137-140	bra	
+2-7	140-141	,	
+2-8	142-144	og	
+2-9	145-147	at	
+2-10	148-151	hun	
+2-11	152-157	kunne	
+2-12	158-162	leve	
+2-13	163-165	et	
+2-14	166-173	nærmest	
+2-15	174-181	normalt	
+2-16	182-185	liv	
+2-17	185-186	.	
+
+#Text=Tumoren hadde fortsatt minsket i størrelse, og hun hadde fått bedre appetitt.
+3-1	187-194	Tumoren	
+3-2	195-200	hadde	
+3-3	201-209	fortsatt	
+3-4	210-217	minsket	
+3-5	218-219	i	
+3-6	220-229	størrelse	
+3-7	229-230	,	
+3-8	231-233	og	
+3-9	234-237	hun	
+3-10	238-243	hadde	
+3-11	244-248	fått	
+3-12	249-254	bedre	
+3-13	255-263	appetitt	
+3-14	263-264	.	
+
+#Text=Vi diskuterede viktigheten av å holde seg fysisk aktiv og unngå stress.
+4-1	265-267	Vi	
+4-2	268-279	diskuterede	
+4-3	280-291	viktigheten	
+4-4	292-294	av	
+4-5	295-296	å	
+4-6	297-302	holde	
+4-7	303-306	seg	
+4-8	307-313	fysisk	
+4-9	314-319	aktiv	
+4-10	320-322	og	
+4-11	323-328	unngå	
+4-12	329-335	stress	
+4-13	335-336	.	
+
+#Text=Kari var meget tilfreds med resultatet av behandlingen og takket meg for støtten.
+5-1	337-341	Kari	
+5-2	342-345	var	
+5-3	346-351	meget	
+5-4	352-360	tilfreds	
+5-5	361-364	med	
+5-6	365-375	resultatet	
+5-7	376-378	av	
+5-8	379-391	behandlingen	
+5-9	392-394	og	
+5-10	395-401	takket	
+5-11	402-405	meg	
+5-12	406-409	for	
+5-13	410-417	støtten	
+5-14	417-418	.	
+
+#Text=Vi planla en oppfølging om seks måneder for å sikre at alt går godt.
+6-1	419-421	Vi	
+6-2	422-428	planla	
+6-3	429-431	en	
+6-4	432-442	oppfølging	
+6-5	443-445	om	
+6-6	446-450	seks	
+6-7	451-458	måneder	
+6-8	459-462	for	
+6-9	463-464	å	
+6-10	465-470	sikre	
+6-11	471-473	at	
+6-12	474-477	alt	
+6-13	478-481	går	
+6-14	482-486	godt	
+6-15	486-487	.	

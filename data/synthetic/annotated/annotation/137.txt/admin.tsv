@@ -1,0 +1,62 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 3 - 04.07.2023**
+#Text=
+#Text=Pasienten kommer tilbake etter 2 uker med antibiotika-behandling.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	3	_	_	_	_	
+1-3	15-16	-	_	_	_	_	
+1-4	17-27	04.07.2023	_	_	_	_	
+1-5	27-28	*	_	_	_	_	
+1-6	28-29	*	_	_	_	_	
+1-7	31-40	Pasienten	_	_	_	_	
+1-8	41-47	kommer	_	_	_	_	
+1-9	48-55	tilbake	_	_	_	_	
+1-10	56-61	etter	_	_	_	_	
+1-11	62-63	2	_	_	_	_	
+1-12	64-68	uker	_	_	_	_	
+1-13	69-72	med	_	_	_	_	
+1-14	73-95	antibiotika-behandling	BEFOREOVERLAP	CONDITION	_	_	
+1-15	95-96	.	_	_	_	_	
+
+#Text=Hun rapporterer en ytterligere forbedring i symptomer og en reduksjon i flankesmertene.
+2-1	97-100	Hun	_	_	_	_	
+2-2	101-112	rapporterer	_	_	_	_	
+2-3	113-115	en	_	_	_	_	
+2-4	116-127	ytterligere	_	_	_	_	
+2-5	128-138	forbedring	OVERLAP[1]	CONDITION[1]	_	_	
+2-6	139-140	i	OVERLAP[1]	CONDITION[1]	_	_	
+2-7	141-150	symptomer	OVERLAP[1]	CONDITION[1]	_	_	
+2-8	151-153	og	_	_	_	_	
+2-9	154-156	en	_	_	_	_	
+2-10	157-166	reduksjon	OVERLAP[2]	CONDITION[2]	_	_	
+2-11	167-168	i	OVERLAP[2]	CONDITION[2]	_	_	
+2-12	169-183	flankesmertene	OVERLAP[2]	CONDITION[2]	_	_	
+2-13	183-184	.	_	_	_	_	
+
+#Text=Jeg fortsätter å justere antibiotika-dosen og foreslår at pasienten begynner med en forebyggende behandling med D-mannose for å forebygge fremtidige urinveisinfeksjoner.
+3-1	185-188	Jeg	_	_	_	_	
+3-2	189-199	fortsätter	_	_	_	_	
+3-3	200-201	å	_	_	_	_	
+3-4	202-209	justere	AFTER[3]	TREATMENT[3]	_	_	
+3-5	210-227	antibiotika-dosen	AFTER[3]	TREATMENT[3]	_	_	
+3-6	228-230	og	_	_	_	_	
+3-7	231-239	foreslår	_	_	_	_	
+3-8	240-242	at	_	_	_	_	
+3-9	243-252	pasienten	_	_	_	_	
+3-10	253-261	begynner	_	_	_	_	
+3-11	262-265	med	_	_	_	_	
+3-12	266-268	en	_	_	_	_	
+3-13	269-281	forebyggende	_	_	_	_	
+3-14	282-292	behandling	AFTER	TREATMENT	_	_	
+3-15	293-296	med	_	_	_	_	
+3-16	297-306	D-mannose	AFTER	TREATMENT	OVERLAP	3-14	
+3-17	307-310	for	_	_	_	_	
+3-18	311-312	å	_	_	_	_	
+3-19	313-322	forebygge	_	_	_	_	
+3-20	323-333	fremtidige	_	_	_	_	
+3-21	334-353	urinveisinfeksjoner	_	_	_	_	
+3-22	353-354	.	_	_	_	_	

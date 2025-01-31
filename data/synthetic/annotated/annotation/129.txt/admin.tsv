@@ -1,0 +1,92 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 1 - 15.04.2023**
+#Text=
+#Text=Pasienten, en 50-årig kvinne, kommer til klinikken med symptomer på kronisk obstruktiv lungesykdom (KOLS), inkludert hoste, tungpust og åndenød.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	1	_	_	_	_	
+1-3	15-16	-	_	_	_	_	
+1-4	17-27	15.04.2023	_	_	_	_	
+1-5	27-28	*	_	_	_	_	
+1-6	28-29	*	_	_	_	_	
+1-7	31-40	Pasienten	_	_	_	_	
+1-8	40-41	,	_	_	_	_	
+1-9	42-44	en	_	_	_	_	
+1-10	45-47	50	_	_	_	_	
+1-11	47-48	-	_	_	_	_	
+1-12	48-52	årig	_	_	_	_	
+1-13	53-59	kvinne	_	_	_	_	
+1-14	59-60	,	_	_	_	_	
+1-15	61-67	kommer	_	_	_	_	
+1-16	68-71	til	_	_	_	_	
+1-17	72-81	klinikken	_	_	_	_	
+1-18	82-85	med	_	_	_	_	
+1-19	86-95	symptomer	OVERLAP[1]	CONDITION[1]	_	_	
+1-20	96-98	på	OVERLAP[1]	CONDITION[1]	_	_	
+1-21	99-106	kronisk	OVERLAP[1]	CONDITION[1]	_	_	
+1-22	107-117	obstruktiv	OVERLAP[1]	CONDITION[1]	_	_	
+1-23	118-129	lungesykdom	OVERLAP[1]	CONDITION[1]	_	_	
+1-24	130-131	(	OVERLAP[1]	CONDITION[1]	_	_	
+1-25	131-135	KOLS	OVERLAP[1]	CONDITION[1]	_	_	
+1-26	135-136	)	OVERLAP[1]	CONDITION[1]	_	_	
+1-27	136-137	,	_	_	_	_	
+1-28	138-147	inkludert	_	_	_	_	
+1-29	148-153	hoste	OVERLAP	CONDITION	OVERLAP	1-19[1_0]	
+1-30	153-154	,	_	_	_	_	
+1-31	155-163	tungpust	OVERLAP	CONDITION	OVERLAP	1-19[1_0]	
+1-32	164-166	og	_	_	_	_	
+1-33	167-174	åndenød	OVERLAP	CONDITION	OVERLAP	1-19[1_0]	
+1-34	174-175	.	_	_	_	_	
+
+#Text=Hun har tidligere vært røyker og har vært eksponert for luftforurensning på jobben.
+2-1	176-179	Hun	_	_	_	_	
+2-2	180-183	har	_	_	_	_	
+2-3	184-193	tidligere	_	_	_	_	
+2-4	194-198	vært	_	_	_	_	
+2-5	199-205	røyker	BEFORE	CONDITION	_	_	
+2-6	206-208	og	_	_	_	_	
+2-7	209-212	har	_	_	_	_	
+2-8	213-217	vært	_	_	_	_	
+2-9	218-227	eksponert	BEFORE[2]	CONDITION[2]	_	_	
+2-10	228-231	for	BEFORE[2]	CONDITION[2]	_	_	
+2-11	232-248	luftforurensning	BEFORE[2]	CONDITION[2]	_	_	
+2-12	249-251	på	_	_	_	_	
+2-13	252-258	jobben	_	_	_	_	
+2-14	258-259	.	_	_	_	_	
+
+#Text=Ved undersøkelse finner jeg en reduksjon i lungfunksjonen og en øket RV-nivå.
+3-1	260-263	Ved	_	_	_	_	
+3-2	264-276	undersøkelse	OVERLAP	TREATMENT	BEFORE	1-19[1_0]	
+3-3	277-283	finner	_	_	_	_	
+3-4	284-287	jeg	_	_	_	_	
+3-5	288-290	en	_	_	_	_	
+3-6	291-300	reduksjon	OVERLAP[3]	CONDITION[3]	BEFORE	3-2[0_3]	
+3-7	301-302	i	OVERLAP[3]	CONDITION[3]	_	_	
+3-8	303-317	lungfunksjonen	OVERLAP[3]	CONDITION[3]	_	_	
+3-9	318-320	og	_	_	_	_	
+3-10	321-323	en	_	_	_	_	
+3-11	324-328	øket	OVERLAP[4]	CONDITION[4]	BEFORE	3-2[0_4]	
+3-12	329-336	RV-nivå	OVERLAP[4]	CONDITION[4]	_	_	
+3-13	336-337	.	_	_	_	_	
+
+#Text=Jeg starter pasienten på en behandling med inhalasjonssteroider og en langtidsvirkende bronkodilator for å kontrollere symptomer.
+4-1	338-341	Jeg	_	_	_	_	
+4-2	342-349	starter	_	_	_	_	
+4-3	350-359	pasienten	_	_	_	_	
+4-4	360-362	på	_	_	_	_	
+4-5	363-365	en	_	_	_	_	
+4-6	366-376	behandling	AFTER	TREATMENT	_	_	
+4-7	377-380	med	_	_	_	_	
+4-8	381-401	inhalasjonssteroider	AFTER	TREATMENT	OVERLAP	4-6	
+4-9	402-404	og	_	_	_	_	
+4-10	405-407	en	_	_	_	_	
+4-11	408-424	langtidsvirkende	AFTER[5]	TREATMENT[5]	OVERLAP	4-6[0_5]	
+4-12	425-438	bronkodilator	AFTER[5]	TREATMENT[5]	_	_	
+4-13	439-442	for	_	_	_	_	
+4-14	443-444	å	_	_	_	_	
+4-15	445-456	kontrollere	_	_	_	_	
+4-16	457-466	symptomer	_	_	_	_	
+4-17	466-467	.	_	_	_	_	

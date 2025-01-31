@@ -1,0 +1,54 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=20.04.2023:
+#Text=Oppfølging etter vurdering ved ME/CFS-team.
+1-1	0-10	20.04.2023	_	_	_	_	
+1-2	10-11	:	_	_	_	_	
+1-3	12-22	Oppfølging	OVERLAP	CONDITION	_	_	
+1-4	23-28	etter	_	_	_	_	
+1-5	29-38	vurdering	BEFORE[1]	TREATMENT[1]	_	_	
+1-6	39-42	ved	BEFORE[1]	TREATMENT[1]	_	_	
+1-7	43-45	ME	BEFORE[1]	TREATMENT[1]	_	_	
+1-8	45-46	/	BEFORE[1]	TREATMENT[1]	_	_	
+1-9	46-54	CFS-team	BEFORE[1]	TREATMENT[1]	_	_	
+1-10	54-55	.	_	_	_	_	
+
+#Text=Aktivitetsavpassing igangsatt. 100% sykemeldt.
+2-1	56-75	Aktivitetsavpassing	_	_	_	_	
+2-2	76-85	igangsatt	_	_	_	_	
+2-3	85-86	.	_	_	_	_	
+2-4	87-91	100%	AFTER[2]	CONDITION[2]	_	_	
+2-5	92-101	sykemeldt	AFTER[2]	CONDITION[2]	_	_	
+2-6	101-102	.	_	_	_	_	
+
+#Text=Søvnhygiene gjennomgått.
+3-1	103-114	Søvnhygiene	_	_	_	_	
+3-2	115-126	gjennomgått	_	_	_	_	
+3-3	126-127	.	_	_	_	_	
+
+#Text=Informasjon om energiøkonomisering.
+4-1	128-139	Informasjon	_	_	_	_	
+4-2	140-142	om	_	_	_	_	
+4-3	143-162	energiøkonomisering	_	_	_	_	
+4-4	162-163	.	_	_	_	_	
+
+#Text=Starter B12-injeksjoner på empirisk grunnlag.
+5-1	164-171	Starter	_	_	_	_	
+5-2	172-175	B12	AFTER[3]	TREATMENT[3]	_	_	
+5-3	175-176	-	AFTER[3]	TREATMENT[3]	_	_	
+5-4	176-187	injeksjoner	AFTER[3]	TREATMENT[3]	_	_	
+5-5	188-190	på	_	_	_	_	
+5-6	191-199	empirisk	_	_	_	_	
+5-7	200-208	grunnlag	_	_	_	_	
+5-8	208-209	.	_	_	_	_	
+
+#Text=Ny kontroll om 6 uker.
+6-1	210-212	Ny	_	_	_	_	
+6-2	213-221	kontroll	AFTER	TREATMENT	BEFORE|BEFORE	5-2[3_0]|2-4[2_0]	
+6-3	222-224	om	_	_	_	_	
+6-4	225-226	6	_	_	_	_	
+6-5	227-231	uker	_	_	_	_	
+6-6	231-232	.	_	_	_	_	

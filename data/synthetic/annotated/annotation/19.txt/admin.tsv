@@ -1,0 +1,183 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Notat 1 - 04.10.2024:
+#Text=Pasienten kommer til time grunnet et sår under høyre fot som har vært til stede i cirka 2 uker.
+1-1	0-5	Notat	_	_	_	_	
+1-2	6-7	1	_	_	_	_	
+1-3	8-9	-	_	_	_	_	
+1-4	10-20	04.10.2024	_	_	_	_	
+1-5	20-21	:	_	_	_	_	
+1-6	22-31	Pasienten	_	_	_	_	
+1-7	32-38	kommer	_	_	_	_	
+1-8	39-42	til	_	_	_	_	
+1-9	43-47	time	_	_	_	_	
+1-10	48-55	grunnet	_	_	_	_	
+1-11	56-58	et	_	_	_	_	
+1-12	59-62	sår	BEFOREOVERLAP[1]	CONDITION[1]	BEFORE|BEFORE	2-3[2_1]|2-15[3_1]	
+1-13	63-68	under	BEFOREOVERLAP[1]	CONDITION[1]	_	_	
+1-14	69-74	høyre	BEFOREOVERLAP[1]	CONDITION[1]	_	_	
+1-15	75-78	fot	BEFOREOVERLAP[1]	CONDITION[1]	_	_	
+1-16	79-82	som	_	_	_	_	
+1-17	83-86	har	_	_	_	_	
+1-18	87-91	vært	_	_	_	_	
+1-19	92-95	til	_	_	_	_	
+1-20	96-101	stede	_	_	_	_	
+1-21	102-103	i	_	_	_	_	
+1-22	104-109	cirka	_	_	_	_	
+1-23	110-111	2	_	_	_	_	
+1-24	112-116	uker	_	_	_	_	
+1-25	116-117	.	_	_	_	_	
+
+#Text=Han har diabetes type 2, diagnostisert for 8 år siden, og bruker metformin 1000 mg x 2 daglig.
+2-1	118-121	Han	_	_	_	_	
+2-2	122-125	har	_	_	_	_	
+2-3	126-134	diabetes	BEFOREOVERLAP[2]	CONDITION[2]	OVERLAP	2-15[3_2]	
+2-4	135-139	type	BEFOREOVERLAP[2]	CONDITION[2]	_	_	
+2-5	140-141	2	BEFOREOVERLAP[2]	CONDITION[2]	_	_	
+2-6	141-142	,	_	_	_	_	
+2-7	143-156	diagnostisert	_	_	_	_	
+2-8	157-160	for	_	_	_	_	
+2-9	161-162	8	_	_	_	_	
+2-10	163-165	år	_	_	_	_	
+2-11	166-171	siden	_	_	_	_	
+2-12	171-172	,	_	_	_	_	
+2-13	173-175	og	_	_	_	_	
+2-14	176-182	bruker	_	_	_	_	
+2-15	183-192	metformin	BEFOREOVERLAP[3]	TREATMENT[3]	OVERLAP	2-3[2_3]	
+2-16	193-197	1000	BEFOREOVERLAP[3]	TREATMENT[3]	_	_	
+2-17	198-200	mg	BEFOREOVERLAP[3]	TREATMENT[3]	_	_	
+2-18	201-202	x	_	_	_	_	
+2-19	203-204	2	_	_	_	_	
+2-20	205-211	daglig	_	_	_	_	
+2-21	211-212	.	_	_	_	_	
+
+#Text=Såret er rundt 2 cm i diameter, lokalisert på metatarsalhodet, og ser infisert ut med rødhet og pussdannelse.
+3-1	213-218	Såret	_	_	_	_	
+3-2	219-221	er	_	_	_	_	
+3-3	222-227	rundt	_	_	_	_	
+3-4	228-229	2	_	_	_	_	
+3-5	230-232	cm	_	_	_	_	
+3-6	233-234	i	_	_	_	_	
+3-7	235-243	diameter	_	_	_	_	
+3-8	243-244	,	_	_	_	_	
+3-9	245-255	lokalisert	_	_	_	_	
+3-10	256-258	på	_	_	_	_	
+3-11	259-274	metatarsalhodet	_	_	_	_	
+3-12	274-275	,	_	_	_	_	
+3-13	276-278	og	_	_	_	_	
+3-14	279-282	ser	_	_	_	_	
+3-15	283-291	infisert	OVERLAP[4]	CONDITION[4]	_	_	
+3-16	292-294	ut	OVERLAP[4]	CONDITION[4]	_	_	
+3-17	295-298	med	OVERLAP[4]	CONDITION[4]	_	_	
+3-18	299-305	rødhet	OVERLAP[4]	CONDITION[4]	_	_	
+3-19	306-308	og	OVERLAP[4]	CONDITION[4]	_	_	
+3-20	309-321	pussdannelse	OVERLAP[4]	CONDITION[4]	_	_	
+3-21	321-322	.	_	_	_	_	
+
+#Text=Pasienten har ikke hatt feber, men klager over smerter i foten når han går.
+4-1	323-332	Pasienten	_	_	_	_	
+4-2	333-336	har	_	_	_	_	
+4-3	337-341	ikke	_	_	_	_	
+4-4	342-346	hatt	_	_	_	_	
+4-5	347-352	feber	_	_	_	_	
+4-6	352-353	,	_	_	_	_	
+4-7	354-357	men	_	_	_	_	
+4-8	358-364	klager	_	_	_	_	
+4-9	365-369	over	_	_	_	_	
+4-10	370-377	smerter	OVERLAP[5]	CONDITION[5]	_	_	
+4-11	378-379	i	OVERLAP[5]	CONDITION[5]	_	_	
+4-12	380-385	foten	OVERLAP[5]	CONDITION[5]	_	_	
+4-13	386-389	når	_	_	_	_	
+4-14	390-393	han	_	_	_	_	
+4-15	394-397	går	_	_	_	_	
+4-16	397-398	.	_	_	_	_	
+
+#Text=Blodsukker er målt til 13 mmol/L i dag, noe forhøyet.
+5-1	399-409	Blodsukker	OVERLAP	CONDITION	_	_	
+5-2	410-412	er	_	_	_	_	
+5-3	413-417	målt	_	_	_	_	
+5-4	418-421	til	_	_	_	_	
+5-5	422-424	13	_	_	_	_	
+5-6	425-429	mmol	_	_	_	_	
+5-7	429-430	/	_	_	_	_	
+5-8	430-431	L	_	_	_	_	
+5-9	432-433	i	_	_	_	_	
+5-10	434-437	dag	_	_	_	_	
+5-11	437-438	,	_	_	_	_	
+5-12	439-442	noe	_	_	_	_	
+5-13	443-451	forhøyet	_	_	_	_	
+5-14	451-452	.	_	_	_	_	
+
+#Text=Klinisk undersøkelse viser svekket sensibilitet under foten, men ingen tegn til dyp infeksjon eller osteomyelitt.
+6-1	453-460	Klinisk	OVERLAP[6]	CONDITION[6]	_	_	
+6-2	461-473	undersøkelse	OVERLAP[6]	CONDITION[6]	_	_	
+6-3	474-479	viser	_	_	_	_	
+6-4	480-487	svekket	_	_	_	_	
+6-5	488-500	sensibilitet	OVERLAP[7]	CONDITION[7]	BEFORE	6-1[6_7]	
+6-6	501-506	under	OVERLAP[7]	CONDITION[7]	_	_	
+6-7	507-512	foten	OVERLAP[7]	CONDITION[7]	_	_	
+6-8	512-513	,	_	_	_	_	
+6-9	514-517	men	_	_	_	_	
+6-10	518-523	ingen	_	_	_	_	
+6-11	524-528	tegn	_	_	_	_	
+6-12	529-532	til	_	_	_	_	
+6-13	533-536	dyp	_	_	_	_	
+6-14	537-546	infeksjon	_	_	_	_	
+6-15	547-552	eller	_	_	_	_	
+6-16	553-565	osteomyelitt	_	_	_	_	
+6-17	565-566	.	_	_	_	_	
+
+#Text=Såret renses, og vi starter med antibiotika (dikloksacillin 500 mg x 3 i 10 dager).
+7-1	567-572	Såret	_	_	_	_	
+7-2	573-579	renses	_	_	_	_	
+7-3	579-580	,	_	_	_	_	
+7-4	581-583	og	_	_	_	_	
+7-5	584-586	vi	_	_	_	_	
+7-6	587-594	starter	_	_	_	_	
+7-7	595-598	med	_	_	_	_	
+7-8	599-610	antibiotika	_	_	_	_	
+7-9	611-612	(	_	_	_	_	
+7-10	612-626	dikloksacillin	_	_	_	_	
+7-11	627-630	500	_	_	_	_	
+7-12	631-633	mg	_	_	_	_	
+7-13	634-635	x	_	_	_	_	
+7-14	636-637	3	_	_	_	_	
+7-15	638-639	i	_	_	_	_	
+7-16	640-642	10	_	_	_	_	
+7-17	643-648	dager	_	_	_	_	
+7-18	648-649	)	_	_	_	_	
+7-19	649-650	.	_	_	_	_	
+
+#Text=Pasienten henvises til sårpoliklinikk for videre oppfølging.
+8-1	651-660	Pasienten	_	_	_	_	
+8-2	661-669	henvises	_	_	_	_	
+8-3	670-673	til	_	_	_	_	
+8-4	674-688	sårpoliklinikk	_	_	_	_	
+8-5	689-692	for	_	_	_	_	
+8-6	693-699	videre	_	_	_	_	
+8-7	700-710	oppfølging	_	_	_	_	
+8-8	710-711	.	_	_	_	_	
+
+#Text=Vi diskuterer også bedre blodsukkerkontroll, og pasienten får time hos diabetessykepleier for gjennomgang av kosthold og medisiner.
+9-1	712-714	Vi	_	_	_	_	
+9-2	715-725	diskuterer	_	_	_	_	
+9-3	726-730	også	_	_	_	_	
+9-4	731-736	bedre	_	_	_	_	
+9-5	737-755	blodsukkerkontroll	_	_	_	_	
+9-6	755-756	,	_	_	_	_	
+9-7	757-759	og	_	_	_	_	
+9-8	760-769	pasienten	_	_	_	_	
+9-9	770-773	får	_	_	_	_	
+9-10	774-778	time	_	_	_	_	
+9-11	779-782	hos	_	_	_	_	
+9-12	783-801	diabetessykepleier	_	_	_	_	
+9-13	802-805	for	_	_	_	_	
+9-14	806-817	gjennomgang	_	_	_	_	
+9-15	818-820	av	_	_	_	_	
+9-16	821-829	kosthold	_	_	_	_	
+9-17	830-832	og	_	_	_	_	
+9-18	833-842	medisiner	_	_	_	_	
+9-19	842-843	.	_	_	_	_	

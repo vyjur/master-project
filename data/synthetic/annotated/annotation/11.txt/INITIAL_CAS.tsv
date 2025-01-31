@@ -1,0 +1,132 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Notat 2 - 17.09.2024:
+#Text=Pasienten rapporterer bedring etter antibiotikakuren og kortisonbruk.
+1-1	0-5	Notat	
+1-2	6-7	2	
+1-3	8-9	-	
+1-4	10-20	17.09.2024	
+1-5	20-21	:	
+1-6	22-31	Pasienten	
+1-7	32-43	rapporterer	
+1-8	44-51	bedring	
+1-9	52-57	etter	
+1-10	58-74	antibiotikakuren	
+1-11	75-77	og	
+1-12	78-90	kortisonbruk	
+1-13	90-91	.	
+
+#Text=Hoste og ekspektorat har avtatt, og han opplever mindre tungpust.
+2-1	92-97	Hoste	
+2-2	98-100	og	
+2-3	101-112	ekspektorat	
+2-4	113-116	har	
+2-5	117-123	avtatt	
+2-6	123-124	,	
+2-7	125-127	og	
+2-8	128-131	han	
+2-9	132-140	opplever	
+2-10	141-147	mindre	
+2-11	148-156	tungpust	
+2-12	156-157	.	
+
+#Text=Spirometri viser fortsatt FEV1 på 47 %, men subjektivt opplever pasienten seg i bedre form.
+3-1	158-168	Spirometri	
+3-2	169-174	viser	
+3-3	175-183	fortsatt	
+3-4	184-188	FEV1	
+3-5	189-191	på	
+3-6	192-194	47	
+3-7	195-196	%	
+3-8	196-197	,	
+3-9	198-201	men	
+3-10	202-212	subjektivt	
+3-11	213-221	opplever	
+3-12	222-231	pasienten	
+3-13	232-235	seg	
+3-14	236-237	i	
+3-15	238-243	bedre	
+3-16	244-248	form	
+3-17	248-249	.	
+
+#Text=Oksygenmetningen er nå 93 % i hvile.
+4-1	250-266	Oksygenmetningen	
+4-2	267-269	er	
+4-3	270-272	nå	
+4-4	273-275	93	
+4-5	276-277	%	
+4-6	278-279	i	
+4-7	280-285	hvile	
+4-8	285-286	.	
+
+#Text=Vi diskuterer viktigheten av å holde seg unna triggere, spesielt i vintermånedene, og pasienten er enig i å ta influensavaksine og pneumokokkvaksine.
+5-1	287-289	Vi	
+5-2	290-300	diskuterer	
+5-3	301-312	viktigheten	
+5-4	313-315	av	
+5-5	316-317	å	
+5-6	318-323	holde	
+5-7	324-327	seg	
+5-8	328-332	unna	
+5-9	333-341	triggere	
+5-10	341-342	,	
+5-11	343-351	spesielt	
+5-12	352-353	i	
+5-13	354-368	vintermånedene	
+5-14	368-369	,	
+5-15	370-372	og	
+5-16	373-382	pasienten	
+5-17	383-385	er	
+5-18	386-390	enig	
+5-19	391-392	i	
+5-20	393-394	å	
+5-21	395-397	ta	
+5-22	398-414	influensavaksine	
+5-23	415-417	og	
+5-24	418-435	pneumokokkvaksine	
+5-25	435-436	.	
+
+#Text=Behandlingen med Spiriva og Ventoline fortsettes som før, men jeg foreslår å legge til en inhalasjonskombinasjon med ICS/LABA (Symbicort) for bedre langtidskontroll.
+6-1	437-449	Behandlingen	
+6-2	450-453	med	
+6-3	454-461	Spiriva	
+6-4	462-464	og	
+6-5	465-474	Ventoline	
+6-6	475-485	fortsettes	
+6-7	486-489	som	
+6-8	490-493	før	
+6-9	493-494	,	
+6-10	495-498	men	
+6-11	499-502	jeg	
+6-12	503-511	foreslår	
+6-13	512-513	å	
+6-14	514-519	legge	
+6-15	520-523	til	
+6-16	524-526	en	
+6-17	527-549	inhalasjonskombinasjon	
+6-18	550-553	med	
+6-19	554-557	ICS	
+6-20	557-558	/	
+6-21	558-562	LABA	
+6-22	563-564	(	
+6-23	564-573	Symbicort	
+6-24	573-574	)	
+6-25	575-578	for	
+6-26	579-584	bedre	
+6-27	585-601	langtidskontroll	
+6-28	601-602	.	
+
+#Text=Pasienten informeres om å kontakte lege ved tegn til ny forverring.
+7-1	603-612	Pasienten	
+7-2	613-623	informeres	
+7-3	624-626	om	
+7-4	627-628	å	
+7-5	629-637	kontakte	
+7-6	638-642	lege	
+7-7	643-646	ved	
+7-8	647-651	tegn	
+7-9	652-655	til	
+7-10	656-658	ny	
+7-11	659-669	forverring	
+7-12	669-670	.	

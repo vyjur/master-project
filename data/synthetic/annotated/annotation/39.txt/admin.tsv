@@ -1,0 +1,58 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=25.04.2023:
+#Text=MR uten patologiske funn.
+1-1	0-10	25.04.2023	_	_	_	_	
+1-2	10-11	:	_	_	_	_	
+1-3	12-14	MR	BEFORE	TREATMENT	_	_	
+1-4	15-19	uten	_	_	_	_	
+1-5	20-31	patologiske	_	_	_	_	
+1-6	32-36	funn	_	_	_	_	
+1-7	36-37	.	_	_	_	_	
+
+#Text=Effekt av Candesartan, men fortsatt ukentlige anfall.
+2-1	38-44	Effekt	_	_	_	_	
+2-2	45-47	av	_	_	_	_	
+2-3	48-59	Candesartan	BEFORE	CONDITION	_	_	
+2-4	59-60	,	_	_	_	_	
+2-5	61-64	men	_	_	_	_	
+2-6	65-73	fortsatt	_	_	_	_	
+2-7	74-83	ukentlige	OVERLAP[1]	CONDITION[1]	_	_	
+2-8	84-90	anfall	OVERLAP[1]	CONDITION[1]	_	_	
+2-9	90-91	.	_	_	_	_	
+
+#Text=Øker til 16mg x1.
+3-1	92-96	Øker	AFTER[2]	TREATMENT[2]	_	_	
+3-2	97-100	til	AFTER[2]	TREATMENT[2]	_	_	
+3-3	101-105	16mg	AFTER[2]	TREATMENT[2]	_	_	
+3-4	106-108	x1	_	_	_	_	
+3-5	108-109	.	_	_	_	_	
+
+#Text=Pasienten rapporterer god nytte av fysioterapi.
+4-1	110-119	Pasienten	_	_	_	_	
+4-2	120-131	rapporterer	_	_	_	_	
+4-3	132-135	god	_	_	_	_	
+4-4	136-141	nytte	_	_	_	_	
+4-5	142-144	av	_	_	_	_	
+4-6	145-156	fysioterapi	BEFORE	CONDITION	_	_	
+4-7	156-157	.	_	_	_	_	
+
+#Text=Anbefaler fortsatt regelmessig trening og avspenningsøvelser.
+5-1	158-167	Anbefaler	_	_	_	_	
+5-2	168-176	fortsatt	_	_	_	_	
+5-3	177-188	regelmessig	AFTER[3]	CONDITION[3]	_	_	
+5-4	189-196	trening	AFTER[3]	CONDITION[3]	_	_	
+5-5	197-199	og	_	_	_	_	
+5-6	200-218	avspenningsøvelser	AFTER	CONDITION	_	_	
+5-7	218-219	.	_	_	_	_	
+
+#Text=Avtaler kontroll om 2 måneder.
+6-1	220-227	Avtaler	_	_	_	_	
+6-2	228-236	kontroll	AFTER	TREATMENT	BEFORE|BEFORE	5-3[3_0]|5-6	
+6-3	237-239	om	_	_	_	_	
+6-4	240-241	2	_	_	_	_	
+6-5	242-249	måneder	_	_	_	_	
+6-6	249-250	.	_	_	_	_	

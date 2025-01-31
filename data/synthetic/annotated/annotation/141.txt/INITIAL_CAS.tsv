@@ -1,0 +1,97 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 1 - 15.08.2023**
+#Text=
+#Text=Pasienten, en 40-årig mann, kommer til klinikken med symptomer på søvnvansker, inkludert vansker med å sove inn, urolig søvn og daglig trøtthet.
+1-1	0-12	Journalnotat	
+1-2	13-14	1	
+1-3	15-16	-	
+1-4	17-27	15.08.2023	
+1-5	27-28	*	
+1-6	28-29	*	
+1-7	31-40	Pasienten	
+1-8	40-41	,	
+1-9	42-44	en	
+1-10	45-47	40	
+1-11	47-48	-	
+1-12	48-52	årig	
+1-13	53-57	mann	
+1-14	57-58	,	
+1-15	59-65	kommer	
+1-16	66-69	til	
+1-17	70-79	klinikken	
+1-18	80-83	med	
+1-19	84-93	symptomer	
+1-20	94-96	på	
+1-21	97-108	søvnvansker	
+1-22	108-109	,	
+1-23	110-119	inkludert	
+1-24	120-127	vansker	
+1-25	128-131	med	
+1-26	132-133	å	
+1-27	134-138	sove	
+1-28	139-142	inn	
+1-29	142-143	,	
+1-30	144-150	urolig	
+1-31	151-155	søvn	
+1-32	156-158	og	
+1-33	159-165	daglig	
+1-34	166-174	trøtthet	
+1-35	174-175	.	
+
+#Text=Han har tidligere vært frisk og aktiv, men har merket en gradvis forverring av symptomer over de siste månedene.
+2-1	176-179	Han	
+2-2	180-183	har	
+2-3	184-193	tidligere	
+2-4	194-198	vært	
+2-5	199-204	frisk	
+2-6	205-207	og	
+2-7	208-213	aktiv	
+2-8	213-214	,	
+2-9	215-218	men	
+2-10	219-222	har	
+2-11	223-229	merket	
+2-12	230-232	en	
+2-13	233-240	gradvis	
+2-14	241-251	forverring	
+2-15	252-254	av	
+2-16	255-264	symptomer	
+2-17	265-269	over	
+2-18	270-272	de	
+2-19	273-278	siste	
+2-20	279-287	månedene	
+2-21	287-288	.	
+
+#Text=Ved undersøkelse finner jeg en normal fysisk undersøkelse, men en øket Epworth Sleepiness Scale-nivå.
+3-1	289-292	Ved	
+3-2	293-305	undersøkelse	
+3-3	306-312	finner	
+3-4	313-316	jeg	
+3-5	317-319	en	
+3-6	320-326	normal	
+3-7	327-333	fysisk	
+3-8	334-346	undersøkelse	
+3-9	346-347	,	
+3-10	348-351	men	
+3-11	352-354	en	
+3-12	355-359	øket	
+3-13	360-367	Epworth	
+3-14	368-378	Sleepiness	
+3-15	379-389	Scale-nivå	
+3-16	389-390	.	
+
+#Text=Jeg starter pasienten på en behandling med melatonin for å kontrollere symptomer.
+4-1	391-394	Jeg	
+4-2	395-402	starter	
+4-3	403-412	pasienten	
+4-4	413-415	på	
+4-5	416-418	en	
+4-6	419-429	behandling	
+4-7	430-433	med	
+4-8	434-443	melatonin	
+4-9	444-447	for	
+4-10	448-449	å	
+4-11	450-461	kontrollere	
+4-12	462-471	symptomer	
+4-13	471-472	.	

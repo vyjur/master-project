@@ -1,0 +1,59 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=05.03.2023:
+#Text=Kvinne 45 år med nyoppdaget hypothyreose.
+1-1	0-10	05.03.2023	
+1-2	10-11	:	
+1-3	12-18	Kvinne	
+1-4	19-21	45	
+1-5	22-24	år	
+1-6	25-28	med	
+1-7	29-39	nyoppdaget	
+1-8	40-52	hypothyreose	
+1-9	52-53	.	
+
+#Text=TSH 12.5, fT4 8.2.
+2-1	54-57	TSH	
+2-2	58-62	12.5	
+2-3	62-63	,	
+2-4	64-67	fT4	
+2-5	68-71	8.2	
+2-6	71-72	.	
+
+#Text=Rapporterer tretthet, vektøkning og hårtap siste 6 måneder.
+3-1	73-84	Rapporterer	
+3-2	85-93	tretthet	
+3-3	93-94	,	
+3-4	95-105	vektøkning	
+3-5	106-108	og	
+3-6	109-115	hårtap	
+3-7	116-121	siste	
+3-8	122-123	6	
+3-9	124-131	måneder	
+3-10	131-132	.	
+
+#Text=Starter Levaxin 50µg x1.
+4-1	133-140	Starter	
+4-2	141-148	Levaxin	
+4-3	149-153	50µg	
+4-4	154-156	x1	
+4-5	156-157	.	
+
+#Text=Bestiller kontroll av stoffskifte om 6 uker.
+5-1	158-167	Bestiller	
+5-2	168-176	kontroll	
+5-3	177-179	av	
+5-4	180-191	stoffskifte	
+5-5	192-194	om	
+5-6	195-196	6	
+5-7	197-201	uker	
+5-8	201-202	.	
+
+#Text=Informerer om gradvis innsettende effekt.
+6-1	203-213	Informerer	
+6-2	214-216	om	
+6-3	217-224	gradvis	
+6-4	225-236	innsettende	
+6-5	237-243	effekt	
+6-6	243-244	.	

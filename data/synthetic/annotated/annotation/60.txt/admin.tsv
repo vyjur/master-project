@@ -1,0 +1,54 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=28.03.2023:
+#Text=Sigmoidoskopi viser moderat til alvorlig betennelse til 30 cm.
+1-1	0-10	28.03.2023	_	_	_	_	
+1-2	10-11	:	_	_	_	_	
+1-3	12-25	Sigmoidoskopi	BEFORE	TREATMENT	_	_	
+1-4	26-31	viser	_	_	_	_	
+1-5	32-39	moderat	OVERLAP[1]	CONDITION[1]	_	_	
+1-6	40-43	til	OVERLAP[1]	CONDITION[1]	_	_	
+1-7	44-52	alvorlig	OVERLAP[1]	CONDITION[1]	_	_	
+1-8	53-63	betennelse	OVERLAP[1]	CONDITION[1]	_	_	
+1-9	64-67	til	_	_	_	_	
+1-10	68-70	30	_	_	_	_	
+1-11	71-73	cm	_	_	_	_	
+1-12	73-74	.	_	_	_	_	
+
+#Text=Biopsier tatt.
+2-1	75-83	Biopsier	_	_	_	_	
+2-2	84-88	tatt	_	_	_	_	
+2-3	88-89	.	_	_	_	_	
+
+#Text=Fortsatt hyppig avføring.
+3-1	90-98	Fortsatt	_	_	_	_	
+3-2	99-105	hyppig	OVERLAP[2]	CONDITION[2]	_	_	
+3-3	106-114	avføring	OVERLAP[2]	CONDITION[2]	_	_	
+3-4	114-115	.	_	_	_	_	
+
+#Text=Starter Remicade-induksjon etter negative TB-prøver.
+4-1	116-123	Starter	_	_	_	_	
+4-2	124-142	Remicade-induksjon	AFTER	TREATMENT	_	_	
+4-3	143-148	etter	_	_	_	_	
+4-4	149-157	negative	OVERLAP[3]	TREATMENT[3]	_	_	
+4-5	158-167	TB-prøver	OVERLAP[3]	TREATMENT[3]	_	_	
+4-6	167-168	.	_	_	_	_	
+
+#Text=Trapper ned Prednisolon etter skjema.
+5-1	169-176	Trapper	AFTER[4]	TREATMENT[4]	_	_	
+5-2	177-180	ned	AFTER[4]	TREATMENT[4]	_	_	
+5-3	181-192	Prednisolon	AFTER[4]	TREATMENT[4]	_	_	
+5-4	193-198	etter	_	_	_	_	
+5-5	199-205	skjema	_	_	_	_	
+5-6	205-206	.	_	_	_	_	
+
+#Text=Ny kontroll om 2 uker.
+6-1	207-209	Ny	_	_	_	_	
+6-2	210-218	kontroll	AFTER	TREATMENT	BEFORE|BEFORE	5-1[4_0]|4-2	
+6-3	219-221	om	_	_	_	_	
+6-4	222-223	2	_	_	_	_	
+6-5	224-228	uker	_	_	_	_	
+6-6	228-229	.	_	_	_	_	

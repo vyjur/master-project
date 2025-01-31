@@ -1,0 +1,162 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 1 (2023-09-12)
+#Text=Per møtte meg i dag med klagene om brannende smerter ved pis, frekvent pisongtvang og tynne pisstrømmet.
+1-1	0-12	Journalnotat	
+1-2	13-14	1	
+1-3	15-16	(	
+1-4	16-20	2023	
+1-5	20-21	-	
+1-6	21-23	09	
+1-7	23-24	-	
+1-8	24-26	12	
+1-9	26-27	)	
+1-10	28-31	Per	
+1-11	32-37	møtte	
+1-12	38-41	meg	
+1-13	42-43	i	
+1-14	44-47	dag	
+1-15	48-51	med	
+1-16	52-59	klagene	
+1-17	60-62	om	
+1-18	63-72	brannende	
+1-19	73-80	smerter	
+1-20	81-84	ved	
+1-21	85-88	pis	
+1-22	88-89	,	
+1-23	90-98	frekvent	
+1-24	99-110	pisongtvang	
+1-25	111-113	og	
+1-26	114-119	tynne	
+1-27	120-131	pisstrømmet	
+1-28	131-132	.	
+
+#Text=Han har en historie av rekurrente urinveisinfeksjoner (UTI), spesielt cystitt, og har tidligere blitt behandlet med antibiotika.
+2-1	133-136	Han	
+2-2	137-140	har	
+2-3	141-143	en	
+2-4	144-152	historie	
+2-5	153-155	av	
+2-6	156-166	rekurrente	
+2-7	167-186	urinveisinfeksjoner	
+2-8	187-188	(	
+2-9	188-191	UTI	
+2-10	191-192	)	
+2-11	192-193	,	
+2-12	194-202	spesielt	
+2-13	203-210	cystitt	
+2-14	210-211	,	
+2-15	212-214	og	
+2-16	215-218	har	
+2-17	219-228	tidligere	
+2-18	229-234	blitt	
+2-19	235-244	behandlet	
+2-20	245-248	med	
+2-21	249-260	antibiotika	
+2-22	260-261	.	
+
+#Text=Symptometologi var verre de siste døgnene, og han hadde begynt å oppleve feber og generell malaise.
+3-1	262-276	Symptometologi	
+3-2	277-280	var	
+3-3	281-286	verre	
+3-4	287-289	de	
+3-5	290-295	siste	
+3-6	296-303	døgnene	
+3-7	303-304	,	
+3-8	305-307	og	
+3-9	308-311	han	
+3-10	312-317	hadde	
+3-11	318-324	begynt	
+3-12	325-326	å	
+3-13	327-334	oppleve	
+3-14	335-340	feber	
+3-15	341-343	og	
+3-16	344-352	generell	
+3-17	353-360	malaise	
+3-18	360-361	.	
+
+#Text=Ved undersøkelse noterte jeg en tydelig irritasjon i uretra, og pisprøven viste tegn på bakterielle vekst.
+4-1	362-365	Ved	
+4-2	366-378	undersøkelse	
+4-3	379-386	noterte	
+4-4	387-390	jeg	
+4-5	391-393	en	
+4-6	394-401	tydelig	
+4-7	402-412	irritasjon	
+4-8	413-414	i	
+4-9	415-421	uretra	
+4-10	421-422	,	
+4-11	423-425	og	
+4-12	426-435	pisprøven	
+4-13	436-441	viste	
+4-14	442-446	tegn	
+4-15	447-449	på	
+4-16	450-461	bakterielle	
+4-17	462-467	vekst	
+4-18	467-468	.	
+
+#Text=Vi tok et urinprøve for kultivering for å identifisere bakterien og finne det mest passende antibiotikum.
+5-1	469-471	Vi	
+5-2	472-475	tok	
+5-3	476-478	et	
+5-4	479-488	urinprøve	
+5-5	489-492	for	
+5-6	493-504	kultivering	
+5-7	505-508	for	
+5-8	509-510	å	
+5-9	511-523	identifisere	
+5-10	524-533	bakterien	
+5-11	534-536	og	
+5-12	537-542	finne	
+5-13	543-546	det	
+5-14	547-551	mest	
+5-15	552-560	passende	
+5-16	561-573	antibiotikum	
+5-17	573-574	.	
+
+#Text=Vi ga ham et recept på ciprofloxacin for akut smertelindring og anbefalte at han dricker mye vann for å hjelpe med å skylle ut infeksjonen.
+6-1	575-577	Vi	
+6-2	578-580	ga	
+6-3	581-584	ham	
+6-4	585-587	et	
+6-5	588-594	recept	
+6-6	595-597	på	
+6-7	598-611	ciprofloxacin	
+6-8	612-615	for	
+6-9	616-620	akut	
+6-10	621-635	smertelindring	
+6-11	636-638	og	
+6-12	639-648	anbefalte	
+6-13	649-651	at	
+6-14	652-655	han	
+6-15	656-663	dricker	
+6-16	664-667	mye	
+6-17	668-672	vann	
+6-18	673-676	for	
+6-19	677-678	å	
+6-20	679-685	hjelpe	
+6-21	686-689	med	
+6-22	690-691	å	
+6-23	692-698	skylle	
+6-24	699-701	ut	
+6-25	702-713	infeksjonen	
+6-26	713-714	.	
+
+#Text=Vi planla en oppfølging om to uker for å se hvordan han reagerer på behandlingen.
+7-1	715-717	Vi	
+7-2	718-724	planla	
+7-3	725-727	en	
+7-4	728-738	oppfølging	
+7-5	739-741	om	
+7-6	742-744	to	
+7-7	745-749	uker	
+7-8	750-753	for	
+7-9	754-755	å	
+7-10	756-758	se	
+7-11	759-766	hvordan	
+7-12	767-770	han	
+7-13	771-779	reagerer	
+7-14	780-782	på	
+7-15	783-795	behandlingen	
+7-16	795-796	.	

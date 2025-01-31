@@ -1,0 +1,130 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Notat 2 - 18.10.2024:
+#Text=Pasienten har vært til kontroll på sårpoliklinikken, og såret har begynt å gro, men det er fortsatt noe rødhet og sekresjon.
+1-1	0-5	Notat	_	_	_	_	
+1-2	6-7	2	_	_	_	_	
+1-3	8-9	-	_	_	_	_	
+1-4	10-20	18.10.2024	_	_	_	_	
+1-5	20-21	:	_	_	_	_	
+1-6	22-31	Pasienten	_	_	_	_	
+1-7	32-35	har	_	_	_	_	
+1-8	36-40	vært	_	_	_	_	
+1-9	41-44	til	_	_	_	_	
+1-10	45-53	kontroll	BEFORE[1]	TREATMENT[1]	_	_	
+1-11	54-56	på	BEFORE[1]	TREATMENT[1]	_	_	
+1-12	57-73	sårpoliklinikken	BEFORE[1]	TREATMENT[1]	_	_	
+1-13	73-74	,	_	_	_	_	
+1-14	75-77	og	_	_	_	_	
+1-15	78-83	såret	OVERLAP	CONDITION	_	_	
+1-16	84-87	har	_	_	_	_	
+1-17	88-94	begynt	_	_	_	_	
+1-18	95-96	å	_	_	_	_	
+1-19	97-100	gro	_	_	_	_	
+1-20	100-101	,	_	_	_	_	
+1-21	102-105	men	_	_	_	_	
+1-22	106-109	det	_	_	_	_	
+1-23	110-112	er	_	_	_	_	
+1-24	113-121	fortsatt	_	_	_	_	
+1-25	122-125	noe	_	_	_	_	
+1-26	126-132	rødhet	OVERLAP	CONDITION	_	_	
+1-27	133-135	og	_	_	_	_	
+1-28	136-145	sekresjon	OVERLAP	CONDITION	_	_	
+1-29	145-146	.	_	_	_	_	
+
+#Text=Han har fulgt antibiotikakuren, og infeksjonstegnene er avtagende.
+2-1	147-150	Han	_	_	_	_	
+2-2	151-154	har	_	_	_	_	
+2-3	155-160	fulgt	_	_	_	_	
+2-4	161-177	antibiotikakuren	BEFOREOVERLAP	TREATMENT	_	_	
+2-5	177-178	,	_	_	_	_	
+2-6	179-181	og	_	_	_	_	
+2-7	182-199	infeksjonstegnene	OVERLAP	CONDITION	_	_	
+2-8	200-202	er	_	_	_	_	
+2-9	203-212	avtagende	_	_	_	_	
+2-10	212-213	.	_	_	_	_	
+
+#Text=Blodsukkeret er nå bedre regulert etter gjennomgang med diabetessykepleier, med verdier på rundt 8-9 mmol/L.
+3-1	214-226	Blodsukkeret	OVERLAP	CONDITION	_	_	
+3-2	227-229	er	_	_	_	_	
+3-3	230-232	nå	_	_	_	_	
+3-4	233-238	bedre	_	_	_	_	
+3-5	239-247	regulert	_	_	_	_	
+3-6	248-253	etter	_	_	_	_	
+3-7	254-265	gjennomgang	BEFORE[2]	TREATMENT[2]	_	_	
+3-8	266-269	med	BEFORE[2]	TREATMENT[2]	_	_	
+3-9	270-288	diabetessykepleier	BEFORE[2]	TREATMENT[2]	_	_	
+3-10	288-289	,	_	_	_	_	
+3-11	290-293	med	_	_	_	_	
+3-12	294-301	verdier	_	_	_	_	
+3-13	302-304	på	_	_	_	_	
+3-14	305-310	rundt	_	_	_	_	
+3-15	311-312	8	_	_	_	_	
+3-16	312-313	-	_	_	_	_	
+3-17	313-314	9	_	_	_	_	
+3-18	315-319	mmol	_	_	_	_	
+3-19	319-320	/	_	_	_	_	
+3-20	320-321	L	_	_	_	_	
+3-21	321-322	.	_	_	_	_	
+
+#Text=Pasienten informeres om viktigheten av regelmessig fothygiene og daglig inspeksjon av føttene.
+4-1	323-332	Pasienten	_	_	_	_	
+4-2	333-343	informeres	_	_	_	_	
+4-3	344-346	om	_	_	_	_	
+4-4	347-358	viktigheten	_	_	_	_	
+4-5	359-361	av	_	_	_	_	
+4-6	362-373	regelmessig	AFTER[3]	TREATMENT[3]	_	_	
+4-7	374-384	fothygiene	AFTER[3]	TREATMENT[3]	_	_	
+4-8	385-387	og	_	_	_	_	
+4-9	388-394	daglig	AFTER[4]	TREATMENT[4]	_	_	
+4-10	395-405	inspeksjon	AFTER[4]	TREATMENT[4]	_	_	
+4-11	406-408	av	AFTER[4]	TREATMENT[4]	_	_	
+4-12	409-416	føttene	AFTER[4]	TREATMENT[4]	_	_	
+4-13	416-417	.	_	_	_	_	
+
+#Text=Han får også time til ortoped for tilpasning av fotsenger for å avlaste trykket på såret.
+5-1	418-421	Han	_	_	_	_	
+5-2	422-425	får	_	_	_	_	
+5-3	426-430	også	_	_	_	_	
+5-4	431-435	time	_	_	_	_	
+5-5	436-439	til	_	_	_	_	
+5-6	440-447	ortoped	AFTER	TREATMENT	_	_	
+5-7	448-451	for	_	_	_	_	
+5-8	452-462	tilpasning	_	_	_	_	
+5-9	463-465	av	_	_	_	_	
+5-10	466-475	fotsenger	_	_	_	_	
+5-11	476-479	for	_	_	_	_	
+5-12	480-481	å	_	_	_	_	
+5-13	482-489	avlaste	_	_	_	_	
+5-14	490-497	trykket	_	_	_	_	
+5-15	498-500	på	_	_	_	_	
+5-16	501-506	såret	_	_	_	_	
+5-17	506-507	.	_	_	_	_	
+
+#Text=Plan: Fortsetter med sårstell og oppfølgning på sårpoliklinikken.
+6-1	508-512	Plan	_	_	_	_	
+6-2	512-513	:	_	_	_	_	
+6-3	514-524	Fortsetter	_	_	_	_	
+6-4	525-528	med	_	_	_	_	
+6-5	529-537	sårstell	AFTER	TREATMENT	_	_	
+6-6	538-540	og	_	_	_	_	
+6-7	541-552	oppfølgning	AFTER[5]	TREATMENT[5]	_	_	
+6-8	553-555	på	AFTER[5]	TREATMENT[5]	_	_	
+6-9	556-572	sårpoliklinikken	AFTER[5]	TREATMENT[5]	_	_	
+6-10	572-573	.	_	_	_	_	
+
+#Text=Ny kontroll om 2 uker for vurdering av videre tiltak.
+7-1	574-576	Ny	_	_	_	_	
+7-2	577-585	kontroll	AFTER	TREATMENT	BEFORE|BEFORE	6-5|6-7[5_0]	
+7-3	586-588	om	_	_	_	_	
+7-4	589-590	2	_	_	_	_	
+7-5	591-595	uker	_	_	_	_	
+7-6	596-599	for	_	_	_	_	
+7-7	600-609	vurdering	_	_	_	_	
+7-8	610-612	av	_	_	_	_	
+7-9	613-619	videre	_	_	_	_	
+7-10	620-626	tiltak	_	_	_	_	
+7-11	626-627	.	_	_	_	_	

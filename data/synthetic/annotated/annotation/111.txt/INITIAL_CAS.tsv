@@ -1,0 +1,53 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 1 - 22.08.2025
+#Text=Kompleks diabetesoppfølging med påviste begynnende nevropatiske forandringer.
+1-1	0-12	Journalnotat	
+1-2	13-14	1	
+1-3	15-16	-	
+1-4	17-27	22.08.2025	
+1-5	28-36	Kompleks	
+1-6	37-55	diabetesoppfølging	
+1-7	56-59	med	
+1-8	60-67	påviste	
+1-9	68-78	begynnende	
+1-10	79-91	nevropatiske	
+1-11	92-104	forandringer	
+1-12	104-105	.	
+
+#Text=Blodprøver viser HbA1c på 8,4%, indikerer utilstrekkelig glykemisk kontroll.
+2-1	106-116	Blodprøver	
+2-2	117-122	viser	
+2-3	123-128	HbA1c	
+2-4	129-131	på	
+2-5	132-136	8,4%	
+2-6	136-137	,	
+2-7	138-147	indikerer	
+2-8	148-162	utilstrekkelig	
+2-9	163-172	glykemisk	
+2-10	173-181	kontroll	
+2-11	181-182	.	
+
+#Text=Påvist lett perifer sirkulasjonssvikt i nedre ekstremiteter.
+3-1	183-189	Påvist	
+3-2	190-194	lett	
+3-3	195-202	perifer	
+3-4	203-220	sirkulasjonssvikt	
+3-5	221-222	i	
+3-6	223-228	nedre	
+3-7	229-242	ekstremiteter	
+3-8	242-243	.	
+
+#Text=Iverksetter intensivert behandlingsstrategi med kombinasjon av medikamentell terapi og livsstilsintervensjoner.
+4-1	244-255	Iverksetter	
+4-2	256-267	intensivert	
+4-3	268-287	behandlingsstrategi	
+4-4	288-291	med	
+4-5	292-303	kombinasjon	
+4-6	304-306	av	
+4-7	307-320	medikamentell	
+4-8	321-327	terapi	
+4-9	328-330	og	
+4-10	331-354	livsstilsintervensjoner	
+4-11	354-355	.	

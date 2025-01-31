@@ -1,0 +1,127 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 1 (2023-09-15)
+#Text=Ingrid møtte meg i dag med klagene om voldsomme smerter i nederst rygg.
+1-1	0-12	Journalnotat	
+1-2	13-14	1	
+1-3	15-16	(	
+1-4	16-20	2023	
+1-5	20-21	-	
+1-6	21-23	09	
+1-7	23-24	-	
+1-8	24-26	15	
+1-9	26-27	)	
+1-10	28-34	Ingrid	
+1-11	35-40	møtte	
+1-12	41-44	meg	
+1-13	45-46	i	
+1-14	47-50	dag	
+1-15	51-54	med	
+1-16	55-62	klagene	
+1-17	63-65	om	
+1-18	66-75	voldsomme	
+1-19	76-83	smerter	
+1-20	84-85	i	
+1-21	86-93	nederst	
+1-22	94-98	rygg	
+1-23	98-99	.	
+
+#Text=Hun har hatt disse smertene i flere måneder, men de er blitt verre de siste uker.
+2-1	100-103	Hun	
+2-2	104-107	har	
+2-3	108-112	hatt	
+2-4	113-118	disse	
+2-5	119-127	smertene	
+2-6	128-129	i	
+2-7	130-135	flere	
+2-8	136-143	måneder	
+2-9	143-144	,	
+2-10	145-148	men	
+2-11	149-151	de	
+2-12	152-154	er	
+2-13	155-160	blitt	
+2-14	161-166	verre	
+2-15	167-169	de	
+2-16	170-175	siste	
+2-17	176-180	uker	
+2-18	180-181	.	
+
+#Text=Ingrid jobber som kontoransett og sitter mye, noe som kan ha bidratt til problemet.
+3-1	182-188	Ingrid	
+3-2	189-195	jobber	
+3-3	196-199	som	
+3-4	200-212	kontoransett	
+3-5	213-215	og	
+3-6	216-222	sitter	
+3-7	223-226	mye	
+3-8	226-227	,	
+3-9	228-231	noe	
+3-10	232-235	som	
+3-11	236-239	kan	
+3-12	240-242	ha	
+3-13	243-250	bidratt	
+3-14	251-254	til	
+3-15	255-264	problemet	
+3-16	264-265	.	
+
+#Text=Ved undersøkelse noterte jeg en tydelig spenning i ryggmuskulatur, spesielt i lumbalregionen.
+4-1	266-269	Ved	
+4-2	270-282	undersøkelse	
+4-3	283-290	noterte	
+4-4	291-294	jeg	
+4-5	295-297	en	
+4-6	298-305	tydelig	
+4-7	306-314	spenning	
+4-8	315-316	i	
+4-9	317-331	ryggmuskulatur	
+4-10	331-332	,	
+4-11	333-341	spesielt	
+4-12	342-343	i	
+4-13	344-358	lumbalregionen	
+4-14	358-359	.	
+
+#Text=Jeg anbefalte at hun begynner med fysioterapi for å styrke musklene rundt ryggen.
+5-1	360-363	Jeg	
+5-2	364-373	anbefalte	
+5-3	374-376	at	
+5-4	377-380	hun	
+5-5	381-389	begynner	
+5-6	390-393	med	
+5-7	394-405	fysioterapi	
+5-8	406-409	for	
+5-9	410-411	å	
+5-10	412-418	styrke	
+5-11	419-427	musklene	
+5-12	428-433	rundt	
+5-13	434-440	ryggen	
+5-14	440-441	.	
+
+#Text=Dessuten ga jeg henne et recept på ibuprofen for smertestillende effekt.
+6-1	442-450	Dessuten	
+6-2	451-453	ga	
+6-3	454-457	jeg	
+6-4	458-463	henne	
+6-5	464-466	et	
+6-6	467-473	recept	
+6-7	474-476	på	
+6-8	477-486	ibuprofen	
+6-9	487-490	for	
+6-10	491-506	smertestillende	
+6-11	507-513	effekt	
+6-12	513-514	.	
+
+#Text=Vi planla også en henvisning til röntgenavdelingen for å utelukke eventuelle skjelettsskadde.
+7-1	515-517	Vi	
+7-2	518-524	planla	
+7-3	525-529	også	
+7-4	530-532	en	
+7-5	533-543	henvisning	
+7-6	544-547	til	
+7-7	548-565	röntgenavdelingen	
+7-8	566-569	for	
+7-9	570-571	å	
+7-10	572-580	utelukke	
+7-11	581-591	eventuelle	
+7-12	592-607	skjelettsskadde	
+7-13	607-608	.	

@@ -1,0 +1,55 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=15.08.2023:
+#Text=Langsom fremgang.
+1-1	0-10	15.08.2023	
+1-2	10-11	:	
+1-3	12-19	Langsom	
+1-4	20-28	fremgang	
+1-5	28-29	.	
+
+#Text=Mestrer nå lett aktivitet 1-2 timer daglig.
+2-1	30-37	Mestrer	
+2-2	38-40	nå	
+2-3	41-45	lett	
+2-4	46-55	aktivitet	
+2-5	56-57	1	
+2-6	57-58	-	
+2-7	58-59	2	
+2-8	60-65	timer	
+2-9	66-72	daglig	
+2-10	72-73	.	
+
+#Text=Kognitive symptomer vedvarer.
+3-1	74-83	Kognitive	
+3-2	84-93	symptomer	
+3-3	94-102	vedvarer	
+3-4	102-103	.	
+
+#Text=Diskuterer gradert sykemelding.
+4-1	104-114	Diskuterer	
+4-2	115-122	gradert	
+4-3	123-134	sykemelding	
+4-4	134-135	.	
+
+#Text=Henviser til arbeidsrettet rehabilitering.
+5-1	136-144	Henviser	
+5-2	145-148	til	
+5-3	149-162	arbeidsrettet	
+5-4	163-177	rehabilitering	
+5-5	177-178	.	
+
+#Text=NAV-møte planlagt.
+6-1	179-187	NAV-møte	
+6-2	188-196	planlagt	
+6-3	196-197	.	
+
+#Text=Fortsetter oppfølging ved ME/CFS-team.
+7-1	198-208	Fortsetter	
+7-2	209-219	oppfølging	
+7-3	220-223	ved	
+7-4	224-226	ME	
+7-5	226-227	/	
+7-6	227-235	CFS-team	
+7-7	235-236	.	

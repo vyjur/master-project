@@ -1,0 +1,55 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=22.04.2023:
+#Text=God initial respons på behandling.
+1-1	0-10	22.04.2023	_	_	_	_	
+1-2	10-11	:	_	_	_	_	
+1-3	12-15	God	_	_	_	_	
+1-4	16-23	initial	_	_	_	_	
+1-5	24-31	respons	_	_	_	_	
+1-6	32-34	på	_	_	_	_	
+1-7	35-45	behandling	_	_	_	_	
+1-8	45-46	.	_	_	_	_	
+
+#Text=Mindre morgenstivhet.
+2-1	47-53	Mindre	OVERLAP[1]	CONDITION[1]	_	_	
+2-2	54-67	morgenstivhet	OVERLAP[1]	CONDITION[1]	_	_	
+2-3	67-68	.	_	_	_	_	
+
+#Text=SR 22, CRP 15.
+3-1	69-71	SR	OVERLAP	CONDITION	_	_	
+3-2	72-74	22	_	_	_	_	
+3-3	74-75	,	_	_	_	_	
+3-4	76-79	CRP	OVERLAP	CONDITION	OVERLAP	3-1	
+3-5	80-82	15	_	_	_	_	
+3-6	82-83	.	_	_	_	_	
+
+#Text=Tolererer Methotrexate godt.
+4-1	84-93	Tolererer	_	_	_	_	
+4-2	94-106	Methotrexate	_	_	_	_	
+4-3	107-111	godt	_	_	_	_	
+4-4	111-112	.	_	_	_	_	
+
+#Text=Starter nedtrapping Prednisolon.
+5-1	113-120	Starter	_	_	_	_	
+5-2	121-132	nedtrapping	AFTER[2]	TREATMENT[2]	_	_	
+5-3	133-144	Prednisolon	AFTER[2]	TREATMENT[2]	_	_	
+5-4	144-145	.	_	_	_	_	
+
+#Text=Ultralyd viser fortsatt synovitt i enkelte MCP-ledd.
+6-1	146-154	Ultralyd	OVERLAP	TREATMENT	_	_	
+6-2	155-160	viser	_	_	_	_	
+6-3	161-169	fortsatt	_	_	_	_	
+6-4	170-178	synovitt	OVERLAP[3]	CONDITION[3]	BEFORE	6-1[0_3]	
+6-5	179-180	i	OVERLAP[3]	CONDITION[3]	_	_	
+6-6	181-188	enkelte	OVERLAP[3]	CONDITION[3]	_	_	
+6-7	189-197	MCP-ledd	OVERLAP[3]	CONDITION[3]	_	_	
+6-8	197-198	.	_	_	_	_	
+
+#Text=Fysioterapi igangsatt.
+7-1	199-210	Fysioterapi	AFTER[4]	TREATMENT[4]	_	_	
+7-2	211-220	igangsatt	AFTER[4]	TREATMENT[4]	_	_	
+7-3	220-221	.	_	_	_	_	
