@@ -24,7 +24,7 @@
 1-17	63-65	om	_	_	_	_	
 1-18	66-71	angst	BEFOREOVERLAP	CONDITION	_	_	
 1-19	71-72	,	_	_	_	_	
-1-20	73-85	deprimerthed	BEFOREOVERLAP	*	_	_	
+1-20	73-85	deprimerthed	BEFOREOVERLAP	CONDITION	_	_	
 1-21	86-88	og	_	_	_	_	
 1-22	89-98	manglende	BEFOREOVERLAP[1]	CONDITION[1]	OVERLAP|OVERLAP	1-18[0_1]|1-20[0_1]	
 1-23	99-109	motivasjon	BEFOREOVERLAP[1]	CONDITION[1]	_	_	

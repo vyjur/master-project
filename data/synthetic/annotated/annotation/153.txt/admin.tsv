@@ -86,7 +86,7 @@
 4-5	394-396	en	_	_	_	_	
 4-6	397-407	behandling	AFTER	TREATMENT	_	_	
 4-7	408-411	med	_	_	_	_	
-4-8	412-423	antibiotika	*	TREATMENT	OVERLAP	4-6	
+4-8	412-423	antibiotika	AFTER	TREATMENT	OVERLAP	4-6	
 4-9	424-427	for	_	_	_	_	
 4-10	428-429	å	_	_	_	_	
 4-11	430-441	kontrollere	_	_	_	_	

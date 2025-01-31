@@ -54,9 +54,9 @@
 3-4	233-238	bedre	_	_	_	_	
 3-5	239-247	regulert	_	_	_	_	
 3-6	248-253	etter	_	_	_	_	
-3-7	254-265	gjennomgang	BEFORE[2]	*[2]	_	_	
-3-8	266-269	med	BEFORE[2]	*[2]	_	_	
-3-9	270-288	diabetessykepleier	BEFORE[2]	*[2]	_	_	
+3-7	254-265	gjennomgang	BEFORE[2]	TREATMENT[2]	_	_	
+3-8	266-269	med	BEFORE[2]	TREATMENT[2]	_	_	
+3-9	270-288	diabetessykepleier	BEFORE[2]	TREATMENT[2]	_	_	
 3-10	288-289	,	_	_	_	_	
 3-11	290-293	med	_	_	_	_	
 3-12	294-301	verdier	_	_	_	_	

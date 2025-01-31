@@ -37,10 +37,10 @@
 3-1	158-168	Spirometri	OVERLAP	TREATMENT	_	_	
 3-2	169-174	viser	_	_	_	_	
 3-3	175-183	fortsatt	_	_	_	_	
-3-4	184-188	FEV1	OVERLAP[3]	*[3]	BEFORE	3-1[0_3]	
-3-5	189-191	på	OVERLAP[3]	*[3]	_	_	
-3-6	192-194	47	OVERLAP[3]	*[3]	_	_	
-3-7	195-196	%	OVERLAP[3]	*[3]	_	_	
+3-4	184-188	FEV1	OVERLAP[3]	CONDITION[3]	BEFORE	3-1[0_3]	
+3-5	189-191	på	OVERLAP[3]	CONDITION[3]	_	_	
+3-6	192-194	47	OVERLAP[3]	CONDITION[3]	_	_	
+3-7	195-196	%	OVERLAP[3]	CONDITION[3]	_	_	
 3-8	196-197	,	_	_	_	_	
 3-9	198-201	men	_	_	_	_	
 3-10	202-212	subjektivt	_	_	_	_	

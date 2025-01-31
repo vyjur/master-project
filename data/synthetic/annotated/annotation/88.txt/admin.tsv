@@ -25,7 +25,7 @@
 #Text=Påvist moderat koronar åreforkalkning.
 3-1	119-125	Påvist	_	_	_	_	
 3-2	126-133	moderat	_	_	_	_	
-3-3	134-141	koronar	OVERLAP[3]	CONDITION[3]	*	2-2[2_3]	
+3-3	134-141	koronar	OVERLAP[3]	CONDITION[3]	BEFORE	2-2[2_3]	
 3-4	142-156	åreforkalkning	OVERLAP[3]	CONDITION[3]	_	_	
 3-5	156-157	.	_	_	_	_	
 

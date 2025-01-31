@@ -74,7 +74,7 @@
 
 #Text=Ved undersøkelse noterte jeg en tydelig overvekt, spesielt i midseksområdet, og moderate akne på ansiktet.
 4-1	315-318	Ved	_	_	_	_	
-4-2	319-331	undersøkelse	OVERLAP	*	BEFORE	1-18[1_0]	
+4-2	319-331	undersøkelse	OVERLAP	CONDITION	BEFORE	1-18[1_0]	
 4-3	332-339	noterte	_	_	_	_	
 4-4	340-343	jeg	_	_	_	_	
 4-5	344-346	en	_	_	_	_	

@@ -26,16 +26,16 @@
 1-18	70-73	til	_	_	_	_	
 1-19	74-83	klinikken	_	_	_	_	
 1-20	84-87	med	_	_	_	_	
-1-21	88-97	symptomer	*[1]	CONDITION[1]	_	_	
-1-22	98-100	på	*[1]	CONDITION[1]	_	_	
-1-23	101-112	hypotyreose	*[1]	CONDITION[1]	_	_	
+1-21	88-97	symptomer	OVERLAP[1]	CONDITION[1]	_	_	
+1-22	98-100	på	OVERLAP[1]	CONDITION[1]	_	_	
+1-23	101-112	hypotyreose	OVERLAP[1]	CONDITION[1]	_	_	
 1-24	112-113	,	_	_	_	_	
 1-25	114-123	inkludert	_	_	_	_	
-1-26	124-132	tretthet	*	CONDITION	OVERLAP	1-21[1_0]	
+1-26	124-132	tretthet	OVERLAP	CONDITION	OVERLAP	1-21[1_0]	
 1-27	132-133	,	_	_	_	_	
-1-28	134-144	vektøkning	*	CONDITION	OVERLAP	1-21[1_0]	
+1-28	134-144	vektøkning	OVERLAP	CONDITION	OVERLAP	1-21[1_0]	
 1-29	145-147	og	_	_	_	_	
-1-30	148-154	hårtap	*	CONDITION	OVERLAP	1-21[1_0]	
+1-30	148-154	hårtap	OVERLAP	CONDITION	OVERLAP	1-21[1_0]	
 1-31	154-155	.	_	_	_	_	
 
 #Text=Hun har tidligere vært frisk og aktiv, men har merket en gradvis forverring av symptomer over de siste månedene.
@@ -63,20 +63,20 @@
 
 #Text=Ved undersøkelse finner jeg en øket TSH-nivå og en reduksjon i fritt T4-nivå.
 3-1	269-272	Ved	_	_	_	_	
-3-2	273-285	undersøkelse	*	TREATMENT	BEFORE	1-21[1_0]	
+3-2	273-285	undersøkelse	OVERLAP	TREATMENT	BEFORE	1-21[1_0]	
 3-3	286-292	finner	_	_	_	_	
 3-4	293-296	jeg	_	_	_	_	
 3-5	297-299	en	_	_	_	_	
-3-6	300-304	øket	*[2]	CONDITION[2]	BEFORE	3-2[0_2]	
-3-7	305-313	TSH-nivå	*[2]	CONDITION[2]	_	_	
+3-6	300-304	øket	OVERLAP[2]	CONDITION[2]	BEFORE	3-2[0_2]	
+3-7	305-313	TSH-nivå	OVERLAP[2]	CONDITION[2]	_	_	
 3-8	314-316	og	_	_	_	_	
 3-9	317-319	en	_	_	_	_	
-3-10	320-329	reduksjon	*[3]	CONDITION[3]	BEFORE	3-2[0_3]	
-3-11	330-331	i	*[3]	CONDITION[3]	_	_	
-3-12	332-337	fritt	*[3]	CONDITION[3]	_	_	
-3-13	338-340	T4	*[3]	CONDITION[3]	_	_	
-3-14	340-341	-	*[3]	CONDITION[3]	_	_	
-3-15	341-345	nivå	*[3]	CONDITION[3]	_	_	
+3-10	320-329	reduksjon	OVERLAP[3]	CONDITION[3]	BEFORE	3-2[0_3]	
+3-11	330-331	i	OVERLAP[3]	CONDITION[3]	_	_	
+3-12	332-337	fritt	OVERLAP[3]	CONDITION[3]	_	_	
+3-13	338-340	T4	OVERLAP[3]	CONDITION[3]	_	_	
+3-14	340-341	-	OVERLAP[3]	CONDITION[3]	_	_	
+3-15	341-345	nivå	OVERLAP[3]	CONDITION[3]	_	_	
 3-16	345-346	.	_	_	_	_	
 
 #Text=Jeg starter pasienten på en behandling med tyroksin for å korrigere hormonubalansen.

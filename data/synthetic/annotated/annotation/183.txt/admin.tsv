@@ -26,13 +26,13 @@
 2-1	88-91	Han	_	_	_	_	
 2-2	92-97	hadde	_	_	_	_	
 2-3	98-103	blitt	_	_	_	_	
-2-4	104-110	mindre	*[2]	CONDITION[2]	_	_	
-2-5	111-122	deprimerede	*[2]	CONDITION[2]	_	_	
+2-4	104-110	mindre	OVERLAP[2]	CONDITION[2]	_	_	
+2-5	111-122	deprimerede	OVERLAP[2]	CONDITION[2]	_	_	
 2-6	123-125	og	_	_	_	_	
 2-7	126-131	hadde	_	_	_	_	
 2-8	132-136	fått	_	_	_	_	
-2-9	137-142	bedre	*[3]	CONDITION[3]	_	_	
-2-10	143-156	koncentration	*[3]	CONDITION[3]	_	_	
+2-9	137-142	bedre	OVERLAP[3]	CONDITION[3]	_	_	
+2-10	143-156	koncentration	OVERLAP[3]	CONDITION[3]	_	_	
 2-11	156-157	.	_	_	_	_	
 
 #Text=Antidepressiva-hjelpen hadde vært vellykket, og han hadde ikke opplevd noen store sidevirkninger.

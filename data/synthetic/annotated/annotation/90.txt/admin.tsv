@@ -37,7 +37,7 @@
 3-4	193-194	-	OVERLAP[4]	CONDITION[4]	_	_	
 3-5	194-201	verdier	OVERLAP[4]	CONDITION[4]	_	_	
 3-6	202-204	og	_	_	_	_	
-3-7	205-214	forhøyede	OVERLAP[5]	CONDITION[5]	*	2-1[2_5]	
+3-7	205-214	forhøyede	OVERLAP[5]	CONDITION[5]	BEFORE	2-1[2_5]	
 3-8	215-237	thyreoidea-antistoffer	OVERLAP[5]	CONDITION[5]	_	_	
 3-9	237-238	.	_	_	_	_	
 

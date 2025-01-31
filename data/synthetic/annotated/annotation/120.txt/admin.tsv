@@ -80,18 +80,18 @@
 
 #Text=Ved undersøkelse finner jeg en begrenset bevegelighet i ryggen og ømhet over lumbosakral-området.
 4-1	353-356	Ved	_	_	_	_	
-4-2	357-369	undersøkelse	OVERLAP	*	BEFORE|BEFORE	2-3|2-9[1_0]	
+4-2	357-369	undersøkelse	OVERLAP	TREATMENT	BEFORE|BEFORE	2-3|2-9[1_0]	
 4-3	370-376	finner	_	_	_	_	
 4-4	377-380	jeg	_	_	_	_	
 4-5	381-383	en	_	_	_	_	
-4-6	384-393	begrenset	*[2]	CONDITION[2]	BEFORE	4-2[0_2]	
-4-7	394-406	bevegelighet	*[2]	CONDITION[2]	_	_	
-4-8	407-408	i	*[2]	CONDITION[2]	_	_	
-4-9	409-415	ryggen	*[2]	CONDITION[2]	_	_	
+4-6	384-393	begrenset	OVERLAP[2]	CONDITION[2]	BEFORE	4-2[0_2]	
+4-7	394-406	bevegelighet	OVERLAP[2]	CONDITION[2]	_	_	
+4-8	407-408	i	OVERLAP[2]	CONDITION[2]	_	_	
+4-9	409-415	ryggen	OVERLAP[2]	CONDITION[2]	_	_	
 4-10	416-418	og	_	_	_	_	
-4-11	419-424	ømhet	*[3]	CONDITION[3]	BEFORE	4-2[0_3]	
-4-12	425-429	over	*[3]	CONDITION[3]	_	_	
-4-13	430-449	lumbosakral-området	*[3]	CONDITION[3]	_	_	
+4-11	419-424	ømhet	OVERLAP[3]	CONDITION[3]	BEFORE	4-2[0_3]	
+4-12	425-429	over	OVERLAP[3]	CONDITION[3]	_	_	
+4-13	430-449	lumbosakral-området	OVERLAP[3]	CONDITION[3]	_	_	
 4-14	449-450	.	_	_	_	_	
 
 #Text=Jeg henviser pasienten til en MR-undersøkelse av ryggen for å utelukke en eventuell diskprolaps eller annen patologi.

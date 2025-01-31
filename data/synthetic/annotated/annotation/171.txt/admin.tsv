@@ -84,7 +84,7 @@
 
 #Text=Hans pustefrekvens var økt, og han hadde en svak cyanose på leppene.
 5-1	376-380	Hans	_	_	_	_	
-5-2	381-394	pustefrekvens	*	CONDITION	BEFORE	4-2	
+5-2	381-394	pustefrekvens	OVERLAP	CONDITION	BEFORE	4-2	
 5-3	395-398	var	_	_	_	_	
 5-4	399-402	økt	_	_	_	_	
 5-5	402-403	,	_	_	_	_	
@@ -92,23 +92,23 @@
 5-7	407-410	han	_	_	_	_	
 5-8	411-416	hadde	_	_	_	_	
 5-9	417-419	en	_	_	_	_	
-5-10	420-424	svak	*[5]	CONDITION[5]	BEFORE	4-2[0_5]	
-5-11	425-432	cyanose	*[5]	CONDITION[5]	_	_	
-5-12	433-435	på	*[5]	CONDITION[5]	_	_	
-5-13	436-443	leppene	*[5]	CONDITION[5]	_	_	
+5-10	420-424	svak	OVERLAP[5]	CONDITION[5]	BEFORE	4-2[0_5]	
+5-11	425-432	cyanose	OVERLAP[5]	CONDITION[5]	_	_	
+5-12	433-435	på	OVERLAP[5]	CONDITION[5]	_	_	
+5-13	436-443	leppene	OVERLAP[5]	CONDITION[5]	_	_	
 5-14	443-444	.	_	_	_	_	
 
 #Text=Vi tok et pulsmåling, som viste en lav oksygenmæring (SpO2 88%).
 6-1	445-447	Vi	_	_	_	_	
 6-2	448-451	tok	_	_	_	_	
 6-3	452-454	et	_	_	_	_	
-6-4	455-465	pulsmåling	*	TREATMENT	OVERLAP	4-2	
+6-4	455-465	pulsmåling	OVERLAP	TREATMENT	OVERLAP	4-2	
 6-5	465-466	,	_	_	_	_	
 6-6	467-470	som	_	_	_	_	
 6-7	471-476	viste	_	_	_	_	
 6-8	477-479	en	_	_	_	_	
-6-9	480-483	lav	*[6]	CONDITION[6]	BEFORE	6-4[0_6]	
-6-10	484-497	oksygenmæring	*[6]	CONDITION[6]	_	_	
+6-9	480-483	lav	OVERLAP[6]	CONDITION[6]	BEFORE	6-4[0_6]	
+6-10	484-497	oksygenmæring	OVERLAP[6]	CONDITION[6]	_	_	
 6-11	498-499	(	_	_	_	_	
 6-12	499-503	SpO2	_	_	_	_	
 6-13	504-507	88%	_	_	_	_	

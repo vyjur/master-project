@@ -61,7 +61,7 @@
 4-5	274-284	forbedring	_	_	_	_	
 4-6	284-285	,	_	_	_	_	
 4-7	286-289	med	_	_	_	_	
-4-8	290-294	FEV1	*	CONDITION	BEFORE	4-1	
+4-8	290-294	FEV1	OVERLAP	CONDITION	BEFORE	4-1	
 4-9	295-303	fortsatt	_	_	_	_	
 4-10	304-306	på	_	_	_	_	
 4-11	307-309	45	_	_	_	_	
@@ -72,8 +72,8 @@
 4-16	325-333	opplever	_	_	_	_	
 4-17	334-337	han	_	_	_	_	
 4-18	338-340	en	_	_	_	_	
-4-19	341-350	subjektiv	*[2]	CONDITION[2]	_	_	
-4-20	351-358	bedring	*[2]	CONDITION[2]	_	_	
+4-19	341-350	subjektiv	OVERLAP[2]	CONDITION[2]	_	_	
+4-20	351-358	bedring	OVERLAP[2]	CONDITION[2]	_	_	
 4-21	358-359	.	_	_	_	_	
 
 #Text=Oksygenmetningen er stabil på 93 %.

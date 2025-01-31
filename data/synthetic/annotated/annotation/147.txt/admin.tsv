@@ -75,11 +75,11 @@
 3-8	322-331	sjølvverd	OVERLAP[3]	CONDITION[3]	_	_	
 3-9	332-334	og	_	_	_	_	
 3-10	335-337	en	_	_	_	_	
-3-11	338-342	øket	OVERLAP[4]	*[4]	BEFORE	3-2[0_4]	
-3-12	343-351	Hamilton	OVERLAP[4]	*[4]	_	_	
-3-13	352-362	Depression	OVERLAP[4]	*[4]	_	_	
-3-14	363-369	Rating	OVERLAP[4]	*[4]	_	_	
-3-15	370-380	Scale-nivå	OVERLAP[4]	*[4]	_	_	
+3-11	338-342	øket	OVERLAP[4]	CONDITION[4]	BEFORE	3-2[0_4]	
+3-12	343-351	Hamilton	OVERLAP[4]	CONDITION[4]	_	_	
+3-13	352-362	Depression	OVERLAP[4]	CONDITION[4]	_	_	
+3-14	363-369	Rating	OVERLAP[4]	CONDITION[4]	_	_	
+3-15	370-380	Scale-nivå	OVERLAP[4]	CONDITION[4]	_	_	
 3-16	380-381	.	_	_	_	_	
 
 #Text=Jeg starter pasienten på en behandling med antidepressiva for å kontrollere symptomer.

@@ -21,9 +21,9 @@
 2-4	105-108	som	_	_	_	_	
 2-5	109-117	avdekker	_	_	_	_	
 2-6	118-128	begynnende	_	_	_	_	
-2-7	129-138	sårbarhet	*[1]	CONDITION[1]	BEFORE	2-3[0_1]	
-2-8	139-140	i	*[1]	CONDITION[1]	_	_	
-2-9	141-150	fotregion	*[1]	CONDITION[1]	_	_	
+2-7	129-138	sårbarhet	OVERLAP[1]	CONDITION[1]	BEFORE	2-3[0_1]	
+2-8	139-140	i	OVERLAP[1]	CONDITION[1]	_	_	
+2-9	141-150	fotregion	OVERLAP[1]	CONDITION[1]	_	_	
 2-10	150-151	.	_	_	_	_	
 
 #Text=Starter forebyggende behandling med spesialtilpassede såleinnlegg.
