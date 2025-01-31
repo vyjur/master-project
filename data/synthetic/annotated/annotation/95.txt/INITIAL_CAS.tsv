@@ -1,0 +1,45 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 3 - 02.06.2025
+#Text=Kontroll etter oppstart ny medikasjon.
+1-1	0-12	Journalnotat	
+1-2	13-14	3	
+1-3	15-16	-	
+1-4	17-27	02.06.2025	
+1-5	28-36	Kontroll	
+1-6	37-42	etter	
+1-7	43-51	oppstart	
+1-8	52-54	ny	
+1-9	55-65	medikasjon	
+1-10	65-66	.	
+
+#Text=Moderat bedring i pustefunksjon registrert.
+2-1	67-74	Moderat	
+2-2	75-82	bedring	
+2-3	83-84	i	
+2-4	85-98	pustefunksjon	
+2-5	99-109	registrert	
+2-6	109-110	.	
+
+#Text=Henvist til sosial- og arbeidsrettet oppfølging grunnet økende funksjonsbegrensninger.
+3-1	111-118	Henvist	
+3-2	119-122	til	
+3-3	123-129	sosial	
+3-4	129-130	-	
+3-5	131-133	og	
+3-6	134-147	arbeidsrettet	
+3-7	148-158	oppfølging	
+3-8	159-166	grunnet	
+3-9	167-173	økende	
+3-10	174-196	funksjonsbegrensninger	
+3-11	196-197	.	
+
+#Text=Fortsatt tett oppfølging av lungespesialist anbefales.
+4-1	198-206	Fortsatt	
+4-2	207-211	tett	
+4-3	212-222	oppfølging	
+4-4	223-225	av	
+4-5	226-241	lungespesialist	
+4-6	242-251	anbefales	
+4-7	251-252	.	

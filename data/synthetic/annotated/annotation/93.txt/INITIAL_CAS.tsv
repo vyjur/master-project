@@ -1,0 +1,49 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 1 - 05.05.2025
+#Text=Pasient møter til oppfølging av KOLS stadium III.
+1-1	0-12	Journalnotat	
+1-2	13-14	1	
+1-3	15-16	-	
+1-4	17-27	05.05.2025	
+1-5	28-35	Pasient	
+1-6	36-41	møter	
+1-7	42-45	til	
+1-8	46-56	oppfølging	
+1-9	57-59	av	
+1-10	60-64	KOLS	
+1-11	65-72	stadium	
+1-12	73-76	III	
+1-13	76-77	.	
+
+#Text=Økende pustevansker ved minimal anstrengelse observeres.
+2-1	78-84	Økende	
+2-2	85-97	pustevansker	
+2-3	98-101	ved	
+2-4	102-109	minimal	
+2-5	110-122	anstrengelse	
+2-6	123-133	observeres	
+2-7	133-134	.	
+
+#Text=Lungefunksjonstester viser ytterligere reduksjon i FEV1-verdi.
+3-1	135-155	Lungefunksjonstester	
+3-2	156-161	viser	
+3-3	162-173	ytterligere	
+3-4	174-183	reduksjon	
+3-5	184-185	i	
+3-6	186-190	FEV1	
+3-7	190-191	-	
+3-8	191-196	verdi	
+3-9	196-197	.	
+
+#Text=Iverksetter intensivert behandling med kombinasjonspreparater og vurderer hjemmeoksygenterapi.
+4-1	198-209	Iverksetter	
+4-2	210-221	intensivert	
+4-3	222-232	behandling	
+4-4	233-236	med	
+4-5	237-259	kombinasjonspreparater	
+4-6	260-262	og	
+4-7	263-271	vurderer	
+4-8	272-291	hjemmeoksygenterapi	
+4-9	291-292	.	

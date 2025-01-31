@@ -173,3 +173,6 @@ output.*
 script.slurm
 .DS__Store
 ._.DS_Store
+
+/data/helsearkiv
+job.slurm

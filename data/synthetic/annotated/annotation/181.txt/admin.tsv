@@ -1,0 +1,169 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 1 (2023-09-10)
+#Text=Sindre møtte meg i dag med klagene om angst, deprimerthed og manglende motivasjon.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	1	_	_	_	_	
+1-3	15-16	(	_	_	_	_	
+1-4	16-20	2023	_	_	_	_	
+1-5	20-21	-	_	_	_	_	
+1-6	21-23	09	_	_	_	_	
+1-7	23-24	-	_	_	_	_	
+1-8	24-26	10	_	_	_	_	
+1-9	26-27	)	_	_	_	_	
+1-10	28-34	Sindre	_	_	_	_	
+1-11	35-40	møtte	_	_	_	_	
+1-12	41-44	meg	_	_	_	_	
+1-13	45-46	i	_	_	_	_	
+1-14	47-50	dag	_	_	_	_	
+1-15	51-54	med	_	_	_	_	
+1-16	55-62	klagene	_	_	_	_	
+1-17	63-65	om	_	_	_	_	
+1-18	66-71	angst	BEFOREOVERLAP	CONDITION	_	_	
+1-19	71-72	,	_	_	_	_	
+1-20	73-85	deprimerthed	BEFOREOVERLAP	CONDITION	_	_	
+1-21	86-88	og	_	_	_	_	
+1-22	89-98	manglende	BEFOREOVERLAP[1]	CONDITION[1]	OVERLAP|OVERLAP	1-18[0_1]|1-20[0_1]	
+1-23	99-109	motivasjon	BEFOREOVERLAP[1]	CONDITION[1]	_	_	
+1-24	109-110	.	_	_	_	_	
+
+#Text=Han har hatt disse symptomen i flere måneder, men de er blitt verre de siste uken.
+2-1	111-114	Han	_	_	_	_	
+2-2	115-118	har	_	_	_	_	
+2-3	119-123	hatt	_	_	_	_	
+2-4	124-129	disse	_	_	_	_	
+2-5	130-139	symptomen	_	_	_	_	
+2-6	140-141	i	_	_	_	_	
+2-7	142-147	flere	_	_	_	_	
+2-8	148-155	måneder	_	_	_	_	
+2-9	155-156	,	_	_	_	_	
+2-10	157-160	men	_	_	_	_	
+2-11	161-163	de	_	_	_	_	
+2-12	164-166	er	_	_	_	_	
+2-13	167-172	blitt	_	_	_	_	
+2-14	173-178	verre	_	_	_	_	
+2-15	179-181	de	_	_	_	_	
+2-16	182-187	siste	_	_	_	_	
+2-17	188-192	uken	_	_	_	_	
+2-18	192-193	.	_	_	_	_	
+
+#Text=Sindre jobber som softwareutvikler og sitter ofte lange timer foran datamaskinen, noe som kan ha bidratt til stress og isolasjon.
+3-1	194-200	Sindre	_	_	_	_	
+3-2	201-207	jobber	_	_	_	_	
+3-3	208-211	som	_	_	_	_	
+3-4	212-228	softwareutvikler	_	_	_	_	
+3-5	229-231	og	_	_	_	_	
+3-6	232-238	sitter	_	_	_	_	
+3-7	239-243	ofte	_	_	_	_	
+3-8	244-249	lange	_	_	_	_	
+3-9	250-255	timer	_	_	_	_	
+3-10	256-261	foran	_	_	_	_	
+3-11	262-274	datamaskinen	_	_	_	_	
+3-12	274-275	,	_	_	_	_	
+3-13	276-279	noe	_	_	_	_	
+3-14	280-283	som	_	_	_	_	
+3-15	284-287	kan	_	_	_	_	
+3-16	288-290	ha	_	_	_	_	
+3-17	291-298	bidratt	_	_	_	_	
+3-18	299-302	til	_	_	_	_	
+3-19	303-309	stress	_	_	_	_	
+3-20	310-312	og	_	_	_	_	
+3-21	313-322	isolasjon	_	_	_	_	
+3-22	322-323	.	_	_	_	_	
+
+#Text=Ved undersøkelse noterte jeg en tydelig nedstemthet, og han hadde vanskeligheter med å koncentrere seg under samtalen.
+4-1	324-327	Ved	_	_	_	_	
+4-2	328-340	undersøkelse	OVERLAP	TREATMENT	BEFORE|BEFORE|BEFORE	1-18|1-20|1-22[1_0]	
+4-3	341-348	noterte	_	_	_	_	
+4-4	349-352	jeg	_	_	_	_	
+4-5	353-355	en	_	_	_	_	
+4-6	356-363	tydelig	_	_	_	_	
+4-7	364-375	nedstemthet	OVERLAP	CONDITION	BEFORE	4-2	
+4-8	375-376	,	_	_	_	_	
+4-9	377-379	og	_	_	_	_	
+4-10	380-383	han	_	_	_	_	
+4-11	384-389	hadde	_	_	_	_	
+4-12	390-404	vanskeligheter	OVERLAP[2]	CONDITION[2]	BEFORE	4-2[0_2]	
+4-13	405-408	med	OVERLAP[2]	CONDITION[2]	_	_	
+4-14	409-410	å	OVERLAP[2]	CONDITION[2]	_	_	
+4-15	411-422	koncentrere	OVERLAP[2]	CONDITION[2]	_	_	
+4-16	423-426	seg	_	_	_	_	
+4-17	427-432	under	_	_	_	_	
+4-18	433-441	samtalen	_	_	_	_	
+4-19	441-442	.	_	_	_	_	
+
+#Text=Vi tok et PHQ-9-test (Patient Health Questionnaire) for å vurdere depresjonsnivået, som viste en score på 16, noe som indikerer moderat depresjon.
+5-1	443-445	Vi	_	_	_	_	
+5-2	446-449	tok	_	_	_	_	
+5-3	450-452	et	_	_	_	_	
+5-4	453-456	PHQ	OVERLAP[3]	TREATMENT[3]	OVERLAP	4-2[0_3]	
+5-5	456-457	-	OVERLAP[3]	TREATMENT[3]	_	_	
+5-6	457-458	9	OVERLAP[3]	TREATMENT[3]	_	_	
+5-7	458-459	-	OVERLAP[3]	TREATMENT[3]	_	_	
+5-8	459-463	test	OVERLAP[3]	TREATMENT[3]	_	_	
+5-9	464-465	(	_	_	_	_	
+5-10	465-472	Patient	_	_	_	_	
+5-11	473-479	Health	_	_	_	_	
+5-12	480-493	Questionnaire	_	_	_	_	
+5-13	493-494	)	_	_	_	_	
+5-14	495-498	for	_	_	_	_	
+5-15	499-500	å	_	_	_	_	
+5-16	501-508	vurdere	_	_	_	_	
+5-17	509-525	depresjonsnivået	_	_	_	_	
+5-18	525-526	,	_	_	_	_	
+5-19	527-530	som	_	_	_	_	
+5-20	531-536	viste	_	_	_	_	
+5-21	537-539	en	_	_	_	_	
+5-22	540-545	score	_	_	_	_	
+5-23	546-548	på	_	_	_	_	
+5-24	549-551	16	_	_	_	_	
+5-25	551-552	,	_	_	_	_	
+5-26	553-556	noe	_	_	_	_	
+5-27	557-560	som	_	_	_	_	
+5-28	561-570	indikerer	_	_	_	_	
+5-29	571-578	moderat	OVERLAP[4]	CONDITION[4]	BEFORE	5-4[3_4]	
+5-30	579-588	depresjon	OVERLAP[4]	CONDITION[4]	_	_	
+5-31	588-589	.	_	_	_	_	
+
+#Text=Vi diskuterte ulike behandlingsalternativer, inkludert kognitiv atferdsterapi (KAT) og mulig antidepressiva.
+6-1	590-592	Vi	_	_	_	_	
+6-2	593-603	diskuterte	_	_	_	_	
+6-3	604-609	ulike	_	_	_	_	
+6-4	610-633	behandlingsalternativer	_	_	_	_	
+6-5	633-634	,	_	_	_	_	
+6-6	635-644	inkludert	_	_	_	_	
+6-7	645-653	kognitiv	AFTER[5]	TREATMENT[5]	_	_	
+6-8	654-667	atferdsterapi	AFTER[5]	TREATMENT[5]	_	_	
+6-9	668-669	(	AFTER[5]	TREATMENT[5]	_	_	
+6-10	669-672	KAT	AFTER[5]	TREATMENT[5]	_	_	
+6-11	672-673	)	AFTER[5]	TREATMENT[5]	_	_	
+6-12	674-676	og	_	_	_	_	
+6-13	677-682	mulig	_	_	_	_	
+6-14	683-697	antidepressiva	_	_	_	_	
+6-15	697-698	.	_	_	_	_	
+
+#Text=Sindre var opptatt av sidevirkninger, så vi bestemte oss for å starte med KAT og se hvordan han reagerer.
+7-1	699-705	Sindre	_	_	_	_	
+7-2	706-709	var	_	_	_	_	
+7-3	710-717	opptatt	_	_	_	_	
+7-4	718-720	av	_	_	_	_	
+7-5	721-735	sidevirkninger	_	_	_	_	
+7-6	735-736	,	_	_	_	_	
+7-7	737-739	så	_	_	_	_	
+7-8	740-742	vi	_	_	_	_	
+7-9	743-751	bestemte	_	_	_	_	
+7-10	752-755	oss	_	_	_	_	
+7-11	756-759	for	_	_	_	_	
+7-12	760-761	å	_	_	_	_	
+7-13	762-768	starte	_	_	_	_	
+7-14	769-772	med	_	_	_	_	
+7-15	773-776	KAT	AFTER	TREATMENT	OVERLAP	6-7[5_0]	
+7-16	777-779	og	_	_	_	_	
+7-17	780-782	se	_	_	_	_	
+7-18	783-790	hvordan	_	_	_	_	
+7-19	791-794	han	_	_	_	_	
+7-20	795-803	reagerer	_	_	_	_	
+7-21	803-804	.	_	_	_	_	

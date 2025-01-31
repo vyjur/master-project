@@ -1,0 +1,129 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Notat 2 - 09.11.2024:  
+#Text=Pasienten kommer tilbake da hun fortsatt opplever svie ved vannlating, selv om de øvrige symptomene har avtatt noe.
+1-1	0-5	Notat	
+1-2	6-7	2	
+1-3	8-9	-	
+1-4	10-20	09.11.2024	
+1-5	20-21	:	
+1-6	24-33	Pasienten	
+1-7	34-40	kommer	
+1-8	41-48	tilbake	
+1-9	49-51	da	
+1-10	52-55	hun	
+1-11	56-64	fortsatt	
+1-12	65-73	opplever	
+1-13	74-78	svie	
+1-14	79-82	ved	
+1-15	83-93	vannlating	
+1-16	93-94	,	
+1-17	95-99	selv	
+1-18	100-102	om	
+1-19	103-105	de	
+1-20	106-112	øvrige	
+1-21	113-123	symptomene	
+1-22	124-127	har	
+1-23	128-134	avtatt	
+1-24	135-138	noe	
+1-25	138-139	.	
+
+#Text=Hun har ikke feber, men beskriver lette smerter i flanken på høyre side.
+2-1	140-143	Hun	
+2-2	144-147	har	
+2-3	148-152	ikke	
+2-4	153-158	feber	
+2-5	158-159	,	
+2-6	160-163	men	
+2-7	164-173	beskriver	
+2-8	174-179	lette	
+2-9	180-187	smerter	
+2-10	188-189	i	
+2-11	190-197	flanken	
+2-12	198-200	på	
+2-13	201-206	høyre	
+2-14	207-211	side	
+2-15	211-212	.	
+
+#Text=Urinstix viser fortsatt positiv utslag for leukocytter, men negativ for nitritt.
+3-1	213-221	Urinstix	
+3-2	222-227	viser	
+3-3	228-236	fortsatt	
+3-4	237-244	positiv	
+3-5	245-251	utslag	
+3-6	252-255	for	
+3-7	256-267	leukocytter	
+3-8	267-268	,	
+3-9	269-272	men	
+3-10	273-280	negativ	
+3-11	281-284	for	
+3-12	285-292	nitritt	
+3-13	292-293	.	
+
+#Text=Jeg mistenker en vedvarende infeksjon eller mulig pyelonefritt.
+4-1	294-297	Jeg	
+4-2	298-307	mistenker	
+4-3	308-310	en	
+4-4	311-321	vedvarende	
+4-5	322-331	infeksjon	
+4-6	332-337	eller	
+4-7	338-343	mulig	
+4-8	344-356	pyelonefritt	
+4-9	356-357	.	
+
+#Text=Pasienten henvises til urinmikroskopi og dyrkning for å bekrefte resistensmønster.
+5-1	358-367	Pasienten	
+5-2	368-376	henvises	
+5-3	377-380	til	
+5-4	381-395	urinmikroskopi	
+5-5	396-398	og	
+5-6	399-407	dyrkning	
+5-7	408-411	for	
+5-8	412-413	å	
+5-9	414-422	bekrefte	
+5-10	423-439	resistensmønster	
+5-11	439-440	.	
+
+#Text=I mellomtiden starter vi med en ny kur, ciprofloxacin 500 mg x 2 i 7 dager, som dekker bredere spekter.
+6-1	441-442	I	
+6-2	443-454	mellomtiden	
+6-3	455-462	starter	
+6-4	463-465	vi	
+6-5	466-469	med	
+6-6	470-472	en	
+6-7	473-475	ny	
+6-8	476-479	kur	
+6-9	479-480	,	
+6-10	481-494	ciprofloxacin	
+6-11	495-498	500	
+6-12	499-501	mg	
+6-13	502-503	x	
+6-14	504-505	2	
+6-15	506-507	i	
+6-16	508-509	7	
+6-17	510-515	dager	
+6-18	515-516	,	
+6-19	517-520	som	
+6-20	521-527	dekker	
+6-21	528-535	bredere	
+6-22	536-543	spekter	
+6-23	543-544	.	
+
+#Text=Pasienten får råd om å kontakte oss dersom hun får feber eller dersom flankesmertene forverres.
+7-1	545-554	Pasienten	
+7-2	555-558	får	
+7-3	559-562	råd	
+7-4	563-565	om	
+7-5	566-567	å	
+7-6	568-576	kontakte	
+7-7	577-580	oss	
+7-8	581-587	dersom	
+7-9	588-591	hun	
+7-10	592-595	får	
+7-11	596-601	feber	
+7-12	602-607	eller	
+7-13	608-614	dersom	
+7-14	615-629	flankesmertene	
+7-15	630-639	forverres	
+7-16	639-640	.	

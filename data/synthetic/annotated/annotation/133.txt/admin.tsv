@@ -1,0 +1,59 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+
+
+#Text=Journalnotat 2 - 17.05.2023**
+#Text=
+#Text=Pasienten kommer tilbake etter 1 uke med triptan-behandling.
+1-1	0-12	Journalnotat	_	_	
+1-2	13-14	2	_	_	
+1-3	15-16	-	_	_	
+1-4	17-27	17.05.2023	_	_	
+1-5	27-28	*	_	_	
+1-6	28-29	*	_	_	
+1-7	31-40	Pasienten	_	_	
+1-8	41-47	kommer	_	_	
+1-9	48-55	tilbake	_	_	
+1-10	56-61	etter	_	_	
+1-11	62-63	1	_	_	
+1-12	64-67	uke	_	_	
+1-13	68-71	med	_	_	
+1-14	72-90	triptan-behandling	BEFOREOVERLAP	TREATMENT	
+1-15	90-91	.	_	_	
+
+#Text=Han rapporterer en forbedring i symptomer og en reduksjon i frekvensen av migrèneanfall.
+2-1	92-95	Han	_	_	
+2-2	96-107	rapporterer	_	_	
+2-3	108-110	en	_	_	
+2-4	111-121	forbedring	OVERLAP[1]	CONDITION[1]	
+2-5	122-123	i	OVERLAP[1]	CONDITION[1]	
+2-6	124-133	symptomer	OVERLAP[1]	CONDITION[1]	
+2-7	134-136	og	_	_	
+2-8	137-139	en	_	_	
+2-9	140-149	reduksjon	OVERLAP[2]	CONDITION[2]	
+2-10	150-151	i	OVERLAP[2]	CONDITION[2]	
+2-11	152-162	frekvensen	OVERLAP[2]	CONDITION[2]	
+2-12	163-165	av	OVERLAP[2]	CONDITION[2]	
+2-13	166-179	migrèneanfall	OVERLAP[2]	CONDITION[2]	
+2-14	179-180	.	_	_	
+
+#Text=Jeg justerer triptan-dosen og foreslår at pasienten begynner med en profylaktisk behandling med betablokkere for å forebygge migrèneanfall.
+3-1	181-184	Jeg	_	_	
+3-2	185-193	justerer	AFTER[3]	TREATMENT[3]	
+3-3	194-207	triptan-dosen	AFTER[3]	TREATMENT[3]	
+3-4	208-210	og	_	_	
+3-5	211-219	foreslår	_	_	
+3-6	220-222	at	_	_	
+3-7	223-232	pasienten	_	_	
+3-8	233-241	begynner	_	_	
+3-9	242-245	med	_	_	
+3-10	246-248	en	_	_	
+3-11	249-261	profylaktisk	AFTER[4]	TREATMENT[4]	
+3-12	262-272	behandling	AFTER[4]	TREATMENT[4]	
+3-13	273-276	med	AFTER[4]	TREATMENT[4]	
+3-14	277-289	betablokkere	AFTER[4]	TREATMENT[4]	
+3-15	290-293	for	_	_	
+3-16	294-295	å	_	_	
+3-17	296-305	forebygge	_	_	
+3-18	306-319	migrèneanfall	_	_	
+3-19	319-320	.	_	_	

@@ -1,0 +1,48 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=15.08.2023:
+#Text=TSH og fT4 nå i normalområdet.
+1-1	0-10	15.08.2023	
+1-2	10-11	:	
+1-3	12-15	TSH	
+1-4	16-18	og	
+1-5	19-22	fT4	
+1-6	23-25	nå	
+1-7	26-27	i	
+1-8	28-41	normalområdet	
+1-9	41-42	.	
+
+#Text=God effekt av behandling.
+2-1	43-46	God	
+2-2	47-53	effekt	
+2-3	54-56	av	
+2-4	57-67	behandling	
+2-5	67-68	.	
+
+#Text=Mindre plaget med fatigue.
+3-1	69-75	Mindre	
+3-2	76-82	plaget	
+3-3	83-86	med	
+3-4	87-94	fatigue	
+3-5	94-95	.	
+
+#Text=Stabil vekt.
+4-1	96-102	Stabil	
+4-2	103-107	vekt	
+4-3	107-108	.	
+
+#Text=Fortsetter uendret dosering.
+5-1	109-119	Fortsetter	
+5-2	120-127	uendret	
+5-3	128-136	dosering	
+5-4	136-137	.	
+
+#Text=Årlig kontroll fremover ved stabil thyreoidafunksjon.
+6-1	138-143	Årlig	
+6-2	144-152	kontroll	
+6-3	153-161	fremover	
+6-4	162-165	ved	
+6-5	166-172	stabil	
+6-6	173-190	thyreoidafunksjon	
+6-7	190-191	.	

@@ -1,0 +1,153 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 1 (2023-09-12)
+#Text=Lars møtte meg i dag med klagene om økte harkluser og dyspne på minste anstrengelse.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	1	_	_	_	_	
+1-3	15-16	(	_	_	_	_	
+1-4	16-20	2023	_	_	_	_	
+1-5	20-21	-	_	_	_	_	
+1-6	21-23	09	_	_	_	_	
+1-7	23-24	-	_	_	_	_	
+1-8	24-26	12	_	_	_	_	
+1-9	26-27	)	_	_	_	_	
+1-10	28-32	Lars	_	_	_	_	
+1-11	33-38	møtte	_	_	_	_	
+1-12	39-42	meg	_	_	_	_	
+1-13	43-44	i	_	_	_	_	
+1-14	45-48	dag	_	_	_	_	
+1-15	49-52	med	_	_	_	_	
+1-16	53-60	klagene	_	_	_	_	
+1-17	61-63	om	_	_	_	_	
+1-18	64-68	økte	OVERLAP[1]	CONDITION[1]	_	_	
+1-19	69-78	harkluser	OVERLAP[1]	CONDITION[1]	_	_	
+1-20	79-81	og	_	_	_	_	
+1-21	82-88	dyspne	OVERLAP[2]	CONDITION[2]	_	_	
+1-22	89-91	på	OVERLAP[2]	CONDITION[2]	_	_	
+1-23	92-98	minste	OVERLAP[2]	CONDITION[2]	_	_	
+1-24	99-111	anstrengelse	OVERLAP[2]	CONDITION[2]	_	_	
+1-25	111-112	.	_	_	_	_	
+
+#Text=Han har en kjent diagnose av kronisk obstruktiv lungesykdom (COPD) og har tidligere blitt behandlet med langverkende bronkopatenter og kortverkende ?
+2-1	113-116	Han	_	_	_	_	
+2-2	117-120	har	_	_	_	_	
+2-3	121-123	en	_	_	_	_	
+2-4	124-129	kjent	_	_	_	_	
+2-5	130-138	diagnose	_	_	_	_	
+2-6	139-141	av	_	_	_	_	
+2-7	142-149	kronisk	BEFOREOVERLAP[3]	CONDITION[3]	_	_	
+2-8	150-160	obstruktiv	BEFOREOVERLAP[3]	CONDITION[3]	_	_	
+2-9	161-172	lungesykdom	BEFOREOVERLAP[3]	CONDITION[3]	_	_	
+2-10	173-174	(	BEFOREOVERLAP[3]	CONDITION[3]	_	_	
+2-11	174-178	COPD	BEFOREOVERLAP[3]	CONDITION[3]	_	_	
+2-12	178-179	)	BEFOREOVERLAP[3]	CONDITION[3]	_	_	
+2-13	180-182	og	_	_	_	_	
+2-14	183-186	har	_	_	_	_	
+2-15	187-196	tidligere	_	_	_	_	
+2-16	197-202	blitt	_	_	_	_	
+2-17	203-212	behandlet	_	_	_	_	
+2-18	213-216	med	_	_	_	_	
+2-19	217-229	langverkende	BEFORE[4]	TREATMENT[4]	_	_	
+2-20	230-244	bronkopatenter	BEFORE[4]	TREATMENT[4]	_	_	
+2-21	245-247	og	BEFORE[4]	TREATMENT[4]	_	_	
+2-22	248-260	kortverkende	BEFORE[4]	TREATMENT[4]	_	_	
+2-23	261-262	?	BEFORE[4]	TREATMENT[4]	_	_	
+
+#Text=2-mimetika.
+3-1	262-263	2	BEFORE[4]	TREATMENT[4]	_	_	
+3-2	263-264	-	BEFORE[4]	TREATMENT[4]	_	_	
+3-3	264-272	mimetika	BEFORE[4]	TREATMENT[4]	_	_	
+3-4	272-273	.	_	_	_	_	
+
+#Text=Ved undersøkelse noterte jeg et tydelig harklus, men ingen tegn på feber eller annen akutt infeksjon.
+4-1	274-277	Ved	_	_	_	_	
+4-2	278-290	undersøkelse	OVERLAP	TREATMENT	BEFORE|BEFORE	1-18[1_0]|1-21[2_0]	
+4-3	291-298	noterte	_	_	_	_	
+4-4	299-302	jeg	_	_	_	_	
+4-5	303-305	et	_	_	_	_	
+4-6	306-313	tydelig	_	_	_	_	
+4-7	314-321	harklus	OVERLAP	CONDITION	BEFORE	4-2	
+4-8	321-322	,	_	_	_	_	
+4-9	323-326	men	_	_	_	_	
+4-10	327-332	ingen	_	_	_	_	
+4-11	333-337	tegn	_	_	_	_	
+4-12	338-340	på	_	_	_	_	
+4-13	341-346	feber	_	_	_	_	
+4-14	347-352	eller	_	_	_	_	
+4-15	353-358	annen	_	_	_	_	
+4-16	359-364	akutt	_	_	_	_	
+4-17	365-374	infeksjon	_	_	_	_	
+4-18	374-375	.	_	_	_	_	
+
+#Text=Hans pustefrekvens var økt, og han hadde en svak cyanose på leppene.
+5-1	376-380	Hans	_	_	_	_	
+5-2	381-394	pustefrekvens	OVERLAP	CONDITION	BEFORE	4-2	
+5-3	395-398	var	_	_	_	_	
+5-4	399-402	økt	_	_	_	_	
+5-5	402-403	,	_	_	_	_	
+5-6	404-406	og	_	_	_	_	
+5-7	407-410	han	_	_	_	_	
+5-8	411-416	hadde	_	_	_	_	
+5-9	417-419	en	_	_	_	_	
+5-10	420-424	svak	OVERLAP[5]	CONDITION[5]	BEFORE	4-2[0_5]	
+5-11	425-432	cyanose	OVERLAP[5]	CONDITION[5]	_	_	
+5-12	433-435	på	OVERLAP[5]	CONDITION[5]	_	_	
+5-13	436-443	leppene	OVERLAP[5]	CONDITION[5]	_	_	
+5-14	443-444	.	_	_	_	_	
+
+#Text=Vi tok et pulsmåling, som viste en lav oksygenmæring (SpO2 88%).
+6-1	445-447	Vi	_	_	_	_	
+6-2	448-451	tok	_	_	_	_	
+6-3	452-454	et	_	_	_	_	
+6-4	455-465	pulsmåling	OVERLAP	TREATMENT	OVERLAP	4-2	
+6-5	465-466	,	_	_	_	_	
+6-6	467-470	som	_	_	_	_	
+6-7	471-476	viste	_	_	_	_	
+6-8	477-479	en	_	_	_	_	
+6-9	480-483	lav	OVERLAP[6]	CONDITION[6]	BEFORE	6-4[0_6]	
+6-10	484-497	oksygenmæring	OVERLAP[6]	CONDITION[6]	_	_	
+6-11	498-499	(	_	_	_	_	
+6-12	499-503	SpO2	_	_	_	_	
+6-13	504-507	88%	_	_	_	_	
+6-14	507-508	)	_	_	_	_	
+6-15	508-509	.	_	_	_	_	
+
+#Text=Jeg ga ham ekstra doser salbutamol for akut smertelindring og anbefalte at han øker bruk av langverkende bronkopatenter.
+7-1	510-513	Jeg	_	_	_	_	
+7-2	514-516	ga	_	_	_	_	
+7-3	517-520	ham	_	_	_	_	
+7-4	521-527	ekstra	_	_	_	_	
+7-5	528-533	doser	_	_	_	_	
+7-6	534-544	salbutamol	AFTER	TREATMENT	_	_	
+7-7	545-548	for	_	_	_	_	
+7-8	549-553	akut	_	_	_	_	
+7-9	554-568	smertelindring	_	_	_	_	
+7-10	569-571	og	_	_	_	_	
+7-11	572-581	anbefalte	_	_	_	_	
+7-12	582-584	at	_	_	_	_	
+7-13	585-588	han	_	_	_	_	
+7-14	589-593	øker	_	_	_	_	
+7-15	594-598	bruk	_	_	_	_	
+7-16	599-601	av	_	_	_	_	
+7-17	602-614	langverkende	AFTER[7]	TREATMENT[7]	_	_	
+7-18	615-629	bronkopatenter	AFTER[7]	TREATMENT[7]	_	_	
+7-19	629-630	.	_	_	_	_	
+
+#Text=Vi planla en henvisning til respiratorisk avdeling for videre utredning og mulig innlegging.
+8-1	631-633	Vi	_	_	_	_	
+8-2	634-640	planla	_	_	_	_	
+8-3	641-643	en	_	_	_	_	
+8-4	644-654	henvisning	AFTER[8]	TREATMENT[8]	_	_	
+8-5	655-658	til	AFTER[8]	TREATMENT[8]	_	_	
+8-6	659-672	respiratorisk	AFTER[8]	TREATMENT[8]	_	_	
+8-7	673-681	avdeling	AFTER[8]	TREATMENT[8]	_	_	
+8-8	682-685	for	_	_	_	_	
+8-9	686-692	videre	_	_	_	_	
+8-10	693-702	utredning	_	_	_	_	
+8-11	703-705	og	_	_	_	_	
+8-12	706-711	mulig	_	_	_	_	
+8-13	712-722	innlegging	_	_	_	_	
+8-14	722-723	.	_	_	_	_	

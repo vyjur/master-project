@@ -1,0 +1,125 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 4 (2023-10-17)
+#Text=Lars kom inn til oppfølging etter å ha fullført den første serien med fysioterapi.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	4	_	_	_	_	
+1-3	15-16	(	_	_	_	_	
+1-4	16-20	2023	_	_	_	_	
+1-5	20-21	-	_	_	_	_	
+1-6	21-23	10	_	_	_	_	
+1-7	23-24	-	_	_	_	_	
+1-8	24-26	17	_	_	_	_	
+1-9	26-27	)	_	_	_	_	
+1-10	28-32	Lars	_	_	_	_	
+1-11	33-36	kom	_	_	_	_	
+1-12	37-40	inn	_	_	_	_	
+1-13	41-44	til	_	_	_	_	
+1-14	45-55	oppfølging	OVERLAP	TREATMENT	_	_	
+1-15	56-61	etter	_	_	_	_	
+1-16	62-63	å	_	_	_	_	
+1-17	64-66	ha	_	_	_	_	
+1-18	67-75	fullført	_	_	_	_	
+1-19	76-79	den	_	_	_	_	
+1-20	80-86	første	_	_	_	_	
+1-21	87-93	serien	_	_	_	_	
+1-22	94-97	med	_	_	_	_	
+1-23	98-109	fysioterapi	BEFORE	TREATMENT	_	_	
+1-24	109-110	.	_	_	_	_	
+
+#Text=Han rapporterte at han følte seg mye sterkere og at hans pustekapasitet hadde forbedret seg betydelig.
+2-1	111-114	Han	_	_	_	_	
+2-2	115-126	rapporterte	_	_	_	_	
+2-3	127-129	at	_	_	_	_	
+2-4	130-133	han	_	_	_	_	
+2-5	134-139	følte	_	_	_	_	
+2-6	140-143	seg	_	_	_	_	
+2-7	144-147	mye	_	_	_	_	
+2-8	148-156	sterkere	_	_	_	_	
+2-9	157-159	og	_	_	_	_	
+2-10	160-162	at	_	_	_	_	
+2-11	163-167	hans	_	_	_	_	
+2-12	168-182	pustekapasitet	OVERLAP	CONDITION	_	_	
+2-13	183-188	hadde	_	_	_	_	
+2-14	189-198	forbedret	_	_	_	_	
+2-15	199-202	seg	_	_	_	_	
+2-16	203-212	betydelig	_	_	_	_	
+2-17	212-213	.	_	_	_	_	
+
+#Text=Fysioterapeuten noterte at Lars hadde gjort gode fremsteg med pusteøvelser og at hans luftveisspill hadde økt.
+3-1	214-229	Fysioterapeuten	_	_	_	_	
+3-2	230-237	noterte	_	_	_	_	
+3-3	238-240	at	_	_	_	_	
+3-4	241-245	Lars	_	_	_	_	
+3-5	246-251	hadde	_	_	_	_	
+3-6	252-257	gjort	_	_	_	_	
+3-7	258-262	gode	_	_	_	_	
+3-8	263-271	fremsteg	_	_	_	_	
+3-9	272-275	med	_	_	_	_	
+3-10	276-288	pusteøvelser	OVERLAP	TREATMENT	_	_	
+3-11	289-291	og	_	_	_	_	
+3-12	292-294	at	_	_	_	_	
+3-13	295-299	hans	_	_	_	_	
+3-14	300-313	luftveisspill	OVERLAP	CONDITION	_	_	
+3-15	314-319	hadde	_	_	_	_	
+3-16	320-323	økt	_	_	_	_	
+3-17	323-324	.	_	_	_	_	
+
+#Text=Vi diskuterte muligheten for å fortsette med fysioterapi, men vi beslutte å redusere antallet sesjoner og la vekt på hjemmeøvelser.
+4-1	325-327	Vi	_	_	_	_	
+4-2	328-338	diskuterte	_	_	_	_	
+4-3	339-349	muligheten	_	_	_	_	
+4-4	350-353	for	_	_	_	_	
+4-5	354-355	å	_	_	_	_	
+4-6	356-365	fortsette	_	_	_	_	
+4-7	366-369	med	_	_	_	_	
+4-8	370-381	fysioterapi	AFTER	TREATMENT	_	_	
+4-9	381-382	,	_	_	_	_	
+4-10	383-386	men	_	_	_	_	
+4-11	387-389	vi	_	_	_	_	
+4-12	390-398	beslutte	_	_	_	_	
+4-13	399-400	å	_	_	_	_	
+4-14	401-409	redusere	_	_	_	_	
+4-15	410-418	antallet	_	_	_	_	
+4-16	419-427	sesjoner	_	_	_	_	
+4-17	428-430	og	_	_	_	_	
+4-18	431-433	la	_	_	_	_	
+4-19	434-438	vekt	_	_	_	_	
+4-20	439-441	på	_	_	_	_	
+4-21	442-455	hjemmeøvelser	AFTER	TREATMENT	_	_	
+4-22	455-456	.	_	_	_	_	
+
+#Text=Lars var glad for resultatet av behandlingen og takket meg for støtten.
+5-1	457-461	Lars	_	_	_	_	
+5-2	462-465	var	_	_	_	_	
+5-3	466-470	glad	_	_	_	_	
+5-4	471-474	for	_	_	_	_	
+5-5	475-485	resultatet	_	_	_	_	
+5-6	486-488	av	_	_	_	_	
+5-7	489-501	behandlingen	_	_	_	_	
+5-8	502-504	og	_	_	_	_	
+5-9	505-511	takket	_	_	_	_	
+5-10	512-515	meg	_	_	_	_	
+5-11	516-519	for	_	_	_	_	
+5-12	520-527	støtten	_	_	_	_	
+5-13	527-528	.	_	_	_	_	
+
+#Text=Vi planla en oppfølging om seks måneder for å sikre at alt går godt.
+6-1	529-531	Vi	_	_	_	_	
+6-2	532-538	planla	_	_	_	_	
+6-3	539-541	en	_	_	_	_	
+6-4	542-552	oppfølging	AFTER	TREATMENT	BEFORE|BEFORE	4-8|4-21	
+6-5	553-555	om	_	_	_	_	
+6-6	556-560	seks	_	_	_	_	
+6-7	561-568	måneder	_	_	_	_	
+6-8	569-572	for	_	_	_	_	
+6-9	573-574	å	_	_	_	_	
+6-10	575-580	sikre	_	_	_	_	
+6-11	581-583	at	_	_	_	_	
+6-12	584-587	alt	_	_	_	_	
+6-13	588-591	går	_	_	_	_	
+6-14	592-596	godt	_	_	_	_	
+6-15	596-597	.	_	_	_	_	

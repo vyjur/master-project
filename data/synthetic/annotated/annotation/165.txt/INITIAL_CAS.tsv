@@ -1,0 +1,140 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 5 (2023-10-27)
+#Text=Ole kom inn til siste oppfølging i dag.
+1-1	0-12	Journalnotat	
+1-2	13-14	5	
+1-3	15-16	(	
+1-4	16-20	2023	
+1-5	20-21	-	
+1-6	21-23	10	
+1-7	23-24	-	
+1-8	24-26	27	
+1-9	26-27	)	
+1-10	28-31	Ole	
+1-11	32-35	kom	
+1-12	36-39	inn	
+1-13	40-43	til	
+1-14	44-49	siste	
+1-15	50-60	oppfølging	
+1-16	61-62	i	
+1-17	63-66	dag	
+1-18	66-67	.	
+
+#Text=Han rapporterte at alt gikk bra, og at han kunne leve et nærmest normalt liv.
+2-1	68-71	Han	
+2-2	72-83	rapporterte	
+2-3	84-86	at	
+2-4	87-90	alt	
+2-5	91-95	gikk	
+2-6	96-99	bra	
+2-7	99-100	,	
+2-8	101-103	og	
+2-9	104-106	at	
+2-10	107-110	han	
+2-11	111-116	kunne	
+2-12	117-121	leve	
+2-13	122-124	et	
+2-14	125-132	nærmest	
+2-15	133-140	normalt	
+2-16	141-144	liv	
+2-17	144-145	.	
+
+#Text=Han hadde fortsatt åtte kilo mindre enn da han startet behandlingen, noe som indikerer at vannoppholdet var vel kontrollert.
+3-1	146-149	Han	
+3-2	150-155	hadde	
+3-3	156-164	fortsatt	
+3-4	165-169	åtte	
+3-5	170-174	kilo	
+3-6	175-181	mindre	
+3-7	182-185	enn	
+3-8	186-188	da	
+3-9	189-192	han	
+3-10	193-200	startet	
+3-11	201-213	behandlingen	
+3-12	213-214	,	
+3-13	215-218	noe	
+3-14	219-222	som	
+3-15	223-232	indikerer	
+3-16	233-235	at	
+3-17	236-249	vannoppholdet	
+3-18	250-253	var	
+3-19	254-257	vel	
+3-20	258-269	kontrollert	
+3-21	269-270	.	
+
+#Text=Vi tok et nytt blodprøve for å sjekke funksjonen av nieren, som er viktig for pasienter med hjertesvikt.
+4-1	271-273	Vi	
+4-2	274-277	tok	
+4-3	278-280	et	
+4-4	281-285	nytt	
+4-5	286-295	blodprøve	
+4-6	296-299	for	
+4-7	300-301	å	
+4-8	302-308	sjekke	
+4-9	309-319	funksjonen	
+4-10	320-322	av	
+4-11	323-329	nieren	
+4-12	329-330	,	
+4-13	331-334	som	
+4-14	335-337	er	
+4-15	338-344	viktig	
+4-16	345-348	for	
+4-17	349-358	pasienter	
+4-18	359-362	med	
+4-19	363-374	hjertesvikt	
+4-20	374-375	.	
+
+#Text=Resultatene viste at nierfunksjonen var stabilt, og at det ikke var behov for endringer i behandlingen.
+5-1	376-387	Resultatene	
+5-2	388-393	viste	
+5-3	394-396	at	
+5-4	397-411	nierfunksjonen	
+5-5	412-415	var	
+5-6	416-423	stabilt	
+5-7	423-424	,	
+5-8	425-427	og	
+5-9	428-430	at	
+5-10	431-434	det	
+5-11	435-439	ikke	
+5-12	440-443	var	
+5-13	444-449	behov	
+5-14	450-453	for	
+5-15	454-463	endringer	
+5-16	464-465	i	
+5-17	466-478	behandlingen	
+5-18	478-479	.	
+
+#Text=Ole var meget tilfreds med resultatet av behandlingen og takket meg for støtten.
+6-1	480-483	Ole	
+6-2	484-487	var	
+6-3	488-493	meget	
+6-4	494-502	tilfreds	
+6-5	503-506	med	
+6-6	507-517	resultatet	
+6-7	518-520	av	
+6-8	521-533	behandlingen	
+6-9	534-536	og	
+6-10	537-543	takket	
+6-11	544-547	meg	
+6-12	548-551	for	
+6-13	552-559	støtten	
+6-14	559-560	.	
+
+#Text=Vi planla en oppfølging om seks måneder for å sikre at alt går godt.
+7-1	561-563	Vi	
+7-2	564-570	planla	
+7-3	571-573	en	
+7-4	574-584	oppfølging	
+7-5	585-587	om	
+7-6	588-592	seks	
+7-7	593-600	måneder	
+7-8	601-604	for	
+7-9	605-606	å	
+7-10	607-612	sikre	
+7-11	613-615	at	
+7-12	616-619	alt	
+7-13	620-623	går	
+7-14	624-628	godt	
+7-15	628-629	.	

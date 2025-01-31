@@ -1,0 +1,48 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 2 - 17.06.2025
+#Text=Oppstart av CPAP-behandling.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	2	_	_	_	_	
+1-3	15-16	-	_	_	_	_	
+1-4	17-27	17.06.2025	_	_	_	_	
+1-5	28-36	Oppstart	_	_	_	_	
+1-6	37-39	av	_	_	_	_	
+1-7	40-55	CPAP-behandling	OVERLAP	TREATMENT	OVERLAP|OVERLAP	2-6|2-8	
+1-8	55-56	.	_	_	_	_	
+
+#Text=Grundig opplæring i bruk av pustemaske og apparatur.
+2-1	57-64	Grundig	_	_	_	_	
+2-2	65-74	opplæring	_	_	_	_	
+2-3	75-76	i	_	_	_	_	
+2-4	77-81	bruk	_	_	_	_	
+2-5	82-84	av	_	_	_	_	
+2-6	85-95	pustemaske	OVERLAP	TREATMENT	OVERLAP	1-7	
+2-7	96-98	og	_	_	_	_	
+2-8	99-108	apparatur	OVERLAP	TREATMENT	OVERLAP|OVERLAP	2-6|1-7	
+2-9	108-109	.	_	_	_	_	
+
+#Text=Pasienten informeres om sammenheng mellom søvnapné og kardiovaskulær risiko.
+3-1	110-119	Pasienten	_	_	_	_	
+3-2	120-130	informeres	_	_	_	_	
+3-3	131-133	om	_	_	_	_	
+3-4	134-144	sammenheng	_	_	_	_	
+3-5	145-151	mellom	_	_	_	_	
+3-6	152-160	søvnapné	_	_	_	_	
+3-7	161-163	og	_	_	_	_	
+3-8	164-178	kardiovaskulær	_	_	_	_	
+3-9	179-185	risiko	_	_	_	_	
+3-10	185-186	.	_	_	_	_	
+
+#Text=Iverksetter samtidig livsstilsendringsprogram med vektreduksjon og treningsoppfølging.
+4-1	187-198	Iverksetter	_	_	_	_	
+4-2	199-207	samtidig	_	_	_	_	
+4-3	208-232	livsstilsendringsprogram	AFTER	TREATMENT	OVERLAP|OVERLAP	4-7|4-5	
+4-4	233-236	med	_	_	_	_	
+4-5	237-250	vektreduksjon	AFTER	TREATMENT	OVERLAP|OVERLAP	4-7|4-3	
+4-6	251-253	og	_	_	_	_	
+4-7	254-272	treningsoppfølging	AFTER	TREATMENT	OVERLAP|OVERLAP	4-5|4-3	
+4-8	272-273	.	_	_	_	_	

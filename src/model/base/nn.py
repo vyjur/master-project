@@ -114,7 +114,7 @@ class NN:
             for t in range(parameters["epochs"]):
                 print(f"Epoch {t + 1}\n-------------------------------")
                 loss, acc = self.__train(training_loader, loss_fn, optimizer)
-                wandb.log({"loss": loss.item(), "accuracy": acc})  # type: ignore
+                wandb.log({"loss": loss, "accuracy": acc})  # type: ignore
 
             labels, predictions = self.__valid(
                 testing_loader, self.__device, processed["id2label"]
@@ -143,48 +143,42 @@ class NN:
 
     def __train(self, training_loader, loss_fn, optimizer):
         self.__model.train()
-        tr_loss, tr_accuracy = 0, 0
+        tr_loss = 0
+        
+        all_preds, all_targets = [], [] 
         for idx, batch in enumerate(training_loader):
             ids = batch["ids"].to(self.__device, dtype=torch.long)
             targets = batch["targets"].to(self.__device, dtype=torch.long)
             self.__model.batch = ids.shape[0]
 
-            self.__model.zero_grad()
+            optimizer.zero_grad()
+
             if self.__task == Task.TOKEN:
                 loss = self.__model.neg_log_likelihood(ids, targets)
                 with torch.no_grad():
                     outputs = self.__model(ids)
-                    flattened_targets = targets.view(-1)
-                    # shape (batch_size * seq_len,)
-                    curr_loss = loss
-                    predictions = outputs
-                    tr_accuracy += accuracy_score(
-                        targets.view(-1).numpy(),
-                        predictions.view(-1).numpy(),
-                    )
+                    predictions = outputs.view(-1).cpu().numpy()
+                    flattened_targets = targets.view(-1).cpu().numpy()
             else:
                 outputs = self.__model(ids)
-                flattened_targets = targets.view(-1)  # shape (batch_size * seq_len,)
-                loss = loss_fn(outputs, flattened_targets)
-                predictions = outputs
+                flattened_targets = targets.view(-1).cpu().numpy()
+                loss = loss_fn(outputs, targets.view(-1))
                 with torch.no_grad():
-                    curr_loss = loss
-                    flattened_predictions = torch.argmax(
-                        outputs,
-                        axis=1,  # type: ignore
-                    )
-                    tr_accuracy += accuracy_score(
-                        targets.view(-1).numpy(), flattened_predictions
-                    )  # shape (batch_size * seq_len,)
-
-            tr_loss += curr_loss
-
-            optimizer.step()
+                    predictions = torch.argmax(outputs, dim=1).cpu().numpy()
+            
+            all_preds.extend(predictions)
+            all_targets.extend(flattened_targets)
+            tr_loss += loss.item()
+        
             loss.backward()
+            optimizer.step()
+            
             if idx % 100 == 0:
                 print(f"Batch {idx}, Loss: {loss.item()}")
 
-        return tr_loss, tr_accuracy
+        acc = accuracy_score(all_targets, all_preds)
+
+        return tr_loss, acc
 
     def __valid(self, testing_loader, device, id2label):
         # put model in evaluation mode

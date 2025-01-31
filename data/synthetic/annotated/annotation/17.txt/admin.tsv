@@ -1,0 +1,155 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+
+
+#Text=Notat 2 - 11.11.2024:
+#Text=Pasienten har nå brukt escitalopram i 3 uker.
+1-1	0-5	Notat	_	_	
+1-2	6-7	2	_	_	
+1-3	8-9	-	_	_	
+1-4	10-20	11.11.2024	_	_	
+1-5	20-21	:	_	_	
+1-6	22-31	Pasienten	_	_	
+1-7	32-35	har	_	_	
+1-8	36-38	nå	_	_	
+1-9	39-44	brukt	_	_	
+1-10	45-57	escitalopram	BEFOREOVERLAP	TREATMENT	
+1-11	58-59	i	_	_	
+1-12	60-61	3	_	_	
+1-13	62-66	uker	_	_	
+1-14	66-67	.	_	_	
+
+#Text=Han rapporterer om noe bedring, spesielt i form av mindre uro og lettere tilgang til søvn, men opplever fortsatt at han våkner tidlig om morgenen.
+2-1	68-71	Han	_	_	
+2-2	72-83	rapporterer	_	_	
+2-3	84-86	om	_	_	
+2-4	87-90	noe	OVERLAP[1]	CONDITION[1]	
+2-5	91-98	bedring	OVERLAP[1]	CONDITION[1]	
+2-6	98-99	,	_	_	
+2-7	100-108	spesielt	_	_	
+2-8	109-110	i	_	_	
+2-9	111-115	form	_	_	
+2-10	116-118	av	_	_	
+2-11	119-125	mindre	_	_	
+2-12	126-129	uro	_	_	
+2-13	130-132	og	_	_	
+2-14	133-140	lettere	_	_	
+2-15	141-148	tilgang	_	_	
+2-16	149-152	til	_	_	
+2-17	153-157	søvn	_	_	
+2-18	157-158	,	_	_	
+2-19	159-162	men	_	_	
+2-20	163-171	opplever	_	_	
+2-21	172-180	fortsatt	_	_	
+2-22	181-183	at	_	_	
+2-23	184-187	han	_	_	
+2-24	188-194	våkner	_	_	
+2-25	195-201	tidlig	_	_	
+2-26	202-204	om	_	_	
+2-27	205-213	morgenen	_	_	
+2-28	213-214	.	_	_	
+
+#Text=Den nedstemte følelsen er der fortsatt, men han føler ikke at det er like tungt som før.
+3-1	215-218	Den	_	_	
+3-2	219-228	nedstemte	OVERLAP[2]	CONDITION[2]	
+3-3	229-237	følelsen	OVERLAP[2]	CONDITION[2]	
+3-4	238-240	er	_	_	
+3-5	241-244	der	_	_	
+3-6	245-253	fortsatt	_	_	
+3-7	253-254	,	_	_	
+3-8	255-258	men	_	_	
+3-9	259-262	han	_	_	
+3-10	263-268	føler	_	_	
+3-11	269-273	ikke	_	_	
+3-12	274-276	at	_	_	
+3-13	277-280	det	_	_	
+3-14	281-283	er	_	_	
+3-15	284-288	like	_	_	
+3-16	289-294	tungt	_	_	
+3-17	295-298	som	_	_	
+3-18	299-302	før	_	_	
+3-19	302-303	.	_	_	
+
+#Text=Pasienten har også begynt å gå turer daglig, noe som har hjulpet på energinivået.
+4-1	304-313	Pasienten	_	_	
+4-2	314-317	har	_	_	
+4-3	318-322	også	_	_	
+4-4	323-329	begynt	_	_	
+4-5	330-331	å	_	_	
+4-6	332-334	gå	OVERLAP[3]	TREATMENT[3]	
+4-7	335-340	turer	OVERLAP[3]	TREATMENT[3]	
+4-8	341-347	daglig	OVERLAP[3]	TREATMENT[3]	
+4-9	347-348	,	_	_	
+4-10	349-352	noe	_	_	
+4-11	353-356	som	_	_	
+4-12	357-360	har	_	_	
+4-13	361-368	hjulpet	_	_	
+4-14	369-371	på	_	_	
+4-15	372-384	energinivået	_	_	
+4-16	384-385	.	_	_	
+
+#Text=Ingen nevneverdige bivirkninger av medisinen, bortsett fra litt kvalme i starten, som nå har avtatt.
+5-1	386-391	Ingen	_	_	
+5-2	392-404	nevneverdige	_	_	
+5-3	405-417	bivirkninger	_	_	
+5-4	418-420	av	_	_	
+5-5	421-430	medisinen	_	_	
+5-6	430-431	,	_	_	
+5-7	432-440	bortsett	_	_	
+5-8	441-444	fra	_	_	
+5-9	445-449	litt	_	_	
+5-10	450-456	kvalme	OVERLAP	CONDITION	
+5-11	457-458	i	_	_	
+5-12	459-466	starten	_	_	
+5-13	466-467	,	_	_	
+5-14	468-471	som	_	_	
+5-15	472-474	nå	_	_	
+5-16	475-478	har	_	_	
+5-17	479-485	avtatt	_	_	
+5-18	485-486	.	_	_	
+
+#Text=Vi øker dosen av escitalopram til 15 mg daglig for å se om dette kan gi ytterligere bedring.
+6-1	487-489	Vi	_	_	
+6-2	490-494	øker	_	_	
+6-3	495-500	dosen	_	_	
+6-4	501-503	av	_	_	
+6-5	504-516	escitalopram	AFTER	TREATMENT	
+6-6	517-520	til	_	_	
+6-7	521-523	15	_	_	
+6-8	524-526	mg	_	_	
+6-9	527-533	daglig	_	_	
+6-10	534-537	for	_	_	
+6-11	538-539	å	_	_	
+6-12	540-542	se	_	_	
+6-13	543-545	om	_	_	
+6-14	546-551	dette	_	_	
+6-15	552-555	kan	_	_	
+6-16	556-558	gi	_	_	
+6-17	559-570	ytterligere	_	_	
+6-18	571-578	bedring	_	_	
+6-19	578-579	.	_	_	
+
+#Text=Pasienten er motivert for å starte samtaleterapi, og vi henviser ham til psykolog.
+7-1	580-589	Pasienten	_	_	
+7-2	590-592	er	_	_	
+7-3	593-601	motivert	_	_	
+7-4	602-605	for	_	_	
+7-5	606-607	å	_	_	
+7-6	608-614	starte	_	_	
+7-7	615-628	samtaleterapi	AFTER	TREATMENT	
+7-8	628-629	,	_	_	
+7-9	630-632	og	_	_	
+7-10	633-635	vi	_	_	
+7-11	636-644	henviser	_	_	
+7-12	645-648	ham	_	_	
+7-13	649-652	til	_	_	
+7-14	653-661	psykolog	AFTER	TREATMENT	
+7-15	661-662	.	_	_	
+
+#Text=Ny oppfølging om 4 uker.
+8-1	663-665	Ny	_	_	
+8-2	666-676	oppfølging	AFTER	TREATMENT	
+8-3	677-679	om	_	_	
+8-4	680-681	4	_	_	
+8-5	682-686	uker	_	_	
+8-6	686-687	.	_	_	

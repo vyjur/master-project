@@ -1,0 +1,105 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 5 (2023-12-06)
+#Text=Liv kom inn til siste oppfølging i dag.
+1-1	0-12	Journalnotat	
+1-2	13-14	5	
+1-3	15-16	(	
+1-4	16-20	2023	
+1-5	20-21	-	
+1-6	21-23	12	
+1-7	23-24	-	
+1-8	24-26	06	
+1-9	26-27	)	
+1-10	28-31	Liv	
+1-11	32-35	kom	
+1-12	36-39	inn	
+1-13	40-43	til	
+1-14	44-49	siste	
+1-15	50-60	oppfølging	
+1-16	61-62	i	
+1-17	63-66	dag	
+1-18	66-67	.	
+
+#Text=Hun rapporterte at alt gikk bra, og at hun kunne leve et nærmest normalt liv.
+2-1	68-71	Hun	
+2-2	72-83	rapporterte	
+2-3	84-86	at	
+2-4	87-90	alt	
+2-5	91-95	gikk	
+2-6	96-99	bra	
+2-7	99-100	,	
+2-8	101-103	og	
+2-9	104-106	at	
+2-10	107-110	hun	
+2-11	111-116	kunne	
+2-12	117-121	leve	
+2-13	122-124	et	
+2-14	125-132	nærmest	
+2-15	133-140	normalt	
+2-16	141-144	liv	
+2-17	144-145	.	
+
+#Text=Søvnpatternen var stabil, og hun hadde ikke opplevd noen nye problemer.
+3-1	146-159	Søvnpatternen	
+3-2	160-163	var	
+3-3	164-170	stabil	
+3-4	170-171	,	
+3-5	172-174	og	
+3-6	175-178	hun	
+3-7	179-184	hadde	
+3-8	185-189	ikke	
+3-9	190-197	opplevd	
+3-10	198-202	noen	
+3-11	203-206	nye	
+3-12	207-216	problemer	
+3-13	216-217	.	
+
+#Text=Vi diskuterede viktigheten av å holde seg fysisk aktiv og unngå stress.
+4-1	218-220	Vi	
+4-2	221-232	diskuterede	
+4-3	233-244	viktigheten	
+4-4	245-247	av	
+4-5	248-249	å	
+4-6	250-255	holde	
+4-7	256-259	seg	
+4-8	260-266	fysisk	
+4-9	267-272	aktiv	
+4-10	273-275	og	
+4-11	276-281	unngå	
+4-12	282-288	stress	
+4-13	288-289	.	
+
+#Text=Liv var meget tilfreds med resultatet av behandlingen og takket meg for støtten.
+5-1	290-293	Liv	
+5-2	294-297	var	
+5-3	298-303	meget	
+5-4	304-312	tilfreds	
+5-5	313-316	med	
+5-6	317-327	resultatet	
+5-7	328-330	av	
+5-8	331-343	behandlingen	
+5-9	344-346	og	
+5-10	347-353	takket	
+5-11	354-357	meg	
+5-12	358-361	for	
+5-13	362-369	støtten	
+5-14	369-370	.	
+
+#Text=Vi planla en oppfølging om ett år for å sikre at alt går godt.
+6-1	371-373	Vi	
+6-2	374-380	planla	
+6-3	381-383	en	
+6-4	384-394	oppfølging	
+6-5	395-397	om	
+6-6	398-401	ett	
+6-7	402-404	år	
+6-8	405-408	for	
+6-9	409-410	å	
+6-10	411-416	sikre	
+6-11	417-419	at	
+6-12	420-423	alt	
+6-13	424-427	går	
+6-14	428-432	godt	
+6-15	432-433	.	

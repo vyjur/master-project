@@ -1,0 +1,71 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=10.02.2023:
+#Text=Mann 65 år med økende tremor høyre hånd siste år.
+1-1	0-10	10.02.2023	
+1-2	10-11	:	
+1-3	12-16	Mann	
+1-4	17-19	65	
+1-5	20-22	år	
+1-6	23-26	med	
+1-7	27-33	økende	
+1-8	34-40	tremor	
+1-9	41-46	høyre	
+1-10	47-51	hånd	
+1-11	52-57	siste	
+1-12	58-60	år	
+1-13	60-61	.	
+
+#Text=Redusert armsving høyre side.
+2-1	62-70	Redusert	
+2-2	71-79	armsving	
+2-3	80-85	høyre	
+2-4	86-90	side	
+2-5	90-91	.	
+
+#Text=Rigiditet ved undersøkelse.
+3-1	92-101	Rigiditet	
+3-2	102-105	ved	
+3-3	106-118	undersøkelse	
+3-4	118-119	.	
+
+#Text=Lett bradykinesi.
+4-1	120-124	Lett	
+4-2	125-136	bradykinesi	
+4-3	136-137	.	
+
+#Text=UPDRS score 22.
+5-1	138-143	UPDRS	
+5-2	144-149	score	
+5-3	150-152	22	
+5-4	152-153	.	
+
+#Text=MR caput uten patologi.
+6-1	154-156	MR	
+6-2	157-162	caput	
+6-3	163-167	uten	
+6-4	168-176	patologi	
+6-5	176-177	.	
+
+#Text=Klinisk diagnose Parkinsons sykdom.
+7-1	178-185	Klinisk	
+7-2	186-194	diagnose	
+7-3	195-205	Parkinsons	
+7-4	206-212	sykdom	
+7-5	212-213	.	
+
+#Text=Starter Sinemet 25/100mg x3.
+8-1	214-221	Starter	
+8-2	222-229	Sinemet	
+8-3	230-232	25	
+8-4	232-233	/	
+8-5	233-238	100mg	
+8-6	239-241	x3	
+8-7	241-242	.	
+
+#Text=Henviser til nevrolog.
+9-1	243-251	Henviser	
+9-2	252-255	til	
+9-3	256-264	nevrolog	
+9-4	264-265	.	

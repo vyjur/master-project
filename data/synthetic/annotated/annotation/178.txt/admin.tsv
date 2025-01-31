@@ -1,0 +1,134 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 3 (2023-10-13)
+#Text=Maria rapporterte en marginal bedring i symptonforvaltningen.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	3	_	_	_	_	
+1-3	15-16	(	_	_	_	_	
+1-4	16-20	2023	_	_	_	_	
+1-5	20-21	-	_	_	_	_	
+1-6	21-23	10	_	_	_	_	
+1-7	23-24	-	_	_	_	_	
+1-8	24-26	13	_	_	_	_	
+1-9	26-27	)	_	_	_	_	
+1-10	28-33	Maria	_	_	_	_	
+1-11	34-45	rapporterte	_	_	_	_	
+1-12	46-48	en	_	_	_	_	
+1-13	49-57	marginal	_	_	_	_	
+1-14	58-65	bedring	OVERLAP[1]	CONDITION[1]	_	_	
+1-15	66-67	i	OVERLAP[1]	CONDITION[1]	_	_	
+1-16	68-88	symptonforvaltningen	OVERLAP[1]	CONDITION[1]	_	_	
+1-17	88-89	.	_	_	_	_	
+
+#Text=Hun hadde blitt mer klar i samtaler, og hennes mann noterte at hun hadde fått mindre vanskeligheter med å huske simple oppgaver.
+2-1	90-93	Hun	_	_	_	_	
+2-2	94-99	hadde	_	_	_	_	
+2-3	100-105	blitt	_	_	_	_	
+2-4	106-109	mer	OVERLAP[2]	CONDITION[2]	_	_	
+2-5	110-114	klar	OVERLAP[2]	CONDITION[2]	_	_	
+2-6	115-116	i	OVERLAP[2]	CONDITION[2]	_	_	
+2-7	117-125	samtaler	OVERLAP[2]	CONDITION[2]	_	_	
+2-8	125-126	,	_	_	_	_	
+2-9	127-129	og	_	_	_	_	
+2-10	130-136	hennes	_	_	_	_	
+2-11	137-141	mann	_	_	_	_	
+2-12	142-149	noterte	_	_	_	_	
+2-13	150-152	at	_	_	_	_	
+2-14	153-156	hun	_	_	_	_	
+2-15	157-162	hadde	_	_	_	_	
+2-16	163-167	fått	_	_	_	_	
+2-17	168-174	mindre	OVERLAP[3]	CONDITION[3]	_	_	
+2-18	175-189	vanskeligheter	OVERLAP[3]	CONDITION[3]	_	_	
+2-19	190-193	med	OVERLAP[3]	CONDITION[3]	_	_	
+2-20	194-195	å	OVERLAP[3]	CONDITION[3]	_	_	
+2-21	196-201	huske	OVERLAP[3]	CONDITION[3]	_	_	
+2-22	202-208	simple	_	_	_	_	
+2-23	209-217	oppgaver	_	_	_	_	
+2-24	217-218	.	_	_	_	_	
+
+#Text=Dagoppholdet hadde vært vellykket, og Maria hadde følt seg trygg og involvert.
+3-1	219-231	Dagoppholdet	_	_	_	_	
+3-2	232-237	hadde	_	_	_	_	
+3-3	238-242	vært	_	_	_	_	
+3-4	243-252	vellykket	_	_	_	_	
+3-5	252-253	,	_	_	_	_	
+3-6	254-256	og	_	_	_	_	
+3-7	257-262	Maria	_	_	_	_	
+3-8	263-268	hadde	_	_	_	_	
+3-9	269-273	følt	_	_	_	_	
+3-10	274-277	seg	_	_	_	_	
+3-11	278-283	trygg	_	_	_	_	
+3-12	284-286	og	_	_	_	_	
+3-13	287-296	involvert	_	_	_	_	
+3-14	296-297	.	_	_	_	_	
+
+#Text=Vi diskuterte muligheten for å fortsette med dagoppholdet og mulig inngående omsorg hvis situasjonen skulle forverres.
+4-1	298-300	Vi	_	_	_	_	
+4-2	301-311	diskuterte	_	_	_	_	
+4-3	312-322	muligheten	_	_	_	_	
+4-4	323-326	for	_	_	_	_	
+4-5	327-328	å	_	_	_	_	
+4-6	329-338	fortsette	AFTER[4]	TREATMENT[4]	_	_	
+4-7	339-342	med	AFTER[4]	TREATMENT[4]	_	_	
+4-8	343-355	dagoppholdet	AFTER[4]	TREATMENT[4]	_	_	
+4-9	356-358	og	_	_	_	_	
+4-10	359-364	mulig	_	_	_	_	
+4-11	365-374	inngående	AFTER[5]	CONDITION[5]	_	_	
+4-12	375-381	omsorg	AFTER[5]	CONDITION[5]	_	_	
+4-13	382-386	hvis	_	_	_	_	
+4-14	387-398	situasjonen	_	_	_	_	
+4-15	399-405	skulle	_	_	_	_	
+4-16	406-415	forverres	_	_	_	_	
+4-17	415-416	.	_	_	_	_	
+
+#Text=Vi planla også en henvisning til en ergoterapeut for å hjelpe Maria med å finne strategier for å håndtere daglige oppgaver.
+5-1	417-419	Vi	_	_	_	_	
+5-2	420-426	planla	_	_	_	_	
+5-3	427-431	også	_	_	_	_	
+5-4	432-434	en	_	_	_	_	
+5-5	435-445	henvisning	AFTER[6]	TREATMENT[6]	_	_	
+5-6	446-449	til	AFTER[6]	TREATMENT[6]	_	_	
+5-7	450-452	en	AFTER[6]	TREATMENT[6]	_	_	
+5-8	453-465	ergoterapeut	AFTER[6]	TREATMENT[6]	_	_	
+5-9	466-469	for	_	_	_	_	
+5-10	470-471	å	_	_	_	_	
+5-11	472-478	hjelpe	_	_	_	_	
+5-12	479-484	Maria	_	_	_	_	
+5-13	485-488	med	_	_	_	_	
+5-14	489-490	å	_	_	_	_	
+5-15	491-496	finne	_	_	_	_	
+5-16	497-507	strategier	_	_	_	_	
+5-17	508-511	for	_	_	_	_	
+5-18	512-513	å	_	_	_	_	
+5-19	514-522	håndtere	_	_	_	_	
+5-20	523-530	daglige	_	_	_	_	
+5-21	531-539	oppgaver	_	_	_	_	
+5-22	539-540	.	_	_	_	_	
+
+#Text=Maria var glad for resultatet av behandlingen og takket meg for støtten.
+6-1	541-546	Maria	_	_	_	_	
+6-2	547-550	var	_	_	_	_	
+6-3	551-555	glad	_	_	_	_	
+6-4	556-559	for	_	_	_	_	
+6-5	560-570	resultatet	_	_	_	_	
+6-6	571-573	av	_	_	_	_	
+6-7	574-586	behandlingen	_	_	_	_	
+6-8	587-589	og	_	_	_	_	
+6-9	590-596	takket	_	_	_	_	
+6-10	597-600	meg	_	_	_	_	
+6-11	601-604	for	_	_	_	_	
+6-12	605-612	støtten	_	_	_	_	
+6-13	612-613	.	_	_	_	_	
+
+#Text=Vi planla en oppfølging om to måneder.
+7-1	614-616	Vi	_	_	_	_	
+7-2	617-623	planla	_	_	_	_	
+7-3	624-626	en	_	_	_	_	
+7-4	627-637	oppfølging	AFTER	CONDITION	BEFORE|BEFORE|BEFORE	5-5[6_0]|4-6[4_0]|4-11[5_0]	
+7-5	638-640	om	_	_	_	_	
+7-6	641-643	to	_	_	_	_	
+7-7	644-651	måneder	_	_	_	_	
+7-8	651-652	.	_	_	_	_	

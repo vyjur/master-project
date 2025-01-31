@@ -1,0 +1,88 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 1 - 10.09.2023**
+#Text=
+#Text=Pasienten, en 30-årig kvinne, kommer til klinikken med symptomer på mageproblemer, inkludert magesmerter, kvalme og diaré.
+1-1	0-12	Journalnotat	
+1-2	13-14	1	
+1-3	15-16	-	
+1-4	17-27	10.09.2023	
+1-5	27-28	*	
+1-6	28-29	*	
+1-7	31-40	Pasienten	
+1-8	40-41	,	
+1-9	42-44	en	
+1-10	45-47	30	
+1-11	47-48	-	
+1-12	48-52	årig	
+1-13	53-59	kvinne	
+1-14	59-60	,	
+1-15	61-67	kommer	
+1-16	68-71	til	
+1-17	72-81	klinikken	
+1-18	82-85	med	
+1-19	86-95	symptomer	
+1-20	96-98	på	
+1-21	99-112	mageproblemer	
+1-22	112-113	,	
+1-23	114-123	inkludert	
+1-24	124-135	magesmerter	
+1-25	135-136	,	
+1-26	137-143	kvalme	
+1-27	144-146	og	
+1-28	147-152	diaré	
+1-29	152-153	.	
+
+#Text=Hun har tidligere vært frisk og aktiv, men har merket en gradvis forverring av symptomer over de siste månedene.
+2-1	154-157	Hun	
+2-2	158-161	har	
+2-3	162-171	tidligere	
+2-4	172-176	vært	
+2-5	177-182	frisk	
+2-6	183-185	og	
+2-7	186-191	aktiv	
+2-8	191-192	,	
+2-9	193-196	men	
+2-10	197-200	har	
+2-11	201-207	merket	
+2-12	208-210	en	
+2-13	211-218	gradvis	
+2-14	219-229	forverring	
+2-15	230-232	av	
+2-16	233-242	symptomer	
+2-17	243-247	over	
+2-18	248-250	de	
+2-19	251-256	siste	
+2-20	257-265	månedene	
+2-21	265-266	.	
+
+#Text=Ved undersøkelse finner jeg en reduksjon i magesaftsekresjon og en øket pH-nivå.
+3-1	267-270	Ved	
+3-2	271-283	undersøkelse	
+3-3	284-290	finner	
+3-4	291-294	jeg	
+3-5	295-297	en	
+3-6	298-307	reduksjon	
+3-7	308-309	i	
+3-8	310-327	magesaftsekresjon	
+3-9	328-330	og	
+3-10	331-333	en	
+3-11	334-338	øket	
+3-12	339-346	pH-nivå	
+3-13	346-347	.	
+
+#Text=Jeg starter pasienten på en behandling med protonpumpshemmere for å kontrollere symptomer.
+4-1	348-351	Jeg	
+4-2	352-359	starter	
+4-3	360-369	pasienten	
+4-4	370-372	på	
+4-5	373-375	en	
+4-6	376-386	behandling	
+4-7	387-390	med	
+4-8	391-409	protonpumpshemmere	
+4-9	410-413	for	
+4-10	414-415	å	
+4-11	416-427	kontrollere	
+4-12	428-437	symptomer	
+4-13	437-438	.	

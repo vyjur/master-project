@@ -1,0 +1,135 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 3 (2023-10-08)
+#Text=Liv rapporterte en viderebedring i søvnpatternen.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	3	_	_	_	_	
+1-3	15-16	(	_	_	_	_	
+1-4	16-20	2023	_	_	_	_	
+1-5	20-21	-	_	_	_	_	
+1-6	21-23	10	_	_	_	_	
+1-7	23-24	-	_	_	_	_	
+1-8	24-26	08	_	_	_	_	
+1-9	26-27	)	_	_	_	_	
+1-10	28-31	Liv	_	_	_	_	
+1-11	32-43	rapporterte	_	_	_	_	
+1-12	44-46	en	_	_	_	_	
+1-13	47-60	viderebedring	OVERLAP[1]	CONDITION[1]	_	_	
+1-14	61-62	i	OVERLAP[1]	CONDITION[1]	_	_	
+1-15	63-76	søvnpatternen	OVERLAP[1]	CONDITION[1]	_	_	
+1-16	76-77	.	_	_	_	_	
+
+#Text=Hun hadde brukt hypnotikum to ganger de siste to ukene, og det hadde hjulpet henne med å falne i søvn raskere.
+2-1	78-81	Hun	_	_	_	_	
+2-2	82-87	hadde	_	_	_	_	
+2-3	88-93	brukt	_	_	_	_	
+2-4	94-104	hypnotikum	BEFOREOVERLAP	TREATMENT	_	_	
+2-5	105-107	to	_	_	_	_	
+2-6	108-114	ganger	_	_	_	_	
+2-7	115-117	de	_	_	_	_	
+2-8	118-123	siste	_	_	_	_	
+2-9	124-126	to	_	_	_	_	
+2-10	127-132	ukene	_	_	_	_	
+2-11	132-133	,	_	_	_	_	
+2-12	134-136	og	_	_	_	_	
+2-13	137-140	det	_	_	_	_	
+2-14	141-146	hadde	_	_	_	_	
+2-15	147-154	hjulpet	_	_	_	_	
+2-16	155-160	henne	_	_	_	_	
+2-17	161-164	med	_	_	_	_	
+2-18	165-166	å	_	_	_	_	
+2-19	167-172	falne	_	_	_	_	
+2-20	173-174	i	_	_	_	_	
+2-21	175-179	søvn	_	_	_	_	
+2-22	180-187	raskere	_	_	_	_	
+2-23	187-188	.	_	_	_	_	
+
+#Text=Hun hadde også mer kontroll over sine tanker når hun ligger i sengen, takket være CBT-I.
+3-1	189-192	Hun	_	_	_	_	
+3-2	193-198	hadde	_	_	_	_	
+3-3	199-203	også	_	_	_	_	
+3-4	204-207	mer	_	_	_	_	
+3-5	208-216	kontroll	_	_	_	_	
+3-6	217-221	over	_	_	_	_	
+3-7	222-226	sine	_	_	_	_	
+3-8	227-233	tanker	_	_	_	_	
+3-9	234-237	når	_	_	_	_	
+3-10	238-241	hun	_	_	_	_	
+3-11	242-248	ligger	_	_	_	_	
+3-12	249-250	i	_	_	_	_	
+3-13	251-257	sengen	_	_	_	_	
+3-14	257-258	,	_	_	_	_	
+3-15	259-265	takket	_	_	_	_	
+3-16	266-270	være	_	_	_	_	
+3-17	271-276	CBT-I	_	_	_	_	
+3-18	276-277	.	_	_	_	_	
+
+#Text=Vi diskuterede viktigheten av å holde seg fysisk aktiv og unngå stress.
+4-1	278-280	Vi	_	_	_	_	
+4-2	281-292	diskuterede	_	_	_	_	
+4-3	293-304	viktigheten	_	_	_	_	
+4-4	305-307	av	_	_	_	_	
+4-5	308-309	å	_	_	_	_	
+4-6	310-315	holde	_	_	_	_	
+4-7	316-319	seg	_	_	_	_	
+4-8	320-326	fysisk	AFTER[2]	TREATMENT[2]	_	_	
+4-9	327-332	aktiv	AFTER[2]	TREATMENT[2]	_	_	
+4-10	333-335	og	_	_	_	_	
+4-11	336-341	unngå	AFTER[3]	TREATMENT[3]	_	_	
+4-12	342-348	stress	AFTER[3]	TREATMENT[3]	_	_	
+4-13	348-349	.	_	_	_	_	
+
+#Text=Liv var glad for resultatet av behandlingen og takket meg for støtten.
+5-1	350-353	Liv	_	_	_	_	
+5-2	354-357	var	_	_	_	_	
+5-3	358-362	glad	_	_	_	_	
+5-4	363-366	for	_	_	_	_	
+5-5	367-377	resultatet	_	_	_	_	
+5-6	378-380	av	_	_	_	_	
+5-7	381-393	behandlingen	_	_	_	_	
+5-8	394-396	og	_	_	_	_	
+5-9	397-403	takket	_	_	_	_	
+5-10	404-407	meg	_	_	_	_	
+5-11	408-411	for	_	_	_	_	
+5-12	412-419	støtten	_	_	_	_	
+5-13	419-420	.	_	_	_	_	
+
+#Text=Vi bestemte oss for å fortsette med CBT-I og redusere bruk av hypnotikum gradvis.
+6-1	421-423	Vi	_	_	_	_	
+6-2	424-432	bestemte	_	_	_	_	
+6-3	433-436	oss	_	_	_	_	
+6-4	437-440	for	_	_	_	_	
+6-5	441-442	å	_	_	_	_	
+6-6	443-452	fortsette	_	_	_	_	
+6-7	453-456	med	_	_	_	_	
+6-8	457-462	CBT-I	AFTER	TREATMENT	_	_	
+6-9	463-465	og	_	_	_	_	
+6-10	466-474	redusere	AFTER[4]	TREATMENT[4]	_	_	
+6-11	475-479	bruk	AFTER[4]	TREATMENT[4]	_	_	
+6-12	480-482	av	AFTER[4]	TREATMENT[4]	_	_	
+6-13	483-493	hypnotikum	AFTER[4]	TREATMENT[4]	_	_	
+6-14	494-501	gradvis	_	_	_	_	
+6-15	501-502	.	_	_	_	_	
+
+#Text=Vi planla en oppfølging om to måneder for å se hvordan hun reagerer på den nye behandlingen.
+7-1	503-505	Vi	_	_	_	_	
+7-2	506-512	planla	_	_	_	_	
+7-3	513-515	en	_	_	_	_	
+7-4	516-526	oppfølging	AFTER	TREATMENT	BEFORE|BEFORE|BEFORE|BEFORE	6-8|6-10[4_0]|4-8[2_0]|4-11[3_0]	
+7-5	527-529	om	_	_	_	_	
+7-6	530-532	to	_	_	_	_	
+7-7	533-540	måneder	_	_	_	_	
+7-8	541-544	for	_	_	_	_	
+7-9	545-546	å	_	_	_	_	
+7-10	547-549	se	_	_	_	_	
+7-11	550-557	hvordan	_	_	_	_	
+7-12	558-561	hun	_	_	_	_	
+7-13	562-570	reagerer	_	_	_	_	
+7-14	571-573	på	_	_	_	_	
+7-15	574-577	den	_	_	_	_	
+7-16	578-581	nye	_	_	_	_	
+7-17	582-594	behandlingen	_	_	_	_	
+7-18	594-595	.	_	_	_	_	

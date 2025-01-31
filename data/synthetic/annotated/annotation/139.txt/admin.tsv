@@ -1,0 +1,55 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+
+
+#Text=Journalnotat 2 - 17.07.2023**
+#Text=
+#Text=Pasienten kommer tilbake etter 1 uke med kolinesteraseinhibitor-behandling.
+1-1	0-12	Journalnotat	_	_	
+1-2	13-14	2	_	_	
+1-3	15-16	-	_	_	
+1-4	17-27	17.07.2023	_	_	
+1-5	27-28	*	_	_	
+1-6	28-29	*	_	_	
+1-7	31-40	Pasienten	_	_	
+1-8	41-47	kommer	_	_	
+1-9	48-55	tilbake	_	_	
+1-10	56-61	etter	_	_	
+1-11	62-63	1	_	_	
+1-12	64-67	uke	_	_	
+1-13	68-71	med	_	_	
+1-14	72-105	kolinesteraseinhibitor-behandling	BEFOREOVERLAP	TREATMENT	
+1-15	105-106	.	_	_	
+
+#Text=Hun rapporterer en forbedring i symptomer og en reduksjon i forvirringen.
+2-1	107-110	Hun	_	_	
+2-2	111-122	rapporterer	_	_	
+2-3	123-125	en	_	_	
+2-4	126-136	forbedring	OVERLAP[1]	CONDITION[1]	
+2-5	137-138	i	OVERLAP[1]	CONDITION[1]	
+2-6	139-148	symptomer	OVERLAP[1]	CONDITION[1]	
+2-7	149-151	og	_	_	
+2-8	152-154	en	OVERLAP[2]	CONDITION[2]	
+2-9	155-164	reduksjon	OVERLAP[2]	CONDITION[2]	
+2-10	165-166	i	OVERLAP[2]	CONDITION[2]	
+2-11	167-179	forvirringen	OVERLAP[2]	CONDITION[2]	
+2-12	179-180	.	_	_	
+
+#Text=Jeg justerer kolinesteraseinhibitor-dosen og foreslår at pasienten begynner med en fysioterapibehandling for å forbedre fysisk funksjon.
+3-1	181-184	Jeg	_	_	
+3-2	185-193	justerer	AFTER[3]	TREATMENT[3]	
+3-3	194-222	kolinesteraseinhibitor-dosen	AFTER[3]	TREATMENT[3]	
+3-4	223-225	og	_	_	
+3-5	226-234	foreslår	_	_	
+3-6	235-237	at	_	_	
+3-7	238-247	pasienten	_	_	
+3-8	248-256	begynner	_	_	
+3-9	257-260	med	_	_	
+3-10	261-263	en	_	_	
+3-11	264-285	fysioterapibehandling	AFTER	CONDITION	
+3-12	286-289	for	_	_	
+3-13	290-291	å	_	_	
+3-14	292-300	forbedre	_	_	
+3-15	301-307	fysisk	_	_	
+3-16	308-316	funksjon	_	_	
+3-17	316-317	.	_	_	

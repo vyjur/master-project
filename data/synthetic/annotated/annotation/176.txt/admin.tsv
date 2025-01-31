@@ -1,0 +1,177 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 1 (2023-09-15)
+#Text=Maria møtte meg i dag med klagene om minnehåpløshet, forvirring og vanskeligheter med å finne riktig ord.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	1	_	_	_	_	
+1-3	15-16	(	_	_	_	_	
+1-4	16-20	2023	_	_	_	_	
+1-5	20-21	-	_	_	_	_	
+1-6	21-23	09	_	_	_	_	
+1-7	23-24	-	_	_	_	_	
+1-8	24-26	15	_	_	_	_	
+1-9	26-27	)	_	_	_	_	
+1-10	28-33	Maria	_	_	_	_	
+1-11	34-39	møtte	_	_	_	_	
+1-12	40-43	meg	_	_	_	_	
+1-13	44-45	i	_	_	_	_	
+1-14	46-49	dag	_	_	_	_	
+1-15	50-53	med	_	_	_	_	
+1-16	54-61	klagene	_	_	_	_	
+1-17	62-64	om	_	_	_	_	
+1-18	65-79	minnehåpløshet	OVERLAP	CONDITION	_	_	
+1-19	79-80	,	_	_	_	_	
+1-20	81-91	forvirring	OVERLAP	CONDITION	_	_	
+1-21	92-94	og	_	_	_	_	
+1-22	95-109	vanskeligheter	OVERLAP[1]	CONDITION[1]	_	_	
+1-23	110-113	med	OVERLAP[1]	CONDITION[1]	_	_	
+1-24	114-115	å	OVERLAP[1]	CONDITION[1]	_	_	
+1-25	116-121	finne	OVERLAP[1]	CONDITION[1]	_	_	
+1-26	122-128	riktig	OVERLAP[1]	CONDITION[1]	_	_	
+1-27	129-132	ord	OVERLAP[1]	CONDITION[1]	_	_	
+1-28	132-133	.	_	_	_	_	
+
+#Text=Hun har en kjent diagnose av Alzheimers sykdom, og symptomen har vært presente i flere år, men de er blitt verre de siste månedene.
+2-1	134-137	Hun	_	_	_	_	
+2-2	138-141	har	_	_	_	_	
+2-3	142-144	en	_	_	_	_	
+2-4	145-150	kjent	_	_	_	_	
+2-5	151-159	diagnose	_	_	_	_	
+2-6	160-162	av	_	_	_	_	
+2-7	163-173	Alzheimers	BEFOREOVERLAP[2]	CONDITION[2]	_	_	
+2-8	174-180	sykdom	BEFOREOVERLAP[2]	CONDITION[2]	_	_	
+2-9	180-181	,	_	_	_	_	
+2-10	182-184	og	_	_	_	_	
+2-11	185-194	symptomen	_	_	_	_	
+2-12	195-198	har	_	_	_	_	
+2-13	199-203	vært	_	_	_	_	
+2-14	204-212	presente	_	_	_	_	
+2-15	213-214	i	_	_	_	_	
+2-16	215-220	flere	_	_	_	_	
+2-17	221-223	år	_	_	_	_	
+2-18	223-224	,	_	_	_	_	
+2-19	225-228	men	_	_	_	_	
+2-20	229-231	de	_	_	_	_	
+2-21	232-234	er	_	_	_	_	
+2-22	235-240	blitt	_	_	_	_	
+2-23	241-246	verre	_	_	_	_	
+2-24	247-249	de	_	_	_	_	
+2-25	250-255	siste	_	_	_	_	
+2-26	256-264	månedene	_	_	_	_	
+2-27	264-265	.	_	_	_	_	
+
+#Text=Maria bor hjemme sammen med sin mann, som er hovedomsorgen, men han har begynt å føle seg overveldet av situasjonen.
+3-1	266-271	Maria	_	_	_	_	
+3-2	272-275	bor	_	_	_	_	
+3-3	276-282	hjemme	_	_	_	_	
+3-4	283-289	sammen	_	_	_	_	
+3-5	290-293	med	_	_	_	_	
+3-6	294-297	sin	_	_	_	_	
+3-7	298-302	mann	_	_	_	_	
+3-8	302-303	,	_	_	_	_	
+3-9	304-307	som	_	_	_	_	
+3-10	308-310	er	_	_	_	_	
+3-11	311-324	hovedomsorgen	_	_	_	_	
+3-12	324-325	,	_	_	_	_	
+3-13	326-329	men	_	_	_	_	
+3-14	330-333	han	_	_	_	_	
+3-15	334-337	har	_	_	_	_	
+3-16	338-344	begynt	_	_	_	_	
+3-17	345-346	å	_	_	_	_	
+3-18	347-351	føle	_	_	_	_	
+3-19	352-355	seg	_	_	_	_	
+3-20	356-366	overveldet	_	_	_	_	
+3-21	367-369	av	_	_	_	_	
+3-22	370-381	situasjonen	_	_	_	_	
+3-23	381-382	.	_	_	_	_	
+
+#Text=Ved undersøkelse noterte jeg at Maria hadde vanskeligheter med å orientere seg i tid og sted, og hun hadde problemer med å huske simple oppgaver.
+4-1	383-386	Ved	_	_	_	_	
+4-2	387-399	undersøkelse	OVERLAP	TREATMENT	BEFORE|BEFORE|BEFORE	1-18|1-20|1-22[1_0]	
+4-3	400-407	noterte	_	_	_	_	
+4-4	408-411	jeg	_	_	_	_	
+4-5	412-414	at	_	_	_	_	
+4-6	415-420	Maria	_	_	_	_	
+4-7	421-426	hadde	_	_	_	_	
+4-8	427-441	vanskeligheter	OVERLAP[3]	CONDITION[3]	BEFORE	4-2[0_3]	
+4-9	442-445	med	OVERLAP[3]	CONDITION[3]	_	_	
+4-10	446-447	å	OVERLAP[3]	CONDITION[3]	_	_	
+4-11	448-457	orientere	OVERLAP[3]	CONDITION[3]	_	_	
+4-12	458-461	seg	OVERLAP[3]	CONDITION[3]	_	_	
+4-13	462-463	i	OVERLAP[3]	CONDITION[3]	_	_	
+4-14	464-467	tid	OVERLAP[3]	CONDITION[3]	_	_	
+4-15	468-470	og	OVERLAP[3]	CONDITION[3]	_	_	
+4-16	471-475	sted	OVERLAP[3]	CONDITION[3]	_	_	
+4-17	475-476	,	_	_	_	_	
+4-18	477-479	og	_	_	_	_	
+4-19	480-483	hun	_	_	_	_	
+4-20	484-489	hadde	_	_	_	_	
+4-21	490-499	problemer	OVERLAP[4]	CONDITION[4]	BEFORE	4-2[0_4]	
+4-22	500-503	med	OVERLAP[4]	CONDITION[4]	_	_	
+4-23	504-505	å	OVERLAP[4]	CONDITION[4]	_	_	
+4-24	506-511	huske	OVERLAP[4]	CONDITION[4]	_	_	
+4-25	512-518	simple	_	_	_	_	
+4-26	519-527	oppgaver	_	_	_	_	
+4-27	527-528	.	_	_	_	_	
+
+#Text=Vi tok et MMSE-test (Mini-Mental State Examination), som viste en score på 18, noe som indikerer moderat demens.
+5-1	529-531	Vi	_	_	_	_	
+5-2	532-535	tok	_	_	_	_	
+5-3	536-538	et	_	_	_	_	
+5-4	539-548	MMSE-test	_	_	_	_	
+5-5	549-550	(	_	_	_	_	
+5-6	550-561	Mini-Mental	_	_	_	_	
+5-7	562-567	State	_	_	_	_	
+5-8	568-579	Examination	_	_	_	_	
+5-9	579-580	)	_	_	_	_	
+5-10	580-581	,	_	_	_	_	
+5-11	582-585	som	_	_	_	_	
+5-12	586-591	viste	_	_	_	_	
+5-13	592-594	en	_	_	_	_	
+5-14	595-600	score	_	_	_	_	
+5-15	601-603	på	_	_	_	_	
+5-16	604-606	18	_	_	_	_	
+5-17	606-607	,	_	_	_	_	
+5-18	608-611	noe	_	_	_	_	
+5-19	612-615	som	_	_	_	_	
+5-20	616-625	indikerer	_	_	_	_	
+5-21	626-633	moderat	_	_	_	_	
+5-22	634-640	demens	_	_	_	_	
+5-23	640-641	.	_	_	_	_	
+
+#Text=Vi diskuterte muligheten for å starte med donepezil for å hjelpe med symptonforvaltning.
+6-1	642-644	Vi	_	_	_	_	
+6-2	645-655	diskuterte	_	_	_	_	
+6-3	656-666	muligheten	_	_	_	_	
+6-4	667-670	for	_	_	_	_	
+6-5	671-672	å	_	_	_	_	
+6-6	673-679	starte	_	_	_	_	
+6-7	680-683	med	_	_	_	_	
+6-8	684-693	donepezil	AFTER	TREATMENT	_	_	
+6-9	694-697	for	_	_	_	_	
+6-10	698-699	å	_	_	_	_	
+6-11	700-706	hjelpe	_	_	_	_	
+6-12	707-710	med	_	_	_	_	
+6-13	711-729	symptonforvaltning	_	_	_	_	
+6-14	729-730	.	_	_	_	_	
+
+#Text=Vi planla også en henvisning til en demensklinik for videre utredning og støtte til familie.
+7-1	731-733	Vi	_	_	_	_	
+7-2	734-740	planla	_	_	_	_	
+7-3	741-745	også	_	_	_	_	
+7-4	746-748	en	_	_	_	_	
+7-5	749-759	henvisning	AFTER[5]	TREATMENT[5]	_	_	
+7-6	760-763	til	AFTER[5]	TREATMENT[5]	_	_	
+7-7	764-766	en	AFTER[5]	TREATMENT[5]	_	_	
+7-8	767-779	demensklinik	AFTER[5]	TREATMENT[5]	_	_	
+7-9	780-783	for	_	_	_	_	
+7-10	784-790	videre	_	_	_	_	
+7-11	791-800	utredning	_	_	_	_	
+7-12	801-803	og	_	_	_	_	
+7-13	804-810	støtte	_	_	_	_	
+7-14	811-814	til	_	_	_	_	
+7-15	815-822	familie	_	_	_	_	
+7-16	822-823	.	_	_	_	_	

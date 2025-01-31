@@ -1,0 +1,53 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 2 - 29.03.2025
+#Text=Oppfølgingssamtale etter oppstart av tilpasset treningsprogram.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	2	_	_	_	_	
+1-3	15-16	-	_	_	_	_	
+1-4	17-27	29.03.2025	_	_	_	_	
+1-5	28-46	Oppfølgingssamtale	OVERLAP	TREATMENT	_	_	
+1-6	47-52	etter	_	_	_	_	
+1-7	53-61	oppstart	_	_	_	_	
+1-8	62-64	av	_	_	_	_	
+1-9	65-74	tilpasset	BEFOREOVERLAP[1]	TREATMENT[1]	_	_	
+1-10	75-90	treningsprogram	BEFOREOVERLAP[1]	TREATMENT[1]	_	_	
+1-11	90-91	.	_	_	_	_	
+
+#Text=Pasienten rapporterer forsiktig bedring i energinivå, men fortsatt betydelige utfordringer med daglige aktiviteter.
+2-1	92-101	Pasienten	_	_	_	_	
+2-2	102-113	rapporterer	_	_	_	_	
+2-3	114-123	forsiktig	_	_	_	_	
+2-4	124-131	bedring	OVERLAP[2]	CONDITION[2]	_	_	
+2-5	132-133	i	OVERLAP[2]	CONDITION[2]	_	_	
+2-6	134-144	energinivå	OVERLAP[2]	CONDITION[2]	_	_	
+2-7	144-145	,	_	_	_	_	
+2-8	146-149	men	_	_	_	_	
+2-9	150-158	fortsatt	_	_	_	_	
+2-10	159-169	betydelige	_	_	_	_	
+2-11	170-182	utfordringer	OVERLAP[3]	CONDITION[3]	OVERLAP	2-4[2_3]	
+2-12	183-186	med	OVERLAP[3]	CONDITION[3]	_	_	
+2-13	187-194	daglige	OVERLAP[3]	CONDITION[3]	_	_	
+2-14	195-206	aktiviteter	OVERLAP[3]	CONDITION[3]	_	_	
+2-15	206-207	.	_	_	_	_	
+
+#Text=Blodprøver viser normale inflammasjonsmarkører.
+3-1	208-218	Blodprøver	OVERLAP	TREATMENT	_	_	
+3-2	219-224	viser	_	_	_	_	
+3-3	225-232	normale	_	_	_	_	
+3-4	233-254	inflammasjonsmarkører	OVERLAP	CONDITION	BEFORE	3-1	
+3-5	254-255	.	_	_	_	_	
+
+#Text=Henvist til revmatolog for ytterligere spesialistutredning av symptomkompleks.
+4-1	256-263	Henvist	_	_	_	_	
+4-2	264-267	til	_	_	_	_	
+4-3	268-278	revmatolog	_	_	_	_	
+4-4	279-282	for	_	_	_	_	
+4-5	283-294	ytterligere	_	_	_	_	
+4-6	295-314	spesialistutredning	_	_	_	_	
+4-7	315-317	av	_	_	_	_	
+4-8	318-333	symptomkompleks	_	_	_	_	
+4-9	333-334	.	_	_	_	_	

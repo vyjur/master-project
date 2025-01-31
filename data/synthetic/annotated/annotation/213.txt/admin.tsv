@@ -1,0 +1,111 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 4 (2023-11-24)
+#Text=Thomas kom inn til oppfølging etter to måneder på EMDR.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	4	_	_	_	_	
+1-3	15-16	(	_	_	_	_	
+1-4	16-20	2023	_	_	_	_	
+1-5	20-21	-	_	_	_	_	
+1-6	21-23	11	_	_	_	_	
+1-7	23-24	-	_	_	_	_	
+1-8	24-26	24	_	_	_	_	
+1-9	26-27	)	_	_	_	_	
+1-10	28-34	Thomas	_	_	_	_	
+1-11	35-38	kom	_	_	_	_	
+1-12	39-42	inn	_	_	_	_	
+1-13	43-46	til	_	_	_	_	
+1-14	47-57	oppfølging	OVERLAP	TREATMENT	_	_	
+1-15	58-63	etter	_	_	_	_	
+1-16	64-66	to	_	_	_	_	
+1-17	67-74	måneder	_	_	_	_	
+1-18	75-77	på	_	_	_	_	
+1-19	78-82	EMDR	AFTER	TREATMENT	_	_	
+1-20	82-83	.	_	_	_	_	
+
+#Text=Han rapporterte at alt gikk bra, og at han kunne leve et nærmest normalt liv.
+2-1	84-87	Han	_	_	_	_	
+2-2	88-99	rapporterte	_	_	_	_	
+2-3	100-102	at	_	_	_	_	
+2-4	103-106	alt	_	_	_	_	
+2-5	107-111	gikk	_	_	_	_	
+2-6	112-115	bra	_	_	_	_	
+2-7	115-116	,	_	_	_	_	
+2-8	117-119	og	_	_	_	_	
+2-9	120-122	at	_	_	_	_	
+2-10	123-126	han	_	_	_	_	
+2-11	127-132	kunne	_	_	_	_	
+2-12	133-137	leve	_	_	_	_	
+2-13	138-140	et	_	_	_	_	
+2-14	141-148	nærmest	_	_	_	_	
+2-15	149-156	normalt	_	_	_	_	
+2-16	157-160	liv	_	_	_	_	
+2-17	160-161	.	_	_	_	_	
+
+#Text=Flashbackene var nesten borte, og han hadde fått bedre kontroll over sine tanker.
+3-1	162-174	Flashbackene	OVERLAP	CONDITION	_	_	
+3-2	175-178	var	_	_	_	_	
+3-3	179-185	nesten	_	_	_	_	
+3-4	186-191	borte	_	_	_	_	
+3-5	191-192	,	_	_	_	_	
+3-6	193-195	og	_	_	_	_	
+3-7	196-199	han	_	_	_	_	
+3-8	200-205	hadde	_	_	_	_	
+3-9	206-210	fått	_	_	_	_	
+3-10	211-216	bedre	OVERLAP[1]	CONDITION[1]	_	_	
+3-11	217-225	kontroll	OVERLAP[1]	CONDITION[1]	_	_	
+3-12	226-230	over	_	_	_	_	
+3-13	231-235	sine	_	_	_	_	
+3-14	236-242	tanker	_	_	_	_	
+3-15	242-243	.	_	_	_	_	
+
+#Text=Vi diskuterede viktigheten av å holde seg fysisk aktiv og unngå stress.
+4-1	244-246	Vi	_	_	_	_	
+4-2	247-258	diskuterede	_	_	_	_	
+4-3	259-270	viktigheten	_	_	_	_	
+4-4	271-273	av	_	_	_	_	
+4-5	274-275	å	_	_	_	_	
+4-6	276-281	holde	_	_	_	_	
+4-7	282-285	seg	_	_	_	_	
+4-8	286-292	fysisk	AFTER[2]	TREATMENT[2]	_	_	
+4-9	293-298	aktiv	AFTER[2]	TREATMENT[2]	_	_	
+4-10	299-301	og	_	_	_	_	
+4-11	302-307	unngå	AFTER[3]	TREATMENT[3]	_	_	
+4-12	308-314	stress	AFTER[3]	TREATMENT[3]	_	_	
+4-13	314-315	.	_	_	_	_	
+
+#Text=Thomas var meget tilfreds med resultatet av behandlingen og takket meg for støtten.
+5-1	316-322	Thomas	_	_	_	_	
+5-2	323-326	var	_	_	_	_	
+5-3	327-332	meget	_	_	_	_	
+5-4	333-341	tilfreds	_	_	_	_	
+5-5	342-345	med	_	_	_	_	
+5-6	346-356	resultatet	_	_	_	_	
+5-7	357-359	av	_	_	_	_	
+5-8	360-372	behandlingen	_	_	_	_	
+5-9	373-375	og	_	_	_	_	
+5-10	376-382	takket	_	_	_	_	
+5-11	383-386	meg	_	_	_	_	
+5-12	387-390	for	_	_	_	_	
+5-13	391-398	støtten	_	_	_	_	
+5-14	398-399	.	_	_	_	_	
+
+#Text=Vi planla en oppfølging om seks måneder for å sikre at alt går godt.
+6-1	400-402	Vi	_	_	_	_	
+6-2	403-409	planla	_	_	_	_	
+6-3	410-412	en	_	_	_	_	
+6-4	413-423	oppfølging	AFTER	TREATMENT	BEFORE|BEFORE	4-8[2_0]|4-11[3_0]	
+6-5	424-426	om	_	_	_	_	
+6-6	427-431	seks	_	_	_	_	
+6-7	432-439	måneder	_	_	_	_	
+6-8	440-443	for	_	_	_	_	
+6-9	444-445	å	_	_	_	_	
+6-10	446-451	sikre	_	_	_	_	
+6-11	452-454	at	_	_	_	_	
+6-12	455-458	alt	_	_	_	_	
+6-13	459-462	går	_	_	_	_	
+6-14	463-467	godt	_	_	_	_	
+6-15	467-468	.	_	_	_	_	

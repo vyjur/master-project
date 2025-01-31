@@ -1,0 +1,113 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 1 - 10.01.2023**
+#Text=
+#Text=Pasienten, en 35-årig kvinne, kommer til klinikken med ryggsmerter som har vart i flere måneder.
+1-1	0-12	Journalnotat	
+1-2	13-14	1	
+1-3	15-16	-	
+1-4	17-27	10.01.2023	
+1-5	27-28	*	
+1-6	28-29	*	
+1-7	31-40	Pasienten	
+1-8	40-41	,	
+1-9	42-44	en	
+1-10	45-47	35	
+1-11	47-48	-	
+1-12	48-52	årig	
+1-13	53-59	kvinne	
+1-14	59-60	,	
+1-15	61-67	kommer	
+1-16	68-71	til	
+1-17	72-81	klinikken	
+1-18	82-85	med	
+1-19	86-97	ryggsmerter	
+1-20	98-101	som	
+1-21	102-105	har	
+1-22	106-110	vart	
+1-23	111-112	i	
+1-24	113-118	flere	
+1-25	119-126	måneder	
+1-26	126-127	.	
+
+#Text=Hun beskriver smertene som en konstant, dovlig smerte i nedre del av ryggen, som forverres av fysisk aktivitet.
+2-1	128-131	Hun	
+2-2	132-141	beskriver	
+2-3	142-150	smertene	
+2-4	151-154	som	
+2-5	155-157	en	
+2-6	158-166	konstant	
+2-7	166-167	,	
+2-8	168-174	dovlig	
+2-9	175-181	smerte	
+2-10	182-183	i	
+2-11	184-189	nedre	
+2-12	190-193	del	
+2-13	194-196	av	
+2-14	197-203	ryggen	
+2-15	203-204	,	
+2-16	205-208	som	
+2-17	209-218	forverres	
+2-18	219-221	av	
+2-19	222-228	fysisk	
+2-20	229-238	aktivitet	
+2-21	238-239	.	
+
+#Text=Pasienten har tidligere vært frisk og aktiv, men har måttet redusere sin fysiske aktivitet på grunn av smertene.
+3-1	240-249	Pasienten	
+3-2	250-253	har	
+3-3	254-263	tidligere	
+3-4	264-268	vært	
+3-5	269-274	frisk	
+3-6	275-277	og	
+3-7	278-283	aktiv	
+3-8	283-284	,	
+3-9	285-288	men	
+3-10	289-292	har	
+3-11	293-299	måttet	
+3-12	300-308	redusere	
+3-13	309-312	sin	
+3-14	313-320	fysiske	
+3-15	321-330	aktivitet	
+3-16	331-333	på	
+3-17	334-339	grunn	
+3-18	340-342	av	
+3-19	343-351	smertene	
+3-20	351-352	.	
+
+#Text=Ved undersøkelse finner jeg en begrenset bevegelighet i ryggen og ømhet over lumbosakral-området.
+4-1	353-356	Ved	
+4-2	357-369	undersøkelse	
+4-3	370-376	finner	
+4-4	377-380	jeg	
+4-5	381-383	en	
+4-6	384-393	begrenset	
+4-7	394-406	bevegelighet	
+4-8	407-408	i	
+4-9	409-415	ryggen	
+4-10	416-418	og	
+4-11	419-424	ømhet	
+4-12	425-429	over	
+4-13	430-449	lumbosakral-området	
+4-14	449-450	.	
+
+#Text=Jeg henviser pasienten til en MR-undersøkelse av ryggen for å utelukke en eventuell diskprolaps eller annen patologi.
+5-1	451-454	Jeg	
+5-2	455-463	henviser	
+5-3	464-473	pasienten	
+5-4	474-477	til	
+5-5	478-480	en	
+5-6	481-496	MR-undersøkelse	
+5-7	497-499	av	
+5-8	500-506	ryggen	
+5-9	507-510	for	
+5-10	511-512	å	
+5-11	513-521	utelukke	
+5-12	522-524	en	
+5-13	525-534	eventuell	
+5-14	535-546	diskprolaps	
+5-15	547-552	eller	
+5-16	553-558	annen	
+5-17	559-567	patologi	
+5-18	567-568	.	

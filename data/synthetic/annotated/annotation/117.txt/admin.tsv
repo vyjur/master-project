@@ -1,0 +1,45 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 1 - 03.06.2025
+#Text=Søvnmedisinsk utredning etter henvisninger grunnet kraftig snorking og uttalt dagtretthet.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	1	_	_	_	_	
+1-3	15-16	-	_	_	_	_	
+1-4	17-27	03.06.2025	_	_	_	_	
+1-5	28-41	Søvnmedisinsk	OVERLAP[1]	TREATMENT[1]	OVERLAP	3-1[0_1]	
+1-6	42-51	utredning	OVERLAP[1]	TREATMENT[1]	_	_	
+1-7	52-57	etter	_	_	_	_	
+1-8	58-70	henvisninger	_	_	_	_	
+1-9	71-78	grunnet	_	_	_	_	
+1-10	79-86	kraftig	BEFOREOVERLAP[2]	CONDITION[2]	_	_	
+1-11	87-95	snorking	BEFOREOVERLAP[2]	CONDITION[2]	_	_	
+1-12	96-98	og	_	_	_	_	
+1-13	99-105	uttalt	_	_	_	_	
+1-14	106-117	dagtretthet	BEFOREOVERLAP	CONDITION	_	_	
+1-15	117-118	.	_	_	_	_	
+
+#Text=Søvnregistrering avdekker alvorlig obstruktiv søvnapné med hyppige pustestopp.
+2-1	119-135	Søvnregistrering	OVERLAP	TREATMENT	OVERLAP|OVERLAP	1-5[1_0]|3-1	
+2-2	136-144	avdekker	_	_	_	_	
+2-3	145-153	alvorlig	OVERLAP[3]	CONDITION[3]	BEFORE	2-1[0_3]	
+2-4	154-164	obstruktiv	OVERLAP[3]	CONDITION[3]	_	_	
+2-5	165-173	søvnapné	OVERLAP[3]	CONDITION[3]	_	_	
+2-6	174-177	med	OVERLAP[3]	CONDITION[3]	_	_	
+2-7	178-185	hyppige	OVERLAP[3]	CONDITION[3]	_	_	
+2-8	186-196	pustestopp	OVERLAP[3]	CONDITION[3]	_	_	
+2-9	196-197	.	_	_	_	_	
+
+#Text=Blodprøver viser forhøyede inflammasjonsmarkører og tegn på metabolsk påkjenning.
+3-1	198-208	Blodprøver	OVERLAP	TREATMENT	OVERLAP|OVERLAP	1-5[1_0]|2-1	
+3-2	209-214	viser	_	_	_	_	
+3-3	215-224	forhøyede	OVERLAP[4]	CONDITION[4]	BEFORE	3-1[0_4]	
+3-4	225-246	inflammasjonsmarkører	OVERLAP[4]	CONDITION[4]	_	_	
+3-5	247-249	og	_	_	_	_	
+3-6	250-254	tegn	_	_	_	_	
+3-7	255-257	på	_	_	_	_	
+3-8	258-267	metabolsk	OVERLAP[5]	CONDITION[5]	BEFORE	3-1[0_5]	
+3-9	268-278	påkjenning	OVERLAP[5]	CONDITION[5]	_	_	
+3-10	278-279	.	_	_	_	_	

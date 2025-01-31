@@ -1,0 +1,81 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+
+
+#Text=10.02.2023:
+#Text=Kvinne 29 år presenterer med økende angst og depressive symptomer siste 6 måneder.
+1-1	0-10	10.02.2023	_	_	
+1-2	10-11	:	_	_	
+1-3	12-18	Kvinne	_	_	
+1-4	19-21	29	_	_	
+1-5	22-24	år	_	_	
+1-6	25-36	presenterer	_	_	
+1-7	37-40	med	_	_	
+1-8	41-47	økende	BEFOREOVERLAP[1]	CONDITION[1]	
+1-9	48-53	angst	BEFOREOVERLAP[1]	CONDITION[1]	
+1-10	54-56	og	_	_	
+1-11	57-67	depressive	BEFOREOVERLAP[2]	CONDITION[2]	
+1-12	68-77	symptomer	BEFOREOVERLAP[2]	CONDITION[2]	
+1-13	78-83	siste	_	_	
+1-14	84-85	6	_	_	
+1-15	86-93	måneder	_	_	
+1-16	93-94	.	_	_	
+
+#Text=Søvnvansker, redusert appetitt, sosial tilbaketrekning.
+2-1	95-106	Søvnvansker	OVERLAP	CONDITION	
+2-2	106-107	,	_	_	
+2-3	108-116	redusert	OVERLAP[3]	CONDITION[3]	
+2-4	117-125	appetitt	OVERLAP[3]	CONDITION[3]	
+2-5	125-126	,	_	_	
+2-6	127-133	sosial	OVERLAP[4]	CONDITION[4]	
+2-7	134-149	tilbaketrekning	OVERLAP[4]	CONDITION[4]	
+2-8	149-150	.	_	_	
+
+#Text=PHQ-9 score 18.
+3-1	151-154	PHQ	OVERLAP[5]	CONDITION[5]	
+3-2	154-155	-	OVERLAP[5]	CONDITION[5]	
+3-3	155-156	9	OVERLAP[5]	CONDITION[5]	
+3-4	157-162	score	_	_	
+3-5	163-165	18	_	_	
+3-6	165-166	.	_	_	
+
+#Text=GAD-7 score 15.
+4-1	167-170	GAD	OVERLAP[6]	CONDITION[6]	
+4-2	170-171	-	OVERLAP[6]	CONDITION[6]	
+4-3	171-172	7	OVERLAP[6]	CONDITION[6]	
+4-4	173-178	score	_	_	
+4-5	179-181	15	_	_	
+4-6	181-182	.	_	_	
+
+#Text=Ingen suicidale tanker.
+5-1	183-188	Ingen	_	_	
+5-2	189-198	suicidale	_	_	
+5-3	199-205	tanker	_	_	
+5-4	205-206	.	_	_	
+
+#Text=Henviser til psykolog.
+6-1	207-215	Henviser	AFTER[7]	TREATMENT[7]	
+6-2	216-219	til	AFTER[7]	TREATMENT[7]	
+6-3	220-228	psykolog	AFTER[7]	TREATMENT[7]	
+6-4	228-229	.	_	_	
+
+#Text=Starter Cipralex 10mg x1.
+7-1	230-237	Starter	_	_	
+7-2	238-246	Cipralex	AFTER[8]	TREATMENT[8]	
+7-3	247-251	10mg	AFTER[8]	TREATMENT[8]	
+7-4	252-254	x1	_	_	
+7-5	254-255	.	_	_	
+
+#Text=Sykemeldes 50% i 2 uker.
+8-1	256-266	Sykemeldes	AFTER	TREATMENT	
+8-2	267-270	50%	_	_	
+8-3	271-272	i	_	_	
+8-4	273-274	2	_	_	
+8-5	275-279	uker	_	_	
+8-6	279-280	.	_	_	
+
+#Text=Avtaler tett oppfølging.
+9-1	281-288	Avtaler	_	_	
+9-2	289-293	tett	AFTER[9]	TREATMENT[9]	
+9-3	294-304	oppfølging	AFTER[9]	TREATMENT[9]	
+9-4	304-305	.	_	_	

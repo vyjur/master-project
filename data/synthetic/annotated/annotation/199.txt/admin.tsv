@@ -1,0 +1,109 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Journalnotat 4 (2023-12-05)
+#Text=Per kom inn til siste oppfølging i dag.
+1-1	0-12	Journalnotat	_	_	_	_	
+1-2	13-14	4	_	_	_	_	
+1-3	15-16	(	_	_	_	_	
+1-4	16-20	2023	_	_	_	_	
+1-5	20-21	-	_	_	_	_	
+1-6	21-23	12	_	_	_	_	
+1-7	23-24	-	_	_	_	_	
+1-8	24-26	05	_	_	_	_	
+1-9	26-27	)	_	_	_	_	
+1-10	28-31	Per	_	_	_	_	
+1-11	32-35	kom	_	_	_	_	
+1-12	36-39	inn	_	_	_	_	
+1-13	40-43	til	_	_	_	_	
+1-14	44-49	siste	_	_	_	_	
+1-15	50-60	oppfølging	OVERLAP	CONDITION	_	_	
+1-16	61-62	i	_	_	_	_	
+1-17	63-66	dag	_	_	_	_	
+1-18	66-67	.	_	_	_	_	
+
+#Text=Han rapporterte at alt gikk bra, og at han ikke hadde opplevd noen nye infeksjoner.
+2-1	68-71	Han	_	_	_	_	
+2-2	72-83	rapporterte	_	_	_	_	
+2-3	84-86	at	_	_	_	_	
+2-4	87-90	alt	_	_	_	_	
+2-5	91-95	gikk	_	_	_	_	
+2-6	96-99	bra	_	_	_	_	
+2-7	99-100	,	_	_	_	_	
+2-8	101-103	og	_	_	_	_	
+2-9	104-106	at	_	_	_	_	
+2-10	107-110	han	_	_	_	_	
+2-11	111-115	ikke	_	_	_	_	
+2-12	116-121	hadde	_	_	_	_	
+2-13	122-129	opplevd	_	_	_	_	
+2-14	130-134	noen	_	_	_	_	
+2-15	135-138	nye	_	_	_	_	
+2-16	139-150	infeksjoner	_	_	_	_	
+2-17	150-151	.	_	_	_	_	
+
+#Text=Profilaktisk behandlingen hadde vært vellykket, og han hadde ikke opplevd noen store problemer.
+3-1	152-164	Profilaktisk	OVERLAP[1]	CONDITION[1]	_	_	
+3-2	165-177	behandlingen	OVERLAP[1]	CONDITION[1]	_	_	
+3-3	178-183	hadde	_	_	_	_	
+3-4	184-188	vært	_	_	_	_	
+3-5	189-198	vellykket	_	_	_	_	
+3-6	198-199	,	_	_	_	_	
+3-7	200-202	og	_	_	_	_	
+3-8	203-206	han	_	_	_	_	
+3-9	207-212	hadde	_	_	_	_	
+3-10	213-217	ikke	_	_	_	_	
+3-11	218-225	opplevd	_	_	_	_	
+3-12	226-230	noen	_	_	_	_	
+3-13	231-236	store	_	_	_	_	
+3-14	237-246	problemer	_	_	_	_	
+3-15	246-247	.	_	_	_	_	
+
+#Text=Vi diskuterede viktigheten av å holde seg fysisk aktiv og unngå stress.
+4-1	248-250	Vi	_	_	_	_	
+4-2	251-262	diskuterede	_	_	_	_	
+4-3	263-274	viktigheten	_	_	_	_	
+4-4	275-277	av	_	_	_	_	
+4-5	278-279	å	_	_	_	_	
+4-6	280-285	holde	_	_	_	_	
+4-7	286-289	seg	_	_	_	_	
+4-8	290-296	fysisk	AFTER[2]	TREATMENT[2]	_	_	
+4-9	297-302	aktiv	AFTER[2]	TREATMENT[2]	_	_	
+4-10	303-305	og	_	_	_	_	
+4-11	306-311	unngå	AFTER[3]	TREATMENT[3]	_	_	
+4-12	312-318	stress	AFTER[3]	TREATMENT[3]	_	_	
+4-13	318-319	.	_	_	_	_	
+
+#Text=Per var meget tilfreds med resultatet av behandlingen og takket meg for støtten.
+5-1	320-323	Per	_	_	_	_	
+5-2	324-327	var	_	_	_	_	
+5-3	328-333	meget	_	_	_	_	
+5-4	334-342	tilfreds	_	_	_	_	
+5-5	343-346	med	_	_	_	_	
+5-6	347-357	resultatet	_	_	_	_	
+5-7	358-360	av	_	_	_	_	
+5-8	361-373	behandlingen	_	_	_	_	
+5-9	374-376	og	_	_	_	_	
+5-10	377-383	takket	_	_	_	_	
+5-11	384-387	meg	_	_	_	_	
+5-12	388-391	for	_	_	_	_	
+5-13	392-399	støtten	_	_	_	_	
+5-14	399-400	.	_	_	_	_	
+
+#Text=Vi planla en oppfølging om ett år for å sikre at alt går godt.
+6-1	401-403	Vi	_	_	_	_	
+6-2	404-410	planla	_	_	_	_	
+6-3	411-413	en	_	_	_	_	
+6-4	414-424	oppfølging	AFTER	TREATMENT	BEFORE|BEFORE	4-8[2_0]|4-11[3_0]	
+6-5	425-427	om	_	_	_	_	
+6-6	428-431	ett	_	_	_	_	
+6-7	432-434	år	_	_	_	_	
+6-8	435-438	for	_	_	_	_	
+6-9	439-440	å	_	_	_	_	
+6-10	441-446	sikre	_	_	_	_	
+6-11	447-449	at	_	_	_	_	
+6-12	450-453	alt	_	_	_	_	
+6-13	454-457	går	_	_	_	_	
+6-14	458-462	godt	_	_	_	_	
+6-15	462-463	.	_	_	_	_	

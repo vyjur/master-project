@@ -1,0 +1,53 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=25.04.2023:
+#Text=Dramatisk symptombedring på Prednisolon.
+1-1	0-10	25.04.2023	
+1-2	10-11	:	
+1-3	12-21	Dramatisk	
+1-4	22-36	symptombedring	
+1-5	37-39	på	
+1-6	40-51	Prednisolon	
+1-7	51-52	.	
+
+#Text=SR 22, CRP 8.
+2-1	53-55	SR	
+2-2	56-58	22	
+2-3	58-59	,	
+2-4	60-63	CRP	
+2-5	64-65	8	
+2-6	65-66	.	
+
+#Text=Ingen tegn til temporalisarteritt.
+3-1	67-72	Ingen	
+3-2	73-77	tegn	
+3-3	78-81	til	
+3-4	82-100	temporalisarteritt	
+3-5	100-101	.	
+
+#Text=Starter nedtrapping til 15mg daglig.
+4-1	102-109	Starter	
+4-2	110-121	nedtrapping	
+4-3	122-125	til	
+4-4	126-130	15mg	
+4-5	131-137	daglig	
+4-6	137-138	.	
+
+#Text=Bestiller bentetthetsmåling.
+5-1	139-148	Bestiller	
+5-2	149-166	bentetthetsmåling	
+5-3	166-167	.	
+
+#Text=DEXA-screening planlagt.
+6-1	168-182	DEXA-screening	
+6-2	183-191	planlagt	
+6-3	191-192	.	
+
+#Text=Ny kontroll om 4 uker.
+7-1	193-195	Ny	
+7-2	196-204	kontroll	
+7-3	205-207	om	
+7-4	208-209	4	
+7-5	210-214	uker	
+7-6	214-215	.	

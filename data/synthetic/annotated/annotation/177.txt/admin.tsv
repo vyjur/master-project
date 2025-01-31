@@ -1,0 +1,139 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+
+
+#Text=Journalnotat 2 (2023-09-29)
+#Text=Maria kom inn til oppfølging etter starten på donepezil.
+1-1	0-12	Journalnotat	_	_	
+1-2	13-14	2	_	_	
+1-3	15-16	(	_	_	
+1-4	16-20	2023	_	_	
+1-5	20-21	-	_	_	
+1-6	21-23	09	_	_	
+1-7	23-24	-	_	_	
+1-8	24-26	29	_	_	
+1-9	26-27	)	_	_	
+1-10	28-33	Maria	_	_	
+1-11	34-37	kom	_	_	
+1-12	38-41	inn	_	_	
+1-13	42-45	til	_	_	
+1-14	46-56	oppfølging	OVERLAP	TREATMENT	
+1-15	57-62	etter	_	_	
+1-16	63-70	starten	_	_	
+1-17	71-73	på	_	_	
+1-18	74-83	donepezil	BEFOREOVERLAP	TREATMENT	
+1-19	83-84	.	_	_	
+
+#Text=Hun rapporterte ingen store endringer i symptombildet, men hennes mann noterte at hun hadde blitt litt mer klar i samtaler de siste dagene.
+2-1	85-88	Hun	_	_	
+2-2	89-100	rapporterte	_	_	
+2-3	101-106	ingen	_	_	
+2-4	107-112	store	_	_	
+2-5	113-122	endringer	_	_	
+2-6	123-124	i	_	_	
+2-7	125-138	symptombildet	_	_	
+2-8	138-139	,	_	_	
+2-9	140-143	men	_	_	
+2-10	144-150	hennes	_	_	
+2-11	151-155	mann	_	_	
+2-12	156-163	noterte	_	_	
+2-13	164-166	at	_	_	
+2-14	167-170	hun	_	_	
+2-15	171-176	hadde	_	_	
+2-16	177-182	blitt	_	_	
+2-17	183-187	litt	_	_	
+2-18	188-191	mer	_	_	
+2-19	192-196	klar	_	_	
+2-20	197-198	i	_	_	
+2-21	199-207	samtaler	_	_	
+2-22	208-210	de	_	_	
+2-23	211-216	siste	_	_	
+2-24	217-223	dagene	_	_	
+2-25	223-224	.	_	_	
+
+#Text=Vi diskuterte viktigheten av å holde Maria fysisk aktiv og involvert i sosiale aktiviteter.
+3-1	225-227	Vi	_	_	
+3-2	228-238	diskuterte	_	_	
+3-3	239-250	viktigheten	_	_	
+3-4	251-253	av	_	_	
+3-5	254-255	å	_	_	
+3-6	256-261	holde	_	_	
+3-7	262-267	Maria	_	_	
+3-8	268-274	fysisk	AFTER[1]	TREATMENT[1]	
+3-9	275-280	aktiv	AFTER[1]	TREATMENT[1]	
+3-10	281-283	og	_	_	
+3-11	284-293	involvert	_	_	
+3-12	294-295	i	_	_	
+3-13	296-303	sosiale	AFTER[2]	TREATMENT[2]	
+3-14	304-315	aktiviteter	AFTER[2]	TREATMENT[2]	
+3-15	315-316	.	_	_	
+
+#Text=Vi planla en henvisning til en dagopphold for demenspasienter for å gi henne stimulans og gi hennes mann en pause fra omsorgen.
+4-1	317-319	Vi	_	_	
+4-2	320-326	planla	_	_	
+4-3	327-329	en	_	_	
+4-4	330-340	henvisning	AFTER[3]	TREATMENT[3]	
+4-5	341-344	til	AFTER[3]	TREATMENT[3]	
+4-6	345-347	en	AFTER[3]	TREATMENT[3]	
+4-7	348-358	dagopphold	AFTER[3]	TREATMENT[3]	
+4-8	359-362	for	AFTER[3]	TREATMENT[3]	
+4-9	363-378	demenspasienter	AFTER[3]	TREATMENT[3]	
+4-10	379-382	for	_	_	
+4-11	383-384	å	_	_	
+4-12	385-387	gi	_	_	
+4-13	388-393	henne	_	_	
+4-14	394-403	stimulans	_	_	
+4-15	404-406	og	_	_	
+4-16	407-409	gi	_	_	
+4-17	410-416	hennes	_	_	
+4-18	417-421	mann	_	_	
+4-19	422-424	en	_	_	
+4-20	425-430	pause	_	_	
+4-21	431-434	fra	_	_	
+4-22	435-443	omsorgen	_	_	
+4-23	443-444	.	_	_	
+
+#Text=Maria var positiv til dette, men hun uttrykte bekymring for at hun ikke ville føle seg trygg i et nytt miljø.
+5-1	445-450	Maria	_	_	
+5-2	451-454	var	_	_	
+5-3	455-462	positiv	_	_	
+5-4	463-466	til	_	_	
+5-5	467-472	dette	_	_	
+5-6	472-473	,	_	_	
+5-7	474-477	men	_	_	
+5-8	478-481	hun	_	_	
+5-9	482-490	uttrykte	_	_	
+5-10	491-500	bekymring	_	_	
+5-11	501-504	for	_	_	
+5-12	505-507	at	_	_	
+5-13	508-511	hun	_	_	
+5-14	512-516	ikke	_	_	
+5-15	517-522	ville	_	_	
+5-16	523-527	føle	_	_	
+5-17	528-531	seg	_	_	
+5-18	532-537	trygg	_	_	
+5-19	538-539	i	_	_	
+5-20	540-542	et	_	_	
+5-21	543-547	nytt	_	_	
+5-22	548-553	miljø	_	_	
+5-23	553-554	.	_	_	
+
+#Text=Vi bestemte oss for å starte med en kort periode på dagopphold og se hvordan hun reagerer.
+6-1	555-557	Vi	_	_	
+6-2	558-566	bestemte	_	_	
+6-3	567-570	oss	_	_	
+6-4	571-574	for	_	_	
+6-5	575-576	å	_	_	
+6-6	577-583	starte	_	_	
+6-7	584-587	med	_	_	
+6-8	588-590	en	_	_	
+6-9	591-595	kort	_	_	
+6-10	596-603	periode	_	_	
+6-11	604-606	på	_	_	
+6-12	607-617	dagopphold	_	_	
+6-13	618-620	og	_	_	
+6-14	621-623	se	_	_	
+6-15	624-631	hvordan	_	_	
+6-16	632-635	hun	_	_	
+6-17	636-644	reagerer	_	_	
+6-18	644-645	.	_	_	

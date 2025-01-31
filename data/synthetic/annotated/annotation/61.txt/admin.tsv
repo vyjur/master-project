@@ -1,0 +1,56 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+
+
+#Text=15.04.2023:
+#Text=God effekt av behandling.
+1-1	0-10	15.04.2023	_	_	
+1-2	10-11	:	_	_	
+1-3	12-15	God	_	_	
+1-4	16-22	effekt	_	_	
+1-5	23-25	av	_	_	
+1-6	26-36	behandling	_	_	
+1-7	36-37	.	_	_	
+
+#Text=Redusert til 2-3 tømminger daglig, mindre blod.
+2-1	38-46	Redusert	OVERLAP[1]	CONDITION[1]	
+2-2	47-50	til	OVERLAP[1]	CONDITION[1]	
+2-3	51-52	2	OVERLAP[1]	CONDITION[1]	
+2-4	52-53	-	OVERLAP[1]	CONDITION[1]	
+2-5	53-54	3	OVERLAP[1]	CONDITION[1]	
+2-6	55-64	tømminger	OVERLAP[1]	CONDITION[1]	
+2-7	65-71	daglig	OVERLAP[1]	CONDITION[1]	
+2-8	71-72	,	_	_	
+2-9	73-79	mindre	OVERLAP[2]	CONDITION[2]	
+2-10	80-84	blod	OVERLAP[2]	CONDITION[2]	
+2-11	84-85	.	_	_	
+
+#Text=CRP 12.
+3-1	86-89	CRP	OVERLAP	CONDITION	
+3-2	90-92	12	_	_	
+3-3	92-93	.	_	_	
+
+#Text=Bedre allmenntilstand.
+4-1	94-99	Bedre	_	_	
+4-2	100-115	allmenntilstand	_	_	
+4-3	115-116	.	_	_	
+
+#Text=Fortsetter nedtrapping av Prednisolon.
+5-1	117-127	Fortsetter	_	_	
+5-2	128-139	nedtrapping	AFTER[3]	TREATMENT[3]	
+5-3	140-142	av	AFTER[3]	TREATMENT[3]	
+5-4	143-154	Prednisolon	AFTER[3]	TREATMENT[3]	
+5-5	154-155	.	_	_	
+
+#Text=Planlegger neste Remicade-infusjon.
+6-1	156-166	Planlegger	AFTER[4]	TREATMENT[4]	
+6-2	167-172	neste	AFTER[4]	TREATMENT[4]	
+6-3	173-190	Remicade-infusjon	AFTER[4]	TREATMENT[4]	
+6-4	190-191	.	_	_	
+
+#Text=Følges opp ved IBD-poliklinikk.
+7-1	192-198	Følges	AFTER[5]	TREATMENT[5]	
+7-2	199-202	opp	AFTER[5]	TREATMENT[5]	
+7-3	203-206	ved	AFTER[5]	TREATMENT[5]	
+7-4	207-222	IBD-poliklinikk	AFTER[5]	TREATMENT[5]	
+7-5	222-223	.	_	_	

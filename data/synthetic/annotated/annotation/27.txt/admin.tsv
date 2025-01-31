@@ -1,0 +1,126 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity
+#T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+#Text=Notat 3 - 10.11.2024: 
+#Text=Pasienten er tilbake til kontroll og melder om betydelig bedring i både hodepine og nakkesmerter.
+1-1	0-5	Notat	_	_	_	_	
+1-2	6-7	3	_	_	_	_	
+1-3	8-9	-	_	_	_	_	
+1-4	10-20	10.11.2024	_	_	_	_	
+1-5	20-21	:	_	_	_	_	
+1-6	23-32	Pasienten	_	_	_	_	
+1-7	33-35	er	_	_	_	_	
+1-8	36-43	tilbake	_	_	_	_	
+1-9	44-47	til	_	_	_	_	
+1-10	48-56	kontroll	OVERLAP	TREATMENT	_	_	
+1-11	57-59	og	_	_	_	_	
+1-12	60-66	melder	_	_	_	_	
+1-13	67-69	om	_	_	_	_	
+1-14	70-79	betydelig	OVERLAP[1]	CONDITION[1]	_	_	
+1-15	80-87	bedring	OVERLAP[1]	CONDITION[1]	_	_	
+1-16	88-89	i	OVERLAP[1]	CONDITION[1]	_	_	
+1-17	90-94	både	OVERLAP[1]	CONDITION[1]	_	_	
+1-18	95-103	hodepine	OVERLAP[1]	CONDITION[1]	_	_	
+1-19	104-106	og	OVERLAP[1]	CONDITION[1]	_	_	
+1-20	107-119	nakkesmerter	OVERLAP[1]	CONDITION[1]	_	_	
+1-21	119-120	.	_	_	_	_	
+
+#Text=Han har brukt muskelavslappende middel med god effekt og har fortsatt med fysioterapi.
+2-1	121-124	Han	_	_	_	_	
+2-2	125-128	har	_	_	_	_	
+2-3	129-134	brukt	_	_	_	_	
+2-4	135-152	muskelavslappende	BEFOREOVERLAP[2]	TREATMENT[2]	_	_	
+2-5	153-159	middel	BEFOREOVERLAP[2]	TREATMENT[2]	_	_	
+2-6	160-163	med	_	_	_	_	
+2-7	164-167	god	_	_	_	_	
+2-8	168-174	effekt	_	_	_	_	
+2-9	175-177	og	_	_	_	_	
+2-10	178-181	har	_	_	_	_	
+2-11	182-190	fortsatt	_	_	_	_	
+2-12	191-194	med	_	_	_	_	
+2-13	195-206	fysioterapi	BEFOREOVERLAP	TREATMENT	OVERLAP	2-4[2_0]	
+2-14	206-207	.	_	_	_	_	
+
+#Text=Kiropraktoren har også gitt ham flere behandlinger, som han føler har hjulpet med å løsne spenningene i nakken.
+3-1	208-221	Kiropraktoren	_	_	_	_	
+3-2	222-225	har	_	_	_	_	
+3-3	226-230	også	_	_	_	_	
+3-4	231-235	gitt	_	_	_	_	
+3-5	236-239	ham	_	_	_	_	
+3-6	240-245	flere	_	_	_	_	
+3-7	246-258	behandlinger	_	_	_	_	
+3-8	258-259	,	_	_	_	_	
+3-9	260-263	som	_	_	_	_	
+3-10	264-267	han	_	_	_	_	
+3-11	268-273	føler	_	_	_	_	
+3-12	274-277	har	_	_	_	_	
+3-13	278-285	hjulpet	_	_	_	_	
+3-14	286-289	med	_	_	_	_	
+3-15	290-291	å	_	_	_	_	
+3-16	292-297	løsne	_	_	_	_	
+3-17	298-309	spenningene	_	_	_	_	
+3-18	310-311	i	_	_	_	_	
+3-19	312-318	nakken	_	_	_	_	
+3-20	318-319	.	_	_	_	_	
+
+#Text=Pasienten har også blitt mer bevisst på å ta pauser fra dataskjermen og gjøre strekkøvelser.
+4-1	320-329	Pasienten	_	_	_	_	
+4-2	330-333	har	_	_	_	_	
+4-3	334-338	også	_	_	_	_	
+4-4	339-344	blitt	_	_	_	_	
+4-5	345-348	mer	_	_	_	_	
+4-6	349-356	bevisst	_	_	_	_	
+4-7	357-359	på	_	_	_	_	
+4-8	360-361	å	_	_	_	_	
+4-9	362-364	ta	_	_	_	_	
+4-10	365-371	pauser	_	_	_	_	
+4-11	372-375	fra	_	_	_	_	
+4-12	376-388	dataskjermen	_	_	_	_	
+4-13	389-391	og	_	_	_	_	
+4-14	392-397	gjøre	_	_	_	_	
+4-15	398-411	strekkøvelser	_	_	_	_	
+4-16	411-412	.	_	_	_	_	
+
+#Text=Ingen nye symptomer, og han føler nå at han har bedre kontroll over plagene.
+5-1	413-418	Ingen	_	_	_	_	
+5-2	419-422	nye	_	_	_	_	
+5-3	423-432	symptomer	_	_	_	_	
+5-4	432-433	,	_	_	_	_	
+5-5	434-436	og	_	_	_	_	
+5-6	437-440	han	_	_	_	_	
+5-7	441-446	føler	_	_	_	_	
+5-8	447-449	nå	_	_	_	_	
+5-9	450-452	at	_	_	_	_	
+5-10	453-456	han	_	_	_	_	
+5-11	457-460	har	_	_	_	_	
+5-12	461-466	bedre	_	_	_	_	
+5-13	467-475	kontroll	_	_	_	_	
+5-14	476-480	over	_	_	_	_	
+5-15	481-488	plagene	_	_	_	_	
+5-16	488-489	.	_	_	_	_	
+
+#Text=Vi avslutter medikamentell behandling, men anbefaler videre fysioterapi og egeninnsats med øvelser.
+6-1	490-492	Vi	_	_	_	_	
+6-2	493-502	avslutter	_	_	_	_	
+6-3	503-516	medikamentell	AFTER[3]	TREATMENT[3]	_	_	
+6-4	517-527	behandling	AFTER[3]	TREATMENT[3]	_	_	
+6-5	527-528	,	_	_	_	_	
+6-6	529-532	men	_	_	_	_	
+6-7	533-542	anbefaler	_	_	_	_	
+6-8	543-549	videre	_	_	_	_	
+6-9	550-561	fysioterapi	AFTER	TREATMENT	_	_	
+6-10	562-564	og	_	_	_	_	
+6-11	565-576	egeninnsats	AFTER[4]	TREATMENT[4]	OVERLAP	6-9[0_4]	
+6-12	577-580	med	AFTER[4]	TREATMENT[4]	_	_	
+6-13	581-588	øvelser	AFTER[4]	TREATMENT[4]	_	_	
+6-14	588-589	.	_	_	_	_	
+
+#Text=Avtaler ny kontroll ved behov.
+7-1	590-597	Avtaler	_	_	_	_	
+7-2	598-600	ny	_	_	_	_	
+7-3	601-609	kontroll	_	_	_	_	
+7-4	610-613	ved	_	_	_	_	
+7-5	614-619	behov	_	_	_	_	
+7-6	619-620	.	_	_	_	_	

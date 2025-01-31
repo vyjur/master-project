@@ -1,0 +1,73 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=22.03.2023:
+#Text=Mann 72 år innkommer akutt med hjertebank og svimmelhet.
+1-1	0-10	22.03.2023	
+1-2	10-11	:	
+1-3	12-16	Mann	
+1-4	17-19	72	
+1-5	20-22	år	
+1-6	23-32	innkommer	
+1-7	33-38	akutt	
+1-8	39-42	med	
+1-9	43-53	hjertebank	
+1-10	54-56	og	
+1-11	57-67	svimmelhet	
+1-12	67-68	.	
+
+#Text=EKG viser atrieflimmer med frekvens 145.
+2-1	69-72	EKG	
+2-2	73-78	viser	
+2-3	79-91	atrieflimmer	
+2-4	92-95	med	
+2-5	96-104	frekvens	
+2-6	105-108	145	
+2-7	108-109	.	
+
+#Text=BT 155/95.
+3-1	110-112	BT	
+3-2	113-116	155	
+3-3	116-117	/	
+3-4	117-119	95	
+3-5	119-120	.	
+
+#Text=Tidligere frisk.
+4-1	121-130	Tidligere	
+4-2	131-136	frisk	
+4-3	136-137	.	
+
+#Text=CHA2DS2-VASc score 2.
+5-1	138-145	CHA2DS2	
+5-2	145-146	-	
+5-3	146-150	VASc	
+5-4	151-156	score	
+5-5	157-158	2	
+5-6	158-159	.	
+
+#Text=Gir Metoprolol 5mg iv med god effekt.
+6-1	160-163	Gir	
+6-2	164-174	Metoprolol	
+6-3	175-178	5mg	
+6-4	179-181	iv	
+6-5	182-185	med	
+6-6	186-189	god	
+6-7	190-196	effekt	
+6-8	196-197	.	
+
+#Text=Starter Eliquis 5mg x2 og Metoprolol 50mg x1.
+7-1	198-205	Starter	
+7-2	206-213	Eliquis	
+7-3	214-217	5mg	
+7-4	218-220	x2	
+7-5	221-223	og	
+7-6	224-234	Metoprolol	
+7-7	235-239	50mg	
+7-8	240-242	x1	
+7-9	242-243	.	
+
+#Text=Innlegges for telemetri.
+8-1	244-253	Innlegges	
+8-2	254-257	for	
+8-3	258-267	telemetri	
+8-4	267-268	.	

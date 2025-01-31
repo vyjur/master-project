@@ -1,0 +1,38 @@
+#FORMAT=WebAnno TSV 3.3
+
+
+#Text=Journalnotat 1 - 15.04.2025
+#Text=Førstegangs grundig konsultasjon vedrørende vedvarende menstruasjonssmerter og fertilitetsutfordringer.
+1-1	0-12	Journalnotat	
+1-2	13-14	1	
+1-3	15-16	-	
+1-4	17-27	15.04.2025	
+1-5	28-39	Førstegangs	
+1-6	40-47	grundig	
+1-7	48-60	konsultasjon	
+1-8	61-71	vedrørende	
+1-9	72-82	vedvarende	
+1-10	83-103	menstruasjonssmerter	
+1-11	104-106	og	
+1-12	107-130	fertilitetsutfordringer	
+1-13	130-131	.	
+
+#Text=Ultralydundersøkelse indikerer multiple endometrioseforandringer i bekkenområdet.
+2-1	132-152	Ultralydundersøkelse	
+2-2	153-162	indikerer	
+2-3	163-171	multiple	
+2-4	172-196	endometrioseforandringer	
+2-5	197-198	i	
+2-6	199-212	bekkenområdet	
+2-7	212-213	.	
+
+#Text=Diskuterer behandlingsalternativer, herunder hormonell og kirurgisk intervensjon.
+3-1	214-224	Diskuterer	
+3-2	225-248	behandlingsalternativer	
+3-3	248-249	,	
+3-4	250-258	herunder	
+3-5	259-268	hormonell	
+3-6	269-271	og	
+3-7	272-281	kirurgisk	
+3-8	282-294	intervensjon	
+3-9	294-295	.	
