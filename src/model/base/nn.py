@@ -114,7 +114,7 @@ class NN:
             for t in range(parameters["epochs"]):
                 print(f"Epoch {t + 1}\n-------------------------------")
                 loss, acc = self.__train(training_loader, loss_fn, optimizer)
-                wandb.log({"loss": loss.item(), "accuracy": acc})  # type: ignore
+                wandb.log({"loss": loss, "accuracy": acc})  # type: ignore
 
             labels, predictions = self.__valid(
                 testing_loader, self.__device, processed["id2label"]
