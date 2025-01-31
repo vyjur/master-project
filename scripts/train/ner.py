@@ -19,6 +19,8 @@ manager = DatasetManager(files)
 
 for i, conf in enumerate(configs):
     print(f"###### ({i}) Training for configuration file: {conf}")
+    if conf != "b-bert.ini":
+        continue
     if os.path.isdir(folder + conf):
         continue
     save_directory = "./models/ner/" + conf.replace(".ini", "")
