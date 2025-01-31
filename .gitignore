@@ -175,3 +175,4 @@ script.slurm
 ._.DS_Store
 
 /data/helsearkiv
+job.slurm
