@@ -168,7 +168,7 @@ class NN:
             
             all_preds.extend(predictions)
             all_targets.extend(flattened_targets)
-            total_loss += loss.item()
+            tr_loss += loss.item()
         
             loss.backward()
             optimizer.step()
