@@ -165,7 +165,7 @@ class Preprocess:
             train = self.sliding_window(train, window_size=window_size, stride=stride)
 
         train_dataset = CustomDataset(train, self.__tokenizer, label2id)
-        valid_dataset = CustomDataset(valid, self.__tokenizer, label2id)
+        valid_dataset = CustomDataset(val, self.__tokenizer, label2id)
         test_dataset = CustomDataset(test, self.__tokenizer, label2id)
 
         return {
