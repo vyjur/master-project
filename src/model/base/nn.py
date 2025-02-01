@@ -89,7 +89,7 @@ class NN:
             test_params = {
                 "batch_size": parameters["valid_batch_size"],
                 "shuffle": parameters["shuffle"],
-                "num_workers": ["num_workers"],
+                "num_workers": parameters["num_workers"],
             }
 
             training_loader = DataLoader(processed["train"], **train_params)
