@@ -286,7 +286,7 @@ class BERT:
         tr_accuracy = tr_accuracy / nb_tr_steps
         print(f"Training loss epoch: {epoch_loss}")
         print(f"Training accuracy epoch: {tr_accuracy}")
-        return epoch_loss, accuracy_score(tr_labels, tr_preds)
+        return epoch_loss, accuracy_score(tr_labels.cpu().numpy(), tr_preds.cpu.numpy())
 
     def __valid(self, testing_loader, device, id2label):
         # put model in evaluation mode
