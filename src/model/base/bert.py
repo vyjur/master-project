@@ -151,7 +151,7 @@ class BERT:
                     loss_fn,
                 )
                 wandb.log({"loss": loss, "accuracy": acc})  # type: ignore
-                early_stopping(loss, model)
+                early_stopping(loss, self.__model)
                 if early_stopping.early_stop:
                     print("Early stopping")
                     break

@@ -118,7 +118,7 @@ class NN:
                 print(f"Epoch {t + 1}\n-------------------------------")
                 loss, acc = self.__train(training_loader, loss_fn, optimizer)
                 wandb.log({"loss": loss, "accuracy": acc})  # type: ignore
-                early_stopping(loss, model)
+                early_stopping(loss, self.__model)
                 if early_stopping.early_stop:
                     print("Early stopping")
                     break
