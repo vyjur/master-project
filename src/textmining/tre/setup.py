@@ -71,7 +71,7 @@ class TRExtract:
                                 continue
 
                         # TODO: change setup of input with XML tags? add amount of SEP as sentences between them?
-                        words = f"{sentences[k].loc[e_i[2]].replace(f"<TAG>{e_i[3]}</TAG>")} [SEP] {sentences[k].loc[e_j[2]].replace(f"<TAG>{e_i[3]}</TAG>")}"
+                        words = f"{sentences[k].loc[e_i[2]].replace(e_i[3], f"<TAG>{e_i[3]}</TAG>")} [SEP] {sentences[k].loc[e_j[2]].replace(e_j[3], f"<TAG>{e_j[3]}</TAG>")}"
 
                         relation_pair = {
                             "sentence": words,
@@ -141,7 +141,7 @@ class TRExtract:
         else:
             if e_j is None:
                 raise ValueError("Missing value for e_j")
-            text = f"{e_i.context.replace(f"<TAG>{e_i.value}</TAG>")} [SEP] {e_j.context.replace(f"<TAG>{e_j.value}</TAG>")}"
+            text = f"{e_i.context.replace(e_i.value, f"<TAG>{e_i.value}</TAG>")} [SEP] {e_j.context.replace(e_j.value, f"<TAG>{e_j.value}</TAG>")}"
         return self.__run(self.preprocess.run(text))
 
 
