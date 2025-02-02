@@ -264,8 +264,8 @@ class BERT:
                 targets = flattened_targets
                 predictions = flattened_predictions
 
-            tr_preds.extend(predictions)
-            tr_labels.extend(targets)
+            tr_preds.extend(predictions.cpu().numpy())
+            tr_labels.extend(targets.cpu().numpy())
 
             tmp_tr_accuracy = accuracy_score(
                 targets.cpu().numpy(), predictions.cpu().numpy()
@@ -286,7 +286,7 @@ class BERT:
         tr_accuracy = tr_accuracy / nb_tr_steps
         print(f"Training loss epoch: {epoch_loss}")
         print(f"Training accuracy epoch: {tr_accuracy}")
-        return epoch_loss, accuracy_score(tr_labels.cpu().numpy(), tr_preds.cpu.numpy())
+        return epoch_loss, accuracy_score(tr_labels, tr_preds)
 
     def __valid(self, testing_loader, device, id2label):
         # put model in evaluation mode
