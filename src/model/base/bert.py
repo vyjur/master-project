@@ -14,6 +14,7 @@ from preprocess.setup import Preprocess
 from transformers import get_scheduler
 from tqdm.auto import tqdm
 import numpy as np
+from model.regularization.early_stopping import EarlyStopping
 from model.util import Util
 import wandb
 from structure.enum import Task
@@ -90,6 +91,7 @@ class BERT:
             }
 
             training_loader = DataLoader(processed["train"], **train_params)
+            valid_loader = DataLoader(processed["valid"], **test_params)
             testing_loader = DataLoader(processed["test"], **test_params)
 
             num_training_steps = len(training_loader)
@@ -129,6 +131,7 @@ class BERT:
             optimizer = torch.optim.Adam(  # type: ignore
                 params=self.__model.parameters(), lr=parameters["learning_rate"]
             )
+            early_stopping = EarlyStopping(patience=5, delta=0.01)
 
             lr_scheduler = get_scheduler(
                 name="linear",
@@ -148,7 +151,19 @@ class BERT:
                     loss_fn,
                 )
                 wandb.log({"loss": loss, "accuracy": acc})  # type: ignore
+                early_stopping(loss, self.__model)
+                if early_stopping.early_stop:
+                    print("Early stopping")
+                    break
 
+            print("### Valid set performance:")
+            labels, predictions = self.__valid(
+                valid_loader, self.__device, processed["id2label"]
+            )
+            Util().validate_report(labels, predictions)
+
+
+            print("### Test set performance:")
             labels, predictions = self.__valid(
                 testing_loader, self.__device, processed["id2label"]
             )
@@ -249,8 +264,8 @@ class BERT:
                 targets = flattened_targets
                 predictions = flattened_predictions
 
-            tr_preds.extend(predictions)
-            tr_labels.extend(targets)
+            tr_preds.extend(predictions.cpu().numpy())
+            tr_labels.extend(targets.cpu().numpy())
 
             tmp_tr_accuracy = accuracy_score(
                 targets.cpu().numpy(), predictions.cpu().numpy()

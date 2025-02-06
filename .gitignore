@@ -170,7 +170,7 @@ cython_debug/
 /src/textmining/tre/model
 
 output.*
-script.slurm
+*.slurm
 .DS__Store
 ._.DS_Store
 

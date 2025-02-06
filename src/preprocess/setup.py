@@ -151,21 +151,30 @@ class Preprocess:
                     encoding_dict["labels"] = row["relation"]
                 tokenized_dataset.append(encoding_dict)
 
+        # TODO: change to train, valid, and test
         train, test = train_test_split(
             tokenized_dataset, train_size=self.__train_size, random_state=42
         )
+
+        train, val = train_test_split(
+            train, train_size=self.__train_size, random_state=42
+        )
+
 
         if self.__config.getboolean("main", "window"):
             train = self.sliding_window(train, window_size=window_size, stride=stride)
 
         train_dataset = CustomDataset(train, self.__tokenizer, label2id)
+        valid_dataset = CustomDataset(val, self.__tokenizer, label2id)
         test_dataset = CustomDataset(test, self.__tokenizer, label2id)
 
         return {
             "train_raw": train,
+            "val_raw": val,
             "test_raw": test,
             "dataset": tokenized_dataset,
             "train": train_dataset,
+            "valid": valid_dataset,
             "test": test_dataset,
             "label2id": label2id,
             "id2label": id2label,
