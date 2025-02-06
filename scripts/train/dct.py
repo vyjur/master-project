@@ -1,12 +1,15 @@
 import os
-from textmining.ner.setup import NERecognition
+from textmining.tre.setup import TRExtract
 from preprocess.dataset import DatasetManager
+from structure.enum import Dataset
 
-print("##### Start training for NER... ######")
+print("##### Start training for TRE... ######")
 
-folder = "./scripts/train/config/ner/"
+# Info: Change here
+TRE_TYPE = "dct"
+
+folder = f"./scripts/train/config/tre/{TRE_TYPE}/"
 configs = os.listdir(folder)
-
 folder_path = "./data/synthetic/annotated/annotation/"
 
 files = [
@@ -14,18 +17,18 @@ files = [
     for f in os.listdir(folder_path)
     if os.path.isfile(os.path.join(folder_path, f, "admin.tsv"))
 ]
-
 manager = DatasetManager(files)
 
 for i, conf in enumerate(configs):
-    print(f"###### ({i}) Training for configuration file: {conf}")
     if os.path.isdir(folder + conf):
         continue
-    save_directory = "./models/ner/" + conf.replace(".ini", "")
-    ner = NERecognition(
+    print(f"###### ({i}) Training for configuration file: {conf}")
+    save_directory = f"./models/tre/{TRE_TYPE}/" + conf.replace(".ini", "")
+    ner = TRExtract(
         config_file=folder + conf,
         manager=manager,
         save_directory=save_directory,
+        task=Dataset.TRE_TLINK
     )
     print("Finished with this task.")
 
