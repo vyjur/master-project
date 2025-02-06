@@ -53,99 +53,137 @@ COLUMN_NAMES_DICT = {
     "fk_id": 6, #6
 }
 
-
 class DatasetManager:
-    def __init__(self, files: List[str]):
+    def __init__(self, entity_files: List[str], relation_files: List[str]):
         self.__documents = []
 
         print("### Processing the files:")
-        for file in files:
-            document = pd.DataFrame(columns=COLUMN_NAMES)  # type: ignore
-            print(file)
+        all_entity_df = None
+        for file in entity_files:
+            df = pd.read_csv(file)
+            if all_entity_df!=None:
+                all_entity_df = pd.concat([all_entity_df, df])
+            else:
+                all_entity_df = df
+        self.__entity_df = all_entity_df
 
-            with open(file, encoding="UTF-8") as f:
-                connect = False
-                prev_id = -1
-                for i, line in enumerate(f):
-                    if i in range(6) or line.strip() in ["\n", ""]:
-                        continue
-
-                    if line.startswith("#"):
-                        continue
-                    sentence = line.split("\t")                    
-                    if len(sentence) > COLUMN_NAMES_DICT['fk_id']:
-                        fk_id = sentence[COLUMN_NAMES_DICT['fk_id']]
-                        clip = fk_id.find("[")
-                        if clip != -1:
-                            fk_id = fk_id[:clip]
-
-                        fk_id = fk_id.split("|")
-                    else:
-                        fk_id = [None]
-                    t_relation = sentence[COLUMN_NAMES_DICT['TRE_TLINK']].split("|")
-
-                    clip = sentence[COLUMN_NAMES_DICT['MER']].find("[")
-                    if clip == -1:
-                        clipper = len(sentence[COLUMN_NAMES_DICT['MER']])
-                    else:
-                        clipper = clip
-
-                    if not connect and clip != -1:
-                        connect = True
-                        prev_id = sentence[COLUMN_NAMES_DICT['id']]
-                    elif clip == -1:
-                        connect = False
-
-                    if connect and prev_id != sentence[0]:
-                        for i in range(len(document)):
-                            if document.loc[i]["id"] == prev_id:
-                                document.loc[i, "Text"] = (
-                                    document.loc[i, "Text"] + " " + sentence[COLUMN_NAMES_DICT['Text']]
-                                )
-                    else:
-                        for i, id in enumerate(fk_id):
-                            row = {
-                                "id": sentence[COLUMN_NAMES_DICT['id']] if sentence[COLUMN_NAMES_DICT['id']] != "_" else "O",  # 0
-                                "sentence_id": int(sentence[COLUMN_NAMES_DICT['id']].split("-")[0]),
-                                "Offset": sentence[COLUMN_NAMES_DICT['Offset']]
-                                if sentence[COLUMN_NAMES_DICT['Offset']] != "_"
-                                else "O",  # 1
-                                "Text": sentence[COLUMN_NAMES_DICT['Text']] if sentence[COLUMN_NAMES_DICT['Text']] != "_" else "O",  # 1
-                                "MER": sentence[COLUMN_NAMES_DICT['MER']][:clipper]
-                                if sentence[COLUMN_NAMES_DICT['MER']] != "_"
-                                else "O",  # 4
-                                "TRE_DCT": re.sub(r"\[.*?\]", "", sentence[COLUMN_NAMES_DICT['TRE_DCT']])
-                                if sentence[COLUMN_NAMES_DICT['TRE_DCT']] != "_"
-                                else "O",  # 3,
-                                "TRE_TLINK": re.sub(r"\[.*?\]", "", t_relation[i])
-                                if t_relation[i] != "_"
-                                else None,  # 13,
-                                "fk_id": id if id != "_" else None,  # 14
-                            }
-                            document.loc[len(document)] = row
-
-            self.__documents.append(document)
-
+        all_relation_df = None
+        for file in entity_files:
+            df = pd.read_csv(file)
+            if all_relation_df!=None:
+                all_relation_df = pd.concat([all_relation_df, df])
+            else:
+                all_relation_df = df
+        self.__relation_df = all_relation_df
+            
     def get(self, task: Dataset):
         match task:
             case Dataset.NER:
-                return self.__get_docs_by_cols(["id", "sentence_id", "Text", "MER"])
+                return self.__get_ent_by_cols(["id", "Text", "MedicalEntity"])
             case Dataset.TRE_DCT:
-                result = self.__get_docs_by_cols(["id", "Text", "TRE_DCT"])
-                return [doc[doc["TRE_DCT"] != "O"] for doc in result]
+                result = self.__get_ent_by_cols(["id", "Text", "DCT", "Context"])
+                return [doc[doc["DCT"].notna()] for doc in result]
             case Dataset.TRE_TLINK:
-                return self.__get_docs_by_cols(["id", "Text", "TRE_TLINK", "fk_id"])
-            case Dataset.SENTENCES:
-                return self.__get_sentences()
+                return self.__get_tlink()
 
-    def __get_docs_by_cols(self, cols: List[str]):
-        return [doc[cols].drop_duplicates() for doc in self.__documents]
+    def __get_ent_by_cols(self, cols: List[str]):
+        return self.__entity_df[cols]
+    
+    def __get_tlink(self):
+        return self.__relation_df
 
-    def __get_sentences(self):
-        return [
-            doc.groupby("sentence_id")["Text"].apply(lambda x: " ".join(x))
-            for doc in self.__documents
-        ]
+#class DatasetManager:
+    #def __init__(self, files: List[str]):
+        #self.__documents = []
+
+        #print("### Processing the files:")
+        #for file in files:
+            #document = pd.DataFrame(columns=COLUMN_NAMES)  # type: ignore
+            #print(file)
+
+            #with open(file, encoding="UTF-8") as f:
+                #connect = False
+                #prev_id = -1
+                #for i, line in enumerate(f):
+                    #if i in range(6) or line.strip() in ["\n", ""]:
+                        #continue
+
+                    #if line.startswith("#"):
+                        #continue
+                    #sentence = line.split("\t")                    
+                    #if len(sentence) > COLUMN_NAMES_DICT['fk_id']:
+                        #fk_id = sentence[COLUMN_NAMES_DICT['fk_id']]
+                        #clip = fk_id.find("[")
+                        #if clip != -1:
+                            #fk_id = fk_id[:clip]
+
+                        #fk_id = fk_id.split("|")
+                    #else:
+                        #fk_id = [None]
+                    #t_relation = sentence[COLUMN_NAMES_DICT['TRE_TLINK']].split("|")
+
+                    #clip = sentence[COLUMN_NAMES_DICT['MER']].find("[")
+                    #if clip == -1:
+                        #clipper = len(sentence[COLUMN_NAMES_DICT['MER']])
+                    #else:
+                        #clipper = clip
+
+                    #if not connect and clip != -1:
+                        #connect = True
+                        #prev_id = sentence[COLUMN_NAMES_DICT['id']]
+                    #elif clip == -1:
+                        #connect = False
+
+                    #if connect and prev_id != sentence[0]:
+                        #for i in range(len(document)):
+                            #if document.loc[i]["id"] == prev_id:
+                                #document.loc[i, "Text"] = (
+                                    #document.loc[i, "Text"] + " " + sentence[COLUMN_NAMES_DICT['Text']]
+                                #)
+                    #else:
+                        #for i, id in enumerate(fk_id):
+                            #row = {
+                                #"id": sentence[COLUMN_NAMES_DICT['id']] if sentence[COLUMN_NAMES_DICT['id']] != "_" else "O",  # 0
+                                #"sentence_id": int(sentence[COLUMN_NAMES_DICT['id']].split("-")[0]),
+                                #"Offset": sentence[COLUMN_NAMES_DICT['Offset']]
+                                #if sentence[COLUMN_NAMES_DICT['Offset']] != "_"
+                                #else "O",  # 1
+                                #"Text": sentence[COLUMN_NAMES_DICT['Text']] if sentence[COLUMN_NAMES_DICT['Text']] != "_" else "O",  # 1
+                                #"MER": sentence[COLUMN_NAMES_DICT['MER']][:clipper]
+                                #if sentence[COLUMN_NAMES_DICT['MER']] != "_"
+                                #else "O",  # 4
+                                #"TRE_DCT": re.sub(r"\[.*?\]", "", sentence[COLUMN_NAMES_DICT['TRE_DCT']])
+                                #if sentence[COLUMN_NAMES_DICT['TRE_DCT']] != "_"
+                                #else "O",  # 3,
+                                #"TRE_TLINK": re.sub(r"\[.*?\]", "", t_relation[i])
+                                #if t_relation[i] != "_"
+                                #else None,  # 13,
+                                #"fk_id": id if id != "_" else None,  # 14
+                            #}
+                            #document.loc[len(document)] = row
+
+            #self.__documents.append(document)
+
+    #def get(self, task: Dataset):
+        #match task:
+            #case Dataset.NER:
+                #return self.__get_docs_by_cols(["id", "sentence_id", "Text", "MER"])
+            #case Dataset.TRE_DCT:
+                #result = self.__get_docs_by_cols(["id", "Text", "TRE_DCT"])
+                #return [doc[doc["TRE_DCT"] != "O"] for doc in result]
+            #case Dataset.TRE_TLINK:
+                #return self.__get_docs_by_cols(["id", "Text", "TRE_TLINK", "fk_id"])
+            #case Dataset.SENTENCES:
+                #return self.__get_sentences()
+
+    #def __get_docs_by_cols(self, cols: List[str]):
+        #return [doc[cols].drop_duplicates() for doc in self.__documents]
+
+    #def __get_sentences(self):
+        #return [
+            #doc.groupby("sentence_id")["Text"].apply(lambda x: " ".join(x))
+            #for doc in self.__documents
+        #]
 
 
 if __name__ == "__main__":

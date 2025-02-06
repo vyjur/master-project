@@ -45,61 +45,54 @@ class TRExtract:
         }
 
         dataset_ner = manager.get(Dataset.NER)
+        dataset_ner = dataset_ner[dataset_ner['MedicalEntity'].notna() | dataset_ner['TIMEX'].notna()]
         dataset_tre = manager.get(task)
-        sentences = manager.get(Dataset.SENTENCES)
 
         dataset = []
         tags = set()
-        for k, doc in enumerate(dataset_ner):
-            for i, e_i in enumerate(doc.itertuples()):
-                if task == Dataset.TRE_TLINK:
-                    for j, e_j in enumerate(doc.itertuples()):
-                        if i == j:
-                            continue
-                        relations = dataset_tre[k][
-                            (dataset_tre[k]["fk_id"] == e_i[1])
-                            & (dataset_tre[k]["id"] == e_j[1])
-                        ]
-
-                        if len(relations) == 1:
-                            relation = relations.iloc[0]["TRE_TLINK"]
-                        else:
-                            relation = "O"
-
-                            # TODO: downsample majority class
-                            if random.random() < 0.999:
-                                continue
-
-                        # TODO: change setup of input with XML tags? add amount of SEP as sentences between them?
-                        sentence_i = sentences[k].loc[e_i[2]].replace(e_i[3], f"<TAG>{e_i[3]}</TAG>")
-                        sentence_j = sentences[k].loc[e_j[2]].replace(e_j[3], f"<TAG>{e_j[3]}</TAG>")
-                        
-                        words = f"{sentence_i} [SEP] {sentence_j}"
-
-                        relation_pair = {
-                            "sentence": words,
-                            "relation": relation,
-                        }
-                        dataset.append(relation_pair)
-                        tags.add(relation)
-                else:
-                    ### Info: This is for TRE_DCT
-                    dct = list(
-                        set(dataset_tre[k][dataset_tre[k]["id"] == e_i[1]]["TRE_DCT"])
-                    )
-                    if len(dct) > 0:
-                        dct = dct[0]
-                    else:
+        
+        if task == Dataset.TRE_DCT:
+            for row in dataset_tre:
+                 
+                dataset.append(
+                    {
+                        "sentence": row['Context']
+                        .replace(row['Text'], f"<TAG>{row['Text']}</TAG>"),
+                        "relation": row['DCT'],
+                    }
+                )
+                tags.add(row['DCT'])
+        elif task == Dataset.TRE_TLINK:
+            for i, e_i in enumerate(dataset_ner):
+                for j, e_j in enumerate(dataset_ner):
+                    if i == j:
                         continue
-                    dataset.append(
-                        {
-                            "sentence": sentences[k]
-                            .loc[e_i[2]]
-                            .replace(e_i[3], f"<TAG>{e_i[3]}</TAG>"),
-                            "relation": dct,
-                        }
-                    )
-                    tags.add(dct)
+                    relations = dataset_tre[
+                        (dataset_tre["FROM_Id"] == e_i['Id'])
+                        & (dataset_tre["TO_Id"] == e_j['Id'])
+                    ]
+
+                    if len(relations) == 1:
+                        relation = relations.iloc[0]["RELATION"]
+                    else:
+                        relation = "O"
+
+                        # TODO: downsample majority class
+                        if random.random() < 0.999:
+                            continue
+
+                    # TODO: change setup of input with XML tags? add amount of SEP as sentences between them?
+                    sentence_i = e_i['CONTEXT'].replace(e_i['Text'], f"<TAG>{e_i['Text']}</TAG>")
+                    sentence_j = e_j['CONTEXT'].loc[e_j['Text']].replace(e_j['Text'], f"<TAG>{e_j['Text']}</TAG>")
+                    
+                    words = f"{sentence_i} [SEP] {sentence_j}"
+
+                    relation_pair = {
+                        "sentence": words,
+                        "relation": relation,
+                    }
+                    dataset.append(relation_pair)
+                    tags.add(relation)
 
         tags = list(tags)
         self.label2id, self.id2label = Util().get_tags(

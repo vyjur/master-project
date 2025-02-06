@@ -21,17 +21,11 @@ class NERecognition:
 
         load = self.__config["MODEL"].getboolean("load")
         print("LOAD", load)
-        raw_dataset = manager.get(Dataset.NER)
+        dataset = manager.get(Dataset.NER)
+        dataset['MedicalEntity'] = dataset['MedicalEntity'].fillna('O')
 
         dataset = []
-        tags = set()
-        for doc in raw_dataset:
-            curr_doc = []
-            for row in doc.itertuples(index=False):
-                curr_doc.append((row[2], row[3]))  # Add (row[1], row[2]) tuple to list
-                tags.add(row[3])  # Add row[2] to the set
-
-            dataset.append(curr_doc)
+        tags = dataset['MedicalEntity'].unique()
         tags = list(tags)
         self.label2id, self.id2label = Util().get_tags(Task.TOKEN, tags)
 
