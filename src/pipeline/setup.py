@@ -4,6 +4,8 @@ from textmining.ner.setup import NERecognition
 
 # from textmining.ere.setup import ERExtract
 from textmining.tre.setup import TRExtract
+from textmining.tee.setup import TEExtract
+
 from preprocess.dataset import DatasetManager
 from preprocess.setup import Preprocess
 
@@ -40,6 +42,9 @@ class Pipeline:
 
         print("### Initializing NER ###")
         self.__ner = NERecognition(self.__config["CONFIGS"]["ner"], manager)
+        
+        print("### Initializing TEE ###")
+        self.__tee = TEExtract()
 
         print("### Initializing DCT ###")
         self.__tre_dct = TRExtract(
@@ -88,14 +93,18 @@ class Pipeline:
         all_info = []
 
         for doc in documents:
-            # TODO: fix this so its not a constant
-            dct = datetime(2025, 1, 25, 00, 00, 00)
-
+            
             output = self.__preprocess.run(doc)
             ### Text Mining ###
 
             ##### Perform Medical Entity Extraction
             ner_output = self.__ner.run(output)
+            
+            ##### Perform Temporal Expression Extraction
+            tee_output = self.__tee.run(doc)
+            # TODO: fix this so its not a constant
+            dct = datetime(2025, 1, 25, 00, 00, 00)
+            
             entities = []
             
             graph = Graph()
@@ -157,15 +166,19 @@ class Pipeline:
             for e in entities:
                 cat, _ = self.__tre_dct.run(e)
                 cat = cat.replace("/", "")
-                e.dct = cat
+                e.set_dct(cat)
+                
+                if e.cat == TR_DCT.OVERLAP:
+                    # Set date of entity as the same as DCT if it is overlapping with DCT
+                    e.date = dct
                 dcts[cat].append(e)
 
             ###### The candidate pairs are pairs within a group##### O(N^2)>O(len(dcts)*(N_i^2)) where N_i < N
             ###### Although triple loop, this should be quicker than checking all entities
             ###### O(N^2)>O(len(dcts)*(N_i^2)) where N_i < N
 
-            
-
+            ###### TODO: add TLINK: EVENT x TIMEX
+            ###### if overlap with a TIMEX. date becomes this.
             relations = []
             for cat in dcts:
                 for i, e_i in enumerate(dcts[cat]):
@@ -185,6 +198,7 @@ class Pipeline:
             relations = sorted(relations, key=lambda r: r.prob, reverse=True)
 
             ##### Add relations one after one, make rules for consistency??!?
+            ##### TODO: after added TIMEX check that Relation date is consistent as well
             for rel in relations[:]:
                 if rel.tr == TR_TLINK.BEFORE: 
                     graph.add_edge(rel.x.id, rel.y.id)
@@ -223,7 +237,7 @@ class Pipeline:
                     "graph": graph,
                 }
             )
-
+        ## TODO: fix so date is used instead of the level things we have been using right now maybe the one above not needed.
         ### Visualize ###
         self.viz.create(all_info)
 

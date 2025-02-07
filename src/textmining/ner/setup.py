@@ -23,9 +23,8 @@ class NERecognition:
         print("LOAD", load)
         dataset = manager.get(Dataset.NER)
         dataset['MedicalEntity'] = dataset['MedicalEntity'].fillna('O')
-
-        dataset = []
         tags = dataset['MedicalEntity'].unique()
+        dataset = [dataset]
         tags = list(tags)
         self.label2id, self.id2label = Util().get_tags(Task.TOKEN, tags)
 
@@ -69,10 +68,6 @@ class NERecognition:
     def run(self, data):
         output = self.__model.predict([val.ids for val in data])
         predictions = [[self.id2label[int(j.numpy())] for j in i] for i in output]
-        if self.__config.getboolean("MODEL", "lexicon"):
-            lexi_predictions = Lexicon().predict(data, self.tokenizer)
-            output = Lexicon().merge(lexi_predictions, predictions)
-            return output
         return predictions
 
 
