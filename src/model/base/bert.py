@@ -95,7 +95,7 @@ class BERT:
             testing_loader = DataLoader(processed["test"], **test_params)
 
             num_training_steps = len(training_loader)
-
+            
             if len(processed['id2label']) != len(class_weights):
                 # Original dictionary
                 # Remove the key-value pair with key 0

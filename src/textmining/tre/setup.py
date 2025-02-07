@@ -52,8 +52,7 @@ class TRExtract:
         tags = set()
         
         if task == Dataset.TRE_DCT:
-            for row in dataset_tre:
-                 
+            for _, row in dataset_tre.iterrows():
                 dataset.append(
                     {
                         "sentence": row['Context']
@@ -63,10 +62,11 @@ class TRExtract:
                 )
                 tags.add(row['DCT'])
         elif task == Dataset.TRE_TLINK:
-            for i, e_i in enumerate(dataset_ner):
-                for j, e_j in enumerate(dataset_ner):
+            for i, e_i in dataset_ner.iterrows():
+                for j, e_j in dataset_ner.iterrows():
                     if i == j:
                         continue
+
                     relations = dataset_tre[
                         (dataset_tre["FROM_Id"] == e_i['Id'])
                         & (dataset_tre["TO_Id"] == e_j['Id'])
@@ -82,8 +82,8 @@ class TRExtract:
                             continue
 
                     # TODO: change setup of input with XML tags? add amount of SEP as sentences between them?
-                    sentence_i = e_i['CONTEXT'].replace(e_i['Text'], f"<TAG>{e_i['Text']}</TAG>")
-                    sentence_j = e_j['CONTEXT'].loc[e_j['Text']].replace(e_j['Text'], f"<TAG>{e_j['Text']}</TAG>")
+                    sentence_i = e_i['Context'].replace(e_i['Text'], f"<TAG>{e_i['Text']}</TAG>")
+                    sentence_j = e_j['Context'].replace(e_j['Text'], f"<TAG>{e_j['Text']}</TAG>")
                     
                     words = f"{sentence_i} [SEP] {sentence_j}"
 

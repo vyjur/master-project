@@ -1,3 +1,6 @@
 [submodule "src/textmining/tee/python-heideltime"]
 	path = src/textmining/tee/python-heideltime
 	url = git@github.com:amineabdaoui/python-heideltime.git
+[submodule "src/textmining/tee/heideltime"]
+	path = src/textmining/tee/heideltime
+	url = git@github.com:PhilipEHausner/python_heideltime.git

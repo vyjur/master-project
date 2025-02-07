@@ -55,22 +55,21 @@ COLUMN_NAMES_DICT = {
 
 class DatasetManager:
     def __init__(self, entity_files: List[str], relation_files: List[str]):
-        self.__documents = []
 
         print("### Processing the files:")
-        all_entity_df = None
+        all_entity_df = []
         for file in entity_files:
-            df = pd.read_csv(file)
-            if all_entity_df!=None:
+            df = pd.read_csv(file, delimiter=',')
+            if len(all_entity_df) > 0:
                 all_entity_df = pd.concat([all_entity_df, df])
             else:
                 all_entity_df = df
         self.__entity_df = all_entity_df
 
-        all_relation_df = None
-        for file in entity_files:
-            df = pd.read_csv(file)
-            if all_relation_df!=None:
+        all_relation_df = []
+        for file in relation_files:
+            df = pd.read_csv(file, delimiter=',')
+            if len(all_relation_df) > 0:
                 all_relation_df = pd.concat([all_relation_df, df])
             else:
                 all_relation_df = df
@@ -79,10 +78,10 @@ class DatasetManager:
     def get(self, task: Dataset):
         match task:
             case Dataset.NER:
-                return self.__get_ent_by_cols(["id", "Text", "MedicalEntity"])
+                return self.__get_ent_by_cols(["Id", "Text", "MedicalEntity", "TIMEX", "Context"])
             case Dataset.TRE_DCT:
-                result = self.__get_ent_by_cols(["id", "Text", "DCT", "Context"])
-                return [doc[doc["DCT"].notna()] for doc in result]
+                result = self.__get_ent_by_cols(["Id", "Text", "DCT", "Context"])
+                return result[result["DCT"].notna()]
             case Dataset.TRE_TLINK:
                 return self.__get_tlink()
 
