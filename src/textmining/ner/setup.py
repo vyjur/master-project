@@ -6,7 +6,7 @@ from preprocess.dataset import DatasetManager
 from model.map import MODEL_MAP
 from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
-from structure.enum import Dataset, Task
+from structure.enum import Dataset, Task, ME
 
 
 class NERecognition:
@@ -21,11 +21,15 @@ class NERecognition:
 
         load = self.__config["MODEL"].getboolean("load")
         print("LOAD", load)
-        dataset = manager.get(Dataset.NER)
-        dataset['MedicalEntity'] = dataset['MedicalEntity'].fillna('O')
-        tags = dataset['MedicalEntity'].unique()
-        dataset = [dataset]
-        tags = list(tags)
+        
+        if load:
+            tags = [cat.name for cat in ME]   
+        else:
+            dataset = manager.get(Dataset.NER)
+            dataset['MedicalEntity'] = dataset['MedicalEntity'].fillna('O')
+            tags = dataset['MedicalEntity'].unique()
+            dataset = [dataset]
+            tags = list(tags)
         self.label2id, self.id2label = Util().get_tags(Task.TOKEN, tags)
 
         self.tokenizer = AutoTokenizer.from_pretrained(
