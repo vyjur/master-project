@@ -45,12 +45,15 @@ class NN(nn.Module):
         # embedding_dim = self.tokenizer.model_max_length
         embedding_dim = 300
         
-        processed = Preprocess(
-            self.tokenizer, parameters["max_length"]
-        ).run_train_test_split(task, dataset, tags_name)
-        class_weights = Util().class_weights(task, processed["dataset"], self.__device)
+        if not load:
+            processed = Preprocess(
+                self.tokenizer, parameters["max_length"]
+            ).run_train_test_split(task, dataset, tags_name)
+            class_weights = Util().class_weights(task, processed["dataset"], self.__device)
 
-        tag_to_ix = processed["label2id"]
+            tag_to_ix = processed["label2id"]
+        else:
+            tag_to_ix, _ = Util().get_tags(task, tags_name)
         
         if len(tag_to_ix) != len(class_weights):
             del tag_to_ix["O"]
@@ -67,7 +70,6 @@ class NN(nn.Module):
             tag_to_ix[STOP_TAG] = STOP_ID
 
         vocab_size = self.tokenizer.vocab_size  # type: ignore
-
         hidden_dim = parameters["max_length"]
 
         if load:

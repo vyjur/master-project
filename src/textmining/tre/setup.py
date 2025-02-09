@@ -6,7 +6,7 @@ from model.map import MODEL_MAP
 from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
 import random
-from structure.enum import Dataset, Task
+from structure.enum import Dataset, Task, TR_DCT, TR_TLINK
 
 
 class TRExtract:
@@ -51,57 +51,23 @@ class TRExtract:
         dataset = []
         tags = set()
         
-        if task == Dataset.TRE_DCT:
-            for _, row in dataset_tre.iterrows():
-                dataset.append(
-                    {
-                        "sentence": row['Context']
-                        .replace(row['Text'], f"<TAG>{row['Text']}</TAG>"),
-                        "relation": row['DCT'],
-                    }
-                )
-                tags.add(row['DCT'])
-        elif task == Dataset.TRE_TLINK:
-            
-            for i, rel in dataset_tre.iterrows():
-                e_i = dataset_ner[dataset_ner['Id'] == rel['FROM_Id']]
-                e_j = dataset_ner[dataset_ner['Id'] == rel['TO_Id']] 
-            
-                sentence_i = e_i['Context'].replace(e_i['Text'], f"<TAG>{e_i['Text']}</TAG>")
-                sentence_j = e_j['Context'].replace(e_j['Text'], f"<TAG>{e_j['Text']}</TAG>")
+        if not load:
+            if task == Dataset.TRE_DCT:
+                for _, row in dataset_tre.iterrows():
+                    dataset.append(
+                        {
+                            "sentence": row['Context']
+                            .replace(row['Text'], f"<TAG>{row['Text']}</TAG>"),
+                            "relation": row['DCT'],
+                        }
+                    )
+                    tags.add(row['DCT'])
+            elif task == Dataset.TRE_TLINK:
                 
-                words = f"{sentence_i} [SEP] {sentence_j}"
-
-                relation_pair = {
-                    "sentence": words,
-                    "relation": rel["RELATION"],
-                }
-                dataset.append(relation_pair)
-                tags.add(relation)
+                for i, rel in dataset_tre.iterrows():
+                    e_i = dataset_ner[dataset_ner['Id'] == rel['FROM_Id']]
+                    e_j = dataset_ner[dataset_ner['Id'] == rel['TO_Id']] 
                 
-            for i, e_i in dataset_ner.iterrows():
-                for j, e_j in dataset_ner.iterrows():
-                    if i == j:
-                        continue
-                    
-                    if e_i['Text'] not in e_j['Context'] and e_j['Text'] not in e_i['Context']:
-                        continue
-
-                    relations = dataset_tre[
-                        (dataset_tre["FROM_Id"] == e_i['Id'])
-                        & (dataset_tre["TO_Id"] == e_j['Id'])
-                    ]
-
-                    if len(relations) > 0:
-                        continue
-                    else:
-                        relation = "O"
-
-                        # TODO: downsample majority class
-                        if random.random() < 0.999:
-                            continue
-
-                    # TODO: Add amount of SEP as sentences between them?
                     sentence_i = e_i['Context'].replace(e_i['Text'], f"<TAG>{e_i['Text']}</TAG>")
                     sentence_j = e_j['Context'].replace(e_j['Text'], f"<TAG>{e_j['Text']}</TAG>")
                     
@@ -109,12 +75,52 @@ class TRExtract:
 
                     relation_pair = {
                         "sentence": words,
-                        "relation": relation,
+                        "relation": rel["RELATION"],
                     }
                     dataset.append(relation_pair)
                     tags.add(relation)
+                    
+                for i, e_i in dataset_ner.iterrows():
+                    for j, e_j in dataset_ner.iterrows():
+                        if i == j:
+                            continue
+                        
+                        if e_i['Text'] not in e_j['Context'] and e_j['Text'] not in e_i['Context']:
+                            continue
 
-        tags = list(tags)
+                        relations = dataset_tre[
+                            (dataset_tre["FROM_Id"] == e_i['Id'])
+                            & (dataset_tre["TO_Id"] == e_j['Id'])
+                        ]
+
+                        if len(relations) > 0:
+                            continue
+                        else:
+                            relation = "O"
+
+                            # TODO: downsample majority class
+                            if random.random() < 0.999:
+                                continue
+
+                        # TODO: Add amount of SEP as sentences between them?
+                        sentence_i = e_i['Context'].replace(e_i['Text'], f"<TAG>{e_i['Text']}</TAG>")
+                        sentence_j = e_j['Context'].replace(e_j['Text'], f"<TAG>{e_j['Text']}</TAG>")
+                        
+                        words = f"{sentence_i} [SEP] {sentence_j}"
+
+                        relation_pair = {
+                            "sentence": words,
+                            "relation": relation,
+                        }
+                        dataset.append(relation_pair)
+                        tags.add(relation)
+
+            tags = list(tags)
+        else:
+            if task == Dataset.TRE_DCT:
+                tags = [cat.name for cat in TR_DCT]
+            else:
+                tags = [cat.name for cat in TR_TLINK]
         self.label2id, self.id2label = Util().get_tags(
             Task.SEQUENCE, tags, task != Dataset.TRE_DCT
         )
