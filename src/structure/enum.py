@@ -24,6 +24,11 @@ class TR_TLINK(Enum):
     OVERLAP = 2  
     NONE = 3
 
+class TIMEX(Enum):
+    DATE = 1
+    DURATION = 2
+    FREQUENCY = 3
+    TIME = 4
 
 class ME(Enum):
     CONDITION = 1

@@ -6,15 +6,19 @@ class TEExtract:
     
     def __init__(self):
         self.__heideltime = Heideltime()
-        self.__heideltime_parser.set_document_type('NEWS')
-        self.__heideltime_parser.set_language('auto-norwegian')
+        self.__heideltime.set_document_type('NEWS')
+        self.__heideltime.set_language('auto-norwegian')
+        
+    def set_dct(self, dct):
+        self.__heideltime.set_document_time(dct)
     
     def __run(self, text):
         result = self.__heideltime.parse(text)
         
         root = ET.fromstring(result)
         timex_elements = root.findall('.//TIMEX3')
-
+        
+        data = []
         for timex in timex_elements:
             tid = timex.get('tid')
             ttype = timex.get('type')
@@ -27,16 +31,17 @@ class TEExtract:
             # Get the 50-character window around this TIMEX3 element
             char_window = self.__get_char_window(full_text, text, window_size=50)
             
-            return {
+            data.append( {
                 'id': tid,
-                'type': {ttype},
-                'value': {value},
-                'text': {text},
-                'context': {char_window}
-            }
+                'type': ttype,
+                'value': value,
+                'text': text,
+                'context': char_window
+            })
+        return pd.DataFrame(data)
             
     def run(self, data):
-        return pd.DataFrame([self.__run(text) for text in data]) 
+        return [self.__run(text) for text in data]
         
     def __get_char_window(self, full_text, timex_text, window_size=50):
         # Find the index of the TIMEX3 text in the full text
@@ -51,4 +56,10 @@ class TEExtract:
         window = before_window + timex_text + after_window
         return window
         
-    
+if __name__ == '__main__':
+    tee = TEExtract()
+     
+    output = tee.run(["Hei i dag er fem dager siden du snakket til meg. en dato 24.12.20. en annen dato 21.10.2025"])
+    print(output[0]) 
+
+     

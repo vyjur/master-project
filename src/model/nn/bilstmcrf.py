@@ -71,7 +71,7 @@ class Model(BaseModel):
                 emit_score = feat[next_tag].view(1, -1).expand(1, self.tagset_size)
                 # the ith entry of trans_score is the score of transitioning to
                 # next_tag from i
-                trans_score = self.transitions[next_tag].view(1, -1)
+                trans_score = self.transitions[next_tag].view(1, -1).to(self.device)
                 # The ith entry of next_tag_var is the value for the
                 # edge (i -> next_tag) before we do log-sum-exp
                 next_tag_var = forward_var + trans_score + emit_score
@@ -79,7 +79,7 @@ class Model(BaseModel):
                 # scores.
                 alphas_t.append(log_sum_exp(next_tag_var).view(1))
             forward_var = torch.cat(alphas_t).view(1, -1)
-        terminal_var = forward_var + self.transitions[self.tag_to_ix[STOP_TAG]]
+        terminal_var = forward_var + self.transitions[self.tag_to_ix[STOP_TAG]].to(self.device)
         alpha = log_sum_exp(terminal_var)
         return alpha
 
@@ -118,7 +118,7 @@ class Model(BaseModel):
                 # from tag i to next_tag.
                 # We don't include the emission scores here because the max
                 # does not depend on them (we add them in below)
-                next_tag_var = forward_var + self.transitions[next_tag]
+                next_tag_var = forward_var + self.transitions[next_tag].to(self.device)
                 best_tag_id = argmax(next_tag_var)
                 bptrs_t.append(best_tag_id)
                 viterbivars_t.append(next_tag_var[0][best_tag_id].view(1))  # type: ignore
@@ -128,7 +128,7 @@ class Model(BaseModel):
             backpointers.append(bptrs_t)
 
         # Transition to STOP_TAG
-        terminal_var = forward_var + self.transitions[self.tag_to_ix[STOP_TAG]]
+        terminal_var = forward_var + self.transitions[self.tag_to_ix[STOP_TAG]].to(self.device)
         best_tag_id = argmax(terminal_var)
         path_score = terminal_var[0][int(best_tag_id)]
 
@@ -163,14 +163,19 @@ class Model(BaseModel):
     def forward(self, sentence):  # dont confuse this with _forward_alg above.
         # Get the emissiwn scores from the BiLSTM
         lstm_feats = self._get_lstm_features(sentence)
+        
+        sum_score = self._forward_alg(lstm_feats)
 
         # Find the best path, given the features.
-        # score, tag_seq = self._viterbi_decode(lstm_feats)
-        result = [self._viterbi_decode(lstm_feat)[1] for lstm_feat in lstm_feats]
-        return torch.tensor(result).to(self.device)
+        result = [self._viterbi_decode(lstm_feat) for lstm_feat in lstm_feats]
+        score = torch.tensor([res[0] for res in result]).to(self.device)
+        tag_seq = [res[1] for res in result]
+        
+        prob = (score - sum_score)/len(score)
+        return torch.tensor(tag_seq).to(self.device), prob
 
 
-class BiLSTMCRF:
+class BiLSTMCRF(nn.Module):
     def __init__(
         self,
         load: bool,
@@ -182,6 +187,8 @@ class BiLSTMCRF:
         project_name: str | None = None,
         pretrain: str | None = None,
     ):
+        super(BiLSTMCRF, self).__init__()
+
         self.__model = NN(
             Model,  # type: ignore
             Task.TOKEN,
@@ -195,11 +202,14 @@ class BiLSTMCRF:
             pretrain,
         )
         self.tokenizer = self.__model.tokenizer
+        self.device = self.__model.device
 
     def predict(self, data, pipeline=False):
         return self.__model.predict(data, pipeline)
 
-
+    def forward(self, x):
+        return self.__model(x)
+    
 if __name__ == "__main__":
     import os
     from preprocess.dataset import DatasetManager

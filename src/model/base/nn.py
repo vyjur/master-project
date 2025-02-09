@@ -14,7 +14,7 @@ START_TAG = "<START>"
 STOP_TAG = "<STOP>"
 
 
-class NN:
+class NN(nn.Module):
     def __init__(
         self,
         model: nn.Module,
@@ -28,10 +28,13 @@ class NN:
         project_name: str | None = None,
         pretrain: str | None = None,
     ):
+        super(NN, self).__init__()
         self.__device = "cuda:0" if cuda.is_available() else "cpu"
 
         if self.__device != "cpu":
             torch.cuda.set_device(self.__device)
+            
+        self.device = self.__device
 
         print("Using:", self.__device, "with NN")
 
@@ -41,6 +44,7 @@ class NN:
         # TODO:
         # embedding_dim = self.tokenizer.model_max_length
         embedding_dim = 300
+        
         processed = Preprocess(
             self.tokenizer, parameters["max_length"]
         ).run_train_test_split(task, dataset, tags_name)
@@ -147,13 +151,13 @@ class NN:
         data_tensor = torch.tensor(data, dtype=torch.long).to(self.__device)
         self.__model.batch = data_tensor.shape[0]
         outputs = self.__model(data_tensor)
-        if self.__task == Task.TOKEN:
-            return outputs
+        if len(outputs) > 1:
+            return outputs[0], outputs[1]
         else:
             pred = torch.argmax(outputs, axis=1).tolist()  # type: ignore
             prob = [
                 max(all_prob)  # type: ignore
-                for all_prob in nn.functional.softmax(outputs, dim=-1)  # type:ignore
+                for all_prob in nn.functional.log_softmax(outputs, dim=-1)  # type:ignore
             ]
 
             return pred, prob  # type: ignore
@@ -244,3 +248,7 @@ class NN:
         print(f"Validation Accuracy: {eval_accuracy}")
 
         return labels, predictions
+
+    def forward(self, x):
+        self.__model.batch = x.shape[0]
+        return self.__model(x)

@@ -66,9 +66,12 @@ class NERecognition:
         return self.__config.getint("MODEL", "max_length")
 
     def run(self, data):
-        output = self.__model.predict([val.ids for val in data])
-        predictions = [[self.id2label[int(j.numpy())] for j in i] for i in output]
+        output, _ = self.__model.predict([val.ids for val in data])
+        predictions = [[self.id2label[int(j.cpu().numpy())] for j in i] for i in output]
         return predictions
+
+    def get_model(self):
+        return self.__model
 
 
 if __name__ == "__main__":
