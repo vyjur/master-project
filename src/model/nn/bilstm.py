@@ -32,17 +32,17 @@ class Model(nn.Module):
                 batch_first=True,
             )
         else:
-            self.word_embeds = nn.Embedding(vocab_size, embedding_dim)
+            self.word_embeds = nn.Embedding(vocab_size, embedding_dim).to(self.device)
             self.lstm = nn.LSTM(
                 embedding_dim,
                 hidden_dim // 2,
                 num_layers=1,
                 bidirectional=True,
                 batch_first=True,
-            )
+            ).to(self.device)
 
         # Maps the output of the LSTM into tag space.
-        self.hidden2tag = nn.Linear(hidden_dim, self.tagset_size)
+        self.hidden2tag = nn.Linear(hidden_dim, self.tagset_size).to(self.device)
 
     def _get_lstm_features(self, sentences):
         embeds = self.word_embeds(sentences)  # type: ignore
@@ -58,7 +58,7 @@ class Model(nn.Module):
         return lstm_feats
 
 
-class BiLSTM:
+class BiLSTM(nn.Module):
     def __init__(
         self,
         load: bool,
@@ -70,6 +70,7 @@ class BiLSTM:
         project_name: str | None = None,
         pretrain: str | None = None,
     ):
+        super(BiLSTM, self).__init__()
         self.__model = NN(
             Model,  # type: ignore
             Task.SEQUENCE,
@@ -83,6 +84,11 @@ class BiLSTM:
             pretrain,
         )
         self.tokenizer = self.__model.tokenizer
+        
+        self.device = self.__model.device
 
     def predict(self, data, pipeline=False):
         return self.__model.predict(data, pipeline)
+
+    def forward(self, x):
+        return self.__model(x)

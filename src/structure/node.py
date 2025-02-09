@@ -1,6 +1,6 @@
 import itertools
 from datetime import datetime
-from structure.enum import ME, TR_DCT
+from structure.enum import ME, TR_DCT, TIMEX
 
 
 class Node:
@@ -18,11 +18,18 @@ class Node:
             if type == me.name:
                 self.type = me
                 break
+        
+        for te in TIMEX:
+            if type == te.name:
+                self.type = te
+                break
 
         self.dct = None
         self.set_dct(dct)
 
         self.date = date
+        self.prob = 0
+        
         self.context = context
 
         self.level = None

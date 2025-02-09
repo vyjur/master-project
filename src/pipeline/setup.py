@@ -14,11 +14,12 @@ from structure.relation import Relation
 from visualization.setup import VizTool, Timeline
 from pipeline.util import remove_duplicates, find_duplicates
 
-from structure.enum import Dataset, TR_DCT, TR_TLINK
+from structure.enum import Dataset, TR_DCT, TR_TLINK, TIMEX
 from structure.node import Node
 from structure.graph import Graph
 
 from datetime import datetime
+import itertools
 
 
 class Pipeline:
@@ -93,26 +94,44 @@ class Pipeline:
         all_info = []
 
         for doc in documents:
-            
-            output = self.__preprocess.run(doc)
-            ### Text Mining ###
-
-            ##### Perform Medical Entity Extraction
-            ner_output = self.__ner.run(output)
-            
-            ##### Perform Temporal Expression Extraction
-            tee_output = self.__tee.run(doc)
-            # TODO: fix this so its not a constant
-            dct = datetime(2025, 1, 25, 00, 00, 00)
-            
+            ### Initialization
             entities = []
-            
             graph = Graph()
 
+            ### Preprocessing
+            output = self.__preprocess.run(doc)
+            
+            ### Text Mining ###
+            
+            ##### Perform Temporal Expression Extraction
+            # TODO: make some extra rules as heideltime is not extracting all type of dates that we want in Norwegian
+            # Do this inside of TEE
+            # Rule 1: -XX => Year
+            # Rule 2: DD.MM => Same year as written
+            # Rule 3: P5D => Subtract or add on the DCT
+            tee_output = self.__tee.run(doc)
+            
+            # TODO: we need to choose what to have as DCT
+            # Simple rule: First date in the page is considered as DCT
+            dct = datetime(2025, 1, 25, 00, 00, 00)
+            self.__tee.set_dct(dct)
+            
+            for te in tee_output:
+                entities.append(
+                    Node(te['text'], te['type'], dct, te['context'], te['value'])
+                )
+
+            ##### Perform Medical Entity Extraction
+            ner_output, _ = self.__ner.run(output)
+            
+            all_outputs = list(itertools.chain(*output))
+            
+            # TODO: Config?
+            WINDOW = 50
+            
             for i, _ in enumerate(output):
                 result = self.__get_non_o_intervals(ner_output[i])
                 start = 0
-                offset = 0
                 for int in result:
                     entity = (
                         self.__preprocess.decode(output[i].ids[int[0] : int[1]])
@@ -126,20 +145,9 @@ class Pipeline:
                     if len(entity) == 0 or entype == "O":
                         continue
 
-                    found = -1
-                    while found == -1 and len(
-                        output[0].ids[0 : int[1] + offset]
-                    ) != len(output[0].ids):
-                        offset += 1
-                        context = self.__preprocess.decode(
-                            output[i].ids[start : int[1] + offset]
-                        )
-                        found = context.find(".")
-                        if -1 < found < context.find(entity):
-                            start = start + 1
-                            offset = offset - 1
-                            found = -1
-                    offset = 0
+                    # TODO: fix context here to window instead of sentence
+                    start = sum([len(output[j]) for j in range(i)])
+                    context = all_outputs[max(0, start + int[0] - WINDOW), max(len(all_outputs),start + int[1] + WINDOW)]
                     context = (
                         context.replace("[CLS]", "")  # type: ignore
                         .replace("[SEP]", "")
@@ -168,8 +176,8 @@ class Pipeline:
                 cat = cat.replace("/", "")
                 e.set_dct(cat)
                 
+                # Set date of entity as the same as DCT if it is overlapping with DCT
                 if e.cat == TR_DCT.OVERLAP:
-                    # Set date of entity as the same as DCT if it is overlapping with DCT
                     e.date = dct
                 dcts[cat].append(e)
 
@@ -192,20 +200,35 @@ class Pipeline:
                         prob = tre_output[1][0]
 
                         if relation != "O":
-                            relations.append(Relation(e_i, e_j, relation, prob))
+                            rel = Relation(e_i, e_j, relation, prob)
+                            if rel.tr == TR_TLINK.OVERLAP:
+                                if type(e_i.type) == TIMEX and type(e_j.type) != TIMEX: 
+                                    if e_i.prob >= e_j.prob:
+                                        e_j.date = e_i.date
+                                        e_j.prob = e_j.prob
+                                elif type(e_j.type) == TIMEX and type(e_i.type) != TIMEX:
+                                    if e_j.prob >= e_i.prob:
+                                        e_i.date = e_j.date
+                                        e_i.prob = e_j.prob
+
+                                
+                            relations.append(rel)
 
             ##### Sort relations after probability
             relations = sorted(relations, key=lambda r: r.prob, reverse=True)
 
-            ##### Add relations one after one, make rules for consistency??!?
+            ##### Add relations one after one, make rules for consistency??!? do we need this if we have date already?
             ##### TODO: after added TIMEX check that Relation date is consistent as well
             for rel in relations[:]:
                 if rel.tr == TR_TLINK.BEFORE: 
-                    graph.add_edge(rel.x.id, rel.y.id)
+                    graph.add_edge(rel.x.id, rel.y.id) 
+                elif rel.tr == TR_TLINK.OVERLAP:
+                    pass
                 if graph.is_cyclic():
                     relations.remove(rel)
                     graph.remove_edge(rel.x.id, rel.y.id)
 
+            # TODO: go through relations and for the before without any dates just put them one hour before that entity relation
             ##### Get the level ordering for the graph
             levels = graph.enumerate_levels()
 

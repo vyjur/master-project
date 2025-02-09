@@ -45,9 +45,9 @@ class TRExtract:
         }
 
         dataset_ner = manager.get(Dataset.NER)
-        dataset_ner = dataset_ner[dataset_ner['MedicalEntity'].notna() | dataset_ner['TIMEX'].notna()]
+        dataset_ner = dataset_ner[dataset_ner['MedicalEntity'].notna() | dataset_ner['TIMEX'].notna()].reset_index()
         dataset_tre = manager.get(task)
-
+        
         dataset = []
         tags = set()
         
@@ -62,9 +62,29 @@ class TRExtract:
                 )
                 tags.add(row['DCT'])
         elif task == Dataset.TRE_TLINK:
+            
+            for i, rel in dataset_tre.iterrows():
+                e_i = dataset_ner[dataset_ner['Id'] == rel['FROM_Id']]
+                e_j = dataset_ner[dataset_ner['Id'] == rel['TO_Id']] 
+            
+                sentence_i = e_i['Context'].replace(e_i['Text'], f"<TAG>{e_i['Text']}</TAG>")
+                sentence_j = e_j['Context'].replace(e_j['Text'], f"<TAG>{e_j['Text']}</TAG>")
+                
+                words = f"{sentence_i} [SEP] {sentence_j}"
+
+                relation_pair = {
+                    "sentence": words,
+                    "relation": rel["RELATION"],
+                }
+                dataset.append(relation_pair)
+                tags.add(relation)
+                
             for i, e_i in dataset_ner.iterrows():
                 for j, e_j in dataset_ner.iterrows():
                     if i == j:
+                        continue
+                    
+                    if e_i['Text'] not in e_j['Context'] and e_j['Text'] not in e_i['Context']:
                         continue
 
                     relations = dataset_tre[
@@ -72,8 +92,8 @@ class TRExtract:
                         & (dataset_tre["TO_Id"] == e_j['Id'])
                     ]
 
-                    if len(relations) == 1:
-                        relation = relations.iloc[0]["RELATION"]
+                    if len(relations) > 0:
+                        continue
                     else:
                         relation = "O"
 
@@ -81,7 +101,7 @@ class TRExtract:
                         if random.random() < 0.999:
                             continue
 
-                    # TODO: change setup of input with XML tags? add amount of SEP as sentences between them?
+                    # TODO: Add amount of SEP as sentences between them?
                     sentence_i = e_i['Context'].replace(e_i['Text'], f"<TAG>{e_i['Text']}</TAG>")
                     sentence_j = e_j['Context'].replace(e_j['Text'], f"<TAG>{e_j['Text']}</TAG>")
                     

@@ -64,7 +64,25 @@ class DatasetManager:
                 all_entity_df = pd.concat([all_entity_df, df])
             else:
                 all_entity_df = df
-        self.__entity_df = all_entity_df
+        self.__entity_df = all_entity_df.reset_index()
+        
+        # TODO: config?
+        tokens_expanded = self.__entity_df["Text"].str.split().explode().tolist()  # Flatten the token list
+        # Define the context window size
+        window_size = 50
+
+        # Function to get the context window for each row (respecting original dataset)
+        def get_context_window(idx):
+            # Get the flattened index of the current token
+            token_start_idx = sum(len(t.split()) for t in df["token"][:idx])
+            
+            # Extract the context window from the flattened list
+            context_start = max(0, token_start_idx - window_size // 2)
+            context_end = token_start_idx + window_size // 2
+            return " ".join(tokens_expanded[context_start:context_end])
+
+        # Apply function to each row
+        self.__entity_df["context_window"] = df.index.map(get_context_window)
 
         all_relation_df = []
         for file in relation_files:
