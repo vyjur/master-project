@@ -1,0 +1,12 @@
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# Project files
+.idea/
+
+# config file
+python_heideltime/config_Heideltime.py
+
+
+heideltime-standalone/*

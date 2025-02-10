@@ -6,18 +6,17 @@ class Dataset(Enum):
     TRE_DCT = 2
     TRE_TLINK = 3
     SENTENCES = 4
+    TEE = 5
 
 class Task(Enum):
     TOKEN = 1
     SEQUENCE = 2
-
 
 class TR_DCT(Enum):
     AFTER = 1
     BEFORE = 2
     OVERLAP = 3 
     BEFOREOVERLAP = 4
-
 
 class TR_TLINK(Enum):
     BEFORE = 1

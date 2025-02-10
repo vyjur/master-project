@@ -176,3 +176,5 @@ output.*
 
 /data/helsearkiv
 job.slurm
+
+/src/textmining/tee/heideltime/heideltime-standalone
