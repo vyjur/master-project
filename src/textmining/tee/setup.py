@@ -1,18 +1,56 @@
 from textmining.tee.heideltime.python_heideltime import Heideltime
+from textmining.tee.rules import *
 import xml.etree.ElementTree as ET
 import pandas as pd
 
+
 class TEExtract:
     
-    def __init__(self):
+    def __init__(self, rules:bool=True):
         self.__heideltime = Heideltime()
         self.__heideltime.set_document_type('NEWS')
         self.__heideltime.set_language('auto-norwegian')
+        self.__rules = rules
         
     def set_dct(self, dct):
         self.__heideltime.set_document_time(dct)
-    
+        
+    def __pre_rules(self, text):
+        text = convert_text(text)
+        
+        text = convert_slash_date(text)
+        text = convert_date_format(text)
+                
+        # Rule 2: -78 => 1.1.1978
+        text = convert_negative_years(text)
+        
+        # Rule 3: 2020 => 1.1.2020
+        text = convert_full_year(text)
+        
+        if self.__heideltime.document_time is not None:
+            # Rule 4: 25.12 => 25.12.YYYY where YYYY is the same year as DCT if 25.12.YYYY < DCT. Else, the year before that.
+            dct = datetime.strptime(self.__heideltime.document_time, "%Y-%m-%d")
+            
+            try:
+                text = convert_partial_dates(text, dct)
+            except:
+                pass
+        return text
+            
+    def __post_rules(self, text, ttype, value):
+        if self.__heideltime.document_time is not None:
+            if ttype == "DURATION":
+                
+                # TODO: WHAT TO DO HERE
+                pass      
+            
+        return value 
+        
     def __run(self, text):
+        
+        if self.__rules:
+            text = self.__pre_rules(text)
+        
         result = self.__heideltime.parse(text)
         
         root = ET.fromstring(result)
@@ -24,6 +62,9 @@ class TEExtract:
             ttype = timex.get('type')
             value = timex.get('value')
             text = timex.text
+            
+            if self.__rules: 
+                value = self.__post_rules(text, ttype, value) 
             
             # Get the full text of the document
             full_text = "".join(root.itertext())
@@ -57,9 +98,49 @@ class TEExtract:
         return window
         
 if __name__ == '__main__':
-    tee = TEExtract()
-     
-    output = tee.run(["Hei i dag er fem dager siden du snakket til meg. en dato 24.12.20. en annen dato 21.10.2025"])
-    print(output[0]) 
+    import os
+    from structure.enum import Dataset
+    from preprocess.dataset import DatasetManager
+    from sklearn.metrics import classification_report
+    
+    folder_path = "./data/helsearkiv/annotated/entity/"
 
+    entity_files = [
+        folder_path + f
+        for f in os.listdir(folder_path)
+        if os.path.isfile(os.path.join(folder_path, f))
+    ]
+
+    folder_path = "./data/helsearkiv/annotated/relation/"
+
+    relation_files = [
+        folder_path + f
+        for f in os.listdir(folder_path)
+        if os.path.isfile(os.path.join(folder_path, f))
+
+    ]
+
+    tee = TEExtract()
+    tee.set_dct('2025-02-10')
      
+    manager = DatasetManager(entity_files, relation_files, False)
+    
+    dataset = manager.get(Dataset.TEE)
+    
+    print(dataset)
+
+    target = []
+    pred = []
+    for i, data in dataset.iterrows():
+        output = tee.run([data['Text']])[0]
+        if not output.empty:
+            pred.append(output["type"].values[0])
+            target.append(data['TIMEX'].replace('DCT', 'DATE'))
+        else:
+            pred.append(None)
+            target.append(data['TIMEX'].replace('DCT', 'DATE'))
+
+    print(classification_report(target, pred))
+    
+    output = tee.run(["21/12/2021 2/1/20"])
+    print(output[0]) 

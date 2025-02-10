@@ -22,6 +22,7 @@ class NERecognition:
         load = self.__config["MODEL"].getboolean("load")
         print("LOAD", load)
         
+        dataset = []
         if load:
             tags = [cat.name for cat in ME]   
         else:

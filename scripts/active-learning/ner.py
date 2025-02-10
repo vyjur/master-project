@@ -75,6 +75,12 @@ csv_file = []
 
 
 print("### Performing NER with the current model")
+
+merged_entities = []
+merged_annots = []
+merged_offsets = []
+
+
 for page in sorted_data[:1200]:
     reader = pypdf.PdfReader('./data/helsearkiv/journal/' + page['file'])
     writer.add_page(reader.pages[page['page']])
@@ -84,11 +90,6 @@ for page in sorted_data[:1200]:
     preoutput = preprocess.run(reader.pages[page['page']].extract_text())
     output = ner.run(preoutput)
    
-    merged_entities = []
-    merged_annots = []
-    merged_offsets = []
-
- 
     for pre in preoutput:
         words = preprocess.decode(pre.ids).split(' ')
 
@@ -105,8 +106,11 @@ for page in sorted_data[:1200]:
                 annot.append(cat)
                 offsets.append(pre.offsets[i])
                 word_count += 1
-                
-            offsets[-1] = (offsets[-1][0], pre.offsets[i][1])
+            
+            if len(offsets) > 0:
+                offsets[-1] = (offsets[-1][0], pre.offsets[i][1])
+            else:
+                offsets.append(pre.offsets[i])
             
             
         for i, word in enumerate(words):
@@ -119,13 +123,14 @@ for page in sorted_data[:1200]:
                 merged_annots.append(annot[i].replace('B-', ''))
                 merged_offsets.append(offsets[i])
             else:
-                merged_entities[-1] += ' ' + word
-                merged_offsets[-1] = (merged_offsets[-1][0], offsets[i][1])
+                if len(merged_entities) > 0 and merged_annots[-1] != 'O':
+                    merged_entities[-1] += ' ' + word
+                    merged_offsets[-1] = (merged_offsets[-1][0], offsets[i][1])
+                else:
+                    merged_entities.append(word)
+                    merged_annots.append(annot[i].replace('I-', ''))
+                    merged_offsets.append(offsets[i])
                 
-        print(len(merged_entities), len(merged_annots), len(merged_offsets))
-
-    
-    
     if count % 12 == 0:
         os.mkdir(f'./data/helsearkiv/batch/ner/{BATCH}')
         with open(f"./data/helsearkiv/batch/ner/{BATCH}/{count // 12}.pdf", "wb") as file:
@@ -142,6 +147,10 @@ for page in sorted_data[:1200]:
             'Context': None
         })
         df.to_csv(f"./data/helsearkiv/batch/ner/{BATCH}/{count // 12}.csv")
+        
+        merged_entities = []
+        merged_offsets = []
+        merged_annots = []
         
                 
 

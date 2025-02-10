@@ -14,5 +14,4 @@ def compute_mnlp(sentence, model):
     with torch.no_grad():
         # INFO: The normalized log probability is computed in the model itself
         output, prob = model(tokens)
-        print(output.shape, prob.shape)
     return sum(prob)/len(output)

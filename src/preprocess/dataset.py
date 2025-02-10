@@ -54,7 +54,7 @@ COLUMN_NAMES_DICT = {
 }
 
 class DatasetManager:
-    def __init__(self, entity_files: List[str], relation_files: List[str]):
+    def __init__(self, entity_files: List[str], relation_files: List[str], context:bool=True):
 
         print("### Processing the files:")
         all_entity_df = []
@@ -74,15 +74,17 @@ class DatasetManager:
         # Function to get the context window for each row (respecting original dataset)
         def get_context_window(idx):
             # Get the flattened index of the current token
-            token_start_idx = sum(len(t.split()) for t in df["token"][:idx])
+            token_start_idx = sum(len(str(t).split()) for t in self.__entity_df["Text"][:idx])
             
             # Extract the context window from the flattened list
             context_start = max(0, token_start_idx - window_size // 2)
             context_end = token_start_idx + window_size // 2
-            return " ".join(tokens_expanded[context_start:context_end])
+            return " ".join(map(str, tokens_expanded[context_start:context_end]))
 
         # Apply function to each row
-        self.__entity_df["context_window"] = df.index.map(get_context_window)
+        
+        if context:
+            self.__entity_df["Context"] = self.__entity_df.index.map(get_context_window)
 
         all_relation_df = []
         for file in relation_files:
@@ -100,6 +102,9 @@ class DatasetManager:
             case Dataset.TRE_DCT:
                 result = self.__get_ent_by_cols(["Id", "Text", "DCT", "Context"])
                 return result[result["DCT"].notna()]
+            case Dataset.TEE:
+                result = self.__get_ent_by_cols(["Id", "Text", "TIMEX", "Context"])
+                return result[result["TIMEX"].notna()]
             case Dataset.TRE_TLINK:
                 return self.__get_tlink()
 
