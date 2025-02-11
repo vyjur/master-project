@@ -34,12 +34,15 @@ target = []
 pred = []
 for i, data in dataset.iterrows():
     output = tee.run([data['Text']])[0]
-    if not output.empty:
-        pred.append(output["type"].values[0])
-        target.append(data['TIMEX'].replace('DCT', 'DATE'))
-    else:
-        pred.append(None)
-        target.append(data['TIMEX'].replace('DCT', 'DATE'))
+    try:
+        if not output.empty:
+            pred.append(output["type"].values[0])
+            target.append(data['TIMEX'].replace('DCT', 'DATE'))
+        else:
+            pred.append("O")
+            target.append(data['TIMEX'].replace('DCT', 'DATE'))
+    except:
+        pass
 
 print(classification_report(target, pred))
 
@@ -51,11 +54,14 @@ target = []
 pred = []
 for i, data in dataset.iterrows():
     output = tee.run([data['Text']])[0]
-    if not output.empty:
-        pred.append(output["type"].values[0])
-        target.append(data['TIMEX'].replace('DCT', 'DATE'))
-    else:
-        pred.append(None)
-        target.append(data['TIMEX'].replace('DCT', 'DATE'))
+    try:
+        if not output.empty:
+            pred.append(output["type"].values[0])
+            target.append(data['TIMEX'].replace('DCT', 'DATE'))
+        else:
+            pred.append("O")
+            target.append(data['TIMEX'].replace('DCT', 'DATE'))
+    except:
+        pass
 
 print(classification_report(target, pred))

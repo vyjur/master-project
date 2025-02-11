@@ -8,6 +8,8 @@ from util import compute_mnlp
 
 BATCH = 1
 
+os.mkdir(f'./data/helsearkiv/batch/ner/{BATCH}')
+
 file = "./scripts/active-learning/config/ner.ini"
 save_directory = "./models/ner/b-bert"
 
@@ -90,49 +92,48 @@ for page in sorted_data[:1200]:
     preoutput = preprocess.run(reader.pages[page['page']].extract_text())
     output = ner.run(preoutput)
    
-    for pre in preoutput:
+    for i, pre in enumerate(preoutput):
         words = preprocess.decode(pre.ids).split(' ')
 
         word_count = 0
         curr = ''
         annot = []
         offsets = []
-        for i, cat in enumerate(output[0]):
-            token = preprocess.decode(pre.ids[i])
+        for j, cat in enumerate(output[i]):
+            token = preprocess.decode(pre.ids[j])
             
             curr += token
             if curr.strip() == words[word_count].strip():
                 curr = ''
                 annot.append(cat)
-                offsets.append(pre.offsets[i])
+                offsets.append(pre.offsets[j])
                 word_count += 1
             
             if len(offsets) > 0:
-                offsets[-1] = (offsets[-1][0], pre.offsets[i][1])
+                offsets[-1] = (offsets[-1][0], pre.offsets[j][1])
             else:
-                offsets.append(pre.offsets[i])
+                offsets.append(pre.offsets[j])
             
             
-        for i, word in enumerate(words):
-            if annot[i] == 'O':
+        for j, word in enumerate(words):
+            if annot[j] == 'O':
                 merged_entities.append(word)
-                merged_annots.append(annot[i])
-                merged_offsets.append(offsets[i])
+                merged_annots.append(annot[j])
+                merged_offsets.append(offsets[j])
             elif annot[i].startswith('B-'):
                 merged_entities.append(word)
-                merged_annots.append(annot[i].replace('B-', ''))
-                merged_offsets.append(offsets[i])
+                merged_annots.append(annot[j].replace('B-', ''))
+                merged_offsets.append(offsets[j])
             else:
                 if len(merged_entities) > 0 and merged_annots[-1] != 'O':
                     merged_entities[-1] += ' ' + word
-                    merged_offsets[-1] = (merged_offsets[-1][0], offsets[i][1])
+                    merged_offsets[-1] = (merged_offsets[-1][0], offsets[j][1])
                 else:
                     merged_entities.append(word)
-                    merged_annots.append(annot[i].replace('I-', ''))
-                    merged_offsets.append(offsets[i])
+                    merged_annots.append(annot[j].replace('I-', ''))
+                    merged_offsets.append(offsets[j])
                 
     if count % 12 == 0:
-        os.mkdir(f'./data/helsearkiv/batch/ner/{BATCH}')
         with open(f"./data/helsearkiv/batch/ner/{BATCH}/{count // 12}.pdf", "wb") as file:
             writer.write(file)
         

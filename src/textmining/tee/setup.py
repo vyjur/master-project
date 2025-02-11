@@ -1,6 +1,7 @@
 from textmining.tee.heideltime.python_heideltime import Heideltime
 from textmining.tee.rules import *
 import xml.etree.ElementTree as ET
+
 import pandas as pd
 
 
@@ -37,17 +38,16 @@ class TEExtract:
                 pass
         return text
             
-    def __post_rules(self, text, ttype, value):
+    def __post_rules(self, full_text, text, ttype, value):
+        dct = datetime.strptime(self.__heideltime.document_time, "%Y-%m-%d")
+        check_context = self.__get_window(full_text, text, window_size=3)
+
         if self.__heideltime.document_time is not None:
             if ttype == "DURATION":
-                
-                # TODO: WHAT TO DO HERE
-                pass      
-            
+                return convert_duration(check_context, value, dct) 
         return value 
         
     def __run(self, text):
-        
         if self.__rules:
             text = self.__pre_rules(text)
         
@@ -63,39 +63,43 @@ class TEExtract:
             value = timex.get('value')
             text = timex.text
             
-            if self.__rules: 
-                value = self.__post_rules(text, ttype, value) 
-            
             # Get the full text of the document
-            full_text = "".join(root.itertext())
+            full_text = " ".join(root.itertext())
             
-            # Get the 50-character window around this TIMEX3 element
-            char_window = self.__get_char_window(full_text, text, window_size=50)
+            # Get the 50-token window around this TIMEX3 element
+            context = self.__get_window(full_text, text, window_size=50)
+            
+            if self.__rules: 
+                value = self.__post_rules(full_text, text, ttype, value)
             
             data.append( {
                 'id': tid,
                 'type': ttype,
                 'value': value,
                 'text': text,
-                'context': char_window
+                'context': context
             })
+
         return pd.DataFrame(data)
             
     def run(self, data):
         return [self.__run(text) for text in data]
         
-    def __get_char_window(self, full_text, timex_text, window_size=50):
+    def __get_window(self, full_text, timex_text, window_size=50):
         # Find the index of the TIMEX3 text in the full text
         start_index = full_text.find(timex_text)
         end_index = start_index + len(timex_text)
         
         # Get the character window before and after the TIMEX3 text
-        before_window = full_text[max(0, start_index - window_size):start_index]  # 50 characters before TIMEX3
-        after_window = full_text[end_index:end_index + window_size]  # 50 characters after TIMEX3
+        before_window = full_text[:start_index].split() # 50 characters before TIMEX3
+        before_window = before_window[max(0, len(before_window) - window_size):]
+        after_window = full_text[end_index:].split()  # 50 characters after TIMEX3
+        after_window = after_window[:min(len(after_window), window_size)]
         
         # Combine the before and after windows with the TIMEX3 text itself in the middle
-        window = before_window + timex_text + after_window
+        window = " ".join(before_window) + " " + timex_text + " " + " ".join(after_window)
         return window
+        
         
 if __name__ == '__main__':
     import os
@@ -123,24 +127,26 @@ if __name__ == '__main__':
     tee = TEExtract()
     tee.set_dct('2025-02-10')
      
-    manager = DatasetManager(entity_files, relation_files, False)
+    # manager = DatasetManager(entity_files, relation_files, False)
     
-    dataset = manager.get(Dataset.TEE)
+    # dataset = manager.get(Dataset.TEE)
     
-    print(dataset)
+    # print(dataset)
 
-    target = []
-    pred = []
-    for i, data in dataset.iterrows():
-        output = tee.run([data['Text']])[0]
-        if not output.empty:
-            pred.append(output["type"].values[0])
-            target.append(data['TIMEX'].replace('DCT', 'DATE'))
-        else:
-            pred.append(None)
-            target.append(data['TIMEX'].replace('DCT', 'DATE'))
+    # target = []
+    # pred = []
+    # for i, data in dataset.iterrows():
+    #     output = tee.run([data['Text']])[0]
+    #     if not output.empty:
+    #         if output["type"].values[0] != data['TIMEX'].replace('DCT', 'DATE'):
+    #             print(data['Text'], output["type"].values[0], data['TIMEX'].replace('DCT', 'DATE'), data['Context'])
+    #         pred.append(output["type"].values[0])
+    #         target.append(data['TIMEX'].replace('DCT', 'DATE'))
+    #     else:
+    #         pred.append('O')
+    #         target.append(data['TIMEX'].replace('DCT', 'DATE'))
 
-    print(classification_report(target, pred))
+    # print(classification_report(target, pred))
     
-    output = tee.run(["21/12/2021 2/1/20"])
+    output = tee.run(["kl. 13.00 på 12.10 funker fint, men den 23.12 kl. 12.00 funker ikke. Hva med kl.14.04"])
     print(output[0]) 

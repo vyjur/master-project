@@ -65,8 +65,15 @@ class TRExtract:
             elif task == Dataset.TRE_TLINK:
                 
                 for i, rel in dataset_tre.iterrows():
-                    e_i = dataset_ner[dataset_ner['Id'] == rel['FROM_Id']].iloc[0]
-                    e_j = dataset_ner[dataset_ner['Id'] == rel['TO_Id']].iloc[0]
+                    
+                    e_i = dataset_ner[dataset_ner['Id'] == rel['FROM_Id']]
+                    e_j = dataset_ner[dataset_ner['Id'] == rel['TO_Id']]
+                    
+                    if len(e_i) > 0 and len(e_j) > 0:
+                        e_i = e_i.iloc[0]
+                        e_j = e_j.iloc[0]
+                    else:
+                        continue
                 
                     sentence_i = e_i['Context'].replace(e_i['Text'], f"<TAG>{e_i['Text']}</TAG>")
                     sentence_j = e_j['Context'].replace(e_j['Text'], f"<TAG>{e_j['Text']}</TAG>")

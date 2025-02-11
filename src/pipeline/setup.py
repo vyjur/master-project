@@ -145,7 +145,7 @@ class Pipeline:
                     if len(entity) == 0 or entype == "O":
                         continue
 
-                    # TODO: fix context here to window instead of sentence
+                    # Token window based on tokenization output
                     start = sum([len(output[j]) for j in range(i)])
                     context = all_outputs[max(0, start + int[0] - WINDOW), max(len(all_outputs),start + int[1] + WINDOW)]
                     context = (
