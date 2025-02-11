@@ -72,13 +72,14 @@ class DatasetManager:
         window_size = 50
 
         # Function to get the context window for each row (respecting original dataset)
+        # Token splits on words (word-level token window)
         def get_context_window(idx):
             # Get the flattened index of the current token
             token_start_idx = sum(len(str(t).split()) for t in self.__entity_df["Text"][:idx])
             
             # Extract the context window from the flattened list
-            context_start = max(0, token_start_idx - window_size // 2)
-            context_end = token_start_idx + window_size // 2
+            context_start = max(0, token_start_idx - window_size)
+            context_end = min(len(tokens_expanded), token_start_idx + window_size)
             return " ".join(map(str, tokens_expanded[context_start:context_end]))
 
         # Apply function to each row

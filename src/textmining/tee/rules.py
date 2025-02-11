@@ -1,3 +1,5 @@
+from datetime import timedelta
+from dateutil.relativedelta import relativedelta
 from datetime import datetime
 import re
 
@@ -34,7 +36,6 @@ def convert_negative_years(text):
 
 def expand_partial_date(match, dct):
     """ Converts DD.MM or DD.M or D.M to DD.MM.YYYY based on DCT logic """
-    # print(match)
     day, month = match.groups()
     
     # Ensure the month has two digits
@@ -48,6 +49,8 @@ def convert_partial_dates(text, dct):
     """ Finds and replaces DD.MM or DD.M or D.M with DD.MM.YYYY based on DCT """
     # Pattern to match DD.MM or DD.M formats
     pattern = r"\b(\d{1,2})\.(\d{1,2})\b(?!\.\d{2})"  # Matches DD.MM or DD.M format
+    pattern = r"(?<!kl\.)\b(\d{1,2})\.(\d{1,2})\b(?!\.\d{2})"
+    text = text.replace('kl. ', 'kl.')
     return re.sub(pattern, lambda match: expand_partial_date(match, dct), text)
 
 def convert_full_year(date_str):
@@ -56,6 +59,8 @@ def convert_full_year(date_str):
         return date_str  # No conversion, return as is
     # If it's just YYYY, convert to 1.1.YYYY
     elif re.match(r'^\d{4}$', date_str):
+        if int(date_str) < 1850:
+            return date_str
         return f"1.1.{date_str}"
     # In case of any other invalid format, return the input as is
     return date_str
@@ -78,6 +83,8 @@ def convert_date_format(text):
 def convert_text(text):
     text = text.replace("i dag", "idag")
     text = text.replace("mnd", "måned")
+    text = text.replace("månedr", "måneder")
+    #text = text.replace("imorgen", "imorgen")
     return text
 
 def convert_slash_date(text):
@@ -92,3 +99,19 @@ def convert_slash_date(text):
 
     # Find all dates in the text using the pattern and replace them
     return re.sub(date_pattern, format_date, text)
+
+def convert_duration(context, value, dct):
+    time_units = {"M": relativedelta(months=1), "W": timedelta(weeks=1), "D": timedelta(days=1), "Y": relativedelta(years=1)}
+    unit = next((unit for unit in time_units if unit in value), None)
+    if unit:
+        amount = int(value.replace("P", "").replace(unit, ""))
+        adjustment = time_units[unit]
+        resolved_date = dct
+        if any(term in context for term in ["siden", "tilbake", "i forveien", "før"]):  
+            resolved_date = dct - adjustment * amount
+        elif any(term in context for term in ["etter", "om", "til", "senere", "postoperativ"]):
+            resolved_date = dct + adjustment * amount
+        resolved_date = resolved_date.strftime("%Y-%m-%d")
+    else:
+        resolved_date = value
+    return resolved_date
