@@ -1,17 +1,90 @@
 from textmining.tee.heideltime.python_heideltime import Heideltime
 from textmining.tee.rules import *
 import xml.etree.ElementTree as ET
-
+from preprocess.dataset import DatasetManager
+import configparser
+from structure.enum import Task, Dataset, TIMEX
+from model.util import Util
 import pandas as pd
+from transformers import AutoTokenizer
+from model.map import MODEL_MAP
 
 
 class TEExtract:
     
-    def __init__(self, rules:bool=True):
+    def __init__(self, config_file:str, manager: DatasetManager, save_directory: str = "./src/textmining/ner/model", rules:bool=True):
         self.__heideltime = Heideltime()
         self.__heideltime.set_document_type('NEWS')
         self.__heideltime.set_language('auto-norwegian')
         self.__rules = rules
+        
+        self.__config = configparser.ConfigParser(allow_no_value=True)
+        self.__config.read(config_file)
+
+        load = self.__config["MODEL"].getboolean("load")
+        print("LOAD", load)
+        
+        dataset = []
+        tags = [TIMEX.DATE.name, TIMEX.DCT.name]   
+
+        if not load:
+            dataset = manager.get(Dataset.TEE)
+            dataset = dataset[dataset['TIMEX'].isin(["DATE", "DCT"])]
+            for _, row in dataset.iterrows():
+                dataset.append(
+                    {
+                        "sentence": row['Context']
+                        .replace(row['Text'], f"<TAG>{row['Text']}</TAG>"),
+                        "relation": row['TIMEX'],
+                    }
+                )
+                tags.add(row['DCT'])
+        self.label2id, self.id2label = Util().get_tags(Task.SEQUENCE, tags)
+        
+        self.tokenizer = AutoTokenizer.from_pretrained(
+            self.__config["pretrain"]["name"]
+        )
+        
+        train_parameters = {
+            "train_batch_size": self.__config.getint(
+                "train.parameters", "train_batch_size"
+            ),
+            "valid_batch_size": self.__config.getint(
+                "train.parameters", "valid_batch_size"
+            ),
+            "epochs": self.__config.getint("train.parameters", "epochs"),
+            "learning_rate": self.__config.getfloat(
+                "train.parameters", "learning_rate"
+            ),
+            "shuffle": self.__config.getboolean("train.parameters", "shuffle"),
+            "num_workers": self.__config.getint("train.parameters", "num_workers"),
+            "max_length": self.__config.getint("MODEL", "max_length"),
+        }
+
+        self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
+            load,
+            save_directory,
+            dataset,
+            tags,
+            parameters=train_parameters,
+            tokenizer=self.tokenizer,
+            project_name=self.__config["GENERAL"]["name"],
+            pretrain=self.__config["pretrain"]["name"],
+        )
+        
+    def get_tokenizer(self):
+        return self.__model.tokenizer
+
+    def get_max_length(self):
+        return self.__config.getint("MODEL", "max_length")
+
+    def __model_run(self, data):
+        output, _ = self.__model.predict([val.ids for val in data])
+        predictions = [[self.id2label[int(j.cpu().numpy())] for j in i] for i in output]
+        return predictions
+
+    def get_model(self):
+        return self.__model
         
     def set_dct(self, dct):
         self.__heideltime.set_document_time(dct)
@@ -21,11 +94,7 @@ class TEExtract:
         
         text = convert_slash_date(text)
         text = convert_date_format(text)
-                
-        # Rule 2: -78 => 1.1.1978
         text = convert_negative_years(text)
-        
-        # Rule 3: 2020 => 1.1.2020
         text = convert_full_year(text)
         
         if self.__heideltime.document_time is not None:
@@ -83,6 +152,7 @@ class TEExtract:
         return pd.DataFrame(data)
             
     def run(self, data):
+        # TODO: add DCT sections split
         return self.__run(data)
         
     def __get_window(self, full_text, timex_text, window_size=50):

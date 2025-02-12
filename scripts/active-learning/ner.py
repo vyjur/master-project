@@ -57,8 +57,8 @@ print("##### Calculating MNLP ... ")
 for i, doc in enumerate(files):
     reader = pypdf.PdfReader('./data/helsearkiv/journal/' + doc)
     for j, page in enumerate(reader.pages):
-        ner.run(preprocess.run(page.extract_text()))
-        prob = compute_mnlp(preprocess.run(page.extract_text()), model)
+        pre_output = preprocess.run(page.extract_text())
+        prob = compute_mnlp(pre_output, model)
         
         al_data.append({
             'file': doc,
@@ -99,6 +99,8 @@ for page in sorted_data[:1200]:
         curr = ''
         annot = []
         offsets = []
+        
+        # Get the offset for each word from words that were split
         for j, cat in enumerate(output[i]):
             token = preprocess.decode(pre.ids[j])
             
@@ -113,15 +115,17 @@ for page in sorted_data[:1200]:
                 offsets[-1] = (offsets[-1][0], pre.offsets[j][1])
             else:
                 annot.append(cat)
-                offsets.append(pre.offsets[j])
+                offsets.append(pre.offsets[j])  
+        
+        assert len(words) == len(annot) == len(offsets), f"Word count:{word_count}, LEN words: {len(words)}, offset/annot: {len(offsets)}/{len(annot)}"      
             
-            
+        # Merge different words together
         for j, word in enumerate(words):
             if annot[j] == 'O':
                 merged_entities.append(word)
                 merged_annots.append(annot[j])
                 merged_offsets.append(offsets[j])
-            elif annot[i].startswith('B-'):
+            elif annot[j].startswith('B-'):
                 merged_entities.append(word)
                 merged_annots.append(annot[j].replace('B-', ''))
                 merged_offsets.append(offsets[j])

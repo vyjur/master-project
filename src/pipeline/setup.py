@@ -87,20 +87,30 @@ class Pipeline:
     def __get_non_o_intervals(self, lst):
         intervals = []
         start = None
+        
+        prev_value = "O"
 
         for i, value in enumerate(lst):
-            if value != "O" and (start is None or not value.startswith("B")):
-                if start is None:  # Starting a new interval
-                    start = i
-            else:
-                if start is not None:  # Closing an existing interval
+            cat_value = value.replace('B-', '').replace('I-', '')
+            if value != "O":
+                    
+                if (value.startswith("B-") or cat_value != prev_value) and start is not None:
                     intervals.append((start, i))
                     start = None
-
+                    
+                if value.startswith("B-") or (value.startswith("I-") and start is None):
+                    start = i
+            else:
+                if start is not None:
+                    intervals.append((start, i))
+                    start = None
+                    
+            prev_value = cat_value
+                    
         # If the last element is part of an interval
         if start is not None:
             intervals.append((start, len(lst)))
-
+            
         return intervals
 
     def run(self, documents):
@@ -108,10 +118,10 @@ class Pipeline:
         # TODO: add document logic, is this necessary?
 
         all_info = []
-
+        entities = []
         for doc in documents:
             ### Initialization
-            entities = []
+            
             graph = Graph()
 
             ### Preprocessing
@@ -150,6 +160,7 @@ class Pipeline:
             WINDOW = self.__config.getint('PARAMETERS', 'context')
             
             for i, _ in enumerate(output):
+                
                 result = self.__get_non_o_intervals(ner_output[i])
                 start = 0
                 for int in result:
@@ -161,7 +172,7 @@ class Pipeline:
                         .strip()
                     )
 
-                    entype = ner_output[i][int[0]].replace("B-", "")
+                    entype = ner_output[i][int[0]].replace("B-", "").replace("I-", "")
                     if len(entity) == 0 or entype == "O":
                         continue
 
@@ -174,6 +185,7 @@ class Pipeline:
                         .replace("[SEP]", "")
                         .replace("[PAD]", "")
                     )
+                    
                     curr_ent = Node(entity, entype, None, context, None)
                     entities.append(curr_ent)
                     graph.add_node(curr_ent.id)
@@ -199,6 +211,8 @@ class Pipeline:
                 
                 # Set date of entity as the same as DCT if it is overlapping with DCT
                 if cat == TR_DCT.OVERLAP:
+                    print("DCT overlap")
+                    print(e)
                     e.date = dct
                 dcts[cat].append(e)
 
@@ -206,8 +220,6 @@ class Pipeline:
             ###### Although triple loop, this should be quicker than checking all entities
             ###### O(N^2)>O(len(dcts)*(N_i^2)) where N_i < N
 
-            ###### TODO: add TLINK: EVENT x TIMEX
-            ###### if overlap with a TIMEX. date becomes this.
             relations = []
             for cat in dcts:
                 for i, e_i in enumerate(dcts[cat]):
@@ -224,37 +236,36 @@ class Pipeline:
                             rel = Relation(e_i, e_j, relation, prob)
                             if rel.tr == TR_TLINK.OVERLAP:
                                 if isinstance(e_i.type, TIMEX) and not isinstance(e_j.type, TIMEX):
-                                    if e_i.prob >= e_j.prob:
+                                    if e_i.prob >= e_j.prob or e_j.date is None:
                                         e_j.date = e_i.date
                                         e_j.prob = e_i.prob 
                                 elif isinstance(e_j.type, TIMEX) and not isinstance(e_i.type, TIMEX):
-                                    if e_j.prob >= e_i.prob:
+                                    if e_j.prob >= e_i.prob or e_i.date is None:
                                         e_i.date = e_j.date
                                         e_i.prob = e_j.prob
                                             
+                            print(rel)
                             relations.append(rel)
 
             ##### Sort relations after probability
             relations = sorted(relations, key=lambda r: r.prob, reverse=True)
-
-            ##### Add relations one after one, make rules for consistency??!? do we need this if we have date already?
-            ##### TODO: after added TIMEX check that Relation date is consistent as well
+                        
+            ### For TLINK BEFORE relation, we will add it X hours ahead before the parent entity if it has no date assigned to it.
+            ### This will be handled in the visualization module
             for rel in relations[:]:
                 if rel.tr == TR_TLINK.BEFORE: 
-                    # TODO: check if this works
                     if None not in (rel.x.date, rel.y.date):
                         if rel.x.date < rel.y.date:
                             graph.add_edge(rel.x.id, rel.y.id)
                     else:
                         graph.add_edge(rel.x.id, rel.y.id)
                 elif rel.tr == TR_TLINK.OVERLAP:
+                    # TODO: do we need to do something here?
                     pass
                 if graph.is_cyclic():
                     relations.remove(rel)
                     graph.remove_edge(rel.x.id, rel.y.id)
-
-            # TODO: go through relations and for the before without any dates just put them one hour before that entity relation
-            # This is for those with no date
+                    
             ##### Get the level ordering for the graph
             
             ## INFORMATION: I don't think we need levels anymore, but DATETIME is our level instead
@@ -295,6 +306,6 @@ class Pipeline:
 
 if __name__ == "__main__":
     pipeline = Pipeline("./src/pipeline/config.ini")
-    text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    text2 = "Vi snakkes"
-    print(pipeline.run([text, text2]))
+    text = "Pasienten var innlagt 21. juni for prostata cancer men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon."
+    text2 = "Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til røntgen test snarest."
+    pipeline.run([text, text2])

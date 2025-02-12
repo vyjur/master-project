@@ -8,7 +8,6 @@ __pycache__/
 
 
 wandb/
-models/
 # Distribution / packaging
 .Python
 build/
@@ -165,12 +164,14 @@ cython_debug/
 #.idea/
 
 # Models
-/notebooks/saved_model/
-/src/textmining/ner/model
-/src/textmining/tre/model
-
+*.pth
 output.*
 *.slurm
+config.json
+model.safetensors
+special_tokens_map.json
+tokenizer_config.json
+tokenizer.json
 .DS__Store
 ._.DS_Store
 
