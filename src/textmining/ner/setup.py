@@ -6,7 +6,7 @@ from preprocess.dataset import DatasetManager
 from model.map import MODEL_MAP
 from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
-from structure.enum import Dataset, Task
+from structure.enum import Dataset, Task, ME
 
 
 class NERecognition:
@@ -21,18 +21,16 @@ class NERecognition:
 
         load = self.__config["MODEL"].getboolean("load")
         print("LOAD", load)
-        raw_dataset = manager.get(Dataset.NER)
-
+        
         dataset = []
-        tags = set()
-        for doc in raw_dataset:
-            curr_doc = []
-            for row in doc.itertuples(index=False):
-                curr_doc.append((row[2], row[3]))  # Add (row[1], row[2]) tuple to list
-                tags.add(row[3])  # Add row[2] to the set
-
-            dataset.append(curr_doc)
-        tags = list(tags)
+        if load:
+            tags = [cat.name for cat in ME]   
+        else:
+            dataset = manager.get(Dataset.NER)
+            dataset['MedicalEntity'] = dataset['MedicalEntity'].fillna('O')
+            tags = dataset['MedicalEntity'].unique()
+            dataset = [dataset]
+            tags = list(tags)
         self.label2id, self.id2label = Util().get_tags(Task.TOKEN, tags)
 
         self.tokenizer = AutoTokenizer.from_pretrained(
@@ -73,13 +71,42 @@ class NERecognition:
         return self.__config.getint("MODEL", "max_length")
 
     def run(self, data):
-        output = self.__model.predict([val.ids for val in data])
-        predictions = [[self.id2label[int(j.numpy())] for j in i] for i in output]
-        if self.__config.getboolean("MODEL", "lexicon"):
-            lexi_predictions = Lexicon().predict(data, self.tokenizer)
-            output = Lexicon().merge(lexi_predictions, predictions)
-            return output
+        output, _ = self.__model.predict([val.ids for val in data])
+        predictions = [[self.id2label[int(j.cpu().numpy())] for j in i] for i in output]
         return predictions
+
+    def get_model(self):
+        return self.__model
+    
+    def get_non_o_intervals(self, lst):
+        intervals = []
+        start = None
+        
+        prev_value = "O"
+
+        for i, value in enumerate(lst):
+            cat_value = value.replace('B-', '').replace('I-', '')
+            if value != "O":
+                    
+                if (value.startswith("B-") or cat_value != prev_value) and start is not None:
+                    intervals.append((start, i))
+                    start = None
+                    
+                if value.startswith("B-") or (value.startswith("I-") and start is None):
+                    start = i
+            else:
+                if start is not None:
+                    intervals.append((start, i))
+                    start = None
+                    
+            prev_value = cat_value
+                    
+        # If the last element is part of an interval
+        if start is not None:
+            intervals.append((start, len(lst)))
+            
+        return intervals
+    
 
 
 if __name__ == "__main__":

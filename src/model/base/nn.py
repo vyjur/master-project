@@ -14,7 +14,7 @@ START_TAG = "<START>"
 STOP_TAG = "<STOP>"
 
 
-class NN:
+class NN(nn.Module):
     def __init__(
         self,
         model: nn.Module,
@@ -28,10 +28,13 @@ class NN:
         project_name: str | None = None,
         pretrain: str | None = None,
     ):
+        super(NN, self).__init__()
         self.__device = "cuda:0" if cuda.is_available() else "cpu"
 
         if self.__device != "cpu":
             torch.cuda.set_device(self.__device)
+            
+        self.device = self.__device
 
         print("Using:", self.__device, "with NN")
 
@@ -41,33 +44,34 @@ class NN:
         # TODO:
         # embedding_dim = self.tokenizer.model_max_length
         embedding_dim = 300
-        processed = Preprocess(
-            self.tokenizer, parameters["max_length"]
-        ).run_train_test_split(task, dataset, tags_name)
-        class_weights = Util().class_weights(task, processed["dataset"], self.__device)
+        
+        if not load:
+            processed = Preprocess(
+                self.tokenizer, parameters["max_length"]
+            ).run_train_test_split(task, dataset, tags_name)
+            class_weights = Util().class_weights(task, processed["dataset"], self.__device)
 
-        tag_to_ix = processed["label2id"]
+            tag_to_ix = processed["label2id"]
+            processed["label2id"] = tag_to_ix
+            ix_to_tag=processed["id2label"]
 
-        if len(tag_to_ix) != len(class_weights):
-            del tag_to_ix["O"]
-            for tag in tag_to_ix:
-                tag_to_ix[tag] -= 1
+        else:
+            tag_to_ix, ix_to_tag = Util().get_tags(task, tags_name)
 
         if task == Task.TOKEN:
-            START_ID = max(processed["id2label"].keys()) + 1
-            STOP_ID = max(processed["id2label"].keys()) + 2
+            START_ID = max(ix_to_tag.keys()) + 1
+            STOP_ID = max(ix_to_tag.keys()) + 2
 
             tag_to_ix[START_TAG] = START_ID
             tag_to_ix[STOP_TAG] = STOP_ID
 
         vocab_size = self.tokenizer.vocab_size  # type: ignore
-
         hidden_dim = parameters["max_length"]
 
         if load:
             self.__model = model(1, vocab_size, tag_to_ix, embedding_dim, hidden_dim)
             self.__model.load_state_dict(
-                torch.load(save + "/model.pth", weights_only=True)
+                torch.load(save + "/model.pth", weights_only=False)
             )
         else:
             wandb.init(project=f"{project_name}-{task}-nn-model".replace('"', ""))  # type: ignore
@@ -146,12 +150,12 @@ class NN:
         self.__model.batch = data_tensor.shape[0]
         outputs = self.__model(data_tensor)
         if self.__task == Task.TOKEN:
-            return outputs
+            return outputs[0], outputs[1]
         else:
             pred = torch.argmax(outputs, axis=1).tolist()  # type: ignore
             prob = [
                 max(all_prob)  # type: ignore
-                for all_prob in nn.functional.softmax(outputs, dim=-1)  # type:ignore
+                for all_prob in nn.functional.log_softmax(outputs, dim=-1)  # type:ignore
             ]
 
             return pred, prob  # type: ignore
@@ -171,7 +175,7 @@ class NN:
             if self.__task == Task.TOKEN:
                 loss = self.__model.neg_log_likelihood(ids, targets)
                 with torch.no_grad():
-                    outputs = self.__model(ids)
+                    outputs, _ = self.__model(ids)
                     predictions = outputs.view(-1).cpu().numpy()
                     flattened_targets = targets.view(-1).cpu().numpy()
             else:
@@ -242,3 +246,7 @@ class NN:
         print(f"Validation Accuracy: {eval_accuracy}")
 
         return labels, predictions
+
+    def forward(self, x):
+        self.__model.batch = x.shape[0]
+        return self.__model(x)

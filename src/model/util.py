@@ -26,10 +26,7 @@ class Util:
         tags = set()
 
         for tag in tags_name:
-            if tag == "O":
-                continue
-
-            if task == Task.TOKEN:
+            if task == Task.TOKEN and tag != "O":
                 tags.add(f"B-{tag}")
                 tags.add(f"I-{tag}")
             else:
@@ -37,15 +34,8 @@ class Util:
 
         tags = list(tags)
 
-        if default:
-            label2id = {k: v + 1 for v, k in enumerate(tags)}
-            id2label = {v + 1: k for v, k in enumerate(tags)}
-
-            label2id["O"] = 0
-            id2label[0] = "O"
-        else:
-            label2id = {k: v for v, k in enumerate(tags)}
-            id2label = {v: k for v, k in enumerate(tags)}
+        label2id = {k: v for v, k in enumerate(tags)}
+        id2label = {v: k for v, k in enumerate(tags)}
 
         return label2id, id2label
 
