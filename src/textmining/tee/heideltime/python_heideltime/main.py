@@ -18,7 +18,7 @@ import subprocess
 import tempfile
 import regex
 
-from textmining.tee.heideltime.python_heideltime.config_Heideltime import Heideltime_path
+from textmining.tee.heideltime.python_heideltime.config_heideltime import Heideltime_path
 
 # Taken from the documentation linked below
 AVAILABLE_LANGUAGES = ['ARABIC', 'CHINESE', 'CROATIAN', 'DUTCH', 'ENGLISH', 'ENGLISHCOLL', 'ENGLISHSCI', 'ESTONIAN',
