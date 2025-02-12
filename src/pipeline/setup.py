@@ -2,14 +2,12 @@ import os
 import configparser
 from textmining.ner.setup import NERecognition
 
-# from textmining.ere.setup import ERExtract
 from textmining.tre.setup import TRExtract
 from textmining.tee.setup import TEExtract
 
 from preprocess.dataset import DatasetManager
 from preprocess.setup import Preprocess
 
-# from structure.node import Node
 from structure.relation import Relation
 from visualization.setup import Timeline
 from pipeline.util import remove_duplicates, find_duplicates
@@ -17,9 +15,6 @@ from pipeline.util import remove_duplicates, find_duplicates
 from structure.enum import Dataset, TR_DCT, TR_TLINK, TIMEX
 from structure.node import Node
 from structure.graph import Graph
-
-from datetime import datetime
-import itertools
 
 
 class Pipeline:
@@ -84,34 +79,7 @@ class Pipeline:
         ### Initialize visualization module ###
         self.viz = Timeline()
 
-    def __get_non_o_intervals(self, lst):
-        intervals = []
-        start = None
-        
-        prev_value = "O"
-
-        for i, value in enumerate(lst):
-            cat_value = value.replace('B-', '').replace('I-', '')
-            if value != "O":
-                    
-                if (value.startswith("B-") or cat_value != prev_value) and start is not None:
-                    intervals.append((start, i))
-                    start = None
-                    
-                if value.startswith("B-") or (value.startswith("I-") and start is None):
-                    start = i
-            else:
-                if start is not None:
-                    intervals.append((start, i))
-                    start = None
-                    
-            prev_value = cat_value
-                    
-        # If the last element is part of an interval
-        if start is not None:
-            intervals.append((start, len(lst)))
-            
-        return intervals
+    
 
     def run(self, documents):
         ### Extract text from PDF ###
@@ -131,17 +99,12 @@ class Pipeline:
             
             ##### Perform Temporal Expression Extraction
             
-            # TODO: we need to choose what to have as DCT
-            # Simple rule: First date in the page is considered as DCT
-            dct = datetime(2025, 1, 25, 00, 00, 00).strftime("%Y-%m-%d")
-            self.__tee.set_dct(dct)
-            
             tee_output = self.__tee.run(doc)
             
             
             for _, te in tee_output.iterrows():
                 entities.append(
-                    Node(te['text'], te['type'], dct, te['context'], te['value'])
+                    Node(te['text'], te['type'], te['dct'], te['context'], te['value'])
                 )
 
             ##### Perform Medical Entity Extraction
@@ -161,7 +124,7 @@ class Pipeline:
             
             for i, _ in enumerate(output):
                 
-                result = self.__get_non_o_intervals(ner_output[i])
+                result = self.__ner.get_non_o_intervals(ner_output[i])
                 start = 0
                 for int in result:
                     entity = (
@@ -213,7 +176,7 @@ class Pipeline:
                 if cat == TR_DCT.OVERLAP:
                     print("DCT overlap")
                     print(e)
-                    e.date = dct
+                    e.date = e.dct
                 dcts[cat].append(e)
 
             ###### The candidate pairs are pairs within a group##### O(N^2)>O(len(dcts)*(N_i^2)) where N_i < N
@@ -265,42 +228,16 @@ class Pipeline:
                 if graph.is_cyclic():
                     relations.remove(rel)
                     graph.remove_edge(rel.x.id, rel.y.id)
-                    
-            ##### Get the level ordering for the graph
-            
-            ## INFORMATION: I don't think we need levels anymore, but DATETIME is our level instead
-            levels = graph.enumerate_levels()
-
-            ##### Center the level ordering to the OVERLAP group
-            center = {"id": None, "lvl": 100}
-            for node in levels:
-                for e in entities:
-                    if e.id == node:
-                        e.level = levels[node]
-
-                        if e.dct == TR_DCT.OVERLAP and e.level < center["lvl"]:
-                            center["id"] = node
-                            center["lvl"] = levels[node]
-
-            updated_levels = {
-                node: level - center["lvl"] for node, level in levels.items()
-            }
-
-            for node in updated_levels:
-                for e in entities:
-                    if e.id == id:
-                        e.level = updated_levels[node]
 
             all_info.append(
                 {
-                    "dct": dct,
                     "entities": entities,
                     "relations": relations,
                     "graph": graph,
                 }
             )
-        ## TODO: fix so date is used instead of the level things we have been using right now maybe the one above not needed.
-        ### Visualize ###
+            
+        ### Visualize: Using a timeline
         self.viz.create(all_info)
 
 

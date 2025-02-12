@@ -61,7 +61,7 @@ class Timeline:
                             Type=e.type.name,
                             Start=start_date,
                             Finish=end_date,
-                            Document=doc["dct"],
+                            Document=e.dct,
                         )
                     )
                         

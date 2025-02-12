@@ -77,6 +77,36 @@ class NERecognition:
 
     def get_model(self):
         return self.__model
+    
+    def get_non_o_intervals(self, lst):
+        intervals = []
+        start = None
+        
+        prev_value = "O"
+
+        for i, value in enumerate(lst):
+            cat_value = value.replace('B-', '').replace('I-', '')
+            if value != "O":
+                    
+                if (value.startswith("B-") or cat_value != prev_value) and start is not None:
+                    intervals.append((start, i))
+                    start = None
+                    
+                if value.startswith("B-") or (value.startswith("I-") and start is None):
+                    start = i
+            else:
+                if start is not None:
+                    intervals.append((start, i))
+                    start = None
+                    
+            prev_value = cat_value
+                    
+        # If the last element is part of an interval
+        if start is not None:
+            intervals.append((start, len(lst)))
+            
+        return intervals
+    
 
 
 if __name__ == "__main__":

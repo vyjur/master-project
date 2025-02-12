@@ -185,9 +185,9 @@ class TEExtract:
                 end = len(data)
             else:
                 end = i + 1
-            
             sec_text = data[sections[i], end] 
             sec_output = self.__run(sec_text)
+            sec_output['dct'] = dct['value']
             processed_output.append(sec_output)
             
         return pd.concat(processed_output, axis=1).reset_index()
