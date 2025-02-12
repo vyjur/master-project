@@ -36,11 +36,11 @@ class BERT(nn.Module):
         super(BERT, self).__init__()
 
         self.__device = "cuda:0" if cuda.is_available() else "cpu"
-        
+
         if self.__device != "cpu":
-            torch.cuda.set_device(self.__device)      
+            torch.cuda.set_device(self.__device)
         print("Using:", self.__device, "with BERT")
-        
+
         self.device = self.__device
 
         self.tokenizer = tokenizer
@@ -99,7 +99,7 @@ class BERT(nn.Module):
             testing_loader = DataLoader(processed["test"], **test_params)
 
             num_training_steps = len(training_loader)
-            
+
             if task == Task.TOKEN:
                 self.__model = AutoModelForTokenClassification.from_pretrained(
                     pretrain,
@@ -134,29 +134,41 @@ class BERT(nn.Module):
 
             for epoch in range(parameters["epochs"]):
                 print(f"Training Epoch: {epoch}")
-                loss, acc = self.__train(
+                train_loss, train_acc = self.__train(
                     training_loader,
                     num_training_steps,
                     optimizer,
                     lr_scheduler,
                     loss_fn,
                 )
-                wandb.log({"loss": loss, "accuracy": acc})  # type: ignore
-                early_stopping(loss, self.__model)
+
+                val_loss, val_acc = self.__valid(
+                    testing_loader, loss_fn, processed["id2label"]
+                )
+                
+                wandb.log(
+                    {
+                        "train_loss": train_loss,
+                        "train_accuracy": train_acc,
+                        "val_loss": val_loss,
+                        "val_acc": val_acc,
+                    }
+                )  # type: ignore
+
+                early_stopping(val_loss, self.__model)
                 if early_stopping.early_stop:
                     print("Early stopping")
                     break
 
             print("### Valid set performance:")
             labels, predictions = self.__valid(
-                valid_loader, self.__device, processed["id2label"]
+                valid_loader, loss_fn, processed["id2label"], True
             )
             Util().validate_report(labels, predictions)
 
-
             print("### Test set performance:")
             labels, predictions = self.__valid(
-                testing_loader, self.__device, processed["id2label"]
+                testing_loader, loss_fn, processed["id2label"], True
             )
             Util().validate_report(labels, predictions)
 
@@ -197,10 +209,13 @@ class BERT(nn.Module):
                 prob = nn.functional.log_softmax(outputs.logits, dim=-1)
                 max_log_prob, _ = torch.max(prob, dim=-1)
                 total_log_prob = max_log_prob.sum(dim=1)
-                prob = total_log_prob/len(pred)
+                prob = total_log_prob / len(pred)
             else:
                 pred = torch.argmax(outputs.logits, dim=1).tolist()
-                prob = [max(all_prob) for all_prob in nn.functional.log_softmax(outputs.logits, dim=-1)]
+                prob = [
+                    max(all_prob)
+                    for all_prob in nn.functional.log_softmax(outputs.logits, dim=-1)
+                ]
         return pred, prob
 
     def __train(
@@ -222,12 +237,11 @@ class BERT(nn.Module):
             ids = batch["ids"].to(self.__device, dtype=torch.long)
             mask = batch["mask"].to(self.__device, dtype=torch.long)
             targets = batch["targets"].to(self.__device, dtype=torch.long)
-            
+
             optimizer.zero_grad()
-            
+
             outputs = self.__model(input_ids=ids, attention_mask=mask, labels=targets)
             loss, tr_logits = outputs.loss, outputs.logits
-            # tr_loss += loss.item()
 
             nb_tr_steps += 1
             nb_tr_examples += targets.size(0)
@@ -247,7 +261,7 @@ class BERT(nn.Module):
                 axis=1,  # type: ignore
             )  # shape (batch_size * seq_len,)
             # now, use mask to determine where we should compare predictions with targets (includes [CLS] and [SEP] token predictions)
-            
+
             if self.__task == Task.TOKEN:
                 active_accuracy = (
                     mask.view(-1) == 1
@@ -278,11 +292,17 @@ class BERT(nn.Module):
 
         epoch_loss = tr_loss / nb_tr_steps
         tr_accuracy = tr_accuracy / nb_tr_steps
+        acc = accuracy_score(tr_labels, tr_preds)
+        
         print(f"Training loss epoch: {epoch_loss}")
         print(f"Training accuracy epoch: {tr_accuracy}")
-        return epoch_loss, accuracy_score(tr_labels, tr_preds)
+        
+        print(f"Overall acc: {acc}")
+        print(f"Overall loss: {tr_loss}")
+        
+        return tr_loss, acc
 
-    def __valid(self, testing_loader, device, id2label):
+    def __valid(self, testing_loader, loss_fn, id2label, end=False):
         # put model in evaluation mode
         self.__model.eval()
 
@@ -292,9 +312,9 @@ class BERT(nn.Module):
 
         with torch.no_grad():
             for idx, batch in enumerate(testing_loader):
-                ids = batch["ids"].to(device, dtype=torch.long)
-                mask = batch["mask"].to(device, dtype=torch.long)
-                targets = batch["targets"].to(device, dtype=torch.long)
+                ids = batch["ids"].to(self.__device, dtype=torch.long)
+                mask = batch["mask"].to(self.__device, dtype=torch.long)
+                targets = batch["targets"].to(self.__device, dtype=torch.long)
 
                 outputs = self.__model(
                     input_ids=ids, attention_mask=mask, labels=targets
@@ -345,10 +365,17 @@ class BERT(nn.Module):
 
         eval_loss = eval_loss / nb_eval_steps
         eval_accuracy = eval_accuracy / nb_eval_steps
+        
+        acc = accuracy_score(eval_labels, eval_preds)
+        
         print(f"Validation Loss: {eval_loss}")
         print(f"Validation Accuracy: {eval_accuracy}")
+        print(f"Overall accuracy: {acc}")
+        print(f"Overall loss: {eval_loss}")
 
-        return labels, predictions
+        if end:
+            return labels, predictions
+        return eval_loss, acc
 
     def forward(self, x):
         return self.__model(x)
