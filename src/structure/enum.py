@@ -21,15 +21,17 @@ class TR_DCT(Enum):
 class TR_TLINK(Enum):
     BEFORE = 1
     OVERLAP = 2  
-    NONE = 3
+    O = 3
 
 class TIMEX(Enum):
     DATE = 1
     DURATION = 2
     FREQUENCY = 3
     TIME = 4
+    O = 5
 
 class ME(Enum):
     CONDITION = 1
     TREATMENT = 2
+    O = 3
 

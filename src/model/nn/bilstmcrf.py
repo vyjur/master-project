@@ -172,6 +172,10 @@ class Model(BaseModel):
         tag_seq = [res[1] for res in result]
         
         prob = (score - sum_score)/len(score)
+        
+        print("TAG", tag_seq)
+        print("SCORE", score)
+        print("prob", prob)
         return torch.tensor(tag_seq).to(self.device), prob
 
 

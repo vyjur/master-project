@@ -83,7 +83,7 @@ class TEExtract:
         return pd.DataFrame(data)
             
     def run(self, data):
-        return [self.__run(text) for text in data]
+        return self.__run(data)
         
     def __get_window(self, full_text, timex_text, window_size=50):
         # Find the index of the TIMEX3 text in the full text
@@ -148,5 +148,6 @@ if __name__ == '__main__':
 
     # print(classification_report(target, pred))
     
-    output = tee.run(["kl. 13.00 på 12.10 funker fint, men den 23.12 kl. 12.00 funker ikke. Hva med kl.14.04"])
-    print(output[0]) 
+    output = tee.run("kl. 13.00. boka er på skolen 12.10 funker fint, men den 23.12 kl. 12.00 funker ikke. Hva med kl.14.04")
+    output = tee.run("1 ukes tid")
+    print(output) 

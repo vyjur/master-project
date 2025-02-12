@@ -11,7 +11,7 @@ from preprocess.setup import Preprocess
 
 # from structure.node import Node
 from structure.relation import Relation
-from visualization.setup import VizTool, Timeline
+from visualization.setup import Timeline
 from pipeline.util import remove_duplicates, find_duplicates
 
 from structure.enum import Dataset, TR_DCT, TR_TLINK, TIMEX
@@ -29,16 +29,32 @@ class Pipeline:
         self.__config.read(config_file)
 
         ### Initialize preprocessing module ###
+        
+        load = self.__config.getboolean('GENERAL', 'load')
+        
+        if not load:
+        
+            folder_path = "./data/helsearkiv/annotated/entity/"
 
-        folder_path = "./data/annotated_MTSamples/"
-        files = [
-            folder_path + f
-            for f in os.listdir(folder_path)
-            if os.path.isfile(os.path.join(folder_path, f))
-        ]
+            entity_files = [
+                folder_path + f
+                for f in os.listdir(folder_path)
+                if os.path.isfile(os.path.join(folder_path, f))
+            ]
 
-        manager = DatasetManager(files)
+            folder_path = "./data/helsearkiv/annotated/relation/"
 
+            relation_files = [
+                folder_path + f
+                for f in os.listdir(folder_path)
+                if os.path.isfile(os.path.join(folder_path, f))
+            ]
+
+            manager = DatasetManager(entity_files, relation_files, window_size=self.__config.getint("PARAMETERS", 'context'))
+
+        else:
+            manager = None
+            
         ### Initialize text mining modules ###
 
         print("### Initializing NER ###")
@@ -83,7 +99,7 @@ class Pipeline:
 
         # If the last element is part of an interval
         if start is not None:
-            intervals.append((start, len(lst) - 1))
+            intervals.append((start, len(lst)))
 
         return intervals
 
@@ -104,30 +120,34 @@ class Pipeline:
             ### Text Mining ###
             
             ##### Perform Temporal Expression Extraction
-            # TODO: make some extra rules as heideltime is not extracting all type of dates that we want in Norwegian
-            # Do this inside of TEE
-            # Rule 1: -XX => Year
-            # Rule 2: DD.MM => Same year as written
-            # Rule 3: P5D => Subtract or add on the DCT
-            tee_output = self.__tee.run(doc)
             
             # TODO: we need to choose what to have as DCT
             # Simple rule: First date in the page is considered as DCT
-            dct = datetime(2025, 1, 25, 00, 00, 00)
+            dct = datetime(2025, 1, 25, 00, 00, 00).strftime("%Y-%m-%d")
             self.__tee.set_dct(dct)
             
-            for te in tee_output:
+            tee_output = self.__tee.run(doc)
+            
+            
+            for _, te in tee_output.iterrows():
                 entities.append(
                     Node(te['text'], te['type'], dct, te['context'], te['value'])
                 )
 
             ##### Perform Medical Entity Extraction
-            ner_output, _ = self.__ner.run(output)
+            ner_output = self.__ner.run(output)
             
-            all_outputs = list(itertools.chain(*output))
+            all_outputs = []
+            for out in output:
+                all_outputs.append(self.__preprocess.decode(out.ids)
+                        .replace("[CLS]", "")
+                        .replace("[PAD]", "")
+                        .replace("[SEP]", "")
+                        .strip())
+                
+            all_outputs = " ".join(all_outputs)
             
-            # TODO: Config?
-            WINDOW = 50
+            WINDOW = self.__config.getint('PARAMETERS', 'context')
             
             for i, _ in enumerate(output):
                 result = self.__get_non_o_intervals(ner_output[i])
@@ -147,15 +167,16 @@ class Pipeline:
 
                     # Token window based on tokenization output
                     start = sum([len(output[j]) for j in range(i)])
-                    context = all_outputs[max(0, start + int[0] - WINDOW), max(len(all_outputs),start + int[1] + WINDOW)]
+                    context = all_outputs[max(0, start + int[0] - WINDOW) : min(len(all_outputs),start + int[1] + WINDOW)]
+                    
                     context = (
                         context.replace("[CLS]", "")  # type: ignore
                         .replace("[SEP]", "")
                         .replace("[PAD]", "")
                     )
-                    curr_ent = Node(entity, entype, None, context, dct)
+                    curr_ent = Node(entity, entype, None, context, None)
                     entities.append(curr_ent)
-                    graph.add(curr_ent.id)
+                    graph.add_node(curr_ent.id)
 
             ### Temporal Relation Extraction
 
@@ -177,7 +198,7 @@ class Pipeline:
                 e.set_dct(cat)
                 
                 # Set date of entity as the same as DCT if it is overlapping with DCT
-                if e.cat == TR_DCT.OVERLAP:
+                if cat == TR_DCT.OVERLAP:
                     e.date = dct
                 dcts[cat].append(e)
 
@@ -202,16 +223,15 @@ class Pipeline:
                         if relation != "O":
                             rel = Relation(e_i, e_j, relation, prob)
                             if rel.tr == TR_TLINK.OVERLAP:
-                                if type(e_i.type) == TIMEX and type(e_j.type) != TIMEX: 
+                                if isinstance(e_i.type, TIMEX) and not isinstance(e_j.type, TIMEX):
                                     if e_i.prob >= e_j.prob:
                                         e_j.date = e_i.date
-                                        e_j.prob = e_j.prob
-                                elif type(e_j.type) == TIMEX and type(e_i.type) != TIMEX:
+                                        e_j.prob = e_i.prob 
+                                elif isinstance(e_j.type, TIMEX) and not isinstance(e_i.type, TIMEX):
                                     if e_j.prob >= e_i.prob:
                                         e_i.date = e_j.date
                                         e_i.prob = e_j.prob
-
-                                
+                                            
                             relations.append(rel)
 
             ##### Sort relations after probability
@@ -221,7 +241,12 @@ class Pipeline:
             ##### TODO: after added TIMEX check that Relation date is consistent as well
             for rel in relations[:]:
                 if rel.tr == TR_TLINK.BEFORE: 
-                    graph.add_edge(rel.x.id, rel.y.id) 
+                    # TODO: check if this works
+                    if None not in (rel.x.date, rel.y.date):
+                        if rel.x.date < rel.y.date:
+                            graph.add_edge(rel.x.id, rel.y.id)
+                    else:
+                        graph.add_edge(rel.x.id, rel.y.id)
                 elif rel.tr == TR_TLINK.OVERLAP:
                     pass
                 if graph.is_cyclic():
@@ -229,7 +254,10 @@ class Pipeline:
                     graph.remove_edge(rel.x.id, rel.y.id)
 
             # TODO: go through relations and for the before without any dates just put them one hour before that entity relation
+            # This is for those with no date
             ##### Get the level ordering for the graph
+            
+            ## INFORMATION: I don't think we need levels anymore, but DATETIME is our level instead
             levels = graph.enumerate_levels()
 
             ##### Center the level ordering to the OVERLAP group
@@ -267,6 +295,6 @@ class Pipeline:
 
 if __name__ == "__main__":
     pipeline = Pipeline("./src/pipeline/config.ini")
-    text = "Hei på deg!"
+    text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     text2 = "Vi snakkes"
     print(pipeline.run([text, text2]))

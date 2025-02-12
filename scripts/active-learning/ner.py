@@ -112,6 +112,7 @@ for page in sorted_data[:1200]:
             if len(offsets) > 0:
                 offsets[-1] = (offsets[-1][0], pre.offsets[j][1])
             else:
+                annot.append(cat)
                 offsets.append(pre.offsets[j])
             
             

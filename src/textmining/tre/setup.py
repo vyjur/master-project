@@ -44,14 +44,15 @@ class TRExtract:
             "max_length": self.__config.getint("MODEL", "max_length"),
         }
 
-        dataset_ner = manager.get(Dataset.NER)
-        dataset_ner = dataset_ner[dataset_ner['MedicalEntity'].notna() | dataset_ner['TIMEX'].notna()].reset_index()
-        dataset_tre = manager.get(task)
+        
         
         dataset = []
         tags = set()
         
         if not load:
+            dataset_ner = manager.get(Dataset.NER)
+            dataset_ner = dataset_ner[dataset_ner['MedicalEntity'].notna() | dataset_ner['TIMEX'].notna()].reset_index()
+            dataset_tre = manager.get(task)
             if task == Dataset.TRE_DCT:
                 for _, row in dataset_tre.iterrows():
                     dataset.append(
@@ -129,7 +130,7 @@ class TRExtract:
             else:
                 tags = [cat.name for cat in TR_TLINK]
         self.label2id, self.id2label = Util().get_tags(
-            Task.SEQUENCE, tags, task != Dataset.TRE_DCT
+            Task.SEQUENCE, tags
         )
 
         if task == Dataset.TRE_DCT and save_directory == "./src/textmining/tre/model":
