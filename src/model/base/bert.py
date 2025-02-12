@@ -20,6 +20,35 @@ import wandb
 from structure.enum import Task
 
 
+# TODO: wandb hyperparameter tune
+sweep_config = {"method": "grid"}
+
+metric = {"name": "val_loss", "goal": "minimize"}
+
+parameters_dict = {
+    "epochs": {"value": 1},
+    "optimizer": ["adam", "sgd"],
+    "learning_rate": {
+        "distribution": "uniform",
+        "min": 0,
+        "max": 0.1,
+    },
+    "batch_size": {"values": [32, 64, 128, 256]},
+    "weight_decay": {
+        "values": [0, 1e-5, 1e-4, 1e-3, 1e-2]  # Grid search over weight decay values
+    },
+    "early_stopping_patience": {
+        "values": [3, 5, 10]  # Grid search over patience values
+    },
+    "early_stopping_delta": {
+        "values": [0.01, 0.001, 0.0005, 0.0001]  # Grid search over delta values
+    },
+}
+
+sweep_config["metric"] = metric
+sweep_config["parameters"] = parameters_dict
+
+
 class BERT(nn.Module):
     def __init__(
         self,
@@ -120,7 +149,9 @@ class BERT(nn.Module):
             self.__model.to(self.__device)
 
             optimizer = torch.optim.Adam(  # type: ignore
-                params=self.__model.parameters(), lr=parameters["learning_rate"]
+                params=self.__model.parameters(),
+                lr=parameters["learning_rate"],
+                weight_decay=1e-4,
             )
             early_stopping = EarlyStopping(patience=5, delta=0.01)
 
@@ -145,7 +176,7 @@ class BERT(nn.Module):
                 val_loss, val_acc = self.__valid(
                     testing_loader, loss_fn, processed["id2label"]
                 )
-                
+
                 wandb.log(
                     {
                         "train_loss": train_loss,
@@ -293,13 +324,13 @@ class BERT(nn.Module):
         epoch_loss = tr_loss / nb_tr_steps
         tr_accuracy = tr_accuracy / nb_tr_steps
         acc = accuracy_score(tr_labels, tr_preds)
-        
+
         print(f"Training loss epoch: {epoch_loss}")
         print(f"Training accuracy epoch: {tr_accuracy}")
-        
+
         print(f"Overall acc: {acc}")
         print(f"Overall loss: {tr_loss}")
-        
+
         return tr_loss, acc
 
     def __valid(self, testing_loader, loss_fn, id2label, end=False):
@@ -365,9 +396,9 @@ class BERT(nn.Module):
 
         eval_loss = eval_loss / nb_eval_steps
         eval_accuracy = eval_accuracy / nb_eval_steps
-        
+
         acc = accuracy_score(eval_labels, eval_preds)
-        
+
         print(f"Validation Loss: {eval_loss}")
         print(f"Validation Accuracy: {eval_accuracy}")
         print(f"Overall accuracy: {acc}")
