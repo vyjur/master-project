@@ -7,6 +7,7 @@ from structure.enum import Task, Dataset, TIMEX
 from model.util import Util
 import pandas as pd
 from transformers import AutoTokenizer
+from preprocess.setup import Preprocess
 from model.map import MODEL_MAP
 
 
@@ -72,6 +73,8 @@ class TEExtract:
             pretrain=self.__config["pretrain"]["name"],
         )
         
+        self.preprocess = Preprocess(self.get_tokenizer(), self.get_max_length())
+        
     def get_tokenizer(self):
         return self.__model.tokenizer
 
@@ -123,6 +126,8 @@ class TEExtract:
         result = self.__heideltime.parse(text)
         
         root = ET.fromstring(result)
+        full_text = " ".join(root.itertext())
+
         timex_elements = root.findall('.//TIMEX3')
         
         data = []
@@ -133,7 +138,6 @@ class TEExtract:
             text = timex.text
             
             # Get the full text of the document
-            full_text = " ".join(root.itertext())
             
             # Get the 50-token window around this TIMEX3 element
             context = self.__get_window(full_text, text, window_size=50)
@@ -152,8 +156,41 @@ class TEExtract:
         return pd.DataFrame(data)
             
     def run(self, data):
-        # TODO: add DCT sections split
-        return self.__run(data)
+        # Initial output: Extracting all TIMEX expressions
+        init_output = self.__run(data)
+       
+        # Only DATE expressions are candidate for DCT 
+        dct_candidates = init_output[init_output['type'] == 'DATE']
+        
+        # For each candidate classify if it is really a DCT or not
+        dcts = []
+        sections = []
+
+        for i, row in dct_candidates.iterrows():
+            text = row['context'].replace(row['text'], f"<TAG>{row['text']}</TAG>")
+            dct_output = self.__model_run(text)
+            
+            if dct_output == "DCT":
+                dcts.append(row)
+                context_start = data.index(dct['context'])
+                dct_start = dct['context'].index(dct['text'])
+                start = context_start + dct_start
+                sections.append(start)
+            
+        processed_output = []
+       
+        # For each DCT in document, define the text section corresponding to the given DCT 
+        for i, dct in enumerate(dcts):
+            if i + 1 > len(sections):
+                end = len(data)
+            else:
+                end = i + 1
+            
+            sec_text = data[sections[i], end] 
+            sec_output = self.__run(sec_text)
+            processed_output.append(sec_output)
+            
+        return pd.concat(processed_output, axis=1).reset_index()
         
     def __get_window(self, full_text, timex_text, window_size=50):
         # Find the index of the TIMEX3 text in the full text

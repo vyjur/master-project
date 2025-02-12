@@ -1,10 +1,13 @@
 import os
-from textmining.ner.setup import NERecognition
+from textmining.tee.setup import TEExtract
 from preprocess.dataset import DatasetManager
+from structure.enum import Dataset
 
-print("##### Start training for NER... ######")
+print("##### Start training for TEE... ######")
 
-folder = "./scripts/train/config/ner/"
+# Info: Change here
+
+folder = f"./scripts/train/config/tee/"
 configs = os.listdir(folder)
 
 folder_path = "./data/helsearkiv/annotated/entity/"
@@ -26,11 +29,11 @@ relation_files = [
 manager = DatasetManager(entity_files, relation_files)
 
 for i, conf in enumerate(configs):
-    print(f"###### ({i}) Training for configuration file: {conf}")
     if os.path.isdir(folder + conf):
         continue
-    save_directory = "./models/ner/" + conf.replace(".ini", "")
-    ner = NERecognition(
+    print(f"###### ({i}) Training for configuration file: {conf}")
+    save_directory = f"./models/tee/" + conf.replace(".ini", "")
+    ner = TEExtract(
         config_file=folder + conf,
         manager=manager,
         save_directory=save_directory,

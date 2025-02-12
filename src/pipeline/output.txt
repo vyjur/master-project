@@ -1,0 +1,1084 @@
+Spawning shell within /cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12
+Installing dependencies from lock file
+
+No dependencies to install or update
+
+Installing the current project: master-project (0.1.0)
+### Initializing NER ###
+LOAD True
+Using: cuda:0 with NN
+### Initializing TEE ###
+### Initializing DCT ###
+LOAD True
+Using: cuda:0 with NN
+### Initializing TLINK ###
+LOAD True
+Using: cuda:0 with NN
+
+            Relation:
+            Node X: 21. juni - TIMEX.DATE
+            Node Y: Pasienten var - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.0010200303513556719
+        
+
+            Relation:
+            Node X: 21. juni - TIMEX.DATE
+            Node Y: innlagt - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.0010200303513556719
+        
+
+            Relation:
+            Node X: 21. juni - TIMEX.DATE
+            Node Y: 21. juni for - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.0010200303513556719
+        
+
+            Relation:
+            Node X: 21. juni - TIMEX.DATE
+            Node Y: prostat - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.0010200303513556719
+        
+
+            Relation:
+            Node X: 21. juni - TIMEX.DATE
+            Node Y: can - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.0010200303513556719
+        
+
+            Relation:
+            Node X: 21. juni - TIMEX.DATE
+            Node Y: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.0010200303513556719
+        
+
+            Relation:
+            Node X: Pasienten var - ME.TREATMENT
+            Node Y: 21. juni - TIMEX.DATE
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.4796862006187439
+        
+
+            Relation:
+            Node X: Pasienten var - ME.TREATMENT
+            Node Y: innlagt - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.4796862006187439
+        
+
+            Relation:
+            Node X: Pasienten var - ME.TREATMENT
+            Node Y: 21. juni for - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.4796862006187439
+        
+
+            Relation:
+            Node X: Pasienten var - ME.TREATMENT
+            Node Y: prostat - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.4796862006187439
+        
+
+            Relation:
+            Node X: Pasienten var - ME.TREATMENT
+            Node Y: can - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.4796862006187439
+        
+
+            Relation:
+            Node X: Pasienten var - ME.TREATMENT
+            Node Y: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.4796862006187439
+        
+
+            Relation:
+            Node X: innlagt - ME.CONDITION
+            Node Y: 21. juni - TIMEX.DATE
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.042792290449142456
+        
+
+            Relation:
+            Node X: innlagt - ME.CONDITION
+            Node Y: Pasienten var - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.042792290449142456
+        
+
+            Relation:
+            Node X: innlagt - ME.CONDITION
+            Node Y: 21. juni for - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.042792290449142456
+        
+
+            Relation:
+            Node X: innlagt - ME.CONDITION
+            Node Y: prostat - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.042792290449142456
+        
+
+            Relation:
+            Node X: innlagt - ME.CONDITION
+            Node Y: can - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.042792290449142456
+        
+
+            Relation:
+            Node X: innlagt - ME.CONDITION
+            Node Y: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.042792290449142456
+        
+
+            Relation:
+            Node X: 21. juni for - ME.TREATMENT
+            Node Y: 21. juni - TIMEX.DATE
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.061089906841516495
+        
+
+            Relation:
+            Node X: 21. juni for - ME.TREATMENT
+            Node Y: Pasienten var - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.061089906841516495
+        
+
+            Relation:
+            Node X: 21. juni for - ME.TREATMENT
+            Node Y: innlagt - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.061089906841516495
+        
+
+            Relation:
+            Node X: 21. juni for - ME.TREATMENT
+            Node Y: prostat - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.061089906841516495
+        
+
+            Relation:
+            Node X: 21. juni for - ME.TREATMENT
+            Node Y: can - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.061089906841516495
+        
+
+            Relation:
+            Node X: 21. juni for - ME.TREATMENT
+            Node Y: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.061089906841516495
+        
+
+            Relation:
+            Node X: prostat - ME.CONDITION
+            Node Y: 21. juni - TIMEX.DATE
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.19648756086826324
+        
+
+            Relation:
+            Node X: prostat - ME.CONDITION
+            Node Y: Pasienten var - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.19648756086826324
+        
+
+            Relation:
+            Node X: prostat - ME.CONDITION
+            Node Y: innlagt - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.19648756086826324
+        
+
+            Relation:
+            Node X: prostat - ME.CONDITION
+            Node Y: 21. juni for - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.19648756086826324
+        
+
+            Relation:
+            Node X: prostat - ME.CONDITION
+            Node Y: can - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.19648756086826324
+        
+
+            Relation:
+            Node X: prostat - ME.CONDITION
+            Node Y: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.19648756086826324
+        
+
+            Relation:
+            Node X: can - ME.CONDITION
+            Node Y: 21. juni - TIMEX.DATE
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.027697842568159103
+        
+
+            Relation:
+            Node X: can - ME.CONDITION
+            Node Y: Pasienten var - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.027697842568159103
+        
+
+            Relation:
+            Node X: can - ME.CONDITION
+            Node Y: innlagt - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.027697842568159103
+        
+
+            Relation:
+            Node X: can - ME.CONDITION
+            Node Y: 21. juni for - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.027697842568159103
+        
+
+            Relation:
+            Node X: can - ME.CONDITION
+            Node Y: prostat - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.027697842568159103
+        
+
+            Relation:
+            Node X: can - ME.CONDITION
+            Node Y: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.027697842568159103
+        
+
+            Relation:
+            Node X: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            Node Y: 21. juni - TIMEX.DATE
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.001207456924021244
+        
+
+            Relation:
+            Node X: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            Node Y: Pasienten var - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.001207456924021244
+        
+
+            Relation:
+            Node X: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            Node Y: innlagt - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.001207456924021244
+        
+
+            Relation:
+            Node X: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            Node Y: 21. juni for - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.001207456924021244
+        
+
+            Relation:
+            Node X: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            Node Y: prostat - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.001207456924021244
+        
+
+            Relation:
+            Node X: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            Node Y: can - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.001207456924021244
+        
+
+            Relation:
+            Node X: 21. juni - TIMEX.DATE
+            Node Y: Pasienten var - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.0010200303513556719
+        
+
+            Relation:
+            Node X: 21. juni - TIMEX.DATE
+            Node Y: innlagt - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.0010200303513556719
+        
+
+            Relation:
+            Node X: 21. juni - TIMEX.DATE
+            Node Y: 21. juni for - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.0010200303513556719
+        
+
+            Relation:
+            Node X: 21. juni - TIMEX.DATE
+            Node Y: prostat - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.0010200303513556719
+        
+
+            Relation:
+            Node X: 21. juni - TIMEX.DATE
+            Node Y: can - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.0010200303513556719
+        
+
+            Relation:
+            Node X: 21. juni - TIMEX.DATE
+            Node Y: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.0010200303513556719
+        
+
+            Relation:
+            Node X: 21. juni - TIMEX.DATE
+            Node Y: to ukene - TIMEX.DURATION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.0010200303513556719
+        
+
+            Relation:
+            Node X: 21. juni - TIMEX.DATE
+            Node Y: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.0010200303513556719
+        
+
+            Relation:
+            Node X: 21. juni - TIMEX.DATE
+            Node Y: røntgen - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.0010200303513556719
+        
+
+            Relation:
+            Node X: 21. juni - TIMEX.DATE
+            Node Y: test - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.0010200303513556719
+        
+
+            Relation:
+            Node X: 21. juni - TIMEX.DATE
+            Node Y: snarest. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.0010200303513556719
+        
+
+            Relation:
+            Node X: Pasienten var - ME.TREATMENT
+            Node Y: 21. juni - TIMEX.DATE
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.4796862006187439
+        
+
+            Relation:
+            Node X: Pasienten var - ME.TREATMENT
+            Node Y: innlagt - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.4796862006187439
+        
+
+            Relation:
+            Node X: Pasienten var - ME.TREATMENT
+            Node Y: 21. juni for - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.4796862006187439
+        
+
+            Relation:
+            Node X: Pasienten var - ME.TREATMENT
+            Node Y: prostat - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.4796862006187439
+        
+
+            Relation:
+            Node X: Pasienten var - ME.TREATMENT
+            Node Y: can - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.4796862006187439
+        
+
+            Relation:
+            Node X: Pasienten var - ME.TREATMENT
+            Node Y: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.4796862006187439
+        
+
+            Relation:
+            Node X: Pasienten var - ME.TREATMENT
+            Node Y: to ukene - TIMEX.DURATION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.4796862006187439
+        
+
+            Relation:
+            Node X: Pasienten var - ME.TREATMENT
+            Node Y: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.4796862006187439
+        
+
+            Relation:
+            Node X: Pasienten var - ME.TREATMENT
+            Node Y: røntgen - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.4796862006187439
+        
+
+            Relation:
+            Node X: Pasienten var - ME.TREATMENT
+            Node Y: test - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.4796862006187439
+        
+
+            Relation:
+            Node X: Pasienten var - ME.TREATMENT
+            Node Y: snarest. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.4796862006187439
+        
+
+            Relation:
+            Node X: innlagt - ME.CONDITION
+            Node Y: 21. juni - TIMEX.DATE
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.042792290449142456
+        
+
+            Relation:
+            Node X: innlagt - ME.CONDITION
+            Node Y: Pasienten var - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.042792290449142456
+        
+
+            Relation:
+            Node X: innlagt - ME.CONDITION
+            Node Y: 21. juni for - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.042792290449142456
+        
+
+            Relation:
+            Node X: innlagt - ME.CONDITION
+            Node Y: prostat - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.042792290449142456
+        
+
+            Relation:
+            Node X: innlagt - ME.CONDITION
+            Node Y: can - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.042792290449142456
+        
+
+            Relation:
+            Node X: innlagt - ME.CONDITION
+            Node Y: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.042792290449142456
+        
+
+            Relation:
+            Node X: innlagt - ME.CONDITION
+            Node Y: to ukene - TIMEX.DURATION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.042792290449142456
+        
+
+            Relation:
+            Node X: innlagt - ME.CONDITION
+            Node Y: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.042792290449142456
+        
+
+            Relation:
+            Node X: innlagt - ME.CONDITION
+            Node Y: røntgen - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.042792290449142456
+        
+
+            Relation:
+            Node X: innlagt - ME.CONDITION
+            Node Y: test - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.042792290449142456
+        
+
+            Relation:
+            Node X: innlagt - ME.CONDITION
+            Node Y: snarest. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.042792290449142456
+        
+
+            Relation:
+            Node X: 21. juni for - ME.TREATMENT
+            Node Y: 21. juni - TIMEX.DATE
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.061089906841516495
+        
+
+            Relation:
+            Node X: 21. juni for - ME.TREATMENT
+            Node Y: Pasienten var - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.061089906841516495
+        
+
+            Relation:
+            Node X: 21. juni for - ME.TREATMENT
+            Node Y: innlagt - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.061089906841516495
+        
+
+            Relation:
+            Node X: 21. juni for - ME.TREATMENT
+            Node Y: prostat - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.061089906841516495
+        
+
+            Relation:
+            Node X: 21. juni for - ME.TREATMENT
+            Node Y: can - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.061089906841516495
+        
+
+            Relation:
+            Node X: 21. juni for - ME.TREATMENT
+            Node Y: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.061089906841516495
+        
+
+            Relation:
+            Node X: 21. juni for - ME.TREATMENT
+            Node Y: to ukene - TIMEX.DURATION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.061089906841516495
+        
+
+            Relation:
+            Node X: 21. juni for - ME.TREATMENT
+            Node Y: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.061089906841516495
+        
+
+            Relation:
+            Node X: 21. juni for - ME.TREATMENT
+            Node Y: røntgen - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.061089906841516495
+        
+
+            Relation:
+            Node X: 21. juni for - ME.TREATMENT
+            Node Y: test - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.061089906841516495
+        
+
+            Relation:
+            Node X: 21. juni for - ME.TREATMENT
+            Node Y: snarest. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.061089906841516495
+        
+
+            Relation:
+            Node X: prostat - ME.CONDITION
+            Node Y: 21. juni - TIMEX.DATE
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.19648756086826324
+        
+
+            Relation:
+            Node X: prostat - ME.CONDITION
+            Node Y: Pasienten var - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.19648756086826324
+        
+
+            Relation:
+            Node X: prostat - ME.CONDITION
+            Node Y: innlagt - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.19648756086826324
+        
+
+            Relation:
+            Node X: prostat - ME.CONDITION
+            Node Y: 21. juni for - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.19648756086826324
+        
+
+            Relation:
+            Node X: prostat - ME.CONDITION
+            Node Y: can - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.19648756086826324
+        
+
+            Relation:
+            Node X: prostat - ME.CONDITION
+            Node Y: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.19648756086826324
+        
+
+            Relation:
+            Node X: prostat - ME.CONDITION
+            Node Y: to ukene - TIMEX.DURATION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.19648756086826324
+        
+
+            Relation:
+            Node X: prostat - ME.CONDITION
+            Node Y: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.19648756086826324
+        
+
+            Relation:
+            Node X: prostat - ME.CONDITION
+            Node Y: røntgen - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.19648756086826324
+        
+
+            Relation:
+            Node X: prostat - ME.CONDITION
+            Node Y: test - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.19648756086826324
+        
+
+            Relation:
+            Node X: prostat - ME.CONDITION
+            Node Y: snarest. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.19648756086826324
+        
+
+            Relation:
+            Node X: can - ME.CONDITION
+            Node Y: 21. juni - TIMEX.DATE
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.027697842568159103
+        
+
+            Relation:
+            Node X: can - ME.CONDITION
+            Node Y: Pasienten var - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.027697842568159103
+        
+
+            Relation:
+            Node X: can - ME.CONDITION
+            Node Y: innlagt - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.027697842568159103
+        
+
+            Relation:
+            Node X: can - ME.CONDITION
+            Node Y: 21. juni for - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.027697842568159103
+        
+
+            Relation:
+            Node X: can - ME.CONDITION
+            Node Y: prostat - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.027697842568159103
+        
+
+            Relation:
+            Node X: can - ME.CONDITION
+            Node Y: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.027697842568159103
+        
+
+            Relation:
+            Node X: can - ME.CONDITION
+            Node Y: to ukene - TIMEX.DURATION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.027697842568159103
+        
+
+            Relation:
+            Node X: can - ME.CONDITION
+            Node Y: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.027697842568159103
+        
+
+            Relation:
+            Node X: can - ME.CONDITION
+            Node Y: røntgen - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.027697842568159103
+        
+
+            Relation:
+            Node X: can - ME.CONDITION
+            Node Y: test - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.027697842568159103
+        
+
+            Relation:
+            Node X: can - ME.CONDITION
+            Node Y: snarest. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.027697842568159103
+        
+
+            Relation:
+            Node X: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            Node Y: 21. juni - TIMEX.DATE
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.001207456924021244
+        
+
+            Relation:
+            Node X: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            Node Y: Pasienten var - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.001207456924021244
+        
+
+            Relation:
+            Node X: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            Node Y: innlagt - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.001207456924021244
+        
+
+            Relation:
+            Node X: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            Node Y: 21. juni for - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.001207456924021244
+        
+
+            Relation:
+            Node X: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            Node Y: prostat - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.001207456924021244
+        
+
+            Relation:
+            Node X: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            Node Y: can - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.001207456924021244
+        
+
+            Relation:
+            Node X: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            Node Y: to ukene - TIMEX.DURATION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.001207456924021244
+        
+
+            Relation:
+            Node X: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            Node Y: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.001207456924021244
+        
+
+            Relation:
+            Node X: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            Node Y: røntgen - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.001207456924021244
+        
+
+            Relation:
+            Node X: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            Node Y: test - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.001207456924021244
+        
+
+            Relation:
+            Node X: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            Node Y: snarest. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.001207456924021244
+        
+
+            Relation:
+            Node X: to ukene - TIMEX.DURATION
+            Node Y: 21. juni - TIMEX.DATE
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.5261300802230835
+        
+
+            Relation:
+            Node X: to ukene - TIMEX.DURATION
+            Node Y: Pasienten var - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.5261300802230835
+        
+
+            Relation:
+            Node X: to ukene - TIMEX.DURATION
+            Node Y: innlagt - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.5261300802230835
+        
+
+            Relation:
+            Node X: to ukene - TIMEX.DURATION
+            Node Y: 21. juni for - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.5261300802230835
+        
+
+            Relation:
+            Node X: to ukene - TIMEX.DURATION
+            Node Y: prostat - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.5261300802230835
+        
+
+            Relation:
+            Node X: to ukene - TIMEX.DURATION
+            Node Y: can - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.5261300802230835
+        
+
+            Relation:
+            Node X: to ukene - TIMEX.DURATION
+            Node Y: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.5261300802230835
+        
+
+            Relation:
+            Node X: to ukene - TIMEX.DURATION
+            Node Y: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.5261300802230835
+        
+
+            Relation:
+            Node X: to ukene - TIMEX.DURATION
+            Node Y: røntgen - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.5261300802230835
+        
+
+            Relation:
+            Node X: to ukene - TIMEX.DURATION
+            Node Y: test - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.5261300802230835
+        
+
+            Relation:
+            Node X: to ukene - TIMEX.DURATION
+            Node Y: snarest. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.5261300802230835
+        
+
+            Relation:
+            Node X: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT
+            Node Y: 21. juni - TIMEX.DATE
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -1.055302619934082
+        
+
+            Relation:
+            Node X: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT
+            Node Y: Pasienten var - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -1.055302619934082
+        
+
+            Relation:
+            Node X: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT
+            Node Y: innlagt - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -1.055302619934082
+        
+
+            Relation:
+            Node X: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT
+            Node Y: 21. juni for - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -1.055302619934082
+        
+
+            Relation:
+            Node X: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT
+            Node Y: prostat - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -1.055302619934082
+        
+
+            Relation:
+            Node X: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT
+            Node Y: can - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -1.055302619934082
+        
+
+            Relation:
+            Node X: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT
+            Node Y: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -1.055302619934082
+        
+
+            Relation:
+            Node X: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT
+            Node Y: to ukene - TIMEX.DURATION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -1.055302619934082
+        
+
+            Relation:
+            Node X: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT
+            Node Y: røntgen - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -1.055302619934082
+        
+
+            Relation:
+            Node X: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT
+            Node Y: test - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -1.055302619934082
+        
+
+            Relation:
+            Node X: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT
+            Node Y: snarest. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -1.055302619934082
+        
+
+            Relation:
+            Node X: røntgen - ME.CONDITION
+            Node Y: 21. juni - TIMEX.DATE
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.8486531376838684
+        
+
+            Relation:
+            Node X: røntgen - ME.CONDITION
+            Node Y: Pasienten var - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.8486531376838684
+        
+
+            Relation:
+            Node X: røntgen - ME.CONDITION
+            Node Y: innlagt - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.8486531376838684
+        
+
+            Relation:
+            Node X: røntgen - ME.CONDITION
+            Node Y: 21. juni for - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.8486531376838684
+        
+
+            Relation:
+            Node X: røntgen - ME.CONDITION
+            Node Y: prostat - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.8486531376838684
+        
+
+            Relation:
+            Node X: røntgen - ME.CONDITION
+            Node Y: can - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.8486531376838684
+        
+
+            Relation:
+            Node X: røntgen - ME.CONDITION
+            Node Y: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.8486531376838684
+        
+
+            Relation:
+            Node X: røntgen - ME.CONDITION
+            Node Y: to ukene - TIMEX.DURATION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.8486531376838684
+        
+
+            Relation:
+            Node X: røntgen - ME.CONDITION
+            Node Y: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.8486531376838684
+        
+
+            Relation:
+            Node X: røntgen - ME.CONDITION
+            Node Y: test - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.8486531376838684
+        
+
+            Relation:
+            Node X: røntgen - ME.CONDITION
+            Node Y: snarest. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.8486531376838684
+        
+
+            Relation:
+            Node X: test - ME.CONDITION
+            Node Y: 21. juni - TIMEX.DATE
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.39969849586486816
+        
+
+            Relation:
+            Node X: test - ME.CONDITION
+            Node Y: Pasienten var - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.39969849586486816
+        
+
+            Relation:
+            Node X: test - ME.CONDITION
+            Node Y: innlagt - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.39969849586486816
+        
+
+            Relation:
+            Node X: test - ME.CONDITION
+            Node Y: 21. juni for - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.39969849586486816
+        
+
+            Relation:
+            Node X: test - ME.CONDITION
+            Node Y: prostat - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.39969849586486816
+        
+
+            Relation:
+            Node X: test - ME.CONDITION
+            Node Y: can - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.39969849586486816
+        
+
+            Relation:
+            Node X: test - ME.CONDITION
+            Node Y: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.39969849586486816
+        
+
+            Relation:
+            Node X: test - ME.CONDITION
+            Node Y: to ukene - TIMEX.DURATION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.39969849586486816
+        
+
+            Relation:
+            Node X: test - ME.CONDITION
+            Node Y: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.39969849586486816
+        
+
+            Relation:
+            Node X: test - ME.CONDITION
+            Node Y: røntgen - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.39969849586486816
+        
+
+            Relation:
+            Node X: test - ME.CONDITION
+            Node Y: snarest. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.39969849586486816
+        
+
+            Relation:
+            Node X: snarest. - ME.TREATMENT
+            Node Y: 21. juni - TIMEX.DATE
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.04761788994073868
+        
+
+            Relation:
+            Node X: snarest. - ME.TREATMENT
+            Node Y: Pasienten var - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.04761788994073868
+        
+
+            Relation:
+            Node X: snarest. - ME.TREATMENT
+            Node Y: innlagt - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.04761788994073868
+        
+
+            Relation:
+            Node X: snarest. - ME.TREATMENT
+            Node Y: 21. juni for - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.04761788994073868
+        
+
+            Relation:
+            Node X: snarest. - ME.TREATMENT
+            Node Y: prostat - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.04761788994073868
+        
+
+            Relation:
+            Node X: snarest. - ME.TREATMENT
+            Node Y: can - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.04761788994073868
+        
+
+            Relation:
+            Node X: snarest. - ME.TREATMENT
+            Node Y: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.04761788994073868
+        
+
+            Relation:
+            Node X: snarest. - ME.TREATMENT
+            Node Y: to ukene - TIMEX.DURATION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.04761788994073868
+        
+
+            Relation:
+            Node X: snarest. - ME.TREATMENT
+            Node Y: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.04761788994073868
+        
+
+            Relation:
+            Node X: snarest. - ME.TREATMENT
+            Node Y: røntgen - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.04761788994073868
+        
+
+            Relation:
+            Node X: snarest. - ME.TREATMENT
+            Node Y: test - ME.CONDITION
+            TR_TLINK: TR_TLINK.BEFORE, Probability: -0.04761788994073868
+        
+Node: 21. juni - TIMEX.DATE (2025-06-21)
+Node: Pasienten var - ME.TREATMENT (None)
+Node: innlagt - ME.CONDITION (None)
+Node: 21. juni for - ME.TREATMENT (None)
+Node: prostat - ME.CONDITION (None)
+Node: can - ME.CONDITION (None)
+Node: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT (None)
+Node: to ukene - TIMEX.DURATION (2025-01-25)
+Node: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT (None)
+Node: røntgen - ME.CONDITION (None)
+Node: test - ME.CONDITION (None)
+Node: snarest. - ME.TREATMENT (None)
+Node: 21. juni - TIMEX.DATE (2025-06-21)
+Node: Pasienten var - ME.TREATMENT (None)
+Node: innlagt - ME.CONDITION (None)
+Node: 21. juni for - ME.TREATMENT (None)
+Node: prostat - ME.CONDITION (None)
+Node: can - ME.CONDITION (None)
+Node: men ble utskrevet dagen etter på grunn av mangel på personell. Han ble sagt til å komme tilbake uken etter for å få operasjon. - ME.TREATMENT (None)
+Node: to ukene - TIMEX.DURATION (2025-01-25)
+Node: Medikasjonen blir det samme de neste to ukene. Men paracetamol blir økt til 2 ganger daglig og det ble sendt en henvisning til - ME.TREATMENT (None)
+Node: røntgen - ME.CONDITION (None)
+Node: test - ME.CONDITION (None)
+Node: snarest. - ME.TREATMENT (None)
