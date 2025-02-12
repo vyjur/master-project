@@ -10,6 +10,37 @@ from model.util import Util
 from structure.enum import Task
 import wandb
 
+# TODO: wandb hyperparameter tune
+sweep_config = {"method": "grid"}
+
+metric = {"name": "val_loss", "goal": "minimize"}
+
+parameters_dict = {
+    "epochs": {"value": 1},
+    "optimizer": ["adam", "sgd"],
+    "learning_rate": {
+        "distribution": "uniform",
+        "min": 0,
+        "max": 0.1,
+    },
+    "batch_size": {"values": [32, 64, 128, 256]},
+    "weight_decay": {
+        "values": [0, 1e-5, 1e-4, 1e-3, 1e-2]  # Grid search over weight decay values
+    },
+    "early_stopping_patience": {
+        "values": [3, 5, 10]  # Grid search over patience values
+    },
+    "early_stopping_delta": {
+        "values": [0.01, 0.001, 0.0005, 0.0001]  # Grid search over delta values
+    },
+    "embedding_dim": {
+        "values": [32, 64, 128, 256, 512]  # Grid search over embedding dimensions
+    },
+}
+
+sweep_config["metric"] = metric
+sweep_config["parameters"] = parameters_dict
+
 START_TAG = "<START>"
 STOP_TAG = "<STOP>"
 
@@ -122,14 +153,18 @@ class NN(nn.Module):
             early_stopping = EarlyStopping(patience=5, delta=0.01)
             for t in range(parameters["epochs"]):
                 print(f"Epoch {t + 1}\n-------------------------------")
-                train_loss, train_acc = self.__train(training_loader, loss_fn, optimizer)
-                val_loss, val_acc = self.__valid(valid_loader, loss_fn, processed["id2label"])
+                train_loss, train_acc = self.__train(
+                    training_loader, loss_fn, optimizer
+                )
+                val_loss, val_acc = self.__valid(
+                    valid_loader, loss_fn, processed["id2label"]
+                )
                 wandb.log(
                     {
                         "train_loss": train_loss,
                         "train_accuracy": train_acc,
                         "val_loss": val_loss,
-                        "val_acc": val_acc
+                        "val_acc": val_acc,
                     }
                 )  # type: ignore
                 early_stopping(val_loss, self.__model)
