@@ -73,9 +73,6 @@ class Pipeline:
             self.__ner.get_tokenizer(), self.__ner.get_max_length()
         )
 
-        ### Initialize trajectory modules ###
-        # TODO: should we move some of the tasks in pipeline method into a module?
-
         ### Initialize visualization module ###
         self.viz = Timeline()
 
