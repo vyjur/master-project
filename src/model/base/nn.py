@@ -10,13 +10,13 @@ from model.util import Util
 from structure.enum import Task
 import wandb
 
-# TODO: wandb hyperparameter tune
+# TODO: Move this out to a config file wandb hyperparameter tune
 sweep_config = {"method": "grid"}
 
 metric = {"name": "val_loss", "goal": "minimize"}
 
 parameters_dict = {
-    "epochs": {"value": 1},
+    "epochs": {"value": 100},
     "optimizer": ["adam", "sgd"],
     "learning_rate": {
         "distribution": "uniform",
@@ -71,22 +71,24 @@ class NN(nn.Module):
 
         self.tokenizer = tokenizer
         self.__task = task
+        self.__base_model = model
+        self.__save = save
 
         # TODO:
         # embedding_dim = self.tokenizer.model_max_length
-        embedding_dim = 300
+        embedding_dim = parameters['embedding_dim']
 
         if not load:
-            processed = Preprocess(
+            self.__processed = Preprocess(
                 self.tokenizer, parameters["max_length"]
             ).run_train_test_split(task, dataset, tags_name)
-            class_weights = Util().class_weights(
-                task, processed["dataset"], self.__device
+            self.__class_weights = Util().class_weights(
+                task, self.__processed["dataset"], self.__device
             )
 
-            tag_to_ix = processed["label2id"]
-            processed["label2id"] = tag_to_ix
-            ix_to_tag = processed["id2label"]
+            tag_to_ix = self.__processed["label2id"]
+            self.__processed["label2id"] = tag_to_ix
+            ix_to_tag = self.__processed["id2label"]
 
         else:
             tag_to_ix, ix_to_tag = Util().get_tags(task, tags_name)
@@ -98,96 +100,119 @@ class NN(nn.Module):
             tag_to_ix[START_TAG] = START_ID
             tag_to_ix[STOP_TAG] = STOP_ID
 
-        vocab_size = self.tokenizer.vocab_size  # type: ignore
+        self.__processed["label2id"] = tag_to_ix
+        self.__processed["id2label"] = ix_to_tag
+
+        self.__vocab_size = self.tokenizer.vocab_size  # type: ignore
         hidden_dim = parameters["max_length"]
+        
+        tune = parameters['tune']
 
         if load:
-            self.__model = model(1, vocab_size, tag_to_ix, embedding_dim, hidden_dim)
+            self.__model = model(1, self.__vocab_size, tag_to_ix, embedding_dim, hidden_dim)
             self.__model.load_state_dict(
                 torch.load(save + "/model.pth", weights_only=False)
             )
         else:
             wandb.init(project=f"{project_name}-{task}-nn-model".replace('"', ""))  # type: ignore
-            wandb.config = {
-                "learning_rate": parameters["learning_rate"],
-                "epochs": parameters["epochs"],
-                "batch_size": parameters["train_batch_size"],
-                "evaluation_strategy": "epoch",
-                "save_strategy": "epoch",
-                "logging_strategy": "epoch",
-            }
+            
+            if tune:
+                sweep_id = wandb.sweep(sweep_config, project=f"{project_name}-{task}-nn-model".replace('"', ""))
+                wandb.agent(sweep_id, self.train, count=parameters["tune_count"])
+            else:
+                wandb.config = {
+                    "learning_rate": parameters["learning_rate"],
+                    "epochs": parameters["epochs"],
+                    "batch_size": parameters["train_batch_size"],
+                    "learning_rate": parameters["learning_rate"],
+                    'optimizer': parameters["optimizer"],
+                    'weight_decay': parameters['weight_decay'],
+                    'early_stopping_patience': parameters['early_stopping_patience'],
+                    'early_stopping_delta': parameters['early_stopping_delta'],
+                    'embedding_dim': parameters['embedding_dim'],
+                    'max_length': parameters['max_length'],
+                    "evaluation_strategy": "epoch",
+                    "save_strategy": "epoch",
+                    "logging_strategy": "epoch",
+                    "tune": tune
+                }
+                self.__train(wandb.config)
+                
+    def train(self, config):
 
-            train_params = {
-                "batch_size": parameters["train_batch_size"],
-                "shuffle": parameters["shuffle"],
-                "num_workers": parameters["num_workers"],
-            }
+        train_params = {
+            "batch_size": config["train_batch_size"],
+            "shuffle": config["shuffle"],
+            "num_workers": config["num_workers"],
+        }
 
-            test_params = {
-                "batch_size": parameters["valid_batch_size"],
-                "shuffle": parameters["shuffle"],
-                "num_workers": parameters["num_workers"],
-            }
+        test_params = {
+            "batch_size": config["valid_batch_size"],
+            "shuffle": config["shuffle"],
+            "num_workers": config["num_workers"],
+        }
 
-            training_loader = DataLoader(processed["train"], **train_params)
-            valid_loader = DataLoader(processed["valid"], **test_params)
-            testing_loader = DataLoader(processed["test"], **test_params)
+        training_loader = DataLoader(self.__processed["train"], **train_params)
+        valid_loader = DataLoader(self.__processed["valid"], **test_params)
+        testing_loader = DataLoader(self.__processed["test"], **test_params)
 
-            self.__model = model(
-                parameters["train_batch_size"],
-                vocab_size,
-                tag_to_ix,
-                embedding_dim,
-                hidden_dim,
-            ).to(self.__device)
+        self.__model = self.__base_model(
+            config["batch_size"],
+            self.__vocab_size,
+            self.__processed["label2id"],
+            config["embedding_dim"],
+            config['max_length'],
+        ).to(self.__device)
 
-            self.__model.num_labels = len(processed["id2label"])
+        self.__model.num_labels = len(self.__processed["id2label"])
 
-            loss_fn = nn.CrossEntropyLoss(weight=class_weights)
-            optimizer = torch.optim.Adam(  # type: ignore
-                self.__model.parameters(),
-                lr=parameters["learning_rate"],
-                weight_decay=1e-4,
+        loss_fn = nn.CrossEntropyLoss(weight=self.__class_weights)
+        optimizer = torch.optim.Adam(  # type: ignore
+            self.__model.parameters(),
+            lr=config["learning_rate"],
+            weight_decay=1e-4,
+        )
+
+        early_stopping = EarlyStopping(patience=5, delta=0.01)
+        for t in range(config["epochs"]):
+            print(f"Epoch {t + 1}\n-------------------------------")
+            train_loss, train_acc = self.__train(
+                training_loader, loss_fn, optimizer
             )
-
-            early_stopping = EarlyStopping(patience=5, delta=0.01)
-            for t in range(parameters["epochs"]):
-                print(f"Epoch {t + 1}\n-------------------------------")
-                train_loss, train_acc = self.__train(
-                    training_loader, loss_fn, optimizer
-                )
-                val_loss, val_acc = self.__valid(
-                    valid_loader, loss_fn, processed["id2label"]
-                )
-                wandb.log(
-                    {
-                        "train_loss": train_loss,
-                        "train_accuracy": train_acc,
-                        "val_loss": val_loss,
-                        "val_acc": val_acc,
-                    }
-                )  # type: ignore
-                early_stopping(val_loss, self.__model)
-                if early_stopping.early_stop:
-                    print("Early stopping")
-                    break
-
-            print("### Valid set performance:")
-            labels, predictions = self.__valid(
-                valid_loader, loss_fn, processed["id2label"], True
+            val_loss, val_acc = self.__valid(
+                valid_loader, loss_fn, self.__processed["id2label"]
             )
-            Util().validate_report(labels, predictions)
+            wandb.log(
+                {
+                    "train_loss": train_loss,
+                    "train_accuracy": train_acc,
+                    "val_loss": val_loss,
+                    "val_acc": val_acc,
+                }
+            )  # type: ignore
+            early_stopping(val_loss, self.__model)
+            if early_stopping.early_stop:
+                print("Early stopping")
+                break
 
-            print("### Test set performance:")
-            labels, predictions = self.__valid(
-                testing_loader, loss_fn, processed["id2label"], True
-            )
-            Util().validate_report(labels, predictions)
+        print("### Valid set performance:")
+        labels, predictions = self.__valid(
+            valid_loader, loss_fn, self.__processed["id2label"], True
+        )
+        Util().validate_report(labels, predictions)
 
-            if not os.path.exists(save):
-                os.makedirs(save)
-            torch.save(self.__model.state_dict(), save + "/model.pth")
-            wandb.finish()
+        print("### Test set performance:")
+        labels, predictions = self.__valid(
+            testing_loader, loss_fn, self.__processed["id2label"], True
+        )
+        Util().validate_report(labels, predictions)
+
+        # If tune don't save else too many models heavy
+        if not config['tune']:
+            if not os.path.exists(self.__save):
+                os.makedirs(self.__save)
+            torch.save(self.__model.state_dict(), self.__save + "/model.pth")
+        wandb.finish()
 
     def predict(self, data, pipeline=False):
         data_tensor = torch.tensor(data, dtype=torch.long).to(self.__device)
