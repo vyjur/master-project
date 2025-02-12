@@ -6,7 +6,7 @@ from preprocess.dataset import DatasetManager
 from preprocess.setup import Preprocess
 from util import compute_mnlp
 
-BATCH = 1
+BATCH = 2
 
 os.mkdir(f'./data/helsearkiv/batch/ner/{BATCH}')
 
@@ -100,24 +100,27 @@ for page in sorted_data[:1200]:
         annot = []
         offsets = []
         
+        start = True
+        
         # Get the offset for each word from words that were split
         for j, cat in enumerate(output[i]):
             token = preprocess.decode(pre.ids[j])
             
             curr += token
-            if curr.strip() == words[word_count].strip():
-                curr = ''
-                annot.append(cat)
-                offsets.append(pre.offsets[j])
-                word_count += 1
             
-            if len(offsets) > 0:
-                offsets[-1] = (offsets[-1][0], pre.offsets[j][1])
-            else:
+            if start:
                 annot.append(cat)
                 offsets.append(pre.offsets[j])  
-        
-        assert len(words) == len(annot) == len(offsets), f"Word count:{word_count}, LEN words: {len(words)}, offset/annot: {len(offsets)}/{len(annot)}"      
+                start = False
+            
+            offsets[-1] = (offsets[-1][0], pre.offsets[j][1])
+
+            if curr.strip() == words[word_count].strip():
+                curr = ''
+                word_count += 1
+                start = True
+       
+        assert len(words) == len(annot) == len(offsets), f"Word count:{word_count}, LEN words: {len(words)}, offset/annot: {len(offsets)}/{len(annot)}, \n words:{words} \n tokens: {token} \n curr: {curr}"      
             
         # Merge different words together
         for j, word in enumerate(words):
