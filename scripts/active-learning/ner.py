@@ -6,7 +6,7 @@ from preprocess.dataset import DatasetManager
 from preprocess.setup import Preprocess
 from util import compute_mnlp
 
-BATCH = 2
+BATCH = 3
 
 os.mkdir(f'./data/helsearkiv/batch/ner/{BATCH}')
 
@@ -120,7 +120,7 @@ for page in sorted_data[:1200]:
                 word_count += 1
                 start = True
        
-        assert len(words) == len(annot) == len(offsets), f"Word count:{word_count}, LEN words: {len(words)}, offset/annot: {len(offsets)}/{len(annot)}, \n words:{words} \n tokens: {token} \n curr: {curr}"      
+        assert len(words) == len(annot) == len(offsets), f"Word count:{word_count}, LEN words: {len(words)}, offset/annot: {len(offsets)}/{len(annot)}, \n words:{words} \n tokens: {token} \n curr: {curr}, page: {page['page']}, file: {page['file']}"      
             
         # Merge different words together
         for j, word in enumerate(words):

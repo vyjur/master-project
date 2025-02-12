@@ -51,6 +51,8 @@ class NERecognition:
             "shuffle": self.__config.getboolean("train.parameters", "shuffle"),
             "num_workers": self.__config.getint("train.parameters", "num_workers"),
             "max_length": self.__config.getint("MODEL", "max_length"),
+            "tune": self.__config.getboolean("tuning", "tune"),
+            "tune_count": self.__config.getint("tuning", "tune") 
         }
 
         self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](

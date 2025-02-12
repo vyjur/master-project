@@ -20,13 +20,13 @@ import wandb
 from structure.enum import Task
 
 
-# TODO: wandb hyperparameter tune
+# TODO: Move this out to a config file wandb hyperparameter tune
 sweep_config = {"method": "grid"}
 
 metric = {"name": "val_loss", "goal": "minimize"}
 
 parameters_dict = {
-    "epochs": {"value": 1},
+    "epochs": {"value": 100},
     "optimizer": ["adam", "sgd"],
     "learning_rate": {
         "distribution": "uniform",
@@ -68,12 +68,18 @@ class BERT(nn.Module):
 
         if self.__device != "cpu":
             torch.cuda.set_device(self.__device)
+
         print("Using:", self.__device, "with BERT")
 
         self.device = self.__device
 
         self.tokenizer = tokenizer
         self.__task = task
+        self.__parameters = parameters
+        self.__pretrain = pretrain
+        self.__save = save
+        self.__dataset = dataset
+        self.__tags_name = tags_name
 
         if load:
             if task == Task.TOKEN:
@@ -94,128 +100,40 @@ class BERT(nn.Module):
             print("Model and tokenizer loaded successfully.")
         else:
             wandb.init(project=f"{project_name}-{task}-bert-model".replace('"', ""))  # type: ignore
-            wandb.config = {
-                "learning_rate": parameters["learning_rate"],
-                "epochs": parameters["epochs"],
-                "batch_size": parameters["train_batch_size"],
-                "evaluation_strategy": "epoch",
-                "save_strategy": "epoch",
-                "logging_strategy": "epoch",
-            }
 
-            processed = Preprocess(
-                self.tokenizer, parameters["max_length"]
-            ).run_train_test_split(task, dataset, tags_name)
-            class_weights = Util().class_weights(
-                task, processed["dataset"], self.__device
-            )
+            # TODO: max length needs to be hyperparameter tuned as well
+            self.__processed = None
+            self.__class_weights = None
 
-            torch.cuda.empty_cache()
-            train_params = {
-                "batch_size": parameters["train_batch_size"],
-                "shuffle": parameters["shuffle"],
-                "num_workers": parameters["num_workers"],
-            }
-
-            test_params = {
-                "batch_size": parameters["valid_batch_size"],
-                "shuffle": parameters["shuffle"],
-                "num_workers": parameters["num_workers"],
-            }
-
-            training_loader = DataLoader(processed["train"], **train_params)
-            valid_loader = DataLoader(processed["valid"], **test_params)
-            testing_loader = DataLoader(processed["test"], **test_params)
-
-            num_training_steps = len(training_loader)
-
-            if task == Task.TOKEN:
-                self.__model = AutoModelForTokenClassification.from_pretrained(
-                    pretrain,
-                    trust_remote_code=True,
-                    num_labels=len(processed["id2label"]),
-                    id2label=processed["id2label"],
-                    label2id=processed["label2id"],
+            tune = parameters["tune"]
+            if tune:
+                sweep_id = wandb.sweep(
+                    sweep_config,
+                    project=f"{project_name}-{task}-bert-model".replace('"', ""),
                 )
+                wandb.agent(sweep_id, self.train, count=parameters["tune_count"])
             else:
-                self.__model = AutoModelForSequenceClassification.from_pretrained(
-                    "ltg/norbert3-xs",
-                    trust_remote_code=True,
-                    num_labels=len(processed["id2label"]),
-                    id2label=processed["id2label"],
-                    label2id=processed["label2id"],
-                )
-
-            self.__model.to(self.__device)
-
-            optimizer = torch.optim.Adam(  # type: ignore
-                params=self.__model.parameters(),
-                lr=parameters["learning_rate"],
-                weight_decay=1e-4,
-            )
-            early_stopping = EarlyStopping(patience=5, delta=0.01)
-
-            lr_scheduler = get_scheduler(
-                name="linear",
-                optimizer=optimizer,
-                num_warmup_steps=0,
-                num_training_steps=num_training_steps,
-            )
-            loss_fn = nn.CrossEntropyLoss(weight=class_weights)
-
-            for epoch in range(parameters["epochs"]):
-                print(f"Training Epoch: {epoch}")
-                train_loss, train_acc = self.__train(
-                    training_loader,
-                    num_training_steps,
-                    optimizer,
-                    lr_scheduler,
-                    loss_fn,
-                )
-
-                val_loss, val_acc = self.__valid(
-                    testing_loader, loss_fn, processed["id2label"]
-                )
-
-                wandb.log(
-                    {
-                        "train_loss": train_loss,
-                        "train_accuracy": train_acc,
-                        "val_loss": val_loss,
-                        "val_acc": val_acc,
-                    }
-                )  # type: ignore
-
-                early_stopping(val_loss, self.__model)
-                if early_stopping.early_stop:
-                    print("Early stopping")
-                    break
-
-            print("### Valid set performance:")
-            labels, predictions = self.__valid(
-                valid_loader, loss_fn, processed["id2label"], True
-            )
-            Util().validate_report(labels, predictions)
-
-            print("### Test set performance:")
-            labels, predictions = self.__valid(
-                testing_loader, loss_fn, processed["id2label"], True
-            )
-            Util().validate_report(labels, predictions)
-
-            # Save the model
-            if not os.path.exists(save):
-                os.makedirs(save)
-            self.__model.save_pretrained(save)
-
-            # Save the tokenizer
-            self.tokenizer.save_pretrained(save)  # type:ignore
-            wandb.finish()
+                wandb.config = {
+                    "learning_rate": parameters["learning_rate"],
+                    "epochs": parameters["epochs"],
+                    "batch_size": parameters["train_batch_size"],
+                    "learning_rate": parameters["learning_rate"],
+                    "optimizer": parameters["optimizer"],
+                    "weight_decay": parameters["weight_decay"],
+                    "early_stopping_patience": parameters["early_stopping_patience"],
+                    "early_stopping_delta": parameters["early_stopping_delta"],
+                    "evaluation_strategy": "epoch",
+                    "save_strategy": "epoch",
+                    "logging_strategy": "epoch",
+                    "tune": tune,
+                }
+                self.__train(wandb.config)
 
         if task == Task.SEQUENCE:
             task_text = "text"
         else:
             task_text = "token"
+
         self.__pipeline = pipeline(
             task=f"{task_text}-classification",
             model=self.__model.to(self.__device),
@@ -223,6 +141,134 @@ class BERT(nn.Module):
             tokenizer=self.tokenizer,
             aggregation_strategy="simple",
         )
+
+    def train(self, config):
+        torch.cuda.empty_cache()
+
+        self.__processed = Preprocess(
+            self.tokenizer, config["max_length"]
+        ).run_train_test_split(self.__task, self.__dataset, self.__tags_name)
+
+        self.__class_weights = Util().class_weights(
+            self.__task, self.__processed["dataset"], self.__device
+        )
+        
+        train_params = {
+            "batch_size": config["batch_size"],
+            "shuffle": self.__parameters["shuffle"],
+            "num_workers": self.__parameters["num_workers"],
+        }
+
+        test_params = {
+            "batch_size": self.__parameters["valid_batch_size"],
+            "shuffle": self.__parameters["shuffle"],
+            "num_workers": self.__parameters["num_workers"],
+        }
+
+        training_loader = DataLoader(self.__processed["train"], **train_params)
+        valid_loader = DataLoader(self.__processed["valid"], **test_params)
+        testing_loader = DataLoader(self.__processed["test"], **test_params)
+
+        num_training_steps = len(training_loader)
+
+        if self.__task == Task.TOKEN:
+            self.__model = AutoModelForTokenClassification.from_pretrained(
+                self.__pretrain,
+                trust_remote_code=True,
+                num_labels=len(self.__processed["id2label"]),
+                id2label=self.__processed["id2label"],
+                label2id=self.__processed["label2id"],
+            )
+        else:
+            self.__model = AutoModelForSequenceClassification.from_pretrained(
+                "ltg/norbert3-xs",
+                trust_remote_code=True,
+                num_labels=len(self.__processed["id2label"]),
+                id2label=self.__processed["id2label"],
+                label2id=self.__processed["label2id"],
+            )
+
+        self.__model.to(self.__device)
+
+        if config["optimizer"] == "adam":
+            optimizer = torch.optim.Adam(  # type: ignore
+                params=self.__model.parameters(),
+                lr=config["learning_rate"],
+                weight_decay=config["weight_decay"],
+            )
+        elif config["optimizer"] == "sgd":
+            optimizer = torch.optim.SGD(  # type: ignore
+                params=self.__model.parameters(),
+                lr=config["learning_rate"],
+                weight_decay=config["weight_decay"],
+            )
+        else:
+            optimizer = None
+
+        early_stopping = EarlyStopping(
+            patience=config["early_stopping_patience"],
+            delta=config["early_stopping_delta"],
+        )
+
+        lr_scheduler = get_scheduler(
+            name="linear",
+            optimizer=optimizer,
+            num_warmup_steps=0,
+            num_training_steps=num_training_steps,
+        )
+
+        loss_fn = nn.CrossEntropyLoss(weight=self.__class_weights)
+
+        for epoch in range(config["epochs"]):
+            print(f"Training Epoch: {epoch}")
+            train_loss, train_acc = self.__train(
+                training_loader,
+                num_training_steps,
+                optimizer,
+                lr_scheduler,
+                loss_fn,
+            )
+
+            val_loss, val_acc = self.__valid(
+                testing_loader, loss_fn, self.__processed["id2label"]
+            )
+
+            wandb.log(
+                {
+                    "train_loss": train_loss,
+                    "train_accuracy": train_acc,
+                    "val_loss": val_loss,
+                    "val_acc": val_acc,
+                }
+            )  # type: ignore
+
+            early_stopping(val_loss, self.__model)
+            if early_stopping.early_stop:
+                print("Early stopping")
+                break
+
+        print("### Valid set performance:")
+        labels, predictions = self.__valid(
+            valid_loader, loss_fn, self.__processed["id2label"], True
+        )
+        Util().validate_report(labels, predictions)
+
+        print("### Test set performance:")
+        labels, predictions = self.__valid(
+            testing_loader, loss_fn, self.__processed["id2label"], True
+        )
+        Util().validate_report(labels, predictions)
+
+        # If tune don't save else too many models heavy
+        if not config['tune']:
+            # Save the model
+            if not os.path.exists(self.__save):
+                os.makedirs(self.__save)
+            self.__model.save_pretrained(self.__save)
+
+            # Save the tokenizer
+            self.tokenizer.save_pretrained(self.__save)  # type:ignore
+        wandb.finish()
 
     def predict(self, data, pipeline=False):
         if pipeline:
