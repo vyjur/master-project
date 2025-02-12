@@ -3,21 +3,11 @@ from dateutil.relativedelta import relativedelta
 from datetime import datetime
 import re
 
-# def expand_year(match):
-#     day, month, year = match.groups()
-#     year = f"20{year}" if int(year) < 30 else f"19{year}"
-#     return f"{day}.{month}.{year}"
-
-# def convert_dates(text):
-#     """Converts DD.MM.YY to DD.MM.YYYY"""
-#     pattern = r"\b(\d{2})\.(\d{2})\.(\d{2})\b"
-#     return re.sub(pattern, expand_year, text)
-
 def dct_year(dct, month, day):
+    """ If event date is in the future of DCT, assign it to the previous year """
     current_year = dct.year
     event_date = datetime(current_year, int(month), int(day))
 
-    # If event date is in the future, assign it to the previous year
     if event_date >= dct:
         current_year -= 1
         
@@ -54,6 +44,7 @@ def convert_partial_dates(text, dct):
     return re.sub(pattern, lambda match: expand_partial_date(match, dct), text)
 
 def convert_full_year(date_str):
+    """ Convert full year YYYY to 1.1.YYYY"""
     # Regex to match dates in the format DD.MM.YYYY or D.M.YYYY
     if re.match(r'^\d{1,2}\.\d{1,2}\.\d{4}$', date_str):
         return date_str  # No conversion, return as is
@@ -66,6 +57,8 @@ def convert_full_year(date_str):
     return date_str
 
 def convert_date_format(text):
+    """ Convert DD/MM/YYYY to DD.MM.YYYY"""
+    
     # Regular expression to match dates in different formats
     date_pattern = r'(\d{1,2})\.(\d{1,2})\.(\d{2})(?!\d)'  # Matches D.M.YY, DD.M.YY, D.MM.YY, DD.MM.YY, but not DD.MM.YYYY
     def format_date(match):
@@ -84,7 +77,8 @@ def convert_text(text):
     text = text.replace("i dag", "idag")
     text = text.replace("mnd", "måned")
     text = text.replace("månedr", "måneder")
-    #text = text.replace("imorgen", "imorgen")
+    text = text.replace("på", "")
+    text = text.replace("imorgen", "i morgen")
     return text
 
 def convert_slash_date(text):

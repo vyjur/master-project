@@ -52,19 +52,15 @@ class NN(nn.Module):
             class_weights = Util().class_weights(task, processed["dataset"], self.__device)
 
             tag_to_ix = processed["label2id"]
+            processed["label2id"] = tag_to_ix
+            ix_to_tag=processed["id2label"]
+
         else:
-            tag_to_ix, _ = Util().get_tags(task, tags_name)
-        
-        if len(tag_to_ix) != len(class_weights):
-            del tag_to_ix["O"]
-            for tag in tag_to_ix:
-                tag_to_ix[tag] -= 1
-                
-        processed["label2id"] = tag_to_ix
+            tag_to_ix, ix_to_tag = Util().get_tags(task, tags_name)
 
         if task == Task.TOKEN:
-            START_ID = max(processed["id2label"].keys()) + 1
-            STOP_ID = max(processed["id2label"].keys()) + 2
+            START_ID = max(ix_to_tag.keys()) + 1
+            STOP_ID = max(ix_to_tag.keys()) + 2
 
             tag_to_ix[START_TAG] = START_ID
             tag_to_ix[STOP_TAG] = STOP_ID
@@ -75,7 +71,7 @@ class NN(nn.Module):
         if load:
             self.__model = model(1, vocab_size, tag_to_ix, embedding_dim, hidden_dim)
             self.__model.load_state_dict(
-                torch.load(save + "/model.pth", weights_only=True)
+                torch.load(save + "/model.pth", weights_only=False)
             )
         else:
             wandb.init(project=f"{project_name}-{task}-nn-model".replace('"', ""))  # type: ignore
@@ -153,7 +149,7 @@ class NN(nn.Module):
         data_tensor = torch.tensor(data, dtype=torch.long).to(self.__device)
         self.__model.batch = data_tensor.shape[0]
         outputs = self.__model(data_tensor)
-        if len(outputs) > 1:
+        if self.__task == Task.TOKEN:
             return outputs[0], outputs[1]
         else:
             pred = torch.argmax(outputs, axis=1).tolist()  # type: ignore

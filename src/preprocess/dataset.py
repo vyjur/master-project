@@ -54,7 +54,7 @@ COLUMN_NAMES_DICT = {
 }
 
 class DatasetManager:
-    def __init__(self, entity_files: List[str], relation_files: List[str], context:bool=True):
+    def __init__(self, entity_files: List[str], relation_files: List[str], context:bool=True, window_size:int=50):
 
         print("### Processing the files:")
         all_entity_df = []
@@ -69,8 +69,7 @@ class DatasetManager:
         # TODO: config?
         tokens_expanded = self.__entity_df["Text"].str.split().explode().tolist()  # Flatten the token list
         # Define the context window size
-        window_size = 50
-
+        
         # Function to get the context window for each row (respecting original dataset)
         # Token splits on words (word-level token window)
         def get_context_window(idx):

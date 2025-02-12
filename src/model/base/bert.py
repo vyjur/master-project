@@ -49,17 +49,17 @@ class BERT(nn.Module):
         if load:
             if task == Task.TOKEN:
                 self.__model = AutoModelForTokenClassification.from_pretrained(
-                    save, trust_remote_code=True
+                    save, trust_remote_code=True, device_map="auto"
                 )
                 self.tokenizer = AutoTokenizer.from_pretrained(
-                    save, trust_remote_code=True
+                    save, trust_remote_code=True, device_map="auto"
                 )
             else:
                 self.__model = AutoModelForSequenceClassification.from_pretrained(
-                    save, trust_remote_code=True
+                    save, trust_remote_code=True, device_map="auto"
                 )
                 self.tokenizer = AutoTokenizer.from_pretrained(
-                    save, trust_remote_code=True
+                    save, trust_remote_code=True, device_map="auto"
                 )
 
             print("Model and tokenizer loaded successfully.")
@@ -100,19 +100,6 @@ class BERT(nn.Module):
 
             num_training_steps = len(training_loader)
             
-            if len(processed['id2label']) != len(class_weights):
-                # Original dictionary
-                # Remove the key-value pair with key 0
-                processed['id2label'].pop(0)
-
-                # Update the keys to reduce them by 1
-                processed['id2label'] = {key - 1: value for key, value in processed['id2label'].items()}
-                
-                del processed['label2id']['O']
-                for tag in processed["label2id"]:
-                    processed['label2id'][tag] -= 1  
-                    
-
             if task == Task.TOKEN:
                 self.__model = AutoModelForTokenClassification.from_pretrained(
                     pretrain,
