@@ -1,0 +1,10 @@
+
+(25, 'Inappropriate ioctl for device')
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/./scripts/train/tee.py", line 36, in <module>
+    ner = TEExtract(
+          ^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/textmining/tee/setup.py", line 29, in __init__
+    tags = [TIMEX.DATE.name, TIMEX.DCT.name]   
+                             ^^^^^^^^^
+AttributeError: type object 'TIMEX' has no attribute 'DCT'

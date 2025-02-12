@@ -1,0 +1,13 @@
+
+(25, 'Inappropriate ioctl for device')
+[nltk_data] Downloading package punkt to
+[nltk_data]     /cluster/home/julievt/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+Unable to connect to VS Code server: Error in request.
+Error: connect ENOENT /tmp/vscode-ipc-32bdb0bc-a702-4b55-a874-33aab2674ae7.sock
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'connect',
+  address: '/tmp/vscode-ipc-32bdb0bc-a702-4b55-a874-33aab2674ae7.sock'
+}

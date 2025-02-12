@@ -7,15 +7,23 @@ print("##### Start training for NER... ######")
 folder = "./scripts/train/config/ner/"
 configs = os.listdir(folder)
 
-folder_path = "./data/synthetic/annotated/annotation/"
+folder_path = "./data/helsearkiv/annotated/entity/"
 
-files = [
-    folder_path + f + "/admin.tsv"
+entity_files = [
+    folder_path + f
     for f in os.listdir(folder_path)
-    if os.path.isfile(os.path.join(folder_path, f, "admin.tsv"))
+    if os.path.isfile(os.path.join(folder_path, f))
 ]
 
-manager = DatasetManager(files)
+folder_path = "./data/helsearkiv/annotated/relation/"
+
+relation_files = [
+    folder_path + f
+    for f in os.listdir(folder_path)
+    if os.path.isfile(os.path.join(folder_path, f))
+]
+
+manager = DatasetManager(entity_files, relation_files)
 
 for i, conf in enumerate(configs):
     print(f"###### ({i}) Training for configuration file: {conf}")

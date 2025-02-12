@@ -18,7 +18,9 @@ class Relation:
 
     def __str__(self):
         return f"""
-            with node Y: {self.y.value} - {self.y.type}
+            Relation:
+            Node X: {self.x.value} - {self.x.type}
+            Node Y: {self.y.value} - {self.y.type}
             TR_TLINK: {self.tr}, Probability: {self.prob}
         """
 

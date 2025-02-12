@@ -108,8 +108,16 @@ class Preprocess:
         
         for row in data:
             if task == Task.TOKEN:
-                words = [val[0] for val in row]
-                annot = [val[1] for val in row]
+                temp_words = row['Text'].tolist()
+                temp_annot = row['MedicalEntity'].tolist()
+                
+                words = []
+                annot = []
+                for i, word in enumerate(temp_words):
+                    for token in str(word).split():
+                        words.append(token)
+                        annot.append(temp_annot[i])
+                    
                 split_into_words = True
             else:
                 words = row["sentence"] 
