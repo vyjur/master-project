@@ -1,0 +1,35 @@
+Spawning shell within /cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12
+Installing dependencies from lock file
+
+No dependencies to install or update
+
+Installing the current project: master-project (0.1.0)
+### Processing the files:
+### Without more rules
+              precision    recall  f1-score   support
+
+        DATE       1.00      0.56      0.71      3470
+    DURATION       0.37      0.47      0.42        76
+   FREQUENCY       0.00      0.00      0.00        60
+           O       0.00      0.00      0.00         0
+         SET       0.00      0.00      0.00         0
+        TIME       0.00      0.00      0.00       144
+
+    accuracy                           0.52      3750
+   macro avg       0.23      0.17      0.19      3750
+weighted avg       0.93      0.52      0.67      3750
+
+### With handcrafted rules
+              precision    recall  f1-score   support
+
+        DATE       1.00      0.81      0.89      3470
+    DURATION       0.37      0.55      0.44        76
+   FREQUENCY       0.00      0.00      0.00        60
+           O       0.00      0.00      0.00         0
+         SET       0.00      0.00      0.00         0
+        TIME       0.00      0.00      0.00       144
+
+    accuracy                           0.76      3750
+   macro avg       0.23      0.23      0.22      3750
+weighted avg       0.93      0.76      0.84      3750
+

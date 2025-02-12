@@ -10,14 +10,24 @@ TRE_TYPE = "tlink"
 
 folder = f"./scripts/train/config/tre/{TRE_TYPE}/"
 configs = os.listdir(folder)
-folder_path = "./data/synthetic/annotated/annotation/"
 
-files = [
-    folder_path + f + "/admin.tsv"
+folder_path = "./data/helsearkiv/annotated/entity/"
+
+entity_files = [
+    folder_path + f
     for f in os.listdir(folder_path)
-    if os.path.isfile(os.path.join(folder_path, f, "admin.tsv"))
+    if os.path.isfile(os.path.join(folder_path, f))
 ]
-manager = DatasetManager(files)
+
+folder_path = "./data/helsearkiv/annotated/relation/"
+
+relation_files = [
+    folder_path + f
+    for f in os.listdir(folder_path)
+    if os.path.isfile(os.path.join(folder_path, f))
+]
+
+manager = DatasetManager(entity_files, relation_files)
 
 for i, conf in enumerate(configs):
     if os.path.isdir(folder + conf):

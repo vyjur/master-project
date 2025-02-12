@@ -20,7 +20,7 @@ import wandb
 from structure.enum import Task
 
 
-class BERT:
+class BERT(nn.Module):
     def __init__(
         self,
         task: Task,
@@ -33,11 +33,15 @@ class BERT:
         project_name: str | None = None,
         pretrain: str | None = None,
     ):
+        super(BERT, self).__init__()
+
         self.__device = "cuda:0" if cuda.is_available() else "cpu"
         
         if self.__device != "cpu":
             torch.cuda.set_device(self.__device)      
         print("Using:", self.__device, "with BERT")
+        
+        self.device = self.__device
 
         self.tokenizer = tokenizer
         self.__task = task
@@ -45,17 +49,17 @@ class BERT:
         if load:
             if task == Task.TOKEN:
                 self.__model = AutoModelForTokenClassification.from_pretrained(
-                    save, trust_remote_code=True
+                    save, trust_remote_code=True, device_map=self.__device
                 )
                 self.tokenizer = AutoTokenizer.from_pretrained(
-                    save, trust_remote_code=True
+                    save, trust_remote_code=True, device_map=self.__device
                 )
             else:
                 self.__model = AutoModelForSequenceClassification.from_pretrained(
-                    save, trust_remote_code=True
+                    save, trust_remote_code=True, device_map=self.__device
                 )
                 self.tokenizer = AutoTokenizer.from_pretrained(
-                    save, trust_remote_code=True
+                    save, trust_remote_code=True, device_map=self.__device
                 )
 
             print("Model and tokenizer loaded successfully.")
@@ -95,20 +99,7 @@ class BERT:
             testing_loader = DataLoader(processed["test"], **test_params)
 
             num_training_steps = len(training_loader)
-
-            if len(processed['id2label']) != len(class_weights):
-                # Original dictionary
-                # Remove the key-value pair with key 0
-                processed['id2label'].pop(0)
-
-                # Update the keys to reduce them by 1
-                processed['id2label'] = {key - 1: value for key, value in processed['id2label'].items()}
-                
-                del processed['label2id']['O']
-                for tag in processed["label2id"]:
-                    processed['label2id'][tag] -= 1  
-                    
-
+            
             if task == Task.TOKEN:
                 self.__model = AutoModelForTokenClassification.from_pretrained(
                     pretrain,
@@ -203,11 +194,14 @@ class BERT:
             )
             if self.__task == Task.TOKEN:
                 pred = torch.argmax(outputs.logits, dim=2)
+                prob = nn.functional.log_softmax(outputs.logits, dim=-1)
+                max_log_prob, _ = torch.max(prob, dim=-1)
+                total_log_prob = max_log_prob.sum(dim=1)
+                prob = total_log_prob/len(pred)
             else:
                 pred = torch.argmax(outputs.logits, dim=1).tolist()
-                prob = [max(all_prob) for all_prob in nn.functional.softmax(outputs.logits, dim=-1)]
-                return pred, prob
-        return pred
+                prob = [max(all_prob) for all_prob in nn.functional.log_softmax(outputs.logits, dim=-1)]
+        return pred, prob
 
     def __train(
         self,
@@ -355,3 +349,6 @@ class BERT:
         print(f"Validation Accuracy: {eval_accuracy}")
 
         return labels, predictions
+
+    def forward(self, x):
+        return self.__model(x)

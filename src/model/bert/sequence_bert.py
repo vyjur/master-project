@@ -1,3 +1,4 @@
+import torch.nn as nn
 from model.base.bert import BERT
 from structure.enum import Task
 
@@ -5,7 +6,7 @@ from structure.enum import Task
 TASK = Task.SEQUENCE
 
 
-class SequenceBERT:
+class SequenceBERT(nn.Module):
     def __init__(
         self,
         load: bool,
@@ -17,6 +18,8 @@ class SequenceBERT:
         project_name: str | None = None,
         pretrain: str | None = None,
     ):
+        super(SequenceBERT, self).__init__()
+
         self.__bert = BERT(
             TASK,
             load,
@@ -32,3 +35,6 @@ class SequenceBERT:
 
     def predict(self, data, pipeline=False):
         return self.__bert.predict(data, pipeline)
+
+    def forward(self, x):
+        return self.predict(x)
