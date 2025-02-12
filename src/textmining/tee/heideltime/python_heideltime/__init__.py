@@ -1,0 +1,2 @@
+from textmining.tee.heideltime.python_heideltime import Heideltime
+from textmining.tee.heideltime.python_heideltime.config_Heideltime import Heideltime_path
