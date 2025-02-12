@@ -22,7 +22,7 @@ weighted avg       0.93      0.52      0.67      3750
 ### With handcrafted rules
               precision    recall  f1-score   support
 
-        DATE       0.99      0.81      0.89      3470
+        DATE       1.00      0.81      0.89      3470
     DURATION       0.37      0.55      0.44        76
    FREQUENCY       0.00      0.00      0.00        60
            O       0.00      0.00      0.00         0
