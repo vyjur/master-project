@@ -57,11 +57,12 @@ class Model(BaseModel):
         # Do the forward algorithm to compute the partition function
         init_alphas = torch.full((1, self.tagset_size), -10000.0).to(self.device)
         # START_TAG has all of the score.
+        # Setting -10000.0 for all states except START_TAG ensures that the model only starts at START_TAG.
         init_alphas[0][self.tag_to_ix[START_TAG]] = 0.0
 
         # Wrap in a variable so that we will get automatic backprop
         forward_var = init_alphas
-
+        
         # Iterate through the sentence
         for feat in feats:
             alphas_t = []  # The forward tensors at this timestep
@@ -160,22 +161,18 @@ class Model(BaseModel):
         lstm_feats = self.hidden2tag(lstm_out)
         return lstm_feats
 
-    def forward(self, sentence):  # dont confuse this with _forward_alg above.
+    def forward(self, sentences):  # dont confuse this with _forward_alg above.
         # Get the emissiwn scores from the BiLSTM
-        lstm_feats = self._get_lstm_features(sentence)
+        lstm_feats = self._get_lstm_features(sentences)
         
-        sum_score = self._forward_alg(lstm_feats)
+        sum_score = torch.tensor([self._forward_alg(lstm_feat) for lstm_feat in lstm_feats]).to(self.device)
 
         # Find the best path, given the features.
         result = [self._viterbi_decode(lstm_feat) for lstm_feat in lstm_feats]
         score = torch.tensor([res[0] for res in result]).to(self.device)
         tag_seq = [res[1] for res in result]
         
-        prob = (score - sum_score)/len(score)
-        
-        print("TAG", tag_seq)
-        print("SCORE", score)
-        print("prob", prob)
+        prob = torch.sum(torch.exp(score-sum_score))/len(sentences)
         return torch.tensor(tag_seq).to(self.device), prob
 
 

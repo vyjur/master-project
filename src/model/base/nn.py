@@ -175,7 +175,7 @@ class NN(nn.Module):
             if self.__task == Task.TOKEN:
                 loss = self.__model.neg_log_likelihood(ids, targets)
                 with torch.no_grad():
-                    outputs = self.__model(ids)
+                    outputs, _ = self.__model(ids)
                     predictions = outputs.view(-1).cpu().numpy()
                     flattened_targets = targets.view(-1).cpu().numpy()
             else:

@@ -1,8 +1,11 @@
 import os
-from structure.enum import Dataset
+from textmining.ner.setup import NERecognition
 from preprocess.dataset import DatasetManager
-from sklearn.metrics import classification_report
-from textmining.tee.setup import TEExtract
+
+print("##### Start training for NER... ######")
+
+folder = "./scripts/train/config/ner/"
+configs = os.listdir(folder)
 
 folder_path = "./data/helsearkiv/annotated/entity/"
 
@@ -18,50 +21,20 @@ relation_files = [
     folder_path + f
     for f in os.listdir(folder_path)
     if os.path.isfile(os.path.join(folder_path, f))
-
 ]
 
-tee = TEExtract(rules=False)
-tee.set_dct('2025-02-10')
-    
-manager = DatasetManager(entity_files, relation_files, False)
+manager = DatasetManager(entity_files, relation_files)
 
-dataset = manager.get(Dataset.TEE)
+for i, conf in enumerate(configs):
+    print(f"###### ({i}) Training for configuration file: {conf}")
+    if os.path.isdir(folder + conf):
+        continue
+    save_directory = "./models/ner/" + conf.replace(".ini", "")
+    ner = NERecognition(
+        config_file=folder + conf,
+        manager=manager,
+        save_directory=save_directory,
+    )
+    print("Finished with this task.")
 
-print("### Without more rules")
-
-target = []
-pred = []
-for i, data in dataset.iterrows():
-    output = tee.run(data['Text'])
-    try:
-        if not output.empty:
-            pred.append(output["type"].values[0])
-            target.append(data['TIMEX'].replace('DCT', 'DATE'))
-        else:
-            pred.append("O")
-            target.append(data['TIMEX'].replace('DCT', 'DATE'))
-    except:
-        pass
-
-print(classification_report(target, pred))
-
-print("### With handcrafted rules")
-tee = TEExtract(rules=True)
-tee.set_dct('2025-02-10')
-
-target = []
-pred = []
-for i, data in dataset.iterrows():
-    output = tee.run(data['Text'])
-    try:
-        if not output.empty:
-            pred.append(output["type"].values[0])
-            target.append(data['TIMEX'].replace('DCT', 'DATE'))
-        else:
-            pred.append("O")
-            target.append(data['TIMEX'].replace('DCT', 'DATE'))
-    except:
-        pass
-
-print(classification_report(target, pred))
+print("Process finished!")

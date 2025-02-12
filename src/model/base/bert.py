@@ -49,17 +49,17 @@ class BERT(nn.Module):
         if load:
             if task == Task.TOKEN:
                 self.__model = AutoModelForTokenClassification.from_pretrained(
-                    save, trust_remote_code=True, device_map="auto"
+                    save, trust_remote_code=True, device_map=self.__device
                 )
                 self.tokenizer = AutoTokenizer.from_pretrained(
-                    save, trust_remote_code=True, device_map="auto"
+                    save, trust_remote_code=True, device_map=self.__device
                 )
             else:
                 self.__model = AutoModelForSequenceClassification.from_pretrained(
-                    save, trust_remote_code=True, device_map="auto"
+                    save, trust_remote_code=True, device_map=self.__device
                 )
                 self.tokenizer = AutoTokenizer.from_pretrained(
-                    save, trust_remote_code=True, device_map="auto"
+                    save, trust_remote_code=True, device_map=self.__device
                 )
 
             print("Model and tokenizer loaded successfully.")
