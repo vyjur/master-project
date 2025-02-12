@@ -49,11 +49,11 @@ sed -i "s~$original_str~$treetagger_dir~" config.props
 # alter config file for python_heideltime
 cd ../../python_heideltime
 rm config_Heideltime.py
-wget --no-verbose https://raw.githubusercontent.com/PhilipEHausner/python_heideltime/master/python_heideltime/config_Heideltime.py
+wget --no-verbose -O config_heideltime.py https://raw.githubusercontent.com/PhilipEHausner/python_heideltime/master/python_heideltime/config_Heideltime.py
 
 original_str="Heideltime_path = '/path/to/heideltime/'"
 replace_str="Heideltime_path = '$heideltime_dir'"
-sed -i "s~$original_str~$replace_str~" config_Heideltime.py
+sed -i "s~$original_str~$replace_str~" config_heideltime.py
 
 cp heideltime-standalone/treetagger/lib/norwegian.par heideltime-standalone/treetagger/lib/auto-norwegian.par 
 cp heideltime-standalone/treetagger/lib/auto-norwegian-abbreviations heideltime-standalone/treetagger/lib/auto-norwegian-abbreviations
