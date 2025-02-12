@@ -1,4 +1,4 @@
-from textmining.tee.heideltime.python_heideltime.python_heideltime import Heideltime
+from textmining.tee.heideltime.python_heideltime.main import Heideltime
 from textmining.tee.rules import *
 import xml.etree.ElementTree as ET
 from preprocess.dataset import DatasetManager
