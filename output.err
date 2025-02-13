@@ -1,2 +1,3 @@
 
 (25, 'Inappropriate ioctl for device')
+slurmstepd: error: *** JOB 21146583 ON idun-04-36 CANCELLED AT 2025-02-13T07:49:28 ***
