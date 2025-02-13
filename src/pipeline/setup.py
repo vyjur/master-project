@@ -132,6 +132,7 @@ class Pipeline:
                         .strip()
                     )
 
+                    # TODO: SCHEMA
                     entype = ner_output[i][int[0]].replace("B-", "").replace("I-", "")
                     if len(entity) == 0 or entype == "O":
                         continue

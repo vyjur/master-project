@@ -93,6 +93,7 @@ for page in sorted_data[:1200]:
     
     cleaned = re.sub(r"[\"'“”‘’]", "", text)
     cleaned = cleaned.replace("Ä", "Æ")
+    cleaned = cleaned.replace("Ö", "Ø")
 
     preoutput = preprocess.run(cleaned)
     output = ner.run(preoutput)
