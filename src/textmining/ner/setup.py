@@ -6,7 +6,7 @@ from preprocess.dataset import DatasetManager
 from model.map import MODEL_MAP
 from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
-from structure.enum import Dataset, Task, ME
+from structure.enum import Dataset, Task, ME, NER_SCHEMA
 
 
 class NERecognition:
@@ -23,6 +23,14 @@ class NERecognition:
         print("LOAD", load)
         
         dataset = []
+        
+        self.schema = self.__config["MODEL"]["schema"]
+        
+        for sch in NER_SCHEMA:
+            if self.schema == sch.name:
+                self.schema = sch
+                break
+        
         if load:
             tags = [cat.name for cat in ME]   
         else:
@@ -31,7 +39,8 @@ class NERecognition:
             tags = dataset['MedicalEntity'].unique()
             dataset = [dataset]
             tags = list(tags)
-        self.label2id, self.id2label = Util().get_tags(Task.TOKEN, tags)
+            
+        self.label2id, self.id2label = Util().get_tags(Task.TOKEN, tags, self.schema)
 
         self.tokenizer = AutoTokenizer.from_pretrained(
             self.__config["pretrain"]["name"]
@@ -48,9 +57,16 @@ class NERecognition:
             "learning_rate": self.__config.getfloat(
                 "train.parameters", "learning_rate"
             ),
+            "optimizer": self.__config["train.parameters"]["optimizer"],
+            "weight_decay": self.__config.getfloat("train.parameters", "weight_decay"),
+            "early_stopping_patience": self.__config.getint("train.parameters", "early_stopping_patience"),
+            "early_stopping_delta": self.__config.getfloat("train.parameters", "early_stopping_delta"),
+            "embedding_dim": self.__config.getint("train.parameters", "embedding_dim"),
             "shuffle": self.__config.getboolean("train.parameters", "shuffle"),
             "num_workers": self.__config.getint("train.parameters", "num_workers"),
             "max_length": self.__config.getint("MODEL", "max_length"),
+            "tune": self.__config.getboolean("tuning", "tune"),
+            "tune_count": self.__config.getint("tuning", "count") 
         }
 
         self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](

@@ -1,0 +1,33 @@
+Spawning shell within /cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12
+Installing dependencies from lock file
+
+No dependencies to install or update
+
+Installing the current project: master-project (0.1.0)
+### Processing the files:
+##### Check NER... ######
+LOAD False
+Using: cuda:0 with NN
+HEI: 1
+dataset: 100, train: 80, test: 20
+train: 64, val: 16, test: 20
+##### Check TEE... ######
+LOAD False
+Using: cuda:0 with NN
+HEI: 135
+dataset: 297, train: 237, test: 60
+train: 189, val: 48, test: 60
+##### Check DTR... ######
+LOAD False
+Using: cuda:0 with NN
+HEI: 296
+dataset: 627, train: 501, test: 126
+train: 400, val: 101, test: 126
+
+##### Check TLINK... ######
+LOAD False
+Using: cuda:0 with NN
+HEI: 179
+dataset: 700, train: 560, test: 140
+train: 448, val: 112, test: 140
+

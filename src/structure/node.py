@@ -1,6 +1,6 @@
 import itertools
 from datetime import datetime
-from structure.enum import ME, TR_DCT, TIMEX
+from structure.enum import ME, DocTimeRel, TIMEX
 
 
 class Node:
@@ -37,6 +37,6 @@ class Node:
         return text
     
     def set_dct(self, cat):
-        for tr in TR_DCT:
+        for tr in DocTimeRel:
             if cat == tr.name:
                 self.dct = tr
