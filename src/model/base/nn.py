@@ -10,6 +10,36 @@ from model.util import Util
 from structure.enum import Task
 import wandb
 
+# TODO: Move this out to a config file wandb hyperparameter tune
+sweep_config = {"method": "grid"}
+
+metric = {"name": "val_loss", "goal": "minimize"}
+
+parameters_dict = {
+    "epochs": {"value": 100},
+    "optimizer": {"values": ["adam", "sgd"]},  # Correct way to define discrete choices
+    "learning_rate": {
+        "values": [0.0001, 0.001, 0.01, 0.1]  # Grid search over specific learning rates
+    },
+    "batch_size": {"values": [32, 64, 128, 256]},
+    "weight_decay": {
+        "values": [0, 1e-5, 1e-4, 1e-3, 1e-2]  # Grid search over weight decay values
+    },
+    "early_stopping_patience": {
+        "values": [3, 5, 10]  # Grid search over patience values
+    },
+    "early_stopping_delta": {
+        "values": [0.01, 0.001, 0.0005, 0.0001]  # Grid search over delta values
+    },
+    "max_length": {"values": [64, 128, 256, 512]},
+    "embedding_dim": {
+        "values": [32, 64, 128, 256, 512]  # Grid search over embedding dimensions
+    },
+}
+
+sweep_config["metric"] = metric
+sweep_config["parameters"] = parameters_dict
+
 START_TAG = "<START>"
 STOP_TAG = "<STOP>"
 
@@ -33,27 +63,33 @@ class NN(nn.Module):
 
         if self.__device != "cpu":
             torch.cuda.set_device(self.__device)
-            
+
         self.device = self.__device
 
         print("Using:", self.__device, "with NN")
 
         self.tokenizer = tokenizer
         self.__task = task
+        self.__base_model = model
+        self.__save = save
 
-        # TODO:
-        # embedding_dim = self.tokenizer.model_max_length
-        embedding_dim = 300
-        
+        self.__project_name = project_name
+
+        embedding_dim = parameters["embedding_dim"]
+
+        self.__processed = {}
+
         if not load:
-            processed = Preprocess(
+            self.__processed = Preprocess(
                 self.tokenizer, parameters["max_length"]
             ).run_train_test_split(task, dataset, tags_name)
-            class_weights = Util().class_weights(task, processed["dataset"], self.__device)
+            self.__class_weights = Util().class_weights(
+                task, self.__processed["dataset"], self.__device
+            )
 
-            tag_to_ix = processed["label2id"]
-            processed["label2id"] = tag_to_ix
-            ix_to_tag=processed["id2label"]
+            tag_to_ix = self.__processed["label2id"]
+            self.__processed["label2id"] = tag_to_ix
+            ix_to_tag = self.__processed["id2label"]
 
         else:
             tag_to_ix, ix_to_tag = Util().get_tags(task, tags_name)
@@ -65,85 +101,137 @@ class NN(nn.Module):
             tag_to_ix[START_TAG] = START_ID
             tag_to_ix[STOP_TAG] = STOP_ID
 
-        vocab_size = self.tokenizer.vocab_size  # type: ignore
+        self.__processed["label2id"] = tag_to_ix
+        self.__processed["id2label"] = ix_to_tag
+
+        self.__vocab_size = self.tokenizer.vocab_size  # type: ignore
         hidden_dim = parameters["max_length"]
 
         if load:
-            self.__model = model(1, vocab_size, tag_to_ix, embedding_dim, hidden_dim)
+            self.__model = model(
+                1, self.__vocab_size, tag_to_ix, embedding_dim, hidden_dim
+            )
             self.__model.load_state_dict(
                 torch.load(save + "/model.pth", weights_only=False)
             )
         else:
-            wandb.init(project=f"{project_name}-{task}-nn-model".replace('"', ""))  # type: ignore
-            wandb.config = {
-                "learning_rate": parameters["learning_rate"],
-                "epochs": parameters["epochs"],
-                "batch_size": parameters["train_batch_size"],
-                "evaluation_strategy": "epoch",
-                "save_strategy": "epoch",
-                "logging_strategy": "epoch",
-            }
+            tune = parameters["tune"]
+            if tune:
+                sweep_config["parameters"]["valid_batch_size"] = {
+                    "value": parameters["valid_batch_size"]
+                }
+                sweep_config["parameters"]["shuffle"] = {"value": parameters["shuffle"]}
+                sweep_config["parameters"]["num_workers"] = {
+                    "value": parameters["num_workers"]
+                }
+                sweep_id = wandb.sweep(
+                    sweep_config,
+                    project=f"{project_name}-{task}-nn-model".replace('"', ""),
+                )
+                wandb.agent(sweep_id, self.train, count=parameters["tune_count"])
+            else:
+                wandb.config = {
+                    "learning_rate": parameters["learning_rate"],
+                    "epochs": parameters["epochs"],
+                    "batch_size": parameters["train_batch_size"],
+                    "valid_batch_size": parameters["valid_batch_size"],
+                    "learning_rate": parameters["learning_rate"],
+                    "optimizer": parameters["optimizer"],
+                    "weight_decay": parameters["weight_decay"],
+                    "early_stopping_patience": parameters["early_stopping_patience"],
+                    "early_stopping_delta": parameters["early_stopping_delta"],
+                    "embedding_dim": parameters["embedding_dim"],
+                    "max_length": parameters["max_length"],
+                    "shuffle": parameters["shuffle"],
+                    "num_workers": parameters["num_workers"],
+                    "evaluation_strategy": "epoch",
+                    "save_strategy": "epoch",
+                    "logging_strategy": "epoch",
+                    "tune": tune,
+                }
+                self.train(wandb.config)
+
+    def train(self, config=None):
+
+        with wandb.init(project=f"{self.__project_name}-{self.__task}-nn-model".replace('"', "")):  # type: ignore
+
+            if config is None:
+                config = wandb.config
+
+            print(config)
 
             train_params = {
-                "batch_size": parameters["train_batch_size"],
-                "shuffle": parameters["shuffle"],
-                "num_workers":parameters["num_workers"] ,
+                "batch_size": config["batch_size"],
+                "shuffle": config["shuffle"],
+                "num_workers": config["num_workers"],
             }
 
             test_params = {
-                "batch_size": parameters["valid_batch_size"],
-                "shuffle": parameters["shuffle"],
-                "num_workers": parameters["num_workers"],
+                "batch_size": config["valid_batch_size"],
+                "shuffle": config["shuffle"],
+                "num_workers": config["num_workers"],
             }
 
-            training_loader = DataLoader(processed["train"], **train_params)
-            valid_loader = DataLoader(processed["valid"], **test_params)
-            testing_loader = DataLoader(processed["test"], **test_params)
+            training_loader = DataLoader(self.__processed["train"], **train_params)
+            valid_loader = DataLoader(self.__processed["valid"], **test_params)
+            testing_loader = DataLoader(self.__processed["test"], **test_params)
 
-            self.__model = model(
-                parameters["train_batch_size"],
-                vocab_size,
-                tag_to_ix,
-                embedding_dim,
-                hidden_dim,
+            self.__model = self.__base_model(
+                config["batch_size"],
+                self.__vocab_size,
+                self.__processed["label2id"],
+                config["embedding_dim"],
+                config["max_length"],
             ).to(self.__device)
 
-            self.__model.num_labels = len(processed["id2label"])
+            self.__model.num_labels = len(self.__processed["id2label"])
 
-            loss_fn = nn.CrossEntropyLoss(weight=class_weights)
+            loss_fn = nn.CrossEntropyLoss(weight=self.__class_weights)
             optimizer = torch.optim.Adam(  # type: ignore
                 self.__model.parameters(),
-                lr=parameters["learning_rate"],
+                lr=config["learning_rate"],
                 weight_decay=1e-4,
             )
 
             early_stopping = EarlyStopping(patience=5, delta=0.01)
-            for t in range(parameters["epochs"]):
+            for t in range(config["epochs"]):
                 print(f"Epoch {t + 1}\n-------------------------------")
-                loss, acc = self.__train(training_loader, loss_fn, optimizer)
-                wandb.log({"loss": loss, "accuracy": acc})  # type: ignore
-                early_stopping(loss, self.__model)
+                train_loss, train_acc = self.__train(
+                    training_loader, loss_fn, optimizer
+                )
+                val_loss, val_acc = self.__valid(
+                    valid_loader, loss_fn, self.__processed["id2label"]
+                )
+                wandb.log(
+                    {
+                        "train_loss": train_loss,
+                        "train_accuracy": train_acc,
+                        "val_loss": val_loss,
+                        "val_acc": val_acc,
+                    }
+                )  # type: ignore
+                early_stopping(val_loss, self.__model)
                 if early_stopping.early_stop:
                     print("Early stopping")
                     break
-            
+
             print("### Valid set performance:")
             labels, predictions = self.__valid(
-                valid_loader, self.__device, processed["id2label"]
+                valid_loader, loss_fn, self.__processed["id2label"], True
             )
             Util().validate_report(labels, predictions)
-
 
             print("### Test set performance:")
             labels, predictions = self.__valid(
-                testing_loader, self.__device, processed["id2label"]
+                testing_loader, loss_fn, self.__processed["id2label"], True
             )
             Util().validate_report(labels, predictions)
 
-            if not os.path.exists(save):
-                os.makedirs(save)
-            torch.save(self.__model.state_dict(), save + "/model.pth")
-            wandb.finish()
+            # If tune don't save else too many models heavy
+            if not config["tune"]:
+                if not os.path.exists(self.__save):
+                    os.makedirs(self.__save)
+                torch.save(self.__model.state_dict(), self.__save + "/model.pth")
 
     def predict(self, data, pipeline=False):
         data_tensor = torch.tensor(data, dtype=torch.long).to(self.__device)
@@ -155,7 +243,9 @@ class NN(nn.Module):
             pred = torch.argmax(outputs, axis=1).tolist()  # type: ignore
             prob = [
                 max(all_prob)  # type: ignore
-                for all_prob in nn.functional.log_softmax(outputs, dim=-1)  # type:ignore
+                for all_prob in nn.functional.log_softmax(
+                    outputs, dim=-1
+                )  # type:ignore
             ]
 
             return pred, prob  # type: ignore
@@ -163,35 +253,33 @@ class NN(nn.Module):
     def __train(self, training_loader, loss_fn, optimizer):
         self.__model.train()
         tr_loss = 0
-        
-        all_preds, all_targets = [], [] 
+
+        all_preds, all_targets = [], []
         for idx, batch in enumerate(training_loader):
             ids = batch["ids"].to(self.__device, dtype=torch.long)
             targets = batch["targets"].to(self.__device, dtype=torch.long)
             self.__model.batch = ids.shape[0]
 
+            flattened_targets = targets.view(-1).cpu().numpy()
+
             optimizer.zero_grad()
 
             if self.__task == Task.TOKEN:
+                outputs, _ = self.__model(ids)
                 loss = self.__model.neg_log_likelihood(ids, targets)
-                with torch.no_grad():
-                    outputs, _ = self.__model(ids)
-                    predictions = outputs.view(-1).cpu().numpy()
-                    flattened_targets = targets.view(-1).cpu().numpy()
+                predictions = outputs.view(-1).cpu().numpy()
             else:
                 outputs = self.__model(ids)
-                flattened_targets = targets.view(-1).cpu().numpy()
                 loss = loss_fn(outputs, targets.view(-1))
-                with torch.no_grad():
-                    predictions = torch.argmax(outputs, dim=1).cpu().numpy()
-            
+                predictions = torch.argmax(outputs, dim=1).cpu().numpy()
+
             all_preds.extend(predictions)
             all_targets.extend(flattened_targets)
             tr_loss += loss.item()
-        
+
             loss.backward()
             optimizer.step()
-            
+
             if idx % 100 == 0:
                 print(f"Batch {idx}, Loss: {loss.item()}")
 
@@ -199,53 +287,44 @@ class NN(nn.Module):
 
         return tr_loss, acc
 
-    def __valid(self, testing_loader, device, id2label):
+    def __valid(self, testing_loader, loss_fn, id2label, end=False):
         # put model in evaluation mode
         self.__model.eval()
 
-        _, eval_accuracy = 0, 0
-        nb_eval_examples, nb_eval_steps = 0, 0
-        eval_preds, eval_labels = [], []
+        eval_loss = 0
+        all_preds, all_targets = [], []
 
         with torch.no_grad():
             for _, batch in enumerate(testing_loader):
-                ids = batch["ids"].to(device, dtype=torch.long)
-                # mask = batch['mask'].to(device, dtype = torch.long)
-                targets = batch["targets"].to(device, dtype=torch.long)
+                ids = batch["ids"].to(self.__device, dtype=torch.long)
+                targets = batch["targets"].to(self.__device, dtype=torch.long)
                 self.__model.batch = ids.shape[0]
-                outputs = self.__model(ids)
 
-                nb_eval_steps += 1
-                nb_eval_examples += targets.size(0)
+                if self.__task == Task.TOKEN:
+                    outputs, _ = self.__model(ids)
+                    loss = self.__model.neg_log_likelihood(ids, targets)
+                    predictions = outputs.view(-1).cpu().numpy()
+                else:
+                    outputs = self.__model(ids)
+                    loss = loss_fn(outputs, targets.view(-1))
+                    predictions = torch.argmax(outputs, dim=1).cpu().numpy()
 
-                # compute evaluation accuracy
-                flattened_targets = targets.view(-1)  # shape (batch_size * seq_len,)
-                flattened_predictions = outputs.view(
-                    -1
-                )  # shape (batch_size * seq_len,)
+                flattened_targets = targets.view(-1).cpu().numpy()
+                all_preds.extend(predictions)
+                all_targets.extend(flattened_targets)
+                eval_loss += loss.item()
 
-                if self.__task != Task.TOKEN:
-                    flattened_predictions = torch.argmax(
-                        outputs,
-                        axis=1,  # type: ignore
-                    )  # shape (batch_size * seq_len,)
+        acc = accuracy_score(all_targets, all_preds)
 
-                # now, use mask to determine where we should compare predictions with targets (includes [CLS] and [SEP] token predictions)
-                eval_labels.extend(flattened_targets.tolist())
-                eval_preds.extend(flattened_predictions.tolist())
+        if end:
+            labels = [id2label[id] for id in all_targets]
+            predictions = [id2label[id] for id in all_preds]
 
-                tmp_eval_accuracy = accuracy_score(
-                    flattened_targets.cpu().numpy(), flattened_predictions.cpu().numpy()
-                )
-                eval_accuracy += tmp_eval_accuracy
+            print(f"Validation Accuracy: {acc}")
 
-        labels = [id2label[id] for id in eval_labels]
-        predictions = [id2label[id] for id in eval_preds]
+            return labels, predictions
 
-        eval_accuracy = eval_accuracy / nb_eval_steps
-        print(f"Validation Accuracy: {eval_accuracy}")
-
-        return labels, predictions
+        return eval_loss, acc
 
     def forward(self, x):
         self.__model.batch = x.shape[0]

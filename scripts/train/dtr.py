@@ -6,7 +6,7 @@ from structure.enum import Dataset
 print("##### Start training for TRE... ######")
 
 # Info: Change here
-TRE_TYPE = "dct"
+TRE_TYPE = "dtr"
 
 folder = f"./scripts/train/config/tre/{TRE_TYPE}/"
 configs = os.listdir(folder)
@@ -38,7 +38,7 @@ for i, conf in enumerate(configs):
         config_file=folder + conf,
         manager=manager,
         save_directory=save_directory,
-        task=Dataset.TRE_DCT
+        task=Dataset.DTR
     )
     print("Finished with this task.")
 

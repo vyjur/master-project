@@ -3,7 +3,7 @@ from pyvis.network import Network
 import plotly
 import plotly.express as px
 import pandas as pd
-from structure.enum import ME, TR_TLINK, TIMEX
+from structure.enum import ME, TLINK, TIMEX
 
 class Timeline:
     def __init__(self, config=None, offset=3):

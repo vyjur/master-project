@@ -38,7 +38,7 @@ for i, conf in enumerate(configs):
         config_file=folder + conf,
         manager=manager,
         save_directory=save_directory,
-        task=Dataset.TRE_TLINK
+        task=Dataset.TLINK
     )
     print("Finished with this task.")
 

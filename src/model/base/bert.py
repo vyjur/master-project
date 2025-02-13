@@ -20,6 +20,34 @@ import wandb
 from structure.enum import Task
 
 
+# TODO: Move this out to a config file wandb hyperparameter tune
+sweep_config = {"method": "grid"}
+
+metric = {"name": "val_loss", "goal": "minimize"}
+
+parameters_dict = {
+    "epochs": {"value": 100},
+    "optimizer": {"values": ["adam", "sgd"]},  # Correct way to define discrete choices
+    "learning_rate": {
+        "values": [0.0001, 0.001, 0.01, 0.1]  # Grid search over specific learning rates
+    },
+    "batch_size": {"values": [32, 64, 128, 256]},
+    "weight_decay": {
+        "values": [0, 1e-5, 1e-4, 1e-3, 1e-2]  # Grid search over weight decay values
+    },
+    "early_stopping_patience": {
+        "values": [3, 5, 10]  # Grid search over patience values
+    },
+    "early_stopping_delta": {
+        "values": [0.01, 0.001, 0.0005, 0.0001]  # Grid search over delta values
+    },
+    "max_length": {"values": [64, 128, 256, 512]},
+}
+
+sweep_config["metric"] = metric
+sweep_config["parameters"] = parameters_dict
+
+
 class BERT(nn.Module):
     def __init__(
         self,
@@ -36,15 +64,22 @@ class BERT(nn.Module):
         super(BERT, self).__init__()
 
         self.__device = "cuda:0" if cuda.is_available() else "cpu"
-        
+
         if self.__device != "cpu":
-            torch.cuda.set_device(self.__device)      
+            torch.cuda.set_device(self.__device)
+
         print("Using:", self.__device, "with BERT")
-        
+
         self.device = self.__device
 
         self.tokenizer = tokenizer
         self.__task = task
+        self.__parameters = parameters
+        self.__pretrain = pretrain
+        self.__save = save
+        self.__dataset = dataset
+        self.__tags_name = tags_name
+        self.__project_name = project_name
 
         if load:
             if task == Task.TOKEN:
@@ -64,115 +99,52 @@ class BERT(nn.Module):
 
             print("Model and tokenizer loaded successfully.")
         else:
-            wandb.init(project=f"{project_name}-{task}-bert-model".replace('"', ""))  # type: ignore
-            wandb.config = {
-                "learning_rate": parameters["learning_rate"],
-                "epochs": parameters["epochs"],
-                "batch_size": parameters["train_batch_size"],
-                "evaluation_strategy": "epoch",
-                "save_strategy": "epoch",
-                "logging_strategy": "epoch",
-            }
 
-            processed = Preprocess(
-                self.tokenizer, parameters["max_length"]
-            ).run_train_test_split(task, dataset, tags_name)
-            class_weights = Util().class_weights(
-                task, processed["dataset"], self.__device
-            )
+            self.__processed = None
+            self.__class_weights = None
 
-            torch.cuda.empty_cache()
-            train_params = {
-                "batch_size": parameters["train_batch_size"],
-                "shuffle": parameters["shuffle"],
-                "num_workers": parameters["num_workers"],
-            }
-
-            test_params = {
-                "batch_size": parameters["valid_batch_size"],
-                "shuffle": parameters["shuffle"],
-                "num_workers": parameters["num_workers"],
-            }
-
-            training_loader = DataLoader(processed["train"], **train_params)
-            valid_loader = DataLoader(processed["valid"], **test_params)
-            testing_loader = DataLoader(processed["test"], **test_params)
-
-            num_training_steps = len(training_loader)
-            
-            if task == Task.TOKEN:
-                self.__model = AutoModelForTokenClassification.from_pretrained(
-                    pretrain,
-                    trust_remote_code=True,
-                    num_labels=len(processed["id2label"]),
-                    id2label=processed["id2label"],
-                    label2id=processed["label2id"],
+            tune = parameters["tune"]
+            if tune:
+                sweep_config['parameters']['valid_batch_size'] = {
+                    "value": parameters['valid_batch_size']
+                } 
+                sweep_config['parameters']['shuffle'] = {
+                    "value": parameters["shuffle"]
+                }
+                sweep_config['parameters']['num_workers'] = {
+                    "value": parameters["num_workers"]
+                }
+                sweep_id = wandb.sweep(
+                    sweep_config,
+                    project=f"{project_name}-{task}-bert-model".replace('"', ""),
                 )
+                wandb.agent(sweep_id, self.train, count=parameters["tune_count"])
             else:
-                self.__model = AutoModelForSequenceClassification.from_pretrained(
-                    "ltg/norbert3-xs",
-                    trust_remote_code=True,
-                    num_labels=len(processed["id2label"]),
-                    id2label=processed["id2label"],
-                    label2id=processed["label2id"],
-                )
-
-            self.__model.to(self.__device)
-
-            optimizer = torch.optim.Adam(  # type: ignore
-                params=self.__model.parameters(), lr=parameters["learning_rate"]
-            )
-            early_stopping = EarlyStopping(patience=5, delta=0.01)
-
-            lr_scheduler = get_scheduler(
-                name="linear",
-                optimizer=optimizer,
-                num_warmup_steps=0,
-                num_training_steps=num_training_steps,
-            )
-            loss_fn = nn.CrossEntropyLoss(weight=class_weights)
-
-            for epoch in range(parameters["epochs"]):
-                print(f"Training Epoch: {epoch}")
-                loss, acc = self.__train(
-                    training_loader,
-                    num_training_steps,
-                    optimizer,
-                    lr_scheduler,
-                    loss_fn,
-                )
-                wandb.log({"loss": loss, "accuracy": acc})  # type: ignore
-                early_stopping(loss, self.__model)
-                if early_stopping.early_stop:
-                    print("Early stopping")
-                    break
-
-            print("### Valid set performance:")
-            labels, predictions = self.__valid(
-                valid_loader, self.__device, processed["id2label"]
-            )
-            Util().validate_report(labels, predictions)
-
-
-            print("### Test set performance:")
-            labels, predictions = self.__valid(
-                testing_loader, self.__device, processed["id2label"]
-            )
-            Util().validate_report(labels, predictions)
-
-            # Save the model
-            if not os.path.exists(save):
-                os.makedirs(save)
-            self.__model.save_pretrained(save)
-
-            # Save the tokenizer
-            self.tokenizer.save_pretrained(save)  # type:ignore
-            wandb.finish()
+                wandb.config = {
+                    "learning_rate": parameters["learning_rate"],
+                    "epochs": parameters["epochs"],
+                    "batch_size": parameters["train_batch_size"],
+                    "valid_batch_size": parameters["valid_batch_size"],
+                    "learning_rate": parameters["learning_rate"],
+                    "optimizer": parameters["optimizer"],
+                    "weight_decay": parameters["weight_decay"],
+                    "early_stopping_patience": parameters["early_stopping_patience"],
+                    "early_stopping_delta": parameters["early_stopping_delta"],
+                    'max_length': parameters['max_length'],
+                    'shuffle': parameters['shuffle'],
+                    'num_workers': parameters['num_workers'],
+                    "evaluation_strategy": "epoch",
+                    "save_strategy": "epoch",
+                    "logging_strategy": "epoch",
+                    "tune": tune,
+                }
+                self.train(wandb.config)
 
         if task == Task.SEQUENCE:
             task_text = "text"
         else:
             task_text = "token"
+
         self.__pipeline = pipeline(
             task=f"{task_text}-classification",
             model=self.__model.to(self.__device),
@@ -180,6 +152,138 @@ class BERT(nn.Module):
             tokenizer=self.tokenizer,
             aggregation_strategy="simple",
         )
+
+    def train(self, config = None):
+        
+        with wandb.init(project=f"{self.__project_name}-{self.__task}-nn-model".replace('"', "")):  # type: ignore
+            if config is None:
+                config = wandb.config
+            
+            torch.cuda.empty_cache()
+
+            self.__processed = Preprocess(
+                self.tokenizer, config["max_length"]
+            ).run_train_test_split(self.__task, self.__dataset, self.__tags_name)
+
+            self.__class_weights = Util().class_weights(
+                self.__task, self.__processed["dataset"], self.__device
+            )
+            
+            train_params = {
+                "batch_size": config["batch_size"],
+                "shuffle": self.__parameters["shuffle"],
+                "num_workers": self.__parameters["num_workers"],
+            }
+
+            test_params = {
+                "batch_size": self.__parameters["valid_batch_size"],
+                "shuffle": self.__parameters["shuffle"],
+                "num_workers": self.__parameters["num_workers"],
+            }
+
+            training_loader = DataLoader(self.__processed["train"], **train_params)
+            valid_loader = DataLoader(self.__processed["valid"], **test_params)
+            testing_loader = DataLoader(self.__processed["test"], **test_params)
+
+            num_training_steps = len(training_loader)
+
+            if self.__task == Task.TOKEN:
+                self.__model = AutoModelForTokenClassification.from_pretrained(
+                    self.__pretrain,
+                    trust_remote_code=True,
+                    num_labels=len(self.__processed["id2label"]),
+                    id2label=self.__processed["id2label"],
+                    label2id=self.__processed["label2id"],
+                )
+            else:
+                self.__model = AutoModelForSequenceClassification.from_pretrained(
+                    "ltg/norbert3-xs",
+                    trust_remote_code=True,
+                    num_labels=len(self.__processed["id2label"]),
+                    id2label=self.__processed["id2label"],
+                    label2id=self.__processed["label2id"],
+                )
+
+            self.__model.to(self.__device)
+
+            if config["optimizer"] == "adam":
+                optimizer = torch.optim.Adam(  # type: ignore
+                    params=self.__model.parameters(),
+                    lr=config["learning_rate"],
+                    weight_decay=config["weight_decay"],
+                )
+            elif config["optimizer"] == "sgd":
+                optimizer = torch.optim.SGD(  # type: ignore
+                    params=self.__model.parameters(),
+                    lr=config["learning_rate"],
+                    weight_decay=config["weight_decay"],
+                )
+            else:
+                optimizer = None
+
+            early_stopping = EarlyStopping(
+                patience=config["early_stopping_patience"],
+                delta=config["early_stopping_delta"],
+            )
+
+            lr_scheduler = get_scheduler(
+                name="linear",
+                optimizer=optimizer,
+                num_warmup_steps=0,
+                num_training_steps=num_training_steps,
+            )
+
+            loss_fn = nn.CrossEntropyLoss(weight=self.__class_weights)
+
+            for epoch in range(config["epochs"]):
+                print(f"Training Epoch: {epoch}")
+                train_loss, train_acc = self.__train(
+                    training_loader,
+                    num_training_steps,
+                    optimizer,
+                    lr_scheduler,
+                    loss_fn,
+                )
+
+                val_loss, val_acc = self.__valid(
+                    testing_loader, loss_fn, self.__processed["id2label"]
+                )
+
+                wandb.log(
+                    {
+                        "train_loss": train_loss,
+                        "train_accuracy": train_acc,
+                        "val_loss": val_loss,
+                        "val_acc": val_acc,
+                    }
+                )  # type: ignore
+
+                early_stopping(val_loss, self.__model)
+                if early_stopping.early_stop:
+                    print("Early stopping")
+                    break
+
+            print("### Valid set performance:")
+            labels, predictions = self.__valid(
+                valid_loader, loss_fn, self.__processed["id2label"], True
+            )
+            Util().validate_report(labels, predictions)
+
+            print("### Test set performance:")
+            labels, predictions = self.__valid(
+                testing_loader, loss_fn, self.__processed["id2label"], True
+            )
+            Util().validate_report(labels, predictions)
+
+            # If tune don't save else too many models heavy
+            if not config['tune']:
+                # Save the model
+                if not os.path.exists(self.__save):
+                    os.makedirs(self.__save)
+                self.__model.save_pretrained(self.__save)
+
+                # Save the tokenizer
+                self.tokenizer.save_pretrained(self.__save)  # type:ignore
 
     def predict(self, data, pipeline=False):
         if pipeline:
@@ -197,10 +301,13 @@ class BERT(nn.Module):
                 prob = nn.functional.log_softmax(outputs.logits, dim=-1)
                 max_log_prob, _ = torch.max(prob, dim=-1)
                 total_log_prob = max_log_prob.sum(dim=1)
-                prob = total_log_prob/len(pred)
+                prob = total_log_prob / len(pred)
             else:
                 pred = torch.argmax(outputs.logits, dim=1).tolist()
-                prob = [max(all_prob) for all_prob in nn.functional.log_softmax(outputs.logits, dim=-1)]
+                prob = [
+                    max(all_prob)
+                    for all_prob in nn.functional.log_softmax(outputs.logits, dim=-1)
+                ]
         return pred, prob
 
     def __train(
@@ -222,12 +329,11 @@ class BERT(nn.Module):
             ids = batch["ids"].to(self.__device, dtype=torch.long)
             mask = batch["mask"].to(self.__device, dtype=torch.long)
             targets = batch["targets"].to(self.__device, dtype=torch.long)
-            
+
             optimizer.zero_grad()
-            
+
             outputs = self.__model(input_ids=ids, attention_mask=mask, labels=targets)
             loss, tr_logits = outputs.loss, outputs.logits
-            # tr_loss += loss.item()
 
             nb_tr_steps += 1
             nb_tr_examples += targets.size(0)
@@ -247,7 +353,7 @@ class BERT(nn.Module):
                 axis=1,  # type: ignore
             )  # shape (batch_size * seq_len,)
             # now, use mask to determine where we should compare predictions with targets (includes [CLS] and [SEP] token predictions)
-            
+
             if self.__task == Task.TOKEN:
                 active_accuracy = (
                     mask.view(-1) == 1
@@ -278,11 +384,17 @@ class BERT(nn.Module):
 
         epoch_loss = tr_loss / nb_tr_steps
         tr_accuracy = tr_accuracy / nb_tr_steps
+        acc = accuracy_score(tr_labels, tr_preds)
+
         print(f"Training loss epoch: {epoch_loss}")
         print(f"Training accuracy epoch: {tr_accuracy}")
-        return epoch_loss, accuracy_score(tr_labels, tr_preds)
 
-    def __valid(self, testing_loader, device, id2label):
+        print(f"Overall acc: {acc}")
+        print(f"Overall loss: {tr_loss}")
+
+        return tr_loss, acc
+
+    def __valid(self, testing_loader, loss_fn, id2label, end=False):
         # put model in evaluation mode
         self.__model.eval()
 
@@ -292,9 +404,9 @@ class BERT(nn.Module):
 
         with torch.no_grad():
             for idx, batch in enumerate(testing_loader):
-                ids = batch["ids"].to(device, dtype=torch.long)
-                mask = batch["mask"].to(device, dtype=torch.long)
-                targets = batch["targets"].to(device, dtype=torch.long)
+                ids = batch["ids"].to(self.__device, dtype=torch.long)
+                mask = batch["mask"].to(self.__device, dtype=torch.long)
+                targets = batch["targets"].to(self.__device, dtype=torch.long)
 
                 outputs = self.__model(
                     input_ids=ids, attention_mask=mask, labels=targets
@@ -332,8 +444,8 @@ class BERT(nn.Module):
                     targets = flattened_targets
                     predictions = flattened_predictions
 
-                eval_labels.extend(targets)
-                eval_preds.extend(predictions)
+                eval_labels.extend(targets.cpu())
+                eval_preds.extend(predictions.cpu())
 
                 tmp_eval_accuracy = accuracy_score(
                     targets.cpu().numpy(), predictions.cpu().numpy()
@@ -345,10 +457,17 @@ class BERT(nn.Module):
 
         eval_loss = eval_loss / nb_eval_steps
         eval_accuracy = eval_accuracy / nb_eval_steps
+
+        acc = accuracy_score(eval_labels, eval_preds)
+
         print(f"Validation Loss: {eval_loss}")
         print(f"Validation Accuracy: {eval_accuracy}")
+        print(f"Overall accuracy: {acc}")
+        print(f"Overall loss: {eval_loss}")
 
-        return labels, predictions
+        if end:
+            return labels, predictions
+        return eval_loss, acc
 
     def forward(self, x):
         return self.__model(x)

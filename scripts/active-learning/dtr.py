@@ -8,10 +8,10 @@ from structure.enum import Dataset
 
 BATCH = 1
 
-file = "./scripts/active-learning/config/dct.ini"
-save_directory = "./models/dct/a-bilstm"
+file = "./scripts/active-learning/config/dtr.ini"
+save_directory = "./models/dtr/a-bilstm"
 
-print("##### Start active learning for DCT... ######")
+print("##### Start active learning for DTR... ######")
 
 folder_path = "./data/helsearkiv/annotated/entity/"
 
@@ -34,7 +34,7 @@ tre = TRExtract(
         config_file=file,
         manager=manager,
         save_directory=save_directory,
-        task=Dataset.TRE_DCT
+        task=Dataset.DTR
 )
 model = tre.get_model()
 

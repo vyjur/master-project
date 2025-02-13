@@ -12,7 +12,7 @@ from structure.relation import Relation
 from visualization.setup import Timeline
 from pipeline.util import remove_duplicates, find_duplicates
 
-from structure.enum import Dataset, TR_DCT, TR_TLINK, TIMEX
+from structure.enum import Dataset, DocTimeRel, TLINK, TIMEX
 from structure.node import Node
 from structure.graph import Graph
 
@@ -58,14 +58,14 @@ class Pipeline:
         print("### Initializing TEE ###")
         self.__tee = TEExtract()
 
-        print("### Initializing DCT ###")
-        self.__tre_dct = TRExtract(
-            self.__config["CONFIGS"]["tre_dct"], manager, Dataset.TRE_DCT
+        print("### Initializing DTR ###")
+        self.__tre_dtr = TRExtract(
+            self.__config["CONFIGS"]["tre_dtr"], manager, Dataset.DTR
         )
 
         print("### Initializing TLINK ###")
         self.__tre_tlink = TRExtract(
-            self.__config["CONFIGS"]["tre_tlink"], manager, Dataset.TRE_DCT
+            self.__config["CONFIGS"]["tre_tlink"], manager, Dataset.TLINK
         )
 
         ### Initialize preprocessing module ###
@@ -132,6 +132,7 @@ class Pipeline:
                         .strip()
                     )
 
+                    # TODO: SCHEMA
                     entype = ner_output[i][int[0]].replace("B-", "").replace("I-", "")
                     if len(entity) == 0 or entype == "O":
                         continue
@@ -156,21 +157,21 @@ class Pipeline:
             dcts = {}
 
             ###### Initialize groups for selecting candidate pairs
-            for cat in TR_DCT:
+            for cat in DocTimeRel:
                 dcts[cat.name] = []
 
             #### Remove local duplicates (document-level)
             duplicates = find_duplicates(entities)
             entities = remove_duplicates(entities, duplicates)
 
-            ###### Predicting each entities' DCT group
+            ###### Predicting each entities' DTR group
             for e in entities:
-                cat, _ = self.__tre_dct.run(e)
+                cat, _ = self.__tre_dtr.run(e)
                 cat = cat.replace("/", "")
                 e.set_dct(cat)
                 
-                # Set date of entity as the same as DCT if it is overlapping with DCT
-                if cat == TR_DCT.OVERLAP:
+                # Set date of entity as the same as DTR if it is overlapping with DCT
+                if cat == DocTimeRel.OVERLAP:
                     print("DCT overlap")
                     print(e)
                     e.date = e.dct
@@ -194,7 +195,7 @@ class Pipeline:
 
                         if relation != "O":
                             rel = Relation(e_i, e_j, relation, prob)
-                            if rel.tr == TR_TLINK.OVERLAP:
+                            if rel.tr == TLINK.OVERLAP:
                                 if isinstance(e_i.type, TIMEX) and not isinstance(e_j.type, TIMEX):
                                     if e_i.prob >= e_j.prob or e_j.date is None:
                                         e_j.date = e_i.date
@@ -213,13 +214,13 @@ class Pipeline:
             ### For TLINK BEFORE relation, we will add it X hours ahead before the parent entity if it has no date assigned to it.
             ### This will be handled in the visualization module
             for rel in relations[:]:
-                if rel.tr == TR_TLINK.BEFORE: 
+                if rel.tr == TLINK.BEFORE: 
                     if None not in (rel.x.date, rel.y.date):
                         if rel.x.date < rel.y.date:
                             graph.add_edge(rel.x.id, rel.y.id)
                     else:
                         graph.add_edge(rel.x.id, rel.y.id)
-                elif rel.tr == TR_TLINK.OVERLAP:
+                elif rel.tr == TLINK.OVERLAP:
                     # TODO: do we need to do something here?
                     pass
                 if graph.is_cyclic():
