@@ -1,6 +1,7 @@
 import torch.nn as nn
 from model.base.bert import BERT
 from structure.enum import Task
+from model.util import Util
 
 
 TASK = Task.SEQUENCE
@@ -17,6 +18,7 @@ class SequenceBERT(nn.Module):
         tokenizer=None,
         project_name: str | None = None,
         pretrain: str | None = None,
+        util: Util = None
     ):
         super(SequenceBERT, self).__init__()
 
@@ -30,6 +32,7 @@ class SequenceBERT(nn.Module):
             tokenizer,
             project_name,
             pretrain,
+            util
         )
         self.tokenizer = self.__bert.tokenizer
 

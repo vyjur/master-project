@@ -57,6 +57,7 @@ class NN(nn.Module):
         tokenizer=None,
         project_name: str | None = None,
         pretrain: str | None = None,
+        util: Util = None
     ):
         super(NN, self).__init__()
         self.__device = "cuda:0" if cuda.is_available() else "cpu"
@@ -72,6 +73,7 @@ class NN(nn.Module):
         self.__task = task
         self.__base_model = model
         self.__save = save
+        self.__util = util if util is not None else Util()
 
         self.__project_name = project_name
 
@@ -81,9 +83,9 @@ class NN(nn.Module):
 
         if not load:
             self.__processed = Preprocess(
-                self.tokenizer, parameters["max_length"]
+                self.tokenizer, parameters["max_length"], util
             ).run_train_test_split(task, dataset, tags_name)
-            self.__class_weights = Util().class_weights(
+            self.__class_weights = self.__util.class_weights(
                 task, self.__processed["dataset"], self.__device
             )
 
@@ -92,7 +94,7 @@ class NN(nn.Module):
             ix_to_tag = self.__processed["id2label"]
 
         else:
-            tag_to_ix, ix_to_tag = Util().get_tags(task, tags_name)
+            tag_to_ix, ix_to_tag = self.__util.get_tags(task, tags_name)
 
         if task == Task.TOKEN:
             START_ID = max(ix_to_tag.keys()) + 1
@@ -219,13 +221,13 @@ class NN(nn.Module):
             labels, predictions = self.__valid(
                 valid_loader, loss_fn, self.__processed["id2label"], True
             )
-            Util().validate_report(labels, predictions)
+            self.__util.validate_report(labels, predictions)
 
             print("### Test set performance:")
             labels, predictions = self.__valid(
                 testing_loader, loss_fn, self.__processed["id2label"], True
             )
-            Util().validate_report(labels, predictions)
+            self.__util.validate_report(labels, predictions)
 
             # If tune don't save else too many models heavy
             if not config["tune"]:

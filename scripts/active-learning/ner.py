@@ -40,7 +40,7 @@ ner = NERecognition(
 )
 
 preprocess = Preprocess(
-    ner.get_tokenizer(), ner.get_max_length()
+    ner.get_tokenizer(), ner.get_max_length(), ner.get_util()
 )
 
 model = ner.get_model()
@@ -94,6 +94,7 @@ for page in sorted_data[:1200]:
     cleaned = re.sub(r"[\"'“”‘’]", "", text)
     cleaned = cleaned.replace("Ä", "Æ")
     cleaned = cleaned.replace("Ö", "Ø")
+    cleaned = cleaned.replace("¢", "")
 
     preoutput = preprocess.run(cleaned)
     output = ner.run(preoutput)

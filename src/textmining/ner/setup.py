@@ -39,8 +39,9 @@ class NERecognition:
             tags = dataset['MedicalEntity'].unique()
             dataset = [dataset]
             tags = list(tags)
-            
-        self.label2id, self.id2label = Util().get_tags(Task.TOKEN, tags, self.schema)
+        
+        self.__util = Util(schema=self.schema)
+        self.label2id, self.id2label = self.__util.get_tags(Task.TOKEN, tags)
 
         self.tokenizer = AutoTokenizer.from_pretrained(
             self.__config["pretrain"]["name"]
@@ -78,6 +79,7 @@ class NERecognition:
             tokenizer=self.tokenizer,
             project_name=self.__config["GENERAL"]["name"],
             pretrain=self.__config["pretrain"]["name"],
+            util=self.__util
         )
 
     def get_tokenizer(self):
@@ -85,6 +87,9 @@ class NERecognition:
 
     def get_max_length(self):
         return self.__config.getint("MODEL", "max_length")
+    
+    def get_util(self):
+        return self.__util
 
     def run(self, data):
         output, _ = self.__model.predict([val.ids for val in data])
@@ -95,27 +100,49 @@ class NERecognition:
         return self.__model
     
     def get_non_o_intervals(self, lst):
+        
         intervals = []
         start = None
         
         prev_value = "O"
+        prev_orig = "O"
 
         for i, value in enumerate(lst):
-            cat_value = value.replace('B-', '').replace('I-', '')
-            if value != "O":
-                    
-                if (value.startswith("B-") or cat_value != prev_value) and start is not None:
-                    intervals.append((start, i))
-                    start = None
-                    
-                if value.startswith("B-") or (value.startswith("I-") and start is None):
-                    start = i
-            else:
+            cat_value = self.__util.remove_schema(value)
+                
+            if value == "O":
                 if start is not None:
                     intervals.append((start, i))
                     start = None
-                    
+                
+            if self.schema == "bio":
+                if value.startswith("B-") or (value.startswith("I-") and start is None) or cat_value != prev_value:
+                    if start is not None:
+                        intervals.append((start, i))
+                    if value != "O":
+                        start = i
+                
+            elif self.schema == "io":
+                if value.startswith("I-") and (start is None or cat_value != prev_value):
+                    if start is not None and cat_value != prev_value:
+                        intervals.append((start, i))
+                    start = i
+                
+            elif self.schema == "ioe":
+                if value.startswith("I-") or value.startswith("E-"):
+                    if start is None:
+                        start = i
+                    elif cat_value != prev_value or (prev_orig.startswith("E-") and value.startswith("I-")):
+                        intervals.append((start, i))
+                        start = i
+                elif value.startswith("E-") and start is not None:
+                    intervals.append((start, i+1))
+                    start = None
+            else:
+                raise TypeError("No schema selected.")
+                            
             prev_value = cat_value
+            prev_orig = value
                     
         # If the last element is part of an interval
         if start is not None:
