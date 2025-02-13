@@ -29,6 +29,7 @@ class TEExtract:
         tags = [DCT.DATE.name, DCT.DCT.name]   
 
         if not load:
+            tags = set()
             raw_dataset = manager.get(Dataset.TEE)
             raw_dataset = raw_dataset[raw_dataset['TIMEX'].isin(["DATE", "DCT"])]
             for _, row in raw_dataset.iterrows():
@@ -39,7 +40,8 @@ class TEExtract:
                         "relation": row['TIMEX'],
                     }
                 )
-                tags.add(row['DCT'])
+                tags.add(row['TIMEX'])
+            tags = list(tags)
         self.label2id, self.id2label = Util().get_tags(Task.SEQUENCE, tags)
         
         self.tokenizer = AutoTokenizer.from_pretrained(
@@ -126,7 +128,7 @@ class TEExtract:
                 return convert_duration(check_context, value, dct) 
         return value 
         
-    def __run(self, text):
+    def base_run(self, text):
         if self.__rules:
             text = self.__pre_rules(text)
         
@@ -164,12 +166,12 @@ class TEExtract:
             
     def run(self, data):
         # Initial output: Extracting all TIMEX expressions
-        init_output = self.__run(data)
+        init_output = self.base_run(data)
        
         # Only DATE expressions are candidate for DCT 
         dct_candidates = init_output[init_output['type'] == 'DATE']
         
-        # For each candidate classify if it is really a DCT or not
+        # For each candidate classify if it is really a DCT /SECTIME or not
         dcts = []
         sections = []
 

@@ -24,7 +24,7 @@ relation_files = [
 tee = TEExtract(rules=False)
 tee.set_dct('2025-02-10')
     
-manager = DatasetManager(entity_files, relation_files, False)
+manager = DatasetManager(entity_files, relation_files, False, False)
 
 dataset = manager.get(Dataset.TEE)
 
@@ -33,7 +33,7 @@ print("### Without more rules")
 target = []
 pred = []
 for i, data in dataset.iterrows():
-    output = tee.run(data['Text'])
+    output = tee.base_run(data['Text'])
     try:
         if not output.empty:
             pred.append(output["type"].values[0])
@@ -53,7 +53,7 @@ tee.set_dct('2025-02-10')
 target = []
 pred = []
 for i, data in dataset.iterrows():
-    output = tee.run(data['Text'])
+    output = tee.base_run(data['Text'])
     try:
         if not output.empty:
             pred.append(output["type"].values[0])

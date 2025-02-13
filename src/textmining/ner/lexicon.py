@@ -112,7 +112,6 @@ if __name__ == "__main__":
         dataset.append(curr_doc)
 
     train, test = train_test_split(
-        # TODO: train_size
         dataset,
         train_size=0.8,
         random_state=42,

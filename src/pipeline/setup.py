@@ -65,7 +65,7 @@ class Pipeline:
 
         print("### Initializing TLINK ###")
         self.__tre_tlink = TRExtract(
-            self.__config["CONFIGS"]["tre_tlink"], manager, Dataset.DTR
+            self.__config["CONFIGS"]["tre_tlink"], manager, Dataset.TLINK
         )
 
         ### Initialize preprocessing module ###

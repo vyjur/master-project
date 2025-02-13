@@ -39,3 +39,7 @@ class DCT(Enum):
     DATE = 1
     DCT = 2
 
+class NER_SCHEMA(Enum):
+    BIO = 1
+    IO = 2
+    IOE = 3

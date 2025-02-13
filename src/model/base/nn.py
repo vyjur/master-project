@@ -17,11 +17,9 @@ metric = {"name": "val_loss", "goal": "minimize"}
 
 parameters_dict = {
     "epochs": {"value": 100},
-    "optimizer": ["adam", "sgd"],
+    "optimizer": {"values": ["adam", "sgd"]},  # Correct way to define discrete choices
     "learning_rate": {
-        "distribution": "uniform",
-        "min": 0,
-        "max": 0.1,
+        "values": [0.0001, 0.001, 0.01, 0.1]  # Grid search over specific learning rates
     },
     "batch_size": {"values": [32, 64, 128, 256]},
     "weight_decay": {
@@ -33,6 +31,7 @@ parameters_dict = {
     "early_stopping_delta": {
         "values": [0.01, 0.001, 0.0005, 0.0001]  # Grid search over delta values
     },
+    "max_length": {"values": [64, 128, 256, 512]},
     "embedding_dim": {
         "values": [32, 64, 128, 256, 512]  # Grid search over embedding dimensions
     },
@@ -74,9 +73,11 @@ class NN(nn.Module):
         self.__base_model = model
         self.__save = save
 
-        # TODO:
-        # embedding_dim = self.tokenizer.model_max_length
-        embedding_dim = parameters['embedding_dim']
+        self.__project_name = project_name
+
+        embedding_dim = parameters["embedding_dim"]
+
+        self.__processed = {}
 
         if not load:
             self.__processed = Preprocess(
@@ -105,114 +106,132 @@ class NN(nn.Module):
 
         self.__vocab_size = self.tokenizer.vocab_size  # type: ignore
         hidden_dim = parameters["max_length"]
-        
-        tune = parameters['tune']
 
         if load:
-            self.__model = model(1, self.__vocab_size, tag_to_ix, embedding_dim, hidden_dim)
+            self.__model = model(
+                1, self.__vocab_size, tag_to_ix, embedding_dim, hidden_dim
+            )
             self.__model.load_state_dict(
                 torch.load(save + "/model.pth", weights_only=False)
             )
         else:
-            wandb.init(project=f"{project_name}-{task}-nn-model".replace('"', ""))  # type: ignore
-            
+            tune = parameters["tune"]
             if tune:
-                sweep_id = wandb.sweep(sweep_config, project=f"{project_name}-{task}-nn-model".replace('"', ""))
+                sweep_config["parameters"]["valid_batch_size"] = {
+                    "value": parameters["valid_batch_size"]
+                }
+                sweep_config["parameters"]["shuffle"] = {"value": parameters["shuffle"]}
+                sweep_config["parameters"]["num_workers"] = {
+                    "value": parameters["num_workers"]
+                }
+                sweep_id = wandb.sweep(
+                    sweep_config,
+                    project=f"{project_name}-{task}-nn-model".replace('"', ""),
+                )
                 wandb.agent(sweep_id, self.train, count=parameters["tune_count"])
             else:
                 wandb.config = {
                     "learning_rate": parameters["learning_rate"],
                     "epochs": parameters["epochs"],
                     "batch_size": parameters["train_batch_size"],
+                    "valid_batch_size": parameters["valid_batch_size"],
                     "learning_rate": parameters["learning_rate"],
-                    'optimizer': parameters["optimizer"],
-                    'weight_decay': parameters['weight_decay'],
-                    'early_stopping_patience': parameters['early_stopping_patience'],
-                    'early_stopping_delta': parameters['early_stopping_delta'],
-                    'embedding_dim': parameters['embedding_dim'],
-                    'max_length': parameters['max_length'],
+                    "optimizer": parameters["optimizer"],
+                    "weight_decay": parameters["weight_decay"],
+                    "early_stopping_patience": parameters["early_stopping_patience"],
+                    "early_stopping_delta": parameters["early_stopping_delta"],
+                    "embedding_dim": parameters["embedding_dim"],
+                    "max_length": parameters["max_length"],
+                    "shuffle": parameters["shuffle"],
+                    "num_workers": parameters["num_workers"],
                     "evaluation_strategy": "epoch",
                     "save_strategy": "epoch",
                     "logging_strategy": "epoch",
-                    "tune": tune
+                    "tune": tune,
                 }
-                self.__train(wandb.config)
-                
-    def train(self, config):
+                self.train(wandb.config)
 
-        train_params = {
-            "batch_size": config["train_batch_size"],
-            "shuffle": config["shuffle"],
-            "num_workers": config["num_workers"],
-        }
+    def train(self, config=None):
 
-        test_params = {
-            "batch_size": config["valid_batch_size"],
-            "shuffle": config["shuffle"],
-            "num_workers": config["num_workers"],
-        }
+        with wandb.init(project=f"{self.__project_name}-{self.__task}-nn-model".replace('"', "")):  # type: ignore
 
-        training_loader = DataLoader(self.__processed["train"], **train_params)
-        valid_loader = DataLoader(self.__processed["valid"], **test_params)
-        testing_loader = DataLoader(self.__processed["test"], **test_params)
+            if config is None:
+                config = wandb.config
 
-        self.__model = self.__base_model(
-            config["batch_size"],
-            self.__vocab_size,
-            self.__processed["label2id"],
-            config["embedding_dim"],
-            config['max_length'],
-        ).to(self.__device)
+            print(config)
 
-        self.__model.num_labels = len(self.__processed["id2label"])
+            train_params = {
+                "batch_size": config["batch_size"],
+                "shuffle": config["shuffle"],
+                "num_workers": config["num_workers"],
+            }
 
-        loss_fn = nn.CrossEntropyLoss(weight=self.__class_weights)
-        optimizer = torch.optim.Adam(  # type: ignore
-            self.__model.parameters(),
-            lr=config["learning_rate"],
-            weight_decay=1e-4,
-        )
+            test_params = {
+                "batch_size": config["valid_batch_size"],
+                "shuffle": config["shuffle"],
+                "num_workers": config["num_workers"],
+            }
 
-        early_stopping = EarlyStopping(patience=5, delta=0.01)
-        for t in range(config["epochs"]):
-            print(f"Epoch {t + 1}\n-------------------------------")
-            train_loss, train_acc = self.__train(
-                training_loader, loss_fn, optimizer
+            training_loader = DataLoader(self.__processed["train"], **train_params)
+            valid_loader = DataLoader(self.__processed["valid"], **test_params)
+            testing_loader = DataLoader(self.__processed["test"], **test_params)
+
+            self.__model = self.__base_model(
+                config["batch_size"],
+                self.__vocab_size,
+                self.__processed["label2id"],
+                config["embedding_dim"],
+                config["max_length"],
+            ).to(self.__device)
+
+            self.__model.num_labels = len(self.__processed["id2label"])
+
+            loss_fn = nn.CrossEntropyLoss(weight=self.__class_weights)
+            optimizer = torch.optim.Adam(  # type: ignore
+                self.__model.parameters(),
+                lr=config["learning_rate"],
+                weight_decay=1e-4,
             )
-            val_loss, val_acc = self.__valid(
-                valid_loader, loss_fn, self.__processed["id2label"]
+
+            early_stopping = EarlyStopping(patience=5, delta=0.01)
+            for t in range(config["epochs"]):
+                print(f"Epoch {t + 1}\n-------------------------------")
+                train_loss, train_acc = self.__train(
+                    training_loader, loss_fn, optimizer
+                )
+                val_loss, val_acc = self.__valid(
+                    valid_loader, loss_fn, self.__processed["id2label"]
+                )
+                wandb.log(
+                    {
+                        "train_loss": train_loss,
+                        "train_accuracy": train_acc,
+                        "val_loss": val_loss,
+                        "val_acc": val_acc,
+                    }
+                )  # type: ignore
+                early_stopping(val_loss, self.__model)
+                if early_stopping.early_stop:
+                    print("Early stopping")
+                    break
+
+            print("### Valid set performance:")
+            labels, predictions = self.__valid(
+                valid_loader, loss_fn, self.__processed["id2label"], True
             )
-            wandb.log(
-                {
-                    "train_loss": train_loss,
-                    "train_accuracy": train_acc,
-                    "val_loss": val_loss,
-                    "val_acc": val_acc,
-                }
-            )  # type: ignore
-            early_stopping(val_loss, self.__model)
-            if early_stopping.early_stop:
-                print("Early stopping")
-                break
+            Util().validate_report(labels, predictions)
 
-        print("### Valid set performance:")
-        labels, predictions = self.__valid(
-            valid_loader, loss_fn, self.__processed["id2label"], True
-        )
-        Util().validate_report(labels, predictions)
+            print("### Test set performance:")
+            labels, predictions = self.__valid(
+                testing_loader, loss_fn, self.__processed["id2label"], True
+            )
+            Util().validate_report(labels, predictions)
 
-        print("### Test set performance:")
-        labels, predictions = self.__valid(
-            testing_loader, loss_fn, self.__processed["id2label"], True
-        )
-        Util().validate_report(labels, predictions)
-
-        # If tune don't save else too many models heavy
-        if not config['tune']:
-            if not os.path.exists(self.__save):
-                os.makedirs(self.__save)
-            torch.save(self.__model.state_dict(), self.__save + "/model.pth")
-        wandb.finish()
+            # If tune don't save else too many models heavy
+            if not config["tune"]:
+                if not os.path.exists(self.__save):
+                    os.makedirs(self.__save)
+                torch.save(self.__model.state_dict(), self.__save + "/model.pth")
 
     def predict(self, data, pipeline=False):
         data_tensor = torch.tensor(data, dtype=torch.long).to(self.__device)
@@ -281,11 +300,12 @@ class NN(nn.Module):
                 targets = batch["targets"].to(self.__device, dtype=torch.long)
                 self.__model.batch = ids.shape[0]
 
-                outputs, _ = self.__model(ids)
                 if self.__task == Task.TOKEN:
+                    outputs, _ = self.__model(ids)
                     loss = self.__model.neg_log_likelihood(ids, targets)
                     predictions = outputs.view(-1).cpu().numpy()
                 else:
+                    outputs = self.__model(ids)
                     loss = loss_fn(outputs, targets.view(-1))
                     predictions = torch.argmax(outputs, dim=1).cpu().numpy()
 
