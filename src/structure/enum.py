@@ -34,4 +34,8 @@ class ME(Enum):
     CONDITION = 1
     TREATMENT = 2
     O = 3
+    
+class DCT(Enum):
+    DATE = 1
+    DCT = 2
 
