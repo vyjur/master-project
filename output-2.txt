@@ -4,3 +4,5 @@ Installing dependencies from lock file
 No dependencies to install or update
 
 Installing the current project: master-project (0.1.0)
+### Processing the files:
+Elapsed: 0:03:37.450369
