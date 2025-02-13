@@ -101,7 +101,6 @@ class BERT(nn.Module):
         else:
             wandb.init(project=f"{project_name}-{task}-bert-model".replace('"', ""))  # type: ignore
 
-            # TODO: max length needs to be hyperparameter tuned as well
             self.__processed = None
             self.__class_weights = None
 
