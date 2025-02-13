@@ -6,7 +6,7 @@ from preprocess.dataset import DatasetManager
 from preprocess.setup import Preprocess
 from util import compute_mnlp
 
-BATCH = 5
+BATCH = 6
 
 os.mkdir(f'./data/helsearkiv/batch/ner/{BATCH}')
 
