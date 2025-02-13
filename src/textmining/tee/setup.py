@@ -3,7 +3,7 @@ from textmining.tee.rules import *
 import xml.etree.ElementTree as ET
 from preprocess.dataset import DatasetManager
 import configparser
-from structure.enum import Task, Dataset, TIMEX
+from structure.enum import Task, Dataset, DCT
 from model.util import Util
 import pandas as pd
 from transformers import AutoTokenizer
@@ -26,12 +26,13 @@ class TEExtract:
         print("LOAD", load)
         
         dataset = []
-        tags = [TIMEX.DATE.name, TIMEX.DCT.name]   
+        tags = [DCT.DATE.name, DCT.DCT.name]   
 
         if not load:
-            dataset = manager.get(Dataset.TEE)
-            dataset = dataset[dataset['TIMEX'].isin(["DATE", "DCT"])]
-            for _, row in dataset.iterrows():
+            tags = set()
+            raw_dataset = manager.get(Dataset.TEE)
+            raw_dataset = raw_dataset[raw_dataset['TIMEX'].isin(["DATE", "DCT"])]
+            for _, row in raw_dataset.iterrows():
                 dataset.append(
                     {
                         "sentence": row['Context']
@@ -39,7 +40,8 @@ class TEExtract:
                         "relation": row['TIMEX'],
                     }
                 )
-                tags.add(row['DCT'])
+                tags.add(row['TIMEX'])
+            tags = list(tags)
         self.label2id, self.id2label = Util().get_tags(Task.SEQUENCE, tags)
         
         self.tokenizer = AutoTokenizer.from_pretrained(
@@ -57,9 +59,16 @@ class TEExtract:
             "learning_rate": self.__config.getfloat(
                 "train.parameters", "learning_rate"
             ),
+            "optimizer": self.__config["train.parameters"]["optimizer"],
+            "weight_decay": self.__config.getfloat("train.parameters", "weight_decay"),
+            "early_stopping_patience": self.__config.getint("train.parameters", "early_stopping_patience"),
+            "early_stopping_delta": self.__config.getfloat("train.parameters", "early_stopping_delta"),
+            "embedding_dim": self.__config.getint("train.parameters", "embedding_dim"),
             "shuffle": self.__config.getboolean("train.parameters", "shuffle"),
             "num_workers": self.__config.getint("train.parameters", "num_workers"),
             "max_length": self.__config.getint("MODEL", "max_length"),
+            "tune": self.__config.getboolean("tuning", "tune"),
+            "tune_count": self.__config.getint("tuning", "count") 
         }
 
         self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
@@ -119,7 +128,7 @@ class TEExtract:
                 return convert_duration(check_context, value, dct) 
         return value 
         
-    def __run(self, text):
+    def base_run(self, text):
         if self.__rules:
             text = self.__pre_rules(text)
         
@@ -157,12 +166,12 @@ class TEExtract:
             
     def run(self, data):
         # Initial output: Extracting all TIMEX expressions
-        init_output = self.__run(data)
+        init_output = self.base_run(data)
        
         # Only DATE expressions are candidate for DCT 
         dct_candidates = init_output[init_output['type'] == 'DATE']
         
-        # For each candidate classify if it is really a DCT or not
+        # For each candidate classify if it is really a DCT /SECTIME or not
         dcts = []
         sections = []
 

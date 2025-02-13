@@ -1,17 +1,18 @@
 import torch
 from typing import List
 from sklearn.metrics import classification_report
-from structure.enum import Task
+from structure.enum import Task, NER_SCHEMA
 
 
 class Util:
-    def __init__(self):
-        pass
+    def __init__(self, schema: NER_SCHEMA = None):
+        self.schema = schema
 
     def validate_report(self, labels, predictions):
         print("### BIO-Scheme")
         print(classification_report(labels, predictions))
 
+        # TODO: SCHEMA
         cat_labels = [lab.replace("B-", "").replace("I-", "") for lab in labels]
         cat_predictions = [
             lab.replace("B-", "").replace("I-", "") for lab in predictions
@@ -22,13 +23,16 @@ class Util:
         print("### Summary")
         print(classification_report(cat_labels, cat_predictions, labels=tags))
 
-    def get_tags(self, task: Task, tags_name: List, default=True):
+    def get_tags(self, task: Task, tags_name: List, schema: NER_SCHEMA=NER_SCHEMA.BIO):
+        
+        # TODO: SCHEMA
         tags = set()
 
         for tag in tags_name:
             if task == Task.TOKEN and tag != "O":
-                tags.add(f"B-{tag}")
-                tags.add(f"I-{tag}")
+                if schema == NER_SCHEMA.BIO:
+                    tags.add(f"B-{tag}")
+                    tags.add(f"I-{tag}")
             else:
                 tags.add(tag)
 
