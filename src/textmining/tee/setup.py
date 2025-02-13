@@ -29,9 +29,9 @@ class TEExtract:
         tags = [DCT.DATE.name, DCT.DCT.name]   
 
         if not load:
-            dataset = manager.get(Dataset.TEE)
-            dataset = dataset[dataset['TIMEX'].isin(["DATE", "DCT"])]
-            for _, row in dataset.iterrows():
+            raw_dataset = manager.get(Dataset.TEE)
+            raw_dataset = dataset[dataset['TIMEX'].isin(["DATE", "DCT"])]
+            for _, row in raw_dataset.iterrows():
                 dataset.append(
                     {
                         "sentence": row['Context']
@@ -60,7 +60,7 @@ class TEExtract:
             "optimizer": self.__config["train.parameters"]["optimizer"],
             "weight_decay": self.__config.getfloat("train.parameters", "weight_decay"),
             "early_stopping_patience": self.__config.getint("train.parameters", "early_stopping_patience"),
-            "early_stopping_delta": self.__config.getint("train.parameters", "early_stopping_delta"),
+            "early_stopping_delta": self.__config.getfloat("train.parameters", "early_stopping_delta"),
             "embedding_dim": self.__config.getint("train.parameters", "embedding_dim"),
             "shuffle": self.__config.getboolean("train.parameters", "shuffle"),
             "num_workers": self.__config.getint("train.parameters", "num_workers"),

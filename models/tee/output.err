@@ -1,13 +1,3 @@
 
 (25, 'Inappropriate ioctl for device')
-Traceback (most recent call last):
-  File "/cluster/home/julievt/master-project/./scripts/train/tee.py", line 36, in <module>
-    ner = TEExtract(
-          ^^^^^^^^^^
-  File "/cluster/home/julievt/master-project/src/textmining/tee/setup.py", line 35, in __init__
-    dataset.append(
-    ^^^^^^^^^^^^^^
-  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/pandas/core/generic.py", line 6299, in __getattr__
-    return object.__getattribute__(self, name)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'DataFrame' object has no attribute 'append'. Did you mean: '_append'?
+slurmstepd: error: *** JOB 21146622 ON idun-09-11 CANCELLED AT 2025-02-13T08:09:33 ***
