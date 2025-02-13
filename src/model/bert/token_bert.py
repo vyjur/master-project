@@ -1,6 +1,7 @@
 import torch.nn as nn
 from model.base.bert import BERT
 from structure.enum import Task
+from model.util import Util
 
 
 TASK = Task.TOKEN
@@ -17,6 +18,7 @@ class TokenBERT(nn.Module):
         tokenizer=None,
         project_name: str | None = None,
         pretrain: str | None = None,
+        util: Util = None
     ):
         super(TokenBERT, self).__init__()
         self.__bert = BERT(
@@ -29,6 +31,7 @@ class TokenBERT(nn.Module):
             tokenizer,
             project_name,
             pretrain,
+            util
         )
         self.tokenizer = self.__bert.tokenizer
 

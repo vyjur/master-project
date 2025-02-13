@@ -60,6 +60,7 @@ class BERT(nn.Module):
         tokenizer=None,
         project_name: str | None = None,
         pretrain: str | None = None,
+        util: Util = None
     ):
         super(BERT, self).__init__()
 
@@ -80,6 +81,7 @@ class BERT(nn.Module):
         self.__dataset = dataset
         self.__tags_name = tags_name
         self.__project_name = project_name
+        self.__util = util if util is not None else Util()
 
         if load:
             if task == Task.TOKEN:
@@ -165,7 +167,7 @@ class BERT(nn.Module):
                 self.tokenizer, config["max_length"]
             ).run_train_test_split(self.__task, self.__dataset, self.__tags_name)
 
-            self.__class_weights = Util().class_weights(
+            self.__class_weights = self.__util.class_weights(
                 self.__task, self.__processed["dataset"], self.__device
             )
             
@@ -267,13 +269,13 @@ class BERT(nn.Module):
             labels, predictions = self.__valid(
                 valid_loader, loss_fn, self.__processed["id2label"], True
             )
-            Util().validate_report(labels, predictions)
+            self.__util.validate_report(labels, predictions)
 
             print("### Test set performance:")
             labels, predictions = self.__valid(
                 testing_loader, loss_fn, self.__processed["id2label"], True
             )
-            Util().validate_report(labels, predictions)
+            self.__util.validate_report(labels, predictions)
 
             # If tune don't save else too many models heavy
             if not config['tune']:

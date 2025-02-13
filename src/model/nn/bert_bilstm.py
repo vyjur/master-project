@@ -1,6 +1,7 @@
 from transformers import AutoModel
 from model.nn.bilstm import Model as BaseModel
 from model.base.nn import NN
+from model.util import Util
 from structure.enum import Task
 import torch.nn as nn
 
@@ -16,6 +17,7 @@ class BERTBiLSTM(nn.Module):
         tokenizer=None,
         project_name: str | None = None,
         pretrain: str | None = None,
+        util: Util = None
     ):
         super(BERTBiLSTM, self).__init__()
 

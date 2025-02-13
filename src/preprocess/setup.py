@@ -38,8 +38,11 @@ class CustomDataset(Dataset):
 
 
 class Preprocess:
-    def __init__(self, tokenizer, max_length: int = 512, train_size: float = 0.8):
+    def __init__(self, tokenizer, max_length: int = 512, util: Util = None, train_size: float = 0.8):
         self.__tokenizer = tokenizer
+        self.__util = util
+        if self.__util is None:
+            self.__util = Util()
         self.__max_length = max_length
         self.__train_size = train_size
 
@@ -101,7 +104,7 @@ class Preprocess:
         window_size: int = 128,
         stride: int = 16,
     ):
-        label2id, id2label = Util().get_tags(task, tags_name)
+        label2id, id2label = self.__util.get_tags(task, tags_name)
         tokenized_dataset = []
         
         for row in data:
@@ -138,7 +141,10 @@ class Preprocess:
                         annot[i] if i is not None else "O"  # type: ignore
                         for i in encoding.word_ids
                     ]
-                    tokens_annot = self.tokens_mapping(encoding, curr_annot)
+                    word_length = [
+                        len(words[i]) for i in encoding.word_ids
+                    ]
+                    tokens_annot = self.__util.tokens_mapping(encoding, curr_annot, word_length)
 
                 encoding_dict = {
                     "ids": encoding.ids,
@@ -182,26 +188,6 @@ class Preprocess:
             "label2id": label2id,
             "id2label": id2label,
         }
-
-    def tokens_mapping(self, tokenized, annot):
-        tokens_annot = []
-        for i in range(len(tokenized.ids)):
-            if tokenized.offsets[i][0] == 0 and tokenized.offsets[i][1] == 0:
-                tokens_annot.append("O")
-                continue
-            elif tokenized.offsets[i][0] == 0:
-                if annot[i] != "O":
-                    tokens_annot.append(f"B-{annot[i]}")
-                elif annot[i] != "O":
-                    tokens_annot.append(f"I-{annot[i]}")
-                else:
-                    tokens_annot.append(annot[i])
-            else:
-                if annot[i] != "O":
-                    tokens_annot.append(f"I-{annot[i]}")
-                else:
-                    tokens_annot.append(annot[i])
-        return tokens_annot
 
 
 if __name__ == "__main__":
