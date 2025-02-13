@@ -90,7 +90,6 @@ class NN(nn.Module):
             )
 
             tag_to_ix = self.__processed["label2id"]
-            self.__processed["label2id"] = tag_to_ix
             ix_to_tag = self.__processed["id2label"]
 
         else:
@@ -105,7 +104,7 @@ class NN(nn.Module):
 
         self.__processed["label2id"] = tag_to_ix
         self.__processed["id2label"] = ix_to_tag
-
+        
         self.__vocab_size = self.tokenizer.vocab_size  # type: ignore
         hidden_dim = parameters["max_length"]
 
@@ -154,7 +153,7 @@ class NN(nn.Module):
                 self.train(wandb.config)
 
     def train(self, config=None):
-
+        
         with wandb.init(project=f"{self.__project_name}-{self.__task}-nn-model".replace('"', "")):  # type: ignore
 
             if config is None:
@@ -185,7 +184,7 @@ class NN(nn.Module):
                 config["embedding_dim"],
                 config["max_length"],
             ).to(self.__device)
-
+            
             self.__model.num_labels = len(self.__processed["id2label"])
 
             loss_fn = nn.CrossEntropyLoss(weight=self.__class_weights)

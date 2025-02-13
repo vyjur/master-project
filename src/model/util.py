@@ -98,17 +98,17 @@ class Util:
         tokens_annot = []
         for i in range(len(tokenized)):
             
-            if self.schema in {"bio", "io", "ioe"}:
+            if self.schema in {NER_SCHEMA.BIO, NER_SCHEMA.IO, NER_SCHEMA.IOE}:
                 if tokenized.offsets[i] == (0, 0):
                     tokens_annot.append("O")
                     continue
 
                 tag_prefix = ""
-                if self.schema == "bio":
+                if self.schema == NER_SCHEMA.BIO:
                     tag_prefix = "B-" if tokenized.offsets[i][0] == 0 else "I-"
-                elif self.schema == "ioe":
+                elif self.schema == NER_SCHEMA.IOE:
                     tag_prefix = "E-" if tokenized.offsets[i][1] == word_length[i] else "I-"
-                elif self.schema == "io":
+                elif self.schema == NER_SCHEMA.IO:
                     tag_prefix = "I-"
 
                 tokens_annot.append(f"{tag_prefix}{annot[i]}" if annot[i] != "O" else "O")

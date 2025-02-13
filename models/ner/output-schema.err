@@ -12,8 +12,52 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
 wandb: Currently logged in as: julievt (julievt-ntnu). Use `wandb login --relogin` to force relogin
 wandb: Tracking run with wandb version 0.19.1
-wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250213_182114-1uf3im0y
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250213_195002-csn4rf3b
 wandb: Run `wandb offline` to turn off syncing.
-wandb: Syncing run dauntless-cosmos-3
+wandb: Syncing run royal-dust-8
 wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/ner-schema-c-io-Task.TOKEN-nn-model
-wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/ner-schema-c-io-Task.TOKEN-nn-model/runs/1uf3im0y
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/ner-schema-c-io-Task.TOKEN-nn-model/runs/csn4rf3b
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/src/model/base/nn.py", line 202, in train
+    train_loss, train_acc = self.__train(
+                            ^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/model/base/nn.py", line 289, in __train
+    loss = self.__model.neg_log_likelihood(ids, targets)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/model/nn/bilstmcrf.py", line 155, in neg_log_likelihood
+    gold_score = [self._score_sentence(feat, tag) for feat, tag in zip(feats, tags)]
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/model/nn/bilstmcrf.py", line 104, in _score_sentence
+    score = score + self.transitions[tags[i + 1], tags[i]] + feat[tags[i + 1]]
+                                     ~~~~^^^^^^^
+IndexError: index 1 is out of bounds for dimension 0 with size 1
+wandb:                                                                                
+wandb: 🚀 View run royal-dust-8 at: https://wandb.ai/julievt-ntnu/ner-schema-c-io-Task.TOKEN-nn-model/runs/csn4rf3b
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/ner-schema-c-io-Task.TOKEN-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250213_195002-csn4rf3b/logs
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/./scripts/train/ner_schema.py", line 33, in <module>
+    ner = NERecognition(
+          ^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/textmining/ner/setup.py", line 75, in __init__
+    self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/model/nn/bilstmcrf.py", line 199, in __init__
+    self.__model = NN(
+                   ^^^
+  File "/cluster/home/julievt/master-project/src/model/base/nn.py", line 153, in __init__
+    self.train(wandb.config)
+  File "/cluster/home/julievt/master-project/src/model/base/nn.py", line 202, in train
+    train_loss, train_acc = self.__train(
+                            ^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/model/base/nn.py", line 289, in __train
+    loss = self.__model.neg_log_likelihood(ids, targets)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/model/nn/bilstmcrf.py", line 155, in neg_log_likelihood
+    gold_score = [self._score_sentence(feat, tag) for feat, tag in zip(feats, tags)]
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/model/nn/bilstmcrf.py", line 104, in _score_sentence
+    score = score + self.transitions[tags[i + 1], tags[i]] + feat[tags[i + 1]]
+                                     ~~~~^^^^^^^
+IndexError: index 1 is out of bounds for dimension 0 with size 1
