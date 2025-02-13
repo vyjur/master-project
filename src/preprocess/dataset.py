@@ -85,15 +85,13 @@ class DatasetManager:
             
             if context:
                 # Initialize "Context" column with empty strings or NaNs
-                self.__entity_df["Context"] = np.nan  
+                self.__entity_df["Context"] = ''
 
                 # Create a mask for rows where MedicalEntity or TIMEX is not NA
                 mask = self.__entity_df["MedicalEntity"].notna() | self.__entity_df["TIMEX"].notna()
 
                 # Apply get_context_window only to the filtered rows
-                self.__entity_df.loc[mask, "Context"] = [
-                    get_context_window(idx) for idx in self.__entity_df.loc[mask].index
-                ]
+                self.__entity_df.loc[mask, "Context"] = self.__entity_df.loc[mask].index.to_series().apply(get_context_window)
 
             all_relation_df = []
             for file in relation_files:
@@ -104,6 +102,7 @@ class DatasetManager:
             self.__entity_df.to_csv(f"{SAVE_FOLDER}/entity_{window_size}.csv")
             self.__relation_df.to_csv(f"{SAVE_FOLDER}/relation.csv")
         else:
+            print("Loading dataset")
             self.__entity_df = pd.read_csv(f"{SAVE_FOLDER}/entity_{window_size}.csv")
             self.__relation_df = pd.read_csv(f"{SAVE_FOLDER}/relation.csv")
             
