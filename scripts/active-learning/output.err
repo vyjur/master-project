@@ -3,3 +3,7 @@
 [nltk_data] Downloading package punkt to
 [nltk_data]     /cluster/home/julievt/nltk_data...
 [nltk_data]   Package punkt is already up-to-date!
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/./scripts/active-learning/ner.py", line 11, in <module>
+    os.mkdir(f'./data/helsearkiv/batch/ner/{BATCH}')
+FileExistsError: [Errno 17] File exists: './data/helsearkiv/batch/ner/7'
