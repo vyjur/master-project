@@ -48,7 +48,7 @@ class TRExtract:
             "num_workers": self.__config.getint("train.parameters", "num_workers"),
             "max_length": self.__config.getint("MODEL", "max_length"),
             "tune": self.__config.getboolean("tuning", "tune"),
-            "tune_count": self.__config.getint("tuning", "tune") 
+            "tune_count": self.__config.getint("tuning", "count") 
         }
 
         dataset = []

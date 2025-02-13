@@ -30,7 +30,7 @@ class TEExtract:
 
         if not load:
             raw_dataset = manager.get(Dataset.TEE)
-            raw_dataset = dataset[dataset['TIMEX'].isin(["DATE", "DCT"])]
+            raw_dataset = raw_dataset[raw_dataset['TIMEX'].isin(["DATE", "DCT"])]
             for _, row in raw_dataset.iterrows():
                 dataset.append(
                     {
@@ -66,7 +66,7 @@ class TEExtract:
             "num_workers": self.__config.getint("train.parameters", "num_workers"),
             "max_length": self.__config.getint("MODEL", "max_length"),
             "tune": self.__config.getboolean("tuning", "tune"),
-            "tune_count": self.__config.getint("tuning", "tune") 
+            "tune_count": self.__config.getint("tuning", "count") 
         }
 
         self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
