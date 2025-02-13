@@ -6,7 +6,7 @@ from model.map import MODEL_MAP
 from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
 import random
-from structure.enum import Dataset, Task, TR_DCT, TR_TLINK
+from structure.enum import Dataset, Task, DocTimeRel, TLINK
 
 
 class TRExtract:
@@ -58,7 +58,7 @@ class TRExtract:
             dataset_ner = manager.get(Dataset.NER)
             dataset_ner = dataset_ner[dataset_ner['MedicalEntity'].notna() | dataset_ner['TIMEX'].notna()].reset_index()
             dataset_tre = manager.get(task)
-            if task == Dataset.TRE_DCT:
+            if task == Dataset.DTR:
                 for _, row in dataset_tre.iterrows():
                     dataset.append(
                         {
@@ -68,7 +68,7 @@ class TRExtract:
                         }
                     )
                     tags.add(row['DCT'])
-            elif task == Dataset.TRE_TLINK:
+            elif task == Dataset.TLINK:
                 
                 for i, rel in dataset_tre.iterrows():
                     
@@ -130,18 +130,18 @@ class TRExtract:
 
             tags = list(tags)
         else:
-            if task == Dataset.TRE_DCT:
-                tags = [cat.name for cat in TR_DCT]
+            if task == Dataset.DTR:
+                tags = [cat.name for cat in DocTimeRel]
             else:
-                tags = [cat.name for cat in TR_TLINK]
+                tags = [cat.name for cat in TLINK]
         self.label2id, self.id2label = Util().get_tags(
             Task.SEQUENCE, tags
         )
 
-        if task == Dataset.TRE_DCT and save_directory == "./src/textmining/tre/model":
-            save_directory += "/dct"
+        if task == Dataset.DTR and save_directory == "./src/textmining/tre/model":
+            save_directory += "/drt"
         elif (
-            task == Dataset.TRE_TLINK and save_directory == "./src/textmining/tre/model"
+            task == Dataset.TLINK and save_directory == "./src/textmining/tre/model"
         ):
             save_directory += "/tlink"
 
@@ -170,7 +170,7 @@ class TRExtract:
         return predictions[0], output[1]
 
     def run(self, e_i, e_j=None):
-        if self.task == Dataset.TRE_DCT:
+        if self.task == Dataset.DTR:
             text = e_i.context.replace(e_i.value, f"<TAG>{e_i.value}</TAG>")
         else:
             if e_j is None:
@@ -193,7 +193,7 @@ if __name__ == "__main__":
     ]
     manager = DatasetManager(files)
 
-    reg = TRExtract("./src/textmining/tre/config.ini", manager, Dataset.TRE_DCT)
+    reg = TRExtract("./src/textmining/tre/config.ini", manager, Dataset.DTR)
 
     e_i = Node("tungpust", None, None, "Han har tungpust", None)
     e_j = Node("brystsmerter", None, None, "Brystsmertene har vart en stund.", None)

@@ -1,5 +1,5 @@
 from structure.node import Node
-from structure.enum import TR_TLINK
+from structure.enum import TLINK
 
 
 class Relation:
@@ -10,7 +10,7 @@ class Relation:
         
         self.tr = None
         
-        for curr_tr in TR_TLINK:
+        for curr_tr in TLINK:
             if tr == curr_tr.name:
                 self.tr = curr_tr
                 break
@@ -21,6 +21,6 @@ class Relation:
             Relation:
             Node X: {self.x.value} - {self.x.type}
             Node Y: {self.y.value} - {self.y.type}
-            TR_TLINK: {self.tr}, Probability: {self.prob}
+            TLINK: {self.tr}, Probability: {self.prob}
         """
 
