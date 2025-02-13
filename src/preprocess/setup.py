@@ -3,7 +3,7 @@ import configparser
 from torch.utils.data import Dataset
 from sklearn.model_selection import train_test_split
 from model.util import Util
-from structure.enum import Task
+from structure.enum import Task, SENTENCE
 
 
 class CustomDataset(Dataset):
@@ -142,7 +142,7 @@ class Preprocess:
                         for i in encoding.word_ids
                     ]
                     word_length = [
-                        len(words[i]) for i in encoding.word_ids
+                        len(words[i]) if i is not None else None for i in encoding.word_ids
                     ]
                     tokens_annot = self.__util.tokens_mapping(encoding, curr_annot, word_length)
 
@@ -160,6 +160,8 @@ class Preprocess:
                     encoding_dict["labels"] = tokens_annot  # type: ignore
                 else:
                     encoding_dict["labels"] = row["relation"]
+                    if "cat" in row:
+                        encoding_dict["cat"] = row["cat"]
                 tokenized_dataset.append(encoding_dict)
 
         train, test = train_test_split(
@@ -177,7 +179,7 @@ class Preprocess:
         valid_dataset = CustomDataset(val, self.__tokenizer, label2id)
         test_dataset = CustomDataset(test, self.__tokenizer, label2id)
         
-        return {
+        return_dict = {
             "train_raw": train,
             "val_raw": val,
             "test_raw": test,
@@ -188,6 +190,18 @@ class Preprocess:
             "label2id": label2id,
             "id2label": id2label,
         }
+        
+        if "cat" in tokenized_dataset[0]:
+            intra = [d for d in tokenized_dataset if d["cat"] == SENTENCE.INTRA]
+            inter = [d for d in tokenized_dataset if d["cat"] == SENTENCE.INTER]
+
+            intra_dataset = CustomDataset(intra, self.__tokenizer, label2id)
+            inter_dataset = CustomDataset(inter, self.__tokenizer, label2id)
+            
+            return_dict["intra"] = intra_dataset
+            return_dict["inter"] = inter_dataset
+
+        return return_dict
 
 
 if __name__ == "__main__":

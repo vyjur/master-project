@@ -1,3 +1,19 @@
+
+(25, 'Inappropriate ioctl for device')
 [nltk_data] Downloading package punkt to
 [nltk_data]     /cluster/home/julievt/nltk_data...
 [nltk_data]   Package punkt is already up-to-date!
+/cluster/home/julievt/master-project/src/textmining/ner/setup.py:40: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  dataset['MedicalEntity'] = dataset['MedicalEntity'].fillna('O')
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: julievt (julievt-ntnu). Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250213_182114-1uf3im0y
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run dauntless-cosmos-3
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/ner-schema-c-io-Task.TOKEN-nn-model
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/ner-schema-c-io-Task.TOKEN-nn-model/runs/1uf3im0y

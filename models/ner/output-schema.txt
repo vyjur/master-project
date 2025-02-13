@@ -1,4 +1,4 @@
-Virtual environment already activated: /cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12
+Spawning shell within /cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12
 Installing dependencies from lock file
 
 No dependencies to install or update
