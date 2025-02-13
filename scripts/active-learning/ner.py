@@ -1,4 +1,5 @@
 import os
+import re
 import pypdf
 import pandas as pd
 from textmining.ner.setup import NERecognition
@@ -6,7 +7,7 @@ from preprocess.dataset import DatasetManager
 from preprocess.setup import Preprocess
 from util import compute_mnlp
 
-BATCH = 8
+BATCH = 1
 
 os.mkdir(f'./data/helsearkiv/batch/ner/{BATCH}')
 
@@ -88,8 +89,12 @@ for page in sorted_data[:1200]:
     writer.add_page(reader.pages[page['page']])
     info_file.append(page)
     count += 1
+    text = reader.pages[page['page']].extract_text()
     
-    preoutput = preprocess.run(reader.pages[page['page']].extract_text())
+    cleaned = re.sub(r"[\"'“”‘’]", "", text)
+    cleaned = cleaned.replace("Ä", "Æ")
+
+    preoutput = preprocess.run(cleaned)
     output = ner.run(preoutput)
    
     for i, pre in enumerate(preoutput):
@@ -120,7 +125,7 @@ for page in sorted_data[:1200]:
                 word_count += 1
                 start = True
        
-        assert len(words) == len(annot) == len(offsets), f"Word count:{word_count}, LEN words: {len(words)}, offset/annot: {len(offsets)}/{len(annot)}, \n words:{words} \n tokens: {token} \n curr: {curr}, page: {page['page']}, file: {page['file']}"      
+        assert len(words) == len(annot) == len(offsets), f"Word count:{word_count}, LEN words: {len(words)}, offset/annot: {len(offsets)}/{len(annot)}, \n words:{words} \n tokens: {token} \n curr: {curr}, word: {words[word_count]}, page: {page['page']}, file: {page['file']}"      
             
         # Merge different words together
         for j, word in enumerate(words):

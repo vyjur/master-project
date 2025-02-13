@@ -1,2 +1,193 @@
 
 (25, 'Inappropriate ioctl for device')
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Agent Starting Run: 20o5y66z with config:
+wandb: 	batch_size: 32
+wandb: 	early_stopping_delta: 0.01
+wandb: 	early_stopping_patience: 3
+wandb: 	embedding_dim: 32
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.0001
+wandb: 	max_length: 64
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0
+wandb: WARNING Ignoring project 'tre-dtr-c-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Currently logged in as: julievt (julievt-ntnu). Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250213_121349-20o5y66z
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run unique-sweep-1
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tre-dtr-c-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tre-dtr-c-Task.SEQUENCE-nn-model/sweeps/zg54gigm
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tre-dtr-c-Task.SEQUENCE-nn-model/runs/20o5y66z
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/src/model/base/nn.py", line 231, in train
+    if not config["tune"]:
+           ~~~~~~^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/sdk/wandb_config.py", line 130, in __getitem__
+    return self._items[key]
+           ~~~~~~~~~~~^^^^^
+KeyError: 'tune'
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb: train_accuracy ▁▃▄▅▆▆▇▇██
+wandb:     train_loss █▇▆▅▄▃▃▂▁▁
+wandb:        val_acc ▁▃▅▆▆▇▇▆██
+wandb:       val_loss ▆▅▄▁▁▂▃▃▇█
+wandb: 
+wandb: Run summary:
+wandb: train_accuracy 0.84697
+wandb:     train_loss 95.8391
+wandb:        val_acc 0.77518
+wandb:       val_loss 122.6856
+wandb: 
+wandb: 🚀 View run unique-sweep-1 at: https://wandb.ai/julievt-ntnu/tre-dtr-c-Task.SEQUENCE-nn-model/runs/20o5y66z
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tre-dtr-c-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250213_121349-20o5y66z/logs
+Run 20o5y66z errored:
+Traceback (most recent call last):
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+    self._function()
+  File "/cluster/home/julievt/master-project/src/model/base/nn.py", line 231, in train
+    if not config["tune"]:
+           ~~~~~~^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/sdk/wandb_config.py", line 130, in __getitem__
+    return self._items[key]
+           ~~~~~~~~~~~^^^^^
+KeyError: 'tune'
+
+wandb: ERROR Run 20o5y66z errored:
+wandb: ERROR Traceback (most recent call last):
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+wandb: ERROR     self._function()
+wandb: ERROR   File "/cluster/home/julievt/master-project/src/model/base/nn.py", line 231, in train
+wandb: ERROR     if not config["tune"]:
+wandb: ERROR            ~~~~~~^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/sdk/wandb_config.py", line 130, in __getitem__
+wandb: ERROR     return self._items[key]
+wandb: ERROR            ~~~~~~~~~~~^^^^^
+wandb: ERROR KeyError: 'tune'
+wandb: ERROR 
+wandb: Sweep Agent: Waiting for job.
+wandb: Job received.
+wandb: Agent Starting Run: rvgx2z5f with config:
+wandb: 	batch_size: 32
+wandb: 	early_stopping_delta: 0.01
+wandb: 	early_stopping_patience: 3
+wandb: 	embedding_dim: 32
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.0001
+wandb: 	max_length: 64
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 1e-05
+wandb: WARNING Ignoring project 'tre-dtr-c-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250213_121827-rvgx2z5f
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run devout-sweep-2
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tre-dtr-c-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tre-dtr-c-Task.SEQUENCE-nn-model/sweeps/zg54gigm
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tre-dtr-c-Task.SEQUENCE-nn-model/runs/rvgx2z5f
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/src/model/base/nn.py", line 231, in train
+    if not config["tune"]:
+           ~~~~~~^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/sdk/wandb_config.py", line 130, in __getitem__
+    return self._items[key]
+           ~~~~~~~~~~~^^^^^
+KeyError: 'tune'
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb: train_accuracy ▁▃▄▄▅▆▆▇▇▇███
+wandb:     train_loss █▇▆▅▄▄▃▂▂▂▁▁▁
+wandb:        val_acc ▁▁▂▅▆▆▆▆▇▆▇▇█
+wandb:       val_loss ▃▂▁▁▁▃▁▁▁▆▄▄█
+wandb: 
+wandb: Run summary:
+wandb: train_accuracy 0.91685
+wandb:     train_loss 49.89791
+wandb:        val_acc 0.80972
+wandb:       val_loss 156.178
+wandb: 
+wandb: 🚀 View run devout-sweep-2 at: https://wandb.ai/julievt-ntnu/tre-dtr-c-Task.SEQUENCE-nn-model/runs/rvgx2z5f
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tre-dtr-c-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250213_121827-rvgx2z5f/logs
+Run rvgx2z5f errored:
+Traceback (most recent call last):
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+    self._function()
+  File "/cluster/home/julievt/master-project/src/model/base/nn.py", line 231, in train
+    if not config["tune"]:
+           ~~~~~~^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/sdk/wandb_config.py", line 130, in __getitem__
+    return self._items[key]
+           ~~~~~~~~~~~^^^^^
+KeyError: 'tune'
+
+wandb: ERROR Run rvgx2z5f errored:
+wandb: ERROR Traceback (most recent call last):
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+wandb: ERROR     self._function()
+wandb: ERROR   File "/cluster/home/julievt/master-project/src/model/base/nn.py", line 231, in train
+wandb: ERROR     if not config["tune"]:
+wandb: ERROR            ~~~~~~^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/sdk/wandb_config.py", line 130, in __getitem__
+wandb: ERROR     return self._items[key]
+wandb: ERROR            ~~~~~~~~~~~^^^^^
+wandb: ERROR KeyError: 'tune'
+wandb: ERROR 
+wandb: Agent Starting Run: 689irvn0 with config:
+wandb: 	batch_size: 32
+wandb: 	early_stopping_delta: 0.01
+wandb: 	early_stopping_patience: 3
+wandb: 	embedding_dim: 32
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.0001
+wandb: 	max_length: 64
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.0001
+wandb: WARNING Ignoring project 'tre-dtr-c-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250213_122353-689irvn0
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run iconic-sweep-3
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tre-dtr-c-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tre-dtr-c-Task.SEQUENCE-nn-model/sweeps/zg54gigm
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tre-dtr-c-Task.SEQUENCE-nn-model/runs/689irvn0

@@ -1,7 +1,0 @@
-
-(25, 'Inappropriate ioctl for device')
-Traceback (most recent call last):
-  File "/cluster/home/julievt/master-project/./scripts/train/drt.py", line 12, in <module>
-    configs = os.listdir(folder)
-              ^^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: './scripts/train/config/tre/dtr/'
