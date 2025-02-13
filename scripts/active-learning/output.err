@@ -3,3 +3,11 @@
 [nltk_data] Downloading package punkt to
 [nltk_data]     /cluster/home/julievt/nltk_data...
 [nltk_data]   Package punkt is already up-to-date!
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/./scripts/active-learning/ner.py", line 128, in <module>
+    assert len(words) == len(annot) == len(offsets), f"Word count:{word_count}, LEN words: {len(words)}, offset/annot: {len(offsets)}/{len(annot)}, \n words:{words} \n tokens: {token} \n curr: {curr}, word: {words[word_count]}, page: {page['page']}, file: {page['file']}"      
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Word count:38, LEN words: 44, offset/annot: 39/39, 
+ words:['[CLS]', ';', '[UNK]U', '[UNK]Sentralsjukehuset', 'i', 'Rogaland', 'J', 'O', 'U', 'RN', 'AL', '[UNK]KONFIDENSIELT', 'Fødselsnr:', '090531', '48163', 'Tlf:', '51618931', '[UNK]Navn:', 'Hogstad', 'Lars', '[UNK]Adresse:', '*', 'Rødhettev', '7', '[UNK]Poststed:', '4330', 'Ålgård', '[UNK]03.08.2000', 'UNDERSØKELSE', 'Kir.', 'Urologisk', 'poliklinikk', 'v/dr.', 'Sigmund', 'Vaage/meit', '[UNK]090531', '48163', 'Hogstadlars-', 'ö-ö-ÖiI|IL0', '—0', '0', '00000000', 'TT', '[SEP]'] 
+ tokens: [SEP] 
+ curr:  ö-ö-��iI|IL0 —0 0 00000000 TT [SEP], word: ö-ö-ÖiI|IL0, page: 36, file: 9ef658f9-b6f0-4ec5-817c-fd788209998b_B402AAAB-3008-4CF8-B5CD-FFDF282D3F7A.pdf
