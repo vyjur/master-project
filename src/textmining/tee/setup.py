@@ -3,7 +3,7 @@ from textmining.tee.rules import *
 import xml.etree.ElementTree as ET
 from preprocess.dataset import DatasetManager
 import configparser
-from structure.enum import Task, Dataset, TIMEX
+from structure.enum import Task, Dataset, DCT
 from model.util import Util
 import pandas as pd
 from transformers import AutoTokenizer
@@ -26,7 +26,7 @@ class TEExtract:
         print("LOAD", load)
         
         dataset = []
-        tags = [TIMEX.DATE.name, TIMEX.DCT.name]   
+        tags = [DCT.DATE.name, DCT.DCT.name]   
 
         if not load:
             dataset = manager.get(Dataset.TEE)
@@ -57,9 +57,16 @@ class TEExtract:
             "learning_rate": self.__config.getfloat(
                 "train.parameters", "learning_rate"
             ),
+            "optimizer": self.__config["train.parameters"]["optimizer"],
+            "weight_decay": self.__config.getfloat("train.parameters", "weight_decay"),
+            "early_stopping_patience": self.__config.getint("train.parameters", "early_stopping_patience"),
+            "early_stopping_delta": self.__config.getint("train.parameters", "early_stopping_delta"),
+            "embedding_dim": self.__config.getint("train.parameters", "embedding_dim"),
             "shuffle": self.__config.getboolean("train.parameters", "shuffle"),
             "num_workers": self.__config.getint("train.parameters", "num_workers"),
             "max_length": self.__config.getint("MODEL", "max_length"),
+            "tune": self.__config.getboolean("tuning", "tune"),
+            "tune_count": self.__config.getint("tuning", "tune") 
         }
 
         self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](

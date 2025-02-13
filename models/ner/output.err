@@ -1,19 +1,7 @@
 
 (25, 'Inappropriate ioctl for device')
+
+Unable to access any of "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/master_project-0.1.0.dist-info"
 [nltk_data] Downloading package punkt to
 [nltk_data]     /cluster/home/julievt/nltk_data...
 [nltk_data]   Package punkt is already up-to-date!
-/cluster/home/julievt/master-project/src/textmining/ner/setup.py:30: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  dataset['MedicalEntity'] = dataset['MedicalEntity'].fillna('O')
-wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
-wandb: Currently logged in as: julievt (julievt-ntnu). Use `wandb login --relogin` to force relogin
-wandb: Tracking run with wandb version 0.19.1
-wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250212_113750-862gzinw
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Syncing run laced-meadow-3
-wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/ner-a-Task.TOKEN-nn-model
-wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/ner-a-Task.TOKEN-nn-model/runs/862gzinw
