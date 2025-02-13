@@ -5,6 +5,7 @@ import torch.nn as nn
 from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
 from model.base.nn import NN
+from model.util import Util
 from structure.enum import Task
 from model.nn.bilstm import Model as BaseModel
 
@@ -187,6 +188,7 @@ class BiLSTMCRF(nn.Module):
         tokenizer=None,
         project_name: str | None = None,
         pretrain: str | None = None,
+        util: Util = None
     ):
         super(BiLSTMCRF, self).__init__()
 
@@ -201,6 +203,7 @@ class BiLSTMCRF(nn.Module):
             tokenizer,
             project_name,
             pretrain,
+            util
         )
         self.tokenizer = self.__model.tokenizer
         self.device = self.__model.device

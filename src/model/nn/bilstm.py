@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 from model.base.nn import NN
 from structure.enum import Task
+from model.util import Util
 
 
 class Model(nn.Module):
@@ -69,6 +70,7 @@ class BiLSTM(nn.Module):
         tokenizer=None,
         project_name: str | None = None,
         pretrain: str | None = None,
+        util: Util = None
     ):
         super(BiLSTM, self).__init__()
         self.__model = NN(
@@ -82,6 +84,7 @@ class BiLSTM(nn.Module):
             tokenizer,
             project_name,
             pretrain,
+            util
         )
         self.tokenizer = self.__model.tokenizer
         
