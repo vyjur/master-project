@@ -51,7 +51,7 @@ class NERecognition:
             "optimizer": self.__config["train.parameters"]["optimizer"],
             "weight_decay": self.__config.getfloat("train.parameters", "weight_decay"),
             "early_stopping_patience": self.__config.getint("train.parameters", "early_stopping_patience"),
-            "early_stopping_delta": self.__config.getint("train.parameters", "early_stopping_delta"),
+            "early_stopping_delta": self.__config.getfloat("train.parameters", "early_stopping_delta"),
             "embedding_dim": self.__config.getint("train.parameters", "embedding_dim"),
             "shuffle": self.__config.getboolean("train.parameters", "shuffle"),
             "num_workers": self.__config.getint("train.parameters", "num_workers"),
