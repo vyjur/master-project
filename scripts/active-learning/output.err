@@ -3,13 +3,3 @@
 [nltk_data] Downloading package punkt to
 [nltk_data]     /cluster/home/julievt/nltk_data...
 [nltk_data]   Package punkt is already up-to-date!
-Traceback (most recent call last):
-  File "/cluster/home/julievt/master-project/./scripts/active-learning/ner.py", line 35, in <module>
-    ner = NERecognition(
-          ^^^^^^^^^^^^^^
-  File "/cluster/home/julievt/master-project/src/textmining/ner/setup.py", line 51, in __init__
-    "optimizer": self.__config["train.parameters"]["optimizer"],
-                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/cluster/apps/eb/software/Python/3.12.3-GCCcore-13.3.0/lib/python3.12/configparser.py", line 1224, in __getitem__
-    raise KeyError(key)
-KeyError: 'optimizer'
