@@ -228,7 +228,21 @@ class NN(nn.Module):
                 testing_loader, loss_fn, self.__processed["id2label"], True
             )
             self.__util.validate_report(labels, predictions)
+            
+            if "intra" in self.__processed and "inter" in self.__processed:
+                intra_loader = DataLoader(self.__processed["intra"], **train_params)
+                inter_loader = DataLoader(self.__processed["inter"], **train_params)
 
+                print("### Inter sentences performance:")
+                labels, predictions = self.__valid(
+                    inter_loader, loss_fn, self.__processed["id2label"], True
+                )
+                
+                print("### Intra sentences performance:")
+                labels, predictions = self.__valid(
+                    intra_loader, loss_fn, self.__processed["id2label"], True
+                )
+                
             # If tune don't save else too many models heavy
             if not config["tune"]:
                 if not os.path.exists(self.__save):

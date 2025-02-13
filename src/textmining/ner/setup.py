@@ -30,6 +30,8 @@ class NERecognition:
             if self.schema == sch.name:
                 self.schema = sch
                 break
+            
+        print(sch)
         
         if load:
             tags = [cat.name for cat in ME]   
@@ -41,7 +43,9 @@ class NERecognition:
             tags = list(tags)
         
         self.__util = Util(schema=self.schema)
+        print(tags)
         self.label2id, self.id2label = self.__util.get_tags(Task.TOKEN, tags)
+        print(self.label2id)
 
         self.tokenizer = AutoTokenizer.from_pretrained(
             self.__config["pretrain"]["name"]

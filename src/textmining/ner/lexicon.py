@@ -100,7 +100,6 @@ if __name__ == "__main__":
     manager = DatasetManager(files)
     raw_dataset = manager.get(Dataset.NER)
 
-    # TODO: can we use train_test splitter's raw data isntead of doing this ourselves?
     dataset = []
     tags = set()
     for doc in raw_dataset:

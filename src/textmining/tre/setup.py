@@ -6,7 +6,11 @@ from model.map import MODEL_MAP
 from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
 import random
-from structure.enum import Dataset, Task, DocTimeRel, TLINK
+from structure.enum import Dataset, Task, DocTimeRel, TLINK, SENTENCE
+
+import nltk
+nltk.download('punkt')
+from nltk.tokenize import sent_tokenize
 
 
 class TRExtract:
@@ -85,10 +89,13 @@ class TRExtract:
                     sentence_j = e_j['Context'].replace(e_j['Text'], f"<TAG>{e_j['Text']}</TAG>")
                     
                     words = f"{sentence_i} [SEP] {sentence_j}"
-
+                    
+                    cat = self.classify_tlink(e_i, e_j)
+                    
                     relation_pair = {
                         "sentence": words,
                         "relation": rel["RELATION"],
+                        "cat": cat
                     }
                     dataset.append(relation_pair)
                     tags.add(rel["RELATION"])
@@ -121,9 +128,11 @@ class TRExtract:
                         
                         words = f"{sentence_i} [SEP] {sentence_j}"
 
+                        cat = self.classify_tlink(e_i, e_j)
                         relation_pair = {
                             "sentence": words,
                             "relation": relation,
+                            "cat": cat
                         }
                         dataset.append(relation_pair)
                         tags.add(relation)
@@ -134,6 +143,7 @@ class TRExtract:
                 tags = [cat.name for cat in DocTimeRel]
             else:
                 tags = [cat.name for cat in TLINK]
+                
         self.label2id, self.id2label = Util().get_tags(
             Task.SEQUENCE, tags
         )
@@ -179,6 +189,15 @@ class TRExtract:
             sentence_j = e_j.context.replace(e_j.value, f"<TAG>{e_j.value}</TAG>")
             text = f"{sentence_i} [SEP] {sentence_j}"
         return self.__run(self.preprocess.run(text))
+    
+    def classify_tlink(self, e_i, e_j):
+        sentences = sent_tokenize(e_i['Context'])
+        
+        for sentence in sentences:
+            # It is inter sentence if both entities are in the same sentence
+            if e_i['Text'] in sentence and e_j['Text'] in sentence:
+                return SENTENCE.INTRA
+        return SENTENCE.INTER
 
 
 if __name__ == "__main__":
