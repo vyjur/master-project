@@ -36,11 +36,11 @@ class Model(BaseModel):
         super(Model, self).__init__(
             batch, vocab_size, tag_to_ix, embedding_dim, hidden_dim, bert_model
         )
-
+        
         # Matrix of transition parameters.  Entry i,j is the score of
         # transitioning *to* i *from* j.
         self.transitions = nn.Parameter(torch.randn(self.tagset_size, self.tagset_size))
-
+        
         # These two statements enforce the constraint that we never transfer
         # to the start tag and we never transfer from the stop tag
         self.transitions.data[tag_to_ix[START_TAG], :] = -10000
