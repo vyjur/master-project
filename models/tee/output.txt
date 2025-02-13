@@ -4,3 +4,7 @@ Installing dependencies from lock file
 No dependencies to install or update
 
 Installing the current project: master-project (0.1.0)
+##### Start training for TEE... ######
+### Processing the files:
+###### (0) Training for configuration file: c-bert-bilstm.ini
+LOAD False
