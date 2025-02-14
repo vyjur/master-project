@@ -9,36 +9,9 @@ from model.regularization.early_stopping import EarlyStopping
 from model.util import Util
 from structure.enum import Task
 import wandb
+from model.tuning.setup import TuningConfig
 
-# TODO: Move this out to a config file wandb hyperparameter tune
-sweep_config = {"method": "grid"}
-
-metric = {"name": "val_loss", "goal": "minimize"}
-
-parameters_dict = {
-    "epochs": {"value": 100},
-    "optimizer": {"values": ["adam", "sgd"]},  # Correct way to define discrete choices
-    "learning_rate": {
-        "values": [0.0001, 0.001, 0.01, 0.1]  # Grid search over specific learning rates
-    },
-    "batch_size": {"values": [32, 64, 128, 256]},
-    "weight_decay": {
-        "values": [0, 1e-5, 1e-4, 1e-3, 1e-2]  # Grid search over weight decay values
-    },
-    "early_stopping_patience": {
-        "values": [3, 5, 10]  # Grid search over patience values
-    },
-    "early_stopping_delta": {
-        "values": [0.01, 0.001, 0.0005, 0.0001]  # Grid search over delta values
-    },
-    "max_length": {"values": [64, 128, 256, 512]},
-    "embedding_dim": {
-        "values": [32, 64, 128, 256, 512]  # Grid search over embedding dimensions
-    },
-}
-
-sweep_config["metric"] = metric
-sweep_config["parameters"] = parameters_dict
+sweep_config = TuningConfig.get_config()
 
 START_TAG = "<START>"
 STOP_TAG = "<STOP>"
@@ -57,6 +30,7 @@ class NN(nn.Module):
         tokenizer=None,
         project_name: str | None = None,
         pretrain: str | None = None,
+        util: Util = None
     ):
         super(NN, self).__init__()
         self.__device = "cuda:0" if cuda.is_available() else "cpu"
@@ -72,38 +46,30 @@ class NN(nn.Module):
         self.__task = task
         self.__base_model = model
         self.__save = save
+        self.__util = util if util is not None else Util()
+        
 
         self.__project_name = project_name
+        self.__tags_name = tags_name
+        self.__dataset = dataset
 
         embedding_dim = parameters["embedding_dim"]
 
         self.__processed = {}
 
-        if not load:
-            self.__processed = Preprocess(
-                self.tokenizer, parameters["max_length"]
-            ).run_train_test_split(task, dataset, tags_name)
-            self.__class_weights = Util().class_weights(
-                task, self.__processed["dataset"], self.__device
-            )
+        if load:
+            tag_to_ix, ix_to_tag = self.__util.get_tags(task, tags_name)
 
-            tag_to_ix = self.__processed["label2id"]
+            if task == Task.TOKEN:
+                START_ID = max(ix_to_tag.keys()) + 1
+                STOP_ID = max(ix_to_tag.keys()) + 2
+
+                tag_to_ix[START_TAG] = START_ID
+                tag_to_ix[STOP_TAG] = STOP_ID
+
             self.__processed["label2id"] = tag_to_ix
-            ix_to_tag = self.__processed["id2label"]
-
-        else:
-            tag_to_ix, ix_to_tag = Util().get_tags(task, tags_name)
-
-        if task == Task.TOKEN:
-            START_ID = max(ix_to_tag.keys()) + 1
-            STOP_ID = max(ix_to_tag.keys()) + 2
-
-            tag_to_ix[START_TAG] = START_ID
-            tag_to_ix[STOP_TAG] = STOP_ID
-
-        self.__processed["label2id"] = tag_to_ix
-        self.__processed["id2label"] = ix_to_tag
-
+            self.__processed["id2label"] = ix_to_tag
+        
         self.__vocab_size = self.tokenizer.vocab_size  # type: ignore
         hidden_dim = parameters["max_length"]
 
@@ -142,6 +108,7 @@ class NN(nn.Module):
                     "early_stopping_delta": parameters["early_stopping_delta"],
                     "embedding_dim": parameters["embedding_dim"],
                     "max_length": parameters["max_length"],
+                    "stride": parameters["stride"],
                     "shuffle": parameters["shuffle"],
                     "num_workers": parameters["num_workers"],
                     "evaluation_strategy": "epoch",
@@ -152,13 +119,27 @@ class NN(nn.Module):
                 self.train(wandb.config)
 
     def train(self, config=None):
-
+        
         with wandb.init(project=f"{self.__project_name}-{self.__task}-nn-model".replace('"', "")):  # type: ignore
 
             if config is None:
                 config = wandb.config
 
             print(config)
+            
+            self.__processed = Preprocess(
+                self.tokenizer, config["max_length"], config['slide'], self.__util
+            ).run_train_test_split(self.__task, self.__dataset, self.__tags_name)
+            self.__class_weights = self.__util.class_weights(
+                self.__task, self.__processed["dataset"], self.__device
+            )
+
+            if self.__task == Task.TOKEN:
+                START_ID = max(self.__processed["id2label"].keys()) + 1
+                STOP_ID = max(self.__processed["id2label"].keys()) + 2
+
+                self.__processed["label2id"][START_TAG] = START_ID
+                self.__processed["label2id"][STOP_TAG] = STOP_ID
 
             train_params = {
                 "batch_size": config["batch_size"],
@@ -183,7 +164,7 @@ class NN(nn.Module):
                 config["embedding_dim"],
                 config["max_length"],
             ).to(self.__device)
-
+            
             self.__model.num_labels = len(self.__processed["id2label"])
 
             loss_fn = nn.CrossEntropyLoss(weight=self.__class_weights)
@@ -219,14 +200,30 @@ class NN(nn.Module):
             labels, predictions = self.__valid(
                 valid_loader, loss_fn, self.__processed["id2label"], True
             )
-            Util().validate_report(labels, predictions)
+            self.__util.validate_report(labels, predictions)
 
             print("### Test set performance:")
             labels, predictions = self.__valid(
                 testing_loader, loss_fn, self.__processed["id2label"], True
             )
-            Util().validate_report(labels, predictions)
+            self.__util.validate_report(labels, predictions)
+            
+            if "intra" in self.__processed and "inter" in self.__processed:
+                intra_loader = DataLoader(self.__processed["intra"], **train_params)
+                inter_loader = DataLoader(self.__processed["inter"], **train_params)
 
+                print("### Inter sentences performance:")
+                labels, predictions = self.__valid(
+                    inter_loader, loss_fn, self.__processed["id2label"], True
+                )
+                self.__util.validate_report(labels, predictions)
+                
+                print("### Intra sentences performance:")
+                labels, predictions = self.__valid(
+                    intra_loader, loss_fn, self.__processed["id2label"], True
+                )
+                self.__util.validate_report(labels, predictions)
+                
             # If tune don't save else too many models heavy
             if not config["tune"]:
                 if not os.path.exists(self.__save):

@@ -3,7 +3,7 @@ import configparser
 from torch.utils.data import Dataset
 from sklearn.model_selection import train_test_split
 from model.util import Util
-from structure.enum import Task
+from structure.enum import Task, SENTENCE
 
 
 class CustomDataset(Dataset):
@@ -38,9 +38,13 @@ class CustomDataset(Dataset):
 
 
 class Preprocess:
-    def __init__(self, tokenizer, max_length: int = 512, train_size: float = 0.8):
+    def __init__(self, tokenizer, max_length: int = 512, stride: int = 0, util: Util = None, train_size: float = 0.8):
         self.__tokenizer = tokenizer
+        self.__util = util
+        if self.__util is None:
+            self.__util = Util()
         self.__max_length = max_length
+        self.__stride = stride
         self.__train_size = train_size
 
         self.__config = configparser.ConfigParser()
@@ -50,7 +54,7 @@ class Preprocess:
         tokenized_dataset = self.__tokenizer(
             data,
             padding="max_length",
-            stride=0,
+            stride=self.__stride,
             max_length=self.__max_length,
             truncation=True,
             return_offsets_mapping=True,
@@ -101,7 +105,7 @@ class Preprocess:
         window_size: int = 128,
         stride: int = 16,
     ):
-        label2id, id2label = Util().get_tags(task, tags_name)
+        label2id, id2label = self.__util.get_tags(task, tags_name)
         tokenized_dataset = []
         
         for row in data:
@@ -124,7 +128,7 @@ class Preprocess:
             tokenized = self.__tokenizer(
                 words,
                 padding="max_length",
-                stride=3,
+                stride=self.__stride,
                 max_length=self.__max_length,
                 is_split_into_words=split_into_words,
                 truncation=True,
@@ -138,7 +142,10 @@ class Preprocess:
                         annot[i] if i is not None else "O"  # type: ignore
                         for i in encoding.word_ids
                     ]
-                    tokens_annot = self.tokens_mapping(encoding, curr_annot)
+                    word_length = [
+                        len(words[i]) if i is not None else None for i in encoding.word_ids
+                    ]
+                    tokens_annot = self.__util.tokens_mapping(encoding, curr_annot, word_length)
 
                 encoding_dict = {
                     "ids": encoding.ids,
@@ -154,6 +161,8 @@ class Preprocess:
                     encoding_dict["labels"] = tokens_annot  # type: ignore
                 else:
                     encoding_dict["labels"] = row["relation"]
+                    if "cat" in row:
+                        encoding_dict["cat"] = row["cat"]
                 tokenized_dataset.append(encoding_dict)
 
         train, test = train_test_split(
@@ -171,7 +180,7 @@ class Preprocess:
         valid_dataset = CustomDataset(val, self.__tokenizer, label2id)
         test_dataset = CustomDataset(test, self.__tokenizer, label2id)
         
-        return {
+        return_dict = {
             "train_raw": train,
             "val_raw": val,
             "test_raw": test,
@@ -182,26 +191,18 @@ class Preprocess:
             "label2id": label2id,
             "id2label": id2label,
         }
+        
+        if "cat" in tokenized_dataset[0]:
+            intra = [d for d in tokenized_dataset if d["cat"] == SENTENCE.INTRA]
+            inter = [d for d in tokenized_dataset if d["cat"] == SENTENCE.INTER]
 
-    def tokens_mapping(self, tokenized, annot):
-        tokens_annot = []
-        for i in range(len(tokenized.ids)):
-            if tokenized.offsets[i][0] == 0 and tokenized.offsets[i][1] == 0:
-                tokens_annot.append("O")
-                continue
-            elif tokenized.offsets[i][0] == 0:
-                if annot[i] != "O":
-                    tokens_annot.append(f"B-{annot[i]}")
-                elif annot[i] != "O":
-                    tokens_annot.append(f"I-{annot[i]}")
-                else:
-                    tokens_annot.append(annot[i])
-            else:
-                if annot[i] != "O":
-                    tokens_annot.append(f"I-{annot[i]}")
-                else:
-                    tokens_annot.append(annot[i])
-        return tokens_annot
+            intra_dataset = CustomDataset(intra, self.__tokenizer, label2id)
+            inter_dataset = CustomDataset(inter, self.__tokenizer, label2id)
+            
+            return_dict["intra"] = intra_dataset
+            return_dict["inter"] = inter_dataset
+
+        return return_dict
 
 
 if __name__ == "__main__":
