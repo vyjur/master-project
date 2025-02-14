@@ -139,7 +139,7 @@ class BERT(nn.Module):
             torch.cuda.empty_cache()
 
             self.__processed = Preprocess(
-                self.tokenizer, config["max_length"]
+                self.tokenizer, config["max_length"], config["stride"], self.__util
             ).run_train_test_split(self.__task, self.__dataset, self.__tags_name)
 
             self.__class_weights = self.__util.class_weights(

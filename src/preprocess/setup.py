@@ -38,12 +38,13 @@ class CustomDataset(Dataset):
 
 
 class Preprocess:
-    def __init__(self, tokenizer, max_length: int = 512, util: Util = None, train_size: float = 0.8):
+    def __init__(self, tokenizer, max_length: int = 512, stride: int = 0, util: Util = None, train_size: float = 0.8):
         self.__tokenizer = tokenizer
         self.__util = util
         if self.__util is None:
             self.__util = Util()
         self.__max_length = max_length
+        self.__stride = stride
         self.__train_size = train_size
 
         self.__config = configparser.ConfigParser()
@@ -53,7 +54,7 @@ class Preprocess:
         tokenized_dataset = self.__tokenizer(
             data,
             padding="max_length",
-            stride=0,
+            stride=self.__stride,
             max_length=self.__max_length,
             truncation=True,
             return_offsets_mapping=True,
@@ -127,7 +128,7 @@ class Preprocess:
             tokenized = self.__tokenizer(
                 words,
                 padding="max_length",
-                stride=3,
+                stride=self.__stride,
                 max_length=self.__max_length,
                 is_split_into_words=split_into_words,
                 truncation=True,

@@ -70,7 +70,7 @@ class Pipeline:
 
         ### Initialize preprocessing module ###
         self.__preprocess = Preprocess(
-            self.__ner.get_tokenizer(), self.__ner.get_max_length()
+            self.__ner.get_tokenizer(), self.__ner.get_max_length(), self.__ner.get_stride(), self.__ner.get_util()
         )
 
         ### Initialize visualization module ###
