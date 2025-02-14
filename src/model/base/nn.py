@@ -108,6 +108,7 @@ class NN(nn.Module):
                     "early_stopping_delta": parameters["early_stopping_delta"],
                     "embedding_dim": parameters["embedding_dim"],
                     "max_length": parameters["max_length"],
+                    "stride": parameters["stride"],
                     "shuffle": parameters["shuffle"],
                     "num_workers": parameters["num_workers"],
                     "evaluation_strategy": "epoch",
@@ -127,7 +128,7 @@ class NN(nn.Module):
             print(config)
             
             self.__processed = Preprocess(
-                self.tokenizer, config["max_length"], self.__util
+                self.tokenizer, config["max_length"], config['slide'], self.__util
             ).run_train_test_split(self.__task, self.__dataset, self.__tags_name)
             self.__class_weights = self.__util.class_weights(
                 self.__task, self.__processed["dataset"], self.__device

@@ -50,7 +50,8 @@ class TRExtract:
             "embedding_dim": self.__config.getint("train.parameters", "embedding_dim"),
             "shuffle": self.__config.getboolean("train.parameters", "shuffle"),
             "num_workers": self.__config.getint("train.parameters", "num_workers"),
-            "max_length": self.__config.getint("MODEL", "max_length"),
+            "max_length": self.__config.getint("train.parameters", "max_length"),
+            "stride": self.__config.getint("train.parameters", "stride"),
             "tune": self.__config.getboolean("tuning", "tune"),
             "tune_count": self.__config.getint("tuning", "count") 
         }
@@ -166,13 +167,16 @@ class TRExtract:
             self.__config["pretrain"]["name"],
         )
 
-        self.preprocess = Preprocess(self.get_tokenizer(), self.get_max_length())
+        self.preprocess = Preprocess(self.get_tokenizer(), self.get_max_length(), self.get_stride())
 
     def get_tokenizer(self):
         return self.__model.tokenizer
 
     def get_max_length(self):
         return self.__config.getint("MODEL", "max_length")
+    
+    def get_stride(self):
+        return self.__config.getint("MODEL", "stride")
 
     def __run(self, data):
         output = self.__model.predict([val.ids for val in data])
