@@ -38,6 +38,6 @@ for i, conf in enumerate(configs):
         manager=manager,
         save_directory=save_directory,
     )
-    print("Finished with this task.")
+    print("Finished with this task. \n \n")
 
 print("Process finished!")

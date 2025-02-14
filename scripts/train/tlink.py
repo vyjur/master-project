@@ -40,6 +40,6 @@ for i, conf in enumerate(configs):
         save_directory=save_directory,
         task=Dataset.TLINK
     )
-    print("Finished with this task.")
+    print("Finished with this task. \n \n")
 
 print("Process finished!")
