@@ -18,35 +18,9 @@ from model.regularization.early_stopping import EarlyStopping
 from model.util import Util
 import wandb
 from structure.enum import Task
+from model.tuning.setup import TuningConfig
 
-
-# TODO: Move this out to a config file wandb hyperparameter tune
-sweep_config = {"method": "grid"}
-
-metric = {"name": "val_loss", "goal": "minimize"}
-
-parameters_dict = {
-    "epochs": {"value": 100},
-    "optimizer": {"values": ["adam", "sgd"]},  # Correct way to define discrete choices
-    "learning_rate": {
-        "values": [0.0001, 0.001, 0.01, 0.1]  # Grid search over specific learning rates
-    },
-    "batch_size": {"values": [32, 64, 128, 256]},
-    "weight_decay": {
-        "values": [0, 1e-5, 1e-4, 1e-3, 1e-2]  # Grid search over weight decay values
-    },
-    "early_stopping_patience": {
-        "values": [3, 5, 10]  # Grid search over patience values
-    },
-    "early_stopping_delta": {
-        "values": [0.01, 0.001, 0.0005, 0.0001]  # Grid search over delta values
-    },
-    "max_length": {"values": [64, 128, 256, 512]},
-    "tune": {"value": True}
-}
-
-sweep_config["metric"] = metric
-sweep_config["parameters"] = parameters_dict
+sweep_config = TuningConfig.get_config()
 
 
 class BERT(nn.Module):
