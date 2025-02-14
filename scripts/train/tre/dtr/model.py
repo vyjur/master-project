@@ -8,7 +8,7 @@ print("##### Start training for TRE... ######")
 # Info: Change here
 TRE_TYPE = "dtr"
 
-folder = f"./scripts/train/config/tre/{TRE_TYPE}/"
+folder = f"./scripts/train/tre/{TRE_TYPE}/config/model/"
 configs = os.listdir(folder)
 
 folder_path = "./data/helsearkiv/annotated/entity/"
@@ -33,7 +33,9 @@ for i, conf in enumerate(configs):
     if os.path.isdir(folder + conf):
         continue
     print(f"###### ({i}) Training for configuration file: {conf}")
-    save_directory = f"./models/tre/{TRE_TYPE}/" + conf.replace(".ini", "")
+    save_directory = f"./models/tre/{TRE_TYPE}/model/" + conf.replace(".ini", "")
+    if not os.path.isdir(save_directory):
+        os.mkdir(save_directory)
     ner = TRExtract(
         config_file=folder + conf,
         manager=manager,

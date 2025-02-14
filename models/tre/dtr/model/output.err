@@ -1,0 +1,5 @@
+
+(25, 'Inappropriate ioctl for device')
+
+Unable to access any of "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/master_project-0.1.0.dist-info"
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/bin/python: can't open file '/cluster/home/julievt/master-project/./scripts/train/dtr.py': [Errno 2] No such file or directory

@@ -47,3 +47,4 @@ wandb: Run `wandb offline` to turn off syncing.
 wandb: Syncing run usual-monkey-2
 wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/ner-c-Task.TOKEN-nn-model
 wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/ner-c-Task.TOKEN-nn-model/runs/hditmy1e
+slurmstepd: error: *** JOB 21146720 ON idun-09-03 CANCELLED AT 2025-02-14T14:19:29 ***
