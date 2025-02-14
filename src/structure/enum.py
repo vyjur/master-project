@@ -43,3 +43,7 @@ class NER_SCHEMA(Enum):
     BIO = 1
     IO = 2
     IOE = 3
+
+class SENTENCE(Enum):
+    INTER = 1
+    INTRA = 2

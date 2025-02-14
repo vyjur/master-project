@@ -1,6 +1,7 @@
 from transformers import AutoModel
 from model.nn.bilstmcrf import Model as BaseModel
 from model.base.nn import NN
+from model.util import Util
 from structure.enum import Task
 import torch.nn as nn
 
@@ -16,6 +17,7 @@ class BERTBiLSTMCRF(nn.Module):
         tokenizer=None,
         project_name: str | None = None,
         pretrain: str | None = None,
+        util: Util = None
     ):
         super(BERTBiLSTMCRF, self).__init__()
 
@@ -38,6 +40,7 @@ class BERTBiLSTMCRF(nn.Module):
             tokenizer,
             project_name,
             pretrain,
+            util
         )
         self.tokenizer = self.__model.tokenizer
         self.device = self.__model.device

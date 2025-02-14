@@ -18,34 +18,9 @@ from model.regularization.early_stopping import EarlyStopping
 from model.util import Util
 import wandb
 from structure.enum import Task
+from model.tuning.setup import TuningConfig
 
-
-# TODO: Move this out to a config file wandb hyperparameter tune
-sweep_config = {"method": "grid"}
-
-metric = {"name": "val_loss", "goal": "minimize"}
-
-parameters_dict = {
-    "epochs": {"value": 100},
-    "optimizer": {"values": ["adam", "sgd"]},  # Correct way to define discrete choices
-    "learning_rate": {
-        "values": [0.0001, 0.001, 0.01, 0.1]  # Grid search over specific learning rates
-    },
-    "batch_size": {"values": [32, 64, 128, 256]},
-    "weight_decay": {
-        "values": [0, 1e-5, 1e-4, 1e-3, 1e-2]  # Grid search over weight decay values
-    },
-    "early_stopping_patience": {
-        "values": [3, 5, 10]  # Grid search over patience values
-    },
-    "early_stopping_delta": {
-        "values": [0.01, 0.001, 0.0005, 0.0001]  # Grid search over delta values
-    },
-    "max_length": {"values": [64, 128, 256, 512]},
-}
-
-sweep_config["metric"] = metric
-sweep_config["parameters"] = parameters_dict
+sweep_config = TuningConfig.get_config()
 
 
 class BERT(nn.Module):
@@ -60,6 +35,7 @@ class BERT(nn.Module):
         tokenizer=None,
         project_name: str | None = None,
         pretrain: str | None = None,
+        util: Util = None
     ):
         super(BERT, self).__init__()
 
@@ -80,6 +56,7 @@ class BERT(nn.Module):
         self.__dataset = dataset
         self.__tags_name = tags_name
         self.__project_name = project_name
+        self.__util = util if util is not None else Util()
 
         if load:
             if task == Task.TOKEN:
@@ -162,10 +139,10 @@ class BERT(nn.Module):
             torch.cuda.empty_cache()
 
             self.__processed = Preprocess(
-                self.tokenizer, config["max_length"]
+                self.tokenizer, config["max_length"], config["stride"], self.__util
             ).run_train_test_split(self.__task, self.__dataset, self.__tags_name)
 
-            self.__class_weights = Util().class_weights(
+            self.__class_weights = self.__util.class_weights(
                 self.__task, self.__processed["dataset"], self.__device
             )
             
@@ -197,7 +174,7 @@ class BERT(nn.Module):
                 )
             else:
                 self.__model = AutoModelForSequenceClassification.from_pretrained(
-                    "ltg/norbert3-xs",
+                    "ltg/norbert3-base",
                     trust_remote_code=True,
                     num_labels=len(self.__processed["id2label"]),
                     id2label=self.__processed["id2label"],
@@ -267,13 +244,29 @@ class BERT(nn.Module):
             labels, predictions = self.__valid(
                 valid_loader, loss_fn, self.__processed["id2label"], True
             )
-            Util().validate_report(labels, predictions)
+            self.__util.validate_report(labels, predictions)
 
             print("### Test set performance:")
             labels, predictions = self.__valid(
                 testing_loader, loss_fn, self.__processed["id2label"], True
             )
-            Util().validate_report(labels, predictions)
+            self.__util.validate_report(labels, predictions)
+            
+            if "intra" in self.__processed and "inter" in self.__processed:
+                intra_loader = DataLoader(self.__processed["intra"], **train_params)
+                inter_loader = DataLoader(self.__processed["inter"], **train_params)
+
+                print("### Inter sentences performance:")
+                labels, predictions = self.__valid(
+                    inter_loader, loss_fn, self.__processed["id2label"], True
+                )
+                self.__util.validate_report(labels, predictions)
+                
+                print("### Intra sentences performance:")
+                labels, predictions = self.__valid(
+                    intra_loader, loss_fn, self.__processed["id2label"], True
+                )
+                self.__util.validate_report(labels, predictions)
 
             # If tune don't save else too many models heavy
             if not config['tune']:

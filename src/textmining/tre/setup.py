@@ -6,7 +6,11 @@ from model.map import MODEL_MAP
 from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
 import random
-from structure.enum import Dataset, Task, DocTimeRel, TLINK
+from structure.enum import Dataset, Task, DocTimeRel, TLINK, SENTENCE
+
+import nltk
+nltk.download('punkt')
+from nltk.tokenize import sent_tokenize
 
 
 class TRExtract:
@@ -46,7 +50,8 @@ class TRExtract:
             "embedding_dim": self.__config.getint("train.parameters", "embedding_dim"),
             "shuffle": self.__config.getboolean("train.parameters", "shuffle"),
             "num_workers": self.__config.getint("train.parameters", "num_workers"),
-            "max_length": self.__config.getint("MODEL", "max_length"),
+            "max_length": self.__config.getint("train.parameters", "max_length"),
+            "stride": self.__config.getint("train.parameters", "stride"),
             "tune": self.__config.getboolean("tuning", "tune"),
             "tune_count": self.__config.getint("tuning", "count") 
         }
@@ -85,10 +90,13 @@ class TRExtract:
                     sentence_j = e_j['Context'].replace(e_j['Text'], f"<TAG>{e_j['Text']}</TAG>")
                     
                     words = f"{sentence_i} [SEP] {sentence_j}"
-
+                    
+                    cat = self.classify_tlink(e_i, e_j)
+                    
                     relation_pair = {
                         "sentence": words,
                         "relation": rel["RELATION"],
+                        "cat": cat
                     }
                     dataset.append(relation_pair)
                     tags.add(rel["RELATION"])
@@ -121,9 +129,11 @@ class TRExtract:
                         
                         words = f"{sentence_i} [SEP] {sentence_j}"
 
+                        cat = self.classify_tlink(e_i, e_j)
                         relation_pair = {
                             "sentence": words,
                             "relation": relation,
+                            "cat": cat
                         }
                         dataset.append(relation_pair)
                         tags.add(relation)
@@ -134,6 +144,7 @@ class TRExtract:
                 tags = [cat.name for cat in DocTimeRel]
             else:
                 tags = [cat.name for cat in TLINK]
+                
         self.label2id, self.id2label = Util().get_tags(
             Task.SEQUENCE, tags
         )
@@ -156,13 +167,16 @@ class TRExtract:
             self.__config["pretrain"]["name"],
         )
 
-        self.preprocess = Preprocess(self.get_tokenizer(), self.get_max_length())
+        self.preprocess = Preprocess(self.get_tokenizer(), self.get_max_length(), self.get_stride())
 
     def get_tokenizer(self):
         return self.__model.tokenizer
 
     def get_max_length(self):
         return self.__config.getint("MODEL", "max_length")
+    
+    def get_stride(self):
+        return self.__config.getint("MODEL", "stride")
 
     def __run(self, data):
         output = self.__model.predict([val.ids for val in data])
@@ -179,6 +193,15 @@ class TRExtract:
             sentence_j = e_j.context.replace(e_j.value, f"<TAG>{e_j.value}</TAG>")
             text = f"{sentence_i} [SEP] {sentence_j}"
         return self.__run(self.preprocess.run(text))
+    
+    def classify_tlink(self, e_i, e_j):
+        sentences = sent_tokenize(e_i['Context'])
+        
+        for sentence in sentences:
+            # It is inter sentence if both entities are in the same sentence
+            if e_i['Text'] in sentence and e_j['Text'] in sentence:
+                return SENTENCE.INTRA
+        return SENTENCE.INTER
 
 
 if __name__ == "__main__":
