@@ -40,7 +40,7 @@ ner = NERecognition(
 )
 
 preprocess = Preprocess(
-    ner.get_tokenizer(), ner.get_max_length(), ner.get_util()
+    ner.get_tokenizer(), ner.get_max_length(), ner.get_stride(), ner.get_util()
 )
 
 model = ner.get_model()

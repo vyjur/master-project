@@ -65,7 +65,8 @@ class NERecognition:
             "embedding_dim": self.__config.getint("train.parameters", "embedding_dim"),
             "shuffle": self.__config.getboolean("train.parameters", "shuffle"),
             "num_workers": self.__config.getint("train.parameters", "num_workers"),
-            "max_length": self.__config.getint("MODEL", "max_length"),
+            "max_length": self.__config.getint("train.parameters", "max_length"),
+            "stride": self.__config.getint("train.parameters", "stride"),
             "tune": self.__config.getboolean("tuning", "tune"),
             "tune_count": self.__config.getint("tuning", "count") 
         }
@@ -87,6 +88,9 @@ class NERecognition:
 
     def get_max_length(self):
         return self.__config.getint("MODEL", "max_length")
+    
+    def get_stride(self):
+        return self.__config.getint("MODEL", "stride")
     
     def get_util(self):
         return self.__util
@@ -161,7 +165,7 @@ if __name__ == "__main__":
     manager = DatasetManager(['./data/annotated_MTSamples/ex13.tsv'])
 
     reg = NERecognition("./src/textmining/ner/config.ini", manager)
-    preprocess = Preprocess(reg.get_tokenizer(), reg.get_max_length())
+    preprocess = Preprocess(reg.get_tokenizer(), reg.get_max_length(), reg.get_stride(), reg.get_util())
 
     text = "Pasienten har også opplevd økt tungpust de siste månedene, noe som har begrenset aktivitetsnivået hans."
 
