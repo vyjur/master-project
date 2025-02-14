@@ -75,36 +75,28 @@ class NN(nn.Module):
         self.__base_model = model
         self.__save = save
         self.__util = util if util is not None else Util()
+        
 
         self.__project_name = project_name
+        self.__tags_name = tags_name
+        self.__dataset = dataset
 
         embedding_dim = parameters["embedding_dim"]
 
         self.__processed = {}
 
-        if not load:
-            self.__processed = Preprocess(
-                self.tokenizer, parameters["max_length"], util
-            ).run_train_test_split(task, dataset, tags_name)
-            self.__class_weights = self.__util.class_weights(
-                task, self.__processed["dataset"], self.__device
-            )
-
-            tag_to_ix = self.__processed["label2id"]
-            ix_to_tag = self.__processed["id2label"]
-
-        else:
+        if load:
             tag_to_ix, ix_to_tag = self.__util.get_tags(task, tags_name)
 
-        if task == Task.TOKEN:
-            START_ID = max(ix_to_tag.keys()) + 1
-            STOP_ID = max(ix_to_tag.keys()) + 2
+            if task == Task.TOKEN:
+                START_ID = max(ix_to_tag.keys()) + 1
+                STOP_ID = max(ix_to_tag.keys()) + 2
 
-            tag_to_ix[START_TAG] = START_ID
-            tag_to_ix[STOP_TAG] = STOP_ID
+                tag_to_ix[START_TAG] = START_ID
+                tag_to_ix[STOP_TAG] = STOP_ID
 
-        self.__processed["label2id"] = tag_to_ix
-        self.__processed["id2label"] = ix_to_tag
+            self.__processed["label2id"] = tag_to_ix
+            self.__processed["id2label"] = ix_to_tag
         
         self.__vocab_size = self.tokenizer.vocab_size  # type: ignore
         hidden_dim = parameters["max_length"]
@@ -161,6 +153,20 @@ class NN(nn.Module):
                 config = wandb.config
 
             print(config)
+            
+            self.__processed = Preprocess(
+                self.tokenizer, config["max_length"], self.__util
+            ).run_train_test_split(self.__task, self.__dataset, self.__tags_name)
+            self.__class_weights = self.__util.class_weights(
+                self.__task, self.__processed["dataset"], self.__device
+            )
+
+            if self.__task == Task.TOKEN:
+                START_ID = max(self.__processed["id2label"].keys()) + 1
+                STOP_ID = max(self.__processed["id2label"].keys()) + 2
+
+                self.__processed["label2id"][START_TAG] = START_ID
+                self.__processed["label2id"][STOP_TAG] = STOP_ID
 
             train_params = {
                 "batch_size": config["batch_size"],
