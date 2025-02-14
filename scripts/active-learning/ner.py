@@ -172,3 +172,6 @@ for page in sorted_data[:1200]:
 
 df = pd.DataFrame(info_file)
 df.to_csv(f'./data/helsearkiv/batch/ner/{BATCH}.csv')
+
+
+print("### Active Learning run finished!")

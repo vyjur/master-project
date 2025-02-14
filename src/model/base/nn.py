@@ -35,6 +35,7 @@ parameters_dict = {
     "embedding_dim": {
         "values": [32, 64, 128, 256, 512]  # Grid search over embedding dimensions
     },
+    "tune": {"value": True}
 }
 
 sweep_config["metric"] = metric
@@ -236,11 +237,13 @@ class NN(nn.Module):
                 labels, predictions = self.__valid(
                     inter_loader, loss_fn, self.__processed["id2label"], True
                 )
+                self.__util.validate_report(labels, predictions)
                 
                 print("### Intra sentences performance:")
                 labels, predictions = self.__valid(
                     intra_loader, loss_fn, self.__processed["id2label"], True
                 )
+                self.__util.validate_report(labels, predictions)
                 
             # If tune don't save else too many models heavy
             if not config["tune"]:
