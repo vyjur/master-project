@@ -1,13 +1,14 @@
 import os
-from textmining.tee.setup import TEExtract
+from textmining.tre.setup import TRExtract
 from preprocess.dataset import DatasetManager
 from structure.enum import Dataset
 
-print("##### Start training for TEE... ######")
+print("##### Start training for TRE... ######")
 
 # Info: Change here
+TRE_TYPE = "tlink"
 
-folder = f"./scripts/train/config/tee/"
+folder = f"./scripts/train/tre/{TRE_TYPE}/config/model/"
 configs = os.listdir(folder)
 
 folder_path = "./data/helsearkiv/annotated/entity/"
@@ -32,11 +33,14 @@ for i, conf in enumerate(configs):
     if os.path.isdir(folder + conf):
         continue
     print(f"###### ({i}) Training for configuration file: {conf}")
-    save_directory = f"./models/tee/" + conf.replace(".ini", "")
-    ner = TEExtract(
+    save_directory = f"./models/tre/{TRE_TYPE}/model/" + conf.replace(".ini", "")
+    if not os.path.isdir(save_directory):
+        os.mkdir(save_directory)
+    ner = TRExtract(
         config_file=folder + conf,
         manager=manager,
         save_directory=save_directory,
+        task=Dataset.TLINK
     )
     print("Finished with this task. \n \n")
 
