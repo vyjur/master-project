@@ -4,3 +4,287 @@ Installing dependencies from lock file
 No dependencies to install or update
 
 Installing the current project: master-project (0.1.0)
+##### Start training for NER Schema... ######
+### Processing the files:
+###### (0) Training for configuration file: c-io.ini
+LOAD False
+Using: cuda:0 with NN
+{'O': 308114, 'I-CONDITION': 35173, 'I-TREATMENT': 8201}
+{'O': 0.3802575237303942, 'I-CONDITION': 3.3310399075048096, 'I-TREATMENT': 14.286387838881437}
+{'learning_rate': 0.01, 'epochs': 100, 'batch_size': 256, 'valid_batch_size': 256, 'optimizer': 'adam', 'weight_decay': 0.0001, 'early_stopping_patience': 5, 'early_stopping_delta': 0.01, 'embedding_dim': 300, 'max_length': 128, 'shuffle': True, 'num_workers': 0, 'evaluation_strategy': 'epoch', 'save_strategy': 'epoch', 'logging_strategy': 'epoch', 'tune': False}
+HASE MODE 5
+Epoch 1
+-------------------------------
+Batch 0, Loss: 63.747802734375
+Epoch 2
+-------------------------------
+Batch 0, Loss: 22.933837890625
+Epoch 3
+-------------------------------
+Batch 0, Loss: 16.502197265625
+Epoch 4
+-------------------------------
+Batch 0, Loss: 13.062896728515625
+Epoch 5
+-------------------------------
+Batch 0, Loss: 7.8031005859375
+Epoch 6
+-------------------------------
+Batch 0, Loss: 6.312744140625
+Epoch 7
+-------------------------------
+Batch 0, Loss: 3.7645263671875
+Epoch 8
+-------------------------------
+Batch 0, Loss: 2.1383056640625
+Epoch 9
+-------------------------------
+Batch 0, Loss: 1.34527587890625
+Early stopping
+### Valid set performance:
+Validation Accuracy: 0.94765625
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.85      0.80      0.82      5923
+ I-TREATMENT       0.59      0.38      0.46      1321
+           O       0.96      0.98      0.97     49076
+
+    accuracy                           0.95     56320
+   macro avg       0.80      0.72      0.75     56320
+weighted avg       0.94      0.95      0.95     56320
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.85      0.80      0.82      5923
+           O       0.96      0.98      0.97     49076
+   TREATMENT       0.59      0.38      0.46      1321
+
+    accuracy                           0.95     56320
+   macro avg       0.80      0.72      0.75     56320
+weighted avg       0.94      0.95      0.95     56320
+
+### Test set performance:
+Validation Accuracy: 0.9499431818181818
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.81      0.74      0.77      5910
+ I-TREATMENT       0.57      0.43      0.49      1517
+           O       0.97      0.98      0.98     62973
+
+    accuracy                           0.95     70400
+   macro avg       0.78      0.72      0.75     70400
+weighted avg       0.95      0.95      0.95     70400
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.81      0.74      0.77      5910
+           O       0.97      0.98      0.98     62973
+   TREATMENT       0.57      0.43      0.49      1517
+
+    accuracy                           0.95     70400
+   macro avg       0.78      0.72      0.75     70400
+weighted avg       0.95      0.95      0.95     70400
+
+Finished with this task.
+###### (1) Training for configuration file: a-bio.ini
+LOAD False
+Using: cuda:0 with NN
+{'O': 308114, 'B-CONDITION': 15951, 'I-CONDITION': 19222, 'B-TREATMENT': 3204, 'I-TREATMENT': 4997}
+{'O': 0.2281545142382365, 'B-CONDITION': 4.4070967337471005, 'I-CONDITION': 3.657142857142857, 'B-TREATMENT': 21.940574282147317, 'I-TREATMENT': 14.06796077646588}
+{'learning_rate': 0.01, 'epochs': 100, 'batch_size': 256, 'valid_batch_size': 256, 'optimizer': 'adam', 'weight_decay': 0.0001, 'early_stopping_patience': 5, 'early_stopping_delta': 0.01, 'embedding_dim': 300, 'max_length': 128, 'shuffle': True, 'num_workers': 0, 'evaluation_strategy': 'epoch', 'save_strategy': 'epoch', 'logging_strategy': 'epoch', 'tune': False}
+HASE MODE 7
+Epoch 1
+-------------------------------
+Batch 0, Loss: 195.38250732421875
+Epoch 2
+-------------------------------
+Batch 0, Loss: 50.736114501953125
+Epoch 3
+-------------------------------
+Batch 0, Loss: 35.355621337890625
+Epoch 4
+-------------------------------
+Batch 0, Loss: 29.482147216796875
+Epoch 5
+-------------------------------
+Batch 0, Loss: 20.21380615234375
+Epoch 6
+-------------------------------
+Batch 0, Loss: 14.59136962890625
+Epoch 7
+-------------------------------
+Batch 0, Loss: 12.0960693359375
+Epoch 8
+-------------------------------
+Batch 0, Loss: 8.8837890625
+Epoch 9
+-------------------------------
+Batch 0, Loss: 7.11370849609375
+Epoch 10
+-------------------------------
+Batch 0, Loss: 6.33905029296875
+Epoch 11
+-------------------------------
+Batch 0, Loss: 5.01739501953125
+Epoch 12
+-------------------------------
+Batch 0, Loss: 3.7403564453125
+Early stopping
+### Valid set performance:
+Validation Accuracy: 0.9474964488636364
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.85      0.77      0.81      2620
+ B-TREATMENT       0.55      0.28      0.37       550
+ I-CONDITION       0.87      0.81      0.84      3303
+ I-TREATMENT       0.53      0.38      0.44       771
+           O       0.96      0.98      0.97     49076
+
+    accuracy                           0.95     56320
+   macro avg       0.75      0.64      0.69     56320
+weighted avg       0.94      0.95      0.94     56320
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.87      0.80      0.83      5923
+           O       0.96      0.98      0.97     49076
+   TREATMENT       0.54      0.34      0.42      1321
+
+    accuracy                           0.95     56320
+   macro avg       0.79      0.71      0.74     56320
+weighted avg       0.94      0.95      0.95     56320
+
+### Test set performance:
+Validation Accuracy: 0.9516477272727273
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.84      0.71      0.77      2727
+ B-TREATMENT       0.62      0.33      0.43       598
+ I-CONDITION       0.85      0.72      0.78      3183
+ I-TREATMENT       0.64      0.42      0.51       919
+           O       0.96      0.99      0.98     62973
+
+    accuracy                           0.95     70400
+   macro avg       0.78      0.63      0.69     70400
+weighted avg       0.95      0.95      0.95     70400
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.85      0.73      0.79      5910
+           O       0.96      0.99      0.98     62973
+   TREATMENT       0.65      0.39      0.49      1517
+
+    accuracy                           0.95     70400
+   macro avg       0.82      0.70      0.75     70400
+weighted avg       0.95      0.95      0.95     70400
+
+Finished with this task.
+###### (2) Training for configuration file: b-ioe.ini
+LOAD False
+Using: cuda:0 with NN
+{'O': 308114, 'I-CONDITION': 19210, 'E-CONDITION': 15963, 'I-TREATMENT': 4999, 'E-TREATMENT': 3202}
+{'O': 0.2281545142382365, 'I-CONDITION': 3.659427381572098, 'E-CONDITION': 4.403783749921694, 'I-TREATMENT': 14.062332466493299, 'E-TREATMENT': 21.95427857589007}
+{'learning_rate': 0.01, 'epochs': 100, 'batch_size': 256, 'valid_batch_size': 256, 'optimizer': 'adam', 'weight_decay': 0.0001, 'early_stopping_patience': 5, 'early_stopping_delta': 0.01, 'embedding_dim': 300, 'max_length': 128, 'shuffle': True, 'num_workers': 0, 'evaluation_strategy': 'epoch', 'save_strategy': 'epoch', 'logging_strategy': 'epoch', 'tune': False}
+HASE MODE 7
+Epoch 1
+-------------------------------
+Batch 0, Loss: 238.6246795654297
+Epoch 2
+-------------------------------
+Batch 0, Loss: 57.2049560546875
+Epoch 3
+-------------------------------
+Batch 0, Loss: 53.5384521484375
+Epoch 4
+-------------------------------
+Batch 0, Loss: 35.46148681640625
+Epoch 5
+-------------------------------
+Batch 0, Loss: 32.35845947265625
+Epoch 6
+-------------------------------
+Batch 0, Loss: 25.5615234375
+Epoch 7
+-------------------------------
+Batch 0, Loss: 17.57257080078125
+Epoch 8
+-------------------------------
+Batch 0, Loss: 15.0810546875
+Epoch 9
+-------------------------------
+Batch 0, Loss: 11.4593505859375
+Epoch 10
+-------------------------------
+Batch 0, Loss: 8.41522216796875
+Epoch 11
+-------------------------------
+Batch 0, Loss: 5.67425537109375
+Epoch 12
+-------------------------------
+Batch 0, Loss: 5.61639404296875
+Epoch 13
+-------------------------------
+Batch 0, Loss: 5.0810546875
+Early stopping
+### Valid set performance:
+Validation Accuracy: 0.9437144886363636
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ E-CONDITION       0.79      0.76      0.78      2624
+ E-TREATMENT       0.59      0.27      0.37       548
+ I-CONDITION       0.83      0.80      0.81      3299
+ I-TREATMENT       0.59      0.38      0.47       773
+           O       0.96      0.98      0.97     49076
+
+    accuracy                           0.94     56320
+   macro avg       0.75      0.64      0.68     56320
+weighted avg       0.94      0.94      0.94     56320
+
+### Summary
+              precision    recall  f1-score   support
+
+   TREATMENT       0.62      0.35      0.45      1321
+           O       0.96      0.98      0.97     49076
+   CONDITION       0.84      0.81      0.82      5923
+
+    accuracy                           0.95     56320
+   macro avg       0.81      0.71      0.75     56320
+weighted avg       0.94      0.95      0.94     56320
+
+### Test set performance:
+Validation Accuracy: 0.9462642045454546
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ E-CONDITION       0.76      0.70      0.73      2721
+ E-TREATMENT       0.53      0.31      0.39       599
+ I-CONDITION       0.78      0.74      0.76      3189
+ I-TREATMENT       0.59      0.43      0.50       918
+           O       0.97      0.98      0.97     62973
+
+    accuracy                           0.95     70400
+   macro avg       0.72      0.63      0.67     70400
+weighted avg       0.94      0.95      0.94     70400
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.80      0.75      0.78      5910
+           O       0.97      0.98      0.97     62973
+   TREATMENT       0.61      0.41      0.49      1517
+
+    accuracy                           0.95     70400
+   macro avg       0.79      0.71      0.75     70400
+weighted avg       0.95      0.95      0.95     70400
+
+Finished with this task.
+Process finished!

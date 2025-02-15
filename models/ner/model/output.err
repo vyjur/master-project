@@ -3,48 +3,1553 @@
 [nltk_data] Downloading package punkt to
 [nltk_data]     /cluster/home/julievt/nltk_data...
 [nltk_data]   Package punkt is already up-to-date!
-/cluster/home/julievt/master-project/src/textmining/ner/setup.py:30: SettingWithCopyWarning: 
+/cluster/home/julievt/master-project/src/textmining/ner/setup.py:38: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   dataset['MedicalEntity'] = dataset['MedicalEntity'].fillna('O')
 wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Agent Starting Run: u90cdoug with config:
+wandb: 	batch_size: 1024
+wandb: 	early_stopping_delta: 0.0001
+wandb: 	early_stopping_patience: 3
+wandb: 	embedding_dim: 256
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.0001
+wandb: 	max_length: 64
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 62
+wandb: 	tune: true
+wandb: 	valid_batch_size: 256
+wandb: 	weight_decay: 0.001
+wandb: WARNING Ignoring project 'ner-b-Task.TOKEN-nn-model' when running a sweep.
 wandb: Currently logged in as: julievt (julievt-ntnu). Use `wandb login --relogin` to force relogin
 wandb: Tracking run with wandb version 0.19.1
-wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250213_094706-k3pqq7j5
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250215_090348-u90cdoug
 wandb: Run `wandb offline` to turn off syncing.
-wandb: Syncing run dandy-oath-8
-wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/ner-a-Task.TOKEN-nn-model
-wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/ner-a-Task.TOKEN-nn-model/runs/k3pqq7j5
+wandb: Syncing run curious-sweep-1
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/sweeps/on7stkpp
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/runs/u90cdoug
+thread '<unnamed>' panicked at /home/runner/work/tokenizers/tokenizers/tokenizers/src/tokenizer/encoding.rs:319:9:
+`stride` must be strictly less than `max_len=62` (note that `max_len` may be shorter than the max length of the original model, as it subtracts the number of special characters
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 143, in train
+    ).run_train_test_split(self.__task, self.__dataset, self.__tags_name)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/preprocess/setup.py", line 128, in run_train_test_split
+    tokenized = self.__tokenizer(
+                ^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 3016, in __call__
+    encodings = self._call_one(text=text, text_pair=text_pair, **all_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 3126, in _call_one
+    return self.encode_plus(
+           ^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 3202, in encode_plus
+    return self._encode_plus(
+           ^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/tokenization_utils_fast.py", line 603, in _encode_plus
+    batched_output = self._batch_encode_plus(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/tokenization_utils_fast.py", line 529, in _batch_encode_plus
+    encodings = self._tokenizer.encode_batch(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyo3_runtime.PanicException: `stride` must be strictly less than `max_len=62` (note that `max_len` may be shorter than the max length of the original model, as it subtracts the number of special characters
 wandb:                                                                                
-wandb: 
-wandb: Run history:
-wandb: train_accuracy ▁▆▆▇▇▇▇▇██████
-wandb:     train_loss █▃▃▂▂▂▂▁▁▁▁▁▁▁
-wandb:        val_acc ▁▃▄▆▆▇▇███████
-wandb:       val_loss █▅▃▂▂▁▁▁▁▁▁▁▂▂
-wandb: 
-wandb: Run summary:
-wandb: train_accuracy 0.99321
-wandb:     train_loss 22.38635
-wandb:        val_acc 0.94609
-wandb:       val_loss 61.5141
-wandb: 
-wandb: 🚀 View run dandy-oath-8 at: https://wandb.ai/julievt-ntnu/ner-a-Task.TOKEN-nn-model/runs/k3pqq7j5
-wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/ner-a-Task.TOKEN-nn-model
+wandb: 🚀 View run curious-sweep-1 at: https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/runs/u90cdoug
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model
 wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Find logs at: ./wandb/run-20250213_094706-k3pqq7j5/logs
-/cluster/home/julievt/master-project/src/textmining/ner/setup.py:30: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  dataset['MedicalEntity'] = dataset['MedicalEntity'].fillna('O')
+wandb: Find logs at: ./wandb/run-20250215_090348-u90cdoug/logs
+Exception in thread Thread-2 (_run_job):
+Traceback (most recent call last):
+  File "/cluster/apps/eb/software/Python/3.12.3-GCCcore-13.3.0/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/cluster/apps/eb/software/Python/3.12.3-GCCcore-13.3.0/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+    self._function()
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 143, in train
+    ).run_train_test_split(self.__task, self.__dataset, self.__tags_name)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/preprocess/setup.py", line 128, in run_train_test_split
+    tokenized = self.__tokenizer(
+                ^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 3016, in __call__
+    encodings = self._call_one(text=text, text_pair=text_pair, **all_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 3126, in _call_one
+    return self.encode_plus(
+           ^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 3202, in encode_plus
+    return self._encode_plus(
+           ^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/tokenization_utils_fast.py", line 603, in _encode_plus
+    batched_output = self._batch_encode_plus(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/tokenization_utils_fast.py", line 529, in _batch_encode_plus
+    encodings = self._tokenizer.encode_batch(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyo3_runtime.PanicException: `stride` must be strictly less than `max_len=62` (note that `max_len` may be shorter than the max length of the original model, as it subtracts the number of special characters
+wandb: Sweep Agent: Waiting for job.
+wandb: Job received.
+wandb: Agent Starting Run: 9yf7eysi with config:
+wandb: 	batch_size: 256
+wandb: 	early_stopping_delta: 0.001
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 32
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.1
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: true
+wandb: 	valid_batch_size: 256
+wandb: 	weight_decay: 1e-05
+wandb: WARNING Ignoring project 'ner-b-Task.TOKEN-nn-model' when running a sweep.
 wandb: Tracking run with wandb version 0.19.1
-wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250213_211824-hditmy1e
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250215_090403-9yf7eysi
 wandb: Run `wandb offline` to turn off syncing.
-wandb: Syncing run usual-monkey-2
-wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/ner-c-Task.TOKEN-nn-model
-wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/ner-c-Task.TOKEN-nn-model/runs/hditmy1e
-slurmstepd: error: *** JOB 21146720 ON idun-09-03 CANCELLED AT 2025-02-14T14:19:29 ***
+wandb: Syncing run fearless-sweep-2
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/sweeps/on7stkpp
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/runs/9yf7eysi
+  0%|          | 0/4 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 217, in train
+    train_loss, train_acc = self.__train(
+                            ^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 328, in __train
+    outputs = self.__model(input_ids=ids, attention_mask=mask, labels=targets)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 493, in forward
+    sequence_output, contextualized_embeddings, attention_probs = self.get_contextualized_embeddings(input_ids, attention_mask)
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 294, in get_contextualized_embeddings
+    contextualized_embeddings, attention_probs = self.transformer(static_embeddings, attention_mask, relative_embedding)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 41, in forward
+    hidden_state, attention_p = layer(hidden_states[-1], attention_mask, relative_embedding)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 77, in forward
+    x = x + self.mlp(x)
+            ^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 101, in forward
+    return self.mlp(x)
+           ^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/container.py", line 219, in forward
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 84, in forward
+    x = x * gelu_new(gate)
+            ^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/activations.py", line 56, in forward
+    return 0.5 * input * (1.0 + torch.tanh(math.sqrt(2.0 / math.pi) * (input + 0.044715 * torch.pow(input, 3.0))))
+                                                                               ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 512.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 197.12 MiB is free. Including non-PyTorch memory, this process has 15.69 GiB memory in use. Of the allocated memory 15.31 GiB is allocated by PyTorch, and 97.40 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+wandb:                                                                                
+wandb: 🚀 View run fearless-sweep-2 at: https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/runs/9yf7eysi
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250215_090403-9yf7eysi/logs
+Run 9yf7eysi errored:
+Traceback (most recent call last):
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+    self._function()
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 217, in train
+    train_loss, train_acc = self.__train(
+                            ^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 328, in __train
+    outputs = self.__model(input_ids=ids, attention_mask=mask, labels=targets)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 493, in forward
+    sequence_output, contextualized_embeddings, attention_probs = self.get_contextualized_embeddings(input_ids, attention_mask)
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 294, in get_contextualized_embeddings
+    contextualized_embeddings, attention_probs = self.transformer(static_embeddings, attention_mask, relative_embedding)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 41, in forward
+    hidden_state, attention_p = layer(hidden_states[-1], attention_mask, relative_embedding)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 77, in forward
+    x = x + self.mlp(x)
+            ^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 101, in forward
+    return self.mlp(x)
+           ^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/container.py", line 219, in forward
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 84, in forward
+    x = x * gelu_new(gate)
+            ^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/activations.py", line 56, in forward
+    return 0.5 * input * (1.0 + torch.tanh(math.sqrt(2.0 / math.pi) * (input + 0.044715 * torch.pow(input, 3.0))))
+                                                                               ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 512.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 197.12 MiB is free. Including non-PyTorch memory, this process has 15.69 GiB memory in use. Of the allocated memory 15.31 GiB is allocated by PyTorch, and 97.40 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+wandb: ERROR Run 9yf7eysi errored:
+wandb: ERROR Traceback (most recent call last):
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+wandb: ERROR     self._function()
+wandb: ERROR   File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 217, in train
+wandb: ERROR     train_loss, train_acc = self.__train(
+wandb: ERROR                             ^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 328, in __train
+wandb: ERROR     outputs = self.__model(input_ids=ids, attention_mask=mask, labels=targets)
+wandb: ERROR               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+wandb: ERROR     return self._call_impl(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+wandb: ERROR     return forward_call(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 493, in forward
+wandb: ERROR     sequence_output, contextualized_embeddings, attention_probs = self.get_contextualized_embeddings(input_ids, attention_mask)
+wandb: ERROR                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 294, in get_contextualized_embeddings
+wandb: ERROR     contextualized_embeddings, attention_probs = self.transformer(static_embeddings, attention_mask, relative_embedding)
+wandb: ERROR                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+wandb: ERROR     return self._call_impl(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+wandb: ERROR     return forward_call(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 41, in forward
+wandb: ERROR     hidden_state, attention_p = layer(hidden_states[-1], attention_mask, relative_embedding)
+wandb: ERROR                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+wandb: ERROR     return self._call_impl(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+wandb: ERROR     return forward_call(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 77, in forward
+wandb: ERROR     x = x + self.mlp(x)
+wandb: ERROR             ^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+wandb: ERROR     return self._call_impl(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+wandb: ERROR     return forward_call(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 101, in forward
+wandb: ERROR     return self.mlp(x)
+wandb: ERROR            ^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+wandb: ERROR     return self._call_impl(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+wandb: ERROR     return forward_call(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/container.py", line 219, in forward
+wandb: ERROR     input = module(input)
+wandb: ERROR             ^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+wandb: ERROR     return self._call_impl(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+wandb: ERROR     return forward_call(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 84, in forward
+wandb: ERROR     x = x * gelu_new(gate)
+wandb: ERROR             ^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+wandb: ERROR     return self._call_impl(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+wandb: ERROR     return forward_call(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/activations.py", line 56, in forward
+wandb: ERROR     return 0.5 * input * (1.0 + torch.tanh(math.sqrt(2.0 / math.pi) * (input + 0.044715 * torch.pow(input, 3.0))))
+wandb: ERROR                                                                                ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+wandb: ERROR torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 512.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 197.12 MiB is free. Including non-PyTorch memory, this process has 15.69 GiB memory in use. Of the allocated memory 15.31 GiB is allocated by PyTorch, and 97.40 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+wandb: ERROR 
+wandb: Agent Starting Run: igircmab with config:
+wandb: 	batch_size: 256
+wandb: 	early_stopping_delta: 0.01
+wandb: 	early_stopping_patience: 10
+wandb: 	embedding_dim: 64
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.001
+wandb: 	max_length: 128
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 62
+wandb: 	tune: true
+wandb: 	valid_batch_size: 256
+wandb: 	weight_decay: 1e-05
+wandb: WARNING Ignoring project 'ner-b-Task.TOKEN-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250215_090436-igircmab
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run whole-sweep-3
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/sweeps/on7stkpp
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/runs/igircmab
+
+  0%|          | 0/14 [00:00<?, ?it/s][ATraceback (most recent call last):
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 217, in train
+    train_loss, train_acc = self.__train(
+                            ^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 328, in __train
+    outputs = self.__model(input_ids=ids, attention_mask=mask, labels=targets)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 493, in forward
+    sequence_output, contextualized_embeddings, attention_probs = self.get_contextualized_embeddings(input_ids, attention_mask)
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 294, in get_contextualized_embeddings
+    contextualized_embeddings, attention_probs = self.transformer(static_embeddings, attention_mask, relative_embedding)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 41, in forward
+    hidden_state, attention_p = layer(hidden_states[-1], attention_mask, relative_embedding)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 75, in forward
+    attention_output, attention_probs = self.attention(x, padding_mask, relative_embedding)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 208, in forward
+    attention_scores, value = self.compute_attention_scores(hidden_states, relative_embedding)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 178, in compute_attention_scores
+    attention_scores = torch.bmm(query, key.transpose(1, 2) * self.scale)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 192.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 11.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.48 GiB is allocated by PyTorch, and 112.16 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+wandb:                                                                                
+wandb: 🚀 View run whole-sweep-3 at: https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/runs/igircmab
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250215_090436-igircmab/logs
+Run igircmab errored:
+Traceback (most recent call last):
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+    self._function()
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 217, in train
+    train_loss, train_acc = self.__train(
+                            ^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 328, in __train
+    outputs = self.__model(input_ids=ids, attention_mask=mask, labels=targets)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 493, in forward
+    sequence_output, contextualized_embeddings, attention_probs = self.get_contextualized_embeddings(input_ids, attention_mask)
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 294, in get_contextualized_embeddings
+    contextualized_embeddings, attention_probs = self.transformer(static_embeddings, attention_mask, relative_embedding)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 41, in forward
+    hidden_state, attention_p = layer(hidden_states[-1], attention_mask, relative_embedding)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 75, in forward
+    attention_output, attention_probs = self.attention(x, padding_mask, relative_embedding)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 208, in forward
+    attention_scores, value = self.compute_attention_scores(hidden_states, relative_embedding)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 178, in compute_attention_scores
+    attention_scores = torch.bmm(query, key.transpose(1, 2) * self.scale)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 192.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 11.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.48 GiB is allocated by PyTorch, and 112.16 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+wandb: ERROR Run igircmab errored:
+wandb: ERROR Traceback (most recent call last):
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+wandb: ERROR     self._function()
+wandb: ERROR   File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 217, in train
+wandb: ERROR     train_loss, train_acc = self.__train(
+wandb: ERROR                             ^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 328, in __train
+wandb: ERROR     outputs = self.__model(input_ids=ids, attention_mask=mask, labels=targets)
+wandb: ERROR               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+wandb: ERROR     return self._call_impl(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+wandb: ERROR     return forward_call(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 493, in forward
+wandb: ERROR     sequence_output, contextualized_embeddings, attention_probs = self.get_contextualized_embeddings(input_ids, attention_mask)
+wandb: ERROR                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 294, in get_contextualized_embeddings
+wandb: ERROR     contextualized_embeddings, attention_probs = self.transformer(static_embeddings, attention_mask, relative_embedding)
+wandb: ERROR                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+wandb: ERROR     return self._call_impl(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+wandb: ERROR     return forward_call(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 41, in forward
+wandb: ERROR     hidden_state, attention_p = layer(hidden_states[-1], attention_mask, relative_embedding)
+wandb: ERROR                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+wandb: ERROR     return self._call_impl(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+wandb: ERROR     return forward_call(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 75, in forward
+wandb: ERROR     attention_output, attention_probs = self.attention(x, padding_mask, relative_embedding)
+wandb: ERROR                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+wandb: ERROR     return self._call_impl(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+wandb: ERROR     return forward_call(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 208, in forward
+wandb: ERROR     attention_scores, value = self.compute_attention_scores(hidden_states, relative_embedding)
+wandb: ERROR                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/huggingface/modules/transformers_modules/ltg/norbert3-base/4376f702588d56cd29276a183582f77345d77a4e/modeling_norbert.py", line 178, in compute_attention_scores
+wandb: ERROR     attention_scores = torch.bmm(query, key.transpose(1, 2) * self.scale)
+wandb: ERROR                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 192.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 11.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.48 GiB is allocated by PyTorch, and 112.16 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+wandb: ERROR 
+wandb: Agent Starting Run: i1nevpvm with config:
+wandb: 	batch_size: 256
+wandb: 	early_stopping_delta: 0.01
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 32
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.0001
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: sgd
+wandb: 	shuffle: True
+wandb: 	stride: 62
+wandb: 	tune: true
+wandb: 	valid_batch_size: 256
+wandb: 	weight_decay: 0.0001
+wandb: WARNING Ignoring project 'ner-b-Task.TOKEN-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250215_090457-i1nevpvm
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run lunar-sweep-4
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/sweeps/on7stkpp
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/runs/i1nevpvm
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 184, in train
+    self.__model.to(self.__device)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  [Previous line repeated 3 more times]
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+wandb:                                                                                
+wandb: 🚀 View run lunar-sweep-4 at: https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/runs/i1nevpvm
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250215_090457-i1nevpvm/logs
+Run i1nevpvm errored:
+Traceback (most recent call last):
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+    self._function()
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 184, in train
+    self.__model.to(self.__device)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  [Previous line repeated 3 more times]
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+wandb: ERROR Run i1nevpvm errored:
+wandb: ERROR Traceback (most recent call last):
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+wandb: ERROR     self._function()
+wandb: ERROR   File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 184, in train
+wandb: ERROR     self.__model.to(self.__device)
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+wandb: ERROR     return super().to(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+wandb: ERROR     return self._apply(convert)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+wandb: ERROR     module._apply(fn)
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+wandb: ERROR     module._apply(fn)
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+wandb: ERROR     module._apply(fn)
+wandb: ERROR   [Previous line repeated 3 more times]
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+wandb: ERROR     param_applied = fn(param)
+wandb: ERROR                     ^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+wandb: ERROR     return t.to(
+wandb: ERROR            ^^^^^
+wandb: ERROR torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+wandb: ERROR 
+wandb: Agent Starting Run: usu7okph with config:
+wandb: 	batch_size: 256
+wandb: 	early_stopping_delta: 0.0005
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 128
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.001
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 32
+wandb: 	tune: true
+wandb: 	valid_batch_size: 256
+wandb: 	weight_decay: 0.001
+wandb: WARNING Ignoring project 'ner-b-Task.TOKEN-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250215_090518-usu7okph
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run rose-sweep-5
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/sweeps/on7stkpp
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/runs/usu7okph
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 184, in train
+    self.__model.to(self.__device)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+wandb:                                                                                
+wandb: 🚀 View run rose-sweep-5 at: https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/runs/usu7okph
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250215_090518-usu7okph/logs
+Run usu7okph errored:
+Traceback (most recent call last):
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+    self._function()
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 184, in train
+    self.__model.to(self.__device)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+wandb: ERROR Run usu7okph errored:
+wandb: ERROR Traceback (most recent call last):
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+wandb: ERROR     self._function()
+wandb: ERROR   File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 184, in train
+wandb: ERROR     self.__model.to(self.__device)
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+wandb: ERROR     return super().to(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+wandb: ERROR     return self._apply(convert)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+wandb: ERROR     module._apply(fn)
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+wandb: ERROR     module._apply(fn)
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+wandb: ERROR     param_applied = fn(param)
+wandb: ERROR                     ^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+wandb: ERROR     return t.to(
+wandb: ERROR            ^^^^^
+wandb: ERROR torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+wandb: ERROR 
+wandb: Agent Starting Run: f45plzxr with config:
+wandb: 	batch_size: 256
+wandb: 	early_stopping_delta: 0.001
+wandb: 	early_stopping_patience: 10
+wandb: 	embedding_dim: 256
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.01
+wandb: 	max_length: 128
+wandb: 	num_workers: 0
+wandb: 	optimizer: sgd
+wandb: 	shuffle: True
+wandb: 	stride: 32
+wandb: 	tune: true
+wandb: 	valid_batch_size: 256
+wandb: 	weight_decay: 0
+wandb: WARNING Ignoring project 'ner-b-Task.TOKEN-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250215_090539-f45plzxr
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run fanciful-sweep-6
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/sweeps/on7stkpp
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/runs/f45plzxr
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 184, in train
+    self.__model.to(self.__device)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+wandb:                                                                                
+wandb: 🚀 View run fanciful-sweep-6 at: https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/runs/f45plzxr
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250215_090539-f45plzxr/logs
+Run f45plzxr errored:
+Traceback (most recent call last):
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+    self._function()
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 184, in train
+    self.__model.to(self.__device)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+wandb: ERROR Run f45plzxr errored:
+wandb: ERROR Traceback (most recent call last):
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+wandb: ERROR     self._function()
+wandb: ERROR   File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 184, in train
+wandb: ERROR     self.__model.to(self.__device)
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+wandb: ERROR     return super().to(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+wandb: ERROR     return self._apply(convert)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+wandb: ERROR     module._apply(fn)
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+wandb: ERROR     module._apply(fn)
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+wandb: ERROR     param_applied = fn(param)
+wandb: ERROR                     ^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+wandb: ERROR     return t.to(
+wandb: ERROR            ^^^^^
+wandb: ERROR torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+wandb: ERROR 
+wandb: Agent Starting Run: qb9i76u0 with config:
+wandb: 	batch_size: 1024
+wandb: 	early_stopping_delta: 0.001
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 64
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.0001
+wandb: 	max_length: 512
+wandb: 	num_workers: 0
+wandb: 	optimizer: sgd
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: true
+wandb: 	valid_batch_size: 256
+wandb: 	weight_decay: 0
+wandb: WARNING Ignoring project 'ner-b-Task.TOKEN-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250215_090554-qb9i76u0
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run lemon-sweep-7
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/sweeps/on7stkpp
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/runs/qb9i76u0
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 184, in train
+    self.__model.to(self.__device)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+wandb:                                                                                
+wandb: 🚀 View run lemon-sweep-7 at: https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/runs/qb9i76u0
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250215_090554-qb9i76u0/logs
+Run qb9i76u0 errored:
+Traceback (most recent call last):
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+    self._function()
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 184, in train
+    self.__model.to(self.__device)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+wandb: ERROR Run qb9i76u0 errored:
+wandb: ERROR Traceback (most recent call last):
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+wandb: ERROR     self._function()
+wandb: ERROR   File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 184, in train
+wandb: ERROR     self.__model.to(self.__device)
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+wandb: ERROR     return super().to(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+wandb: ERROR     return self._apply(convert)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+wandb: ERROR     module._apply(fn)
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+wandb: ERROR     module._apply(fn)
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+wandb: ERROR     param_applied = fn(param)
+wandb: ERROR                     ^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+wandb: ERROR     return t.to(
+wandb: ERROR            ^^^^^
+wandb: ERROR torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+wandb: ERROR 
+wandb: Agent Starting Run: ix6kprje with config:
+wandb: 	batch_size: 512
+wandb: 	early_stopping_delta: 0.001
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 256
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.0001
+wandb: 	max_length: 128
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 32
+wandb: 	tune: true
+wandb: 	valid_batch_size: 256
+wandb: 	weight_decay: 0.0001
+wandb: WARNING Ignoring project 'ner-b-Task.TOKEN-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250215_090621-ix6kprje
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run fast-sweep-8
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/sweeps/on7stkpp
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/runs/ix6kprje
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 184, in train
+    self.__model.to(self.__device)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+wandb:                                                                                
+wandb: 🚀 View run fast-sweep-8 at: https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/runs/ix6kprje
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250215_090621-ix6kprje/logs
+Run ix6kprje errored:
+Traceback (most recent call last):
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+    self._function()
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 184, in train
+    self.__model.to(self.__device)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+wandb: ERROR Run ix6kprje errored:
+wandb: ERROR Traceback (most recent call last):
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+wandb: ERROR     self._function()
+wandb: ERROR   File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 184, in train
+wandb: ERROR     self.__model.to(self.__device)
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+wandb: ERROR     return super().to(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+wandb: ERROR     return self._apply(convert)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+wandb: ERROR     module._apply(fn)
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+wandb: ERROR     module._apply(fn)
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+wandb: ERROR     param_applied = fn(param)
+wandb: ERROR                     ^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+wandb: ERROR     return t.to(
+wandb: ERROR            ^^^^^
+wandb: ERROR torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+wandb: ERROR 
+wandb: Agent Starting Run: ebkg0f74 with config:
+wandb: 	batch_size: 256
+wandb: 	early_stopping_delta: 0.01
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 512
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.001
+wandb: 	max_length: 128
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 32
+wandb: 	tune: true
+wandb: 	valid_batch_size: 256
+wandb: 	weight_decay: 1e-05
+wandb: WARNING Ignoring project 'ner-b-Task.TOKEN-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250215_090636-ebkg0f74
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run leafy-sweep-9
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/sweeps/on7stkpp
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/runs/ebkg0f74
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 184, in train
+    self.__model.to(self.__device)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+wandb:                                                                                
+wandb: 🚀 View run leafy-sweep-9 at: https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/runs/ebkg0f74
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250215_090636-ebkg0f74/logs
+Run ebkg0f74 errored:
+Traceback (most recent call last):
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+    self._function()
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 184, in train
+    self.__model.to(self.__device)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+wandb: ERROR Run ebkg0f74 errored:
+wandb: ERROR Traceback (most recent call last):
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+wandb: ERROR     self._function()
+wandb: ERROR   File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 184, in train
+wandb: ERROR     self.__model.to(self.__device)
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+wandb: ERROR     return super().to(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+wandb: ERROR     return self._apply(convert)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+wandb: ERROR     module._apply(fn)
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+wandb: ERROR     module._apply(fn)
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+wandb: ERROR     param_applied = fn(param)
+wandb: ERROR                     ^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+wandb: ERROR     return t.to(
+wandb: ERROR            ^^^^^
+wandb: ERROR torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+wandb: ERROR 
+wandb: Agent Starting Run: yhct2tk3 with config:
+wandb: 	batch_size: 512
+wandb: 	early_stopping_delta: 0.001
+wandb: 	early_stopping_patience: 3
+wandb: 	embedding_dim: 32
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.0001
+wandb: 	max_length: 128
+wandb: 	num_workers: 0
+wandb: 	optimizer: sgd
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: true
+wandb: 	valid_batch_size: 256
+wandb: 	weight_decay: 0.001
+wandb: WARNING Ignoring project 'ner-b-Task.TOKEN-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250215_090652-yhct2tk3
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run mild-sweep-10
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/sweeps/on7stkpp
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/runs/yhct2tk3
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 184, in train
+    self.__model.to(self.__device)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+wandb:                                                                                
+wandb: 🚀 View run mild-sweep-10 at: https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model/runs/yhct2tk3
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/ner-b-Task.TOKEN-bert-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250215_090652-yhct2tk3/logs
+Run yhct2tk3 errored:
+Traceback (most recent call last):
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+    self._function()
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 184, in train
+    self.__model.to(self.__device)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+wandb: ERROR Run yhct2tk3 errored:
+wandb: ERROR Traceback (most recent call last):
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/wandb/agents/pyagent.py", line 306, in _run_job
+wandb: ERROR     self._function()
+wandb: ERROR   File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 184, in train
+wandb: ERROR     self.__model.to(self.__device)
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+wandb: ERROR     return super().to(*args, **kwargs)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+wandb: ERROR     return self._apply(convert)
+wandb: ERROR            ^^^^^^^^^^^^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+wandb: ERROR     module._apply(fn)
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+wandb: ERROR     module._apply(fn)
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+wandb: ERROR     param_applied = fn(param)
+wandb: ERROR                     ^^^^^^^^^
+wandb: ERROR   File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+wandb: ERROR     return t.to(
+wandb: ERROR            ^^^^^
+wandb: ERROR torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+wandb: ERROR 
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/./scripts/train/ner/main.py", line 35, in <module>
+    ner = NERecognition(
+          ^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/textmining/ner/setup.py", line 74, in __init__
+    self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/model/bert/token_bert.py", line 24, in __init__
+    self.__bert = BERT(
+                  ^^^^^
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 127, in __init__
+    model=self.__model.to(self.__device),
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/./scripts/train/ner/main.py", line 35, in <module>
+    ner = NERecognition(
+          ^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/textmining/ner/setup.py", line 74, in __init__
+    self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/model/bert/token_bert.py", line 24, in __init__
+    self.__bert = BERT(
+                  ^^^^^
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 127, in __init__
+    model=self.__model.to(self.__device),
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/./scripts/train/ner/main.py", line 35, in <module>
+    ner = NERecognition(
+          ^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/textmining/ner/setup.py", line 74, in __init__
+    self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/model/bert/token_bert.py", line 24, in __init__
+    self.__bert = BERT(
+                  ^^^^^
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 127, in __init__
+    model=self.__model.to(self.__device),
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/./scripts/train/ner/main.py", line 35, in <module>
+    ner = NERecognition(
+          ^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/textmining/ner/setup.py", line 74, in __init__
+    self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/model/bert/token_bert.py", line 24, in __init__
+    self.__bert = BERT(
+                  ^^^^^
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 127, in __init__
+    model=self.__model.to(self.__device),
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/./scripts/train/ner/main.py", line 35, in <module>
+    ner = NERecognition(
+          ^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/textmining/ner/setup.py", line 74, in __init__
+    self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/model/bert/token_bert.py", line 24, in __init__
+    self.__bert = BERT(
+                  ^^^^^
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 127, in __init__
+    model=self.__model.to(self.__device),
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/./scripts/train/ner/main.py", line 35, in <module>
+    ner = NERecognition(
+          ^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/textmining/ner/setup.py", line 74, in __init__
+    self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/model/bert/token_bert.py", line 24, in __init__
+    self.__bert = BERT(
+                  ^^^^^
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 127, in __init__
+    model=self.__model.to(self.__device),
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/./scripts/train/ner/main.py", line 35, in <module>
+    ner = NERecognition(
+          ^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/textmining/ner/setup.py", line 74, in __init__
+    self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/model/bert/token_bert.py", line 24, in __init__
+    self.__bert = BERT(
+                  ^^^^^
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 127, in __init__
+    model=self.__model.to(self.__device),
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/./scripts/train/ner/main.py", line 35, in <module>
+    ner = NERecognition(
+          ^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/textmining/ner/setup.py", line 74, in __init__
+    self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/model/bert/token_bert.py", line 24, in __init__
+    self.__bert = BERT(
+                  ^^^^^
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 127, in __init__
+    model=self.__model.to(self.__device),
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/./scripts/train/ner/main.py", line 35, in <module>
+    ner = NERecognition(
+          ^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/textmining/ner/setup.py", line 74, in __init__
+    self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/model/bert/token_bert.py", line 24, in __init__
+    self.__bert = BERT(
+                  ^^^^^
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 127, in __init__
+    model=self.__model.to(self.__device),
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/./scripts/train/ner/main.py", line 35, in <module>
+    ner = NERecognition(
+          ^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/textmining/ner/setup.py", line 74, in __init__
+    self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/model/bert/token_bert.py", line 24, in __init__
+    self.__bert = BERT(
+                  ^^^^^
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 127, in __init__
+    model=self.__model.to(self.__device),
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/./scripts/train/ner/main.py", line 35, in <module>
+    ner = NERecognition(
+          ^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/textmining/ner/setup.py", line 74, in __init__
+    self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/model/bert/token_bert.py", line 24, in __init__
+    self.__bert = BERT(
+                  ^^^^^
+  File "/cluster/home/julievt/master-project/src/model/base/bert.py", line 127, in __init__
+    model=self.__model.to(self.__device),
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/transformers/modeling_utils.py", line 2958, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 148.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 3.12 MiB is free. Including non-PyTorch memory, this process has 15.88 GiB memory in use. Of the allocated memory 15.58 GiB is allocated by PyTorch, and 17.45 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

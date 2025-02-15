@@ -77,3 +77,21 @@ wandb: Run `wandb offline` to turn off syncing.
 wandb: Syncing run gorgeous-heartthrob-1
 wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/ner-schema-b-ioe-Task.TOKEN-nn-model
 wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/ner-schema-b-ioe-Task.TOKEN-nn-model/runs/0fa4ow85
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb: train_accuracy ▁▆▆▆▇▇▇▇█████
+wandb:     train_loss █▄▃▃▂▂▂▁▁▁▁▁▁
+wandb:        val_acc ▁▂▄▅▆▇▇▇█████
+wandb:       val_loss █▅▃▂▂▁▁▁▁▁▁▂▂
+wandb: 
+wandb: Run summary:
+wandb: train_accuracy 0.99158
+wandb:     train_loss 28.66028
+wandb:        val_acc 0.9435
+wandb:       val_loss 67.70862
+wandb: 
+wandb: 🚀 View run gorgeous-heartthrob-1 at: https://wandb.ai/julievt-ntnu/ner-schema-b-ioe-Task.TOKEN-nn-model/runs/0fa4ow85
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/ner-schema-b-ioe-Task.TOKEN-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250214_112425-0fa4ow85/logs

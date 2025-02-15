@@ -10,7 +10,7 @@ class Util:
 
     def validate_report(self, labels, predictions):
         if self.schema is not None:
-            print("### BIO-Scheme")
+            print(f"### {self.schema.name}-Scheme")
         else:
             print("### Summary")
 

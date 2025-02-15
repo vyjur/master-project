@@ -128,7 +128,7 @@ class NN(nn.Module):
             print(config)
             
             self.__processed = Preprocess(
-                self.tokenizer, config["max_length"], config['slide'], self.__util
+                self.tokenizer, config["max_length"], config['stride'], self.__util
             ).run_train_test_split(self.__task, self.__dataset, self.__tags_name)
             self.__class_weights = self.__util.class_weights(
                 self.__task, self.__processed["dataset"], self.__device
