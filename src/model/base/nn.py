@@ -156,6 +156,10 @@ class NN(nn.Module):
             training_loader = DataLoader(self.__processed["train"], **train_params)
             valid_loader = DataLoader(self.__processed["valid"], **test_params)
             testing_loader = DataLoader(self.__processed["test"], **test_params)
+            
+            if hasattr(self, '__model'):
+                del self.__model
+                torch.cuda.empty_cache()
 
             self.__model = self.__base_model(
                 config["batch_size"],
@@ -311,17 +315,17 @@ class NN(nn.Module):
                 all_targets.extend(flattened_targets)
                 eval_loss += loss.item()
 
-        acc = accuracy_score(all_targets, all_preds)
+            acc = accuracy_score(all_targets, all_preds)
 
-        if end:
-            labels = [id2label[id] for id in all_targets]
-            predictions = [id2label[id] for id in all_preds]
+            if end:
+                labels = [id2label[id] for id in all_targets]
+                predictions = [id2label[id] for id in all_preds]
 
-            print(f"Validation Accuracy: {acc}")
+                print(f"Validation Accuracy: {acc}")
 
-            return labels, predictions
+                return labels, predictions
 
-        return eval_loss, acc
+            return eval_loss, acc
 
     def forward(self, x):
         self.__model.batch = x.shape[0]
