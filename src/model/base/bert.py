@@ -174,7 +174,7 @@ class BERT(nn.Module):
                 )
             else:
                 self.__model = AutoModelForSequenceClassification.from_pretrained(
-                    "ltg/norbert3-base",
+                    self.__pretrain,
                     trust_remote_code=True,
                     num_labels=len(self.__processed["id2label"]),
                     id2label=self.__processed["id2label"],
