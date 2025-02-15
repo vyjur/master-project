@@ -4,3 +4,11 @@ Installing dependencies from lock file
 No dependencies to install or update
 
 Installing the current project: master-project (0.1.0)
+WINDOW SIZE: 50
+### Processing the files:
+#### DTR / TEE Context
+Mean: 191.06842048284074, Max: 341, Min: 111
+
+
+#### TLINK Context
+Mean: 428.8290553056364, Max: 675, Min: 229
