@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "model", from="src"}, {include = "pipeline", from="src"}, {include = "preprocess", from="src"}, {include = "textmining", from="src"}, {include = "structure", from="src"}, {include = "visualization", from="src"}]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">=3.10,<3.13"
 ipykernel = "^6.29.5"
 scikit-learn = "^1.5.2"
 transformers = "^4.45.2"
@@ -32,6 +32,8 @@ polyglot = "^16.7.4"
 icu = "^0.0.1"
 lingua-language-detector = "^2.0.2"
 accelerate = "^1.3.0"
+spacy = "^3.8.4"
+nb_core_news_sm = {url = "https://github.com/explosion/spacy-models/releases/download/nb_core_news_sm-3.8.0/nb_core_news_sm-3.8.0.tar.gz"}
 
 
 [build-system]

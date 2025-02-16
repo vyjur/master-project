@@ -19,6 +19,7 @@ from model.util import Util
 import wandb
 from structure.enum import Task
 from model.tuning.setup import TuningConfig
+import gc
 
 sweep_config = TuningConfig.get_config()
 
@@ -135,8 +136,6 @@ class BERT(nn.Module):
         with wandb.init(project=f"{self.__project_name}-{self.__task}-nn-model".replace('"', "")):  # type: ignore
             if config is None:
                 config = wandb.config
-            
-            torch.cuda.empty_cache()
 
             self.__processed = Preprocess(
                 self.tokenizer, config["max_length"], config["stride"], self.__util
@@ -163,6 +162,10 @@ class BERT(nn.Module):
             testing_loader = DataLoader(self.__processed["test"], **test_params)
 
             num_training_steps = len(training_loader)
+            
+            if hasattr(self, '__model'):
+                del self.__model
+                torch.cuda.empty_cache()
 
             if self.__task == Task.TOKEN:
                 self.__model = AutoModelForTokenClassification.from_pretrained(
@@ -174,7 +177,7 @@ class BERT(nn.Module):
                 )
             else:
                 self.__model = AutoModelForSequenceClassification.from_pretrained(
-                    "ltg/norbert3-base",
+                    self.__pretrain,
                     trust_remote_code=True,
                     num_labels=len(self.__processed["id2label"]),
                     id2label=self.__processed["id2label"],
@@ -277,7 +280,8 @@ class BERT(nn.Module):
 
                 # Save the tokenizer
                 self.tokenizer.save_pretrained(self.__save)  # type:ignore
-
+                
+                
     def predict(self, data, pipeline=False):
         if pipeline:
             return self.__pipeline(data)
@@ -339,7 +343,7 @@ class BERT(nn.Module):
 
             loss = loss_fn(active_logits, flattened_targets)  # type: ignore
 
-            tr_loss += loss
+            tr_loss += loss.item()
             # Now compute predictions based on the probabilities
             flattened_predictions = torch.argmax(
                 active_logits,
@@ -357,17 +361,23 @@ class BERT(nn.Module):
                 targets = flattened_targets
                 predictions = flattened_predictions
 
-            tr_preds.extend(predictions.cpu().numpy())
-            tr_labels.extend(targets.cpu().numpy())
+            with torch.no_grad():
+                # Move predictions and targets to CPU only once for accuracy calculation
+                predictions = flattened_predictions.cpu().numpy()
+                targets = flattened_targets.cpu().numpy()
+                
+                # Extend predictions and targets
+                tr_preds.extend(predictions)
+                tr_labels.extend(targets)
+                
+                # Compute the accuracy
+                tmp_tr_accuracy = accuracy_score(predictions, targets)
+                tr_accuracy += tmp_tr_accuracy
 
-            tmp_tr_accuracy = accuracy_score(
-                targets.cpu().numpy(), predictions.cpu().numpy()
-            )
-            tr_accuracy += tmp_tr_accuracy
-
-            torch.nn.utils.clip_grad_norm_(
-                parameters=self.__model.parameters(), max_norm=10
-            )
+            # TODO:
+            #torch.nn.utils.clip_grad_norm_(
+            #    parameters=self.__model.parameters(), max_norm=10
+            #)
 
             # backward pass
             loss.backward()
@@ -445,22 +455,22 @@ class BERT(nn.Module):
                 )
                 eval_accuracy += tmp_eval_accuracy
 
-        labels = [id2label[id.item()] for id in eval_labels]
-        predictions = [id2label[id.item()] for id in eval_preds]
+            labels = [id2label[id.item()] for id in eval_labels]
+            predictions = [id2label[id.item()] for id in eval_preds]
 
-        eval_loss = eval_loss / nb_eval_steps
-        eval_accuracy = eval_accuracy / nb_eval_steps
+            eval_loss = eval_loss / nb_eval_steps
+            eval_accuracy = eval_accuracy / nb_eval_steps
 
-        acc = accuracy_score(eval_labels, eval_preds)
+            acc = accuracy_score(eval_labels, eval_preds)
 
-        print(f"Validation Loss: {eval_loss}")
-        print(f"Validation Accuracy: {eval_accuracy}")
-        print(f"Overall accuracy: {acc}")
-        print(f"Overall loss: {eval_loss}")
+            print(f"Validation Loss: {eval_loss}")
+            print(f"Validation Accuracy: {eval_accuracy}")
+            print(f"Overall accuracy: {acc}")
+            print(f"Overall loss: {eval_loss}")
 
-        if end:
-            return labels, predictions
-        return eval_loss, acc
+            if end:
+                return labels, predictions
+            return eval_loss, acc
 
     def forward(self, x):
         return self.__model(x)

@@ -1,6 +1,7 @@
 import os
 import re
 import pypdf
+import textwrap
 import pandas as pd
 from textmining.ner.setup import NERecognition
 from preprocess.dataset import DatasetManager
@@ -9,7 +10,7 @@ from util import compute_mnlp
 
 BATCH = 1
 
-os.mkdir(f'./data/helsearkiv/batch/ner/{BATCH}')
+os.mkdir(f'./data/helsearkiv/batch/ner/{BATCH}-local')
 
 file = "./scripts/active-learning/config/ner.ini"
 save_directory = "./models/ner/b-bert"
@@ -148,21 +149,21 @@ for page in sorted_data[:1200]:
                     merged_annots.append(annot[j].replace('I-', ''))
                     merged_offsets.append(offsets[j])
                 
-    if count % 12 == 0:
-        with open(f"./data/helsearkiv/batch/ner/{BATCH}/{count // 12}.pdf", "wb") as file:
+    if count % 36 == 0:
+        with open(f"./data/helsearkiv/batch/ner/{BATCH}/{count // 36}.pdf", "wb") as file:
             writer.write(file)
         
         
         writer = pypdf.PdfWriter()
         df = pd.DataFrame({
-            'Text': merged_entities,
+            'Text': [word.replace("[UNK]", "").replace("[SEP]", "").replace("[CLS]", "").replace("PAD", "") for word in merged_entities],
             'Id': [f"{offset[0]}-{offset[1]}"for offset in merged_offsets],
             'MedicalEntity': merged_annots,
             'DCT': None,
             'TIMEX': None,
             'Context': None
         })
-        df.to_csv(f"./data/helsearkiv/batch/ner/{BATCH}/{count // 12}.csv")
+        df.to_csv(f"./data/helsearkiv/batch/ner/{BATCH}/{count // 36}.csv")
         
         merged_entities = []
         merged_offsets = []
@@ -175,3 +176,52 @@ df.to_csv(f'./data/helsearkiv/batch/ner/{BATCH}.csv')
 
 
 print("### Active Learning run finished!")
+print("#################################################")
+
+print("### Converting to webanno.tsv style")
+
+out_folder_path = f"./data/helsearkiv/batch/ner/{BATCH}-webanno/"
+in_folder_path = f"./data/helsearkiv/batch/ner/{BATCH}-local/"
+
+os.mkdir(out_folder_path)
+
+entity_files = [
+    (in_folder_path + f, f)
+    for f in os.listdir(in_folder_path)
+    if os.path.isfile(os.path.join(in_folder_path, f))
+]
+
+for i, (path, file) in enumerate(entity_files[:10]):
+        
+    if ".pdf" in file:
+        continue
+    
+    content = textwrap.dedent("""\
+        #FORMAT=WebAnno TSV 3.3
+        #T_SP=org.dkpro.core.api.pdf.type.PdfPage|height|pageNumber|width
+        #T_SP=webanno.custom.MedicalEntity|DCT|MedicalEntity|TIMEX
+        #T_RL=webanno.custom.TLINK|TLINK|BT_webanno.custom.MedicalEntity
+
+
+    """)
+    
+    df = pd.read_csv(path)
+    offset = 0
+    sentence_id = 1
+    word_id = 1
+    annot_id = 1
+    with open(path.replace(in_folder_path, out_folder_path).replace(file, f"b{BATCH}-{file}"), 'w') as out:
+        content += f"#Text={" ".join(df['Text'].astype(str).values)}"
+        for j, row in df.iterrows():
+            row['Text'] = str(row['Text'])
+            words = row['Text'].split()
+            temp = ''
+            if len(words) > 1:
+                temp = f"[{word_id}]"
+                word_id += 1
+            for word in words:
+                word = word.replace('[UNK]', '').replace('[SEP]', '').replace('[CLS]', '').replace('[PAD]', '')
+                content += f'{sentence_id}-{word_id}	{offset}-{offset + len(word)}\t{word}\t_\t_\t_\t_\t{row['MedicalEntity'] if row['MedicalEntity'] != "O" else '_'}{temp}\t_\t_\t_\n' 
+                offset += len(row['Text']) + 1
+        
+        out.write(content)

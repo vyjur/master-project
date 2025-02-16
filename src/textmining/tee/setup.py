@@ -31,7 +31,6 @@ class TEExtract:
         if not load:
             tags = set()
             raw_dataset = manager.get(Dataset.TEE)
-            raw_dataset = raw_dataset[raw_dataset['TIMEX'].isin(["DATE", "DCT"])]
             for _, row in raw_dataset.iterrows():
                 dataset.append(
                     {
@@ -132,7 +131,7 @@ class TEExtract:
                 return convert_duration(check_context, value, dct) 
         return value 
         
-    def base_run(self, text):
+    def run(self, text):
         if self.__rules:
             text = self.__pre_rules(text)
         
@@ -168,9 +167,9 @@ class TEExtract:
 
         return pd.DataFrame(data)
             
-    def run(self, data):
+    def extract_sectime(self, data):
         # Initial output: Extracting all TIMEX expressions
-        init_output = self.base_run(data)
+        init_output = self.run(data)
        
         # Only DATE expressions are candidate for DCT 
         dct_candidates = init_output[init_output['type'] == 'DATE']
@@ -185,25 +184,12 @@ class TEExtract:
             
             if dct_output == "DCT":
                 dcts.append(row)
-                context_start = data.index(dct['context'])
-                dct_start = dct['context'].index(dct['text'])
+                context_start = data.index(row['context'])
+                dct_start = row['context'].index(row['text'])
                 start = context_start + dct_start
                 sections.append(start)
             
-        processed_output = []
-       
-        # For each DCT in document, define the text section corresponding to the given DCT 
-        for i, dct in enumerate(dcts):
-            if i + 1 > len(sections):
-                end = len(data)
-            else:
-                end = i + 1
-            sec_text = data[sections[i], end] 
-            sec_output = self.__run(sec_text)
-            sec_output['dct'] = dct['value']
-            processed_output.append(sec_output)
-            
-        return pd.concat(processed_output, axis=1).reset_index()
+        return dcts
         
     def __get_window(self, full_text, timex_text, window_size=50):
         # Find the index of the TIMEX3 text in the full text
