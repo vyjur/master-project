@@ -33,7 +33,7 @@ print("### Without more rules")
 target = []
 pred = []
 for i, data in dataset.iterrows():
-    output = tee.base_run(data['Text'])
+    output = tee.run(data['Text'])
     try:
         if not output.empty:
             pred.append(output["type"].values[0])
@@ -53,7 +53,7 @@ tee.set_dct('2025-02-10')
 target = []
 pred = []
 for i, data in dataset.iterrows():
-    output = tee.base_run(data['Text'])
+    output = tee.run(data['Text'])
     try:
         if not output.empty:
             pred.append(output["type"].values[0])
