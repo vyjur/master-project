@@ -115,7 +115,7 @@ class DatasetManager:
                 return result[result["DCT"].notna()]
             case Dataset.TEE:
                 result = self.__get_ent_by_cols(["Id", "Text", "TIMEX", "Context"])
-                return result[result["TIMEX"].notna()]
+                return result[result["TIMEX"].notna() & result["TIMEX"].isin(["DATE", "DCT"])]
             case Dataset.TLINK:
                 return self.__get_tlink()
 
