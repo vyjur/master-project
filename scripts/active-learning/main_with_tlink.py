@@ -4,16 +4,20 @@ import pypdf
 import textwrap
 import pandas as pd
 from textmining.ner.setup import NERecognition
+from textmining.tee.setup import TEExtract
+from textmining.tre.setup import TRExtract
 from preprocess.dataset import DatasetManager
 from preprocess.setup import Preprocess
+from structure.enum import Dataset
 from util import compute_mnlp
+from types import SimpleNamespace
 
 BATCH = 1
+PAGES = 36
 
 os.mkdir(f'./data/helsearkiv/batch/ner/{BATCH}-local')
 
-file = "./scripts/active-learning/config/ner.ini"
-save_directory = "./models/ner/b-bert"
+
 
 print("##### Start active learning for NER... ######")
 
@@ -34,10 +38,36 @@ relation_files = [
 ]
 
 manager = DatasetManager(entity_files, relation_files)
+
+file = "./scripts/active-learning/config/ner.ini"
+save_directory = "./models/ner/b-bert"
 ner = NERecognition(
     config_file=file,
     manager=manager,
     save_directory=save_directory,
+)
+
+file = "./scripts/active-learning/config/tee.ini"
+tee = TEExtract(
+    config_file=file,
+    manager=manager,
+    save_directory=save_directory
+)
+
+file = "./scripts/active-learning/config/tre-dtr.ini"
+dtr = TRExtract(
+    config_file=file,
+    manager=manager,
+    save_directory=save_directory,
+    task=Dataset.DTR
+
+)
+file = "./scripts/active-learning/config/tre-tlink.ini"
+tlink = TRExtract(
+    config_file=file,
+    manager=manager,
+    save_directory=save_directory,
+    task=Dataset.TLINK
 )
 
 preprocess = Preprocess(
@@ -135,15 +165,15 @@ for page in sorted_data[:1200]:
        
         assert len(words) == len(annot) == len(offsets), f"Word count:{word_count}, LEN words: {len(words)}, offset/annot: {len(offsets)}/{len(annot)}, \n words:{words} \n tokens: {token} \n curr: {curr}, word: {words[word_count]}, page: {page['page']}, file: {page['file']}"      
             
-        # Merge different words together
+        # Merge different words together BIO-scheme
         for j, word in enumerate(words):
             if annot[j] == 'O':
                 merged_entities.append(word)
-                merged_annots.append(annot[j])
+                merged_annots.append(None)
                 merged_offsets.append(offsets[j])
             elif annot[j].startswith('B-'):
                 merged_entities.append(word)
-                merged_annots.append(annot[j].replace('B-', ''))
+                merged_annots.append(ner.get_util().remove_schema(annot[j]))
                 merged_offsets.append(offsets[j])
             else:
                 if len(merged_entities) > 0 and merged_annots[-1] != 'O':
@@ -151,24 +181,63 @@ for page in sorted_data[:1200]:
                     merged_offsets[-1] = (merged_offsets[-1][0], offsets[j][1])
                 else:
                     merged_entities.append(word)
-                    merged_annots.append(annot[j].replace('I-', ''))
+                    merged_annots.append(ner.get_util().remove_schema(annot[j]))
                     merged_offsets.append(offsets[j])
                 
-    if count % 36 == 0:
-        with open(f"./data/helsearkiv/batch/ner/{BATCH}-local/{count // 36}.pdf", "wb") as file:
+    if count % PAGES == 0:
+        with open(f"./data/helsearkiv/batch/ner/{BATCH}-local/{count // PAGES}.pdf", "wb") as file:
             writer.write(file)
+            
+        tokens_expanded = [word for entity in merged_entities for word in entity.split()]
         
+        contexts = []
+            
+        ### TIMEX
+        timex = []
+        for i, ent in enumerate(merged_entities):
+            context = None
+            if merged_annots[i] != None:
+                result = tee.run(ent)
+                if len(result) < 1:
+                    timex.append(None)
+                else:
+                    timex_output = result.iloc[0]['type']
+                    if timex_output == "DATE":
+                        context = manager.get_context_window(i, merged_entities, tokens_expanded)
+                        e = {
+                            'text': ent,
+                            'context': context
+                        }
+                        timex_output = tee.predict_sectime(**SimpleNamespace(e))
+                    timex.append()
+            else:
+                timex.append(None)
+            contexts.append(None)
+
+        ### DocTimeRel        
+        dcts = []
+
+        for i, ent in enumerate(merged_entities):
+            if merged_annots[i] is not None or timex[i] is not None:
+                context = manager.get_context_window(i, merged_entities, tokens_expanded)
+                e = {'value': ent, 'context': context}
+                dcts.append(dtr.run(**SimpleNamespace(e)))
+                contexts[i] = context
+            else:
+                dcts.append(None)
         
         writer = pypdf.PdfWriter()
         df = pd.DataFrame({
             'Text': [word.replace("[UNK]", "").replace("[SEP]", "").replace("[CLS]", "").replace("PAD", "") for word in merged_entities],
             'Id': [f"{offset[0]}-{offset[1]}"for offset in merged_offsets],
             'MedicalEntity': merged_annots,
-            'DCT': None,
-            'TIMEX': None,
-            'Context': None
+            'DCT': dcts,
+            'TIMEX': timex,
+            'Context': contexts,
+            'sentence-id': '',
+            'Relation': ''
         })
-        df.to_csv(f"./data/helsearkiv/batch/ner/{BATCH}/{count // 36}.csv")
+        df.to_csv(f"./data/helsearkiv/batch/ner/{BATCH}/{count // PAGES}.csv")
         
         merged_entities = []
         merged_offsets = []
@@ -217,6 +286,16 @@ for i, (path, file) in enumerate(entity_files):
     annot_id = 1
     with open(path.replace(in_folder_path, out_folder_path).replace(file, f"b{BATCH}-{file}"), 'w') as out:
         content += f"#Text={" ".join(df['Text'].astype(str).values)}"
+        total_words = 0
+        for j, row in df.iterrows():
+            row['Text'] = str(row['Text'])
+            words = row['Text'].split()
+            df.at[j, 'sentence-id'] = f'{sentence_id}-{j + 1}'
+            total_words += len(words)
+                 
+        sentence_id = 1
+        word_id = 1
+        annot_id = 1
         for j, row in df.iterrows():
             row['Text'] = str(row['Text'])
             words = row['Text'].split()
@@ -224,9 +303,32 @@ for i, (path, file) in enumerate(entity_files):
             if len(words) > 1:
                 temp = f"[{word_id}]"
                 word_id += 1
-            for word in words:
+            
+            entity = row['MedicalEntity'] if row['MedicalEntity'] is not None else '_'
+    
+            col = None
+            if entity:
+                col = 'TIMEX'
+            elif timex:
+                col = 'MedicalEntity'
+            
+            relations = []
+            if col:
+                for k, f_row in df[col].iterrows():
+                    if f_row['TEXT'] in row['Context']:
+                        relation = tlink.run(row, f_row)[0]
+                        if relation is not "O":
+                            relations.append((f_row['sentence-id'], relation))                
+            timex = row['TIMEX'] if row['TIMEX'] is not None else '_'
+            dct = row['DCT'] if row['DCT'] is not None else '_'
+            for k, word in enumerate(words):
                 word = word.replace('[UNK]', '').replace('[SEP]', '').replace('[CLS]', '').replace('[PAD]', '')
-                content += f'{sentence_id}-{word_id}	{offset}-{offset + len(word)}\t{word}\t_\t_\t_\t_\t{row['MedicalEntity'] if row['MedicalEntity'] != "O" else '_'}{temp}\t_\t_\t_\n' 
+                rel_cat = ''
+                rel_fk = ''
+                if k == 0 and len(relations) > 0:
+                    rel_cat = "|".join([rel[1] for rel in relations])
+                    rel_fk = "|".join([rel[0] for rel in relations])
+                content += f'{sentence_id}-{j+k+1}	{offset}-{offset + len(word)}\t{word}\t_\t_\t_\t{dct}{temp}\t{entity}{temp}\t{timex}{temp}\t_\t_\n' 
                 offset += len(row['Text']) + 1
         
         out.write(content)
