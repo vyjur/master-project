@@ -194,7 +194,7 @@ class TRExtract:
             text = f"{sentence_i} [SEP] {sentence_j}"
         return self.__run(self.preprocess.run(text))
    
-    @static 
+    @staticmethod
     def classify_tlink(self, e_i, e_j):
         sentences = sent_tokenize(e_i['Context'])
         
