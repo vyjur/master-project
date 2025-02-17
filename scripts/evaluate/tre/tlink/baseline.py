@@ -4,6 +4,7 @@ from structure.enum import Dataset, TLINK, SENTENCE
 from textmining.tre.baseline_tlink import Baseline
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
+from textmining.tre.setup import TRExtract
 
 import nltk
 
@@ -49,16 +50,9 @@ for i, rel in dataset_tre.iterrows():
         e_j = e_j.iloc[0]
     else:
         continue
-
-    sentences = sent_tokenize(e_i["Context"])
-
-    cat = None
-
-    for sentence in sentences:
-        # It is inter sentence if both entities are in the same sentence
-        if e_i["Text"] in sentence and e_j["Text"] in sentence:
-            cat = SENTENCE.INTRA
     
+    cat = TRExtract.classify_tlink(e_i, e_j)
+
     dataset.append({
         "e_i": e_i,
         "e_j": e_j,

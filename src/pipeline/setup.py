@@ -101,7 +101,7 @@ class Pipeline:
                     end = len(doc)
                 else:
                     end = i + 1
-                sec_text = doc[sectimes[i], end] 
+                sec_text = doc[sectimes[i], sectimes[end]] 
                 tee_output = self.__tee.run(sec_text)
                 tee_output['dct'] = dct['value']
                             
