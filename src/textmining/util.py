@@ -5,35 +5,35 @@ def convert_to_input(input_tag_type, e, single=True, start=True):
     
     match input_tag_type:
         case TAGS.XML:
-            return e['Context'].replace(e['Text'], f'<TAG>{e['Text']}</TAG>')
+            return e['Context'].replace(e["Text"], f'<TAG>{e["Text"]}</TAG>')
         case TAGS.XML_TYPE:
             cat = 'TAG'
             if entity:
                 cat = entity
             elif date:
                 cat = date
-            return e['Context'].replace(e['Text'], f'<{cat}>{e['Text']}</{cat}>')
+            return e['Context'].replace(e["Text"], f'<{cat}>{e["Text"]}</{cat}>')
         case TAGS.SOURCE:
             if entity and single:
-                return e['Context'].replace(e['Text'], f'es{e['Text']}ee')
+                return e['Context'].replace(e["Text"], f'es{e["Text"]}ee')
             elif entity and not single:
                 if start:
-                    return e['Context'].replace(e['Text'], f'eas{e['Text']}eae')
+                    return e['Context'].replace(e["Text"], f'eas{e["Text"]}eae')
                 else:
-                    return e['Context'].replace(e['Text'], f'ebs{e['Text']}ebe')
+                    return e['Context'].replace(e["Text"], f'ebs{e["Text"]}ebe')
             elif date:
-                return e['Context'].replace(e['Text'], f'ts{e['Text']}ts') 
+                return e['Context'].replace(e["Text"], f'ts{e["Text"]}ts') 
             else:
                 return e['Context']
         case TAGS.CUSTOM:
             if entity and single:
-                return e['Context'].replace(e['Text'], f'es{e['Text']}ee')
+                return e['Context'].replace(e["Text"], f'es{e["Text"]}ee')
             elif entity and not single:
                 if start:
-                    return e['Context'].replace(e['Text'], f'as es{e['Text']}ee ae')
+                    return e['Context'].replace(e["Text"], f'as es{e["Text"]}ee ae')
                 else:
-                    return e['Context'].replace(e['Text'], f'bs es{e['Text']}ee be')
+                    return e['Context'].replace(e["Text"], f'bs es{e["Text"]}ee be')
             elif date:
-                return e['Context'].replace(e['Text'], f'ts{e['Text']}ts') 
+                return e['Context'].replace(e["Text"], f'ts{e["Text"]}ts') 
             else:
                 return e['Context']
