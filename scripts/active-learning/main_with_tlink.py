@@ -314,6 +314,7 @@ for i, (path, file) in enumerate(entity_files):
             
             relations = []
             if col:
+                for k, f_row in df[col].iterrows():
                     if f_row['TEXT'] in row['Context']:
                         relation = tlink.run(row, f_row)[0]
                         if relation is not "O":
