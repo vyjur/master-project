@@ -53,3 +53,7 @@ class TAGS:
     XML_TYPE = 2
     SOURCE = 3
     CUSTOM = 4
+    
+class TLINK_INPUT:
+    SEP = 1
+    DIST = 2
