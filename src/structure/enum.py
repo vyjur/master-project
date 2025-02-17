@@ -47,3 +47,9 @@ class NER_SCHEMA(Enum):
 class SENTENCE(Enum):
     INTER = 1
     INTRA = 2
+    
+class TAGS:
+    XML = 1
+    XML_TYPE = 2
+    SOURCE = 3
+    CUSTOM = 4

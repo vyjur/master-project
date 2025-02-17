@@ -1,12 +1,14 @@
 import configparser
 import os
+from types import SimpleNamespace
 from model.util import Util
 from preprocess.dataset import DatasetManager
 from model.map import MODEL_MAP
 from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
 import random
-from structure.enum import Dataset, Task, DocTimeRel, TLINK, SENTENCE
+from structure.enum import Dataset, Task, DocTimeRel, TLINK, SENTENCE, TAGS
+from textmining.util import convert_to_input
 
 import nltk
 nltk.download('punkt')
@@ -24,6 +26,11 @@ class TRExtract:
         self.task = task
         self.__config = configparser.ConfigParser()
         self.__config.read(config_file)
+        
+        self.input_tag_type = self.__config['GENERAL']['tag']
+        for tag_type in TAGS:
+            if tag_type.name == self.input_tag_type:
+                self.input_tag_type = tag_type
 
         load = self.__config["MODEL"].getboolean("load")
         print("LOAD", load)
@@ -67,8 +74,7 @@ class TRExtract:
                 for _, row in dataset_tre.iterrows():
                     dataset.append(
                         {
-                            "sentence": row['Context']
-                            .replace(row['Text'], f"<TAG>{row['Text']}</TAG>"),
+                            "sentence": self.convert_to_input(row),
                             "relation": row['DCT'],
                         }
                     )
@@ -86,8 +92,8 @@ class TRExtract:
                     else:
                         continue
                 
-                    sentence_i = e_i['Context'].replace(e_i['Text'], f"<TAG>{e_i['Text']}</TAG>")
-                    sentence_j = e_j['Context'].replace(e_j['Text'], f"<TAG>{e_j['Text']}</TAG>")
+                    sentence_i = convert_to_input(self.input_tag_type, e_i, single=False, start=True)
+                    sentence_j = convert_to_input(self.input_tag_type, e_j, single=False, start=False)
                     
                     words = f"{sentence_i} [SEP] {sentence_j}"
                     
@@ -124,8 +130,8 @@ class TRExtract:
                                 continue
 
                         # TODO: Add amount of SEP as sentences between them?
-                        sentence_i = e_i['Context'].replace(e_i['Text'], f"<TAG>{e_i['Text']}</TAG>")
-                        sentence_j = e_j['Context'].replace(e_j['Text'], f"<TAG>{e_j['Text']}</TAG>")
+                        sentence_i = convert_to_input(self.input_tag_type, e_i, single=False, start=True)
+                        sentence_j = convert_to_input(self.input_tag_type, e_j, single=False, start=False)
                         
                         words = f"{sentence_i} [SEP] {sentence_j}"
 
@@ -184,13 +190,25 @@ class TRExtract:
         return predictions[0], output[1]
 
     def run(self, e_i, e_j=None):
+        
+        e_i = {
+            "Context": e_i.context,
+            "Text": e_i.value
+        }
+        
+        if e_j is not None:
+            e_j = {
+                "Context": e_j.context,
+                "Text": e_j.value
+            }
+            
         if self.task == Dataset.DTR:
-            text = e_i.context.replace(e_i.value, f"<TAG>{e_i.value}</TAG>")
+            text = convert_to_input(self.input_tag_type, e_i)
         else:
             if e_j is None:
                 raise ValueError("Missing value for e_j")
-            sentence_i = e_i.context.replace(e_i.value, f"<TAG>{e_i.value}</TAG>")
-            sentence_j = e_j.context.replace(e_j.value, f"<TAG>{e_j.value}</TAG>")
+            sentence_i = convert_to_input(self.input_tag_type, e_i, single=False, start=True)
+            sentence_j = convert_to_input(self.input_tag_type, e_j, single=False, start=False)
             text = f"{sentence_i} [SEP] {sentence_j}"
         return self.__run(self.preprocess.run(text))
    

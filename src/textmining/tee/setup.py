@@ -9,6 +9,7 @@ import pandas as pd
 from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
 from model.map import MODEL_MAP
+from textmining.util import convert_to_input
 
 
 class TEExtract:
@@ -21,6 +22,8 @@ class TEExtract:
         
         self.__config = configparser.ConfigParser(allow_no_value=True)
         self.__config.read(config_file)
+        
+        self.input_tag_type = self.__config["GENERAL"]['tag']
 
         load = self.__config["MODEL"].getboolean("load")
         print("LOAD", load)
@@ -34,8 +37,7 @@ class TEExtract:
             for _, row in raw_dataset.iterrows():
                 dataset.append(
                     {
-                        "sentence": row['Context']
-                        .replace(row['Text'], f"<TAG>{row['Text']}</TAG>"),
+                        "sentence": convert_to_input(self.input_tag_type, row, True, True),
                         "relation": row['TIMEX'],
                     }
                 )
@@ -191,7 +193,11 @@ class TEExtract:
         return dcts
     
     def predict_sectime(self, data):
-        text = data['context'].replace(data['text'], f"<TAG>{data['text']}</TAG>")
+        data = {
+            'Context': data['context'],
+            'Text': data['Text']
+        }
+        text = convert_to_input(self.input_tag_type, data, True, True)
         return self.__model_run(text)
 
 
