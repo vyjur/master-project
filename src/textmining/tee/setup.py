@@ -179,8 +179,7 @@ class TEExtract:
         sections = []
 
         for i, row in dct_candidates.iterrows():
-            text = row['context'].replace(row['text'], f"<TAG>{row['text']}</TAG>")
-            dct_output = self.__model_run(text)
+            dct_output = self.predict_sectime(row)
             
             if dct_output == "DCT":
                 dcts.append(row)
@@ -190,7 +189,12 @@ class TEExtract:
                 sections.append(start)
             
         return dcts
-        
+    
+    def predict_sectime(self, data):
+        text = data['context'].replace(data['text'], f"<TAG>{data['text']}</TAG>")
+        return self.__model_run(text)
+
+
     def __get_window(self, full_text, timex_text, window_size=50):
         # Find the index of the TIMEX3 text in the full text
         start_index = full_text.find(timex_text)

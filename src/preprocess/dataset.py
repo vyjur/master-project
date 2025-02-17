@@ -69,17 +69,14 @@ class DatasetManager:
             
             tokens_expanded = self.__entity_df["Text"].str.split().explode().tolist()  # Flatten the token list
             # Define the context window size
+            self.window_size = window_size
             
             # Function to get the context window for each row (respecting original dataset)
             # Token splits on words (word-level token window)
-            def get_context_window(idx):
+            
+            def local_get_context_window(idx):
                 # Get the flattened index of the current token
-                token_start_idx = sum(len(str(t).split()) for t in self.__entity_df["Text"][:idx])
-                
-                # Extract the context window from the flattened list
-                context_start = max(0, token_start_idx - window_size)
-                context_end = min(len(tokens_expanded), token_start_idx + window_size)
-                return " ".join(map(str, tokens_expanded[context_start:context_end]))
+                return self.get_context_window(idx, self.__entity_df['TIMEX'], tokens_expanded)
 
             # Apply function to each row
             
@@ -91,7 +88,7 @@ class DatasetManager:
                 mask = self.__entity_df["MedicalEntity"].notna() | self.__entity_df["TIMEX"].notna()
 
                 # Apply get_context_window only to the filtered rows
-                self.__entity_df.loc[mask, "Context"] = self.__entity_df.loc[mask].index.to_series().apply(get_context_window)
+                self.__entity_df.loc[mask, "Context"] = self.__entity_df.loc[mask].index.to_series().apply(local_get_context_window)
 
             all_relation_df = []
             for file in relation_files:
@@ -124,6 +121,15 @@ class DatasetManager:
     
     def __get_tlink(self):
         return self.__relation_df
+    
+    def get_context_window(self, idx, text, tokens_expanded):
+        # Get the flattened index of the current token
+        token_start_idx = sum(len(str(t).split()) for t in text[:idx])
+        
+        # Extract the context window from the flattened list
+        context_start = max(0, token_start_idx - self.window_size)
+        context_end = min(len(tokens_expanded), token_start_idx + self.window_size)
+        return " ".join(map(str, tokens_expanded[context_start:context_end]))
 
 if __name__ == "__main__":
     manager = DatasetManager(
