@@ -129,7 +129,7 @@ class TRExtract:
                         
                         words = f"{sentence_i} [SEP] {sentence_j}"
 
-                        cat = self.classify_tlink(e_i, e_j)
+                        cat = self.__class__.classify_tlink(e_i, e_j)
                         relation_pair = {
                             "sentence": words,
                             "relation": relation,
@@ -193,8 +193,9 @@ class TRExtract:
             sentence_j = e_j.context.replace(e_j.value, f"<TAG>{e_j.value}</TAG>")
             text = f"{sentence_i} [SEP] {sentence_j}"
         return self.__run(self.preprocess.run(text))
-    
-    def classify_tlink(self, e_i, e_j):
+   
+    @staticmethod
+    def classify_tlink(e_i, e_j):
         sentences = sent_tokenize(e_i['Context'])
         
         for sentence in sentences:
