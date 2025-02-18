@@ -106,6 +106,7 @@ class BERT(nn.Module):
                     "early_stopping_patience": parameters["early_stopping_patience"],
                     "early_stopping_delta": parameters["early_stopping_delta"],
                     'max_length': parameters['max_length'],
+                    'stride': parameters['stride'],
                     'shuffle': parameters['shuffle'],
                     'num_workers': parameters['num_workers'],
                     "evaluation_strategy": "epoch",

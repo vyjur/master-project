@@ -1,7 +1,7 @@
 from structure.enum import TAGS
 def convert_to_input(input_tag_type, e, single=True, start=True):
-    entity = e['MedicalEntity']
-    date = e['Date'] 
+    entity = e['MedicalEntity'] if 'MedicalEntity' in e else None
+    date = e['TIMEX'] if 'TIMEX' in e else None
     
     match input_tag_type:
         case TAGS.XML:
