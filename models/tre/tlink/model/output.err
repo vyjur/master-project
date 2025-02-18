@@ -1,3 +1,36 @@
 
 (25, 'Inappropriate ioctl for device')
-/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/bin/python: can't open file '/cluster/home/julievt/master-project/./scripts/train/tlink.py': [Errno 2] No such file or directory
+[nltk_data] Downloading package punkt to
+[nltk_data]     /cluster/home/julievt/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+Traceback (most recent call last):
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Date'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/./scripts/train/tre/tlink/main.py", line 39, in <module>
+    ner = TRExtract(
+          ^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/textmining/tre/setup.py", line 106, in __init__
+    sentence_i = convert_to_input(self.input_tag_type, e_i, single=False, start=True)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/textmining/util.py", line 4, in convert_to_input
+    date = e['Date'] 
+           ~^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/pandas/core/series.py", line 1121, in __getitem__
+    return self._get_value(key)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/pandas/core/series.py", line 1237, in _get_value
+    loc = self.index.get_loc(label)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Date'

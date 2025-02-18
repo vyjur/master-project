@@ -1,5 +1,13 @@
 
 (25, 'Inappropriate ioctl for device')
-
-Unable to access any of "/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/master_project-0.1.0.dist-info"
-/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/bin/python: can't open file '/cluster/home/julievt/master-project/./scripts/train/dtr.py': [Errno 2] No such file or directory
+[nltk_data] Downloading package punkt to
+[nltk_data]     /cluster/home/julievt/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+Traceback (most recent call last):
+  File "/cluster/home/julievt/master-project/./scripts/train/tre/dtr/main.py", line 39, in <module>
+    ner = TRExtract(
+          ^^^^^^^^^^
+  File "/cluster/home/julievt/master-project/src/textmining/tre/setup.py", line 78, in __init__
+    "sentence": self.convert_to_input(row),
+                ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'TRExtract' object has no attribute 'convert_to_input'

@@ -75,7 +75,7 @@ class TRExtract:
                 for _, row in dataset_tre.iterrows():
                     dataset.append(
                         {
-                            "sentence": self.convert_to_input(row),
+                            "sentence": convert_to_input(row),
                             "relation": row['DCT'],
                         }
                     )

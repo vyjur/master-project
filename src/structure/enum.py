@@ -48,12 +48,12 @@ class SENTENCE(Enum):
     INTER = 1
     INTRA = 2
     
-class TAGS:
+class TAGS(Enum):
     XML = 1
     XML_TYPE = 2
     SOURCE = 3
     CUSTOM = 4
     
-class TLINK_INPUT:
+class TLINK_INPUT(Enum):
     SEP = 1
     DIST = 2

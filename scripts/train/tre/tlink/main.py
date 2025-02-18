@@ -27,14 +27,14 @@ relation_files = [
     if os.path.isfile(os.path.join(folder_path, f))
 ]
 
-manager = DatasetManager(entity_files, relation_files)
+manager = DatasetManager(entity_files, relation_files, window_size=512)
 
 for i, conf in enumerate(configs):
-    if os.path.isdir(folder + conf):
+    if os.path.isdir(folder + conf) or conf != 'b-bert.ini':
         continue
     print(f"###### ({i}) Training for configuration file: {conf}")
     save_directory = f"./models/tre/{TRE_TYPE}/model/" + conf.replace(".ini", "")
-    if not os.path.isdir(save_directory):
+    if not os.path.isdir(save_directory) or conf != 'b-bert.ini':
         os.mkdir(save_directory)
     ner = TRExtract(
         config_file=folder + conf,

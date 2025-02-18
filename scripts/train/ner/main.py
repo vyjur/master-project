@@ -27,7 +27,7 @@ manager = DatasetManager(entity_files, relation_files)
 
 for i, conf in enumerate(configs):
     print(f"###### ({i}) Training for configuration file: {conf}")
-    if os.path.isdir(folder + conf) or conf != 'a-bilstmcrf.ini':
+    if os.path.isdir(folder + conf) or conf != 'b-bert.ini':
         continue
     save_directory = "./models/ner/model/" + conf.replace(".ini", "")
     if not os.path.isdir(save_directory):
