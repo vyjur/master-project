@@ -1,0 +1,22 @@
+Spawning shell within /cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12
+Installing dependencies from lock file
+
+No dependencies to install or update
+
+Installing the current project: master-project (0.1.0)
+LOAD True
+{'B-CONDITION': 0, 'B-TREATMENT': 1, 'I-CONDITION': 2, 'I-TREATMENT': 3, 'O': 4} {0: 'B-CONDITION', 1: 'B-TREATMENT', 2: 'I-CONDITION', 3: 'I-TREATMENT', 4: 'O'}
+Using: cuda:0 with BERT
+Model and tokenizer loaded successfully.
+[['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-TREATMENT', 'I-TREATMENT', 'B-TREATMENT', 'O', 'O', 'O', 'B-TREATMENT', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']]
+['O', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'B-CONDITION', 'B-CONDITION', 'B-CONDITION', 'I-CONDITION', 'O']
+              precision    recall  f1-score   support
+
+ B-CONDITION       1.00      0.89      0.94         9
+ I-CONDITION       0.94      1.00      0.97        17
+           O       1.00      1.00      1.00        38
+
+    accuracy                           0.98        64
+   macro avg       0.98      0.96      0.97        64
+weighted avg       0.99      0.98      0.98        64
+

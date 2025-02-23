@@ -11,249 +11,231 @@ Installing the current project: master-project (0.1.0)
 ###### (2) Training for configuration file: c-bert-bilstmcrf.ini
 ###### (3) Training for configuration file: b-bert.ini
 LOAD False
+{'B-CONDITION': 0, 'B-TREATMENT': 1, 'I-CONDITION': 2, 'I-TREATMENT': 3, 'O': 4} {0: 'B-CONDITION', 1: 'B-TREATMENT', 2: 'I-CONDITION', 3: 'I-TREATMENT', 4: 'O'}
 Using: cuda:0 with BERT
+{'B-CONDITION': 0, 'B-TREATMENT': 1, 'I-CONDITION': 2, 'I-TREATMENT': 3, 'O': 4}
+{0: 'B-CONDITION', 1: 'B-TREATMENT', 2: 'I-CONDITION', 3: 'I-TREATMENT', 4: 'O'}
+[1, 120, 4923, 120, 327, 121, 3029, 1359, 28375, 120, 124, 7910, 120, 22763, 179, 18364, 1506, 49476, 399, 1733, 10453, 3957, 186, 561, 175, 2120, 4968, 128, 2546, 29159, 3957, 5066, 126, 623, 1082, 175, 460, 1108, 561, 450, 195, 395, 175, 126, 2191, 17876, 21439, 5235, 398, 759, 558, 34158, 184, 1969, 397, 552, 1359, 1480, 24614, 498, 416, 39337, 13890, 2]
+['[CLS]', '.', 'pros', '.', 'Ġm', '/', 'met', 'Ġ.', 'Ġ153', '.', '2', 'ĠCa', '.', 'col', 'i', 'Ġopera', 'ta', 'ĠDiagno', 'se', 'Ġ:', 'Ġ83', '35', 'p', 'Ġ3', 'e', '15', '33', '6', 'Ġ60', 'Ġ325', '35', '36', '4', 'Ġ4', 'stand', 'e', 'ad', 'ns', 'Ġ3', 'je', 'y', 'Ġ1', 'e', '4', 'Ġus', 'just', 'seg', 'Ġfalt', 'Ġut', 'Ġnoe', 'ĠfÃ¸r', 'Ġinnleggelse', 'n', 'Ġ,', 'Ġhar', 'Ġhan', 'Ġ.', 'Ġhatt', 'Ġpose', 'Ġved', 'Ġden', 'Ġsup', 'rap', '[SEP]']
+['O', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'B-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'B-CONDITION', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'I-CONDITION', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-CONDITION', 'B-CONDITION', 'B-CONDITION', 'B-CONDITION', 'I-CONDITION', 'O']
 {'O': 9492430, 'B-CONDITION': 483560, 'I-CONDITION': 581376, 'B-TREATMENT': 96844, 'I-TREATMENT': 150846}
 {'O': 0.22765626925876725, 'B-CONDITION': 4.468961866159319, 'I-CONDITION': 3.71706296785557, 'B-TREATMENT': 22.31435298005039, 'I-TREATMENT': 14.325943014730255}
 Training Epoch: 0
-Training loss epoch: 0.050566986156351995
-Training accuracy epoch: 0.9800405809551693
-Overall acc: 0.9800273310967145
-Overall loss: 42.72910330211744
-Validation loss per 100 evaluation steps: 0.004831111524254084
-Validation loss per 100 evaluation steps: 0.013566070766474056
-Validation loss per 100 evaluation steps: 0.014162509769910197
-Validation loss per 100 evaluation steps: 0.014697270419918916
-Validation loss per 100 evaluation steps: 0.014627842430868407
-Validation loss per 100 evaluation steps: 0.01449924446791113
-Validation loss per 100 evaluation steps: 0.014494885497969791
-Validation loss per 100 evaluation steps: 0.014508334144095646
-Validation loss per 100 evaluation steps: 0.014669341860994807
-Validation loss per 100 evaluation steps: 0.014857081700267309
-Validation loss per 100 evaluation steps: 0.014680816208828357
-Validation Loss: 0.01452298648313665
-Validation Accuracy: 0.9957437226266572
-Overall accuracy: 0.9957404452703903
-Overall loss: 0.01452298648313665
+Training loss epoch: 0.027913423878906746
+Training accuracy epoch: 0.9705531093339087
+Overall acc: 0.9705266658954188
+Overall loss: 23.5868431776762
+Validation loss per 100 evaluation steps: 0.04724647477269173
+Validation loss per 100 evaluation steps: 0.044443041621015804
+Validation loss per 100 evaluation steps: 0.04463282710552883
+Validation loss per 100 evaluation steps: 0.044578963081565906
+Validation loss per 100 evaluation steps: 0.044087063028776734
+Validation loss per 100 evaluation steps: 0.043799460871133976
+Validation loss per 100 evaluation steps: 0.043315833972181236
+Validation loss per 100 evaluation steps: 0.04363097567855249
+Validation loss per 100 evaluation steps: 0.04361856745883878
+Validation loss per 100 evaluation steps: 0.04344374768293311
+Validation loss per 100 evaluation steps: 0.04341324546758633
+Validation Loss: 0.043353613836877754
+Validation Accuracy: 0.9876087843769727
+Overall accuracy: 0.9876012482971036
+Overall loss: 0.043353613836877754
 Training Epoch: 1
-Training loss epoch: 0.009434560290124466
-Training accuracy epoch: 0.9950428538225262
-Overall acc: 0.995042225821379
-Overall loss: 7.9722034451551735
-Validation loss per 100 evaluation steps: 0.019246220588684082
-Validation loss per 100 evaluation steps: 0.01355476393410475
-Validation loss per 100 evaluation steps: 0.012735943190072343
-Validation loss per 100 evaluation steps: 0.012880434400086412
-Validation loss per 100 evaluation steps: 0.012693218605829741
-Validation loss per 100 evaluation steps: 0.012827265532705896
-Validation loss per 100 evaluation steps: 0.01269645228677471
-Validation loss per 100 evaluation steps: 0.012693962923081037
-Validation loss per 100 evaluation steps: 0.012725958920818766
-Validation loss per 100 evaluation steps: 0.01276809216482662
-Validation loss per 100 evaluation steps: 0.012646331051183115
-Validation Loss: 0.012684024502959801
-Validation Accuracy: 0.9961723558830492
-Overall accuracy: 0.9961694085766748
-Overall loss: 0.012684024502959801
+Training loss epoch: 0.005489944053411528
+Training accuracy epoch: 0.9906818377352481
+Overall acc: 0.9906767700138824
+Overall loss: 4.639002725132741
+Validation loss per 100 evaluation steps: 0.005016125272959471
+Validation loss per 100 evaluation steps: 0.01948816887112242
+Validation loss per 100 evaluation steps: 0.01985157834017297
+Validation loss per 100 evaluation steps: 0.020284635532126016
+Validation loss per 100 evaluation steps: 0.020500632294278332
+Validation loss per 100 evaluation steps: 0.02096038320398761
+Validation loss per 100 evaluation steps: 0.02120870725492313
+Validation loss per 100 evaluation steps: 0.021264912431130316
+Validation loss per 100 evaluation steps: 0.02139306813296798
+Validation loss per 100 evaluation steps: 0.021658796753171526
+Validation loss per 100 evaluation steps: 0.02178242624967362
+Validation Loss: 0.02185233353320758
+Validation Accuracy: 0.9939209909150095
+Overall accuracy: 0.993916310045608
+Overall loss: 0.02185233353320758
 Training Epoch: 2
-Training loss epoch: 0.008348644763980744
-Training accuracy epoch: 0.9955403485320101
-Overall acc: 0.9955419944470153
-Overall loss: 7.054604825563729
-Validation loss per 100 evaluation steps: 0.01568993553519249
-Validation loss per 100 evaluation steps: 0.01147403055686725
-Validation loss per 100 evaluation steps: 0.012331265854806784
-Validation loss per 100 evaluation steps: 0.012437124935789436
-Validation loss per 100 evaluation steps: 0.012699265233902935
-Validation loss per 100 evaluation steps: 0.01289141125953338
-Validation loss per 100 evaluation steps: 0.012891962220167861
-Validation loss per 100 evaluation steps: 0.012826171323584629
-Validation loss per 100 evaluation steps: 0.012756504093517158
-Validation loss per 100 evaluation steps: 0.012726953576877609
-Validation loss per 100 evaluation steps: 0.012763011045512054
-Validation Loss: 0.01269122158946905
-Validation Accuracy: 0.9962985876834753
-Overall accuracy: 0.9962957375762601
-Overall loss: 0.01269122158946905
+Training loss epoch: 0.004788432734985367
+Training accuracy epoch: 0.9917429265029175
+Overall acc: 0.9917380552984729
+Overall loss: 4.0462256610626355
+Validation loss per 100 evaluation steps: 0.02350432053208351
+Validation loss per 100 evaluation steps: 0.018855044923118767
+Validation loss per 100 evaluation steps: 0.01861555457366538
+Validation loss per 100 evaluation steps: 0.018735615429824274
+Validation loss per 100 evaluation steps: 0.01882589608721175
+Validation loss per 100 evaluation steps: 0.01890132896404178
+Validation loss per 100 evaluation steps: 0.01913711831340498
+Validation loss per 100 evaluation steps: 0.019266465969849378
+Validation loss per 100 evaluation steps: 0.01955205405611468
+Validation loss per 100 evaluation steps: 0.019503660499338955
+Validation loss per 100 evaluation steps: 0.019491367652983434
+Validation Loss: 0.019561369871084797
+Validation Accuracy: 0.9952096650094697
+Overall accuracy: 0.9952059764259906
+Overall loss: 0.019561369871084797
 Training Epoch: 3
-Training loss epoch: 0.007628908060551704
-Training accuracy epoch: 0.9959215032513561
-Overall acc: 0.9959200023137437
-Overall loss: 6.44642731116619
-Validation loss per 100 evaluation steps: 0.009447893127799034
-Validation loss per 100 evaluation steps: 0.013874639655546387
-Validation loss per 100 evaluation steps: 0.013966248273404676
-Validation loss per 100 evaluation steps: 0.013934747486311844
-Validation loss per 100 evaluation steps: 0.014324977023885853
-Validation loss per 100 evaluation steps: 0.014617803796429648
-Validation loss per 100 evaluation steps: 0.014937563755205862
-Validation loss per 100 evaluation steps: 0.014851217371912822
-Validation loss per 100 evaluation steps: 0.015101585576036648
-Validation loss per 100 evaluation steps: 0.01519363937030813
-Validation loss per 100 evaluation steps: 0.015201428065595862
-Validation Loss: 0.01508046279866104
-Validation Accuracy: 0.9952170632102273
-Overall accuracy: 0.9952133803234022
-Overall loss: 0.01508046279866104
+Training loss epoch: 0.004071293973719381
+Training accuracy epoch: 0.9927897777469592
+Overall acc: 0.9927895071726053
+Overall loss: 3.4402434077928774
+Validation loss per 100 evaluation steps: 0.011460239998996258
+Validation loss per 100 evaluation steps: 0.01659775735974072
+Validation loss per 100 evaluation steps: 0.0172636596035949
+Validation loss per 100 evaluation steps: 0.017113290575527868
+Validation loss per 100 evaluation steps: 0.016981331434128735
+Validation loss per 100 evaluation steps: 0.017030088697267815
+Validation loss per 100 evaluation steps: 0.017520322615639874
+Validation loss per 100 evaluation steps: 0.017558665389582694
+Validation loss per 100 evaluation steps: 0.017907121007238572
+Validation loss per 100 evaluation steps: 0.01802548092435792
+Validation loss per 100 evaluation steps: 0.018141744208128353
+Validation Loss: 0.0180504339253854
+Validation Accuracy: 0.9949991245462436
+Overall accuracy: 0.9949972790677012
+Overall loss: 0.0180504339253854
 Training Epoch: 4
-Training loss epoch: 0.007813299772158794
-Training accuracy epoch: 0.9958281969099277
-Overall acc: 0.9958336707542804
-Overall loss: 6.602238307474181
-Validation loss per 100 evaluation steps: 0.0031243101693689823
-Validation loss per 100 evaluation steps: 0.008108893627217869
-Validation loss per 100 evaluation steps: 0.008254633272073663
-Validation loss per 100 evaluation steps: 0.008468375031130878
-Validation loss per 100 evaluation steps: 0.00820741255621326
-Validation loss per 100 evaluation steps: 0.008012271978722294
-Validation loss per 100 evaluation steps: 0.008154064612864081
-Validation loss per 100 evaluation steps: 0.008206846122397441
-Validation loss per 100 evaluation steps: 0.008254040435101017
-Validation loss per 100 evaluation steps: 0.008304351126134538
-Validation loss per 100 evaluation steps: 0.008277861410190214
-Validation Loss: 0.00825870012950721
-Validation Accuracy: 0.9973384972774622
-Overall accuracy: 0.9973364479061778
-Overall loss: 0.00825870012950721
+Training loss epoch: 0.004066456969036616
+Training accuracy epoch: 0.9928370488936143
+Overall acc: 0.9928350590004628
+Overall loss: 3.4361561388359405
+Validation loss per 100 evaluation steps: 0.014160575345158577
+Validation loss per 100 evaluation steps: 0.020028926875894096
+Validation loss per 100 evaluation steps: 0.019720114464639914
+Validation loss per 100 evaluation steps: 0.020194612986847535
+Validation loss per 100 evaluation steps: 0.020035559077517237
+Validation loss per 100 evaluation steps: 0.019815011439099535
+Validation loss per 100 evaluation steps: 0.019595559554317108
+Validation loss per 100 evaluation steps: 0.019629795633697517
+Validation loss per 100 evaluation steps: 0.019808626209778687
+Validation loss per 100 evaluation steps: 0.01985330203768759
+Validation loss per 100 evaluation steps: 0.01993679101965004
+Validation Loss: 0.01988880795022741
+Validation Accuracy: 0.9947989107382417
+Overall accuracy: 0.9947969110939999
+Overall loss: 0.01988880795022741
 Training Epoch: 5
-Training loss epoch: 0.005818466993032255
-Training accuracy epoch: 0.9968380819567718
-Overall acc: 0.9968392815826006
-Overall loss: 4.916604609112255
-Validation loss per 100 evaluation steps: 0.005621037445962429
-Validation loss per 100 evaluation steps: 0.007944644140056564
-Validation loss per 100 evaluation steps: 0.008293279230047888
-Validation loss per 100 evaluation steps: 0.0081302668537482
-Validation loss per 100 evaluation steps: 0.008249272276941185
-Validation loss per 100 evaluation steps: 0.00842607354596787
-Validation loss per 100 evaluation steps: 0.008515057048286558
-Validation loss per 100 evaluation steps: 0.008542123944920417
-Validation loss per 100 evaluation steps: 0.008423730915807044
-Validation loss per 100 evaluation steps: 0.008337747266255868
-Validation loss per 100 evaluation steps: 0.008289827491077905
-Validation Loss: 0.008353572268319884
-Validation Accuracy: 0.9975380945687341
-Overall accuracy: 0.9975382041106439
-Overall loss: 0.008353572268319884
+Training loss epoch: 0.0038512763277263815
+Training accuracy epoch: 0.993227962817431
+Overall acc: 0.9932343243868579
+Overall loss: 3.2543284969287924
+Validation loss per 100 evaluation steps: 0.017115967348217964
+Validation loss per 100 evaluation steps: 0.028808402847314236
+Validation loss per 100 evaluation steps: 0.03022810563315355
+Validation loss per 100 evaluation steps: 0.029676165352838478
+Validation loss per 100 evaluation steps: 0.02958428054732129
+Validation loss per 100 evaluation steps: 0.03048100134361528
+Validation loss per 100 evaluation steps: 0.03046748220652091
+Validation loss per 100 evaluation steps: 0.030042163538032435
+Validation loss per 100 evaluation steps: 0.030153089821424114
+Validation loss per 100 evaluation steps: 0.03049758267887381
+Validation loss per 100 evaluation steps: 0.030728562677743845
+Validation Loss: 0.030677366500557666
+Validation Accuracy: 0.9921455768623738
+Overall accuracy: 0.9921555706924124
+Overall loss: 0.030677366500557666
 Training Epoch: 6
-Training loss epoch: 0.006543637812206488
-Training accuracy epoch: 0.9966597517566568
-Overall acc: 0.9966563512262842
-Overall loss: 5.529373951314483
-Validation loss per 100 evaluation steps: 0.011658280156552792
-Validation loss per 100 evaluation steps: 0.008948815524310686
-Validation loss per 100 evaluation steps: 0.00873673255341035
-Validation loss per 100 evaluation steps: 0.008716185417094352
-Validation loss per 100 evaluation steps: 0.008726545647346992
-Validation loss per 100 evaluation steps: 0.008806758429127802
-Validation loss per 100 evaluation steps: 0.008649891699571704
-Validation loss per 100 evaluation steps: 0.008791297223422605
-Validation loss per 100 evaluation steps: 0.008871094430481419
-Validation loss per 100 evaluation steps: 0.008871424701462781
-Validation loss per 100 evaluation steps: 0.008867959878137604
-Validation Loss: 0.008936054550097404
-Validation Accuracy: 0.9972950328480114
-Overall accuracy: 0.9972929500088846
-Overall loss: 0.008936054550097404
-Training Epoch: 7
-Training loss epoch: 0.005327249101098605
-Training accuracy epoch: 0.9971449351012903
-Overall acc: 0.9971455633965757
-Overall loss: 4.501525490428321
-Validation loss per 100 evaluation steps: 0.0059211961925029755
-Validation loss per 100 evaluation steps: 0.009388070039469565
-Validation loss per 100 evaluation steps: 0.009999333624264679
-Validation loss per 100 evaluation steps: 0.010100067842618696
-Validation loss per 100 evaluation steps: 0.010128105017025619
-Validation loss per 100 evaluation steps: 0.010147644822535006
-Validation loss per 100 evaluation steps: 0.010297991194666989
-Validation loss per 100 evaluation steps: 0.010305178206471777
-Validation loss per 100 evaluation steps: 0.01025676807928156
-Validation loss per 100 evaluation steps: 0.010066645321672417
-Validation loss per 100 evaluation steps: 0.01006047850186061
-Validation Loss: 0.010116229141975495
-Validation Accuracy: 0.9968013570766256
-Overall accuracy: 0.9968029045489546
-Overall loss: 0.010116229141975495
+Training loss epoch: 0.0036287802592548128
+Training accuracy epoch: 0.9933714455950033
+Overall acc: 0.9933682322998612
+Overall loss: 3.066319319070317
+Validation loss per 100 evaluation steps: 0.02341039851307869
+Validation loss per 100 evaluation steps: 0.015661403127325845
+Validation loss per 100 evaluation steps: 0.0172908655867335
+Validation loss per 100 evaluation steps: 0.01753326476425121
+Validation loss per 100 evaluation steps: 0.017905123065649054
+Validation loss per 100 evaluation steps: 0.01755892402884465
+Validation loss per 100 evaluation steps: 0.017803286278716052
+Validation loss per 100 evaluation steps: 0.018193795831520948
+Validation loss per 100 evaluation steps: 0.01820088237533189
+Validation loss per 100 evaluation steps: 0.017972121104892894
+Validation loss per 100 evaluation steps: 0.01791977668206066
+Validation Loss: 0.018117194747366675
+Validation Accuracy: 0.9951620390920928
+Overall accuracy: 0.9951583138364035
+Overall loss: 0.018117194747366675
 Early stopping
 ### Valid set performance:
-Validation loss per 100 evaluation steps: 0.012014579959213734
-Validation loss per 100 evaluation steps: 0.01059625495114539
-Validation loss per 100 evaluation steps: 0.010370096799614028
-Validation loss per 100 evaluation steps: 0.010769457701149635
-Validation loss per 100 evaluation steps: 0.010737237034242442
-Validation loss per 100 evaluation steps: 0.010739792503675395
-Validation loss per 100 evaluation steps: 0.010597886108107997
-Validation loss per 100 evaluation steps: 0.010890224045144193
-Validation loss per 100 evaluation steps: 0.010873300901760339
-Validation Loss: 0.010859750244682434
-Validation Accuracy: 0.9966230558913427
-Overall accuracy: 0.9966196811602753
-Overall loss: 0.010859750244682434
+Validation loss per 100 evaluation steps: 0.012349673546850681
+Validation loss per 100 evaluation steps: 0.018469826230723962
+Validation loss per 100 evaluation steps: 0.018096296434390327
+Validation loss per 100 evaluation steps: 0.01772030206593264
+Validation loss per 100 evaluation steps: 0.01830677632200346
+Validation loss per 100 evaluation steps: 0.018535532988317425
+Validation loss per 100 evaluation steps: 0.018814790175099176
+Validation loss per 100 evaluation steps: 0.018721337862086605
+Validation loss per 100 evaluation steps: 0.01879032106049674
+Validation Loss: 0.018697186363495877
+Validation Accuracy: 0.9950834363992949
+Overall accuracy: 0.9950816476567114
+Overall loss: 0.018697186363495877
 ### BIO-Scheme
               precision    recall  f1-score   support
 
- B-CONDITION       0.99      0.99      0.99     77258
- B-TREATMENT       0.91      1.00      0.95     15797
- I-CONDITION       0.98      1.00      0.99     92931
- I-TREATMENT       1.00      0.91      0.95     24537
+ B-CONDITION       1.00      0.92      0.96     77258
+ B-TREATMENT       0.98      0.96      0.97     15797
+ I-CONDITION       1.00      0.99      0.99     92931
+ I-TREATMENT       0.98      0.99      0.99     24537
            O       1.00      1.00      1.00   1518308
 
     accuracy                           1.00   1728831
-   macro avg       0.98      0.98      0.98   1728831
+   macro avg       0.99      0.97      0.98   1728831
 weighted avg       1.00      1.00      1.00   1728831
 
 ### Summary
               precision    recall  f1-score   support
 
-   CONDITION       0.98      1.00      0.99    170189
-   TREATMENT       0.97      0.95      0.96     40334
+   CONDITION       1.00      0.96      0.98    170189
+   TREATMENT       0.98      0.98      0.98     40334
            O       1.00      1.00      1.00   1518308
 
     accuracy                           1.00   1728831
-   macro avg       0.98      0.98      0.98   1728831
+   macro avg       0.99      0.98      0.99   1728831
 weighted avg       1.00      1.00      1.00   1728831
 
 ### Test set performance:
-Validation loss per 100 evaluation steps: 0.02667558193206787
-Validation loss per 100 evaluation steps: 0.010551363224564765
-Validation loss per 100 evaluation steps: 0.010733692037157103
-Validation loss per 100 evaluation steps: 0.010415456128968823
-Validation loss per 100 evaluation steps: 0.010052319706366525
-Validation loss per 100 evaluation steps: 0.010123176919156965
-Validation loss per 100 evaluation steps: 0.010264108590793311
-Validation loss per 100 evaluation steps: 0.010133480699417366
-Validation loss per 100 evaluation steps: 0.010132023470883796
-Validation loss per 100 evaluation steps: 0.010105188347393549
-Validation loss per 100 evaluation steps: 0.010111837118694728
-Validation Loss: 0.010105217678425437
-Validation Accuracy: 0.9968053644353693
-Overall accuracy: 0.9968029045489546
-Overall loss: 0.010105217678425437
+Validation loss per 100 evaluation steps: 0.02238413877785206
+Validation loss per 100 evaluation steps: 0.01887733548174216
+Validation loss per 100 evaluation steps: 0.018741493008507238
+Validation loss per 100 evaluation steps: 0.018287134286406083
+Validation loss per 100 evaluation steps: 0.018201430966877877
+Validation loss per 100 evaluation steps: 0.01806139626318102
+Validation loss per 100 evaluation steps: 0.017864279127342723
+Validation loss per 100 evaluation steps: 0.017924393938815144
+Validation loss per 100 evaluation steps: 0.01806904849554973
+Validation loss per 100 evaluation steps: 0.01811007735034599
+Validation loss per 100 evaluation steps: 0.018083046878683735
+Validation Loss: 0.018156978495054234
+Validation Accuracy: 0.9951520206952337
+Overall accuracy: 0.9951583138364035
+Overall loss: 0.018156978495054234
 ### BIO-Scheme
               precision    recall  f1-score   support
 
- B-CONDITION       0.99      0.99      0.99     97744
- B-TREATMENT       0.92      0.99      0.95     19083
- I-CONDITION       0.98      1.00      0.99    117729
- I-TREATMENT       1.00      0.90      0.95     29823
+ B-CONDITION       1.00      0.93      0.96     97744
+ B-TREATMENT       0.99      0.96      0.97     19083
+ I-CONDITION       1.00      0.99      0.99    117729
+ I-TREATMENT       0.98      0.99      0.99     29823
            O       1.00      1.00      1.00   1896645
 
     accuracy                           1.00   2161024
-   macro avg       0.98      0.98      0.98   2161024
+   macro avg       0.99      0.97      0.98   2161024
 weighted avg       1.00      1.00      1.00   2161024
 
 ### Summary
               precision    recall  f1-score   support
 
-   CONDITION       0.98      1.00      0.99    215473
-   TREATMENT       0.97      0.95      0.96     48906
+   CONDITION       1.00      0.96      0.98    215473
+   TREATMENT       0.98      0.98      0.98     48906
            O       1.00      1.00      1.00   1896645
 
     accuracy                           1.00   2161024
-   macro avg       0.98      0.98      0.98   2161024
+   macro avg       0.99      0.98      0.99   2161024
 weighted avg       1.00      1.00      1.00   2161024
 
-Finished with this task. 
- 
-
-Process finished!

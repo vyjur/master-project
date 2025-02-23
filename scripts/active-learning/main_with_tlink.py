@@ -89,7 +89,7 @@ patients_df = pd.read_csv('./data/helsearkiv/patients.csv')
 
 print("##### Calculating MNLP ... ")
 for i, doc in enumerate(files):
-    if file.split("_")[1].strip() not in patients_df['journalidentifikator']
+    if doc.split("_")[1].strip() not in patients_df['journalidentifikator']
         reader = pypdf.PdfReader('./data/helsearkiv/journal/' + doc)
         for j, page in enumerate(reader.pages):
             pre_output = preprocess.run(page.extract_text())
@@ -237,7 +237,7 @@ for page in sorted_data[:1200]:
             'sentence-id': '',
             'Relation': ''
         })
-        df.to_csv(f"./data/helsearkiv/batch/ner/{BATCH}/{count // PAGES}.csv")
+        df.to_csv(f"./data/helsearkiv/batch/ner/{BATCH}-local/{count // PAGES}.csv")
         
         merged_entities = []
         merged_offsets = []

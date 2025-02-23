@@ -3,7 +3,7 @@ from textmining.tee.rules import *
 import xml.etree.ElementTree as ET
 from preprocess.dataset import DatasetManager
 import configparser
-from structure.enum import Task, Dataset, DCT
+from structure.enum import Task, Dataset, DCT, TAGS
 from model.util import Util
 import pandas as pd
 from transformers import AutoTokenizer
@@ -24,7 +24,12 @@ class TEExtract:
         self.__config.read(config_file)
         
         self.input_tag_type = self.__config["GENERAL"]['tag']
-
+        
+        for tag_type in TAGS:
+            if tag_type.name == self.input_tag_type:
+                self.input_tag_type = tag_type
+                break
+        
         load = self.__config["MODEL"].getboolean("load")
         print("LOAD", load)
         
@@ -90,10 +95,10 @@ class TEExtract:
         return self.__model.tokenizer
 
     def get_max_length(self):
-        return self.__config.getint("MODEL", "max_length")
+        return self.__config.getint("train.parameters", "max_length")
 
     def get_stride(self):
-        return self.__config.getint("MODEL", "stride")
+        return self.__config.getint("train.parameters", "stride")
 
     def __model_run(self, data):
         output, _ = self.__model.predict([val.ids for val in data])
@@ -198,7 +203,8 @@ class TEExtract:
             'Text': data['Text']
         }
         text = convert_to_input(self.input_tag_type, data, True, True)
-        return self.__model_run(text)
+        # TODO: we need to have preprocessing stage here
+        return self.__model_run(self.preprocess.run(text))
 
 
     def __get_window(self, full_text, timex_text, window_size=50):

@@ -42,6 +42,8 @@ class NERecognition:
         
         self.__util = Util(schema=self.schema)
         self.label2id, self.id2label = self.__util.get_tags(Task.TOKEN, tags)
+        
+        print(self.label2id, self.id2label)
 
         self.tokenizer = AutoTokenizer.from_pretrained(
             self.__config["pretrain"]["name"]
@@ -87,10 +89,10 @@ class NERecognition:
         return self.__model.tokenizer
 
     def get_max_length(self):
-        return self.__config.getint("MODEL", "max_length")
+        return self.__config.getint("train.parameters", "max_length")
     
     def get_stride(self):
-        return self.__config.getint("MODEL", "stride")
+        return self.__config.getint("train.parameters", "stride")
     
     def get_util(self):
         return self.__util

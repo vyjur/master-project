@@ -34,3 +34,86 @@ wandb: Syncing run dauntless-sweep-1
 wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/ner-a-Task.TOKEN-nn-model
 wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/ner-a-Task.TOKEN-nn-model/sweeps/bjhor8mu
 wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/ner-a-Task.TOKEN-nn-model/runs/2hg5ftcq
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb: train_accuracy ▁▆▇▇▇████████████████████
+wandb:     train_loss █▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:        val_acc ▁▅▆▇▇▇██▇████████████████
+wandb:       val_loss █▄▂▂▂▁▁▂▁▁▂▂▁▁▁▁▁▁▁▁▁▁▁▁▂
+wandb: 
+wandb: Run summary:
+wandb: train_accuracy 0.99802
+wandb:     train_loss 13.15726
+wandb:        val_acc 0.96146
+wandb:       val_loss 351.56165
+wandb: 
+wandb: 🚀 View run dauntless-sweep-1 at: https://wandb.ai/julievt-ntnu/ner-a-Task.TOKEN-nn-model/runs/2hg5ftcq
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/ner-a-Task.TOKEN-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250217_143252-2hg5ftcq/logs
+wandb: Agent Starting Run: 704v8mgv with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.01
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 512
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.001
+wandb: 	max_length: 512
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 32
+wandb: 	tune: true
+wandb: 	valid_batch_size: 32
+wandb: 	weight_decay: 0.001
+wandb: WARNING Ignoring project 'ner-a-Task.TOKEN-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250218_102529-704v8mgv
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run upbeat-sweep-2
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/ner-a-Task.TOKEN-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/ner-a-Task.TOKEN-nn-model/sweeps/bjhor8mu
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/ner-a-Task.TOKEN-nn-model/runs/704v8mgv
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb: train_accuracy ▁▇▇▇▇▇███████████████████
+wandb:     train_loss █▃▃▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:        val_acc ▁▄▅▅▆▆▆▇▇▇▇▇█████████████
+wandb:       val_loss █▅▅▄▃▃▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: 
+wandb: Run summary:
+wandb: train_accuracy 0.98045
+wandb:     train_loss 275.68848
+wandb:        val_acc 0.94218
+wandb:       val_loss 464.41772
+wandb: 
+wandb: 🚀 View run upbeat-sweep-2 at: https://wandb.ai/julievt-ntnu/ner-a-Task.TOKEN-nn-model/runs/704v8mgv
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/ner-a-Task.TOKEN-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250218_102529-704v8mgv/logs
+wandb: Agent Starting Run: 5fzl1rnd with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.01
+wandb: 	early_stopping_patience: 3
+wandb: 	embedding_dim: 512
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.0001
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: sgd
+wandb: 	shuffle: True
+wandb: 	stride: 32
+wandb: 	tune: true
+wandb: 	valid_batch_size: 32
+wandb: 	weight_decay: 0.001
+wandb: WARNING Ignoring project 'ner-a-Task.TOKEN-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250219_021100-5fzl1rnd
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run restful-sweep-3
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/ner-a-Task.TOKEN-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/ner-a-Task.TOKEN-nn-model/sweeps/bjhor8mu
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/ner-a-Task.TOKEN-nn-model/runs/5fzl1rnd
+slurmstepd: error: *** JOB 21163808 ON idun-09-17 CANCELLED AT 2025-02-23T05:25:45 DUE TO TIME LIMIT ***

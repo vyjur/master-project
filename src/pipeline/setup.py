@@ -188,6 +188,8 @@ class Pipeline:
                 ###### The candidate pairs are pairs within a group##### O(N^2)>O(len(dcts)*(N_i^2)) where N_i < N
                 ###### Although triple loop, this should be quicker than checking all entities
                 ###### O(N^2)>O(len(dcts)*(N_i^2)) where N_i < N
+                
+                # TODO: candidate pairs: context?
 
                 relations = []
                 for cat in dcts:
