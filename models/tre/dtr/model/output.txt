@@ -7,4 +7,1356 @@ Installing the current project: master-project (0.1.0)
 ##### Start training for TRE... ######
 ### Processing the files:
 ###### (2) Training for configuration file: b-bert.ini
+TAGS.XML
 LOAD False
+Using: cuda:0 with BERT
+Create sweep with ID: 6r2hl0zi
+Sweep URL: https://wandb.ai/julievt-ntnu/tre-dtr-b-Task.SEQUENCE-bert-model/sweeps/6r2hl0zi
+{'AFTER': 0, 'BEFORE': 1, 'BEFOREOVERLAP': 2, 'OVERLAP': 3}
+{0: 'AFTER', 1: 'BEFORE', 2: 'BEFOREOVERLAP', 3: 'OVERLAP'}
+[1, 730, 39023, 1359, 1733, 901, 111, 327, 151, 1359, 1101, 120, 6491, 47089, 22991, 14409, 2809, 18508, 158, 6539, 128, 8706, 11995, 4503, 162, 10900, 28176, 3950, 23861, 147, 27594, 120, 131, 32807, 11767, 37908, 1142, 14012, 25187, 10004, 4520, 143, 423, 10423, 36561, 8677, 6207, 3060, 18129, 4987, 9555, 38333, 120, 123, 408, 163, 33344, 14043, 13577, 36363, 14043, 21886, 41079, 2]
+['[CLS]', 'me', 'ĠAvd', 'Ġ.', 'Ġ:', 'Ġ9', '%', 'Ġm', 'M', 'Ġ.', 'Ġ11', '.', '95', 'Ġ428', 'ĠHJ', 'ERT', 'ES', 'VIK', 'T', 'Ġ43', '6', 'ĠAP', 'OP', 'LE', 'X', 'IA', 'ĠCE', 'RE', 'BR', 'I', 'Ġ440', '.', '9', 'ĠGENER', 'ELL', 'ĠART', 'ER', 'IO', 'SC', 'LER', 'OS', 'E', 'ĠA', 'ORT', 'AA', 'NE', 'UR', 'IS', 'ME', 'Ġ44', '71', 'Ġ425', '.', '1', 'ĠH', 'Y', 'PER', 'TR', 'OF', 'ĠOBS', 'TR', 'UK', 'TI', '[SEP]']
+BEFORE
+{'BEFORE': 104448, 'OVERLAP': 34563, 'BEFOREOVERLAP': 4153, 'AFTER': 9363}
+{'BEFORE': 0.36507879518995096, 'OVERLAP': 1.1032534791540087, 'BEFOREOVERLAP': 9.181736094389597, 'AFTER': 4.072599594147175}
+Training Epoch: 0
+Training loss epoch: 1.0460975770087886
+Training accuracy epoch: 0.32159239842726084
+Overall acc: 0.3217198000327815
+Overall loss: 1596.3449025154114
+Validation loss per 100 evaluation steps: 0.8971726894378662
+Validation loss per 100 evaluation steps: 1.209128738039791
+Validation loss per 100 evaluation steps: 1.1761121984144942
+Validation loss per 100 evaluation steps: 1.1632122078607248
+Validation loss per 100 evaluation steps: 1.1504320925905223
+Validation loss per 100 evaluation steps: 1.1502614739888204
+Validation loss per 100 evaluation steps: 1.150631949429504
+Validation loss per 100 evaluation steps: 1.157223461357911
+Validation loss per 100 evaluation steps: 1.1565348215019806
+Validation loss per 100 evaluation steps: 1.1578185243426629
+Validation loss per 100 evaluation steps: 1.1572453189682175
+Validation loss per 100 evaluation steps: 1.1572089709551305
+Validation loss per 100 evaluation steps: 1.1580119550377006
+Validation loss per 100 evaluation steps: 1.1607209237422693
+Validation loss per 100 evaluation steps: 1.157229275426041
+Validation loss per 100 evaluation steps: 1.1565292916402747
+Validation loss per 100 evaluation steps: 1.1559118491869134
+Validation loss per 100 evaluation steps: 1.1570541479530088
+Validation loss per 100 evaluation steps: 1.157553040570911
+Validation loss per 100 evaluation steps: 1.157104748634838
+Validation Loss: 1.1576251772353958
+Validation Accuracy: 0.22728106974305193
+Overall accuracy: 0.22726676719333902
+Overall loss: 1.1576251772353958
+Training Epoch: 1
+Training loss epoch: 1.0369457879041468
+Training accuracy epoch: 0.2828985091743119
+Overall acc: 0.2828224881167022
+Overall loss: 1582.3792723417282
+Validation loss per 100 evaluation steps: 1.135798692703247
+Validation loss per 100 evaluation steps: 1.1569924791260522
+Validation loss per 100 evaluation steps: 1.1757380849686427
+Validation loss per 100 evaluation steps: 1.1661555194775528
+Validation loss per 100 evaluation steps: 1.1687085887143143
+Validation loss per 100 evaluation steps: 1.1714587509037253
+Validation loss per 100 evaluation steps: 1.1685142213611952
+Validation loss per 100 evaluation steps: 1.1728348228628727
+Validation loss per 100 evaluation steps: 1.1732103964511524
+Validation loss per 100 evaluation steps: 1.1698453540145755
+Validation loss per 100 evaluation steps: 1.1718865232272344
+Validation loss per 100 evaluation steps: 1.1716189238832388
+Validation loss per 100 evaluation steps: 1.1694809658938303
+Validation loss per 100 evaluation steps: 1.1715352838539692
+Validation loss per 100 evaluation steps: 1.1702189011117716
+Validation loss per 100 evaluation steps: 1.1732856780588428
+Validation loss per 100 evaluation steps: 1.1739430880263624
+Validation loss per 100 evaluation steps: 1.1748701068739693
+Validation loss per 100 evaluation steps: 1.1739460063735225
+Validation loss per 100 evaluation steps: 1.1735417204490153
+Validation Loss: 1.1738898485320741
+Validation Accuracy: 0.22730073413738855
+Overall accuracy: 0.22726676719333902
+Overall loss: 1.1738898485320741
+Training Epoch: 2
+Training loss epoch: 1.0355331767667793
+Training accuracy epoch: 0.2684202981651376
+Overall acc: 0.26839862317652846
+Overall loss: 1580.2236277461052
+Validation loss per 100 evaluation steps: 1.9607280492782593
+Validation loss per 100 evaluation steps: 1.1520186043021703
+Validation loss per 100 evaluation steps: 1.1573202835386664
+Validation loss per 100 evaluation steps: 1.1519525500627055
+Validation loss per 100 evaluation steps: 1.1529824268490894
+Validation loss per 100 evaluation steps: 1.1551545209989338
+Validation loss per 100 evaluation steps: 1.1529354869625137
+Validation loss per 100 evaluation steps: 1.1511873523791065
+Validation loss per 100 evaluation steps: 1.1499106304327051
+Validation loss per 100 evaluation steps: 1.1452350448424227
+Validation loss per 100 evaluation steps: 1.144234502827609
+Validation loss per 100 evaluation steps: 1.1449843701398124
+Validation loss per 100 evaluation steps: 1.1449483691107523
+Validation loss per 100 evaluation steps: 1.1434808521432018
+Validation loss per 100 evaluation steps: 1.1411324233178324
+Validation loss per 100 evaluation steps: 1.141484266912675
+Validation loss per 100 evaluation steps: 1.1432234368273648
+Validation loss per 100 evaluation steps: 1.1428176203872933
+Validation loss per 100 evaluation steps: 1.140584382694473
+Validation loss per 100 evaluation steps: 1.1392603072600889
+Validation Loss: 1.1390786181898973
+Validation Accuracy: 0.22726140534871525
+Overall accuracy: 0.22726676719333902
+Overall loss: 1.1390786181898973
+Training Epoch: 3
+Training loss epoch: 1.0356720187560915
+Training accuracy epoch: 0.26254300458715596
+Overall acc: 0.26257990493361744
+Overall loss: 1580.4355006217957
+Validation loss per 100 evaluation steps: 0.8548970222473145
+Validation loss per 100 evaluation steps: 1.1290521804649052
+Validation loss per 100 evaluation steps: 1.1393808867800888
+Validation loss per 100 evaluation steps: 1.1504012336366596
+Validation loss per 100 evaluation steps: 1.135512139731809
+Validation loss per 100 evaluation steps: 1.1268171389659722
+Validation loss per 100 evaluation steps: 1.1266042488982
+Validation loss per 100 evaluation steps: 1.1284099591101457
+Validation loss per 100 evaluation steps: 1.1299752270833086
+Validation loss per 100 evaluation steps: 1.1287802606655675
+Validation loss per 100 evaluation steps: 1.1271717214322352
+Validation loss per 100 evaluation steps: 1.126604334913959
+Validation loss per 100 evaluation steps: 1.1272517334015344
+Validation loss per 100 evaluation steps: 1.1278910192501352
+Validation loss per 100 evaluation steps: 1.127077269435014
+Validation loss per 100 evaluation steps: 1.1237143282887143
+Validation loss per 100 evaluation steps: 1.1254641918522503
+Validation loss per 100 evaluation steps: 1.1257050179650263
+Validation loss per 100 evaluation steps: 1.1253271470263162
+Validation loss per 100 evaluation steps: 1.1253218201823387
+Validation Loss: 1.1253828060020623
+Validation Accuracy: 0.22726140534871525
+Overall accuracy: 0.22726676719333902
+Overall loss: 1.1253828060020623
+Training Epoch: 4
+Training loss epoch: 1.0367208980560927
+Training accuracy epoch: 0.266925376802097
+Overall acc: 0.26693369939354206
+Overall loss: 1582.0360904335976
+Validation loss per 100 evaluation steps: 1.124069094657898
+Validation loss per 100 evaluation steps: 1.115922749042511
+Validation loss per 100 evaluation steps: 1.124895907456602
+Validation loss per 100 evaluation steps: 1.1269831162354478
+Validation loss per 100 evaluation steps: 1.1286854833141526
+Validation loss per 100 evaluation steps: 1.130176827817144
+Validation loss per 100 evaluation steps: 1.1314132730298352
+Validation loss per 100 evaluation steps: 1.1403076449746583
+Validation loss per 100 evaluation steps: 1.1384789547074898
+Validation loss per 100 evaluation steps: 1.1393544764550492
+Validation loss per 100 evaluation steps: 1.1387456117810069
+Validation loss per 100 evaluation steps: 1.1393337458182637
+Validation loss per 100 evaluation steps: 1.1408664215911337
+Validation loss per 100 evaluation steps: 1.1418980143328614
+Validation loss per 100 evaluation steps: 1.142663983469942
+Validation loss per 100 evaluation steps: 1.143717200695714
+Validation loss per 100 evaluation steps: 1.1433860712465385
+Validation loss per 100 evaluation steps: 1.142435614709501
+Validation loss per 100 evaluation steps: 1.142032853171006
+Validation loss per 100 evaluation steps: 1.1426213891928851
+Validation Loss: 1.1426734881183522
+Validation Accuracy: 0.22732039853172523
+Overall accuracy: 0.22726676719333902
+Overall loss: 1.1426734881183522
+Training Epoch: 5
+Training loss epoch: 1.0370920875438074
+Training accuracy epoch: 0.2657273918741809
+Overall acc: 0.2657043927225045
+Overall loss: 1582.6025255918503
+Validation loss per 100 evaluation steps: 1.3258230686187744
+Validation loss per 100 evaluation steps: 1.1195706577584295
+Validation loss per 100 evaluation steps: 1.1061438968525596
+Validation loss per 100 evaluation steps: 1.0899829886284382
+Validation loss per 100 evaluation steps: 1.0948806274264233
+Validation loss per 100 evaluation steps: 1.0996809536349512
+Validation loss per 100 evaluation steps: 1.1000039583434678
+Validation loss per 100 evaluation steps: 1.097770247751908
+Validation loss per 100 evaluation steps: 1.0971842913443082
+Validation loss per 100 evaluation steps: 1.1020696290192937
+Validation loss per 100 evaluation steps: 1.106523512960314
+Validation loss per 100 evaluation steps: 1.1093423066628618
+Validation loss per 100 evaluation steps: 1.1129810044310868
+Validation loss per 100 evaluation steps: 1.1122714526189648
+Validation loss per 100 evaluation steps: 1.113816061120302
+Validation loss per 100 evaluation steps: 1.113488345524218
+Validation loss per 100 evaluation steps: 1.1146627201429387
+Validation loss per 100 evaluation steps: 1.1158568157931064
+Validation loss per 100 evaluation steps: 1.11662696630408
+Validation loss per 100 evaluation steps: 1.1144449808044474
+Validation Loss: 1.1141901562585215
+Validation Accuracy: 0.22724174095437863
+Overall accuracy: 0.22726676719333902
+Overall loss: 1.1141901562585215
+Training Epoch: 6
+Training loss epoch: 1.0357114896861785
+Training accuracy epoch: 0.26491849606815204
+Overall acc: 0.26495656449762334
+Overall loss: 1580.4957332611084
+Validation loss per 100 evaluation steps: 0.9208818078041077
+Validation loss per 100 evaluation steps: 1.089246959969549
+Validation loss per 100 evaluation steps: 1.0930928303234613
+Validation loss per 100 evaluation steps: 1.0947386115492381
+Validation loss per 100 evaluation steps: 1.0855169123842234
+Validation loss per 100 evaluation steps: 1.0958066288820523
+Validation loss per 100 evaluation steps: 1.1009955253458261
+Validation loss per 100 evaluation steps: 1.1070678645635978
+Validation loss per 100 evaluation steps: 1.1055496479390414
+Validation loss per 100 evaluation steps: 1.107566071006487
+Validation loss per 100 evaluation steps: 1.1081086084559246
+Validation loss per 100 evaluation steps: 1.1088650749554751
+Validation loss per 100 evaluation steps: 1.109200977911858
+Validation loss per 100 evaluation steps: 1.108964354555759
+Validation loss per 100 evaluation steps: 1.1096629844998394
+Validation loss per 100 evaluation steps: 1.1079186582311165
+Validation loss per 100 evaluation steps: 1.1093221005613099
+Validation loss per 100 evaluation steps: 1.1099100126230597
+Validation loss per 100 evaluation steps: 1.109476601726674
+Validation loss per 100 evaluation steps: 1.1078676827514504
+Validation Loss: 1.1083514749785024
+Validation Accuracy: 0.6842094913476664
+Overall accuracy: 0.6842260538910379
+Overall loss: 1.1083514749785024
+Training Epoch: 7
+Training loss epoch: 1.0354766827345208
+Training accuracy epoch: 0.27164564220183485
+Overall acc: 0.2716562858547779
+Overall loss: 1580.1374178528786
+Validation loss per 100 evaluation steps: 1.071356177330017
+Validation loss per 100 evaluation steps: 1.1525841077955643
+Validation loss per 100 evaluation steps: 1.1341103173013944
+Validation loss per 100 evaluation steps: 1.1480136074101015
+Validation loss per 100 evaluation steps: 1.1440869938405671
+Validation loss per 100 evaluation steps: 1.1490673024259404
+Validation loss per 100 evaluation steps: 1.1486370284823133
+Validation loss per 100 evaluation steps: 1.1459362909899289
+Validation loss per 100 evaluation steps: 1.1448931348011289
+Validation loss per 100 evaluation steps: 1.1439760136154462
+Validation loss per 100 evaluation steps: 1.1471328252440804
+Validation loss per 100 evaluation steps: 1.143646674628262
+Validation loss per 100 evaluation steps: 1.1458107015175387
+Validation loss per 100 evaluation steps: 1.147499667187089
+Validation loss per 100 evaluation steps: 1.1477458507226757
+Validation loss per 100 evaluation steps: 1.1508971695340848
+Validation loss per 100 evaluation steps: 1.1515008173533934
+Validation loss per 100 evaluation steps: 1.1518394698611714
+Validation loss per 100 evaluation steps: 1.1498965640520797
+Validation loss per 100 evaluation steps: 1.1497331610922434
+Validation Loss: 1.1496905271583162
+Validation Accuracy: 0.22726140534871525
+Overall accuracy: 0.22726676719333902
+Overall loss: 1.1496905271583162
+Training Epoch: 8
+Training loss epoch: 1.0358263642416088
+Training accuracy epoch: 0.2673042267365662
+Overall acc: 0.2673434682838879
+Overall loss: 1580.671031832695
+Validation loss per 100 evaluation steps: 1.3339202404022217
+Validation loss per 100 evaluation steps: 1.1246948808726698
+Validation loss per 100 evaluation steps: 1.1431711313143298
+Validation loss per 100 evaluation steps: 1.1511538696051435
+Validation loss per 100 evaluation steps: 1.158000835754033
+Validation loss per 100 evaluation steps: 1.1543545718202572
+Validation loss per 100 evaluation steps: 1.154351428423864
+Validation loss per 100 evaluation steps: 1.1502956585605202
+Validation loss per 100 evaluation steps: 1.1479949658729611
+Validation loss per 100 evaluation steps: 1.1473694133441006
+Validation loss per 100 evaluation steps: 1.14495308671917
+Validation loss per 100 evaluation steps: 1.142241286213673
+Validation loss per 100 evaluation steps: 1.1445206040942997
+Validation loss per 100 evaluation steps: 1.143146292738141
+Validation loss per 100 evaluation steps: 1.143406900016858
+Validation loss per 100 evaluation steps: 1.1436750612443165
+Validation loss per 100 evaluation steps: 1.1419726587845935
+Validation loss per 100 evaluation steps: 1.1429595784675648
+Validation loss per 100 evaluation steps: 1.1422990218657112
+Validation loss per 100 evaluation steps: 1.1423217627263458
+Validation Loss: 1.1423392786864655
+Validation Accuracy: 0.22722207656004195
+Overall accuracy: 0.22726676719333902
+Overall loss: 1.1423392786864655
+Training Epoch: 9
+Training loss epoch: 1.0357291046945014
+Training accuracy epoch: 0.2665260484927916
+Overall acc: 0.26650344205867893
+Overall loss: 1580.5226137638092
+Validation loss per 100 evaluation steps: 1.1214535236358643
+Validation loss per 100 evaluation steps: 1.1492791813198884
+Validation loss per 100 evaluation steps: 1.1488266886763312
+Validation loss per 100 evaluation steps: 1.1533363776349546
+Validation loss per 100 evaluation steps: 1.1507615481231575
+Validation loss per 100 evaluation steps: 1.1550462731344258
+Validation loss per 100 evaluation steps: 1.154375162279348
+Validation loss per 100 evaluation steps: 1.1562787628547953
+Validation loss per 100 evaluation steps: 1.154380396436365
+Validation loss per 100 evaluation steps: 1.1540709632747579
+Validation loss per 100 evaluation steps: 1.15556375922023
+Validation loss per 100 evaluation steps: 1.1548508847983288
+Validation loss per 100 evaluation steps: 1.1549137580106896
+Validation loss per 100 evaluation steps: 1.155832115912969
+Validation loss per 100 evaluation steps: 1.156134024124159
+Validation loss per 100 evaluation steps: 1.1567984346466649
+Validation loss per 100 evaluation steps: 1.1576559980685528
+Validation loss per 100 evaluation steps: 1.159976098587904
+Validation loss per 100 evaluation steps: 1.1603007129269927
+Validation loss per 100 evaluation steps: 1.1616863898074608
+Validation Loss: 1.1618000311756485
+Validation Accuracy: 0.22726140534871525
+Overall accuracy: 0.22726676719333902
+Overall loss: 1.1618000311756485
+Training Epoch: 10
+Training loss epoch: 1.040340923505248
+Training accuracy epoch: 0.2592869429882045
+Overall acc: 0.2592607769218161
+Overall loss: 1587.5602492690086
+Validation loss per 100 evaluation steps: 1.3619968891143799
+Validation loss per 100 evaluation steps: 1.160421635254775
+Validation loss per 100 evaluation steps: 1.1406001077955634
+Validation loss per 100 evaluation steps: 1.1476396478687807
+Validation loss per 100 evaluation steps: 1.1406071536856102
+Validation loss per 100 evaluation steps: 1.1398040954462307
+Validation loss per 100 evaluation steps: 1.139832129395147
+Validation loss per 100 evaluation steps: 1.1396188562504745
+Validation loss per 100 evaluation steps: 1.1381149928221541
+Validation loss per 100 evaluation steps: 1.1374198999441953
+Validation loss per 100 evaluation steps: 1.1383364451276912
+Validation loss per 100 evaluation steps: 1.1406990052568815
+Validation loss per 100 evaluation steps: 1.1393108903915061
+Validation loss per 100 evaluation steps: 1.140995094539751
+Validation loss per 100 evaluation steps: 1.142172559851157
+Validation loss per 100 evaluation steps: 1.1436346740741716
+Validation loss per 100 evaluation steps: 1.144799272020782
+Validation loss per 100 evaluation steps: 1.1442174428985232
+Validation loss per 100 evaluation steps: 1.146213248132137
+Validation loss per 100 evaluation steps: 1.1463980837472798
+Validation Loss: 1.1464365371622587
+Validation Accuracy: 0.22726140534871525
+Overall accuracy: 0.22726676719333902
+Overall loss: 1.1464365371622587
+Training Epoch: 11
+Training loss epoch: 1.0394549548704064
+Training accuracy epoch: 0.27172755570117957
+Overall acc: 0.2715231109654155
+Overall loss: 1586.2082611322403
+Validation loss per 100 evaluation steps: 0.8106690645217896
+Validation loss per 100 evaluation steps: 1.0155529869665014
+Validation loss per 100 evaluation steps: 1.0393196812909633
+Validation loss per 100 evaluation steps: 1.0414616586362009
+Validation loss per 100 evaluation steps: 1.047161279473816
+Validation loss per 100 evaluation steps: 1.0512815882821758
+Validation loss per 100 evaluation steps: 1.04560273766716
+Validation loss per 100 evaluation steps: 1.0449263190746987
+Validation loss per 100 evaluation steps: 1.0445566165462117
+Validation loss per 100 evaluation steps: 1.0432634456837746
+Validation loss per 100 evaluation steps: 1.0424813952122058
+Validation loss per 100 evaluation steps: 1.0462624625549004
+Validation loss per 100 evaluation steps: 1.0471040757867716
+Validation loss per 100 evaluation steps: 1.0491457493556269
+Validation loss per 100 evaluation steps: 1.0478046184178338
+Validation loss per 100 evaluation steps: 1.0479572689747667
+Validation loss per 100 evaluation steps: 1.0470949989196139
+Validation loss per 100 evaluation steps: 1.049338205816604
+Validation loss per 100 evaluation steps: 1.0495121947663946
+Validation loss per 100 evaluation steps: 1.049850836074835
+Validation Loss: 1.049598748232597
+Validation Accuracy: 0.6842684845306765
+Overall accuracy: 0.6842260538910379
+Overall loss: 1.049598748232597
+Training Epoch: 12
+Training loss epoch: 1.0388222821886854
+Training accuracy epoch: 0.2853763925294889
+Overall acc: 0.28545525323717424
+Overall loss: 1585.242802619934
+Validation loss per 100 evaluation steps: 1.2156176567077637
+Validation loss per 100 evaluation steps: 1.1478769484132822
+Validation loss per 100 evaluation steps: 1.1610510100179643
+Validation loss per 100 evaluation steps: 1.1553038461659835
+Validation loss per 100 evaluation steps: 1.1433811071804931
+Validation loss per 100 evaluation steps: 1.148046917306211
+Validation loss per 100 evaluation steps: 1.1475589806942297
+Validation loss per 100 evaluation steps: 1.1488953621343267
+Validation loss per 100 evaluation steps: 1.1471775084101454
+Validation loss per 100 evaluation steps: 1.1437801117373094
+Validation loss per 100 evaluation steps: 1.1431421092101983
+Validation loss per 100 evaluation steps: 1.1413898676444356
+Validation loss per 100 evaluation steps: 1.1405483928449347
+Validation loss per 100 evaluation steps: 1.1395047422925113
+Validation loss per 100 evaluation steps: 1.1408814317324092
+Validation loss per 100 evaluation steps: 1.140302451311311
+Validation loss per 100 evaluation steps: 1.1426576264644697
+Validation loss per 100 evaluation steps: 1.1427569313654824
+Validation loss per 100 evaluation steps: 1.143244840812842
+Validation loss per 100 evaluation steps: 1.1442192295925797
+Validation Loss: 1.1438770231990585
+Validation Accuracy: 0.22726140534871525
+Overall accuracy: 0.22726676719333902
+Overall loss: 1.1438770231990585
+Training Epoch: 13
+Training loss epoch: 1.037209951940089
+Training accuracy epoch: 0.2891648918741809
+Overall acc: 0.2891841501393214
+Overall loss: 1582.7823866605759
+Validation loss per 100 evaluation steps: 1.099422574043274
+Validation loss per 100 evaluation steps: 1.1518016740827277
+Validation loss per 100 evaluation steps: 1.1313924347583335
+Validation loss per 100 evaluation steps: 1.1275686512753813
+Validation loss per 100 evaluation steps: 1.126626257735892
+Validation loss per 100 evaluation steps: 1.129764686325591
+Validation loss per 100 evaluation steps: 1.1319965717201423
+Validation loss per 100 evaluation steps: 1.134550424428197
+Validation loss per 100 evaluation steps: 1.1332487135046578
+Validation loss per 100 evaluation steps: 1.1310286343296148
+Validation loss per 100 evaluation steps: 1.1316889284493088
+Validation loss per 100 evaluation steps: 1.1306301683972468
+Validation loss per 100 evaluation steps: 1.1313516847497715
+Validation loss per 100 evaluation steps: 1.1328510304398944
+Validation loss per 100 evaluation steps: 1.1325962633681586
+Validation loss per 100 evaluation steps: 1.1332101776232963
+Validation loss per 100 evaluation steps: 1.1353763018005867
+Validation loss per 100 evaluation steps: 1.1367354763037734
+Validation loss per 100 evaluation steps: 1.1343832403868188
+Validation loss per 100 evaluation steps: 1.1337509620258646
+Validation Loss: 1.1335227450401795
+Validation Accuracy: 0.22730073413738855
+Overall accuracy: 0.22726676719333902
+Overall loss: 1.1335227450401795
+Training Epoch: 14
+Training loss epoch: 1.0367382166426273
+Training accuracy epoch: 0.26242013433813893
+Overall acc: 0.2624569742665137
+Overall loss: 1582.0625185966492
+Validation loss per 100 evaluation steps: 0.9843124151229858
+Validation loss per 100 evaluation steps: 1.1315770102019358
+Validation loss per 100 evaluation steps: 1.1225350926171487
+Validation loss per 100 evaluation steps: 1.1257864819016568
+Validation loss per 100 evaluation steps: 1.1272940889855572
+Validation loss per 100 evaluation steps: 1.1261046406275736
+Validation loss per 100 evaluation steps: 1.1290304571538916
+Validation loss per 100 evaluation steps: 1.1337839539312942
+Validation loss per 100 evaluation steps: 1.134658716144633
+Validation loss per 100 evaluation steps: 1.1382423869512983
+Validation loss per 100 evaluation steps: 1.1434674137955778
+Validation loss per 100 evaluation steps: 1.1400307252881312
+Validation loss per 100 evaluation steps: 1.1387131567005313
+Validation loss per 100 evaluation steps: 1.14191181319755
+Validation loss per 100 evaluation steps: 1.1417908590661892
+Validation loss per 100 evaluation steps: 1.1407510349148515
+Validation loss per 100 evaluation steps: 1.1412595432672852
+Validation loss per 100 evaluation steps: 1.1383977174268338
+Validation loss per 100 evaluation steps: 1.137445809939118
+Validation loss per 100 evaluation steps: 1.137271869220212
+Validation Loss: 1.1370069405828775
+Validation Accuracy: 0.22728106974305193
+Overall accuracy: 0.22726676719333902
+Overall loss: 1.1370069405828775
+Training Epoch: 15
+Training loss epoch: 1.0377064021121158
+Training accuracy epoch: 0.2723828636959371
+Overall acc: 0.272117275856417
+Overall loss: 1583.5399696230888
+Validation loss per 100 evaluation steps: 1.4793096780776978
+Validation loss per 100 evaluation steps: 1.07119092020658
+Validation loss per 100 evaluation steps: 1.0486887026188978
+Validation loss per 100 evaluation steps: 1.0550009152817963
+Validation loss per 100 evaluation steps: 1.0504331325652296
+Validation loss per 100 evaluation steps: 1.0563046553891575
+Validation loss per 100 evaluation steps: 1.0559501114383514
+Validation loss per 100 evaluation steps: 1.0509777138814778
+Validation loss per 100 evaluation steps: 1.0534154767549588
+Validation loss per 100 evaluation steps: 1.0542722483321645
+Validation loss per 100 evaluation steps: 1.053720143231955
+Validation loss per 100 evaluation steps: 1.0537747303319995
+Validation loss per 100 evaluation steps: 1.0514856867250257
+Validation loss per 100 evaluation steps: 1.0517102999012806
+Validation loss per 100 evaluation steps: 1.0501371147290541
+Validation loss per 100 evaluation steps: 1.052266405472193
+Validation loss per 100 evaluation steps: 1.0519228380669063
+Validation loss per 100 evaluation steps: 1.05214312485146
+Validation loss per 100 evaluation steps: 1.052043964669547
+Validation loss per 100 evaluation steps: 1.0521015761276096
+Validation Loss: 1.0524223824415022
+Validation Accuracy: 0.6842488201363398
+Overall accuracy: 0.6842260538910379
+Overall loss: 1.0524223824415022
+Training Epoch: 16
+Training loss epoch: 1.0364892305037297
+Training accuracy epoch: 0.25913335517693314
+Overall acc: 0.25904564825438453
+Overall loss: 1581.6825657486916
+Validation loss per 100 evaluation steps: 1.2779144048690796
+Validation loss per 100 evaluation steps: 1.0793983216332916
+Validation loss per 100 evaluation steps: 1.0869195467204005
+Validation loss per 100 evaluation steps: 1.0770596402428079
+Validation loss per 100 evaluation steps: 1.0756393138904523
+Validation loss per 100 evaluation steps: 1.0736616038514706
+Validation loss per 100 evaluation steps: 1.0717876504939328
+Validation loss per 100 evaluation steps: 1.0742442745625038
+Validation loss per 100 evaluation steps: 1.0783265260572588
+Validation loss per 100 evaluation steps: 1.0782254121941282
+Validation loss per 100 evaluation steps: 1.0749035990917004
+Validation loss per 100 evaluation steps: 1.0717169496278998
+Validation loss per 100 evaluation steps: 1.0726783485535678
+Validation loss per 100 evaluation steps: 1.0752144130168741
+Validation loss per 100 evaluation steps: 1.073396027173254
+Validation loss per 100 evaluation steps: 1.07569296962813
+Validation loss per 100 evaluation steps: 1.076819996026663
+Validation loss per 100 evaluation steps: 1.0777270465581155
+Validation loss per 100 evaluation steps: 1.0772977413765792
+Validation loss per 100 evaluation steps: 1.0786422586077329
+Validation Loss: 1.0794422443961997
+Validation Accuracy: 0.6842094913476664
+Overall accuracy: 0.6842260538910379
+Overall loss: 1.0794422443961997
+Early stopping
+### Valid set performance:
+Validation loss per 100 evaluation steps: 0.9070185422897339
+Validation loss per 100 evaluation steps: 1.0777262059768828
+Validation loss per 100 evaluation steps: 1.0843943651042767
+Validation loss per 100 evaluation steps: 1.0980466958692303
+Validation loss per 100 evaluation steps: 1.0874860980861503
+Validation loss per 100 evaluation steps: 1.084864763561599
+Validation loss per 100 evaluation steps: 1.0839861245599642
+Validation loss per 100 evaluation steps: 1.0775563729642632
+Validation loss per 100 evaluation steps: 1.0819235389003443
+Validation loss per 100 evaluation steps: 1.083173268709278
+Validation loss per 100 evaluation steps: 1.0850629813663966
+Validation loss per 100 evaluation steps: 1.08397339361565
+Validation loss per 100 evaluation steps: 1.0864320477279994
+Validation loss per 100 evaluation steps: 1.0849301149806638
+Validation loss per 100 evaluation steps: 1.0878382358357024
+Validation loss per 100 evaluation steps: 1.0881934445512684
+Validation Loss: 1.0871006210931475
+Validation Accuracy: 0.6833387942332897
+Overall accuracy: 0.6834665027658267
+Overall loss: 1.0871006210931475
+### Summary
+               precision    recall  f1-score   support
+
+        AFTER       0.00      0.00      0.00      1545
+       BEFORE       0.68      1.00      0.81     16680
+BEFOREOVERLAP       0.00      0.00      0.00       677
+      OVERLAP       0.00      0.00      0.00      5503
+
+     accuracy                           0.68     24405
+    macro avg       0.17      0.25      0.20     24405
+ weighted avg       0.47      0.68      0.55     24405
+
+### Test set performance:
+Validation loss per 100 evaluation steps: 1.1316581964492798
+Validation loss per 100 evaluation steps: 1.0955691933631897
+Validation loss per 100 evaluation steps: 1.0913978963348996
+Validation loss per 100 evaluation steps: 1.0878686195988196
+Validation loss per 100 evaluation steps: 1.0804177974524938
+Validation loss per 100 evaluation steps: 1.0798002774130084
+Validation loss per 100 evaluation steps: 1.0781555148012032
+Validation loss per 100 evaluation steps: 1.0766116397697134
+Validation loss per 100 evaluation steps: 1.0788117936636774
+Validation loss per 100 evaluation steps: 1.0788318214485304
+Validation loss per 100 evaluation steps: 1.0789487545902317
+Validation loss per 100 evaluation steps: 1.0796995184618596
+Validation loss per 100 evaluation steps: 1.0780957611176891
+Validation loss per 100 evaluation steps: 1.079919085605249
+Validation loss per 100 evaluation steps: 1.0811187018674242
+Validation loss per 100 evaluation steps: 1.0815840452452805
+Validation loss per 100 evaluation steps: 1.078978476860909
+Validation loss per 100 evaluation steps: 1.0790906639956923
+Validation loss per 100 evaluation steps: 1.0793097931633122
+Validation loss per 100 evaluation steps: 1.0792383946662574
+Validation Loss: 1.0793008880272672
+Validation Accuracy: 0.6842094913476664
+Overall accuracy: 0.6842260538910379
+Overall loss: 1.0793008880272672
+### Summary
+               precision    recall  f1-score   support
+
+        AFTER       0.00      0.00      0.00      1870
+       BEFORE       0.68      1.00      0.81     20873
+BEFOREOVERLAP       0.00      0.00      0.00       830
+      OVERLAP       0.00      0.00      0.00      6933
+
+     accuracy                           0.68     30506
+    macro avg       0.17      0.25      0.20     30506
+ weighted avg       0.47      0.68      0.56     30506
+
+{'AFTER': 0, 'BEFORE': 1, 'BEFOREOVERLAP': 2, 'OVERLAP': 3}
+{0: 'AFTER', 1: 'BEFORE', 2: 'BEFOREOVERLAP', 3: 'OVERLAP'}
+[1, 1969, 465, 4752, 428, 363, 584, 4721, 342, 2225, 533, 2177, 818, 1969, 5961, 356, 552, 45975, 466, 1969, 6132, 2634, 1969, 5282, 342, 2638, 3931, 380, 31883, 27952, 32913, 1359, 1249, 406, 7327, 15653, 158, 119, 20423, 359, 683, 464, 776, 120, 5909, 351, 1969, 356, 4721, 3970, 1969, 1099, 2741, 3601, 380, 440, 127, 395, 899, 345, 2257, 1262, 3410, 17739, 1969, 480, 1917, 1719, 363, 1381, 333, 1941, 1359, 842, 5380, 380, 1864, 36993, 802, 342, 333, 1544, 27333, 3376, 778, 1991, 1359, 842, 2095, 383, 1619, 1359, 1794, 406, 39745, 3033, 24213, 189, 484, 4730, 1969, 6233, 6649, 1359, 18994, 335, 7386, 315, 351, 416, 3876, 1983, 367, 8864, 1702, 342, 362, 444, 7386, 542, 361, 355, 1942, 1359, 1027, 2967, 803, 1969, 14551, 1359, 356, 3371, 342, 7524, 360, 7386, 368, 14214, 25153, 1969, 10076, 10314, 1359, 14452, 417, 1934, 869, 316, 12307, 6787, 2891, 5603, 28115, 2727, 1359, 3769, 1942, 1359, 342, 16892, 316, 2877, 368, 16812, 368, 879, 1241, 10076, 1969, 782, 383, 416, 2852, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+['[CLS]', 'Ġ,', 'Ġan', 'Ġklarer', 'Ġikke', 'ĠÃ¥', 'ĠvÃ¦re', 'Ġoppe', 'Ġog', 'Ġlegger', 'Ġseg', 'Ġgjerne', 'Ġned', 'Ġ,', 'Ġpsykisk', 'Ġer', 'Ġhan', 'Ġdepress', 'iv', 'Ġ,', 'Ġap', 'atisk', 'Ġ,', 'Ġfjern', 'Ġog', 'Ġsterkt', 'Ġopptatt', 'Ġmed', 'Ġsomatiske', 'Ġforne', 'mmelser', 'Ġ.', 'ĠEtter', 'Ġet', 'Ġnar', 'ĠEC', 'T', '-', 'sjo', 'kk', 'Ġkv', 'ik', 'ner', '.', 'han', 'Ġtil', 'Ġ,', 'Ġer', 'Ġoppe', 'gÃ¥ende', 'Ġ,', 'Ġlitt', 'Ġner', 'Ġaktiv', 'Ġmed', 'Ġe', '5', 'Ġ1', 'Ġof', 'Ġfor', 'Ġses', 'Ġnatur', 'lis', 'Ġvesen', 'Ġ,', 'Ġmen', 'Ġlikevel', 'Ġvanskelig', 'ĠÃ¥', 'Ġkomme', 'Ġi', 'Ġkontakt', 'Ġ.', 'ĠHan', 'Ġsnakker', 'Ġmed', 'Ġliten', 'Ġspontan', 'itet', 'Ġog', 'Ġi', 'ĠsvÃ¦rt', 'Ġalmindelige', 'Ġvenn', 'inger', 'ĠÂ»', 'Ġ.', 'ĠHan', 'Ġforteller', 'Ġat', 'Ġhans', 'Ġ.', 'Ġmor', 'Ġet', 'ĠfÃ¶', 'dt', 'ĠLid', 's', 'Ġ-', 'Ġheim', 'Ġ,', 'Ġfrisk', 'Ġslekt', 'Ġ.', 'ĠFaren', 'Ġh', 'Ã¶r', 'er', 'Ġtil', 'Ġden', 'Ġtype', 'Ġmennesker', 'Ġsom', 'Ġsover', 'Ġlite', 'Ġog', 'Ġdet', 'Ġgj', 'Ã¶r', 'ĠogsÃ¥', 'Ġen', 'Ġav', 'Ġpas', 'Ġ.', 'Ġbr', 'Ã¶', 'dre', 'Ġ,', 'ĠPas', 'Ġ.', 'Ġer', 'Ġformann', 'Ġog', 'Ġrepar', 'at', 'Ã¶r', 'ĠpÃ¥', 'ĠDale', 'Ġfabrikker', 'Ġ,', 'Ġskift', 'arbeide', 'Ġ.', 'ĠSis', 'ste', 'ĠÃ¥ret', 'Ġmeg', 'en', 'Ġovertid', 'Ġopptil', 'Ġ70', 'ĠtÃ¥', 'mers', 'Ġuke', 'Ġ.', 'ĠBÃ¥de', 'Ġpas', 'Ġ.', 'Ġog', 'Ġhustru', 'en', 'Ġarbeider', 'ĠpÃ¥', 'Ġfabrikken', 'ĠpÃ¥', 'Ġhver', 'Ġsit', 'Ġskift', 'Ġ,', 'Ġslik', 'Ġat', 'Ġden', 'Ġene', '[SEP]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]']
+BEFORE
+{'BEFORE': 22855, 'OVERLAP': 7531, 'BEFOREOVERLAP': 895, 'AFTER': 2045}
+{'BEFORE': 0.36453730037190984, 'OVERLAP': 1.1062939848625681, 'BEFOREOVERLAP': 9.308938547486033, 'AFTER': 4.074083129584352}
+Training Epoch: 0
+Training loss epoch: 1.0671176892554688
+Training accuracy epoch: 0.31644835329341314
+Overall acc: 0.3167666916729182
+Overall loss: 178.2086541056633
+Validation loss per 100 evaluation steps: 0.8862349390983582
+Validation loss per 100 evaluation steps: 1.045676325217332
+Validation loss per 100 evaluation steps: 1.030136186685135
+Validation loss per 100 evaluation steps: 1.0302701172638573
+Validation loss per 100 evaluation steps: 1.0331866827391627
+Validation Loss: 1.0319242454547104
+Validation Accuracy: 0.6846223021582734
+Overall accuracy: 0.6845184518451846
+Overall loss: 1.0319242454547104
+Training Epoch: 1
+Training loss epoch: 1.0459421045052077
+Training accuracy epoch: 0.30932821856287424
+Overall acc: 0.3091241560390098
+Overall loss: 174.6723314523697
+Validation loss per 100 evaluation steps: 0.9368642568588257
+Validation loss per 100 evaluation steps: 1.0879044591790379
+Validation loss per 100 evaluation steps: 1.0939018761933739
+Validation loss per 100 evaluation steps: 1.0930440756569668
+Validation loss per 100 evaluation steps: 1.0922536216769134
+Validation Loss: 1.0909860537206526
+Validation Accuracy: 0.23138489208633092
+Overall accuracy: 0.23132313231323132
+Overall loss: 1.0909860537206526
+Training Epoch: 2
+Training loss epoch: 1.0454052529649107
+Training accuracy epoch: 0.3085048652694611
+Overall acc: 0.3084677419354839
+Overall loss: 174.58267724514008
+Validation loss per 100 evaluation steps: 1.156488060951233
+Validation loss per 100 evaluation steps: 1.1201404510158124
+Validation loss per 100 evaluation steps: 1.11346107869599
+Validation loss per 100 evaluation steps: 1.1051410379203848
+Validation loss per 100 evaluation steps: 1.1059446214440458
+Validation Loss: 1.106820833054092
+Validation Accuracy: 0.23126498800959233
+Overall accuracy: 0.23147314731473148
+Overall loss: 1.106820833054092
+Training Epoch: 3
+Training loss epoch: 1.0440835863530278
+Training accuracy epoch: 0.30920658682634733
+Overall acc: 0.3094523630907727
+Overall loss: 174.36195892095566
+Validation loss per 100 evaluation steps: 1.0679889917373657
+Validation loss per 100 evaluation steps: 1.1242756111787098
+Validation loss per 100 evaluation steps: 1.1000471767501452
+Validation loss per 100 evaluation steps: 1.0923000459259136
+Validation loss per 100 evaluation steps: 1.086246995259996
+Validation Loss: 1.090192721044417
+Validation Accuracy: 0.23156474820143885
+Overall accuracy: 0.23132313231323132
+Overall loss: 1.090192721044417
+Training Epoch: 4
+Training loss epoch: 1.043262427795433
+Training accuracy epoch: 0.3046313622754491
+Overall acc: 0.30466991747936983
+Overall loss: 174.2248254418373
+Validation loss per 100 evaluation steps: 1.357560396194458
+Validation loss per 100 evaluation steps: 1.1416133677605356
+Validation loss per 100 evaluation steps: 1.1433801333702618
+Validation loss per 100 evaluation steps: 1.1457666667592883
+Validation loss per 100 evaluation steps: 1.1455157538899163
+Validation Loss: 1.1418888921932064
+Validation Accuracy: 0.23129496402877697
+Overall accuracy: 0.23132313231323132
+Overall loss: 1.1418888921932064
+Training Epoch: 5
+Training loss epoch: 1.0426500468196984
+Training accuracy epoch: 0.3081493263473054
+Overall acc: 0.3081395348837209
+Overall loss: 174.12255781888962
+Validation loss per 100 evaluation steps: 1.1929255723953247
+Validation loss per 100 evaluation steps: 1.0866379118201757
+Validation loss per 100 evaluation steps: 1.08415418003329
+Validation loss per 100 evaluation steps: 1.0985700642547733
+Validation loss per 100 evaluation steps: 1.096517041288409
+Validation Loss: 1.0976810842680989
+Validation Accuracy: 0.23111510791366907
+Overall accuracy: 0.23132313231323132
+Overall loss: 1.0976810842680989
+Training Epoch: 6
+Training loss epoch: 1.0456666814352937
+Training accuracy epoch: 0.3055108532934132
+Overall acc: 0.3057483120780195
+Overall loss: 174.62633579969406
+Validation loss per 100 evaluation steps: 0.848891019821167
+Validation loss per 100 evaluation steps: 1.112346079089854
+Validation loss per 100 evaluation steps: 1.1243245041192467
+Validation loss per 100 evaluation steps: 1.1141324138324522
+Validation loss per 100 evaluation steps: 1.1067947739377582
+Validation Loss: 1.1042043009250284
+Validation Accuracy: 0.23138489208633092
+Overall accuracy: 0.23132313231323132
+Overall loss: 1.1042043009250284
+Training Epoch: 7
+Training loss epoch: 1.043501756505338
+Training accuracy epoch: 0.2962294161676647
+Overall acc: 0.29613653413353336
+Overall loss: 174.26479333639145
+Validation loss per 100 evaluation steps: 0.8516231179237366
+Validation loss per 100 evaluation steps: 1.1040234311972514
+Validation loss per 100 evaluation steps: 1.0806010347693713
+Validation loss per 100 evaluation steps: 1.0804208639848272
+Validation loss per 100 evaluation steps: 1.0808766661142173
+Validation Loss: 1.0840129992372984
+Validation Accuracy: 0.27499999999999997
+Overall accuracy: 0.274977497749775
+Overall loss: 1.0840129992372984
+Training Epoch: 8
+Training loss epoch: 1.0428886231548058
+Training accuracy epoch: 0.29917664670658684
+Overall acc: 0.2989497374343586
+Overall loss: 174.16240006685257
+Validation loss per 100 evaluation steps: 1.1813725233078003
+Validation loss per 100 evaluation steps: 1.1292778932222045
+Validation loss per 100 evaluation steps: 1.1090082715992904
+Validation loss per 100 evaluation steps: 1.113458943129378
+Validation loss per 100 evaluation steps: 1.1110243057074987
+Validation Loss: 1.1106784149325437
+Validation Accuracy: 0.23138489208633092
+Overall accuracy: 0.23132313231323132
+Overall loss: 1.1106784149325437
+Training Epoch: 9
+Training loss epoch: 1.042633831501007
+Training accuracy epoch: 0.29725860778443114
+Overall acc: 0.29702738184546135
+Overall loss: 174.11984986066818
+Validation loss per 100 evaluation steps: 1.140236496925354
+Validation loss per 100 evaluation steps: 1.1006764704638188
+Validation loss per 100 evaluation steps: 1.1040842209882404
+Validation loss per 100 evaluation steps: 1.0865612032009517
+Validation loss per 100 evaluation steps: 1.0870779494097702
+Validation Loss: 1.0857917414866478
+Validation Accuracy: 0.23177458033573142
+Overall accuracy: 0.23162316231623162
+Overall loss: 1.0857917414866478
+Training Epoch: 10
+Training loss epoch: 1.0449559260271266
+Training accuracy epoch: 0.29325411676646707
+Overall acc: 0.29346399099774945
+Overall loss: 174.50763964653015
+Validation loss per 100 evaluation steps: 1.1295140981674194
+Validation loss per 100 evaluation steps: 1.1501683923277524
+Validation loss per 100 evaluation steps: 1.1310441390198855
+Validation loss per 100 evaluation steps: 1.1173611408056214
+Validation loss per 100 evaluation steps: 1.117501776860539
+Validation Loss: 1.1216369351322988
+Validation Accuracy: 0.2314748201438849
+Overall accuracy: 0.23132313231323132
+Overall loss: 1.1216369351322988
+Early stopping
+### Valid set performance:
+Validation loss per 100 evaluation steps: 0.9093438386917114
+Validation loss per 100 evaluation steps: 1.119409696890576
+Validation loss per 100 evaluation steps: 1.1429152568774437
+Validation loss per 100 evaluation steps: 1.134678230531192
+Validation Loss: 1.132335144245696
+Validation Accuracy: 0.2281062874251497
+Overall accuracy: 0.22693173293323332
+Overall loss: 1.132335144245696
+### Summary
+               precision    recall  f1-score   support
+
+        AFTER       0.00      0.00      0.00       324
+       BEFORE       0.00      0.00      0.00      3666
+BEFOREOVERLAP       0.00      0.00      0.00       132
+      OVERLAP       0.23      1.00      0.37      1210
+
+     accuracy                           0.23      5332
+    macro avg       0.06      0.25      0.09      5332
+ weighted avg       0.05      0.23      0.08      5332
+
+### Test set performance:
+Validation loss per 100 evaluation steps: 0.9183986186981201
+Validation loss per 100 evaluation steps: 1.1366480069585365
+Validation loss per 100 evaluation steps: 1.112589124126814
+Validation loss per 100 evaluation steps: 1.126054548345927
+Validation loss per 100 evaluation steps: 1.1222577514196572
+Validation Loss: 1.1209493127944086
+Validation Accuracy: 0.2316546762589928
+Overall accuracy: 0.23132313231323132
+Overall loss: 1.1209493127944086
+### Summary
+               precision    recall  f1-score   support
+
+        AFTER       0.00      0.00      0.00       378
+       BEFORE       0.00      0.00      0.00      4563
+BEFOREOVERLAP       0.00      0.00      0.00       183
+      OVERLAP       0.23      1.00      0.38      1542
+
+     accuracy                           0.23      6666
+    macro avg       0.06      0.25      0.09      6666
+ weighted avg       0.05      0.23      0.09      6666
+
+{'AFTER': 0, 'BEFORE': 1, 'BEFOREOVERLAP': 2, 'OVERLAP': 3}
+{0: 'AFTER', 1: 'BEFORE', 2: 'BEFOREOVERLAP', 3: 'OVERLAP'}
+[1, 342, 4107, 533, 45819, 1969, 8455, 383, 22755, 551, 832, 3684, 22138, 1359, 18582, 1733, 11851, 18203, 318, 9076, 1359, 3696, 8488, 21897, 484, 3350, 428, 363, 584, 588, 10373, 1359, 9327, 461, 414, 526, 368, 17737, 342, 2684, 13513, 557, 533, 351, 2882, 23283, 1359, 39955, 4301, 818, 333, 2518, 431, 1234, 32923, 484, 2877, 342, 472, 935, 3458, 818, 333, 2518, 367, 2882, 23283, 459, 5664, 345, 36636, 5897, 356, 368, 32923, 119, 47900, 4408, 1359, 30334, 12678, 26093, 315, 542, 5283, 368, 8728, 1359, 342, 3988, 8000, 762, 348, 333, 1310, 1387, 2752, 368, 361, 1384, 1905, 1359, 2458, 13980, 1733, 8184, 333, 7717, 119, 8111, 1941, 380, 23674, 156, 1969, 24652, 1359, 35993, 43056, 26428, 9076, 1359, 414, 14965, 189, 380, 5087, 342, 1032, 21459, 1818, 119, 5413, 15839, 6585, 350, 2137, 20063, 1359, 842, 1115, 893, 383, 22377, 3536, 3696, 8488, 21897, 367, 549, 44924, 333, 484, 6408, 1359, 395, 16067, 344, 796, 433, 36788, 10443, 459, 6311, 120, 190, 173, 19733, 120, 613, 4408, 36560, 12276, 1733, 2285, 120, 556, 120, 1316, 5798, 46503, 12276, 1733, 6043, 120, 556, 120, 10424, 35367, 1733, 16953, 6287, 12861, 1733, 4158, 120, 3835, 120, 27388, 9314, 12861, 1733, 4451, 8362, 49476, 399, 4158, 120, 3835, 120, 27388, 12464, 142, 130, 2025, 2528, 5066, 2025, 11620, 163, 17182, 4520, 3060, 438, 46512, 140, 3060, 28176, 3950, 23861, 147, 8693, 8451, 157, 120, 12169, 4379, 498, 639, 29310, 18511, 484, 498, 22014, 12264, 7197, 10506, 120, 3764, 120, 556, 120, 28436, 12464, 142, 130, 2025, 2528, 5066, 2025, 11620, 163, 17182, 4520, 3060, 438, 46512, 140, 3060, 28176, 3950, 23861, 147, 8693, 8451, 157, 120, 12169, 4379, 498, 639, 29310, 18511, 484, 498, 22014, 12264, 7197, 10506, 1359, 4515, 120, 1537, 120, 34487, 413, 1367, 128, 2025, 4439, 49372, 179, 4515, 120, 1537, 120, 34487, 510, 2470, 131, 2025, 2191, 11103, 8537, 35607, 34557, 4515, 120, 1537, 120, 34487, 413, 4751, 2025, 2080, 5961, 33023, 3764, 120, 556, 120, 35366, 510, 2470, 131, 2025, 2191, 11103, 8537, 35607, 34557, 3764, 120, 556, 120, 35366, 413, 4751, 2025, 2080, 5961, 33023, 3764, 120, 556, 120, 35366, 413, 1367, 128, 2025, 4439, 49372, 179, 3764, 120, 556, 120, 38759, 413, 4751, 2025, 2080, 5961, 33023, 3764, 120, 556, 120, 38759, 413, 1367, 128, 2025, 4439, 49372, 179, 3764, 120, 556, 120, 38759, 510, 2470, 131, 2025, 2191, 11103, 8537, 35607, 34557, 3764, 120, 556, 120, 38088, 413, 4751, 2025, 2080, 5961, 33023, 3764, 120, 556, 120, 38088, 510, 2470, 131, 2025, 2191, 11103, 8537, 35607, 34557, 3764, 120, 556, 120, 38088, 413, 1367, 128, 2025, 4439, 49372, 179, 8362, 49476, 399, 3764, 120, 556, 120, 38079, 413, 4751, 2025, 2080, 5961, 33023, 3764, 120, 556, 120, 38079, 413, 1367, 128, 2025, 4439, 49372, 179, 3764, 120, 556, 120, 38079, 510, 2470, 131, 2025, 2191, 11103, 8537, 35607, 34557, 3764, 120, 556, 120, 35048, 510, 2470, 131, 2025, 2191, 11103, 8537, 35607, 34557, 3764, 120, 556, 120, 35048, 413, 4751, 2025, 2080, 5961, 33023, 3764, 120, 556, 120, 35048, 413, 1367, 128, 2]
+['[CLS]', 'Ġog', 'ĠfÃ¸ler', 'Ġseg', 'Ġutslitt', 'Ġ,', 'Ġmerker', 'Ġat', 'Ġdrikk', 'ingen', 'ĠgÃ¥r', 'Ġutover', 'Ġhelsen', 'Ġ.', 'ĠÃĺkonomi', 'Ġ:', 'ĠBle', 'ĠufÃ¸retrygd', 'et', 'Ġpga', 'Ġ.', 'Ġstoff', 'skifte', 'sykdom', 'Ġ-', 'ĠÃ¸nsket', 'Ġikke', 'ĠÃ¥', 'ĠvÃ¦re', 'Ġdette', 'Ġpermanent', 'Ġ.', 'ĠGÃ¥', 'tt', 'Ġ2', 'ĠÃ¥r', 'ĠpÃ¥', 'ĠattfÃ¸ring', 'Ġog', 'Ġoms', 'kol', 'ert', 'Ġseg', 'Ġtil', 'Ġhjelpe', 'pleier', 'Ġ.', 'ĠGikk', 'Ġkraftig', 'Ġned', 'Ġi', 'ĠlÃ¸nn', 'Ġfra', 'Ġtidligere', 'ĠNordsjÃ¸', 'Ġ-', 'Ġarbeider', 'Ġog', 'Ġvil', 'ĠgÃ¥', 'Ġytterligere', 'Ġned', 'Ġi', 'ĠlÃ¸nn', 'Ġsom', 'Ġhjelpe', 'pleier', 'Ġ(', 'Ġgrunnlaget', 'Ġfor', 'ĠattfÃ¸rings', 'penger', 'Ġer', 'ĠpÃ¥', 'ĠNordsjÃ¸', '-', 'lÃ¸nnen', 'Ġ)', 'Ġ.', 'ĠAlkohol', 'forbruket', 'ĠtÃ¦r', 'er', 'ĠogsÃ¥', 'Ġhardt', 'ĠpÃ¥', 'ĠÃ¸konomien', 'Ġ.', 'Ġog', 'Ġfamilien', 'Ġinvi', 'ster', 'te', 'Ġi', 'Ġnytt', 'Ġhus', 'Ġbasert', 'ĠpÃ¥', 'Ġen', 'Ġannen', 'Ġinntekt', 'Ġ.', 'ĠAndre', 'Ġinstanser', 'Ġ:', 'ĠHadde', 'Ġi', 'Ġ1985', '-', '86', 'Ġkontakt', 'Ġmed', 'ĠSI', 'R', 'Ġ,', 'Ġpsykiatrisk', 'Ġ.', 'ĠRagna', 'ĠBlock', 'ĠThorsen', 'Ġpga', 'Ġ.', 'Ġ2', 'Ġforli', 's', 'Ġmed', 'ĠbÃ¥t', 'Ġog', 'Ġfikk', 'Ġdiagnosen', 'Ġpost', '-', 'tra', 'uma', 'ti', 'sk', 'Ġdis', 'order', 'Ġ.', 'ĠHan', 'Ġmener', 'Ġselv', 'Ġat', 'Ġsymptomene', 'Ġskyldes', 'Ġstoff', 'skifte', 'sykdom', 'Ġsom', 'Ġble', 'Ġdiagnostisert', 'Ġi', 'Ġ-', '88', 'Ġ.', 'Ġ1', 'ĠPower', 'ed', 'Ġby', 'ĠT', 'CP', 'DF', 'Ġ(', 'Ġwww', '.', 't', 'c', 'pdf', '.', 'org', 'Ġ)', 'ĠFÃ¸dt', 'dato', 'Ġ:', 'Ġ26', '.', '01', '.', '19', '49', 'ĠMors', 'dato', 'Ġ:', 'Ġ06', '.', '01', '.', '2002', 'ĠKjÃ¸nn', 'Ġ:', 'ĠKvinne', 'ĠFÃ¸rste', 'kontakt', 'Ġ:', 'Ġ09', '.', '04', '.', '1970', 'ĠSiste', 'kontakt', 'Ġ:', 'Ġ2001', 'ĠDato', 'ĠDiagno', 'se', 'Ġ09', '.', '04', '.', '1970', 'ĠIC', 'D', '8', 'Ġ|', 'Ġ29', '36', 'Ġ|', 'ĠPS', 'Y', 'CH', 'OS', 'IS', 'ĠE', 'ĠMOR', 'B', 'IS', 'ĠCE', 'RE', 'BR', 'I', 'ĠAL', 'II', 'S', '.', 'ĠPsyk', 'ose', 'Ġved', 'Ġandre', 'Ġhjernes', 'ykdommer', 'Ġ-', 'Ġved', 'Ġoli', 'go', 'fre', 'ni', '.', 'Ġ01', '.', '01', '.', '1971', 'ĠIC', 'D', '8', 'Ġ|', 'Ġ29', '36', 'Ġ|', 'ĠPS', 'Y', 'CH', 'OS', 'IS', 'ĠE', 'ĠMOR', 'B', 'IS', 'ĠCE', 'RE', 'BR', 'I', 'ĠAL', 'II', 'S', '.', 'ĠPsyk', 'ose', 'Ġved', 'Ġandre', 'Ġhjernes', 'ykdommer', 'Ġ-', 'Ġved', 'Ġoli', 'go', 'fre', 'ni', 'Ġ.', 'Ġ08', '.', '10', '.', '1974', 'ĠF', '20', '6', 'Ġ|', 'Ġenkel', 'Ġschizofren', 'i', 'Ġ08', '.', '10', '.', '1974', 'ĠG', '40', '9', 'Ġ|', 'Ġus', 'pes', 'ifisert', 'Ġepile', 'psi', 'Ġ08', '.', '10', '.', '1974', 'ĠF', '70', 'Ġ|', 'Ġlett', 'Ġpsykisk', 'Ġutviklingshemming', 'Ġ01', '.', '01', '.', '1975', 'ĠG', '40', '9', 'Ġ|', 'Ġus', 'pes', 'ifisert', 'Ġepile', 'psi', 'Ġ01', '.', '01', '.', '1975', 'ĠF', '70', 'Ġ|', 'Ġlett', 'Ġpsykisk', 'Ġutviklingshemming', 'Ġ01', '.', '01', '.', '1975', 'ĠF', '20', '6', 'Ġ|', 'Ġenkel', 'Ġschizofren', 'i', 'Ġ01', '.', '01', '.', '1976', 'ĠF', '70', 'Ġ|', 'Ġlett', 'Ġpsykisk', 'Ġutviklingshemming', 'Ġ01', '.', '01', '.', '1976', 'ĠF', '20', '6', 'Ġ|', 'Ġenkel', 'Ġschizofren', 'i', 'Ġ01', '.', '01', '.', '1976', 'ĠG', '40', '9', 'Ġ|', 'Ġus', 'pes', 'ifisert', 'Ġepile', 'psi', 'Ġ01', '.', '01', '.', '1977', 'ĠF', '70', 'Ġ|', 'Ġlett', 'Ġpsykisk', 'Ġutviklingshemming', 'Ġ01', '.', '01', '.', '1977', 'ĠG', '40', '9', 'Ġ|', 'Ġus', 'pes', 'ifisert', 'Ġepile', 'psi', 'Ġ01', '.', '01', '.', '1977', 'ĠF', '20', '6', 'Ġ|', 'Ġenkel', 'Ġschizofren', 'i', 'ĠDato', 'ĠDiagno', 'se', 'Ġ01', '.', '01', '.', '1978', 'ĠF', '70', 'Ġ|', 'Ġlett', 'Ġpsykisk', 'Ġutviklingshemming', 'Ġ01', '.', '01', '.', '1978', 'ĠF', '20', '6', 'Ġ|', 'Ġenkel', 'Ġschizofren', 'i', 'Ġ01', '.', '01', '.', '1978', 'ĠG', '40', '9', 'Ġ|', 'Ġus', 'pes', 'ifisert', 'Ġepile', 'psi', 'Ġ01', '.', '01', '.', '1979', 'ĠG', '40', '9', 'Ġ|', 'Ġus', 'pes', 'ifisert', 'Ġepile', 'psi', 'Ġ01', '.', '01', '.', '1979', 'ĠF', '70', 'Ġ|', 'Ġlett', 'Ġpsykisk', 'Ġutviklingshemming', 'Ġ01', '.', '01', '.', '1979', 'ĠF', '20', '6', '[SEP]']
+BEFORE
+{'BEFORE': 12703, 'OVERLAP': 4259, 'BEFOREOVERLAP': 516, 'AFTER': 1150}
+{'BEFORE': 0.3666063134692592, 'OVERLAP': 1.0934491664710027, 'BEFOREOVERLAP': 9.025193798449612, 'AFTER': 4.049565217391304}
+Training Epoch: 0
+Training loss epoch: 10.80429368988078
+Training accuracy epoch: 0.3913917505504876
+Overall acc: 0.3901518328999245
+Overall loss: 2020.4029200077057
+Validation loss per 100 evaluation steps: 10.205251693725586
+Validation loss per 100 evaluation steps: 12.702176773902213
+Validation loss per 100 evaluation steps: 12.604362117710398
+Validation Loss: 12.607578936564565
+Validation Accuracy: 0.23405885959534029
+Overall accuracy: 0.23403113258185723
+Overall loss: 12.607578936564565
+Training Epoch: 1
+Training loss epoch: 10.551918322071035
+Training accuracy epoch: 0.3827658068575024
+Overall acc: 0.3812599614126332
+Overall loss: 1973.2087262272835
+Validation loss per 100 evaluation steps: 15.657449722290039
+Validation loss per 100 evaluation steps: 15.84026010909883
+Validation loss per 100 evaluation steps: 16.156617966457386
+Validation Loss: 16.123993763084574
+Validation Accuracy: 0.23394389944819127
+Overall accuracy: 0.23403113258185723
+Overall loss: 16.123993763084574
+Training Epoch: 2
+Training loss epoch: 11.117781856162026
+Training accuracy epoch: 0.38290834381881095
+Overall acc: 0.382098817213321
+Overall loss: 2079.0252071022987
+Validation loss per 100 evaluation steps: 19.66055679321289
+Validation loss per 100 evaluation steps: 21.2946994422686
+Validation loss per 100 evaluation steps: 21.160329937341796
+Validation Loss: 21.172680519169493
+Validation Accuracy: 0.23402053954629062
+Overall accuracy: 0.23403113258185723
+Overall loss: 21.172680519169493
+Training Epoch: 3
+Training loss epoch: 11.485891790951
+Training accuracy epoch: 0.3734271783579742
+Overall acc: 0.3721164331851355
+Overall loss: 2147.861764907837
+Validation loss per 100 evaluation steps: 15.324827194213867
+Validation loss per 100 evaluation steps: 20.309640006263656
+Validation loss per 100 evaluation steps: 20.348730860657952
+Validation Loss: 20.238671908562786
+Validation Accuracy: 0.23409717964438992
+Overall accuracy: 0.23403113258185723
+Overall loss: 20.238671908562786
+Training Epoch: 4
+Training loss epoch: 11.494561805444604
+Training accuracy epoch: 0.37754108996539787
+Overall acc: 0.37647848334871237
+Overall loss: 2149.483057618141
+Validation loss per 100 evaluation steps: 17.831579208374023
+Validation loss per 100 evaluation steps: 18.831957392173237
+Validation loss per 100 evaluation steps: 18.439890277919485
+Validation Loss: 18.394640279941804
+Validation Accuracy: 0.23402053954629062
+Overall accuracy: 0.23403113258185723
+Overall loss: 18.394640279941804
+Training Epoch: 5
+Training loss epoch: 11.585230783345228
+Training accuracy epoch: 0.3733731126140296
+Overall acc: 0.3743813438469927
+Overall loss: 2166.4381564855576
+Validation loss per 100 evaluation steps: 17.657224655151367
+Validation loss per 100 evaluation steps: 10.84871513300603
+Validation loss per 100 evaluation steps: 11.121196344717225
+Validation Loss: 11.174608373846619
+Validation Accuracy: 0.6839362354383813
+Overall accuracy: 0.6838432635534085
+Overall loss: 11.174608373846619
+Training Epoch: 6
+Training loss epoch: 11.475099197046005
+Training accuracy epoch: 0.3807702893991821
+Overall acc: 0.38134384699270196
+Overall loss: 2145.843549847603
+Validation loss per 100 evaluation steps: 1.9976215362548828
+Validation loss per 100 evaluation steps: 2.6160885602890485
+Validation loss per 100 evaluation steps: 2.63335689026121
+Validation Loss: 2.6132027363452597
+Validation Accuracy: 0.6838595953402821
+Overall accuracy: 0.6838432635534085
+Overall loss: 2.6132027363452597
+Training Epoch: 7
+Training loss epoch: 10.851840374622753
+Training accuracy epoch: 0.37616487102862534
+Overall acc: 0.37463300058719906
+Overall loss: 2029.2941500544548
+Validation loss per 100 evaluation steps: 5.790664196014404
+Validation loss per 100 evaluation steps: 9.26652741196132
+Validation loss per 100 evaluation steps: 9.088613386770978
+Validation Loss: 9.210009691541288
+Validation Accuracy: 0.23390557939914164
+Overall accuracy: 0.23403113258185723
+Overall loss: 9.210009691541288
+Training Epoch: 8
+Training loss epoch: 10.34195451557955
+Training accuracy epoch: 0.3776688817238125
+Overall acc: 0.3761429410284372
+Overall loss: 1933.9454944133759
+Validation loss per 100 evaluation steps: 13.974461555480957
+Validation loss per 100 evaluation steps: 14.212438635306784
+Validation loss per 100 evaluation steps: 14.177351256508139
+Validation Loss: 14.248840546914948
+Validation Accuracy: 0.23394389944819127
+Overall accuracy: 0.23403113258185723
+Overall loss: 14.248840546914948
+Training Epoch: 9
+Training loss epoch: 9.829561129929548
+Training accuracy epoch: 0.3767595942120164
+Overall acc: 0.37731733914940024
+Overall loss: 1838.1279312968254
+Validation loss per 100 evaluation steps: 9.641125679016113
+Validation loss per 100 evaluation steps: 9.32842190430896
+Validation loss per 100 evaluation steps: 9.205775710480724
+Validation Loss: 9.172746123162462
+Validation Accuracy: 0.02521459227467811
+Overall accuracy: 0.02522812667740204
+Overall loss: 9.172746123162462
+Training Epoch: 10
+Training loss epoch: 11.352831229169102
+Training accuracy epoch: 0.3733141318024536
+Overall acc: 0.37362637362637363
+Overall loss: 2122.979439854622
+Validation loss per 100 evaluation steps: 7.28495454788208
+Validation loss per 100 evaluation steps: 4.9947198269390825
+Validation loss per 100 evaluation steps: 4.870385459109919
+Validation Loss: 4.849421286020156
+Validation Accuracy: 0.6838595953402821
+Overall accuracy: 0.6838432635534085
+Overall loss: 4.849421286020156
+Training Epoch: 11
+Training loss epoch: 10.98213537236586
+Training accuracy epoch: 0.376887385970431
+Overall acc: 0.3769817968291251
+Overall loss: 2053.6593146324158
+Validation loss per 100 evaluation steps: 5.064096450805664
+Validation loss per 100 evaluation steps: 4.274872295927294
+Validation loss per 100 evaluation steps: 4.331132866849947
+Validation Loss: 4.3354335547516785
+Validation Accuracy: 0.6837829552421828
+Overall accuracy: 0.6838432635534085
+Overall loss: 4.3354335547516785
+Early stopping
+### Valid set performance:
+Validation loss per 100 evaluation steps: 6.084632396697998
+Validation loss per 100 evaluation steps: 4.46230316294892
+Validation Loss: 4.241082083174889
+Validation Accuracy: 0.6796791443850267
+Overall accuracy: 0.6799731633679973
+Overall loss: 4.241082083174889
+### Summary
+               precision    recall  f1-score   support
+
+        AFTER       0.00      0.00      0.00       211
+       BEFORE       0.68      1.00      0.81      2027
+BEFOREOVERLAP       0.00      0.00      0.00        86
+      OVERLAP       0.00      0.00      0.00       657
+
+     accuracy                           0.68      2981
+    macro avg       0.17      0.25      0.20      2981
+ weighted avg       0.46      0.68      0.55      2981
+
+### Test set performance:
+Validation loss per 100 evaluation steps: 3.7130236625671387
+Validation loss per 100 evaluation steps: 4.3246720046690195
+Validation loss per 100 evaluation steps: 4.290465965644637
+Validation Loss: 4.334436860591045
+Validation Accuracy: 0.6838595953402821
+Overall accuracy: 0.6838432635534085
+Overall loss: 4.334436860591045
+### Summary
+               precision    recall  f1-score   support
+
+        AFTER       0.00      0.00      0.00       212
+       BEFORE       0.68      1.00      0.81      2548
+BEFOREOVERLAP       0.00      0.00      0.00        94
+      OVERLAP       0.00      0.00      0.00       872
+
+     accuracy                           0.68      3726
+    macro avg       0.17      0.25      0.20      3726
+ weighted avg       0.47      0.68      0.56      3726
+
+{'AFTER': 0, 'BEFORE': 1, 'BEFOREOVERLAP': 2, 'OVERLAP': 3}
+{0: 'AFTER', 1: 'BEFORE', 2: 'BEFOREOVERLAP', 3: 'OVERLAP'}
+[1, 533, 351, 2882, 23283, 1359, 39955, 4301, 818, 333, 2518, 431, 1234, 32923, 484, 2877, 342, 472, 935, 3458, 818, 333, 2518, 367, 2882, 23283, 459, 5664, 345, 36636, 5897, 356, 368, 32923, 119, 47900, 4408, 1359, 30334, 12678, 26093, 315, 542, 5283, 368, 8728, 1359, 342, 3988, 8000, 762, 348, 333, 1310, 1387, 2752, 368, 361, 1384, 1905, 1359, 2458, 13980, 1733, 8184, 333, 7717, 119, 8111, 1941, 380, 23674, 156, 1969, 24652, 1359, 35993, 43056, 26428, 9076, 1359, 414, 14965, 189, 380, 5087, 342, 1032, 21459, 1818, 119, 5413, 15839, 6585, 350, 2137, 20063, 1359, 842, 1115, 893, 383, 22377, 3536, 3696, 8488, 21897, 367, 549, 44924, 333, 484, 6408, 1359, 395, 16067, 344, 796, 433, 36788, 10443, 459, 6311, 120, 190, 173, 19733, 120, 613, 4408, 36560, 12276, 1733, 2285, 120, 556, 120, 1316, 5798, 46503, 12276, 1733, 6043, 120, 556, 120, 10424, 35367, 1733, 16953, 6287, 12861, 1733, 4158, 120, 3835, 120, 27388, 9314, 12861, 1733, 4451, 8362, 49476, 399, 4158, 120, 3835, 120, 27388, 12464, 142, 130, 2025, 2528, 5066, 2025, 11620, 163, 17182, 4520, 3060, 438, 46512, 140, 3060, 28176, 3950, 23861, 147, 8693, 8451, 157, 120, 12169, 4379, 498, 639, 29310, 18511, 484, 498, 22014, 12264, 7197, 10506, 120, 3764, 120, 556, 120, 28436, 12464, 142, 130, 2025, 2528, 5066, 2025, 11620, 163, 17182, 4520, 3060, 438, 46512, 140, 3060, 28176, 3950, 23861, 147, 8693, 8451, 157, 120, 12169, 4379, 498, 639, 29310, 18511, 484, 498, 22014, 12264, 7197, 10506, 1359, 4515, 120, 1537, 120, 34487, 413, 2]
+['[CLS]', 'Ġseg', 'Ġtil', 'Ġhjelpe', 'pleier', 'Ġ.', 'ĠGikk', 'Ġkraftig', 'Ġned', 'Ġi', 'ĠlÃ¸nn', 'Ġfra', 'Ġtidligere', 'ĠNordsjÃ¸', 'Ġ-', 'Ġarbeider', 'Ġog', 'Ġvil', 'ĠgÃ¥', 'Ġytterligere', 'Ġned', 'Ġi', 'ĠlÃ¸nn', 'Ġsom', 'Ġhjelpe', 'pleier', 'Ġ(', 'Ġgrunnlaget', 'Ġfor', 'ĠattfÃ¸rings', 'penger', 'Ġer', 'ĠpÃ¥', 'ĠNordsjÃ¸', '-', 'lÃ¸nnen', 'Ġ)', 'Ġ.', 'ĠAlkohol', 'forbruket', 'ĠtÃ¦r', 'er', 'ĠogsÃ¥', 'Ġhardt', 'ĠpÃ¥', 'ĠÃ¸konomien', 'Ġ.', 'Ġog', 'Ġfamilien', 'Ġinvi', 'ster', 'te', 'Ġi', 'Ġnytt', 'Ġhus', 'Ġbasert', 'ĠpÃ¥', 'Ġen', 'Ġannen', 'Ġinntekt', 'Ġ.', 'ĠAndre', 'Ġinstanser', 'Ġ:', 'ĠHadde', 'Ġi', 'Ġ1985', '-', '86', 'Ġkontakt', 'Ġmed', 'ĠSI', 'R', 'Ġ,', 'Ġpsykiatrisk', 'Ġ.', 'ĠRagna', 'ĠBlock', 'ĠThorsen', 'Ġpga', 'Ġ.', 'Ġ2', 'Ġforli', 's', 'Ġmed', 'ĠbÃ¥t', 'Ġog', 'Ġfikk', 'Ġdiagnosen', 'Ġpost', '-', 'tra', 'uma', 'ti', 'sk', 'Ġdis', 'order', 'Ġ.', 'ĠHan', 'Ġmener', 'Ġselv', 'Ġat', 'Ġsymptomene', 'Ġskyldes', 'Ġstoff', 'skifte', 'sykdom', 'Ġsom', 'Ġble', 'Ġdiagnostisert', 'Ġi', 'Ġ-', '88', 'Ġ.', 'Ġ1', 'ĠPower', 'ed', 'Ġby', 'ĠT', 'CP', 'DF', 'Ġ(', 'Ġwww', '.', 't', 'c', 'pdf', '.', 'org', 'Ġ)', 'ĠFÃ¸dt', 'dato', 'Ġ:', 'Ġ26', '.', '01', '.', '19', '49', 'ĠMors', 'dato', 'Ġ:', 'Ġ06', '.', '01', '.', '2002', 'ĠKjÃ¸nn', 'Ġ:', 'ĠKvinne', 'ĠFÃ¸rste', 'kontakt', 'Ġ:', 'Ġ09', '.', '04', '.', '1970', 'ĠSiste', 'kontakt', 'Ġ:', 'Ġ2001', 'ĠDato', 'ĠDiagno', 'se', 'Ġ09', '.', '04', '.', '1970', 'ĠIC', 'D', '8', 'Ġ|', 'Ġ29', '36', 'Ġ|', 'ĠPS', 'Y', 'CH', 'OS', 'IS', 'ĠE', 'ĠMOR', 'B', 'IS', 'ĠCE', 'RE', 'BR', 'I', 'ĠAL', 'II', 'S', '.', 'ĠPsyk', 'ose', 'Ġved', 'Ġandre', 'Ġhjernes', 'ykdommer', 'Ġ-', 'Ġved', 'Ġoli', 'go', 'fre', 'ni', '.', 'Ġ01', '.', '01', '.', '1971', 'ĠIC', 'D', '8', 'Ġ|', 'Ġ29', '36', 'Ġ|', 'ĠPS', 'Y', 'CH', 'OS', 'IS', 'ĠE', 'ĠMOR', 'B', 'IS', 'ĠCE', 'RE', 'BR', 'I', 'ĠAL', 'II', 'S', '.', 'ĠPsyk', 'ose', 'Ġved', 'Ġandre', 'Ġhjernes', 'ykdommer', 'Ġ-', 'Ġved', 'Ġoli', 'go', 'fre', 'ni', 'Ġ.', 'Ġ08', '.', '10', '.', '1974', 'ĠF', '[SEP]']
+BEFORE
+{'BEFORE': 21931, 'OVERLAP': 7250, 'BEFOREOVERLAP': 864, 'AFTER': 1988}
+{'BEFORE': 0.36515662760476036, 'OVERLAP': 1.1045862068965517, 'BEFOREOVERLAP': 9.26880787037037, 'AFTER': 4.02829476861167}
+Training Epoch: 0
+Training loss epoch: 1.0501046310300413
+Training accuracy epoch: 0.3250194099378882
+Overall acc: 0.3254146341463415
+Overall loss: 169.06684559583664
+Validation loss per 100 evaluation steps: 1.0709134340286255
+Validation loss per 100 evaluation steps: 1.1411230387073932
+Validation loss per 100 evaluation steps: 1.1514287332990276
+Validation loss per 100 evaluation steps: 1.1581313513046088
+Validation loss per 100 evaluation steps: 1.1613858994700368
+Validation Loss: 1.1613858994700368
+Validation Accuracy: 0.22728892055575348
+Overall accuracy: 0.227407523021695
+Overall loss: 1.1613858994700368
+Training Epoch: 1
+Training loss epoch: 1.0378005871121188
+Training accuracy epoch: 0.3221370341614907
+Overall acc: 0.32278048780487806
+Overall loss: 167.08589452505112
+Validation loss per 100 evaluation steps: 1.0977652072906494
+Validation loss per 100 evaluation steps: 1.1244364510668385
+Validation loss per 100 evaluation steps: 1.1142968351568157
+Validation loss per 100 evaluation steps: 1.1189845560793068
+Validation loss per 100 evaluation steps: 1.121828256253887
+Validation Loss: 1.121828256253887
+Validation Accuracy: 0.22964909155682223
+Overall accuracy: 0.22896831590447947
+Overall loss: 1.121828256253887
+Training Epoch: 2
+Training loss epoch: 1.0356158762244705
+Training accuracy epoch: 0.3261548913043478
+Overall acc: 0.32497560975609757
+Overall loss: 166.73415607213974
+Validation loss per 100 evaluation steps: 1.3723763227462769
+Validation loss per 100 evaluation steps: 1.1354371864016692
+Validation loss per 100 evaluation steps: 1.118024786906456
+Validation loss per 100 evaluation steps: 1.1012457417095223
+Validation loss per 100 evaluation steps: 1.1069633767491862
+Validation Loss: 1.1069633767491862
+Validation Accuracy: 0.3162183826148913
+Overall accuracy: 0.31606055876385203
+Overall loss: 1.1069633767491862
+Training Epoch: 3
+Training loss epoch: 1.0348551465857843
+Training accuracy epoch: 0.3291149068322981
+Overall acc: 0.32926829268292684
+Overall loss: 166.61167860031128
+Validation loss per 100 evaluation steps: 1.2077666521072388
+Validation loss per 100 evaluation steps: 1.1843550659642361
+Validation loss per 100 evaluation steps: 1.1912808572474998
+Validation loss per 100 evaluation steps: 1.182419313940891
+Validation loss per 100 evaluation steps: 1.1842477538639173
+Validation Loss: 1.1842477538639173
+Validation Accuracy: 0.22748931243320272
+Overall accuracy: 0.227407523021695
+Overall loss: 1.1842477538639173
+Training Epoch: 4
+Training loss epoch: 1.034524444837748
+Training accuracy epoch: 0.3140430900621118
+Overall acc: 0.3151707317073171
+Overall loss: 166.5584356188774
+Validation loss per 100 evaluation steps: 0.9822321534156799
+Validation loss per 100 evaluation steps: 1.0234497744258086
+Validation loss per 100 evaluation steps: 1.0511649422977694
+Validation loss per 100 evaluation steps: 1.0516178796061646
+Validation loss per 100 evaluation steps: 1.0540174886472802
+Validation Loss: 1.0540174886472802
+Validation Accuracy: 0.6802413608835055
+Overall accuracy: 0.6801935383174653
+Overall loss: 1.0540174886472802
+Training Epoch: 5
+Training loss epoch: 1.0365440715914187
+Training accuracy epoch: 0.32052600931677017
+Overall acc: 0.3206341463414634
+Overall loss: 166.88359552621841
+Validation loss per 100 evaluation steps: 1.069740653038025
+Validation loss per 100 evaluation steps: 1.2354062848752088
+Validation loss per 100 evaluation steps: 1.244940195214096
+Validation loss per 100 evaluation steps: 1.2435401800859014
+Validation loss per 100 evaluation steps: 1.2511186457037033
+Validation Loss: 1.2511186457037033
+Validation Accuracy: 0.22728892055575348
+Overall accuracy: 0.227407523021695
+Overall loss: 1.2511186457037033
+Training Epoch: 6
+Training loss epoch: 1.0344864452107352
+Training accuracy epoch: 0.3207395186335404
+Overall acc: 0.32190243902439025
+Overall loss: 166.55231767892838
+Validation loss per 100 evaluation steps: 0.9825974702835083
+Validation loss per 100 evaluation steps: 1.0313615267819698
+Validation loss per 100 evaluation steps: 1.0564564679985615
+Validation loss per 100 evaluation steps: 1.0499959023687926
+Validation loss per 100 evaluation steps: 1.0490970772103478
+Validation Loss: 1.0490970772103478
+Validation Accuracy: 0.6798405771286071
+Overall accuracy: 0.6801935383174653
+Overall loss: 1.0490970772103478
+Training Epoch: 7
+Training loss epoch: 1.0389493751970138
+Training accuracy epoch: 0.3167798913043478
+Overall acc: 0.31765853658536586
+Overall loss: 167.2708494067192
+Validation loss per 100 evaluation steps: 0.8943660259246826
+Validation loss per 100 evaluation steps: 1.1514216637847448
+Validation loss per 100 evaluation steps: 1.1494090379174076
+Validation loss per 100 evaluation steps: 1.1493846417661522
+Validation loss per 100 evaluation steps: 1.1450891576502984
+Validation Loss: 1.1450891576502984
+Validation Accuracy: 0.232009262557891
+Overall accuracy: 0.23193382238176993
+Overall loss: 1.1450891576502984
+Training Epoch: 8
+Training loss epoch: 1.0345981702301073
+Training accuracy epoch: 0.31498447204968943
+Overall acc: 0.31585365853658537
+Overall loss: 166.57030540704727
+Validation loss per 100 evaluation steps: 0.8500015735626221
+Validation loss per 100 evaluation steps: 1.0454918187443574
+Validation loss per 100 evaluation steps: 1.0528079787297036
+Validation loss per 100 evaluation steps: 1.0579901181186155
+Validation loss per 100 evaluation steps: 1.05265861378049
+Validation Loss: 1.05265861378049
+Validation Accuracy: 0.6800409690060563
+Overall accuracy: 0.6801935383174653
+Overall loss: 1.05265861378049
+Training Epoch: 9
+Training loss epoch: 1.0343744928792398
+Training accuracy epoch: 0.32297166149068324
+Overall acc: 0.32282926829268294
+Overall loss: 166.5342933535576
+Validation loss per 100 evaluation steps: 1.1619758605957031
+Validation loss per 100 evaluation steps: 1.180841366843422
+Validation loss per 100 evaluation steps: 1.1618207737581054
+Validation loss per 100 evaluation steps: 1.1703733221637054
+Validation loss per 100 evaluation steps: 1.1715225627892034
+Validation Loss: 1.1715225627892034
+Validation Accuracy: 0.22768970431065194
+Overall accuracy: 0.227407523021695
+Overall loss: 1.1715225627892034
+Training Epoch: 10
+Training loss epoch: 1.0357395488282908
+Training accuracy epoch: 0.3060656055900621
+Overall acc: 0.30609756097560975
+Overall loss: 166.75406736135483
+Validation loss per 100 evaluation steps: 0.8781868815422058
+Validation loss per 100 evaluation steps: 1.1764768840062736
+Validation loss per 100 evaluation steps: 1.1581052933166276
+Validation loss per 100 evaluation steps: 1.1616358426322178
+Validation loss per 100 evaluation steps: 1.1648856988571528
+Validation Loss: 1.1648856988571528
+Validation Accuracy: 0.2280904880655504
+Overall accuracy: 0.227407523021695
+Overall loss: 1.1648856988571528
+Training Epoch: 11
+Training loss epoch: 1.034663384375365
+Training accuracy epoch: 0.3063858695652174
+Overall acc: 0.3066829268292683
+Overall loss: 166.58080488443375
+Validation loss per 100 evaluation steps: 1.5391430854797363
+Validation loss per 100 evaluation steps: 1.1700624770457202
+Validation loss per 100 evaluation steps: 1.1567280378507738
+Validation loss per 100 evaluation steps: 1.1499219384304313
+Validation loss per 100 evaluation steps: 1.1501967141455842
+Validation Loss: 1.1501967141455842
+Validation Accuracy: 0.22728892055575348
+Overall accuracy: 0.227407523021695
+Overall loss: 1.1501967141455842
+Training Epoch: 12
+Training loss epoch: 1.031433849971487
+Training accuracy epoch: 0.3148971273291925
+Overall acc: 0.31234146341463415
+Overall loss: 166.0608498454094
+Validation loss per 100 evaluation steps: 0.9814493060112
+Validation loss per 100 evaluation steps: 1.0446809754513278
+Validation loss per 100 evaluation steps: 1.0235997233817826
+Validation loss per 100 evaluation steps: 1.0212560830718258
+Validation loss per 100 evaluation steps: 1.0251132441577768
+Validation Loss: 1.0251132441577768
+Validation Accuracy: 0.6802413608835055
+Overall accuracy: 0.6801935383174653
+Overall loss: 1.0251132441577768
+Training Epoch: 13
+Training loss epoch: 1.032573280127152
+Training accuracy epoch: 0.3201669254658385
+Overall acc: 0.32053658536585367
+Overall loss: 166.2442981004715
+Validation loss per 100 evaluation steps: 0.8779300451278687
+Validation loss per 100 evaluation steps: 1.1328431249845146
+Validation loss per 100 evaluation steps: 1.1452665091747076
+Validation loss per 100 evaluation steps: 1.1503820334162032
+Validation loss per 100 evaluation steps: 1.1599950555554055
+Validation Loss: 1.1599950555554055
+Validation Accuracy: 0.22728892055575348
+Overall accuracy: 0.227407523021695
+Overall loss: 1.1599950555554055
+Training Epoch: 14
+Training loss epoch: 1.0338246974145404
+Training accuracy epoch: 0.30838509316770185
+Overall acc: 0.30790243902439024
+Overall loss: 166.445776283741
+Validation loss per 100 evaluation steps: 1.1472851037979126
+Validation loss per 100 evaluation steps: 1.1493823758446344
+Validation loss per 100 evaluation steps: 1.1864424288569397
+Validation loss per 100 evaluation steps: 1.178786570645646
+Validation loss per 100 evaluation steps: 1.1799282022842446
+Validation Loss: 1.1799282022842446
+Validation Accuracy: 0.22728892055575348
+Overall accuracy: 0.227407523021695
+Overall loss: 1.1799282022842446
+Training Epoch: 15
+Training loss epoch: 1.034082265744298
+Training accuracy epoch: 0.2982628105590062
+Overall acc: 0.29746341463414633
+Overall loss: 166.487244784832
+Validation loss per 100 evaluation steps: 0.9921483993530273
+Validation loss per 100 evaluation steps: 1.1525916557500857
+Validation loss per 100 evaluation steps: 1.1508835788389937
+Validation loss per 100 evaluation steps: 1.145427366229783
+Validation loss per 100 evaluation steps: 1.14780405765757
+Validation Loss: 1.14780405765757
+Validation Accuracy: 0.22748931243320272
+Overall accuracy: 0.227407523021695
+Overall loss: 1.14780405765757
+Training Epoch: 16
+Training loss epoch: 1.032853969505855
+Training accuracy epoch: 0.3080454192546584
+Overall acc: 0.3075609756097561
+Overall loss: 166.28948909044266
+Validation loss per 100 evaluation steps: 0.9025655388832092
+Validation loss per 100 evaluation steps: 1.1609283791910303
+Validation loss per 100 evaluation steps: 1.1407065237339455
+Validation loss per 100 evaluation steps: 1.1433002732916924
+Validation loss per 100 evaluation steps: 1.1558368269939374
+Validation Loss: 1.1558368269939374
+Validation Accuracy: 0.22728892055575348
+Overall accuracy: 0.227407523021695
+Overall loss: 1.1558368269939374
+Training Epoch: 17
+Training loss epoch: 1.0330782825161953
+Training accuracy epoch: 0.30032026397515527
+Overall acc: 0.2992682926829268
+Overall loss: 166.32560348510742
+Validation loss per 100 evaluation steps: 1.3267568349838257
+Validation loss per 100 evaluation steps: 1.1161296214207563
+Validation loss per 100 evaluation steps: 1.1162657865244359
+Validation loss per 100 evaluation steps: 1.1211167851159738
+Validation loss per 100 evaluation steps: 1.1290557632719787
+Validation Loss: 1.1290557632719787
+Validation Accuracy: 0.28925454221588887
+Overall accuracy: 0.28905884189168096
+Overall loss: 1.1290557632719787
+Training Epoch: 18
+Training loss epoch: 1.0305364535462043
+Training accuracy epoch: 0.30739518633540375
+Overall acc: 0.30717073170731707
+Overall loss: 165.91636902093887
+Validation loss per 100 evaluation steps: 0.9434674382209778
+Validation loss per 100 evaluation steps: 1.1263578799691532
+Validation loss per 100 evaluation steps: 1.119438419591135
+Validation loss per 100 evaluation steps: 1.1227080221984078
+Validation loss per 100 evaluation steps: 1.121391098695503
+Validation Loss: 1.121391098695503
+Validation Accuracy: 0.2296268257926612
+Overall accuracy: 0.22974871234587171
+Overall loss: 1.121391098695503
+Training Epoch: 19
+Training loss epoch: 1.033622495876336
+Training accuracy epoch: 0.3058326863354037
+Overall acc: 0.3050731707317073
+Overall loss: 166.4132218360901
+Validation loss per 100 evaluation steps: 1.0894886255264282
+Validation loss per 100 evaluation steps: 1.141537580159631
+Validation loss per 100 evaluation steps: 1.1141393300312668
+Validation loss per 100 evaluation steps: 1.1216952539361593
+Validation loss per 100 evaluation steps: 1.1217031318350623
+Validation Loss: 1.1217031318350623
+Validation Accuracy: 0.3280192376202351
+Overall accuracy: 0.3280786639612923
+Overall loss: 1.1217031318350623
+Training Epoch: 20
+Training loss epoch: 1.031824174875058
+Training accuracy epoch: 0.30080551242236025
+Overall acc: 0.3010731707317073
+Overall loss: 166.12369215488434
+Validation loss per 100 evaluation steps: 0.892282247543335
+Validation loss per 100 evaluation steps: 1.1609363868685052
+Validation loss per 100 evaluation steps: 1.155495572742538
+Validation loss per 100 evaluation steps: 1.1547543810451546
+Validation loss per 100 evaluation steps: 1.1594565284816998
+Validation Loss: 1.1594565284816998
+Validation Accuracy: 0.22748931243320272
+Overall accuracy: 0.227407523021695
+Overall loss: 1.1594565284816998
+Training Epoch: 21
+Training loss epoch: 1.0292456912698214
+Training accuracy epoch: 0.31796389751552795
+Overall acc: 0.31726829268292683
+Overall loss: 165.70855629444122
+Validation loss per 100 evaluation steps: 1.016331672668457
+Validation loss per 100 evaluation steps: 1.1876587354310668
+Validation loss per 100 evaluation steps: 1.213482503274187
+Validation loss per 100 evaluation steps: 1.2003804476950255
+Validation loss per 100 evaluation steps: 1.1953465700744097
+Validation Loss: 1.1953465700744097
+Validation Accuracy: 0.22708852867830423
+Overall accuracy: 0.227407523021695
+Overall loss: 1.1953465700744097
+Training Epoch: 22
+Training loss epoch: 1.029623622479646
+Training accuracy epoch: 0.31453804347826086
+Overall acc: 0.3148780487804878
+Overall loss: 165.76940321922302
+Validation loss per 100 evaluation steps: 0.9699978232383728
+Validation loss per 100 evaluation steps: 1.240509851734237
+Validation loss per 100 evaluation steps: 1.220209838146001
+Validation loss per 100 evaluation steps: 1.2050022423465387
+Validation loss per 100 evaluation steps: 1.2042354685707282
+Validation Loss: 1.2042354685707282
+Validation Accuracy: 0.22748931243320272
+Overall accuracy: 0.227407523021695
+Overall loss: 1.2042354685707282
+Early stopping
+### Valid set performance:
+Validation loss per 100 evaluation steps: 1.3137645721435547
+Validation loss per 100 evaluation steps: 1.1808058708020956
+Validation loss per 100 evaluation steps: 1.218668257122609
+Validation loss per 100 evaluation steps: 1.1966988838392238
+Validation Loss: 1.1998081344681737
+Validation Accuracy: 0.22676531671858777
+Overall accuracy: 0.22688255950058525
+Overall loss: 1.1998081344681737
+### Summary
+               precision    recall  f1-score   support
+
+        AFTER       0.00      0.00      0.00       315
+       BEFORE       0.00      0.00      0.00      3503
+BEFOREOVERLAP       0.00      0.00      0.00       145
+      OVERLAP       0.23      1.00      0.37      1163
+
+     accuracy                           0.23      5126
+    macro avg       0.06      0.25      0.09      5126
+ weighted avg       0.05      0.23      0.08      5126
+
+### Test set performance:
+Validation loss per 100 evaluation steps: 1.203498125076294
+Validation loss per 100 evaluation steps: 1.2097794024070891
+Validation loss per 100 evaluation steps: 1.2160737084512094
+Validation loss per 100 evaluation steps: 1.2058288563921602
+Validation loss per 100 evaluation steps: 1.204259906326446
+Validation Loss: 1.204259906326446
+Validation Accuracy: 0.22748931243320272
+Overall accuracy: 0.227407523021695
+Overall loss: 1.204259906326446
+### Summary
+               precision    recall  f1-score   support
+
+        AFTER       0.00      0.00      0.00       402
+       BEFORE       0.00      0.00      0.00      4358
+BEFOREOVERLAP       0.00      0.00      0.00       190
+      OVERLAP       0.23      1.00      0.37      1457
+
+     accuracy                           0.23      6407
+    macro avg       0.06      0.25      0.09      6407
+ weighted avg       0.05      0.23      0.08      6407
+
+{'AFTER': 0, 'BEFORE': 1, 'BEFOREOVERLAP': 2, 'OVERLAP': 3}
+{0: 'AFTER', 1: 'BEFORE', 2: 'BEFOREOVERLAP', 3: 'OVERLAP'}
+[1, 39531, 1733, 5956, 19490, 27947, 47532, 2059, 351, 12068, 1733, 414, 17485, 447, 359, 27441, 16854, 142, 1491, 1733, 2335, 1757, 11519, 1991, 10032, 143, 17485, 17485, 48589, 49476, 399, 1733, 1359, 1359, 1359, 1359, 1359, 1359, 1359, 392, 445, 519, 32357, 24773, 171, 3895, 17485, 4484, 35228, 3437, 1373, 35228, 24396, 7468, 3141, 343, 1023, 4637, 508, 421, 623, 606, 1748, 644, 484, 1436, 1359, 8941, 30066, 42309, 2059, 351, 1733, 1359, 5986, 175, 1359, 1359, 1359, 1188, 120, 190, 1359, 1359, 1359, 1359, 1359, 8362, 1359, 1359, 1359, 1359, 1081, 120, 3530, 1359, 1359, 1359, 5805, 3009, 14633, 464, 17291, 498, 1733, 414, 10421, 157, 39954, 49290, 1359, 1733, 1359, 1359, 1359, 1359, 1359, 1359, 1359, 1359, 1359, 8362, 1733, 1359, 1359, 1359, 1359, 1359, 1359, 1359, 6180, 34158, 188, 1733, 508, 6180, 5629, 1359, 2568, 1733, 508, 16193, 8522, 188, 1359, 2654, 1733, 1359, 1359, 1359, 1359, 1359, 1359, 623, 120, 126, 1359, 1359, 1359, 623, 120, 126, 413, 183, 36368, 153, 793, 8264, 143, 4860, 16871, 2156, 1118, 2349, 1118, 28941, 363, 859, 678, 3471, 31426, 196, 510, 1042, 341, 172, 11306, 16003, 152, 149, 47193, 333, 18044, 12915, 41839, 125, 6155, 438, 468, 333, 363, 779, 35540, 7987, 328, 333, 171, 319, 953, 7552, 333, 363, 545, 40313, 1118, 965, 6213, 2707, 33833, 12068, 1359, 644, 43721, 2025, 24973, 732, 28967, 16755, 438, 175, 7076, 352, 3089, 2025, 859, 859, 2025, 41564, 2460, 1475, 1715, 333, 3767, 2025, 2025, 24973, 484, 24973, 7076, 6586, 2025, 7468, 195, 6980, 333, 1014, 11343, 12794, 1733, 859, 2025, 2025, 2025, 2025, 4921, 333, 3089, 2025, 5574, 1985, 6586, 484, 333, 2025, 24799, 1359, 435, 2025, 363, 647, 2025, 7860, 1733, 577, 41320, 3627, 46805, 318, 1359, 435, 484, 901, 484, 3706, 2025, 478, 2485, 1359, 644, 435, 1359, 1359, 2025, 1212, 179, 41674, 41663, 1733, 2025, 2025, 1106, 465, 1118, 861, 28318, 3978, 3978, 484, 5832, 644, 953, 1413, 181, 363, 10408, 1359, 373, 189, 5321, 175, 5832, 644, 333, 352, 189, 363, 23628, 10448, 7076, 23846, 1118, 1289, 859, 16298, 143, 4826, 1118, 434, 859, 859, 38483, 23923, 9006, 143, 1041, 28741, 859, 859, 30648, 42654, 561, 4921, 4826, 2025, 7076, 414, 15058, 421, 172, 508, 319, 4184, 325, 181, 561, 1359, 1991, 732, 4408, 3978, 3304, 179, 3978, 4826, 6352, 17485, 325, 363, 1359, 31448, 484, 476, 26057, 3191, 6043, 45795, 6528, 125, 2767, 7973, 373, 2799, 4921, 484, 561, 2466, 10821, 5956, 130, 859, 484, 859, 21694, 2025, 4842, 162, 2136, 1733, 31448, 4921, 606, 1969, 363, 317, 4408, 1359, 5680, 120, 4012, 3978, 1969, 901, 120, 2387, 1359, 920, 10115, 184, 1969, 16871, 391, 477, 3748, 1359, 5405, 7270, 17463, 20003, 316, 34299, 18768, 13082, 26426, 49245, 188, 120, 1300, 120, 11694, 1909, 195, 508, 120, 189, 335, 189, 1359, 9094, 316, 1359, 478, 2205, 4133, 7708, 118, 13260, 122, 9001, 183, 1359, 18328, 29784, 4408, 9094, 316, 329, 181, 1359, 5932, 120, 32615, 11225, 4586, 363, 5956, 875, 2025, 2025, 2025, 1359, 24984, 4095, 1733, 18019, 1733, 4921, 414, 2025, 1889, 2025, 374, 2]
+['[CLS]', 'ĠMerknad', 'Ġ:', 'Ġ$', 'ĠOVER', 'FL', 'YTT', 'ET', 'Ġtil', 'Ġavd', 'Ġ:', 'Ġ2', 'Ġss', 'ks', 'kk', 'Ġsvakeste', 'ĠDA', 'D', 'Ãĺ', 'Ġ:', 'Ġokt', 'Ġkar', 'Ġmenes', 'ĠÂ»', 'ĠKL', 'E', 'Ġss', 'Ġss', 'mens', 'ĠDiagno', 'se', 'Ġ:', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġsk', 'Ġr', 'ss', 'rr', 'arr', 'a', 'Ġann', 'Ġss', 'Ġass', 'Ġnn', 'Ġna', 'Ġne', 'Ġnn', 'ĠGjelder', 'Ġoverfl', 'ytt', 'ing', 'Ġsamme', 'Ġsykdom', 'ĠJ', 'ĠN', 'Ġ4', 'Ġle', 'Ġ/', 'Ġ5', 'Ġ-', 'ĠOm', 'Ġ.', 'ĠUT', 'SKR', 'EV', 'ET', 'Ġtil', 'Ġ:', 'Ġ.', 'Ġmamma', 'e', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġbo', '.', 't', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ.', 'ĠDato', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ12', '.', '199', 'Ġ.', 'Ġ.', 'Ġ.', 'ĠKle', 'ĠLa', 'ĠEp', 'ik', 'rise', 'Ġved', 'Ġ:', 'Ġ2', 'ĠAF', 'S', 'Ġname', 'ĠOppfÃ¸lg', 'Ġ.', 'Ġ:', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ.', 'ĠDato', 'Ġ:', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ.', 'ĠTidligere', 'Ġinnleggelse', 'r', 'Ġ:', 'ĠJ', 'ĠTidligere', 'Ġpol', 'Ġ.', 'ĠbesÃ¸k', 'Ġ:', 'ĠJ', 'ĠSign', 'Ġutsk', 'r', 'Ġ.', 'Ġlege', 'Ġ:', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ4', '.', '4', 'Ġ.', 'Ġ.', 'Ġ.', 'Ġ4', '.', '4', 'ĠF', 'm', 'ĠTK', 'O', 'Ġ7', 'ĠEN', 'E', 'ĠJohansen', 'ĠHelen', 'Ġsette', 'ĠÃħ', 'Ġtv', 'ĠÃħ', 'Ġdg', 'ĠÃ¥', 'ĠâĢĶ', 'Ġha', 'ĠSch', 'wart', 'z', 'ĠG', 'Ġ18', 'Ġp', 'b', 'ĠAM', 'NA', 'N', 'K', 'NI', 'Ġi', 'ĠSU', 'SI', 'Ġ304', '3', 'ĠDrammen', 'ĠE', 'Ġal', 'Ġi', 'ĠÃ¥', 'Ġmu', 'Ul', 'Ġwe', 'ar', 'Ġi', 'a', 'Ã¥', 'Ġ"', 'ĠOp', 'Ġi', 'ĠÃ¥', 'Ġu', 'jn', 'ĠÃħ', 'Ġoss', 'Ġed', 'isin', 'dk', 'Ġavd', 'Ġ.', 'Ġ5', 'ĠEE', 'Ġ|', 'Ġ]', 'Ġ6', 'ĠMedisinsk', 'Ġjournal', 'ĠE', 'e', 'Ġ!', 'Ġg', 'ĠX', 'Ġ|', 'ĠâĢĶ', 'ĠâĢĶ', 'Ġ|', 'Ġee', 'Ġho', 'ĠInn', 'lagt', 'Ġi', 'ĠIntern', 'Ġ|', 'Ġ|', 'Ġ]', 'Ġ-', 'Ġ]', 'Ġ!', 'Ġdato', 'Ġ|', 'Ġoverfl', 'y', 'ining', 'Ġi', 'ĠUt', 'skrevet', 'ĠEik', 'Ġ:', 'ĠâĢĶ', 'Ġ|', 'Ġ|', 'Ġ|', 'Ġ|', 'Ġ;', 'Ġi', 'ĠX', 'Ġ|', 'ĠGa', 'io', 'Ġdato', 'Ġ-', 'Ġi', 'Ġ|', 'Ġpp', 'Ġ.', 'Ġj', 'Ġ|', 'ĠÃ¥', 'fÃ¸r', 'Ġ|', 'Ġarkiv', 'Ġ:', 'ĠU', 'aktuelle', 'Ġdokumenter', 'Ġkinn', 'et', 'Ġ.', 'Ġj', 'Ġ-', 'Ġ9', 'Ġ-', 'Ġ45', 'Ġ|', 'ĠR', 'Ãħ', 'Ġ.', 'Ġ5', 'Ġj', 'Ġ.', 'Ġ.', 'Ġ|', 'Ġbak', 'i', 'Ġpie', 'Ġmappe', 'Ġ:', 'Ġ|', 'Ġ|', 'Ġma', 'Ġan', 'ĠÃħ', 'ĠAr', 'ĠKA', 'Ġ=', 'Ġ=', 'Ġ-', 'ĠHed', 'Ġ5', 'Ġ"', 'Ġkor', 'k', 'ĠÃ¥', 'ĠPal', 'Ġ.', 'Ġl', 's', 'Ġmm', 'e', 'ĠHed', 'Ġ5', 'Ġi', 'Ġg', 's', 'ĠÃ¥', 'ĠXX', 'ĠKR', 'Ġ!', 'Ġelt', 'ĠÃħ', 'Ġ13', 'ĠâĢĶ', 'ĠMA', 'E', 'Ġ>', 'ĠÃħ', 'ĠI', 'ĠâĢĶ', 'ĠâĢĶ', 'Ġll', 'ĠTO', 'ĠAR', 'E', 'ĠTr', 'ĠPT', 'ĠâĢĶ', 'ĠâĢĶ', 'Ġtl', 'Ġiii', 'Ġ3', 'Ġ;', 'Ġ>', 'Ġ|', 'Ġ!', 'Ġ2', 'Ġq', 'ĠN', 'b', 'ĠJ', 'Ã¥', 'Ġ34', 'Ġd', 'k', 'Ġ3', 'Ġ.', 'ĠÂ»', 'Ġ6', 'Ġ)', 'Ġ=', 'ĠSu', 'i', 'Ġ=', 'Ġ>', 'Ġir', 'Ġss', 'Ġd', 'ĠÃ¥', 'Ġ.', 'ĠFE', 'Ġ-', 'ĠO', 'Ġ310', '21', 'Ġ06', '135', '85', '3', 'Ġem', 'sg', 'Ġl', "Ġ'", 'Ġ;', 'Ġ-', 'Ġ3', 'ĠÃ©', 'ĠÃ¦', 'Ġ$', '8', 'ĠâĢĶ', 'Ġ-', 'ĠâĢĶ', 'ĠEss', 'Ġ|', 'ĠIN', 'X', 'Ġ&', 'Ġ:', 'ĠFE', 'Ġ;', 'Ġle', 'Ġ,', 'ĠÃ¥', 'Ġs', 'Ġ)', 'Ġ.', 'Ġ07', '.', '29', 'Ġ=', 'Ġ,', 'Ġ9', '.', '17', 'Ġ.', 'Ġ0', 'Ġanse', 'n', 'Ġ,', 'ĠHelen', 'Ã¦', 'ĠL', 'nr', 'Ġ.', 'Ġ65', '97', 'Ġrist', 'iens', 'en', 'ĠDRAMMEN', 'ĠSY', 'KE', 'HUS', 'Ġkt', 'r', '.', 'sv', '.', 'Jo', 'nn', 'y', 'ĠJ', '.', 's', 'Ġh', 's', 'Ġ.', 'Ġimm', 'en', 'Ġ.', 'ĠR', 'Ġfall', 'Ã¸ya', 'Ġ53', ',', '300', '0', 'ĠDr', 'm', 'Ġ.', 'ĠSyke', 'journal', 'Ġ)', 'Ġimm', 'en', 'Ġt', 'k', 'Ġ.', 'Ġdr', '.', 'Ni', 'ls', 'son', 'ĠÃ¥', 'Ġ$', 'Ġlig', 'Ġ|', 'Ġ|', 'Ġ|', 'Ġ.', 'ĠBlod', 'gruppe', 'Ġ:', 'ĠRh', 'Ġ:', 'Ġ;', 'Ġ2', 'Ġ|', 'Ġ24', 'Ġ|', 'ĠD', '[SEP]']
+AFTER
+{'BEFORE': 12736, 'OVERLAP': 4284, 'BEFOREOVERLAP': 516, 'AFTER': 1158}
+{'BEFORE': 0.3669519472361809, 'OVERLAP': 1.0909197012138188, 'BEFOREOVERLAP': 9.057170542635658, 'AFTER': 4.035837651122625}
+Training Epoch: 0

@@ -51,12 +51,14 @@ class Preprocess:
         self.__config.read("./src/preprocess/config.ini")
 
     def run(self, data: str):
+        data = data.split()
         tokenized_dataset = self.__tokenizer(
             data,
             padding="max_length",
             stride=self.__stride,
             max_length=self.__max_length,
             truncation=True,
+            is_split_into_words=True,
             return_offsets_mapping=True,
             return_overflowing_tokens=True,
         ).encodings
@@ -106,6 +108,8 @@ class Preprocess:
         stride: int = 16,
     ):
         label2id, id2label = self.__util.get_tags(task, tags_name)
+        print(label2id)
+        print(id2label)
         tokenized_dataset = []
         
         for row in data:
@@ -172,6 +176,11 @@ class Preprocess:
         train, val = train_test_split(
             train, train_size=self.__train_size, random_state=42
         )
+        
+        print(val[-1]['ids'])
+        print(val[-1]["tokens"])
+        print(val[-1]['labels'])
+        
         
         if self.__config.getboolean("main", "window"):
             train = self.sliding_window(train, window_size=window_size, stride=stride)

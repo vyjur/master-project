@@ -56,6 +56,7 @@ class Util:
                 tags.add(tag)
 
         tags = list(tags)
+        tags.sort()
 
         label2id = {k: v for v, k in enumerate(tags)}
         id2label = {v: k for v, k in enumerate(tags)}

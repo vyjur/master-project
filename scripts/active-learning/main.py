@@ -89,7 +89,7 @@ patients_df = pd.read_csv('./data/helsearkiv/patients.csv')
 
 print("##### Calculating MNLP ... ")
 for i, doc in enumerate(files):
-    if file.split("_")[1].strip() not in patients_df['journalidentifikator']
+    if doc.split("_")[1].strip() not in patients_df['journalidentifikator']
         reader = pypdf.PdfReader('./data/helsearkiv/journal/' + doc)
         for j, page in enumerate(reader.pages):
             pre_output = preprocess.run(page.extract_text())
@@ -230,7 +230,7 @@ for page in sorted_data[:1200]:
             'TIMEX': timex,
             'Context': None
         })
-        df.to_csv(f"./data/helsearkiv/batch/ner/{BATCH}/{count // PAGES}.csv")
+        df.to_csv(f"./data/helsearkiv/batch/ner/{BATCH}-local/{count // PAGES}.csv")
         
         merged_entities = []
         merged_offsets = []
@@ -278,7 +278,7 @@ for i, (path, file) in enumerate(entity_files):
     word_id = 1
     annot_id = 1
     with open(path.replace(in_folder_path, out_folder_path).replace(file, f"b{BATCH}-{file}"), 'w') as out:
-        content += f"#Text={" ".join(df['Text'].astype(str).values)}"
+        content += f"#Text={" ".join(df['Text'].astype(str).values).replace('[UNK]', '').replace('[SEP]', '').replace('[CLS]', '').replace('[PAD]', '')}"
         for j, row in df.iterrows():
             row['Text'] = str(row['Text'])
             words = row['Text'].split()

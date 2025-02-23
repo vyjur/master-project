@@ -32,7 +32,7 @@ class TRExtract:
             if tag_type.name == self.input_tag_type:
                 self.input_tag_type = tag_type
                 break
-                
+        
         load = self.__config["MODEL"].getboolean("load")
         print("LOAD", load)
 
@@ -75,7 +75,7 @@ class TRExtract:
                 for _, row in dataset_tre.iterrows():
                     dataset.append(
                         {
-                            "sentence": convert_to_input(row),
+                            "sentence": convert_to_input(self.input_tag_type, row),
                             "relation": row['DCT'],
                         }
                     )
@@ -180,7 +180,7 @@ class TRExtract:
             task == Dataset.TLINK and save_directory == "./src/textmining/tre/model"
         ):
             save_directory += "/tlink"
-
+            
         self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
             load,
             save_directory,
@@ -198,10 +198,10 @@ class TRExtract:
         return self.__model.tokenizer
 
     def get_max_length(self):
-        return self.__config.getint("MODEL", "max_length")
+        return self.__config.getint("train.parameters", "max_length")
     
     def get_stride(self):
-        return self.__config.getint("MODEL", "stride")
+        return self.__config.getint("train.parameters", "stride")
 
     def __run(self, data):
         output = self.__model.predict([val.ids for val in data])

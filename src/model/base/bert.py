@@ -4,7 +4,7 @@ from transformers import (
     AutoModelForSequenceClassification,
     AutoTokenizer,
 )
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, classification_report
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
@@ -58,7 +58,7 @@ class BERT(nn.Module):
         self.__tags_name = tags_name
         self.__project_name = project_name
         self.__util = util if util is not None else Util()
-
+        
         if load:
             if task == Task.TOKEN:
                 self.__model = AutoModelForTokenClassification.from_pretrained(
@@ -128,10 +128,12 @@ class BERT(nn.Module):
             tokenizer=self.tokenizer,
             aggregation_strategy="simple",
         )
+        
+        self.__model = self.__model.to(self.__device)
 
     def train(self, config = None):
         
-        with wandb.init(project=f"{self.__project_name}-{self.__task}-nn-model".replace('"', "")):  # type: ignore
+        with wandb.init(project=f"{self.__project_name}-{self.__task}-bert-model".replace('"', "")):  # type: ignore
             if config is None:
                 config = wandb.config
 
@@ -163,6 +165,7 @@ class BERT(nn.Module):
             
             if hasattr(self, '__model'):
                 del self.__model
+                gc.collect()
                 torch.cuda.empty_cache()
 
             if self.__task == Task.TOKEN:
@@ -253,6 +256,8 @@ class BERT(nn.Module):
             )
             self.__util.validate_report(labels, predictions)
             
+            
+            
             if "intra" in self.__processed and "inter" in self.__processed:
                 intra_loader = DataLoader(self.__processed["intra"], **train_params)
                 inter_loader = DataLoader(self.__processed["inter"], **train_params)
@@ -281,28 +286,30 @@ class BERT(nn.Module):
                 
                 
     def predict(self, data, pipeline=False):
+        self.__model.eval()
+        
         if pipeline:
             return self.__pipeline(data)
         else:
-            self.__model = self.__model.to(self.__device)
 
-            mask = np.where(np.array(data) == 0, 0, 1)
-            outputs = self.__model(
-                input_ids=torch.tensor(data, dtype=torch.long).to(self.__device),
-                attention_mask=torch.tensor(mask, dtype=torch.long).to(self.__device),
-            )
-            if self.__task == Task.TOKEN:
-                pred = torch.argmax(outputs.logits, dim=2)
-                prob = nn.functional.log_softmax(outputs.logits, dim=-1)
-                max_log_prob, _ = torch.max(prob, dim=-1)
-                total_log_prob = max_log_prob.sum(dim=1)
-                prob = total_log_prob / len(pred)
-            else:
-                pred = torch.argmax(outputs.logits, dim=1).tolist()
-                prob = [
-                    max(all_prob)
-                    for all_prob in nn.functional.log_softmax(outputs.logits, dim=-1)
-                ]
+            with torch.no_grad():
+                mask = np.where(np.array(data) == 0, 0, 1)
+                outputs = self.__model(
+                    input_ids=torch.tensor(data, dtype=torch.long).to(self.__device),
+                    attention_mask=torch.tensor(mask, dtype=torch.long).to(self.__device),
+                )
+                if self.__task == Task.TOKEN:
+                    pred = torch.argmax(outputs.logits, dim=2)
+                    prob = nn.functional.log_softmax(outputs.logits, dim=-1)
+                    max_log_prob, _ = torch.max(prob, dim=-1)
+                    total_log_prob = max_log_prob.sum(dim=1)
+                    prob = total_log_prob / len(pred)
+                else:
+                    pred = torch.argmax(outputs.logits, dim=1).tolist()
+                    prob = [
+                        max(all_prob)
+                        for all_prob in nn.functional.log_softmax(outputs.logits, dim=-1)
+                    ]
         return pred, prob
 
     def __train(
