@@ -19,6 +19,28 @@ entity_files = [
     if os.path.isfile(os.path.join(folder_path, f))
 ]
 
+# MEDICAL ENTITY
+folder_path = "./data/helsearkiv/batch/dtr/"
+
+batch_files = [
+    folder_path + f
+    for f in os.listdir(folder_path)
+    if os.path.isfile(os.path.join(folder_path, f))
+]
+
+entity_files.extend(batch_files)
+
+# TIMEX
+folder_path = "./data/helsearkiv/batch/dtr/"
+
+batch_files = [
+    folder_path + f
+    for f in os.listdir(folder_path)
+    if os.path.isfile(os.path.join(folder_path, f))
+]
+
+entity_files.extend(batch_files)
+
 folder_path = "./data/helsearkiv/annotated/relation/"
 
 relation_files = [
@@ -26,6 +48,17 @@ relation_files = [
     for f in os.listdir(folder_path)
     if os.path.isfile(os.path.join(folder_path, f))
 ]
+
+
+folder_path = "./data/helsearkiv/batch/tlink/"
+
+batch_files = [
+    folder_path + f
+    for f in os.listdir(folder_path)
+    if os.path.isfile(os.path.join(folder_path, f))
+]
+
+relation_files.extend(batch_files)
 
 manager = DatasetManager(entity_files, relation_files, window_size=512)
 
