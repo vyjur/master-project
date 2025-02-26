@@ -90,15 +90,16 @@ class TRExtract:
                 
                 for i, rel in dataset_tre.iterrows():
                     
-                    e_i = dataset_ner[dataset_ner['Id'] == rel['FROM_Id']]
-                    e_j = dataset_ner[dataset_ner['Id'] == rel['TO_Id']]
+                    if e_i['Context'].str.strip().eq("") or e_i['Context'].isna() or e_j['Context'].str.strip().eq("") or e_j['Context'].isna():
+                        e_i = dataset_ner[dataset_ner['Id'] == rel['FROM_Id']]
+                        e_j = dataset_ner[dataset_ner['Id'] == rel['TO_Id']]
                     
-                    if len(e_i) > 0 and len(e_j) > 0:
-                        e_i = e_i.iloc[0]
-                        e_j = e_j.iloc[0]
-                    else:
-                        continue
-                
+                        if len(e_i) > 0 and len(e_j) > 0:
+                            e_i = e_i.iloc[0]
+                            e_j = e_j.iloc[0]
+                        else:
+                            continue
+                    
                     if self.tlink_input == TLINK_INPUT.DIST:
                         cat, distance = self.__class__.classify_tlink(e_i, e_j, True)
                     else:
@@ -153,7 +154,7 @@ class TRExtract:
                         sentence_j = convert_to_input(self.input_tag_type, e_j, single=False, start=False)
                         
                         cat = self.__class__.classify_tlink(e_i, e_j)
-                        words = f"{sentence_i} [SEP] {sentence_j}"
+                        words = self.classify_sep(e_i, e_j, cat, distance)
 
                         relation_pair = {
                             "sentence": words,
@@ -227,22 +228,26 @@ class TRExtract:
             if e_j is None:
                 raise ValueError("Missing value for e_j")
             cat, distance = self.__class__.classify_tlink(e_i, e_j, True)
-            sentence_i = convert_to_input(self.input_tag_type, e_i, single=False, start=True)
-            if cat == SENTENCE.INTRA:
-                e_j['Context'] = sentence_i
-            
-            sentence_j = convert_to_input(self.input_tag_type, e_j, single=False, start=False)
-            
-            if cat == SENTENCE.INTRA:
-                text = sentence_j
-            else:
-                if self.tlink_input == TLINK_INPUT.DIST:
-                    text = f"{sentence_i} [SEP_{distance}] {sentence_j}"
-                else:
-                    text = f"{sentence_i} [SEP] {sentence_j}"
+            text = self.classify_sep(e_i, e_j, cat, distance)
                         
 
         return self.__run(self.preprocess.run(text))
+    
+    def classify_sep(self, e_i, e_j, cat, distance):
+        sentence_i = convert_to_input(self.input_tag_type, e_i, single=False, start=True)
+        if cat == SENTENCE.INTRA:
+            e_j['Context'] = sentence_i
+        
+        sentence_j = convert_to_input(self.input_tag_type, e_j, single=False, start=False)
+        
+        if cat == SENTENCE.INTRA:
+            text = sentence_j
+        else:
+            if self.tlink_input == TLINK_INPUT.DIST:
+                text = f"{sentence_i} [SEP_{distance}] {sentence_j}"
+            else:
+                text = f"{sentence_i} [SEP] {sentence_j}"
+        return text
    
     @staticmethod
     def classify_tlink(e_i, e_j, distance=False):

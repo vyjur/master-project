@@ -12,12 +12,14 @@ from structure.enum import Dataset
 from util import compute_mnlp
 from types import SimpleNamespace
 
-BATCH = 1
+BATCH = 1001
 PAGES = 36
 
-os.mkdir(f'./data/helsearkiv/batch/ner/{BATCH}-local')
-
-
+if not os.path.exists(f'./data/helsearkiv/batch/ner/{BATCH}-local'):
+    os.mkdir(f'./data/helsearkiv/batch/ner/{BATCH}-local')
+    print(f"Folder local has been created.")
+else:
+    print(f"Folder local already exists.")
 
 print("##### Start active learning for NER... ######")
 
@@ -89,7 +91,7 @@ patients_df = pd.read_csv('./data/helsearkiv/patients.csv')
 
 print("##### Calculating MNLP ... ")
 for i, doc in enumerate(files):
-    if doc.split("_")[1].strip() not in patients_df['journalidentifikator']
+    if doc.split("_")[1].strip() not in patients_df['journalidentifikator']:
         reader = pypdf.PdfReader('./data/helsearkiv/journal/' + doc)
         for j, page in enumerate(reader.pages):
             pre_output = preprocess.run(page.extract_text())
@@ -278,7 +280,7 @@ for i, (path, file) in enumerate(entity_files):
     word_id = 1
     annot_id = 1
     with open(path.replace(in_folder_path, out_folder_path).replace(file, f"b{BATCH}-{file}"), 'w') as out:
-        content += f"#Text={" ".join(df['Text'].astype(str).values).replace('[UNK]', '').replace('[SEP]', '').replace('[CLS]', '').replace('[PAD]', '')}"
+        content += f"#Text={" ".join(df['Text'].astype(str).values).replace('[UNK]', '').replace('[SEP]', '').replace('[CLS]', '').replace('[PAD]', '').strip().replace("  ", " ")}"
         for j, row in df.iterrows():
             row['Text'] = str(row['Text'])
             words = row['Text'].split()

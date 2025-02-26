@@ -10,8 +10,18 @@ from model.util import Util
 from structure.enum import Task
 import wandb
 from model.tuning.setup import TuningConfig
+import numpy as np
 
 sweep_config = TuningConfig.get_config()
+
+import random
+seed = 42
+torch.manual_seed(seed)
+torch.cuda.manual_seed_all(seed)  # For multi-GPU
+random.seed(seed)
+np.random.seed(seed)
+torch.use_deterministic_algorithms(True)
+torch.backends.cudnn.deterministic = True
 
 START_TAG = "<START>"
 STOP_TAG = "<STOP>"

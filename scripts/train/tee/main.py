@@ -18,6 +18,17 @@ entity_files = [
     if os.path.isfile(os.path.join(folder_path, f))
 ]
 
+folder_path = "./data/helsearkiv/batch/tee/"
+
+batch_files = [
+    folder_path + f
+    for f in os.listdir(folder_path)
+    if os.path.isfile(os.path.join(folder_path, f))
+]
+
+entity_files.extend(batch_files)
+
+
 folder_path = "./data/helsearkiv/annotated/relation/"
 
 relation_files = [
@@ -26,7 +37,7 @@ relation_files = [
     if os.path.isfile(os.path.join(folder_path, f))
 ]
 
-manager = DatasetManager(entity_files, relation_files, window_size=256)
+manager = DatasetManager(entity_files, relation_files, window_size=50)
 
 for i, conf in enumerate(configs):
     if os.path.isdir(folder + conf) or conf != 'b-bert.ini':

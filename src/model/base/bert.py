@@ -21,6 +21,15 @@ from structure.enum import Task
 from model.tuning.setup import TuningConfig
 import gc
 
+import random
+seed = 42
+torch.manual_seed(seed)
+torch.cuda.manual_seed_all(seed)  # For multi-GPU
+random.seed(seed)
+np.random.seed(seed)
+torch.use_deterministic_algorithms(True)
+torch.backends.cudnn.deterministic = True
+
 sweep_config = TuningConfig.get_config()
 
 

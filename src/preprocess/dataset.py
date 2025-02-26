@@ -64,6 +64,13 @@ class DatasetManager:
             all_entity_df = []
             for file in entity_files:
                 df = pd.read_csv(file, delimiter=',')
+                if 'page' not in df.columns:
+                    df['page'] = np.nan
+                if 'file' not in df.columns:
+                    df['file'] = ''
+                    
+                df = df[['Text', 'Id', 'MedicalEntity', 'DCT', 'TIMEX', 'Context', 'file', 'page']]
+
                 all_entity_df.append(df)
             self.__entity_df = pd.concat(all_entity_df).reset_index()
             
@@ -76,23 +83,27 @@ class DatasetManager:
             
             def local_get_context_window(idx):
                 # Get the flattened index of the current token
-                return self.get_context_window(idx, self.__entity_df['TIMEX'], tokens_expanded)
+                return self.get_context_window(idx, self.__entity_df['Text'], tokens_expanded)
 
             # Apply function to each row
             
             if context:
-                # Initialize "Context" column with empty strings or NaNs
-                self.__entity_df["Context"] = ''
-
                 # Create a mask for rows where MedicalEntity or TIMEX is not NA
                 mask = self.__entity_df["MedicalEntity"].notna() | self.__entity_df["TIMEX"].notna()
 
+                # Create a mask to check for rows where Context is empty
+                empty_context_mask = self.__entity_df["Context"] == ''
+
+                # Combine both masks: apply only to rows where Context is empty and MedicalEntity or TIMEX is not NA
+                combined_mask = mask & empty_context_mask
+
                 # Apply get_context_window only to the filtered rows
-                self.__entity_df.loc[mask, "Context"] = self.__entity_df.loc[mask].index.to_series().apply(local_get_context_window)
+                self.__entity_df.loc[combined_mask, "Context"] = self.__entity_df.loc[combined_mask].index.to_series().apply(local_get_context_window)
 
             all_relation_df = []
             for file in relation_files:
                 df = pd.read_csv(file, delimiter=',')
+                df = df[['FROM', 'FROM_Id', 'FROM_CONTEXT', 'TO', 'TO_Id', 'TO_CONTEXT', 'RELATION']]
                 all_relation_df.append(df)
             self.__relation_df = pd.concat(all_relation_df)
 

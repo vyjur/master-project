@@ -100,9 +100,11 @@ class TEExtract:
     def get_stride(self):
         return self.__config.getint("train.parameters", "stride")
 
-    def __model_run(self, data):
-        output, _ = self.__model.predict([val.ids for val in data])
-        predictions = [[self.id2label[int(j.cpu().numpy())] for j in i] for i in output]
+    def __model_run(self, data, prob=False):
+        output, prob = self.__model.predict([val.ids for val in data])
+        predictions = [self.id2label[int(i)] for i in output]
+        if prob:
+            return predictions, prob
         return predictions
 
     def get_model(self):
@@ -130,10 +132,10 @@ class TEExtract:
         return text
             
     def __post_rules(self, full_text, text, ttype, value):
-        dct = datetime.strptime(self.__heideltime.document_time, "%Y-%m-%d")
         check_context = self.__get_window(full_text, text, window_size=3)
 
         if self.__heideltime.document_time is not None:
+            dct = datetime.strptime(self.__heideltime.document_time, "%Y-%m-%d")
             if ttype == "DURATION":
                 return convert_duration(check_context, value, dct) 
         return value 
@@ -197,14 +199,14 @@ class TEExtract:
             
         return dcts
     
-    def predict_sectime(self, data):
+    def predict_sectime(self, data, prob=False):
         data = {
             'Context': data['context'],
             'Text': data['Text']
         }
         text = convert_to_input(self.input_tag_type, data, True, True)
         # TODO: we need to have preprocessing stage here
-        return self.__model_run(self.preprocess.run(text))
+        return self.__model_run(self.preprocess.run(text), prob)
 
 
     def __get_window(self, full_text, timex_text, window_size=50):

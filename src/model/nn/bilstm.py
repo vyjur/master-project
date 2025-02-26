@@ -18,7 +18,6 @@ class Model(nn.Module):
         self.vocab_size = vocab_size
         self.tag_to_ix = tag_to_ix
         self.tagset_size = len(tag_to_ix)
-        print("HASE MODE", self.tagset_size)
 
         self.batch = batch
 
