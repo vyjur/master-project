@@ -1,3 +1,178 @@
-
-(25, 'Inappropriate ioctl for device')
-/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/bin/python: can't open file '/cluster/home/julievt/master-project/./scripts/active-learning/ner.py': [Errno 2] No such file or directory
+[nltk_data] Downloading package punkt to
+[nltk_data]     /cluster/home/julievt/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     /cluster/home/julievt/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
+/cluster/home/julievt/master-project/./scripts/active-learning/ner.py:300: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1-1' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'

@@ -119,10 +119,12 @@ class Preprocess:
                 
                 words = []
                 annot = []
+                terms = []
                 for i, word in enumerate(temp_words):
                     for token in str(word).split():
                         words.append(token)
                         annot.append(temp_annot[i])
+                        terms.append(i)
                     
                 split_into_words = True
             else:
@@ -140,7 +142,7 @@ class Preprocess:
                 return_overflowing_tokens=True,
             )
 
-            for encoding in tokenized.encodings:
+            for j, encoding in enumerate(tokenized.encodings):
                 if task == Task.TOKEN:
                     curr_annot = [
                         annot[i] if i is not None else "O"  # type: ignore
@@ -149,8 +151,12 @@ class Preprocess:
                     word_length = [
                         len(words[i]) if i is not None else None for i in encoding.word_ids
                     ]
-                    tokens_annot = self.__util.tokens_mapping(encoding, curr_annot, word_length)
-
+                    curr_terms = [
+                        terms[i] if i is not None else None for i in encoding.word_ids
+                    ]
+                    tokens_annot = self.__util.tokens_mapping(encoding, curr_annot, word_length, curr_terms)
+                elif task == Task.SEQUENCE and j != 0:
+                    break
                 encoding_dict = {
                     "ids": encoding.ids,
                     "type_ids": encoding.type_ids,
@@ -176,11 +182,6 @@ class Preprocess:
         train, val = train_test_split(
             train, train_size=self.__train_size, random_state=42
         )
-        
-        print(val[-1]['ids'])
-        print(val[-1]["tokens"])
-        print(val[-1]['labels'])
-        
         
         if self.__config.getboolean("main", "window"):
             train = self.sliding_window(train, window_size=window_size, stride=stride)

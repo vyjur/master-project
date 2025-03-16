@@ -13,6 +13,7 @@ from util import compute_mnlp
 from types import SimpleNamespace
 from datetime import datetime
 from collections import Counter
+import itertools
 
 def most_common_element(lst):
     counts = Counter(lst)
@@ -23,8 +24,9 @@ def most_common_element(lst):
     # Otherwise, return the numerically largest
     return max(candidates, key=lambda x: (len(str(x)), x))
 
-BATCH = 1000
+BATCH = 3
 SIZE = 50
+PAGES = 4300
 
 os.mkdir(f'./data/helsearkiv/batch/ner/{BATCH}-local')
 os.mkdir(f'./data/helsearkiv/batch/ner/{BATCH}-webanno')
@@ -60,7 +62,6 @@ preprocess = Preprocess(
     ner.get_tokenizer(), ner.get_max_length(), ner.get_stride(), ner.get_util()
 )
 
-
 files = []
 raw_files = os.listdir('./data/helsearkiv/journal')
 annotated_files = os.listdir('./data/helsearkiv/annotated')
@@ -70,14 +71,13 @@ batch_path = './data/helsearkiv/batch/ner/'
 csv_files = [f for f in os.listdir(batch_path) if f.endswith('.csv')]
 
 # Read and merge all CSV files into one DataFrame
-df_list = [pd.read_csv(os.path.join(folder_path, file)) for file in csv_files]
+df_list = [pd.read_csv(os.path.join(batch_path, file)) for file in csv_files]
 if df_list:
     batch_df = pd.concat(df_list, ignore_index=True)
 else:
     batch_df = pd.DataFrame(columns=["file", "page", "prob"])
 
 files = [file for file in raw_files if file.replace('.pdf', '') not in annotated_files]
-files = ['441e4333-7370-4a35-a073-5ee92412b249_338B5188-0CE6-471E-B04C-972E9C54AB84.pdf']
 
 al_data = []
 
@@ -89,11 +89,16 @@ print("##### Calculating MNLP ... ")
 for i, doc in enumerate(files):
     if doc.split("_")[1].strip() not in patients_df['journalidentifikator']:
         reader = pypdf.PdfReader('./data/helsearkiv/journal/' + doc)
-        for j, page in enumerate(reader.pages[100:101]):
+        for j, page in enumerate(reader.pages):
             if ((batch_df['file'] == doc) & (batch_df['page'] == j)).any():
-                print("Row with the same file and page exists. Continuing...")
-            pre_output = preprocess.run(page.extract_text())
-            prob = compute_mnlp(pre_output, model)
+                continue
+            text = page.extract_text().strip()
+            
+            if len(text) < 10:
+                prob = 100000
+            else: 
+                pre_output = preprocess.run(text)
+                prob = compute_mnlp(pre_output, model)
             
             al_data.append({
                 'file': doc,
@@ -102,6 +107,7 @@ for i, doc in enumerate(files):
             })
         
 sorted_data = sorted(al_data, key=lambda x: x['prob'])
+#sorted_data = pd.DataFrame(sorted_data)
 
 count = 0
 info_file = []
@@ -117,30 +123,30 @@ merged_offsets = []
 merged_files = []
 merged_pages = []
 
-
-for page in sorted_data[:]:
+for index, page in enumerate(sorted_data[:PAGES]):
     reader = pypdf.PdfReader('./data/helsearkiv/journal/' + page['file'])
     info_file.append(page)
     count += 1
-    text = reader.pages[100].extract_text()
-    
-    print("###ORIG:", text)
-    
+    #text = reader.pages[page['page']].extract_text()
+    text = reader.pages[page['page']].extract_text()
+ 
     cleaned = re.sub(r"[\"'“”‘’]", "", text)
     cleaned = cleaned.replace("Ä", "Æ")
     cleaned = cleaned.replace("Ö", "Ø")
     cleaned = cleaned.replace("¢", "")
     cleaned = cleaned.replace("¥", "")
     cleaned = cleaned.replace("™", "")
+    cleaned = cleaned.replace("®", "")
 
-    print("#### CLEANED:", cleaned)
     preoutput = preprocess.run(cleaned)
-    print("####preprocess", preoutput)
     output = ner.run(preoutput)
-    print("output:", output)
    
     for i, pre in enumerate(preoutput):
-        words = preprocess.decode(pre.ids).split(' ')
+        decoded = preprocess.decode(pre.ids)
+        cleaned = decoded.replace("[UNK]", "").replace("[SEP]", "").replace("[CLS]", "").replace("[PAD]", "").replace("[]", "")
+        if len(cleaned) < 10:
+            continue
+        words = decoded.split(' ')
 
         word_count = 0
         curr = ''
@@ -165,7 +171,7 @@ for page in sorted_data[:]:
 
             if curr.strip() == words[word_count].strip():
                 cat = most_common_element(cats)
-                print("###BAMAMAMAM", curr, cats, cat)
+                print(words[word_count], cats)
                 curr = ''
                 word_count += 1
                 
@@ -176,58 +182,58 @@ for page in sorted_data[:]:
         assert len(words) == len(annot) == len(offsets), f"Word count:{word_count}, LEN words: {len(words)}, offset/annot: {len(offsets)}/{len(annot)}, \n words:{words} \n tokens: {token} \n curr: {curr}, word: {words[word_count]}, page: {page['page']}, file: {page['file']}"      
             
         # Merge different words together
-        print("### START")
         for j, word in enumerate(words):
-            print(word, annot[j])
-            if annot[j] == 'O':
-                merged_entities.append(word)
-                merged_annots.append(annot[j])
-                merged_offsets.append(offsets[j])
-                
-                merged_files.append(page['file'])
-                merged_pages.append(page['page'])
-            elif annot[j].startswith('B-'):
-                merged_entities.append(word)
-                merged_annots.append(annot[j].replace('B-', ''))
-                merged_offsets.append(offsets[j])
-                
-                merged_files.append(page['file'])
-                merged_pages.append(page['page'])
-            else:
-                if len(merged_entities) > 0 and merged_annots[-1] != 'O':
-                    merged_entities[-1] += ' ' + word
-                    merged_offsets[-1] = (merged_offsets[-1][0], offsets[j][1])
-                else:
+            if word.strip() != '':
+                if annot[j] == 'O':
                     merged_entities.append(word)
-                    merged_annots.append(annot[j].replace('I-', ''))
+                    merged_annots.append(annot[j])
                     merged_offsets.append(offsets[j])
                     
                     merged_files.append(page['file'])
                     merged_pages.append(page['page'])
-                
-        if count % SIZE == 0:
-            df = pd.DataFrame({
-                        'Text': [word.replace("[UNK]", "").replace("[SEP]", "").replace("[CLS]", "").replace("PAD", "") for word in merged_entities],
-                        'Id': [f"{offset[0]}-{offset[1]}"for offset in merged_offsets],
-                        'MedicalEntity': merged_annots,
-                        'DCT': [None for _ in range(len(merged_annots))],
-                        'TIMEX': [None for _ in range(len(merged_annots))],
-                        'Context': [None for _ in range(len(merged_annots))],
-                        'sentence-id': '',
-                        'Relation': '',
-                        'file':merged_files,
-                        'page':merged_pages
-                    })
-            df.to_csv(f"./data/helsearkiv/batch/ner/{BATCH}-local/{count // SIZE}.csv")
-            
-            merged_entities = []
-            merged_annots = []
-            merged_offsets = []
-            merged_files = []
-            merged_pages = []
-            
+                elif annot[j].startswith('B-'):
+                    merged_entities.append(word)
+                    merged_annots.append(annot[j].replace('B-', ''))
+                    merged_offsets.append(offsets[j])
+                    
+                    merged_files.append(page['file'])
+                    merged_pages.append(page['page'])
+                else:
+                    if len(merged_entities) > 0 and merged_annots[-1] == annot[j].replace('I-', '') and merged_files[-1] == page['file'] and merged_pages[-1] == page['page']:
+                        merged_entities[-1] += ' ' + word
+                        merged_offsets[-1] = (merged_offsets[-1][0], offsets[j][1])
+                    else:
+                        merged_entities.append(word)
+                        merged_annots.append(annot[j].replace('I-', ''))
+                        merged_offsets.append(offsets[j])
+                        
+                        merged_files.append(page['file'])
+                        merged_pages.append(page['page'])
+                    
+    if count % SIZE == 0:
+        print("INSIDE", count, len(merged_entities))
+        df = pd.DataFrame({
+                    'Text': [word.replace("[UNK]", "").replace("[SEP]", "").replace("[CLS]", "").replace("[PAD]", "").replace("[]", "") for word in merged_entities],
+                    'Id': [f"{offset[0]}-{offset[1]}"for offset in merged_offsets],
+                    'MedicalEntity': merged_annots,
+                    'DCT': [None for _ in range(len(merged_annots))],
+                    'TIMEX': [None for _ in range(len(merged_annots))],
+                    'Context': [None for _ in range(len(merged_annots))],
+                    'sentence-id': '',
+                    'Relation': '',
+                    'file':merged_files,
+                    'page':merged_pages
+                })
+        df.to_csv(f"./data/helsearkiv/batch/ner/{BATCH}-local/{count // SIZE}.csv")
+        
+        merged_entities = []
+        merged_annots = []
+        merged_offsets = []
+        merged_files = []
+        merged_pages = []            
             
 if len(merged_entities) > 0:
+    
     df = pd.DataFrame({
         'Text': [word.replace("[UNK]", "").replace("[SEP]", "").replace("[CLS]", "").replace("PAD", "").replace("[]", "") for word in merged_entities],
         'Id': [f"{offset[0]}-{offset[1]}"for offset in merged_offsets],
@@ -240,7 +246,7 @@ if len(merged_entities) > 0:
         'file':merged_files,
         'page':merged_pages
         })
-    df.to_csv(f"./data/helsearkiv/batch/ner/{BATCH}-local/{count // SIZE}.csv")
+    df.to_csv(f"./data/helsearkiv/batch/ner/{BATCH}-local/{count // SIZE + 1}.csv")
 df = pd.DataFrame(info_file)
 df.to_csv(f'./data/helsearkiv/batch/ner/{BATCH}.csv')
 

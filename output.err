@@ -1,25 +1,2 @@
-
-(25, 'Inappropriate ioctl for device')
-[nltk_data] Downloading package punkt to
-[nltk_data]     /cluster/home/julievt/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package punkt to
-[nltk_data]     /cluster/home/julievt/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[HeidelTime] HeidelTime has not found any sentence tokens in this document. HeidelTime needs sentence tokens tagged by a preprocessing UIMA analysis engine to do its work. Please check your UIMA workflow and add an analysis engine that creates these sentence tokens.
-[HeidelTime] HeidelTime has not found any sentence tokens in this document. HeidelTime needs sentence tokens tagged by a preprocessing UIMA analysis engine to do its work. Please check your UIMA workflow and add an analysis engine that creates these sentence tokens.
-[HeidelTime] HeidelTime has not found any sentence tokens in this document. HeidelTime needs sentence tokens tagged by a preprocessing UIMA analysis engine to do its work. Please check your UIMA workflow and add an analysis engine that creates these sentence tokens.
-[HeidelTime] HeidelTime has not found any sentence tokens in this document. HeidelTime needs sentence tokens tagged by a preprocessing UIMA analysis engine to do its work. Please check your UIMA workflow and add an analysis engine that creates these sentence tokens.
-[HeidelTime] HeidelTime has not found any sentence tokens in this document. HeidelTime needs sentence tokens tagged by a preprocessing UIMA analysis engine to do its work. Please check your UIMA workflow and add an analysis engine that creates these sentence tokens.
-[HeidelTime] HeidelTime has not found any sentence tokens in this document. HeidelTime needs sentence tokens tagged by a preprocessing UIMA analysis engine to do its work. Please check your UIMA workflow and add an analysis engine that creates these sentence tokens.
-[HeidelTime] HeidelTime has not found any sentence tokens in this document. HeidelTime needs sentence tokens tagged by a preprocessing UIMA analysis engine to do its work. Please check your UIMA workflow and add an analysis engine that creates these sentence tokens.
-[HeidelTime] HeidelTime has not found any sentence tokens in this document. HeidelTime needs sentence tokens tagged by a preprocessing UIMA analysis engine to do its work. Please check your UIMA workflow and add an analysis engine that creates these sentence tokens.
-[HeidelTime] HeidelTime has not found any sentence tokens in this document. HeidelTime needs sentence tokens tagged by a preprocessing UIMA analysis engine to do its work. Please check your UIMA workflow and add an analysis engine that creates these sentence tokens.
-[HeidelTime] HeidelTime has not found any sentence tokens in this document. HeidelTime needs sentence tokens tagged by a preprocessing UIMA analysis engine to do its work. Please check your UIMA workflow and add an analysis engine that creates these sentence tokens.
-[HeidelTime] HeidelTime has not found any sentence tokens in this document. HeidelTime needs sentence tokens tagged by a preprocessing UIMA analysis engine to do its work. Please check your UIMA workflow and add an analysis engine that creates these sentence tokens.
-[HeidelTime] HeidelTime has not found any sentence tokens in this document. HeidelTime needs sentence tokens tagged by a preprocessing UIMA analysis engine to do its work. Please check your UIMA workflow and add an analysis engine that creates these sentence tokens.
-Traceback (most recent call last):
-  File "/cluster/home/julievt/master-project/./scripts/active-learning/convert.py", line 234, in <module>
-    with open(f"./data/helsearkiv/batch/ner/{BATCH}-local/{count // 36}.pdf", "wb") as file:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: './data/helsearkiv/batch/ner/102-local/0.pdf'
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/cassis/cas.py:82: UserWarning: Not mapping external offset [62334] which is not valid within the internal range [0-62333]
+  warnings.warn(

@@ -56,28 +56,47 @@ tlink = TRExtract(
     task=Dataset.TLINK
 )
 
-files = []
-folder_path = "./data/helsearkiv/batch/base_ner/"
+batch_path = './data/helsearkiv/batch/tlink/'
+csv_files = [f for f in os.listdir(batch_path) if f.endswith('.csv')]
 
-entity_files = [
-    folder_path + f
-    for f in os.listdir(folder_path)
-    if os.path.isfile(os.path.join(folder_path, f))
-]
+# TODO: how can we do this
+# Read and merge all CSV files into one DataFrame
+df_list = [pd.read_csv(os.path.join(batch_path, file)) for file in csv_files]
+if df_list:
+    batch_df = pd.concat(df_list, ignore_index=True)
+else:
+    batch_df = pd.DataFrame(columns=[
+        "FROM",
+        "FROM_Id",
+        "FROM_CONTEXT",
+        "TO",
+        "TO_Id",
+        "TO_CONTEXT",
+        "RELATION",
+        "file",
+        "page",
+        "prob"
+    ])
+    
+entities = pd.read_csv("./data/helsearkiv/batch/ner/all-local/all.csv")
+entities = entities[entities["MedicalEntity"].notna()]
+timex = pd.read_csv(f"./data/helsearkiv/batch/tee/{1}.csv")
+timex = timex[timex["TIMEX"].notna()] 
 
-folder_path = "./data/helsearkiv/batch/tee/"
+all_entities = pd.concat([entities, timex])
 
-tee_entity_files = [
-    folder_path + f
-    for f in os.listdir(folder_path)
-    if os.path.isfile(os.path.join(folder_path, f))
-]
+batch_path = './data/helsearkiv/batch/dtr/'
+csv_files = [f for f in os.listdir(batch_path) if f.endswith('.csv') and 'final' in f]
 
-entity_files.extend(tee_entity_files)
+batch_entities = [pd.read_csv(os.path.join(batch_path, file)) for file in csv_files]
+batch_entities = pd.concat(batch_entities, ignore_index=True)  # Combine all into one DataFrame
 
-new_manager = DatasetManager(entity_files, [])
+entities = pd.read_csv(all_entities)
 
-dataset = new_manager.get(Dataset.TLINK)
+filtered_entities = entities.merge(batch_entities, on=["FROM", "FROM_Id", "TO", "TO_Id", "file", "page"], how="left", indicator=True)
+print(len(entities), len(filtered_entities))
+dataset = filtered_entities[filtered_entities["_merge"] == "left_only"].drop(columns=["_merge"])
+
 
 grouped_df = dataset.groupby(['file', 'page'])
 
@@ -100,8 +119,8 @@ for name, group in grouped_df:
                 'TO_Id': e_j['Id'],
                 'TO_CONTEXT':e_j['Context'],
                 'RELATION': pred,
-                'file': name,
-                'page': name,
+                'file': i[0],
+                'page': i[1],
                 'prob': prob
             })
             
