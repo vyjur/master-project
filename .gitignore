@@ -176,5 +176,6 @@ tokenizer.json
 
 /data/helsearkiv
 job.slurm
+/slurm
 
 /src/textmining/tee/heideltime/heideltime-standalone

@@ -72,11 +72,12 @@ class BERT(nn.Module):
             if task == Task.TOKEN:
                 self.__model = AutoModelForTokenClassification.from_pretrained(
                     save, trust_remote_code=True, device_map=self.__device
-                )
+                ).to(self.__device)
             else:
                 self.__model = AutoModelForSequenceClassification.from_pretrained(
                     save, trust_remote_code=True, device_map=self.__device
-                )
+                ).to(self.__device)
+                
             self.tokenizer = AutoTokenizer.from_pretrained(
                 save, trust_remote_code=True, device_map=self.__device
             )
@@ -121,6 +122,7 @@ class BERT(nn.Module):
                     "evaluation_strategy": "epoch",
                     "save_strategy": "epoch",
                     "logging_strategy": "epoch",
+                    "weights": parameters['weights'],
                     "tune": tune,
                 }
                 self.train(wandb.config)
@@ -132,13 +134,13 @@ class BERT(nn.Module):
 
         self.__pipeline = pipeline(
             task=f"{task_text}-classification",
-            model=self.__model.to(self.__device),
+            model=self.__model,
             device=0 if self.__device == "gpu" else None,
             tokenizer=self.tokenizer,
             aggregation_strategy="simple",
         )
         
-        self.__model = self.__model.to(self.__device)
+        
 
     def train(self, config = None):
         
@@ -164,7 +166,7 @@ class BERT(nn.Module):
                 "batch_size": self.__parameters["valid_batch_size"],
                 "shuffle": self.__parameters["shuffle"],
                 "num_workers": self.__parameters["num_workers"],
-            }
+            } 
 
             training_loader = DataLoader(self.__processed["train"], **train_params)
             valid_loader = DataLoader(self.__processed["valid"], **test_params)
@@ -174,8 +176,8 @@ class BERT(nn.Module):
             
             if hasattr(self, '__model'):
                 del self.__model
-                gc.collect()
-                torch.cuda.empty_cache()
+            gc.collect()
+            torch.cuda.empty_cache()
 
             if self.__task == Task.TOKEN:
                 self.__model = AutoModelForTokenClassification.from_pretrained(
@@ -184,7 +186,7 @@ class BERT(nn.Module):
                     num_labels=len(self.__processed["id2label"]),
                     id2label=self.__processed["id2label"],
                     label2id=self.__processed["label2id"],
-                )
+                ).to(self.__device)
             else:
                 self.__model = AutoModelForSequenceClassification.from_pretrained(
                     self.__pretrain,
@@ -192,9 +194,7 @@ class BERT(nn.Module):
                     num_labels=len(self.__processed["id2label"]),
                     id2label=self.__processed["id2label"],
                     label2id=self.__processed["label2id"],
-                )
-
-            self.__model.to(self.__device)
+                ).to(self.__device)
 
             if config["optimizer"] == "adam":
                 optimizer = torch.optim.Adam(  # type: ignore
@@ -222,8 +222,11 @@ class BERT(nn.Module):
                 num_warmup_steps=0,
                 num_training_steps=num_training_steps,
             )
-
-            loss_fn = nn.CrossEntropyLoss(weight=self.__class_weights)
+            
+            if config['weights']:
+                loss_fn = nn.CrossEntropyLoss(weight=self.__class_weights)
+            else:
+                loss_fn = nn.CrossEntropyLoss()
 
             for epoch in range(config["epochs"]):
                 print(f"Training Epoch: {epoch}")
@@ -235,8 +238,8 @@ class BERT(nn.Module):
                     loss_fn,
                 )
 
-                val_loss, val_acc = self.__valid(
-                    testing_loader, loss_fn, self.__processed["id2label"]
+                val_loss, val_acc, macro_f1, weighted_f1 = self.__valid(
+                    valid_loader, loss_fn, self.__processed["id2label"]
                 )
 
                 wandb.log(
@@ -245,6 +248,8 @@ class BERT(nn.Module):
                         "train_accuracy": train_acc,
                         "val_loss": val_loss,
                         "val_acc": val_acc,
+                        "macro_f1": macro_f1,
+                        "weighted_f1": weighted_f1
                     }
                 )  # type: ignore
 
@@ -300,9 +305,12 @@ class BERT(nn.Module):
         if pipeline:
             return self.__pipeline(data)
         else:
+            
+            gc.collect()
+            torch.cuda.empty_cache()
 
             with torch.no_grad():
-                mask = np.where(np.array(data) == 0, 0, 1)
+                mask = np.where(np.array(data) == 3, 0, 1)
                 outputs = self.__model(
                     input_ids=torch.tensor(data, dtype=torch.long).to(self.__device),
                     attention_mask=torch.tensor(mask, dtype=torch.long).to(self.__device),
@@ -319,6 +327,9 @@ class BERT(nn.Module):
                         max(all_prob)
                         for all_prob in nn.functional.log_softmax(outputs.logits, dim=-1)
                     ]
+            del outputs        
+            gc.collect()
+            torch.cuda.empty_cache()   
         return pred, prob
 
     def __train(
@@ -468,6 +479,9 @@ class BERT(nn.Module):
                     targets.cpu().numpy(), predictions.cpu().numpy()
                 )
                 eval_accuracy += tmp_eval_accuracy
+                
+                del outputs
+                torch.cuda.empty_cache()
 
             labels = [id2label[id.item()] for id in eval_labels]
             predictions = [id2label[id.item()] for id in eval_preds]
@@ -484,7 +498,9 @@ class BERT(nn.Module):
 
             if end:
                 return labels, predictions
-            return eval_loss, acc
+            
+            report = self.__util.validate_report(labels, predictions)
+            return eval_loss, acc, report['macro avg']['f1-score'], report['weighted avg']['f1-score']
 
     def forward(self, x):
         return self.__model(x)

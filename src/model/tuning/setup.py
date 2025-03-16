@@ -17,13 +17,21 @@ class TuningConfig:
     _parameters = {}
     if _config.has_section("parameters"):
         for key, value in _config.items("parameters"):
-            values = [v.strip() for v in value.split(",")]
-            if len(values) > 1:
-                _parameters[key] = {"values": [float(v) if v.replace('.', '', 1).isdigit() else v for v in values]}
+            values = [v.strip().lower() for v in value.split(",")]  # Convert to lowercase for boolean handling
+            
+            # Check if all values are boolean
+            if all(v in ["true", "false"] for v in values):
+                converted_values = [v == "true" for v in values]  # Convert to actual boolean values
             else:
-                single_value = values[0]
-                _parameters[key] = {"value": float(single_value) if single_value.replace('.', '', 1).isdigit() else single_value}
-    
+                converted_values = [
+                    float(v) if v.replace('.', '', 1).isdigit() else v for v in values
+                ]  # Convert numeric values
+
+            if len(converted_values) > 1:
+                _parameters[key] = {"values": converted_values}
+            else:
+                _parameters[key] = {"value": converted_values[0]}
+
     _sweep_config["metric"] = _metric
     _sweep_config["parameters"] = _parameters
     

@@ -9,157 +9,549 @@ Installing the current project: master-project (0.1.0)
 ###### (1) Training for configuration file: b-bert.ini
 LOAD False
 Using: cuda:0 with BERT
+Create sweep with ID: 3s826ivv
+Sweep URL: https://wandb.ai/julievt-ntnu/tee-b-batch-Task.SEQUENCE-bert-model/sweeps/3s826ivv
 {'DATE': 0, 'DCT': 1}
 {0: 'DATE', 1: 'DCT'}
-[1, 3907, 3096, 124, 424, 8596, 153, 122, 153, 119, 14681, 14624, 423, 424, 18019, 119, 14681, 14624, 44373, 157, 424, 9104, 41079, 2020, 42812, 25187, 3950, 1404, 16596, 145, 424, 16510, 21886, 11119, 47532, 1142, 834, 118, 125, 1101, 118, 122, 793, 118, 130, 424, 9336, 25488, 36192, 141, 47532, 414, 118, 8317, 477, 424, 408, 23284, 901, 118, 131, 477, 914, 118, 130, 477, 901, 118, 129, 477, 424, 23482, 144, 459, 44920, 158, 4408, 920, 118, 5588, 477, 920, 118, 5320, 477, 920, 118, 5370, 477, 424, 20347, 160, 17732, 408, 424, 20347, 146, 4184, 408, 424, 20347, 146, 141, 2861, 118, 123, 477, 424, 478, 142, 161, 555, 118, 123, 408, 424, 16722, 19536, 141, 47532, 1142, 6539, 126, 408, 27594, 408, 4011, 126, 424, 24201, 160, 793, 118, 128, 424, 23853, 1883, 408, 11620, 21279, 154, 1293, 408, 2861, 408, 424, 28741, 119, 1616, 156, 561, 118, 130, 408, 414, 118, 124, 408, 11620, 16394, 21886, 4520, 143, 623, 118, 130, 11620, 22446, 24993, 24993, 11620, 441, 623, 118, 123, 623, 118, 127, 424, 33046, 793, 118, 3334, 408, 424, 6971, 153, 124, 732, 118, 126, 408, 424, 44373, 124, 793, 118, 131, 477, 424, 15950, 158, 120, 140, 8225, 2313, 140, 3760, 118, 126, 408, 15653, 47378, 143, 34365, 28260, 9128, 901, 118, 126, 408, 424, 476, 124, 18129, 158, 6497, 12135, 11620, 10448, 21542, 158, 6486, 8487, 11620, 22889, 8398, 15194, 1616, 23923, 158, 1517, 11620, 8693, 2724, 2861, 11620, 46409, 17187, 119, 39256, 1042, 11620, 8693, 149, 2]
-['[CLS]', '26', '22', '2', 'ĠB', 'ĠAB', 'O', '0', 'O', '-', 'Ty', 'ping', 'ĠA', 'ĠB', 'ĠRh', '-', 'Ty', 'ping', 'ĠPO', 'S', 'ĠB', 'ĠAN', 'TI', 'ST', 'OFF', 'SC', 'RE', 'EN', 'ĠNE', 'G', 'ĠB', 'ĠLE', 'UK', 'OC', 'YTT', 'ER', 'Ġ8', ',', '3', 'Ġ11', ',', '0', 'Ġ7', ',', '8', 'ĠB', 'ĠER', 'YT', 'RO', 'C', 'YTT', 'Ġ2', ',', '96', 'ĠL', 'ĠB', 'ĠH', 'GB', 'Ġ9', ',', '9', 'ĠL', 'Ġ10', ',', '8', 'ĠL', 'Ġ9', ',', '7', 'ĠL', 'ĠB', 'ĠEV', 'F', 'Ġ(', 'ĠHC', 'T', 'Ġ)', 'Ġ0', ',', '32', 'ĠL', 'Ġ0', ',', '34', 'ĠL', 'Ġ0', ',', '31', 'ĠL', 'ĠB', 'ĠMC', 'V', 'Ġ108', 'ĠH', 'ĠB', 'ĠMC', 'H', 'Ġ34', 'ĠH', 'ĠB', 'ĠMC', 'H', 'C', 'Ġ31', ',', '1', 'ĠL', 'ĠB', 'ĠR', 'D', 'W', 'Ġ19', ',', '1', 'ĠH', 'ĠB', 'ĠTROM', 'BO', 'C', 'YTT', 'ER', 'Ġ43', '4', 'ĠH', 'Ġ440', 'ĠH', 'Ġ36', '4', 'ĠB', 'ĠMP', 'V', 'Ġ7', ',', '6', 'ĠB', 'ĠSR', 'Ġ23', 'ĠH', 'ĠPS', 'ĠCR', 'P', 'Ġ17', 'ĠH', 'Ġ31', 'ĠH', 'ĠB', 'ĠPT', '-', 'IN', 'R', 'Ġ3', ',', '8', 'ĠH', 'Ġ2', ',', '2', 'ĠH', 'ĠPS', 'ĠGL', 'UK', 'OS', 'E', 'Ġ4', ',', '8', 'ĠPS', 'Ġnan', 'Ġ138', 'Ġ138', 'ĠPS', 'ĠK', 'Ġ4', ',', '1', 'Ġ4', ',', '5', 'ĠB', 'ĠPH', 'Ġ7', ',', '45', 'ĠH', 'ĠB', 'ĠPC', 'O', '2', 'Ġ6', ',', '4', 'ĠH', 'ĠB', 'ĠPO', '2', 'Ġ7', ',', '9', 'ĠL', 'ĠB', 'ĠAK', 'T', '.', 'B', 'IC', 'AR', 'B', 'Ġ33', ',', '4', 'ĠH', 'ĠEC', 'ĠBAS', 'E', 'ĠEX', 'CE', 'SS', 'Ġ9', ',', '4', 'ĠH', 'ĠB', 'ĠO', '2', 'ME', 'T', 'NING', 'Ġ91', 'ĠPS', 'ĠKR', 'EA', 'T', 'Ġ67', 'Ġ72', 'ĠPS', 'ĠBIL', 'IR', 'UB', 'IN', 'ĠTO', 'T', 'Ġ25', 'ĠPS', 'ĠAL', 'AT', 'Ġ31', 'ĠPS', 'ĠGAM', 'MA', '-', 'GT', 'Ġ18', 'ĠPS', 'ĠAL', 'K', '[SEP]']
-DATE
-{'DATE': 13037, 'DCT': 1277}
-{'DATE': 0.5489759914090665, 'DCT': 5.604541895066562}
+{'DATE': 4893, 'DCT': 3855}
+{'DATE': 0.8939301042305334, 'DCT': 1.1346303501945525}
+{'DATE': 0.8939301042305334, 'DCT': 1.1346303501945525}
 Training Epoch: 0
-Training loss epoch: 0.8331755102715559
-Training accuracy epoch: 0.5159505208333334
-Overall acc: 0.5129912663755458
-Overall loss: 119.97727347910404
-Validation loss per 100 evaluation steps: 0.28610873222351074
-Validation Loss: 0.29250217311912113
-Validation Accuracy: 0.9185653073286052
-Overall accuracy: 0.918966119455117
-Overall loss: 0.29250217311912113
+Training loss epoch: 0.6432176310230385
+Training accuracy epoch: 0.6176846590909091
+Overall acc: 0.6171847088245802
+Overall loss: 56.60315153002739
+Validation loss per 100 evaluation steps: 0.5380354523658752
+Validation Loss: 0.5251304371790453
+Validation Accuracy: 0.7141842532467533
+Overall accuracy: 0.7142857142857143
+Overall loss: 0.5251304371790453
+### Summary
+              precision    recall  f1-score   support
+
+        DATE       0.81      0.64      0.71       784
+         DCT       0.64      0.81      0.71       616
+
+    accuracy                           0.71      1400
+   macro avg       0.72      0.72      0.71      1400
+weighted avg       0.74      0.71      0.71      1400
+
+### Without O
+              precision    recall  f1-score   support
+
+        DATE       0.81      0.64      0.71       784
+         DCT       0.64      0.81      0.71       616
+
+    accuracy                           0.71      1400
+   macro avg       0.72      0.72      0.71      1400
+weighted avg       0.74      0.71      0.71      1400
+
 Training Epoch: 1
-Training loss epoch: 0.764274930788411
-Training accuracy epoch: 0.5572916666666666
-Overall acc: 0.5606986899563319
-Overall loss: 110.05559003353119
-Validation loss per 100 evaluation steps: 0.5804290175437927
-Validation Loss: 0.5591746237542894
-Validation Accuracy: 0.9188164893617021
-Overall accuracy: 0.918966119455117
-Overall loss: 0.5591746237542894
+Training loss epoch: 0.45268826914781873
+Training accuracy epoch: 0.7868607954545456
+Overall acc: 0.7861736334405145
+Overall loss: 39.83656768500805
+Validation loss per 100 evaluation steps: 0.3786625266075134
+Validation Loss: 0.4204039790413596
+Validation Accuracy: 0.8155438311688311
+Overall accuracy: 0.8157142857142857
+Overall loss: 0.4204039790413596
+### Summary
+              precision    recall  f1-score   support
+
+        DATE       0.85      0.81      0.83       784
+         DCT       0.77      0.82      0.80       616
+
+    accuracy                           0.82      1400
+   macro avg       0.81      0.82      0.81      1400
+weighted avg       0.82      0.82      0.82      1400
+
+### Without O
+              precision    recall  f1-score   support
+
+        DATE       0.85      0.81      0.83       784
+         DCT       0.77      0.82      0.80       616
+
+    accuracy                           0.82      1400
+   macro avg       0.81      0.82      0.81      1400
+weighted avg       0.82      0.82      0.82      1400
+
 Training Epoch: 2
-Training loss epoch: 0.7130218102700181
-Training accuracy epoch: 0.5634765625
-Overall acc: 0.5608078602620087
-Overall loss: 102.6751406788826
-Validation loss per 100 evaluation steps: 0.5786284804344177
-Validation Loss: 0.5698170555962456
-Validation Accuracy: 0.9184397163120568
-Overall accuracy: 0.918966119455117
-Overall loss: 0.5698170555962456
+Training loss epoch: 0.29958266256885097
+Training accuracy epoch: 0.877829071969697
+Overall acc: 0.8787066809574848
+Overall loss: 26.363274306058884
+Validation loss per 100 evaluation steps: 0.4214142858982086
+Validation Loss: 0.4710207974368876
+Validation Accuracy: 0.7872362012987012
+Overall accuracy: 0.7871428571428571
+Overall loss: 0.4710207974368876
+### Summary
+              precision    recall  f1-score   support
+
+        DATE       0.91      0.69      0.78       784
+         DCT       0.70      0.91      0.79       616
+
+    accuracy                           0.79      1400
+   macro avg       0.80      0.80      0.79      1400
+weighted avg       0.82      0.79      0.79      1400
+
+### Without O
+              precision    recall  f1-score   support
+
+        DATE       0.91      0.69      0.78       784
+         DCT       0.70      0.91      0.79       616
+
+    accuracy                           0.79      1400
+   macro avg       0.80      0.80      0.79      1400
+weighted avg       0.82      0.79      0.79      1400
+
 Training Epoch: 3
-Training loss epoch: 0.7062447956866689
-Training accuracy epoch: 0.5567491319444444
-Overall acc: 0.5540393013100436
-Overall loss: 101.69925057888031
-Validation loss per 100 evaluation steps: 0.4520990252494812
-Validation Loss: 0.4973652535014682
-Validation Accuracy: 0.9190676713947991
-Overall accuracy: 0.918966119455117
-Overall loss: 0.4973652535014682
+Training loss epoch: 0.20229313120415265
+Training accuracy epoch: 0.9287286931818183
+Overall acc: 0.9289031797070382
+Overall loss: 17.801795545965433
+Validation loss per 100 evaluation steps: 0.4745529890060425
+Validation Loss: 0.5005163089795546
+Validation Accuracy: 0.8377637987012988
+Overall accuracy: 0.8371428571428572
+Overall loss: 0.5005163089795546
+### Summary
+              precision    recall  f1-score   support
+
+        DATE       0.87      0.84      0.85       784
+         DCT       0.80      0.84      0.82       616
+
+    accuracy                           0.84      1400
+   macro avg       0.83      0.84      0.84      1400
+weighted avg       0.84      0.84      0.84      1400
+
+### Without O
+              precision    recall  f1-score   support
+
+        DATE       0.87      0.84      0.85       784
+         DCT       0.80      0.84      0.82       616
+
+    accuracy                           0.84      1400
+   macro avg       0.83      0.84      0.84      1400
+weighted avg       0.84      0.84      0.84      1400
+
 Training Epoch: 4
-Training loss epoch: 0.7039316681524118
-Training accuracy epoch: 0.5843098958333334
-Overall acc: 0.5817685589519651
-Overall loss: 101.3661602139473
-Validation loss per 100 evaluation steps: 0.47160303592681885
-Validation Loss: 0.3976465364297231
-Validation Accuracy: 0.9190676713947991
-Overall accuracy: 0.918966119455117
-Overall loss: 0.3976465364297231
+Training loss epoch: 0.1509267594559457
+Training accuracy epoch: 0.9474195075757575
+Overall acc: 0.9473026080743122
+Overall loss: 13.28155483212322
+Validation loss per 100 evaluation steps: 0.6500462889671326
+Validation Loss: 0.532169530337507
+Validation Accuracy: 0.8143262987012988
+Overall accuracy: 0.8142857142857143
+Overall loss: 0.532169530337507
+### Summary
+              precision    recall  f1-score   support
+
+        DATE       0.80      0.88      0.84       784
+         DCT       0.83      0.73      0.77       616
+
+    accuracy                           0.81      1400
+   macro avg       0.82      0.80      0.81      1400
+weighted avg       0.82      0.81      0.81      1400
+
+### Without O
+              precision    recall  f1-score   support
+
+        DATE       0.80      0.88      0.84       784
+         DCT       0.83      0.73      0.77       616
+
+    accuracy                           0.81      1400
+   macro avg       0.82      0.80      0.81      1400
+weighted avg       0.82      0.81      0.81      1400
+
 Training Epoch: 5
-Training loss epoch: 0.7123805466625426
-Training accuracy epoch: 0.6121961805555556
-Overall acc: 0.615938864628821
-Overall loss: 102.58279871940613
-Validation loss per 100 evaluation steps: 0.6377096176147461
-Validation Loss: 0.6401202148861356
-Validation Accuracy: 0.9191932624113476
-Overall accuracy: 0.918966119455117
-Overall loss: 0.6401202148861356
+Training loss epoch: 0.08569300570525229
+Training accuracy epoch: 0.9721235795454546
+Overall acc: 0.9719542693819221
+Overall loss: 7.5409845020622015
+Validation loss per 100 evaluation steps: 0.7270002961158752
+Validation Loss: 0.6600852906703949
+Validation Accuracy: 0.8226461038961038
+Overall accuracy: 0.8235714285714286
+Overall loss: 0.6600852906703949
+### Summary
+              precision    recall  f1-score   support
+
+        DATE       0.86      0.82      0.84       784
+         DCT       0.78      0.83      0.81       616
+
+    accuracy                           0.82      1400
+   macro avg       0.82      0.82      0.82      1400
+weighted avg       0.83      0.82      0.82      1400
+
+### Without O
+              precision    recall  f1-score   support
+
+        DATE       0.86      0.82      0.84       784
+         DCT       0.78      0.83      0.81       616
+
+    accuracy                           0.82      1400
+   macro avg       0.82      0.82      0.82      1400
+weighted avg       0.83      0.82      0.82      1400
+
 Training Epoch: 6
-Training loss epoch: 0.712706931349304
-Training accuracy epoch: 0.5991753472222222
-Overall acc: 0.5974890829694323
-Overall loss: 102.62979811429977
-Validation loss per 100 evaluation steps: 0.647338330745697
-Validation Loss: 0.6438690198792352
-Validation Accuracy: 0.9190676713947991
-Overall accuracy: 0.918966119455117
-Overall loss: 0.6438690198792352
+Training loss epoch: 0.05111967361219947
+Training accuracy epoch: 0.9813328598484848
+Overall acc: 0.9814219364058593
+Overall loss: 4.498531277873553
+Validation loss per 100 evaluation steps: 1.063757061958313
+Validation Loss: 0.6856143786148592
+Validation Accuracy: 0.8179788961038962
+Overall accuracy: 0.8178571428571428
+Overall loss: 0.6856143786148592
+### Summary
+              precision    recall  f1-score   support
+
+        DATE       0.83      0.84      0.84       784
+         DCT       0.80      0.79      0.79       616
+
+    accuracy                           0.82      1400
+   macro avg       0.82      0.81      0.81      1400
+weighted avg       0.82      0.82      0.82      1400
+
+### Without O
+              precision    recall  f1-score   support
+
+        DATE       0.83      0.84      0.84       784
+         DCT       0.80      0.79      0.79       616
+
+    accuracy                           0.82      1400
+   macro avg       0.82      0.81      0.81      1400
+weighted avg       0.82      0.82      0.82      1400
+
 Training Epoch: 7
-Training loss epoch: 0.7055407162341807
-Training accuracy epoch: 0.6201171875
-Overall acc: 0.6239082969432315
-Overall loss: 101.59786313772202
-Validation loss per 100 evaluation steps: 0.7157468795776367
-Validation Loss: 0.7140529115994771
-Validation Accuracy: 0.08130910165484634
-Overall accuracy: 0.08103388054488299
-Overall loss: 0.7140529115994771
+Training loss epoch: 0.043814241089752286
+Training accuracy epoch: 0.9852627840909091
+Overall acc: 0.9851732761700608
+Overall loss: 3.855653215898201
+Validation loss per 100 evaluation steps: 0.5321488380432129
+Validation Loss: 0.6265991411425851
+Validation Accuracy: 0.8337053571428572
+Overall accuracy: 0.8335714285714285
+Overall loss: 0.6265991411425851
+### Summary
+              precision    recall  f1-score   support
+
+        DATE       0.87      0.83      0.85       784
+         DCT       0.80      0.84      0.82       616
+
+    accuracy                           0.83      1400
+   macro avg       0.83      0.83      0.83      1400
+weighted avg       0.84      0.83      0.83      1400
+
+### Without O
+              precision    recall  f1-score   support
+
+        DATE       0.87      0.83      0.85       784
+         DCT       0.80      0.84      0.82       616
+
+    accuracy                           0.83      1400
+   macro avg       0.83      0.83      0.83      1400
+weighted avg       0.84      0.83      0.83      1400
+
 Training Epoch: 8
-Training loss epoch: 0.7099074042505689
-Training accuracy epoch: 0.5887586805555556
-Overall acc: 0.5923580786026201
-Overall loss: 102.22666621208191
-Validation loss per 100 evaluation steps: 0.6894562244415283
-Validation Loss: 0.689731952879164
-Validation Accuracy: 0.919318853427896
-Overall accuracy: 0.918966119455117
-Overall loss: 0.689731952879164
+Training loss epoch: 0.03930621318101079
+Training accuracy epoch: 0.9870383522727273
+Overall acc: 0.9869596284387281
+Overall loss: 3.458946759928949
+Validation loss per 100 evaluation steps: 1.0209001302719116
+Validation Loss: 1.0360985086722807
+Validation Accuracy: 0.807426948051948
+Overall accuracy: 0.8071428571428572
+Overall loss: 1.0360985086722807
+### Summary
+              precision    recall  f1-score   support
+
+        DATE       0.87      0.78      0.82       784
+         DCT       0.75      0.85      0.79       616
+
+    accuracy                           0.81      1400
+   macro avg       0.81      0.81      0.81      1400
+weighted avg       0.81      0.81      0.81      1400
+
+### Without O
+              precision    recall  f1-score   support
+
+        DATE       0.87      0.78      0.82       784
+         DCT       0.75      0.85      0.79       616
+
+    accuracy                           0.81      1400
+   macro avg       0.81      0.81      0.81      1400
+weighted avg       0.81      0.81      0.81      1400
+
 Training Epoch: 9
-Training loss epoch: 0.709358349442482
-Training accuracy epoch: 0.5876736111111112
-Overall acc: 0.5912663755458515
-Overall loss: 102.14760231971741
-Validation loss per 100 evaluation steps: 0.6271095275878906
-Validation Loss: 0.6275904085901048
-Validation Accuracy: 0.9189420803782506
-Overall accuracy: 0.918966119455117
-Overall loss: 0.6275904085901048
+Training loss epoch: 0.049938825255429205
+Training accuracy epoch: 0.9838423295454546
+Overall acc: 0.9837441943551268
+Overall loss: 4.39461662247777
+Validation loss per 100 evaluation steps: 0.9828265309333801
+Validation Loss: 0.8701770833947442
+Validation Accuracy: 0.815137987012987
+Overall accuracy: 0.815
+Overall loss: 0.8701770833947442
+### Summary
+              precision    recall  f1-score   support
+
+        DATE       0.84      0.83      0.83       784
+         DCT       0.78      0.80      0.79       616
+
+    accuracy                           0.81      1400
+   macro avg       0.81      0.81      0.81      1400
+weighted avg       0.82      0.81      0.82      1400
+
+### Without O
+              precision    recall  f1-score   support
+
+        DATE       0.84      0.83      0.83       784
+         DCT       0.78      0.80      0.79       616
+
+    accuracy                           0.81      1400
+   macro avg       0.81      0.81      0.81      1400
+weighted avg       0.82      0.81      0.82      1400
+
 Training Epoch: 10
-Training loss epoch: 0.7136198936237229
-Training accuracy epoch: 0.5438368055555556
-Overall acc: 0.5463973799126638
-Overall loss: 102.7612646818161
-Validation loss per 100 evaluation steps: 0.7562227249145508
-Validation Loss: 0.7536664870050218
-Validation Accuracy: 0.08093232860520094
-Overall accuracy: 0.08103388054488299
-Overall loss: 0.7536664870050218
+Training loss epoch: 0.043440597657040184
+Training accuracy epoch: 0.9848839962121212
+Overall acc: 0.984994640943194
+Overall loss: 3.8227725938195363
+Validation loss per 100 evaluation steps: 0.825712263584137
+Validation Loss: 0.7656052966009487
+Validation Accuracy: 0.807426948051948
+Overall accuracy: 0.8071428571428572
+Overall loss: 0.7656052966009487
+### Summary
+              precision    recall  f1-score   support
+
+        DATE       0.84      0.81      0.82       784
+         DCT       0.77      0.80      0.79       616
+
+    accuracy                           0.81      1400
+   macro avg       0.80      0.81      0.81      1400
+weighted avg       0.81      0.81      0.81      1400
+
+### Without O
+              precision    recall  f1-score   support
+
+        DATE       0.84      0.81      0.82       784
+         DCT       0.77      0.80      0.79       616
+
+    accuracy                           0.81      1400
+   macro avg       0.80      0.81      0.81      1400
+weighted avg       0.81      0.81      0.81      1400
+
+Training Epoch: 11
+Training loss epoch: 0.08160916490967131
+Training accuracy epoch: 0.9710582386363636
+Overall acc: 0.9708824580207217
+Overall loss: 7.181606512051076
+Validation loss per 100 evaluation steps: 0.9013478755950928
+Validation Loss: 0.7646542950110002
+Validation Accuracy: 0.778612012987013
+Overall accuracy: 0.7785714285714286
+Overall loss: 0.7646542950110002
+### Summary
+              precision    recall  f1-score   support
+
+        DATE       0.78      0.84      0.81       784
+         DCT       0.78      0.69      0.73       616
+
+    accuracy                           0.78      1400
+   macro avg       0.78      0.77      0.77      1400
+weighted avg       0.78      0.78      0.78      1400
+
+### Without O
+              precision    recall  f1-score   support
+
+        DATE       0.78      0.84      0.81       784
+         DCT       0.78      0.69      0.73       616
+
+    accuracy                           0.78      1400
+   macro avg       0.78      0.77      0.77      1400
+weighted avg       0.78      0.78      0.78      1400
+
 Early stopping
 ### Valid set performance:
-Validation loss per 100 evaluation steps: 0.7497219443321228
-Validation Loss: 0.7512398080693351
-Validation Accuracy: 0.09843069172113289
-Overall accuracy: 0.09821038847664776
-Overall loss: 0.7512398080693351
+Validation loss per 100 evaluation steps: 0.7270033359527588
+Validation Loss: 0.7655123241923072
+Validation Accuracy: 0.7788149350649352
+Overall accuracy: 0.7785714285714286
+Overall loss: 0.7655123241923072
 ### Summary
               precision    recall  f1-score   support
 
-        DATE       0.00      0.00      0.00      2066
-         DCT       0.10      1.00      0.18       225
+        DATE       0.78      0.84      0.81       784
+         DCT       0.78      0.69      0.73       616
 
-    accuracy                           0.10      2291
-   macro avg       0.05      0.50      0.09      2291
-weighted avg       0.01      0.10      0.02      2291
+    accuracy                           0.78      1400
+   macro avg       0.78      0.77      0.77      1400
+weighted avg       0.78      0.78      0.78      1400
+
+### Without O
+              precision    recall  f1-score   support
+
+        DATE       0.78      0.84      0.81       784
+         DCT       0.78      0.69      0.73       616
+
+    accuracy                           0.78      1400
+   macro avg       0.78      0.77      0.77      1400
+weighted avg       0.78      0.78      0.78      1400
 
 ### Test set performance:
-Validation loss per 100 evaluation steps: 0.7583896517753601
-Validation Loss: 0.7537013159857856
-Validation Accuracy: 0.08068114657210403
-Overall accuracy: 0.08103388054488299
-Overall loss: 0.7537013159857856
+Validation loss per 100 evaluation steps: 0.8358416557312012
+Validation Loss: 0.8314291962555477
+Validation Accuracy: 0.7736911525974026
+Overall accuracy: 0.7737142857142857
+Overall loss: 0.8314291962555477
 ### Summary
               precision    recall  f1-score   support
 
-        DATE       0.00      0.00      0.00      2631
-         DCT       0.08      1.00      0.15       232
+        DATE       0.78      0.83      0.80       971
+         DCT       0.77      0.71      0.74       779
 
-    accuracy                           0.08      2863
-   macro avg       0.04      0.50      0.07      2863
-weighted avg       0.01      0.08      0.01      2863
+    accuracy                           0.77      1750
+   macro avg       0.77      0.77      0.77      1750
+weighted avg       0.77      0.77      0.77      1750
 
-Finished with this task. 
- 
+### Without O
+              precision    recall  f1-score   support
 
-Process finished!
+        DATE       0.78      0.83      0.80       971
+         DCT       0.77      0.71      0.74       779
+
+    accuracy                           0.77      1750
+   macro avg       0.77      0.77      0.77      1750
+weighted avg       0.77      0.77      0.77      1750
+
+{'DATE': 0, 'DCT': 1}
+{0: 'DATE', 1: 'DCT'}
+{'DATE': 4893, 'DCT': 3855}
+{'DATE': 0.8939301042305334, 'DCT': 1.1346303501945525}
+{'DATE': 0.8939301042305334, 'DCT': 1.1346303501945525}
+Training Epoch: 0
+Training loss epoch: 0.7000936555862427
+Training accuracy epoch: 0.49503571428571425
+Overall acc: 0.49499821364773133
+Overall loss: 122.51638972759247
+Validation loss per 100 evaluation steps: 0.6936807036399841
+Validation Loss: 0.691484039480036
+Validation Accuracy: 0.5540787337662337
+Overall accuracy: 0.5535714285714286
+Overall loss: 0.691484039480036
+### Summary
+              precision    recall  f1-score   support
+
+        DATE       0.56      0.94      0.70       784
+         DCT       0.45      0.06      0.11       616
+
+    accuracy                           0.55      1400
+   macro avg       0.50      0.50      0.40      1400
+weighted avg       0.51      0.55      0.44      1400
+
+### Without O
+              precision    recall  f1-score   support
+
+        DATE       0.56      0.94      0.70       784
+         DCT       0.45      0.06      0.11       616
+
+    accuracy                           0.55      1400
+   macro avg       0.50      0.50      0.40      1400
+weighted avg       0.51      0.55      0.44      1400
+
+Training Epoch: 1
+Training loss epoch: 0.6962580639975412
+Training accuracy epoch: 0.5048214285714285
+Overall acc: 0.5048231511254019
+Overall loss: 121.8451611995697
+Validation loss per 100 evaluation steps: 0.6934444308280945
+Validation Loss: 0.6918848102742975
+Validation Accuracy: 0.5427150974025974
+Overall accuracy: 0.5421428571428571
+Overall loss: 0.6918848102742975
+### Summary
+              precision    recall  f1-score   support
+
+        DATE       0.56      0.82      0.67       784
+         DCT       0.45      0.18      0.26       616
+
+    accuracy                           0.54      1400
+   macro avg       0.51      0.50      0.46      1400
+weighted avg       0.51      0.54      0.49      1400
+
+### Without O
+              precision    recall  f1-score   support
+
+        DATE       0.56      0.82      0.67       784
+         DCT       0.45      0.18      0.26       616
+
+    accuracy                           0.54      1400
+   macro avg       0.51      0.50      0.46      1400
+weighted avg       0.51      0.54      0.49      1400
+
+Training Epoch: 2
+Training loss epoch: 0.6951997198377337
+Training accuracy epoch: 0.5073095238095238
+Overall acc: 0.5073240443015362
+Overall loss: 121.6599509716034
+Validation loss per 100 evaluation steps: 0.6792623996734619
+Validation Loss: 0.6880078722130168
+Validation Accuracy: 0.5609780844155844
+Overall accuracy: 0.56
+Overall loss: 0.6880078722130168
+### Summary
+              precision    recall  f1-score   support
+
+        DATE       0.56      1.00      0.72       784
+         DCT       0.00      0.00      0.00       616
+
+    accuracy                           0.56      1400
+   macro avg       0.28      0.50      0.36      1400
+weighted avg       0.31      0.56      0.40      1400
+
+### Without O
+              precision    recall  f1-score   support
+
+        DATE       0.56      1.00      0.72       784
+         DCT       0.00      0.00      0.00       616
+
+    accuracy                           0.56      1400
+   macro avg       0.28      0.50      0.36      1400
+weighted avg       0.31      0.56      0.40      1400
+
+Training Epoch: 3
+Training loss epoch: 0.6971979941640581
+Training accuracy epoch: 0.5060476190476191
+Overall acc: 0.506073597713469
+Overall loss: 122.00964897871017
+Validation loss per 100 evaluation steps: 0.6885117292404175
+Validation Loss: 0.6891410973939028
+Validation Accuracy: 0.559963474025974
+Overall accuracy: 0.56
+Overall loss: 0.6891410973939028
+### Summary
+              precision    recall  f1-score   support
+
+        DATE       0.56      1.00      0.72       784
+         DCT       0.00      0.00      0.00       616
+
+    accuracy                           0.56      1400
+   macro avg       0.28      0.50      0.36      1400
+weighted avg       0.31      0.56      0.40      1400
+
+### Without O
+              precision    recall  f1-score   support
+
+        DATE       0.56      1.00      0.72       784
+         DCT       0.00      0.00      0.00       616
+
+    accuracy                           0.56      1400
+   macro avg       0.28      0.50      0.36      1400
+weighted avg       0.31      0.56      0.40      1400
+
+Training Epoch: 4

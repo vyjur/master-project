@@ -10,6 +10,9 @@ from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
 from model.map import MODEL_MAP
 from textmining.util import convert_to_input
+import html
+import numpy as np
+
 
 
 class TEExtract:
@@ -40,6 +43,11 @@ class TEExtract:
             tags = set()
             raw_dataset = manager.get(Dataset.TEE)
             for _, row in raw_dataset.iterrows():
+                if row['Text'].replace(" ", "").isalpha() or 'ICD' in row['Context']:
+                    continue
+                result = self.run(row['Text'])
+                if len(result) <= 0 :
+                    continue
                 dataset.append(
                     {
                         "sentence": convert_to_input(self.input_tag_type, row, True, True),
@@ -74,6 +82,7 @@ class TEExtract:
             "num_workers": self.__config.getint("train.parameters", "num_workers"),
             "max_length": self.__config.getint("train.parameters", "max_length"),
             "stride": self.__config.getint("train.parameters", "stride"),
+            "weights": self.__config.getboolean("train.parameters", "weights"),
             "tune": self.__config.getboolean("tuning", "tune"),
             "tune_count": self.__config.getint("tuning", "count") 
         }
@@ -143,10 +152,13 @@ class TEExtract:
     def run(self, text):
         if self.__rules:
             text = self.__pre_rules(text)
-        
-        result = self.__heideltime.parse(text)
-        
-        root = ET.fromstring(result)
+    
+        result = self.__heideltime.parse(text).encode("utf-8").decode("utf-8")
+        try:
+            root = ET.fromstring(result)
+        except:
+            columns = ["id", "type", "value", "text", "context"]
+            return pd.DataFrame(columns=columns)
         full_text = " ".join(root.itertext())
 
         timex_elements = root.findall('.//TIMEX3')
@@ -188,6 +200,8 @@ class TEExtract:
         sections = []
 
         for i, row in dct_candidates.iterrows():
+            if row['text'].replace(" ", "").isalpha():
+                continue
             dct_output = self.predict_sectime(row)
             
             if dct_output == "DCT":
@@ -200,14 +214,29 @@ class TEExtract:
         return dcts
     
     def predict_sectime(self, data, prob=False):
+        if data['text'].isalpha():
+            return 'DATE'
         data = {
             'Context': data['context'],
-            'Text': data['Text']
+            'Text': data['text']
         }
         text = convert_to_input(self.input_tag_type, data, True, True)
         # TODO: we need to have preprocessing stage here
         return self.__model_run(self.preprocess.run(text), prob)
-
+    
+    def batch_predict_sectime(self, datas, prob=False):
+        batch_text = []
+        for data in datas:
+            data = {
+                'Context': data['context'],
+                'Text': data['text']
+            }
+            text = convert_to_input(self.input_tag_type, data, True, True)
+            batch_text.append(self.preprocess.run(text)[0])
+        
+        if len(batch_text) == 0:
+            return None
+        return self.__model_run(np.array(batch_text), prob)
 
     def __get_window(self, full_text, timex_text, window_size=50):
         # Find the index of the TIMEX3 text in the full text
