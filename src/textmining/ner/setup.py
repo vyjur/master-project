@@ -69,6 +69,7 @@ class NERecognition:
             "num_workers": self.__config.getint("train.parameters", "num_workers"),
             "max_length": self.__config.getint("train.parameters", "max_length"),
             "stride": self.__config.getint("train.parameters", "stride"),
+            "weights": self.__config.getboolean("train.parameters", "weights"),
             "tune": self.__config.getboolean("tuning", "tune"),
             "tune_count": self.__config.getint("tuning", "count") 
         }
@@ -121,20 +122,20 @@ class NERecognition:
                     intervals.append((start, i))
                     start = None
                 
-            if self.schema == "bio":
+            if self.schema == NER_SCHEMA.BIO:
                 if value.startswith("B-") or (value.startswith("I-") and start is None) or cat_value != prev_value:
                     if start is not None:
                         intervals.append((start, i))
                     if value != "O":
                         start = i
                 
-            elif self.schema == "io":
+            elif self.schema == NER_SCHEMA.IO:
                 if value.startswith("I-") and (start is None or cat_value != prev_value):
                     if start is not None and cat_value != prev_value:
                         intervals.append((start, i))
                     start = i
                 
-            elif self.schema == "ioe":
+            elif self.schema == NER_SCHEMA.IOE:
                 if value.startswith("I-") or value.startswith("E-"):
                     if start is None:
                         start = i

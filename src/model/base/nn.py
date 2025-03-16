@@ -4,7 +4,7 @@ import torch.nn as nn
 from torch import cuda
 from torch.utils.data import DataLoader
 from preprocess.setup import Preprocess
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, classification_report
 from model.regularization.early_stopping import EarlyStopping
 from model.util import Util
 from structure.enum import Task
@@ -124,6 +124,7 @@ class NN(nn.Module):
                     "evaluation_strategy": "epoch",
                     "save_strategy": "epoch",
                     "logging_strategy": "epoch",
+                    "weights": parameters['weights'],
                     "tune": tune,
                 }
                 self.train(wandb.config)
@@ -181,12 +182,25 @@ class NN(nn.Module):
             
             self.__model.num_labels = len(self.__processed["id2label"])
 
-            loss_fn = nn.CrossEntropyLoss(weight=self.__class_weights)
-            optimizer = torch.optim.Adam(  # type: ignore
-                self.__model.parameters(),
-                lr=config["learning_rate"],
-                weight_decay=1e-4,
-            )
+            if config['weights']:
+                loss_fn = nn.CrossEntropyLoss(weight=self.__class_weights)
+            else:
+                loss_fn = nn.CrossEntropyLoss()
+                
+            if config["optimizer"] == "adam":
+                optimizer = torch.optim.Adam(  # type: ignore
+                    params=self.__model.parameters(),
+                    lr=config["learning_rate"],
+                    weight_decay=config["weight_decay"],
+                )
+            elif config["optimizer"] == "sgd":
+                optimizer = torch.optim.SGD(  # type: ignore
+                    params=self.__model.parameters(),
+                    lr=config["learning_rate"],
+                    weight_decay=config["weight_decay"],
+                )
+            else:
+                optimizer = None
 
             early_stopping = EarlyStopping(patience=5, delta=0.01)
             for t in range(config["epochs"]):
@@ -194,7 +208,7 @@ class NN(nn.Module):
                 train_loss, train_acc = self.__train(
                     training_loader, loss_fn, optimizer
                 )
-                val_loss, val_acc = self.__valid(
+                val_loss, val_acc, macro_f1, weighted_f1 = self.__valid(
                     valid_loader, loss_fn, self.__processed["id2label"]
                 )
                 wandb.log(
@@ -203,6 +217,8 @@ class NN(nn.Module):
                         "train_accuracy": train_acc,
                         "val_loss": val_loss,
                         "val_acc": val_acc,
+                        "macro_f1": macro_f1,
+                        "weighted_f1": weighted_f1
                     }
                 )  # type: ignore
                 early_stopping(val_loss, self.__model)
@@ -327,15 +343,15 @@ class NN(nn.Module):
 
             acc = accuracy_score(all_targets, all_preds)
 
+            labels = [id2label[id] for id in all_targets]
+            predictions = [id2label[id] for id in all_preds]
+            print(f"Validation Accuracy: {acc}")
+            
             if end:
-                labels = [id2label[id] for id in all_targets]
-                predictions = [id2label[id] for id in all_preds]
-
-                print(f"Validation Accuracy: {acc}")
-
                 return labels, predictions
 
-            return eval_loss, acc
+            report = self.__util.validate_report(labels, predictions)
+            return eval_loss, acc, report['macro avg']['f1-score'], report['weighted avg']['f1-score']
 
     def forward(self, x):
         self.__model.batch = x.shape[0]

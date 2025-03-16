@@ -1,5 +1,6 @@
 import configparser
 import os
+import numpy as np
 from types import SimpleNamespace
 from model.util import Util
 from preprocess.dataset import DatasetManager
@@ -13,6 +14,7 @@ from textmining.util import convert_to_input
 import nltk
 nltk.download('punkt')
 from nltk.tokenize import sent_tokenize
+random.seed(42)
 
 
 class TRExtract:
@@ -60,6 +62,7 @@ class TRExtract:
             "num_workers": self.__config.getint("train.parameters", "num_workers"),
             "max_length": self.__config.getint("train.parameters", "max_length"),
             "stride": self.__config.getint("train.parameters", "stride"),
+            "weights": self.__config.getboolean("train.parameters", "weights"),
             "tune": self.__config.getboolean("tuning", "tune"),
             "tune_count": self.__config.getint("tuning", "count") 
         }
@@ -72,7 +75,10 @@ class TRExtract:
             dataset_ner = dataset_ner[dataset_ner['MedicalEntity'].notna() | dataset_ner['TIMEX'].notna()].reset_index()
             dataset_tre = manager.get(task)
             if task == Dataset.DTR:
+                dataset_tre = dataset_tre[dataset_tre['DCT'] != 'BEFOREOVERLAP']
                 for _, row in dataset_tre.iterrows():
+                    if 'ICD' in row['Context']:
+                        continue
                     dataset.append(
                         {
                             "sentence": convert_to_input(self.input_tag_type, row),
@@ -90,7 +96,7 @@ class TRExtract:
                 
                 for i, rel in dataset_tre.iterrows():
                     
-                    if e_i['Context'].str.strip().eq("") or e_i['Context'].isna() or e_j['Context'].str.strip().eq("") or e_j['Context'].isna():
+                    if rel['FROM_CONTEXT'].strip() == "" or rel['TO_CONTEXT'].strip() == "" or 'ICD' in rel['FROM_CONTEXT']:
                         e_i = dataset_ner[dataset_ner['Id'] == rel['FROM_Id']]
                         e_j = dataset_ner[dataset_ner['Id'] == rel['TO_Id']]
                     
@@ -127,10 +133,11 @@ class TRExtract:
                         
                     dataset.append(relation_pair)
                     tags.add(rel["RELATION"])
-                    
+                
+                # Create negative candidate pairs
                 for i, e_i in dataset_ner.iterrows():
                     for j, e_j in dataset_ner.iterrows():
-                        if i == j:
+                        if i == j or 'ICD' in e_i['Context'] or e_i['Context'].strip() == '':
                             continue
                         
                         if e_i['Text'] not in e_j['Context'] and e_j['Text'] not in e_i['Context']:
@@ -146,14 +153,14 @@ class TRExtract:
                         else:
                             relation = "O"
 
-                            # TODO: downsample majority class
-                            if random.random() < 0.999:
+                            # TODO: downsample majority class: this is not deterministic
+                            if random.random() < 0.5:
                                 continue
 
                         sentence_i = convert_to_input(self.input_tag_type, e_i, single=False, start=True)
                         sentence_j = convert_to_input(self.input_tag_type, e_j, single=False, start=False)
                         
-                        cat = self.__class__.classify_tlink(e_i, e_j)
+                        cat, distance = self.__class__.classify_tlink(e_i, e_j, True)
                         words = self.classify_sep(e_i, e_j, cat, distance)
 
                         relation_pair = {
@@ -163,6 +170,8 @@ class TRExtract:
                         }
                         dataset.append(relation_pair)
                         tags.add(relation)
+                        
+            
 
             tags = list(tags)
         else:
@@ -207,8 +216,35 @@ class TRExtract:
     def __run(self, data):
         output = self.__model.predict([val.ids for val in data])
         predictions = [self.id2label[i] for i in output[0]]
-        return predictions[0], output[1]
-
+        return predictions, output[1]
+    
+    def batch_run(self, datas):
+        batch_text = []
+        for data in datas:
+            e_i = {
+                "Context": e_i.context,
+                "Text": e_i.value
+            }
+            
+            if e_j in data:
+                e_j = {
+                    "Context": e_j.context,
+                    "Text": e_j.value
+                }
+            
+            if self.task == Dataset.DTR:
+                e_i = data['e_i']
+                text = convert_to_input(self.input_tag_type, e_i)
+                batch_text.append(self.preprocess.run(text)[0])
+            elif self.task == Dataset.TLINK:
+                if e_j is None:
+                    raise ValueError("Missing value for e_j")
+                cat, distance = self.__class__.classify_tlink(e_i, e_j, True)
+                text = self.classify_sep(e_i, e_j, cat, distance)
+                batch_text.append(self.preprocess.run(text)[0])
+                
+        return self.__run(np.array(batch_text))
+    
     def run(self, e_i, e_j=None):
         
         e_i = {
@@ -230,8 +266,8 @@ class TRExtract:
             cat, distance = self.__class__.classify_tlink(e_i, e_j, True)
             text = self.classify_sep(e_i, e_j, cat, distance)
                         
-
-        return self.__run(self.preprocess.run(text))
+        output = self.__run(self.preprocess.run(text))
+        return output[0][0], output[1]
     
     def classify_sep(self, e_i, e_j, cat, distance):
         sentence_i = convert_to_input(self.input_tag_type, e_i, single=False, start=True)

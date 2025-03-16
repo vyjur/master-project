@@ -34,18 +34,6 @@ relation_files = [
 
 manager = DatasetManager(entity_files, relation_files)
 
-file = "./scripts/active-learning/config/ner.ini"
-save_directory = "./models/ner/model/b-bert"
-ner = NERecognition(
-    config_file=file,
-    manager=manager,
-    save_directory=save_directory,
-)
-
-preprocess = Preprocess(
-    ner.get_tokenizer(), ner.get_max_length(), ner.get_stride(), ner.get_util()
-)
-
 file = "./scripts/active-learning/config/tre-dtr.ini"
 save_directory = "./models/tre/dtr/model/b-bert"
 dtr = TRExtract(
@@ -53,29 +41,72 @@ dtr = TRExtract(
     manager=manager,
     save_directory=save_directory,
     task=Dataset.DTR
-
 )
 
-files = []
-folder_path = "./data/helsearkiv/batch/base_ner/"
+batch_path = "./data/helsearkiv/batch/dtr/"
+csv_files = [f for f in os.listdir(batch_path) if f.endswith(".csv")]
 
-entity_files = [
-    folder_path + f
-    for f in os.listdir(folder_path)
-    if os.path.isfile(os.path.join(folder_path, f))
+# Read and merge all CSV files into one DataFrame
+df_list = [pd.read_csv(os.path.join(batch_path, file)) for file in csv_files]
+if df_list:
+    batch_df = pd.concat(df_list)
+else:
+    batch_df = pd.DataFrame(
+        columns=[
+            "Text",
+            "Id",
+            "MedicalEntity",
+            "DCT",
+            "TIMEX",
+            "Context",
+            "sentence-id",
+            "Relation",
+            "file",
+            "page",
+        ]
+    )
+
+entities = pd.read_csv("./data/helsearkiv/batch/ner/all-local/all.csv")
+entities = entities[entities["MedicalEntity"].notna()]
+timex = pd.read_csv(f"./data/helsearkiv/batch/tee/{1}.csv")
+timex = timex[timex["TIMEX"].notna()] 
+
+all_entities = pd.concat([entities, timex])
+
+batch_path = './data/helsearkiv/batch/dtr/'
+csv_files = [f for f in os.listdir(batch_path) if f.endswith('.csv') and 'final' in f]
+
+batch_entities = [pd.read_csv(os.path.join(batch_path, file)) for file in csv_files]
+batch_entities = pd.concat(batch_entities, ignore_index=True)  # Combine all into one DataFrame
+
+entities = pd.read_csv(all_entities)
+
+filtered_entities = entities.merge(batch_entities, on=["page", "file", "Text"], how="left", indicator=True)
+print(len(entities), len(filtered_entities))
+dataset = filtered_entities[filtered_entities["_merge"] == "left_only"].drop(columns=["_merge"])
+
+
+BATCH_SIZE = 64
+batch_inputs = [
+    SimpleNamespace(value=row['Text'], context=row['Context']) for _, row in dataset.iterrows()
 ]
-new_manager = DatasetManager(entity_files, [])
 
-dataset = new_manager.get(Dataset.DTR)
+# Prepare storage for results
+dct_results = []
+prob_results = []
 
-dataset['prob'] = 0
+# Process in batches
+for i in range(0, len(batch_inputs), BATCH_SIZE):
+    batch = batch_inputs[i:i + BATCH_SIZE]
+    batch_outputs = dtr.batch_run(batch)
 
-for i, row in dataset.iterrows():
-    
-    e = {'value': row['Text'], 'context': row['Context']}
-    output = dtr.run(SimpleNamespace(**e))
-    dataset[i, 'DCT'] = output[0]
-    dataset[i, 'prob'] = output[1].item()
+    # Collect results
+    dct_results.extend(output[0] for output in batch_outputs)
+    prob_results.extend(output[1] for output in batch_outputs)
+
+# Assign results to dataset
+dataset['DCT'] = dct_results
+dataset['prob'] = prob_results
 
 dataset = dataset.sort_values('prob', ascending=True)
 dataset.to_csv(f'./data/helsearkiv/batch/dtr/{BATCH}.csv')

@@ -1,51 +1,7 @@
-Spawning shell within /cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12
+Virtual environment already activated: /cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12
 Installing dependencies from lock file
 
 No dependencies to install or update
 
 Installing the current project: master-project (0.1.0)
-### Processing the files:
-##### Start active learning for NER... ######
-LOAD True
-{'B-CONDITION': 0, 'B-TREATMENT': 1, 'I-CONDITION': 2, 'I-TREATMENT': 3, 'O': 4} {0: 'B-CONDITION', 1: 'B-TREATMENT', 2: 'I-CONDITION', 3: 'I-TREATMENT', 4: 'O'}
-Using: cuda:0 with BERT
-Model and tokenizer loaded successfully.
-LOAD True
-Using: cuda:0 with BERT
-Model and tokenizer loaded successfully.
-LOAD True
-Using: cuda:0 with BERT
-Model and tokenizer loaded successfully.
-LOAD True
-Using: cuda:0 with BERT
-Model and tokenizer loaded successfully.
-Init time:  0:07:16.373629
-##### Calculating MNLP ... 
-### Performing NER with the current model
-NER time: 0:00:02.924612
-TIMEX time: 0:01:55.632318
-DTR time: 0:01:55.668027
-NER time: 0:01:55.669880
-TIMEX time: 0:06:04.080731
-DTR time: 0:06:04.150767
-NER time: 0:06:04.152800
-TIMEX time: 0:12:47.563262
-DTR time: 0:12:47.704274
-NER time: 0:12:47.706344
-TIMEX time: 0:23:11.365066
-DTR time: 0:23:11.783639
-NER time: 0:23:11.786002
-TIMEX time: 0:36:29.849341
-DTR time: 0:36:30.153008
-NER time: 0:36:30.155047
-TIMEX time: 0:52:16.912493
-DTR time: 0:52:17.377939
-NER time: 0:52:17.379760
-TIMEX time: 1:09:28.837943
-DTR time: 1:09:29.543666
-NER time: 1:09:29.547082
-TIMEX time: 1:28:25.732319
-DTR time: 1:28:26.584996
-NER time: 1:28:26.586784
-TIMEX time: 1:49:02.894007
-DTR time: 1:49:03.880961
+/cluster/home/julievt/master-project
