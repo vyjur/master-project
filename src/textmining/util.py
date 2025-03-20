@@ -12,6 +12,12 @@ def convert_to_input(input_tag_type, e, single=True, start=True):
                 cat = entity
             elif date:
                 cat = date
+            
+            if start and not single:    
+                return e['Context'].replace(e["Text"], f'<{cat}A>{e["Text"]}</{cat}A>')
+            elif not start and not single:
+                return e['Context'].replace(e["Text"], f'<{cat}B>{e["Text"]}</{cat}B>')
+
             return e['Context'].replace(e["Text"], f'<{cat}>{e["Text"]}</{cat}>')
         case TAGS.SOURCE:
             if entity and single:

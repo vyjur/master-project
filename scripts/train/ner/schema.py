@@ -37,8 +37,8 @@ manager = DatasetManager(entity_files, relation_files)
 
 for i, conf in enumerate(configs):
     print(f"###### ({i}) Training for configuration file: {conf}")
-    if os.path.isdir(folder + conf):
-        continue
+    if os.path.isdir(folder + conf) or conf != 'a-bio.ini':
+        continue 
 
     save_directory = "./models/ner/schema" + conf.replace(".ini", "")
     if not os.path.isdir(save_directory):

@@ -4,7 +4,7 @@ from preprocess.dataset import DatasetManager
 
 print("##### Start training for NER... ######")
 
-folder = "./scripts/train/ner/config/model/batch/"
+folder = "./scripts/train/ner/config/model/"
 configs = os.listdir(folder)
 
 folder_path = "./data/helsearkiv/annotated/entity/"
@@ -36,8 +36,8 @@ relation_files = [
 manager = DatasetManager(entity_files, relation_files)
 
 for i, conf in enumerate(configs):
-    #if conf != 'c-bert-bilstmcrf.ini':
-        #continue
+    if conf != 'c-bert-bilstmcrf.ini':
+        continue
     print(f"###### ({i}) Training for configuration file: {conf}")
     if os.path.isdir(folder + conf):
         continue

@@ -103,7 +103,9 @@ class BERT(nn.Module):
                     sweep_config,
                     project=f"{project_name}-{task}-bert-model".replace('"', ""),
                 )
+                
                 wandb.agent(sweep_id, self.train, count=parameters["tune_count"])
+                
             else:
                 wandb.config = {
                     "learning_rate": parameters["learning_rate"],
@@ -297,6 +299,11 @@ class BERT(nn.Module):
 
                 # Save the tokenizer
                 self.tokenizer.save_pretrained(self.__save)  # type:ignore
+            else:
+                if not os.path.exists(f"{self.__save}/{wandb.run.id}"):
+                    os.makedirs(f"{self.__save}/{wandb.run.id}")
+                self.__model.save_pretrained(f"{self.__save}/{wandb.run.id}")
+                self.tokenizer.save_pretrained(f"{self.__save}/{wandb.run.id}")  # type:ignore
                 
                 
     def predict(self, data, pipeline=False):
