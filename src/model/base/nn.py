@@ -100,11 +100,18 @@ class NN(nn.Module):
                 sweep_config["parameters"]["num_workers"] = {
                     "value": parameters["num_workers"]
                 }
-                sweep_id = wandb.sweep(
-                    sweep_config,
-                    project=f"{project_name}-{task}-nn-model".replace('"', ""),
-                )
-                wandb.agent(sweep_id, self.train, count=parameters["tune_count"])
+                # sweep_id = wandb.sweep(
+                #     sweep_config,
+                #     project=f"{project_name}-{task}-nn-model".replace('"', ""),
+                # )
+                # wandb.agent(sweep_id, self.train, count=parameters["tune_count"])
+                
+                # bilstm-crf"
+                sweep_id = '5vn0laxj'
+                
+                # bert-bilstm-crf"
+                sweep_id = 'ibvpiz29' 
+                wandb.agent(sweep_id, project=f"{project_name}-{task}-nn-model".replace('"', ""), function=self.train)
             else:
                 wandb.config = {
                     "learning_rate": parameters["learning_rate"],

@@ -111,7 +111,7 @@ class TEExtract:
 
     def __model_run(self, data, prob=False):
         output, prob = self.__model.predict([val.ids for val in data])
-        predictions = [self.id2label[int(i)] for i in output]
+        predictions = [self.id2label[int(i)] if int(i) in self.id2label else "O" for i in output ]
         if prob:
             return predictions, prob
         return predictions

@@ -1,4 +1,5 @@
 import os
+import pandas as pd
 import configparser
 from textmining.ner.setup import NERecognition
 
@@ -56,7 +57,7 @@ class Pipeline:
         self.__ner = NERecognition(self.__config["CONFIGS"]["ner"], manager)
         
         print("### Initializing TEE ###")
-        self.__tee = TEExtract()
+        self.__tee = TEExtract(self.__config["CONFIGS"]["tee"], manager)
 
         print("### Initializing DTR ###")
         self.__tre_dtr = TRExtract(
@@ -78,10 +79,7 @@ class Pipeline:
 
     
 
-    def run(self, documents):
-        ### Extract text from PDF ###
-        # TODO: add document logic, is this necessary?
-
+    def run(self, documents, save_path='./'):
         all_info = []
         entities = []
         for doc in documents:
@@ -245,7 +243,15 @@ class Pipeline:
                 )
             
         ### Visualize: Using a timeline
-        self.viz.create(all_info)
+        
+        all_entities = []
+        for info in all_info:
+            all_entities.extend(info['entities'])
+             
+        df = pd.DataFrame([vars(ent) for ent in all_entities])
+        df.to_csv(save_path + "output.csv")
+
+        self.viz.create(all_info, save_path)
 
 
 if __name__ == "__main__":

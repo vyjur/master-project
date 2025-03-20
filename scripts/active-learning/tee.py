@@ -13,7 +13,7 @@ from util import compute_mnlp
 from types import SimpleNamespace
 from datetime import datetime
 
-BATCH = 2
+BATCH = 1
 tee_start = 1
 
 file = f"./data/helsearkiv/batch/tee/{BATCH}.csv"
@@ -48,7 +48,10 @@ batch_path = './data/helsearkiv/batch/tee/'
 csv_files = [f for f in os.listdir(batch_path) if f.endswith('.csv') and 'final' in f]
 
 batch_entities = [pd.read_csv(os.path.join(batch_path, file)) for file in csv_files]
-batch_entities = pd.concat(batch_entities, ignore_index=True)  # Combine all into one DataFrame
+if batch_entities:  # Check if the list is not empty
+    batch_entities = pd.concat(batch_entities, ignore_index=True)  # Combine all into one DataFrame
+else:
+    batch_entities = pd.DataFrame(columns=["page", "file", "Text", "Context"])  # Empty DataFrame with expected columns
 
 entities = pd.read_csv(all_entities)
 
@@ -88,7 +91,7 @@ for i, (_, res) in enumerate(filtered_entities.iterrows()):
             "Relation": "",
             "file": res['file'],
             "page": res['page'],
-            "prob": batch_prob[i]
+            "prob": batch_prob[i].cpu().item()
         }
     )
     tee_start += 1
@@ -97,5 +100,5 @@ al_df = pd.DataFrame(al_data)
 print("LENGTH:", len(al_data))
 al_df = al_df.sort_values(by="prob",ascending=True)
 
-al_df.to_csv(f"./data/helsearkiv/batch/tee/{BATCH}.csv")
+al_df.to_csv(f"./data/helsearkiv/batch/tee/{BATCH}-withprob.csv")
 
