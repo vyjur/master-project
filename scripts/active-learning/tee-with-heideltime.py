@@ -16,7 +16,7 @@ from datetime import datetime
 # 15: not all one doc only
 # 16: tee2 all
 # 17 one page
-BATCH = 2
+BATCH = 1
 tee_start = 1
 
 folder_path = "./data/helsearkiv/annotated/entity/"
@@ -82,7 +82,7 @@ else:
         ]
     )
 
-files = [file for file in raw_files if file.replace(".pdf", "") not in annotated_files]
+files = [file for file in raw_files]
 
 al_data = []
 

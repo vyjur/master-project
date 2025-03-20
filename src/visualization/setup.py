@@ -10,7 +10,7 @@ class Timeline:
         self.__config = config
         self.__offset = offset
 
-    def create(self, data):
+    def create(self, data, save_path="./"):
         timeline = []
         
         levels = list(set([e.date for doc in data for e in doc["entities"]]))
@@ -100,5 +100,5 @@ class Timeline:
         )
 
         #fig.show()
-        plotly.offline.plot(fig, filename='./src/visualization/timeline.html')
+        plotly.offline.plot(fig, filename=save_path + 'timeline.html')
 

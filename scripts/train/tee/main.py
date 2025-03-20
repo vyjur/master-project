@@ -3,6 +3,8 @@ from textmining.tee.setup import TEExtract
 from preprocess.dataset import DatasetManager
 from structure.enum import Dataset
 
+BATCH = 2
+
 print("##### Start training for TEE... ######")
 
 # Info: Change here
@@ -43,7 +45,7 @@ for i, conf in enumerate(configs):
     if os.path.isdir(folder + conf) or conf != 'b-bert.ini':
         continue
     print(f"###### ({i}) Training for configuration file: {conf}")
-    save_directory = f"./models/tee/model/" + conf.replace(".ini", "")
+    save_directory = f"./models/tee/model/" + conf.replace(".ini", "") + f"/b{BATCH}/"
     if not os.path.isdir(save_directory):
         os.mkdir(save_directory)
     ner = TEExtract(
