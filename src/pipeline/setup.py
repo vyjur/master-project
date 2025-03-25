@@ -193,7 +193,7 @@ class Pipeline:
                 for cat in dcts:
                     for i, e_i in enumerate(dcts[cat]):
                         for j, e_j in enumerate(dcts[cat]):
-                            if i == j:
+                            if i == j or e_j.value not in e_i.context:
                                 continue
 
                             tre_output = self.__tre_tlink.run(e_i, e_j)
@@ -205,6 +205,7 @@ class Pipeline:
                                 rel = Relation(e_i, e_j, relation, prob)
                                 if rel.tr == TLINK.OVERLAP:
                                     if isinstance(e_i.type, TIMEX) and not isinstance(e_j.type, TIMEX):
+                                        # TODO:
                                         if e_i.prob >= e_j.prob or e_j.date is None:
                                             e_j.date = e_i.date
                                             e_j.prob = e_i.prob 
@@ -247,6 +248,9 @@ class Pipeline:
         all_entities = []
         for info in all_info:
             all_entities.extend(info['entities'])
+            
+        print(len(all_entities))
+        print(all_entities)
              
         df = pd.DataFrame([vars(ent) for ent in all_entities])
         df.to_csv(save_path + "output.csv")

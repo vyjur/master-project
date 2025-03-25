@@ -8,7 +8,8 @@ class Util:
     def __init__(self, schema: NER_SCHEMA = None):
         self.schema = schema
 
-    def validate_report(self, labels, predictions):
+    def validate_report(self, labels, predictions, output=True):
+
         if self.schema is not None:
             print(f"### {self.schema.name}-Scheme")
         else:
@@ -29,7 +30,9 @@ class Util:
             tags.remove("BEFOREOVERLAP")
         except:
             pass
-        print(classification_report(labels, predictions, labels=tags))
+        
+        if output:
+            print(classification_report(labels, predictions, labels=tags))
         
         
 
@@ -43,16 +46,18 @@ class Util:
             
             report = classification_report(cat_labels, cat_predictions, labels=tags, output_dict=True)
 
-            print("### Summary")
-            print(classification_report(cat_labels, cat_predictions, labels=tags))
+            if output:
+                print("### Summary")
+                print(classification_report(cat_labels, cat_predictions, labels=tags))
             
             try:
                 tags.remove("O")
+                if output:
+                    print("### Without O")
+                    print(classification_report(cat_labels, cat_predictions, labels=tags))
             except:
                 pass
-            
-            print("### Without O")
-            print(classification_report(cat_labels, cat_predictions, labels=tags))
+                   
         return report
     
     def remove_schema(self, text: str):

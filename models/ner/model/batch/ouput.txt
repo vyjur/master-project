@@ -1,0 +1,530 @@
+Spawning shell within /cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12
+Installing dependencies from lock file
+
+No dependencies to install or update
+
+Installing the current project: master-project (0.1.0)
+##### Start training for NER... ######
+### Processing the files:
+###### (4) Training for configuration file: b-bert.ini
+LOAD False
+{'I-CONDITION': 0, 'I-TREATMENT': 1, 'O': 2} {0: 'I-CONDITION', 1: 'I-TREATMENT', 2: 'O'}
+Using: cuda:0 with BERT
+{'I-CONDITION': 0, 'I-TREATMENT': 1, 'O': 2}
+{0: 'I-CONDITION', 1: 'I-TREATMENT', 2: 'O'}
+{'O': 2419560, 'I-CONDITION': 208342, 'I-TREATMENT': 161474}
+{'I-CONDITION': 4.462815946856611, 'I-TREATMENT': 5.758153015346124, 'O': 0.3842814396005885}
+{'I-CONDITION': 4.462815946856611, 'I-TREATMENT': 5.758153015346124, 'O': 0.3842814396005885}
+Training Epoch: 0
+Training loss epoch: 0.05870107581856054
+Training accuracy epoch: 0.9792180705872515
+Overall acc: 0.979215971026965
+Overall loss: 6.398417264223099
+Validation loss per 100 evaluation steps: 0.09678675979375839
+Validation Loss: 0.14659315959683486
+Validation Accuracy: 0.9533374286758366
+Overall accuracy: 0.9539344743320095
+Overall loss: 0.14659315959683486
+### IO-Scheme
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.83      0.81      0.82     33385
+ I-TREATMENT       0.81      0.80      0.80     27612
+           O       0.97      0.98      0.98    385454
+
+    accuracy                           0.95    446451
+   macro avg       0.87      0.86      0.87    446451
+weighted avg       0.95      0.95      0.95    446451
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.83      0.81      0.82     33385
+ I-TREATMENT       0.81      0.80      0.80     27612
+
+   micro avg       0.82      0.81      0.81     60997
+   macro avg       0.82      0.81      0.81     60997
+weighted avg       0.82      0.81      0.81     60997
+
+### Summary
+              precision    recall  f1-score   support
+
+           O       0.97      0.98      0.98    385454
+   CONDITION       0.83      0.81      0.82     33385
+   TREATMENT       0.81      0.80      0.80     27612
+
+    accuracy                           0.95    446451
+   macro avg       0.87      0.86      0.87    446451
+weighted avg       0.95      0.95      0.95    446451
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.83      0.81      0.82     33385
+   TREATMENT       0.81      0.80      0.80     27612
+
+   micro avg       0.82      0.81      0.81     60997
+   macro avg       0.82      0.81      0.81     60997
+weighted avg       0.82      0.81      0.81     60997
+
+Early stopping
+### Valid set performance:
+Validation loss per 100 evaluation steps: 0.1558857262134552
+Validation Loss: 0.14725599331515177
+Validation Accuracy: 0.9534679136452089
+Overall accuracy: 0.9539344743320095
+Overall loss: 0.14725599331515177
+### IO-Scheme
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.83      0.81      0.82     33385
+ I-TREATMENT       0.81      0.80      0.80     27612
+           O       0.97      0.98      0.98    385454
+
+    accuracy                           0.95    446451
+   macro avg       0.87      0.86      0.87    446451
+weighted avg       0.95      0.95      0.95    446451
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.83      0.81      0.82     33385
+ I-TREATMENT       0.81      0.80      0.80     27612
+
+   micro avg       0.82      0.81      0.81     60997
+   macro avg       0.82      0.81      0.81     60997
+weighted avg       0.82      0.81      0.81     60997
+
+### Summary
+              precision    recall  f1-score   support
+
+           O       0.97      0.98      0.98    385454
+   CONDITION       0.83      0.81      0.82     33385
+   TREATMENT       0.81      0.80      0.80     27612
+
+    accuracy                           0.95    446451
+   macro avg       0.87      0.86      0.87    446451
+weighted avg       0.95      0.95      0.95    446451
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.83      0.81      0.82     33385
+   TREATMENT       0.81      0.80      0.80     27612
+
+   micro avg       0.82      0.81      0.81     60997
+   macro avg       0.82      0.81      0.81     60997
+weighted avg       0.82      0.81      0.81     60997
+
+### Test set performance:
+Validation loss per 100 evaluation steps: 0.1493133157491684
+Validation Loss: 0.13984240208353316
+Validation Accuracy: 0.9561750139508929
+Overall accuracy: 0.9556138904816514
+Overall loss: 0.13984240208353316
+### IO-Scheme
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.82      0.80      0.81     39488
+ I-TREATMENT       0.79      0.80      0.80     30903
+           O       0.98      0.98      0.98    487689
+
+    accuracy                           0.96    558080
+   macro avg       0.86      0.86      0.86    558080
+weighted avg       0.96      0.96      0.96    558080
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.82      0.80      0.81     39488
+ I-TREATMENT       0.79      0.80      0.80     30903
+
+   micro avg       0.81      0.80      0.80     70391
+   macro avg       0.81      0.80      0.80     70391
+weighted avg       0.81      0.80      0.80     70391
+
+### Summary
+              precision    recall  f1-score   support
+
+           O       0.98      0.98      0.98    487689
+   CONDITION       0.82      0.80      0.81     39488
+   TREATMENT       0.79      0.80      0.80     30903
+
+    accuracy                           0.96    558080
+   macro avg       0.86      0.86      0.86    558080
+weighted avg       0.96      0.96      0.96    558080
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.82      0.80      0.81     39488
+   TREATMENT       0.79      0.80      0.80     30903
+
+   micro avg       0.81      0.80      0.80     70391
+   macro avg       0.81      0.80      0.80     70391
+weighted avg       0.81      0.80      0.80     70391
+
+Finished with this task. 
+ 
+
+Process finished!
+Training loss epoch: 0.20497532804077917
+Training accuracy epoch: 0.9246169903956423
+Overall acc: 0.9246130728270223
+Overall loss: 22.34231075644493
+Validation loss per 100 evaluation steps: 0.13308510184288025
+Validation Loss: 0.1389927158930472
+Validation Accuracy: 0.948190519568115
+Overall accuracy: 0.9488947275288889
+Overall loss: 0.1389927158930472
+### IO-Scheme
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.88      0.73      0.80     33385
+ I-TREATMENT       0.87      0.67      0.76     27612
+           O       0.96      0.99      0.97    385454
+
+    accuracy                           0.95    446451
+   macro avg       0.90      0.79      0.84    446451
+weighted avg       0.95      0.95      0.95    446451
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.88      0.73      0.80     33385
+ I-TREATMENT       0.87      0.67      0.76     27612
+
+   micro avg       0.88      0.70      0.78     60997
+   macro avg       0.88      0.70      0.78     60997
+weighted avg       0.88      0.70      0.78     60997
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.88      0.73      0.80     33385
+   TREATMENT       0.87      0.67      0.76     27612
+           O       0.96      0.99      0.97    385454
+
+    accuracy                           0.95    446451
+   macro avg       0.90      0.79      0.84    446451
+weighted avg       0.95      0.95      0.95    446451
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.88      0.73      0.80     33385
+   TREATMENT       0.87      0.67      0.76     27612
+
+   micro avg       0.88      0.70      0.78     60997
+   macro avg       0.88      0.70      0.78     60997
+weighted avg       0.88      0.70      0.78     60997
+
+Training Epoch: 1
+Training loss epoch: 0.11561511716711412
+Training accuracy epoch: 0.957277406465023
+Overall acc: 0.957276090971027
+Overall loss: 12.602047771215439
+Validation loss per 100 evaluation steps: 0.11160027980804443
+Validation Loss: 0.12198698973017079
+Validation Accuracy: 0.9542878297897843
+Overall accuracy: 0.9541920613908357
+Overall loss: 0.12198698973017079
+### IO-Scheme
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.82      0.84      0.83     33385
+ I-TREATMENT       0.84      0.75      0.79     27612
+           O       0.97      0.98      0.98    385454
+
+    accuracy                           0.95    446451
+   macro avg       0.88      0.86      0.87    446451
+weighted avg       0.95      0.95      0.95    446451
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.82      0.84      0.83     33385
+ I-TREATMENT       0.84      0.75      0.79     27612
+
+   micro avg       0.83      0.80      0.81     60997
+   macro avg       0.83      0.80      0.81     60997
+weighted avg       0.83      0.80      0.81     60997
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.82      0.84      0.83     33385
+   TREATMENT       0.84      0.75      0.79     27612
+           O       0.97      0.98      0.98    385454
+
+    accuracy                           0.95    446451
+   macro avg       0.88      0.86      0.87    446451
+weighted avg       0.95      0.95      0.95    446451
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.82      0.84      0.83     33385
+   TREATMENT       0.84      0.75      0.79     27612
+
+   micro avg       0.83      0.80      0.81     60997
+   macro avg       0.83      0.80      0.81     60997
+weighted avg       0.83      0.80      0.81     60997
+
+Training Epoch: 2
+Training loss epoch: 0.09040756004119138
+Training accuracy epoch: 0.9668671680882073
+Overall acc: 0.9668685904331612
+Overall loss: 9.85442404448986
+Validation loss per 100 evaluation steps: 0.1425105184316635
+Validation Loss: 0.1270577692027603
+Validation Accuracy: 0.9531827250041859
+Overall accuracy: 0.9537687226593736
+Overall loss: 0.1270577692027603
+### IO-Scheme
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.83      0.82      0.82     33385
+ I-TREATMENT       0.82      0.78      0.80     27612
+           O       0.97      0.98      0.98    385454
+
+    accuracy                           0.95    446451
+   macro avg       0.87      0.86      0.87    446451
+weighted avg       0.95      0.95      0.95    446451
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.83      0.82      0.82     33385
+ I-TREATMENT       0.82      0.78      0.80     27612
+
+   micro avg       0.82      0.80      0.81     60997
+   macro avg       0.82      0.80      0.81     60997
+weighted avg       0.82      0.80      0.81     60997
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.83      0.82      0.82     33385
+   TREATMENT       0.82      0.78      0.80     27612
+           O       0.97      0.98      0.98    385454
+
+    accuracy                           0.95    446451
+   macro avg       0.87      0.86      0.87    446451
+weighted avg       0.95      0.95      0.95    446451
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.83      0.82      0.82     33385
+   TREATMENT       0.82      0.78      0.80     27612
+
+   micro avg       0.82      0.80      0.81     60997
+   macro avg       0.82      0.80      0.81     60997
+weighted avg       0.82      0.80      0.81     60997
+
+Training Epoch: 3
+Training loss epoch: 0.07271565377302126
+Training accuracy epoch: 0.9739355244767776
+Overall acc: 0.9739409647518646
+Overall loss: 7.926006261259317
+Validation loss per 100 evaluation steps: 0.13172690570354462
+Validation Loss: 0.133903815011893
+Validation Accuracy: 0.9519379226140112
+Overall accuracy: 0.9522411194061611
+Overall loss: 0.133903815011893
+### IO-Scheme
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.84      0.78      0.81     33385
+ I-TREATMENT       0.84      0.74      0.79     27612
+           O       0.97      0.98      0.97    385454
+
+    accuracy                           0.95    446451
+   macro avg       0.88      0.84      0.86    446451
+weighted avg       0.95      0.95      0.95    446451
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.84      0.78      0.81     33385
+ I-TREATMENT       0.84      0.74      0.79     27612
+
+   micro avg       0.84      0.76      0.80     60997
+   macro avg       0.84      0.76      0.80     60997
+weighted avg       0.84      0.76      0.80     60997
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.84      0.78      0.81     33385
+   TREATMENT       0.84      0.74      0.79     27612
+           O       0.97      0.98      0.97    385454
+
+    accuracy                           0.95    446451
+   macro avg       0.88      0.84      0.86    446451
+weighted avg       0.95      0.95      0.95    446451
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.84      0.78      0.81     33385
+   TREATMENT       0.84      0.74      0.79     27612
+
+   micro avg       0.84      0.76      0.80     60997
+   macro avg       0.84      0.76      0.80     60997
+weighted avg       0.84      0.76      0.80     60997
+
+Training Epoch: 4
+Training loss epoch: 0.05870107581856054
+Training accuracy epoch: 0.9792180705872515
+Overall acc: 0.979215971026965
+Overall loss: 6.398417264223099
+Validation loss per 100 evaluation steps: 0.09678675979375839
+Validation Loss: 0.14659315959683486
+Validation Accuracy: 0.9533374286758366
+Overall accuracy: 0.9539344743320095
+Overall loss: 0.14659315959683486
+### IO-Scheme
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.83      0.81      0.82     33385
+ I-TREATMENT       0.81      0.80      0.80     27612
+           O       0.97      0.98      0.98    385454
+
+    accuracy                           0.95    446451
+   macro avg       0.87      0.86      0.87    446451
+weighted avg       0.95      0.95      0.95    446451
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.83      0.81      0.82     33385
+ I-TREATMENT       0.81      0.80      0.80     27612
+
+   micro avg       0.82      0.81      0.81     60997
+   macro avg       0.82      0.81      0.81     60997
+weighted avg       0.82      0.81      0.81     60997
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.83      0.81      0.82     33385
+   TREATMENT       0.81      0.80      0.80     27612
+           O       0.97      0.98      0.98    385454
+
+    accuracy                           0.95    446451
+   macro avg       0.87      0.86      0.87    446451
+weighted avg       0.95      0.95      0.95    446451
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.83      0.81      0.82     33385
+   TREATMENT       0.81      0.80      0.80     27612
+
+   micro avg       0.82      0.81      0.81     60997
+   macro avg       0.82      0.81      0.81     60997
+weighted avg       0.82      0.81      0.81     60997
+
+Early stopping
+### Valid set performance:
+Validation loss per 100 evaluation steps: 0.1558857262134552
+Validation Loss: 0.14725599331515177
+Validation Accuracy: 0.9534679136452089
+Overall accuracy: 0.9539344743320095
+Overall loss: 0.14725599331515177
+### IO-Scheme
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.83      0.81      0.82     33385
+ I-TREATMENT       0.81      0.80      0.80     27612
+           O       0.97      0.98      0.98    385454
+
+    accuracy                           0.95    446451
+   macro avg       0.87      0.86      0.87    446451
+weighted avg       0.95      0.95      0.95    446451
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.83      0.81      0.82     33385
+ I-TREATMENT       0.81      0.80      0.80     27612
+
+   micro avg       0.82      0.81      0.81     60997
+   macro avg       0.82      0.81      0.81     60997
+weighted avg       0.82      0.81      0.81     60997
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.83      0.81      0.82     33385
+   TREATMENT       0.81      0.80      0.80     27612
+           O       0.97      0.98      0.98    385454
+
+    accuracy                           0.95    446451
+   macro avg       0.87      0.86      0.87    446451
+weighted avg       0.95      0.95      0.95    446451
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.83      0.81      0.82     33385
+   TREATMENT       0.81      0.80      0.80     27612
+
+   micro avg       0.82      0.81      0.81     60997
+   macro avg       0.82      0.81      0.81     60997
+weighted avg       0.82      0.81      0.81     60997
+
+### Test set performance:
+Validation loss per 100 evaluation steps: 0.1493133157491684
+Validation Loss: 0.13984240208353316
+Validation Accuracy: 0.9561750139508929
+Overall accuracy: 0.9556138904816514
+Overall loss: 0.13984240208353316
+### IO-Scheme
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.82      0.80      0.81     39488
+ I-TREATMENT       0.79      0.80      0.80     30903
+           O       0.98      0.98      0.98    487689
+
+    accuracy                           0.96    558080
+   macro avg       0.86      0.86      0.86    558080
+weighted avg       0.96      0.96      0.96    558080
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.82      0.80      0.81     39488
+ I-TREATMENT       0.79      0.80      0.80     30903
+
+   micro avg       0.81      0.80      0.80     70391
+   macro avg       0.81      0.80      0.80     70391
+weighted avg       0.81      0.80      0.80     70391
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.82      0.80      0.81     39488
+   TREATMENT       0.79      0.80      0.80     30903
+           O       0.98      0.98      0.98    487689
+
+    accuracy                           0.96    558080
+   macro avg       0.86      0.86      0.86    558080
+weighted avg       0.96      0.96      0.96    558080
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.82      0.80      0.81     39488
+   TREATMENT       0.79      0.80      0.80     30903
+
+   micro avg       0.81      0.80      0.80     70391
+   macro avg       0.81      0.80      0.80     70391
+weighted avg       0.81      0.80      0.80     70391
+
+Finished with this task. 
+ 
+
+Process finished!

@@ -3,6 +3,21 @@ from dateutil.relativedelta import relativedelta
 from datetime import datetime
 import re
 
+def expand_norwegian_months(text):
+    month_mapping = {
+        "jan": "januar", "feb": "februar", "mar": "mars", "apr": "april",
+        "mai": "mai", "jun": "juni", "jul": "juli", "aug": "august",
+        "sep": "september", "okt": "oktober", "nov": "november", "des": "desember"
+    }
+    
+    def replace_match(match):
+        day1, short_month, day2 = match.groups()
+        long_month = month_mapping.get(short_month.lower(), short_month)
+        return f"{day1} {long_month} {day2}"
+    
+    pattern = r"(\d{1,2})\s*(jan|feb|mar|apr|mai|jun|jul|aug|sep|okt|nov|des)\s*(\d{1,2})"
+    return re.sub(pattern, replace_match, text, flags=re.IGNORECASE)
+
 def dct_year(dct, month, day):
     """ If event date is in the future of DCT, assign it to the previous year """
     current_year = dct.year
@@ -55,6 +70,23 @@ def convert_full_year(date_str):
         return f"1.1.{date_str}"
     # In case of any other invalid format, return the input as is
     return date_str
+
+def convert_date_format_2(text):
+    # Updated regex to match a valid 6-digit date (DDMMYY) and ensure no other numbers follow directly
+    match = re.search(r"\b(\d{2}\d{2}\d{2})\b", text)
+    
+    if match:
+        date_str = match.group(1)  # Extract the found date
+        try:
+            date_obj = datetime.strptime(date_str, "%d%m%y")  # Convert to date object
+            formatted_date = date_obj.strftime("%d.%m.%y")  # Format as DD.MM.YY
+            
+            # Replace the original date in text with formatted date
+            text = text.replace(date_str, formatted_date)
+        except ValueError as e:
+            print(f"Error parsing date: {e}")
+    
+    return text
 
 def convert_date_format(text):
     """ Convert DD/MM/YYYY to DD.MM.YYYY"""
@@ -109,3 +141,4 @@ def convert_duration(context, value, dct):
     else:
         resolved_date = value
     return resolved_date
+

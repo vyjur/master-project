@@ -8,7 +8,7 @@ file = "./data/helsearkiv/batch/tee/1-final.csv"
 df = pd.read_csv(file)
 
 STOP = len(df)
-df = df.sort_values(by="prob", ascending=True)  # Sort in ascending order
+df = df.sort_values(by="prob", ascending=False) 
 
 # Filter rows where TIMEX is not NaN
 timex_df = df[~df['TIMEX'].isna()]
@@ -16,11 +16,13 @@ timex_df = df[~df['TIMEX'].isna()]
 print("LEN:", len(timex_df))
 
 for i, (index, row) in enumerate(timex_df.iterrows()):
+    if i < 1350:
+        continue
     if i > STOP:
         print("STOPPED AT", i, index)
         break
     print("###########################################################################")
-    print(i, index)
+    print(i, len(timex_df))
     
     if row['Text'].replace(" ", "").isalpha():
         df.at[index, 'TIMEX'] = "DATE"
@@ -48,7 +50,7 @@ for i, (index, row) in enumerate(timex_df.iterrows()):
     elif user_input == 'n':
         df.at[index, 'TIMEX'] = np.nan  # Set TIMEX value to NaN
         
-    if i % 30 == 0:
+    if i % 10 == 0:
         print("CHECKPOINT")
         df.to_csv(file, index=True)
 

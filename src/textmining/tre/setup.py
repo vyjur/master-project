@@ -221,20 +221,29 @@ class TRExtract:
     def batch_run(self, datas):
         batch_text = []
         for data in datas:
+            e_j = None
+            if type(data) is list:
+                e_i = data[0]
+                e_j = data[1]
+            else:
+                e_i = data
+                
             e_i = {
                 "Context": e_i.context,
                 "Text": e_i.value
             }
             
-            if e_j in data:
+            if e_j is not None:
                 e_j = {
                     "Context": e_j.context,
                     "Text": e_j.value
                 }
             
             if self.task == Dataset.DTR:
-                e_i = data['e_i']
                 text = convert_to_input(self.input_tag_type, e_i)
+                print(e_i)
+                print(data)
+                print(text)
                 batch_text.append(self.preprocess.run(text)[0])
             elif self.task == Dataset.TLINK:
                 if e_j is None:

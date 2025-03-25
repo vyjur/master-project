@@ -11,7 +11,7 @@ TRE_TYPE = "dtr"
 folder = f"./scripts/train/tre/{TRE_TYPE}/config/model/"
 configs = os.listdir(folder)
 
-folder_path = "./data/helsearkiv/annotated/entity/"
+folder_path = "./data/helsearkiv/annotated/entity-without-timex/"
 
 entity_files = [
     folder_path + f
@@ -19,19 +19,19 @@ entity_files = [
     if os.path.isfile(os.path.join(folder_path, f))
 ]
 
-# MEDICAL ENTITY
-folder_path = "./data/helsearkiv/batch/dtr/"
+# MEDICAL ENTITY batch
+folder_path = "./data/helsearkiv/batch/ner/final/"
 
 batch_files = [
     folder_path + f
     for f in os.listdir(folder_path)
-    if os.path.isfile(os.path.join(folder_path, f))
+    if os.path.isfile(os.path.join(folder_path, f)) and "b4" not in f
 ]
 
 entity_files.extend(batch_files)
 
 # TIMEX
-folder_path = "./data/helsearkiv/batch/dtr/"
+folder_path = "./data/helsearkiv/batch/dtr/final/"
 
 batch_files = [
     folder_path + f

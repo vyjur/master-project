@@ -18,8 +18,6 @@ tee_start = 1
 
 file = f"./data/helsearkiv/batch/tee/{BATCH}.csv"
 
-all_entities = f"./data/helsearkiv/batch/tee/{1}.csv"
-
 folder_path = "./data/helsearkiv/annotated/entity/"
 
 entity_files = [
@@ -53,6 +51,7 @@ if batch_entities:  # Check if the list is not empty
 else:
     batch_entities = pd.DataFrame(columns=["page", "file", "Text", "Context"])  # Empty DataFrame with expected columns
 
+all_entities = "./data/helsearkiv/batch/tee/1.csv"
 entities = pd.read_csv(all_entities)
 
 filtered_entities = entities.merge(batch_entities, on=["page", "file", "Text"], how="left", indicator=True)

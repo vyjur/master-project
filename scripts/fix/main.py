@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np  # Import NumPy for NaN values
 from datetime import datetime
 
-folder_path = "./data/helsearkiv/annotated/entity/"
+folder_path = "./data/helsearkiv/annotated/entity copy/"
 
 # Get all CSV files in the folder
 entity_files = [
@@ -25,12 +25,17 @@ for index, file in enumerate(entity_files):
     df = pd.read_csv(file)
     
     # Filter rows where TIMEX is not NaN
-    timex_df = df[~df['TIMEX'].isna()]
-    
+    timex_df = df[df["TIMEX"].notna() & df["TIMEX"].isin(["DATE", "DCT"])]
+    count = 0
     for index, row in timex_df.iterrows():
         print("###########################################################################")
+        
+        print(count, len(timex_df))
+        if row['Text'].replace(" ", "").isalpha() or 'ICD' in row['Context']:
+            count += 1
+            continue
         print(f"\nText: {row['Text']}, TIMEX: {row['TIMEX']}")
-        window_size = 10
+        window_size = 50
         text_start = row["Context"].find(row["Text"])  # Find start position of the text
 
         if text_start != -1:  # Ensure text is found
@@ -50,6 +55,13 @@ for index, file in enumerate(entity_files):
             df.at[index, 'TIMEX'] = "DCT"
         elif user_input == 'n':
             df.at[index, 'TIMEX'] = np.nan  # Set TIMEX value to NaN
+        
+        if count % 10 == 0:
+            print("checkpoint!")
+            df.to_csv(file, index=False)
+
+        count += 1
+            
 
     # Save the modified file
     df.to_csv(file, index=False)

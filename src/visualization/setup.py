@@ -19,7 +19,6 @@ class Timeline:
         for doc in data:
             
             for e in doc["entities"]:
-                print(e)
                 if e.type is None or isinstance(e.type, TIMEX) or e.date is None:
                     continue
                 

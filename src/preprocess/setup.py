@@ -174,6 +174,12 @@ class Preprocess:
                     if "cat" in row:
                         encoding_dict["cat"] = row["cat"]
                 tokenized_dataset.append(encoding_dict)
+                
+        if len(tokenized_dataset) == 0:
+            return {
+                "label2id": label2id,
+                "id2label": id2label,
+            }
 
         train, test = train_test_split(
             tokenized_dataset, train_size=self.__train_size, random_state=42
@@ -190,6 +196,8 @@ class Preprocess:
         valid_dataset = CustomDataset(val, self.__tokenizer, label2id)
         test_dataset = CustomDataset(test, self.__tokenizer, label2id)
         
+        #torch.save(test_dataset, "./data/helsearkiv/test_dataset/test_dataset.pth")
+        
         return_dict = {
             "train_raw": train,
             "val_raw": val,
@@ -203,8 +211,8 @@ class Preprocess:
         }
         
         if "cat" in tokenized_dataset[0]:
-            intra = [d for d in tokenized_dataset if d["cat"] == SENTENCE.INTRA]
-            inter = [d for d in tokenized_dataset if d["cat"] == SENTENCE.INTER]
+            intra = [d for d in test_dataset if d["cat"] == SENTENCE.INTRA]
+            inter = [d for d in test_dataset if d["cat"] == SENTENCE.INTER]
 
             intra_dataset = CustomDataset(intra, self.__tokenizer, label2id)
             inter_dataset = CustomDataset(inter, self.__tokenizer, label2id)
