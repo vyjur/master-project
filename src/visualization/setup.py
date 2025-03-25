@@ -38,32 +38,7 @@ class Timeline:
                     )
                 )
                 level_dict[e.date] += 1
-            for rel in doc["relations"]:
-                date = None
-                if rel.x.date is None and rel.y.date is not None:
-                    date = datetime.strptime(rel.y.date, "%Y-%m-%d")
-                    start_date =  date - timedelta(hours=self.__offset)
-                    end_date = date
-                elif rel.x.date is not None and rel.y.date is None:
-                    date = datetime.strptime(rel.x.date, "%Y-%m-%d")
-                    start_date =  date + timedelta(hours=self.__offset)
-                    end_date = start_date + timedelta(hours=self.__offset)
-                if date is not None:
-                    if start_date not in level_dict:
-                        level_dict[start_date] = 1
-                    else:
-                        level_dict[start_date] += 1
-                    timeline.append(
-                        dict(
-                            System=level_dict[e.date],
-                            Entity=e.value,
-                            Type=e.type.name,
-                            Start=start_date,
-                            Finish=end_date,
-                            Document=e.dct,
-                        )
-                    )
-                        
+                
         if len(timeline) < 1:
             print("Empty timeline")
             return

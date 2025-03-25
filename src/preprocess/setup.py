@@ -51,7 +51,7 @@ class Preprocess:
         self.__config.read("./src/preprocess/config.ini")
 
     def run(self, data: str):
-        data = data.split()
+        data = str(data).split()
         tokenized_dataset = self.__tokenizer(
             data,
             padding="max_length",

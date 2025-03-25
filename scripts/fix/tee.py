@@ -3,8 +3,8 @@ import pandas as pd
 import numpy as np  # Import NumPy for NaN values
 from datetime import datetime
 
-
-file = "./data/helsearkiv/batch/tee/1-final.csv"   
+BATCH = 2
+file = f"./data/helsearkiv/batch/tee/{BATCH}-final.csv"   
 df = pd.read_csv(file)
 
 STOP = len(df)
@@ -16,7 +16,7 @@ timex_df = df[~df['TIMEX'].isna()]
 print("LEN:", len(timex_df))
 
 for i, (index, row) in enumerate(timex_df.iterrows()):
-    if i < 1350:
+    if i < 3660:
         continue
     if i > STOP:
         print("STOPPED AT", i, index)
