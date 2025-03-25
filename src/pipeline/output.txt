@@ -4,23 +4,3 @@ Installing dependencies from lock file
 No dependencies to install or update
 
 Installing the current project: master-project (0.1.0)
-### Initializing NER ###
-LOAD True
-{'B-CONDITION': 0, 'B-TREATMENT': 1, 'I-CONDITION': 2, 'I-TREATMENT': 3, 'O': 4} {0: 'B-CONDITION', 1: 'B-TREATMENT', 2: 'I-CONDITION', 3: 'I-TREATMENT', 4: 'O'}
-Using: cuda:0 with BERT
-Model and tokenizer loaded successfully.
-### Initializing TEE ###
-LOAD True
-Using: cuda:0 with BERT
-Model and tokenizer loaded successfully.
-### Initializing DTR ###
-LOAD True
-Using: cuda:0 with BERT
-Model and tokenizer loaded successfully.
-### Initializing TLINK ###
-LOAD True
-Using: cuda:0 with BERT
-Model and tokenizer loaded successfully.
-[4]
-{0: 'DATE', 1: 'DCT'}
-Empty timeline

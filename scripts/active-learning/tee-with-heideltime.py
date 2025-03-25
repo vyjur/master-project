@@ -101,7 +101,7 @@ for i, doc in enumerate(files):
                 text = page.extract_text()
                 
                 if len(text) > 0:
-                    result = tee.run(page.extract_text())
+                    result = tee.run(page.extract_text(), True)
                     added = True
                 else:
                     added = False
@@ -127,7 +127,6 @@ for i, doc in enumerate(files):
             ]
             
             timex_output = tee.batch_predict_sectime(tee_entities, True)
-            print(timex_output)
             
             for i, res in enumerate(entities):
                 al_data.append(

@@ -24,9 +24,9 @@ def most_common_element(lst):
     # Otherwise, return the numerically largest
     return max(candidates, key=lambda x: (len(str(x)), x))
 
-BATCH = 3
+BATCH = 4
 SIZE = 50
-PAGES = 4300
+#PAGES = 4300
 
 os.mkdir(f'./data/helsearkiv/batch/ner/{BATCH}-local')
 os.mkdir(f'./data/helsearkiv/batch/ner/{BATCH}-webanno')
@@ -77,7 +77,8 @@ if df_list:
 else:
     batch_df = pd.DataFrame(columns=["file", "page", "prob"])
 
-files = [file for file in raw_files if file.replace('.pdf', '') not in annotated_files]
+# files = [file for file in raw_files if file.replace('.pdf', '') not in annotated_files]
+files = [file for file in raw_files if file.replace('.pdf', '')]
 
 al_data = []
 
@@ -123,7 +124,9 @@ merged_offsets = []
 merged_files = []
 merged_pages = []
 
-for index, page in enumerate(sorted_data[:PAGES]):
+#for index, page in enumerate(sorted_data[:PAGES]):
+for index, page in enumerate(sorted_data[:]):
+
     reader = pypdf.PdfReader('./data/helsearkiv/journal/' + page['file'])
     info_file.append(page)
     count += 1
@@ -224,7 +227,8 @@ for index, page in enumerate(sorted_data[:PAGES]):
                     'file':merged_files,
                     'page':merged_pages
                 })
-        df.to_csv(f"./data/helsearkiv/batch/ner/{BATCH}-local/{count // SIZE}.csv")
+        #df.to_csv(f"./data/helsearkiv/batch/ner/{BATCH}-local/{count // SIZE}.csv")
+        df.to_csv(f"./data/helsearkiv/batch/ner/final/b{BATCH}-{count // SIZE}.csv")
         
         merged_entities = []
         merged_annots = []
