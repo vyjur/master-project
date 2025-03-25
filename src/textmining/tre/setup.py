@@ -241,9 +241,6 @@ class TRExtract:
             
             if self.task == Dataset.DTR:
                 text = convert_to_input(self.input_tag_type, e_i)
-                print(e_i)
-                print(data)
-                print(text)
                 batch_text.append(self.preprocess.run(text)[0])
             elif self.task == Dataset.TLINK:
                 if e_j is None:

@@ -17,7 +17,7 @@ import numpy as np
 
 class TEExtract:
     
-    def __init__(self, config_file:str, manager: DatasetManager, save_directory: str = "./src/textmining/ner/model", rules:bool=True):
+    def __init__(self, config_file:str, manager: DatasetManager, save_directory: str = "./src/textmining/tee/model", rules:bool=True):
         self.__heideltime = Heideltime()
         self.__heideltime.set_document_type('NEWS')
         self.__heideltime.set_language('auto-norwegian')
@@ -38,16 +38,12 @@ class TEExtract:
         
         dataset = []
         tags = [DCT.DATE.name, DCT.DCT.name]   
-
         if not load:
             tags = set()
             raw_dataset = manager.get(Dataset.TEE)
             for _, row in raw_dataset.iterrows():
                 if row['Text'].replace(" ", "").isalpha() or 'ICD' in row['Context']:
                     continue
-                # result = self.run(row['Text'])
-                # if len(result) <= 0 :
-                #     continue
                 dataset.append(
                     {
                         "sentence": convert_to_input(self.input_tag_type, row, True, True),
@@ -206,6 +202,8 @@ class TEExtract:
         # Only DATE expressions are candidate for DCT 
         dct_candidates = init_output[init_output['type'] == 'DATE']
         
+        print(dct_candidates)
+        
         # For each candidate classify if it is really a DCT /SECTIME or not
         dcts = []
         sections = []
@@ -214,6 +212,7 @@ class TEExtract:
             if row['text'].replace(" ", "").isalpha():
                 continue
             dct_output = self.predict_sectime(row)
+            print(dct_output)
             
             if dct_output == "DCT":
                 dcts.append(row)
@@ -232,7 +231,7 @@ class TEExtract:
             'Text': data['text']
         }
         text = convert_to_input(self.input_tag_type, data, True, True)
-        # TODO: we need to have preprocessing stage here
+        print(text)
         return self.__model_run(self.preprocess.run(text), prob)
     
     def batch_predict_sectime(self, datas, prob=False):

@@ -68,15 +68,13 @@ filtered_entities = all_entities.merge(batch_entities, on=["page", "file", "Text
 print(len(all_entities), len(filtered_entities))
 dataset = filtered_entities[filtered_entities["_merge"] == "left_only"].drop(columns=["_merge"])
 
+print(dataset['Context_x'])
+raise ValueError
+
 BATCH_SIZE = 64
 batch_inputs = [
-    SimpleNamespace(value=row['Text'], context=row['Context_x']) for _, row in dataset.iterrows()
+    SimpleNamespace(value=str(row['Text']), context=row['Context_x']) for _, row in dataset.iterrows()
 ]
-
-print(dataset)
-print(vars(batch_inputs[0]))
-print(vars(batch_inputs[1]))
-raise ValueError
 
 # Prepare storage for results
 dct_results = []
@@ -88,8 +86,8 @@ for i in range(0, len(batch_inputs), BATCH_SIZE):
     batch_outputs = dtr.batch_run(batch)
 
     # Collect results
-    dct_results.extend(output[0] for output in batch_outputs)
-    prob_results.extend(output[1].cpu().item() for output in batch_outputs)
+    dct_results.extend(batch_outputs[0])
+    prob_results.extend(output.cpu().item() for output in batch_outputs)
 
 # Assign results to dataset
 dataset['DCT'] = dct_results
