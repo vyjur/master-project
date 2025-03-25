@@ -81,6 +81,27 @@ class BERT(nn.Module):
             self.tokenizer = AutoTokenizer.from_pretrained(
                 save, trust_remote_code=True, device_map=self.__device
             )
+            
+            self.__processed = Preprocess(
+                self.tokenizer, parameters["max_length"], parameters["stride"], self.__util
+            ).run_train_test_split(self.__task, self.__dataset, self.__tags_name)
+
+            # try:
+            #     print("### Extra set performance:")
+            #     test_dataset = torch.load("./data/helsearkiv/test_dataset/test_dataset.pth")
+            #     train_params = {
+            #         "batch_size": parameters["train_batch_size"],
+            #         "shuffle": parameters["shuffle"],
+            #         "num_workers": parameters["num_workers"],
+            #     }
+            #     extra_loader = DataLoader(test_dataset, **train_params)
+            #     loss_fn = nn.CrossEntropyLoss() 
+            #     labels, predictions = self.__valid(
+            #         extra_loader, loss_fn, self.__processed["id2label"], True
+            #     )
+            #     self.__util.validate_report(labels, predictions)
+            # except Exception as e:
+            #     print(e)
 
             print("Model and tokenizer loaded successfully.")
         else:
@@ -272,7 +293,17 @@ class BERT(nn.Module):
             )
             self.__util.validate_report(labels, predictions)
             
-            
+            # try:
+            #     print("### Extra set performance:")
+            #     test_dataset = torch.load("./data/helsearkiv/test_dataset/test_dataset.pth")
+            #     extra_loader = DataLoader(test_dataset, **train_params)
+                
+            #     labels, predictions = self.__valid(
+            #         extra_loader, loss_fn, self.__processed["id2label"], True
+            #     )
+            #     self.__util.validate_report(labels, predictions)
+            # except Exception as e:
+            #     print(e)
             
             if "intra" in self.__processed and "inter" in self.__processed:
                 intra_loader = DataLoader(self.__processed["intra"], **train_params)
@@ -506,7 +537,7 @@ class BERT(nn.Module):
             if end:
                 return labels, predictions
             
-            report = self.__util.validate_report(labels, predictions)
+            report = self.__util.validate_report(labels, predictions, output=True)
             return eval_loss, acc, report['macro avg']['f1-score'], report['weighted avg']['f1-score']
 
     def forward(self, x):

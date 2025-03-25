@@ -2,6 +2,7 @@ import pandas as pd
 
 BATCH = 1
 PERCENTAGE = 7
+PREVIOUS = 2.6
 
 def sample_dataframe(df: pd.DataFrame, percentage: float) -> pd.DataFrame:
     """
@@ -18,14 +19,14 @@ def sample_dataframe(df: pd.DataFrame, percentage: float) -> pd.DataFrame:
     if not (0 < percentage <= 100):
         raise ValueError("Percentage must be between 0 and 100.")
 
-    df_sorted = df.sort_values(by='prob', ascending=True)
+    df_sorted = df.sort_values(by='prob', ascending=False)
     print(df_sorted)
     num_rows = int(len(df) * (percentage / 100))
     return df_sorted.head(num_rows)
 
 df = pd.read_csv(f'./data/helsearkiv/batch/tee/{BATCH}-withprob.csv')
-final_df = sample_dataframe(df, PERCENTAGE)
+final_df = sample_dataframe(df, PERCENTAGE-PREVIOUS)
 
 final_df.to_csv(f'./data/helsearkiv/batch/tee/{BATCH}-final.csv')
 
-print(len(df), len(final_df), len(final_df)/len(df))
+print(len(df), len(final_df), (len(final_df))/len(df)+PREVIOUS/100)

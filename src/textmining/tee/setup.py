@@ -45,9 +45,9 @@ class TEExtract:
             for _, row in raw_dataset.iterrows():
                 if row['Text'].replace(" ", "").isalpha() or 'ICD' in row['Context']:
                     continue
-                result = self.run(row['Text'])
-                if len(result) <= 0 :
-                    continue
+                # result = self.run(row['Text'])
+                # if len(result) <= 0 :
+                #     continue
                 dataset.append(
                     {
                         "sentence": convert_to_input(self.input_tag_type, row, True, True),
@@ -122,15 +122,20 @@ class TEExtract:
     def set_dct(self, dct):
         self.__heideltime.set_document_time(dct)
         
-    def __pre_rules(self, text):
-        text = convert_text(text)
-        
-        text = convert_slash_date(text)
+    def __pre_rules(self, text, sectime=False):
+       
+        if not sectime:
+            
+            text = convert_text(text)
+            text = convert_negative_years(text)
+            text = convert_full_year(text)
+            
+        text = expand_norwegian_months(text)
+        text = convert_date_format_2(text)
         text = convert_date_format(text)
-        text = convert_negative_years(text)
-        text = convert_full_year(text)
+        text = convert_slash_date(text)
         
-        if self.__heideltime.document_time is not None:
+        if self.__heideltime.document_time is not None and not sectime:
             # Rule 4: 25.12 => 25.12.YYYY where YYYY is the same year as DCT if 25.12.YYYY < DCT. Else, the year before that.
             dct = datetime.strptime(self.__heideltime.document_time, "%Y-%m-%d")
             
@@ -149,9 +154,9 @@ class TEExtract:
                 return convert_duration(check_context, value, dct) 
         return value 
         
-    def run(self, text):
+    def run(self, text, sectime=False):
         if self.__rules:
-            text = self.__pre_rules(text)
+            text = self.__pre_rules(text, sectime)
     
         result = self.__heideltime.parse(text).encode("utf-8").decode("utf-8")
         try:
@@ -170,13 +175,16 @@ class TEExtract:
             value = timex.get('value')
             text = timex.text
             
+            if text.replace(' ', '').isalpha():
+                continue
+            
             # Get the full text of the document
             
             # Get the 50-token window around this TIMEX3 element
             context = self.__get_window(full_text, text, window_size=50)
             
-            if self.__rules: 
-                value = self.__post_rules(full_text, text, ttype, value)
+            if self.__rules and not sectime: 
+                value = self.__post_rules(full_text, text, ttype, value,)
             
             data.append( {
                 'id': tid,
@@ -185,13 +193,16 @@ class TEExtract:
                 'text': text,
                 'context': context
             })
-
+            
+        if not data:  # This checks if the list is empty
+            return pd.DataFrame(columns=['id', 'type', 'value', 'text', 'context'])
+        
         return pd.DataFrame(data)
             
     def extract_sectime(self, data):
         # Initial output: Extracting all TIMEX expressions
-        init_output = self.run(data)
-       
+        init_output = self.run(data, True)
+        
         # Only DATE expressions are candidate for DCT 
         dct_candidates = init_output[init_output['type'] == 'DATE']
         

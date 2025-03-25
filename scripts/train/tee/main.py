@@ -3,7 +3,7 @@ from textmining.tee.setup import TEExtract
 from preprocess.dataset import DatasetManager
 from structure.enum import Dataset
 
-BATCH = 2
+BATCH = 1
 
 print("##### Start training for TEE... ######")
 
@@ -12,7 +12,9 @@ print("##### Start training for TEE... ######")
 folder = f"./scripts/train/tee/config/model/"
 configs = os.listdir(folder)
 
-folder_path = "./data/helsearkiv/annotated/entity/"
+#folder_path = "./data/helsearkiv/annotated/entity/"
+
+folder_path = "./data/helsearkiv/batch/tee/base/"
 
 entity_files = [
     folder_path + f
