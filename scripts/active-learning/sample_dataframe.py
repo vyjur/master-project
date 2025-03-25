@@ -1,8 +1,8 @@
 import pandas as pd
 
-BATCH = 1
-PERCENTAGE = 7
-PREVIOUS = 2.6
+BATCH = 2
+PERCENTAGE = 15.6
+PREVIOUS = 7
 
 def sample_dataframe(df: pd.DataFrame, percentage: float) -> pd.DataFrame:
     """

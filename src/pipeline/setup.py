@@ -1,6 +1,8 @@
 import os
 import pandas as pd
 import configparser
+from datetime import datetime, timedelta
+
 from textmining.ner.setup import NERecognition
 
 from textmining.tre.setup import TRExtract
@@ -92,6 +94,8 @@ class Pipeline:
             ##### Perform Temporal Expression Extraction
         
             sectimes = self.__tee.extract_sectime(doc)
+            
+            print("SECTIMES", sectimes)
        
             # For each DCT in document, define the text section corresponding to the given DCT 
             for i, dct in enumerate(sectimes):
@@ -178,8 +182,6 @@ class Pipeline:
                     
                     # Set date of entity as the same as DTR if it is overlapping with DCT
                     if cat == DocTimeRel.OVERLAP:
-                        print("DCT overlap")
-                        print(e)
                         e.date = e.dct
                     dcts[cat].append(e)
 
@@ -205,7 +207,6 @@ class Pipeline:
                                 rel = Relation(e_i, e_j, relation, prob)
                                 if rel.tr == TLINK.OVERLAP:
                                     if isinstance(e_i.type, TIMEX) and not isinstance(e_j.type, TIMEX):
-                                        # TODO:
                                         if e_i.prob >= e_j.prob or e_j.date is None:
                                             e_j.date = e_i.date
                                             e_j.prob = e_i.prob 
@@ -221,19 +222,23 @@ class Pipeline:
                             
                 ### For TLINK BEFORE relation, we will add it X hours ahead before the parent entity if it has no date assigned to it.
                 ### This will be handled in the visualization module
-                for rel in relations[:]:
+                for rel in relations:
                     if rel.tr == TLINK.BEFORE: 
                         if None not in (rel.x.date, rel.y.date):
                             if rel.x.date < rel.y.date:
                                 graph.add_edge(rel.x.id, rel.y.id)
                         else:
                             graph.add_edge(rel.x.id, rel.y.id)
-                    elif rel.tr == TLINK.OVERLAP:
-                        # TODO: do we need to do something here? as we ahve already handled it above
-                        pass
                     if graph.is_cyclic():
                         relations.remove(rel)
                         graph.remove_edge(rel.x.id, rel.y.id)
+
+                for rel in relations:
+                    if rel.tr == TLINK.BEFORE:
+                        if rel.x.date is None and rel.y.date is not None and not isinstance(rel.x.type, TIMEX):
+                            rel.x.date = datetime.strptime(rel.y.date, "%Y-%m-%d") - timedelta(days=1)
+                        elif rel.x.date is not None and rel.y.date is None and not isinstance(rel.y.type, TIMEX):
+                            rel.y.date = datetime.strptime(rel.x.date, "%Y-%m-%d") + timedelta(days=1)
 
                 all_info.append(
                     {

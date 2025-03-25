@@ -3,7 +3,7 @@ from textmining.tee.setup import TEExtract
 from preprocess.dataset import DatasetManager
 from structure.enum import Dataset
 
-BATCH = 1
+BATCH =3
 
 print("##### Start training for TEE... ######")
 

@@ -21,6 +21,7 @@ for i, doc in enumerate(files):
         print(f"- Executing the pipeline for {doc}")
         reader = pypdf.PdfReader(doc)
         documents = []
+        print("PAGES:", len(reader.pages))
         for j, page in enumerate(reader.pages):
             documents.append(page.extract_text())
         
