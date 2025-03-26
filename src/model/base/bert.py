@@ -71,13 +71,11 @@ class BERT(nn.Module):
         if load:
             if task == Task.TOKEN:
                 self.__model = AutoModelForTokenClassification.from_pretrained(
-                    save, trust_remote_code=True, num_labels=len(self.__tags_name), device_map=self.__device
+                    save, trust_remote_code=True, device_map=self.__device
                 ).to(self.__device)
             else:
-                config = AutoConfig.from_pretrained(self.__pretrain)
-                print("Before Loading:", config.num_labels)
                 self.__model = AutoModelForSequenceClassification.from_pretrained(
-                    save, trust_remote_code=True, num_labels=len(self.__tags_name), device_map=self.__device
+                    save, trust_remote_code=True, device_map=self.__device
                 ).to(self.__device)
                 
             self.tokenizer = AutoTokenizer.from_pretrained(

@@ -36,7 +36,7 @@ relation_files = [
 manager = DatasetManager(entity_files, relation_files)
 
 for i, conf in enumerate(configs):
-    if conf != 'b-bert.ini':
+    if conf != 'c-bert-bilstmcrf.ini':
         continue
     print(f"###### ({i}) Training for configuration file: {conf}")
     if os.path.isdir(folder + conf):
