@@ -107,7 +107,7 @@ class NN(nn.Module):
                 # wandb.agent(sweep_id, self.train, count=parameters["tune_count"])
                 
                 # bilstm-crf"
-                sweep_id = '5vn0laxj'
+                #sweep_id = '5vn0laxj'
                 
                 # bert-bilstm-crf"
                 sweep_id = 'ibvpiz29' 

@@ -1,2 +1,0 @@
-/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/cassis/cas.py:82: UserWarning: Not mapping external offset [62334] which is not valid within the internal range [0-62333]
-  warnings.warn(

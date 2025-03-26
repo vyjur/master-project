@@ -33,7 +33,7 @@ def convert_to_input(input_tag_type, e, single=True, start=True):
                 return e['Context']
         case TAGS.CUSTOM:
             if entity and single:
-                return e['Context'].replace(e["Text"], f'es{e["Text"]} ee')
+                return e['Context'].replace(e["Text"], f'es {e["Text"]}  ee')
             elif entity and not single:
                 if start:
                     return e['Context'].replace(e["Text"], f'as es {e["Text"]} ee ae')

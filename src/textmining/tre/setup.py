@@ -1,5 +1,6 @@
 import configparser
 import os
+import pandas as pd
 import numpy as np
 from types import SimpleNamespace
 from model.util import Util
@@ -71,8 +72,7 @@ class TRExtract:
         tags = set()
         
         if not load:
-            dataset_ner = manager.get(Dataset.NER)
-            dataset_ner = dataset_ner[dataset_ner['MedicalEntity'].notna() | dataset_ner['TIMEX'].notna()].reset_index()
+
             dataset_tre = manager.get(task)
             if task == Dataset.DTR:
                 dataset_tre = dataset_tre[dataset_tre['DCT'] != 'BEFOREOVERLAP']
@@ -87,6 +87,10 @@ class TRExtract:
                     )
                     tags.add(row['DCT'])
             elif task == Dataset.TLINK:
+                dataset_ner = manager.get(Dataset.NER)
+                dataset_ner = dataset_ner[dataset_ner['MedicalEntity'].notna() | dataset_ner['TIMEX'].notna()].reset_index()
+                dataset_tee = dataset.get(Dataset.TEE)
+                full_dataset = pd.concat([dataset_ner, dataset_tee])
                 
                 self.tlink_input = self.__config['GENERAL']['input']
                 for input in TLINK_INPUT:
@@ -135,12 +139,15 @@ class TRExtract:
                     tags.add(rel["RELATION"])
                 
                 # Create negative candidate pairs
-                for i, e_i in dataset_ner.iterrows():
-                    for j, e_j in dataset_ner.iterrows():
+                for i, e_i in full_dataset.iterrows():
+                    for j, e_j in full_dataset.iterrows():
                         if i == j or 'ICD' in e_i['Context'] or e_i['Context'].strip() == '':
                             continue
                         
                         if e_i['Text'] not in e_j['Context'] and e_j['Text'] not in e_i['Context']:
+                            continue
+                        
+                        if e_i['TIMEX'].notna() and e_j['TIMEX'].notna():
                             continue
 
                         relations = dataset_tre[
@@ -153,8 +160,8 @@ class TRExtract:
                         else:
                             relation = "O"
 
-                            # TODO: downsample majority class: this is not deterministic
-                            if random.random() < 0.5:
+                            # TODO: downsample majority class: 
+                            if random.random() < 0.7:
                                 continue
 
                         sentence_i = convert_to_input(self.input_tag_type, e_i, single=False, start=True)

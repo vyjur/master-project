@@ -219,7 +219,10 @@ class TEExtract:
                 context_start = data.index(row['context'])
                 dct_start = row['context'].index(row['text'])
                 start = context_start + dct_start
-                sections.append(start)
+                sections.append({
+                    "index": start,
+                    "value": row['value']    
+                })
             
         return dcts
     
