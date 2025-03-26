@@ -96,6 +96,9 @@ class Pipeline:
             sectimes = self.__tee.extract_sectime(doc)
             
             print("SECTIMES", sectimes)
+            
+            if len(sectimes) == 0:
+                sectimes = [0]
        
             # For each DCT in document, define the text section corresponding to the given DCT 
             for i, dct in enumerate(sectimes):
@@ -103,7 +106,7 @@ class Pipeline:
                     end = len(doc)
                 else:
                     end = i + 1
-                sec_text = doc[sectimes[i], sectimes[end]] 
+                sec_text = doc[sectimes[i]:sectimes[end]] 
                 tee_output = self.__tee.run(sec_text)
                 tee_output['dct'] = dct['value']
                             
