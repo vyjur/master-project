@@ -68,9 +68,6 @@ filtered_entities = all_entities.merge(batch_entities, on=["page", "file", "Text
 print(len(all_entities), len(filtered_entities))
 dataset = filtered_entities[filtered_entities["_merge"] == "left_only"].drop(columns=["_merge"])
 
-print(dataset['Context_x'])
-raise ValueError
-
 BATCH_SIZE = 64
 batch_inputs = [
     SimpleNamespace(value=str(row['Text']), context=row['Context_x']) for _, row in dataset.iterrows()

@@ -14847,3 +14847,3099 @@ Finished with this task.
  
 
 Process finished!
+##### Start training for NER... ######
+### Processing the files:
+###### (2) Training for configuration file: a-bilstmcrf.ini
+LOAD False
+{'B-CONDITION': 0, 'B-TREATMENT': 1, 'I-CONDITION': 2, 'I-TREATMENT': 3, 'O': 4} {0: 'B-CONDITION', 1: 'B-TREATMENT', 2: 'I-CONDITION', 3: 'I-TREATMENT', 4: 'O'}
+Using: cuda:0 with NN
+{'batch_size': 32, 'early_stopping_delta': 0.001, 'early_stopping_patience': 10, 'embedding_dim': 256, 'epochs': 100, 'learning_rate': 0.1, 'max_length': 256, 'num_workers': 0, 'optimizer': 'sgd', 'shuffle': True, 'stride': 0, 'tune': True, 'valid_batch_size': 32, 'weight_decay': 0, 'weights': False}
+{'B-CONDITION': 0, 'B-TREATMENT': 1, 'I-CONDITION': 2, 'I-TREATMENT': 3, 'O': 4}
+{0: 'B-CONDITION', 1: 'B-TREATMENT', 2: 'I-CONDITION', 3: 'I-TREATMENT', 4: 'O'}
+{'O': 2430568, 'B-CONDITION': 36814, 'I-CONDITION': 171528, 'B-TREATMENT': 42470, 'I-TREATMENT': 119004}
+{'B-CONDITION': 15.213690443852881, 'B-TREATMENT': 13.187586531669414, 'I-CONDITION': 3.26522083858029, 'I-TREATMENT': 4.706369533797183, 'O': 0.23043041791054603}
+{'B-CONDITION': 15.213690443852881, 'B-TREATMENT': 13.187586531669414, 'I-CONDITION': 3.26522083858029, 'I-TREATMENT': 4.706369533797183, 'O': 0.23043041791054603}
+Epoch 1
+-------------------------------
+Batch 0, Loss: 374.6816101074219
+Batch 100, Loss: 1325.669921875
+Batch 200, Loss: 526.5087890625
+Validation Accuracy: 0.8439396237864077
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.20      0.22      0.21      5666
+ B-TREATMENT       0.22      0.29      0.25      6648
+ I-CONDITION       0.39      0.43      0.41     26386
+ I-TREATMENT       0.32      0.39      0.35     19037
+           O       0.94      0.91      0.92    390519
+
+    accuracy                           0.84    448256
+   macro avg       0.41      0.45      0.43    448256
+weighted avg       0.86      0.84      0.85    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.32      0.39      0.35     19037
+ I-CONDITION       0.39      0.43      0.41     26386
+ B-CONDITION       0.20      0.22      0.21      5666
+ B-TREATMENT       0.22      0.29      0.25      6648
+
+   micro avg       0.33      0.38      0.35     57737
+   macro avg       0.28      0.34      0.31     57737
+weighted avg       0.33      0.38      0.35     57737
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.41      0.45      0.43     32052
+           O       0.94      0.91      0.92    390519
+   TREATMENT       0.34      0.43      0.38     25685
+
+    accuracy                           0.85    448256
+   macro avg       0.56      0.60      0.58    448256
+weighted avg       0.86      0.85      0.86    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.41      0.45      0.43     32052
+   TREATMENT       0.34      0.43      0.38     25685
+
+   micro avg       0.38      0.44      0.41     57737
+   macro avg       0.38      0.44      0.40     57737
+weighted avg       0.38      0.44      0.41     57737
+
+Epoch 2
+-------------------------------
+Batch 0, Loss: 528.5048828125
+Batch 100, Loss: 330.4033203125
+Batch 200, Loss: 701.25
+Validation Accuracy: 0.8371622465733867
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.24      0.31      0.27      5666
+ B-TREATMENT       0.25      0.42      0.32      6648
+ I-CONDITION       0.43      0.56      0.49     26386
+ I-TREATMENT       0.32      0.55      0.40     19037
+           O       0.95      0.88      0.92    390519
+
+    accuracy                           0.84    448256
+   macro avg       0.44      0.55      0.48    448256
+weighted avg       0.88      0.84      0.85    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.32      0.55      0.40     19037
+ I-CONDITION       0.43      0.56      0.49     26386
+ B-CONDITION       0.24      0.31      0.27      5666
+ B-TREATMENT       0.25      0.42      0.32      6648
+
+   micro avg       0.35      0.52      0.41     57737
+   macro avg       0.31      0.46      0.37     57737
+weighted avg       0.35      0.52      0.42     57737
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.44      0.57      0.50     32052
+           O       0.95      0.88      0.92    390519
+   TREATMENT       0.34      0.58      0.43     25685
+
+    accuracy                           0.84    448256
+   macro avg       0.58      0.68      0.61    448256
+weighted avg       0.88      0.84      0.86    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.44      0.57      0.50     32052
+   TREATMENT       0.34      0.58      0.43     25685
+
+   micro avg       0.39      0.58      0.46     57737
+   macro avg       0.39      0.58      0.46     57737
+weighted avg       0.39      0.58      0.47     57737
+
+Epoch 3
+-------------------------------
+Batch 0, Loss: 217.52001953125
+Batch 100, Loss: 339.03515625
+Batch 200, Loss: 221.9580078125
+Validation Accuracy: 0.7938588663620788
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.41      0.14      0.21      5666
+ B-TREATMENT       0.18      0.50      0.26      6648
+ I-CONDITION       0.73      0.11      0.19     26386
+ I-TREATMENT       0.20      0.77      0.31     19037
+           O       0.96      0.86      0.90    390519
+
+    accuracy                           0.79    448256
+   macro avg       0.50      0.48      0.38    448256
+weighted avg       0.89      0.79      0.82    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.20      0.77      0.31     19037
+ I-CONDITION       0.73      0.11      0.19     26386
+ B-CONDITION       0.41      0.14      0.21      5666
+ B-TREATMENT       0.18      0.50      0.26      6648
+
+   micro avg       0.22      0.38      0.28     57737
+   macro avg       0.38      0.38      0.25     57737
+weighted avg       0.46      0.38      0.24     57737
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.69      0.13      0.22     32052
+           O       0.96      0.86      0.90    390519
+   TREATMENT       0.22      0.80      0.34     25685
+
+    accuracy                           0.80    448256
+   macro avg       0.62      0.59      0.49    448256
+weighted avg       0.90      0.80      0.82    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.69      0.13      0.22     32052
+   TREATMENT       0.22      0.80      0.34     25685
+
+   micro avg       0.25      0.43      0.31     57737
+   macro avg       0.45      0.46      0.28     57737
+weighted avg       0.48      0.43      0.27     57737
+
+Epoch 4
+-------------------------------
+Batch 0, Loss: 332.21875
+Batch 100, Loss: 148.23828125
+Batch 200, Loss: 92.89990234375
+Validation Accuracy: 0.762945727441462
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.27      0.35      0.30      5666
+ B-TREATMENT       0.16      0.51      0.25      6648
+ I-CONDITION       0.49      0.50      0.50     26386
+ I-TREATMENT       0.19      0.76      0.31     19037
+           O       0.97      0.79      0.87    390519
+
+    accuracy                           0.76    448256
+   macro avg       0.42      0.58      0.45    448256
+weighted avg       0.89      0.76      0.81    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.19      0.76      0.31     19037
+ I-CONDITION       0.49      0.50      0.50     26386
+ B-CONDITION       0.27      0.35      0.30      5666
+ B-TREATMENT       0.16      0.51      0.25      6648
+
+   micro avg       0.25      0.57      0.35     57737
+   macro avg       0.28      0.53      0.34     57737
+weighted avg       0.34      0.57      0.39     57737
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.49      0.52      0.50     32052
+           O       0.97      0.79      0.87    390519
+   TREATMENT       0.21      0.79      0.33     25685
+
+    accuracy                           0.77    448256
+   macro avg       0.56      0.70      0.57    448256
+weighted avg       0.89      0.77      0.81    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.49      0.52      0.50     32052
+   TREATMENT       0.21      0.79      0.33     25685
+
+   micro avg       0.28      0.64      0.39     57737
+   macro avg       0.35      0.65      0.42     57737
+weighted avg       0.36      0.64      0.43     57737
+
+Epoch 5
+-------------------------------
+Batch 0, Loss: 238.68603515625
+Batch 100, Loss: 212.75341796875
+Batch 200, Loss: 207.45751953125
+Validation Accuracy: 0.8934425863792119
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.49      0.24      0.33      5666
+ B-TREATMENT       0.70      0.17      0.28      6648
+ I-CONDITION       0.73      0.30      0.42     26386
+ I-TREATMENT       0.85      0.12      0.21     19037
+           O       0.90      0.99      0.94    390519
+
+    accuracy                           0.89    448256
+   macro avg       0.73      0.36      0.44    448256
+weighted avg       0.88      0.89      0.87    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.85      0.12      0.21     19037
+ I-CONDITION       0.73      0.30      0.42     26386
+ B-CONDITION       0.49      0.24      0.33      5666
+ B-TREATMENT       0.70      0.17      0.28      6648
+
+   micro avg       0.71      0.22      0.33     57737
+   macro avg       0.69      0.21      0.31     57737
+weighted avg       0.74      0.22      0.32     57737
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.73      0.31      0.43     32052
+           O       0.90      0.99      0.94    390519
+   TREATMENT       0.85      0.14      0.24     25685
+
+    accuracy                           0.90    448256
+   macro avg       0.83      0.48      0.54    448256
+weighted avg       0.89      0.90      0.87    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.73      0.31      0.43     32052
+   TREATMENT       0.85      0.14      0.24     25685
+
+   micro avg       0.76      0.23      0.36     57737
+   macro avg       0.79      0.23      0.34     57737
+weighted avg       0.79      0.23      0.35     57737
+
+Epoch 6
+-------------------------------
+Batch 0, Loss: 179.6259765625
+Batch 100, Loss: 437.1396484375
+Batch 200, Loss: 133.95361328125
+Validation Accuracy: 0.9016544117647058
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.53      0.27      0.36      5666
+ B-TREATMENT       0.62      0.33      0.43      6648
+ I-CONDITION       0.77      0.32      0.45     26386
+ I-TREATMENT       0.71      0.31      0.43     19037
+           O       0.91      0.99      0.95    390519
+
+    accuracy                           0.90    448256
+   macro avg       0.71      0.44      0.52    448256
+weighted avg       0.89      0.90      0.88    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.71      0.31      0.43     19037
+ I-CONDITION       0.77      0.32      0.45     26386
+ B-CONDITION       0.53      0.27      0.36      5666
+ B-TREATMENT       0.62      0.33      0.43      6648
+
+   micro avg       0.70      0.31      0.43     57737
+   macro avg       0.66      0.31      0.42     57737
+weighted avg       0.71      0.31      0.43     57737
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.77      0.34      0.47     32052
+           O       0.91      0.99      0.95    390519
+   TREATMENT       0.73      0.33      0.46     25685
+
+    accuracy                           0.90    448256
+   macro avg       0.81      0.55      0.63    448256
+weighted avg       0.89      0.90      0.89    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.77      0.34      0.47     32052
+   TREATMENT       0.73      0.33      0.46     25685
+
+   micro avg       0.75      0.34      0.46     57737
+   macro avg       0.75      0.34      0.46     57737
+weighted avg       0.75      0.34      0.46     57737
+
+Epoch 7
+-------------------------------
+Batch 0, Loss: 126.4599609375
+Batch 100, Loss: 108.7158203125
+Batch 200, Loss: 100.7431640625
+Validation Accuracy: 0.8631853226727584
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.30      0.44      0.36      5666
+ B-TREATMENT       0.40      0.54      0.46      6648
+ I-CONDITION       0.46      0.70      0.55     26386
+ I-TREATMENT       0.42      0.61      0.50     19037
+           O       0.97      0.90      0.93    390519
+
+    accuracy                           0.86    448256
+   macro avg       0.51      0.64      0.56    448256
+weighted avg       0.90      0.86      0.88    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.42      0.61      0.50     19037
+ I-CONDITION       0.46      0.70      0.55     26386
+ B-CONDITION       0.30      0.44      0.36      5666
+ B-TREATMENT       0.40      0.54      0.46      6648
+
+   micro avg       0.42      0.63      0.51     57737
+   macro avg       0.40      0.57      0.47     57737
+weighted avg       0.42      0.63      0.51     57737
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.47      0.71      0.56     32052
+           O       0.97      0.90      0.93    390519
+   TREATMENT       0.45      0.64      0.53     25685
+
+    accuracy                           0.87    448256
+   macro avg       0.63      0.75      0.67    448256
+weighted avg       0.90      0.87      0.88    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.47      0.71      0.56     32052
+   TREATMENT       0.45      0.64      0.53     25685
+
+   micro avg       0.46      0.68      0.55     57737
+   macro avg       0.46      0.67      0.55     57737
+weighted avg       0.46      0.68      0.55     57737
+
+Epoch 8
+-------------------------------
+Batch 0, Loss: 92.01025390625
+Batch 100, Loss: 66.7080078125
+Batch 200, Loss: 539.5576171875
+Validation Accuracy: 0.8628395381210737
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.26      0.47      0.34      5666
+ B-TREATMENT       0.61      0.36      0.45      6648
+ I-CONDITION       0.36      0.78      0.50     26386
+ I-TREATMENT       0.69      0.26      0.37     19037
+           O       0.96      0.91      0.94    390519
+
+    accuracy                           0.86    448256
+   macro avg       0.58      0.56      0.52    448256
+weighted avg       0.90      0.86      0.87    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.69      0.26      0.37     19037
+ I-CONDITION       0.36      0.78      0.50     26386
+ B-CONDITION       0.26      0.47      0.34      5666
+ B-TREATMENT       0.61      0.36      0.45      6648
+
+   micro avg       0.39      0.53      0.45     57737
+   macro avg       0.48      0.47      0.41     57737
+weighted avg       0.49      0.53      0.44     57737
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.38      0.79      0.51     32052
+           O       0.96      0.91      0.94    390519
+   TREATMENT       0.70      0.30      0.42     25685
+
+    accuracy                           0.87    448256
+   macro avg       0.68      0.67      0.62    448256
+weighted avg       0.90      0.87      0.88    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.38      0.79      0.51     32052
+   TREATMENT       0.70      0.30      0.42     25685
+
+   micro avg       0.42      0.57      0.49     57737
+   macro avg       0.54      0.54      0.47     57737
+weighted avg       0.52      0.57      0.47     57737
+
+Epoch 9
+-------------------------------
+Batch 0, Loss: 80.63330078125
+Batch 100, Loss: 103.87060546875
+Batch 200, Loss: 116.34228515625
+Validation Accuracy: 0.8610347658480868
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.28      0.49      0.36      5666
+ B-TREATMENT       0.45      0.52      0.48      6648
+ I-CONDITION       0.41      0.76      0.53     26386
+ I-TREATMENT       0.50      0.51      0.51     19037
+           O       0.97      0.90      0.93    390519
+
+    accuracy                           0.86    448256
+   macro avg       0.52      0.64      0.56    448256
+weighted avg       0.90      0.86      0.87    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.50      0.51      0.51     19037
+ I-CONDITION       0.41      0.76      0.53     26386
+ B-CONDITION       0.28      0.49      0.36      5666
+ B-TREATMENT       0.45      0.52      0.48      6648
+
+   micro avg       0.42      0.63      0.50     57737
+   macro avg       0.41      0.57      0.47     57737
+weighted avg       0.43      0.63      0.50     57737
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.42      0.78      0.54     32052
+           O       0.97      0.90      0.93    390519
+   TREATMENT       0.52      0.55      0.53     25685
+
+    accuracy                           0.87    448256
+   macro avg       0.63      0.74      0.67    448256
+weighted avg       0.90      0.87      0.88    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.42      0.78      0.54     32052
+   TREATMENT       0.52      0.55      0.53     25685
+
+   micro avg       0.45      0.67      0.54     57737
+   macro avg       0.47      0.66      0.54     57737
+weighted avg       0.46      0.67      0.54     57737
+
+Epoch 10
+-------------------------------
+Batch 0, Loss: 60.20068359375
+Batch 100, Loss: 63.99462890625
+Batch 200, Loss: 85.6669921875
+Validation Accuracy: 0.8910912514277556
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.59      0.18      0.27      5666
+ B-TREATMENT       0.67      0.22      0.33      6648
+ I-CONDITION       0.87      0.17      0.28     26386
+ I-TREATMENT       0.76      0.18      0.30     19037
+           O       0.89      1.00      0.94    390519
+
+    accuracy                           0.89    448256
+   macro avg       0.76      0.35      0.42    448256
+weighted avg       0.88      0.89      0.86    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.76      0.18      0.30     19037
+ I-CONDITION       0.87      0.17      0.28     26386
+ B-CONDITION       0.59      0.18      0.27      5666
+ B-TREATMENT       0.67      0.22      0.33      6648
+
+   micro avg       0.77      0.18      0.29     57737
+   macro avg       0.72      0.19      0.30     57737
+weighted avg       0.78      0.18      0.29     57737
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.87      0.18      0.30     32052
+           O       0.89      1.00      0.94    390519
+   TREATMENT       0.78      0.20      0.32     25685
+
+    accuracy                           0.89    448256
+   macro avg       0.85      0.46      0.52    448256
+weighted avg       0.89      0.89      0.86    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.87      0.18      0.30     32052
+   TREATMENT       0.78      0.20      0.32     25685
+
+   micro avg       0.82      0.19      0.31     57737
+   macro avg       0.82      0.19      0.31     57737
+weighted avg       0.83      0.19      0.31     57737
+
+Epoch 11
+-------------------------------
+Batch 0, Loss: 174.4443359375
+Batch 100, Loss: 93.6572265625
+Batch 200, Loss: 42.63720703125
+Validation Accuracy: 0.8717496252141633
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.32      0.48      0.38      5666
+ B-TREATMENT       0.44      0.54      0.49      6648
+ I-CONDITION       0.46      0.72      0.56     26386
+ I-TREATMENT       0.48      0.58      0.52     19037
+           O       0.97      0.91      0.94    390519
+
+    accuracy                           0.87    448256
+   macro avg       0.53      0.65      0.58    448256
+weighted avg       0.90      0.87      0.88    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.48      0.58      0.52     19037
+ I-CONDITION       0.46      0.72      0.56     26386
+ B-CONDITION       0.32      0.48      0.38      5666
+ B-TREATMENT       0.44      0.54      0.49      6648
+
+   micro avg       0.45      0.63      0.52     57737
+   macro avg       0.42      0.58      0.49     57737
+weighted avg       0.45      0.63      0.52     57737
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.47      0.73      0.57     32052
+           O       0.97      0.91      0.94    390519
+   TREATMENT       0.50      0.61      0.55     25685
+
+    accuracy                           0.88    448256
+   macro avg       0.64      0.75      0.69    448256
+weighted avg       0.90      0.88      0.89    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.47      0.73      0.57     32052
+   TREATMENT       0.50      0.61      0.55     25685
+
+   micro avg       0.48      0.68      0.56     57737
+   macro avg       0.48      0.67      0.56     57737
+weighted avg       0.48      0.68      0.56     57737
+
+Epoch 12
+-------------------------------
+Batch 0, Loss: 66.59716796875
+Batch 100, Loss: 115.7822265625
+Batch 200, Loss: 65.46142578125
+Validation Accuracy: 0.7435594838663621
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.30      0.38      0.33      5666
+ B-TREATMENT       0.19      0.56      0.28      6648
+ I-CONDITION       0.45      0.59      0.51     26386
+ I-TREATMENT       0.19      0.82      0.30     19037
+           O       0.98      0.76      0.86    390519
+
+    accuracy                           0.74    448256
+   macro avg       0.42      0.62      0.46    448256
+weighted avg       0.90      0.74      0.80    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.19      0.82      0.30     19037
+ I-CONDITION       0.45      0.59      0.51     26386
+ B-CONDITION       0.30      0.38      0.33      5666
+ B-TREATMENT       0.19      0.56      0.28      6648
+
+   micro avg       0.25      0.64      0.36     57737
+   macro avg       0.28      0.59      0.36     57737
+weighted avg       0.32      0.64      0.40     57737
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.45      0.60      0.52     32052
+           O       0.98      0.76      0.86    390519
+   TREATMENT       0.21      0.84      0.33     25685
+
+    accuracy                           0.75    448256
+   macro avg       0.55      0.73      0.57    448256
+weighted avg       0.90      0.75      0.80    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.45      0.60      0.52     32052
+   TREATMENT       0.21      0.84      0.33     25685
+
+   micro avg       0.28      0.71      0.40     57737
+   macro avg       0.33      0.72      0.42     57737
+weighted avg       0.34      0.71      0.43     57737
+
+Epoch 13
+-------------------------------
+Batch 0, Loss: 183.83056640625
+Batch 100, Loss: 67.1513671875
+Batch 200, Loss: 60.78076171875
+Validation Accuracy: 0.8866495930896631
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.39      0.45      0.42      5666
+ B-TREATMENT       0.45      0.56      0.50      6648
+ I-CONDITION       0.56      0.63      0.59     26386
+ I-TREATMENT       0.46      0.62      0.53     19037
+           O       0.96      0.93      0.94    390519
+
+    accuracy                           0.89    448256
+   macro avg       0.56      0.64      0.60    448256
+weighted avg       0.90      0.89      0.89    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.46      0.62      0.53     19037
+ I-CONDITION       0.56      0.63      0.59     26386
+ B-CONDITION       0.39      0.45      0.42      5666
+ B-TREATMENT       0.45      0.56      0.50      6648
+
+   micro avg       0.49      0.60      0.54     57737
+   macro avg       0.46      0.56      0.51     57737
+weighted avg       0.50      0.60      0.54     57737
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.57      0.64      0.60     32052
+           O       0.96      0.93      0.94    390519
+   TREATMENT       0.49      0.64      0.56     25685
+
+    accuracy                           0.89    448256
+   macro avg       0.67      0.74      0.70    448256
+weighted avg       0.90      0.89      0.90    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.57      0.64      0.60     32052
+   TREATMENT       0.49      0.64      0.56     25685
+
+   micro avg       0.53      0.64      0.58     57737
+   macro avg       0.53      0.64      0.58     57737
+weighted avg       0.53      0.64      0.58     57737
+
+Epoch 14
+-------------------------------
+Batch 0, Loss: 64.4931640625
+Batch 100, Loss: 53.5751953125
+Batch 200, Loss: 84.68701171875
+Validation Accuracy: 0.8951313535122787
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.44      0.43      0.44      5666
+ B-TREATMENT       0.44      0.58      0.50      6648
+ I-CONDITION       0.64      0.54      0.59     26386
+ I-TREATMENT       0.47      0.62      0.53     19037
+           O       0.95      0.94      0.95    390519
+
+    accuracy                           0.90    448256
+   macro avg       0.59      0.62      0.60    448256
+weighted avg       0.90      0.90      0.90    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.47      0.62      0.53     19037
+ I-CONDITION       0.64      0.54      0.59     26386
+ B-CONDITION       0.44      0.43      0.44      5666
+ B-TREATMENT       0.44      0.58      0.50      6648
+
+   micro avg       0.53      0.56      0.54     57737
+   macro avg       0.50      0.54      0.52     57737
+weighted avg       0.54      0.56      0.55     57737
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.64      0.56      0.60     32052
+           O       0.95      0.94      0.95    390519
+   TREATMENT       0.49      0.65      0.56     25685
+
+    accuracy                           0.90    448256
+   macro avg       0.70      0.72      0.70    448256
+weighted avg       0.91      0.90      0.90    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.64      0.56      0.60     32052
+   TREATMENT       0.49      0.65      0.56     25685
+
+   micro avg       0.56      0.60      0.58     57737
+   macro avg       0.57      0.60      0.58     57737
+weighted avg       0.58      0.60      0.58     57737
+
+Epoch 15
+-------------------------------
+Batch 0, Loss: 58.0283203125
+Batch 100, Loss: 103.04638671875
+Batch 200, Loss: 33.55419921875
+Validation Accuracy: 0.8669398736436322
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.37      0.48      0.41      5666
+ B-TREATMENT       0.38      0.59      0.46      6648
+ I-CONDITION       0.53      0.65      0.58     26386
+ I-TREATMENT       0.38      0.69      0.49     19037
+           O       0.97      0.90      0.93    390519
+
+    accuracy                           0.87    448256
+   macro avg       0.52      0.66      0.58    448256
+weighted avg       0.90      0.87      0.88    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.38      0.69      0.49     19037
+ I-CONDITION       0.53      0.65      0.58     26386
+ B-CONDITION       0.37      0.48      0.41      5666
+ B-TREATMENT       0.38      0.59      0.46      6648
+
+   micro avg       0.44      0.64      0.52     57737
+   macro avg       0.41      0.60      0.49     57737
+weighted avg       0.45      0.64      0.52     57737
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.53      0.66      0.59     32052
+           O       0.97      0.90      0.93    390519
+   TREATMENT       0.41      0.71      0.52     25685
+
+    accuracy                           0.87    448256
+   macro avg       0.64      0.76      0.68    448256
+weighted avg       0.90      0.87      0.88    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.53      0.66      0.59     32052
+   TREATMENT       0.41      0.71      0.52     25685
+
+   micro avg       0.47      0.68      0.55     57737
+   macro avg       0.47      0.69      0.55     57737
+weighted avg       0.48      0.68      0.56     57737
+
+Epoch 16
+-------------------------------
+Batch 0, Loss: 51.20849609375
+Batch 100, Loss: 109.12548828125
+Batch 200, Loss: 47.48779296875
+Validation Accuracy: 0.8767378462307253
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.32      0.49      0.39      5666
+ B-TREATMENT       0.50      0.52      0.51      6648
+ I-CONDITION       0.44      0.74      0.55     26386
+ I-TREATMENT       0.55      0.52      0.53     19037
+           O       0.97      0.91      0.94    390519
+
+    accuracy                           0.88    448256
+   macro avg       0.55      0.64      0.58    448256
+weighted avg       0.90      0.88      0.89    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.55      0.52      0.53     19037
+ I-CONDITION       0.44      0.74      0.55     26386
+ B-CONDITION       0.32      0.49      0.39      5666
+ B-TREATMENT       0.50      0.52      0.51      6648
+
+   micro avg       0.46      0.62      0.53     57737
+   macro avg       0.45      0.57      0.50     57737
+weighted avg       0.47      0.62      0.52     57737
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.45      0.75      0.57     32052
+           O       0.97      0.91      0.94    390519
+   TREATMENT       0.56      0.55      0.56     25685
+
+    accuracy                           0.88    448256
+   macro avg       0.66      0.74      0.69    448256
+weighted avg       0.91      0.88      0.89    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.45      0.75      0.57     32052
+   TREATMENT       0.56      0.55      0.56     25685
+
+   micro avg       0.49      0.66      0.56     57737
+   macro avg       0.51      0.65      0.56     57737
+weighted avg       0.50      0.66      0.56     57737
+
+Epoch 17
+-------------------------------
+Batch 0, Loss: 46.6552734375
+Batch 100, Loss: 46.5654296875
+Batch 200, Loss: 113.73046875
+Validation Accuracy: 0.9085611793260994
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.49      0.40      0.44      5666
+ B-TREATMENT       0.61      0.44      0.51      6648
+ I-CONDITION       0.67      0.51      0.58     26386
+ I-TREATMENT       0.67      0.43      0.52     19037
+           O       0.94      0.97      0.95    390519
+
+    accuracy                           0.91    448256
+   macro avg       0.67      0.55      0.60    448256
+weighted avg       0.90      0.91      0.90    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.67      0.43      0.52     19037
+ I-CONDITION       0.67      0.51      0.58     26386
+ B-CONDITION       0.49      0.40      0.44      5666
+ B-TREATMENT       0.61      0.44      0.51      6648
+
+   micro avg       0.64      0.47      0.54     57737
+   macro avg       0.61      0.45      0.51     57737
+weighted avg       0.64      0.47      0.54     57737
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.67      0.52      0.59     32052
+           O       0.94      0.97      0.95    390519
+   TREATMENT       0.69      0.46      0.55     25685
+
+    accuracy                           0.91    448256
+   macro avg       0.77      0.65      0.70    448256
+weighted avg       0.90      0.91      0.91    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.67      0.52      0.59     32052
+   TREATMENT       0.69      0.46      0.55     25685
+
+   micro avg       0.68      0.49      0.57     57737
+   macro avg       0.68      0.49      0.57     57737
+weighted avg       0.68      0.49      0.57     57737
+
+Epoch 18
+-------------------------------
+Batch 0, Loss: 51.9384765625
+Batch 100, Loss: 76.3310546875
+Batch 200, Loss: 134.3232421875
+Validation Accuracy: 0.8331132210165619
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.31      0.48      0.38      5666
+ B-TREATMENT       0.32      0.60      0.42      6648
+ I-CONDITION       0.44      0.71      0.55     26386
+ I-TREATMENT       0.33      0.71      0.45     19037
+           O       0.97      0.86      0.91    390519
+
+    accuracy                           0.83    448256
+   macro avg       0.47      0.67      0.54    448256
+weighted avg       0.90      0.83      0.86    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.33      0.71      0.45     19037
+ I-CONDITION       0.44      0.71      0.55     26386
+ B-CONDITION       0.31      0.48      0.38      5666
+ B-TREATMENT       0.32      0.60      0.42      6648
+
+   micro avg       0.37      0.67      0.48     57737
+   macro avg       0.35      0.62      0.45     57737
+weighted avg       0.38      0.67      0.48     57737
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.45      0.72      0.56     32052
+           O       0.97      0.86      0.91    390519
+   TREATMENT       0.35      0.73      0.47     25685
+
+    accuracy                           0.84    448256
+   macro avg       0.59      0.77      0.65    448256
+weighted avg       0.90      0.84      0.86    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.45      0.72      0.56     32052
+   TREATMENT       0.35      0.73      0.47     25685
+
+   micro avg       0.40      0.73      0.52     57737
+   macro avg       0.40      0.73      0.51     57737
+weighted avg       0.41      0.73      0.52     57737
+
+Early stopping
+### Valid set performance:
+Validation Accuracy: 0.8331243753569388
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.31      0.48      0.38      5666
+ B-TREATMENT       0.32      0.60      0.42      6648
+ I-CONDITION       0.44      0.71      0.55     26386
+ I-TREATMENT       0.33      0.71      0.45     19037
+           O       0.97      0.86      0.91    390519
+
+    accuracy                           0.83    448256
+   macro avg       0.47      0.67      0.54    448256
+weighted avg       0.90      0.83      0.86    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.33      0.71      0.45     19037
+ I-CONDITION       0.44      0.71      0.55     26386
+ B-CONDITION       0.31      0.48      0.38      5666
+ B-TREATMENT       0.32      0.60      0.42      6648
+
+   micro avg       0.37      0.67      0.48     57737
+   macro avg       0.35      0.62      0.45     57737
+weighted avg       0.38      0.67      0.48     57737
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.45      0.72      0.56     32052
+           O       0.97      0.86      0.91    390519
+   TREATMENT       0.35      0.73      0.47     25685
+
+    accuracy                           0.84    448256
+   macro avg       0.59      0.77      0.65    448256
+weighted avg       0.90      0.84      0.86    448256
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.45      0.72      0.56     32052
+   TREATMENT       0.35      0.73      0.47     25685
+
+   micro avg       0.40      0.73      0.52     57737
+   macro avg       0.40      0.73      0.51     57737
+weighted avg       0.41      0.73      0.52     57737
+
+### Test set performance:
+Validation Accuracy: 0.8365587865630713
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.32      0.48      0.38      7273
+ B-TREATMENT       0.32      0.60      0.42      8293
+ I-CONDITION       0.45      0.73      0.56     33028
+ I-TREATMENT       0.33      0.71      0.45     23430
+           O       0.98      0.86      0.91    488104
+
+    accuracy                           0.84    560128
+   macro avg       0.48      0.68      0.55    560128
+weighted avg       0.90      0.84      0.86    560128
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.33      0.71      0.45     23430
+ I-CONDITION       0.45      0.73      0.56     33028
+ B-CONDITION       0.32      0.48      0.38      7273
+ B-TREATMENT       0.32      0.60      0.42      8293
+
+   micro avg       0.38      0.69      0.49     72024
+   macro avg       0.36      0.63      0.45     72024
+weighted avg       0.38      0.69      0.49     72024
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.46      0.74      0.57     40301
+           O       0.98      0.86      0.91    488104
+   TREATMENT       0.35      0.74      0.48     31723
+
+    accuracy                           0.84    560128
+   macro avg       0.60      0.78      0.65    560128
+weighted avg       0.90      0.84      0.86    560128
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.46      0.74      0.57     40301
+   TREATMENT       0.35      0.74      0.48     31723
+
+   micro avg       0.41      0.74      0.52     72024
+   macro avg       0.41      0.74      0.52     72024
+weighted avg       0.41      0.74      0.53     72024
+
+{'batch_size': 64, 'early_stopping_delta': 0.0001, 'early_stopping_patience': 3, 'embedding_dim': 128, 'epochs': 100, 'learning_rate': 0.1, 'max_length': 64, 'num_workers': 0, 'optimizer': 'sgd', 'shuffle': True, 'stride': 0, 'tune': True, 'valid_batch_size': 32, 'weight_decay': 0.01, 'weights': False}
+{'B-CONDITION': 0, 'B-TREATMENT': 1, 'I-CONDITION': 2, 'I-TREATMENT': 3, 'O': 4}
+{0: 'B-CONDITION', 1: 'B-TREATMENT', 2: 'I-CONDITION', 3: 'I-TREATMENT', 4: 'O'}
+{'O': 2498280, 'B-CONDITION': 37449, 'I-CONDITION': 170893, 'B-TREATMENT': 42703, 'I-TREATMENT': 118771}
+{'B-CONDITION': 15.3173435872787, 'B-TREATMENT': 13.432761164321008, 'I-CONDITION': 3.3565985733763233, 'I-TREATMENT': 4.829623392915779, 'O': 0.22960564868629618}
+{'B-CONDITION': 15.3173435872787, 'B-TREATMENT': 13.432761164321008, 'I-CONDITION': 3.3565985733763233, 'I-TREATMENT': 4.829623392915779, 'O': 0.22960564868629618}
+Epoch 1
+-------------------------------
+Batch 0, Loss: 164.43771362304688
+Batch 100, Loss: 35.00518798828125
+Batch 200, Loss: 20.732940673828125
+Batch 300, Loss: 34.339111328125
+Batch 400, Loss: 15.509490966796875
+Validation Accuracy: 0.077981191605076
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.03      0.01      0.02      5857
+ B-TREATMENT       0.89      0.00      0.00      6777
+ I-CONDITION       0.06      1.00      0.11     26967
+ I-TREATMENT       0.00      0.00      0.00     18861
+           O       1.00      0.02      0.04    400482
+
+    accuracy                           0.08    458944
+   macro avg       0.40      0.21      0.04    458944
+weighted avg       0.89      0.08      0.04    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.00      0.00      0.00     18861
+ I-CONDITION       0.06      1.00      0.11     26967
+ B-CONDITION       0.03      0.01      0.02      5857
+ B-TREATMENT       0.89      0.00      0.00      6777
+
+   micro avg       0.06      0.46      0.11     58462
+   macro avg       0.25      0.25      0.03     58462
+weighted avg       0.13      0.46      0.05     58462
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.07      1.00      0.14     32824
+           O       1.00      0.02      0.04    400482
+   TREATMENT       0.57      0.00      0.00     25638
+
+    accuracy                           0.09    458944
+   macro avg       0.55      0.34      0.06    458944
+weighted avg       0.91      0.09      0.05    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.07      1.00      0.14     32824
+   TREATMENT       0.57      0.00      0.00     25638
+
+   micro avg       0.07      0.56      0.13     58462
+   macro avg       0.32      0.50      0.07     58462
+weighted avg       0.29      0.56      0.08     58462
+
+Epoch 2
+-------------------------------
+Batch 0, Loss: 164.6950225830078
+Batch 100, Loss: 36.860015869140625
+Batch 200, Loss: 12.42816162109375
+Batch 300, Loss: 11.034332275390625
+Batch 400, Loss: 41.953155517578125
+Validation Accuracy: 0.8013156289220471
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.18      0.31      0.23      5857
+ B-TREATMENT       0.75      0.13      0.22      6777
+ I-CONDITION       0.24      0.79      0.37     26967
+ I-TREATMENT       0.74      0.05      0.09     18861
+           O       0.96      0.86      0.90    400482
+
+    accuracy                           0.80    458944
+   macro avg       0.57      0.43      0.36    458944
+weighted avg       0.89      0.80      0.82    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.74      0.05      0.09     18861
+ I-CONDITION       0.24      0.79      0.37     26967
+ B-CONDITION       0.18      0.31      0.23      5857
+ B-TREATMENT       0.75      0.13      0.22      6777
+
+   micro avg       0.25      0.43      0.32     58462
+   macro avg       0.48      0.32      0.23     58462
+weighted avg       0.46      0.43      0.25     58462
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.26      0.79      0.40     32824
+           O       0.96      0.86      0.90    400482
+   TREATMENT       0.76      0.07      0.13     25638
+
+    accuracy                           0.81    458944
+   macro avg       0.66      0.57      0.48    458944
+weighted avg       0.90      0.81      0.82    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.26      0.79      0.40     32824
+   TREATMENT       0.76      0.07      0.13     25638
+
+   micro avg       0.28      0.47      0.35     58462
+   macro avg       0.51      0.43      0.26     58462
+weighted avg       0.48      0.47      0.28     58462
+
+Epoch 3
+-------------------------------
+Batch 0, Loss: 16.728927612304688
+Batch 100, Loss: 26.27874755859375
+Batch 200, Loss: 12.387847900390625
+Batch 300, Loss: 74.50189208984375
+Batch 400, Loss: 28.607498168945312
+Validation Accuracy: 0.8839836668526008
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.93      0.06      0.11      5857
+ B-TREATMENT       0.80      0.08      0.14      6777
+ I-CONDITION       0.95      0.13      0.23     26967
+ I-TREATMENT       0.72      0.06      0.10     18861
+           O       0.88      1.00      0.94    400482
+
+    accuracy                           0.88    458944
+   macro avg       0.86      0.27      0.31    458944
+weighted avg       0.88      0.88      0.84    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.72      0.06      0.10     18861
+ I-CONDITION       0.95      0.13      0.23     26967
+ B-CONDITION       0.93      0.06      0.11      5857
+ B-TREATMENT       0.80      0.08      0.14      6777
+
+   micro avg       0.88      0.09      0.17     58462
+   macro avg       0.85      0.08      0.15     58462
+weighted avg       0.86      0.09      0.17     58462
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.96      0.12      0.21     32824
+           O       0.88      1.00      0.94    400482
+   TREATMENT       0.77      0.06      0.12     25638
+
+    accuracy                           0.88    458944
+   macro avg       0.87      0.39      0.42    458944
+weighted avg       0.88      0.88      0.84    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.96      0.12      0.21     32824
+   TREATMENT       0.77      0.06      0.12     25638
+
+   micro avg       0.89      0.10      0.17     58462
+   macro avg       0.86      0.09      0.17     58462
+weighted avg       0.87      0.10      0.17     58462
+
+Epoch 4
+-------------------------------
+Batch 0, Loss: 23.128570556640625
+Batch 100, Loss: 29.26898193359375
+Batch 200, Loss: 10.66937255859375
+Batch 300, Loss: 25.9268798828125
+Batch 400, Loss: 14.021453857421875
+Validation Accuracy: 0.872616266908381
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.00      0.00      0.00      5857
+ B-TREATMENT       0.00      0.00      0.00      6777
+ I-CONDITION       0.00      0.00      0.00     26967
+ I-TREATMENT       0.00      0.00      0.00     18861
+           O       0.87      1.00      0.93    400482
+
+    accuracy                           0.87    458944
+   macro avg       0.17      0.20      0.19    458944
+weighted avg       0.76      0.87      0.81    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-CONDITION       0.00      0.00      0.00     26967
+ I-TREATMENT       0.00      0.00      0.00     18861
+ B-CONDITION       0.00      0.00      0.00      5857
+ B-TREATMENT       0.00      0.00      0.00      6777
+
+   micro avg       0.00      0.00      0.00     58462
+   macro avg       0.00      0.00      0.00     58462
+weighted avg       0.00      0.00      0.00     58462
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.00      0.00      0.00     32824
+   TREATMENT       0.00      0.00      0.00     25638
+           O       0.87      1.00      0.93    400482
+
+    accuracy                           0.87    458944
+   macro avg       0.29      0.33      0.31    458944
+weighted avg       0.76      0.87      0.81    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.00      0.00      0.00     32824
+   TREATMENT       0.00      0.00      0.00     25638
+
+   micro avg       0.00      0.00      0.00     58462
+   macro avg       0.00      0.00      0.00     58462
+weighted avg       0.00      0.00      0.00     58462
+
+Epoch 5
+-------------------------------
+Batch 0, Loss: 97.34637451171875
+Batch 100, Loss: 14.26263427734375
+Batch 200, Loss: 16.932022094726562
+Batch 300, Loss: 9.552032470703125
+Batch 400, Loss: 11.712631225585938
+Validation Accuracy: 0.883114279737833
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.81      0.09      0.16      5857
+ B-TREATMENT       0.92      0.03      0.06      6777
+ I-CONDITION       0.92      0.16      0.27     26967
+ I-TREATMENT       1.00      0.00      0.00     18861
+           O       0.88      1.00      0.94    400482
+
+    accuracy                           0.88    458944
+   macro avg       0.91      0.26      0.29    458944
+weighted avg       0.89      0.88      0.84    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       1.00      0.00      0.00     18861
+ I-CONDITION       0.92      0.16      0.27     26967
+ B-CONDITION       0.81      0.09      0.16      5857
+ B-TREATMENT       0.92      0.03      0.06      6777
+
+   micro avg       0.91      0.09      0.16     58462
+   macro avg       0.91      0.07      0.12     58462
+weighted avg       0.94      0.09      0.15     58462
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.92      0.15      0.26     32824
+           O       0.88      1.00      0.94    400482
+   TREATMENT       0.95      0.01      0.02     25638
+
+    accuracy                           0.88    458944
+   macro avg       0.92      0.39      0.40    458944
+weighted avg       0.89      0.88      0.84    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.92      0.15      0.26     32824
+   TREATMENT       0.95      0.01      0.02     25638
+
+   micro avg       0.92      0.09      0.16     58462
+   macro avg       0.94      0.08      0.14     58462
+weighted avg       0.93      0.09      0.15     58462
+
+Epoch 6
+-------------------------------
+Batch 0, Loss: 19.591766357421875
+Batch 100, Loss: 7.93804931640625
+Batch 200, Loss: 8.87677001953125
+Batch 300, Loss: 9.87835693359375
+Batch 400, Loss: 37.3870849609375
+Validation Accuracy: 0.8892915039743411
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.69      0.13      0.22      5857
+ B-TREATMENT       0.38      0.64      0.47      6777
+ I-CONDITION       0.91      0.16      0.27     26967
+ I-TREATMENT       0.37      0.61      0.46     18861
+           O       0.94      0.97      0.96    400482
+
+    accuracy                           0.89    458944
+   macro avg       0.66      0.50      0.48    458944
+weighted avg       0.91      0.89      0.88    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.37      0.61      0.46     18861
+ I-CONDITION       0.91      0.16      0.27     26967
+ B-CONDITION       0.69      0.13      0.22      5857
+ B-TREATMENT       0.38      0.64      0.47      6777
+
+   micro avg       0.43      0.36      0.39     58462
+   macro avg       0.58      0.39      0.36     58462
+weighted avg       0.65      0.36      0.35     58462
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.89      0.16      0.27     32824
+           O       0.94      0.97      0.96    400482
+   TREATMENT       0.39      0.65      0.49     25638
+
+    accuracy                           0.89    458944
+   macro avg       0.74      0.59      0.57    458944
+weighted avg       0.91      0.89      0.88    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.89      0.16      0.27     32824
+   TREATMENT       0.39      0.65      0.49     25638
+
+   micro avg       0.45      0.38      0.41     58462
+   macro avg       0.64      0.41      0.38     58462
+weighted avg       0.67      0.38      0.37     58462
+
+Epoch 7
+-------------------------------
+Batch 0, Loss: 10.7039794921875
+Batch 100, Loss: 6.377044677734375
+Batch 200, Loss: 11.177520751953125
+Batch 300, Loss: 12.337158203125
+Batch 400, Loss: 24.84033203125
+Validation Accuracy: 0.8856941151861665
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.93      0.06      0.11      5857
+ B-TREATMENT       0.39      0.12      0.19      6777
+ I-CONDITION       0.95      0.12      0.21     26967
+ I-TREATMENT       0.59      0.13      0.22     18861
+           O       0.89      1.00      0.94    400482
+
+    accuracy                           0.89    458944
+   macro avg       0.75      0.29      0.33    458944
+weighted avg       0.87      0.89      0.85    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.59      0.13      0.22     18861
+ I-CONDITION       0.95      0.12      0.21     26967
+ B-CONDITION       0.93      0.06      0.11      5857
+ B-TREATMENT       0.39      0.12      0.19      6777
+
+   micro avg       0.68      0.12      0.20     58462
+   macro avg       0.72      0.11      0.18     58462
+weighted avg       0.77      0.12      0.20     58462
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.95      0.11      0.19     32824
+           O       0.89      1.00      0.94    400482
+   TREATMENT       0.62      0.16      0.25     25638
+
+    accuracy                           0.89    458944
+   macro avg       0.82      0.42      0.46    458944
+weighted avg       0.88      0.89      0.85    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.95      0.11      0.19     32824
+   TREATMENT       0.62      0.16      0.25     25638
+
+   micro avg       0.74      0.13      0.22     58462
+   macro avg       0.79      0.13      0.22     58462
+weighted avg       0.81      0.13      0.22     58462
+
+Epoch 8
+-------------------------------
+Batch 0, Loss: 24.000762939453125
+Batch 100, Loss: 37.823516845703125
+Batch 200, Loss: 25.702056884765625
+Batch 300, Loss: 9.976593017578125
+Batch 400, Loss: 9.5859375
+Validation Accuracy: 0.8115826767535909
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.67      0.19      0.29      5857
+ B-TREATMENT       0.34      0.56      0.42      6777
+ I-CONDITION       0.76      0.31      0.44     26967
+ I-TREATMENT       0.19      0.86      0.31     18861
+           O       0.98      0.86      0.91    400482
+
+    accuracy                           0.81    458944
+   macro avg       0.59      0.56      0.48    458944
+weighted avg       0.92      0.81      0.85    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.19      0.86      0.31     18861
+ I-CONDITION       0.76      0.31      0.44     26967
+ B-CONDITION       0.67      0.19      0.29      5857
+ B-TREATMENT       0.34      0.56      0.42      6777
+
+   micro avg       0.27      0.50      0.35     58462
+   macro avg       0.49      0.48      0.37     58462
+weighted avg       0.52      0.50      0.38     58462
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.78      0.30      0.43     32824
+           O       0.98      0.86      0.91    400482
+   TREATMENT       0.23      0.86      0.36     25638
+
+    accuracy                           0.82    458944
+   macro avg       0.66      0.67      0.57    458944
+weighted avg       0.92      0.82      0.85    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.78      0.30      0.43     32824
+   TREATMENT       0.23      0.86      0.36     25638
+
+   micro avg       0.29      0.54      0.38     58462
+   macro avg       0.50      0.58      0.40     58462
+weighted avg       0.54      0.54      0.40     58462
+
+Epoch 9
+-------------------------------
+Batch 0, Loss: 9.412109375
+Batch 100, Loss: 32.12164306640625
+Batch 200, Loss: 8.75958251953125
+Batch 300, Loss: 7.41888427734375
+Batch 400, Loss: 10.08056640625
+Validation Accuracy: 0.8914464509831265
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.84      0.07      0.13      5857
+ B-TREATMENT       0.53      0.38      0.44      6777
+ I-CONDITION       0.95      0.12      0.21     26967
+ I-TREATMENT       0.55      0.22      0.31     18861
+           O       0.90      1.00      0.95    400482
+
+    accuracy                           0.89    458944
+   macro avg       0.75      0.36      0.41    458944
+weighted avg       0.88      0.89      0.86    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.55      0.22      0.31     18861
+ I-CONDITION       0.95      0.12      0.21     26967
+ B-CONDITION       0.84      0.07      0.13      5857
+ B-TREATMENT       0.53      0.38      0.44      6777
+
+   micro avg       0.64      0.17      0.27     58462
+   macro avg       0.72      0.20      0.27     58462
+weighted avg       0.76      0.17      0.26     58462
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.95      0.11      0.20     32824
+           O       0.90      1.00      0.95    400482
+   TREATMENT       0.57      0.27      0.37     25638
+
+    accuracy                           0.89    458944
+   macro avg       0.81      0.46      0.50    458944
+weighted avg       0.89      0.89      0.86    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.95      0.11      0.20     32824
+   TREATMENT       0.57      0.27      0.37     25638
+
+   micro avg       0.66      0.18      0.28     58462
+   macro avg       0.76      0.19      0.28     58462
+weighted avg       0.78      0.18      0.27     58462
+
+Epoch 10
+-------------------------------
+Batch 0, Loss: 12.953765869140625
+Batch 100, Loss: 6.813934326171875
+Batch 200, Loss: 20.79644775390625
+Batch 300, Loss: 6.66986083984375
+Batch 400, Loss: 13.731216430664062
+Validation Accuracy: 0.5737083391437735
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.67      0.16      0.26      5857
+ B-TREATMENT       0.25      0.47      0.33      6777
+ I-CONDITION       0.70      0.30      0.42     26967
+ I-TREATMENT       0.09      0.96      0.17     18861
+           O       0.99      0.58      0.73    400482
+
+    accuracy                           0.57    458944
+   macro avg       0.54      0.49      0.38    458944
+weighted avg       0.92      0.57      0.68    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.09      0.96      0.17     18861
+ I-CONDITION       0.70      0.30      0.42     26967
+ B-CONDITION       0.67      0.16      0.26      5857
+ B-TREATMENT       0.25      0.47      0.33      6777
+
+   micro avg       0.14      0.52      0.21     58462
+   macro avg       0.43      0.47      0.29     58462
+weighted avg       0.45      0.52      0.31     58462
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.73      0.29      0.41     32824
+           O       0.99      0.58      0.73    400482
+   TREATMENT       0.12      0.95      0.21     25638
+
+    accuracy                           0.58    458944
+   macro avg       0.61      0.61      0.45    458944
+weighted avg       0.92      0.58      0.68    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.73      0.29      0.41     32824
+   TREATMENT       0.12      0.95      0.21     25638
+
+   micro avg       0.15      0.58      0.24     58462
+   macro avg       0.42      0.62      0.31     58462
+weighted avg       0.46      0.58      0.32     58462
+
+Epoch 11
+-------------------------------
+Batch 0, Loss: 17.731033325195312
+Batch 100, Loss: 6.988983154296875
+Batch 200, Loss: 12.012481689453125
+Batch 300, Loss: 5.444915771484375
+Batch 400, Loss: 16.631317138671875
+Validation Accuracy: 0.8189452307906847
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.46      0.47      0.46      5857
+ B-TREATMENT       0.33      0.71      0.45      6777
+ I-CONDITION       0.53      0.67      0.59     26967
+ I-TREATMENT       0.24      0.83      0.37     18861
+           O       0.99      0.84      0.90    400482
+
+    accuracy                           0.82    458944
+   macro avg       0.51      0.70      0.56    458944
+weighted avg       0.91      0.82      0.85    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.24      0.83      0.37     18861
+ I-CONDITION       0.53      0.67      0.59     26967
+ B-CONDITION       0.46      0.47      0.46      5857
+ B-TREATMENT       0.33      0.71      0.45      6777
+
+   micro avg       0.35      0.70      0.46     58462
+   macro avg       0.39      0.67      0.47     58462
+weighted avg       0.40      0.70      0.49     58462
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.55      0.67      0.60     32824
+           O       0.99      0.84      0.90    400482
+   TREATMENT       0.27      0.84      0.41     25638
+
+    accuracy                           0.82    458944
+   macro avg       0.60      0.78      0.64    458944
+weighted avg       0.91      0.82      0.86    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.55      0.67      0.60     32824
+   TREATMENT       0.27      0.84      0.41     25638
+
+   micro avg       0.37      0.74      0.49     58462
+   macro avg       0.41      0.76      0.51     58462
+weighted avg       0.43      0.74      0.52     58462
+
+Early stopping
+### Valid set performance:
+Validation Accuracy: 0.8188210326314321
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.46      0.47      0.46      5857
+ B-TREATMENT       0.33      0.71      0.45      6777
+ I-CONDITION       0.53      0.67      0.59     26967
+ I-TREATMENT       0.24      0.83      0.37     18861
+           O       0.99      0.84      0.90    400482
+
+    accuracy                           0.82    458944
+   macro avg       0.51      0.70      0.56    458944
+weighted avg       0.91      0.82      0.85    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.24      0.83      0.37     18861
+ I-CONDITION       0.53      0.67      0.59     26967
+ B-CONDITION       0.46      0.47      0.46      5857
+ B-TREATMENT       0.33      0.71      0.45      6777
+
+   micro avg       0.34      0.70      0.46     58462
+   macro avg       0.39      0.67      0.47     58462
+weighted avg       0.40      0.70      0.49     58462
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.55      0.67      0.60     32824
+           O       0.99      0.84      0.90    400482
+   TREATMENT       0.27      0.84      0.41     25638
+
+    accuracy                           0.82    458944
+   macro avg       0.60      0.78      0.64    458944
+weighted avg       0.91      0.82      0.86    458944
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.55      0.67      0.60     32824
+   TREATMENT       0.27      0.84      0.41     25638
+
+   micro avg       0.37      0.75      0.49     58462
+   macro avg       0.41      0.76      0.51     58462
+weighted avg       0.43      0.75      0.52     58462
+
+### Test set performance:
+Validation Accuracy: 0.8177978215999108
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.48      0.48      0.48      7563
+ B-TREATMENT       0.33      0.71      0.45      8673
+ I-CONDITION       0.55      0.66      0.60     34628
+ I-TREATMENT       0.24      0.84      0.37     23617
+           O       0.98      0.83      0.90    499151
+
+    accuracy                           0.82    573632
+   macro avg       0.52      0.71      0.56    573632
+weighted avg       0.91      0.82      0.85    573632
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.24      0.84      0.37     23617
+ I-CONDITION       0.55      0.66      0.60     34628
+ B-CONDITION       0.48      0.48      0.48      7563
+ B-TREATMENT       0.33      0.71      0.45      8673
+
+   micro avg       0.35      0.71      0.47     74481
+   macro avg       0.40      0.67      0.48     74481
+weighted avg       0.42      0.71      0.50     74481
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.57      0.67      0.61     42191
+           O       0.98      0.83      0.90    499151
+   TREATMENT       0.27      0.85      0.41     32290
+
+    accuracy                           0.82    573632
+   macro avg       0.61      0.79      0.64    573632
+weighted avg       0.91      0.82      0.85    573632
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.57      0.67      0.61     42191
+   TREATMENT       0.27      0.85      0.41     32290
+
+   micro avg       0.37      0.75      0.50     74481
+   macro avg       0.42      0.76      0.51     74481
+weighted avg       0.44      0.75      0.53     74481
+
+{'batch_size': 64, 'early_stopping_delta': 0.0001, 'early_stopping_patience': 3, 'embedding_dim': 256, 'epochs': 100, 'learning_rate': 0.1, 'max_length': 128, 'num_workers': 0, 'optimizer': 'adam', 'shuffle': True, 'stride': 0, 'tune': True, 'valid_batch_size': 32, 'weight_decay': 0.01, 'weights': True}
+{'B-CONDITION': 0, 'B-TREATMENT': 1, 'I-CONDITION': 2, 'I-TREATMENT': 3, 'O': 4}
+{0: 'B-CONDITION', 1: 'B-TREATMENT', 2: 'I-CONDITION', 3: 'I-TREATMENT', 4: 'O'}
+{'O': 2452840, 'B-CONDITION': 37021, 'I-CONDITION': 171321, 'B-TREATMENT': 42552, 'I-TREATMENT': 118922}
+{'B-CONDITION': 15.248945193268685, 'B-TREATMENT': 13.266854671930814, 'I-CONDITION': 3.2951663835723584, 'I-TREATMENT': 4.747071189519181, 'O': 0.23015410707587938}
+{'B-CONDITION': 15.248945193268685, 'B-TREATMENT': 13.266854671930814, 'I-CONDITION': 3.2951663835723584, 'I-TREATMENT': 4.747071189519181, 'O': 0.23015410707587938}
+Epoch 1
+-------------------------------
+Batch 0, Loss: 165.90097045898438
+Batch 100, Loss: 18.997955322265625
+Batch 200, Loss: 14.9765625
+Validation Accuracy: 0.8637981722867668
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.44      0.16      0.23      5794
+ B-TREATMENT       0.66      0.23      0.34      6883
+ I-CONDITION       0.38      0.47      0.42     27192
+ I-TREATMENT       0.49      0.30      0.37     19522
+           O       0.92      0.94      0.93    392321
+
+    accuracy                           0.86    451712
+   macro avg       0.58      0.42      0.46    451712
+weighted avg       0.86      0.86      0.86    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.49      0.30      0.37     19522
+ I-CONDITION       0.38      0.47      0.42     27192
+ B-CONDITION       0.44      0.16      0.23      5794
+ B-TREATMENT       0.66      0.23      0.34      6883
+
+   micro avg       0.42      0.35      0.38     59391
+   macro avg       0.49      0.29      0.34     59391
+weighted avg       0.45      0.35      0.37     59391
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.41      0.45      0.43     32986
+           O       0.92      0.94      0.93    392321
+   TREATMENT       0.54      0.30      0.38     26405
+
+    accuracy                           0.87    451712
+   macro avg       0.63      0.56      0.58    451712
+weighted avg       0.86      0.87      0.86    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.41      0.45      0.43     32986
+   TREATMENT       0.54      0.30      0.38     26405
+
+   micro avg       0.45      0.38      0.41     59391
+   macro avg       0.48      0.37      0.41     59391
+weighted avg       0.47      0.38      0.41     59391
+
+Epoch 2
+-------------------------------
+Batch 0, Loss: 14.958221435546875
+Batch 100, Loss: 15.28753662109375
+Batch 200, Loss: 12.934478759765625
+Validation Accuracy: 0.891072187588552
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.55      0.23      0.32      5794
+ B-TREATMENT       0.67      0.33      0.44      6883
+ I-CONDITION       0.52      0.54      0.53     27192
+ I-TREATMENT       0.57      0.34      0.43     19522
+           O       0.93      0.96      0.95    392321
+
+    accuracy                           0.89    451712
+   macro avg       0.65      0.48      0.53    451712
+weighted avg       0.88      0.89      0.88    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.57      0.34      0.43     19522
+ I-CONDITION       0.52      0.54      0.53     27192
+ B-CONDITION       0.55      0.23      0.32      5794
+ B-TREATMENT       0.67      0.33      0.44      6883
+
+   micro avg       0.55      0.42      0.48     59391
+   macro avg       0.58      0.36      0.43     59391
+weighted avg       0.56      0.42      0.47     59391
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.56      0.52      0.54     32986
+           O       0.93      0.96      0.95    392321
+   TREATMENT       0.63      0.36      0.46     26405
+
+    accuracy                           0.89    451712
+   macro avg       0.71      0.61      0.65    451712
+weighted avg       0.89      0.89      0.89    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.56      0.52      0.54     32986
+   TREATMENT       0.63      0.36      0.46     26405
+
+   micro avg       0.58      0.45      0.51     59391
+   macro avg       0.59      0.44      0.50     59391
+weighted avg       0.59      0.45      0.50     59391
+
+Epoch 3
+-------------------------------
+Batch 0, Loss: 12.685272216796875
+Batch 100, Loss: 13.532257080078125
+Batch 200, Loss: 13.415802001953125
+Validation Accuracy: 0.8975652628223293
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.63      0.23      0.34      5794
+ B-TREATMENT       0.59      0.44      0.51      6883
+ I-CONDITION       0.67      0.43      0.53     27192
+ I-TREATMENT       0.50      0.44      0.47     19522
+           O       0.93      0.97      0.95    392321
+
+    accuracy                           0.90    451712
+   macro avg       0.66      0.50      0.56    451712
+weighted avg       0.89      0.90      0.89    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.50      0.44      0.47     19522
+ I-CONDITION       0.67      0.43      0.53     27192
+ B-CONDITION       0.63      0.23      0.34      5794
+ B-TREATMENT       0.59      0.44      0.51      6883
+
+   micro avg       0.59      0.42      0.49     59391
+   macro avg       0.60      0.39      0.46     59391
+weighted avg       0.60      0.42      0.49     59391
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.69      0.42      0.52     32986
+           O       0.93      0.97      0.95    392321
+   TREATMENT       0.55      0.46      0.50     26405
+
+    accuracy                           0.90    451712
+   macro avg       0.72      0.62      0.66    451712
+weighted avg       0.89      0.90      0.89    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.69      0.42      0.52     32986
+   TREATMENT       0.55      0.46      0.50     26405
+
+   micro avg       0.61      0.44      0.51     59391
+   macro avg       0.62      0.44      0.51     59391
+weighted avg       0.63      0.44      0.51     59391
+
+Epoch 4
+-------------------------------
+Batch 0, Loss: 12.619537353515625
+Batch 100, Loss: 25.997467041015625
+Batch 200, Loss: 11.8062744140625
+Validation Accuracy: 0.8871006304902238
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.81      0.09      0.17      5794
+ B-TREATMENT       0.51      0.45      0.48      6883
+ I-CONDITION       0.88      0.13      0.23     27192
+ I-TREATMENT       0.46      0.45      0.45     19522
+           O       0.91      0.98      0.95    392321
+
+    accuracy                           0.89    451712
+   macro avg       0.71      0.42      0.46    451712
+weighted avg       0.88      0.89      0.86    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.46      0.45      0.45     19522
+ I-CONDITION       0.88      0.13      0.23     27192
+ B-CONDITION       0.81      0.09      0.17      5794
+ B-TREATMENT       0.51      0.45      0.48      6883
+
+   micro avg       0.54      0.27      0.36     59391
+   macro avg       0.67      0.28      0.33     59391
+weighted avg       0.69      0.27      0.33     59391
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.89      0.13      0.22     32986
+           O       0.91      0.98      0.95    392321
+   TREATMENT       0.49      0.47      0.48     26405
+
+    accuracy                           0.89    451712
+   macro avg       0.76      0.53      0.55    451712
+weighted avg       0.89      0.89      0.87    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.89      0.13      0.22     32986
+   TREATMENT       0.49      0.47      0.48     26405
+
+   micro avg       0.56      0.28      0.37     59391
+   macro avg       0.69      0.30      0.35     59391
+weighted avg       0.71      0.28      0.34     59391
+
+Epoch 5
+-------------------------------
+Batch 0, Loss: 15.228729248046875
+Batch 100, Loss: 14.003173828125
+Batch 200, Loss: 15.072265625
+Validation Accuracy: 0.8962480518560498
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.67      0.24      0.35      5794
+ B-TREATMENT       0.78      0.29      0.42      6883
+ I-CONDITION       0.80      0.29      0.43     27192
+ I-TREATMENT       0.82      0.19      0.31     19522
+           O       0.90      0.99      0.95    392321
+
+    accuracy                           0.90    451712
+   macro avg       0.79      0.40      0.49    451712
+weighted avg       0.89      0.90      0.87    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.82      0.19      0.31     19522
+ I-CONDITION       0.80      0.29      0.43     27192
+ B-CONDITION       0.67      0.24      0.35      5794
+ B-TREATMENT       0.78      0.29      0.42      6883
+
+   micro avg       0.79      0.25      0.38     59391
+   macro avg       0.77      0.25      0.38     59391
+weighted avg       0.79      0.25      0.38     59391
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.80      0.29      0.43     32986
+           O       0.90      0.99      0.95    392321
+   TREATMENT       0.83      0.22      0.35     26405
+
+    accuracy                           0.90    451712
+   macro avg       0.85      0.50      0.58    451712
+weighted avg       0.89      0.90      0.87    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.80      0.29      0.43     32986
+   TREATMENT       0.83      0.22      0.35     26405
+
+   micro avg       0.81      0.26      0.40     59391
+   macro avg       0.82      0.26      0.39     59391
+weighted avg       0.82      0.26      0.39     59391
+
+Epoch 6
+-------------------------------
+Batch 0, Loss: 13.17572021484375
+Batch 100, Loss: 32.497894287109375
+Batch 200, Loss: 16.1234130859375
+Validation Accuracy: 0.8731249114480023
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.41      0.26      0.32      5794
+ B-TREATMENT       0.78      0.17      0.28      6883
+ I-CONDITION       0.39      0.55      0.46     27192
+ I-TREATMENT       0.80      0.10      0.17     19522
+           O       0.92      0.96      0.94    392321
+
+    accuracy                           0.87    451712
+   macro avg       0.66      0.41      0.43    451712
+weighted avg       0.88      0.87      0.86    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.80      0.10      0.17     19522
+ I-CONDITION       0.39      0.55      0.46     27192
+ B-CONDITION       0.41      0.26      0.32      5794
+ B-TREATMENT       0.78      0.17      0.28      6883
+
+   micro avg       0.43      0.33      0.37     59391
+   macro avg       0.60      0.27      0.31     59391
+weighted avg       0.57      0.33      0.33     59391
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.42      0.54      0.47     32986
+           O       0.92      0.96      0.94    392321
+   TREATMENT       0.82      0.12      0.21     26405
+
+    accuracy                           0.88    451712
+   macro avg       0.72      0.54      0.54    451712
+weighted avg       0.88      0.88      0.86    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.42      0.54      0.47     32986
+   TREATMENT       0.82      0.12      0.21     26405
+
+   micro avg       0.46      0.35      0.40     59391
+   macro avg       0.62      0.33      0.34     59391
+weighted avg       0.60      0.35      0.36     59391
+
+Epoch 7
+-------------------------------
+Batch 0, Loss: 17.337615966796875
+Batch 100, Loss: 12.0765380859375
+Batch 200, Loss: 15.10809326171875
+Validation Accuracy: 0.894514646500425
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.62      0.26      0.37      5794
+ B-TREATMENT       0.54      0.48      0.51      6883
+ I-CONDITION       0.70      0.41      0.52     27192
+ I-TREATMENT       0.45      0.53      0.49     19522
+           O       0.93      0.96      0.95    392321
+
+    accuracy                           0.89    451712
+   macro avg       0.65      0.53      0.57    451712
+weighted avg       0.89      0.89      0.89    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.45      0.53      0.49     19522
+ I-CONDITION       0.70      0.41      0.52     27192
+ B-CONDITION       0.62      0.26      0.37      5794
+ B-TREATMENT       0.54      0.48      0.51      6883
+
+   micro avg       0.55      0.45      0.49     59391
+   macro avg       0.58      0.42      0.47     59391
+weighted avg       0.59      0.45      0.49     59391
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.72      0.41      0.52     32986
+           O       0.93      0.96      0.95    392321
+   TREATMENT       0.50      0.55      0.52     26405
+
+    accuracy                           0.90    451712
+   macro avg       0.72      0.64      0.66    451712
+weighted avg       0.89      0.90      0.89    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.72      0.41      0.52     32986
+   TREATMENT       0.50      0.55      0.52     26405
+
+   micro avg       0.58      0.47      0.52     59391
+   macro avg       0.61      0.48      0.52     59391
+weighted avg       0.62      0.47      0.52     59391
+
+Epoch 8
+-------------------------------
+Batch 0, Loss: 12.252410888671875
+Batch 100, Loss: 24.191650390625
+Batch 200, Loss: 11.9427490234375
+Validation Accuracy: 0.9009811561348824
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.66      0.24      0.35      5794
+ B-TREATMENT       0.71      0.35      0.47      6883
+ I-CONDITION       0.76      0.35      0.48     27192
+ I-TREATMENT       0.72      0.29      0.41     19522
+           O       0.91      0.99      0.95    392321
+
+    accuracy                           0.90    451712
+   macro avg       0.75      0.44      0.53    451712
+weighted avg       0.89      0.90      0.88    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.72      0.29      0.41     19522
+ I-CONDITION       0.76      0.35      0.48     27192
+ B-CONDITION       0.66      0.24      0.35      5794
+ B-TREATMENT       0.71      0.35      0.47      6883
+
+   micro avg       0.73      0.32      0.44     59391
+   macro avg       0.71      0.31      0.43     59391
+weighted avg       0.73      0.32      0.44     59391
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.78      0.35      0.48     32986
+           O       0.91      0.99      0.95    392321
+   TREATMENT       0.75      0.32      0.44     26405
+
+    accuracy                           0.90    451712
+   macro avg       0.81      0.55      0.62    451712
+weighted avg       0.89      0.90      0.88    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.78      0.35      0.48     32986
+   TREATMENT       0.75      0.32      0.44     26405
+
+   micro avg       0.76      0.33      0.46     59391
+   macro avg       0.76      0.33      0.46     59391
+weighted avg       0.76      0.33      0.46     59391
+
+Epoch 9
+-------------------------------
+Batch 0, Loss: 14.017303466796875
+Batch 100, Loss: 13.654937744140625
+Batch 200, Loss: 18.510894775390625
+Validation Accuracy: 0.8958672782657977
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.69      0.22      0.33      5794
+ B-TREATMENT       0.60      0.41      0.49      6883
+ I-CONDITION       0.77      0.29      0.42     27192
+ I-TREATMENT       0.50      0.45      0.47     19522
+           O       0.92      0.98      0.95    392321
+
+    accuracy                           0.90    451712
+   macro avg       0.70      0.47      0.53    451712
+weighted avg       0.88      0.90      0.88    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.50      0.45      0.47     19522
+ I-CONDITION       0.77      0.29      0.42     27192
+ B-CONDITION       0.69      0.22      0.33      5794
+ B-TREATMENT       0.60      0.41      0.49      6883
+
+   micro avg       0.60      0.35      0.44     59391
+   macro avg       0.64      0.34      0.43     59391
+weighted avg       0.65      0.35      0.44     59391
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.79      0.29      0.42     32986
+           O       0.92      0.98      0.95    392321
+   TREATMENT       0.55      0.46      0.50     26405
+
+    accuracy                           0.90    451712
+   macro avg       0.75      0.57      0.62    451712
+weighted avg       0.89      0.90      0.88    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.79      0.29      0.42     32986
+   TREATMENT       0.55      0.46      0.50     26405
+
+   micro avg       0.63      0.36      0.46     59391
+   macro avg       0.67      0.37      0.46     59391
+weighted avg       0.68      0.36      0.46     59391
+
+Epoch 10
+-------------------------------
+Batch 0, Loss: 13.22149658203125
+Batch 100, Loss: 18.20611572265625
+Batch 200, Loss: 17.255706787109375
+Validation Accuracy: 0.8978840500141683
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.55      0.31      0.39      5794
+ B-TREATMENT       0.61      0.48      0.54      6883
+ I-CONDITION       0.57      0.56      0.56     27192
+ I-TREATMENT       0.59      0.43      0.49     19522
+           O       0.94      0.96      0.95    392321
+
+    accuracy                           0.90    451712
+   macro avg       0.65      0.55      0.59    451712
+weighted avg       0.89      0.90      0.89    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.59      0.43      0.49     19522
+ I-CONDITION       0.57      0.56      0.56     27192
+ B-CONDITION       0.55      0.31      0.39      5794
+ B-TREATMENT       0.61      0.48      0.54      6883
+
+   micro avg       0.58      0.48      0.52     59391
+   macro avg       0.58      0.44      0.50     59391
+weighted avg       0.58      0.48      0.52     59391
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.60      0.55      0.57     32986
+           O       0.94      0.96      0.95    392321
+   TREATMENT       0.62      0.46      0.53     26405
+
+    accuracy                           0.90    451712
+   macro avg       0.72      0.66      0.68    451712
+weighted avg       0.89      0.90      0.90    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.60      0.55      0.57     32986
+   TREATMENT       0.62      0.46      0.53     26405
+
+   micro avg       0.61      0.51      0.55     59391
+   macro avg       0.61      0.50      0.55     59391
+weighted avg       0.61      0.51      0.55     59391
+
+Epoch 11
+-------------------------------
+Batch 0, Loss: 14.772247314453125
+Batch 100, Loss: 14.254302978515625
+Batch 200, Loss: 13.859405517578125
+Validation Accuracy: 0.9048774440351375
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.56      0.35      0.43      5794
+ B-TREATMENT       0.68      0.41      0.51      6883
+ I-CONDITION       0.68      0.45      0.55     27192
+ I-TREATMENT       0.67      0.35      0.46     19522
+           O       0.93      0.98      0.95    392321
+
+    accuracy                           0.90    451712
+   macro avg       0.70      0.51      0.58    451712
+weighted avg       0.89      0.90      0.89    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.67      0.35      0.46     19522
+ I-CONDITION       0.68      0.45      0.55     27192
+ B-CONDITION       0.56      0.35      0.43      5794
+ B-TREATMENT       0.68      0.41      0.51      6883
+
+   micro avg       0.67      0.40      0.50     59391
+   macro avg       0.65      0.39      0.49     59391
+weighted avg       0.67      0.40      0.50     59391
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.70      0.46      0.55     32986
+           O       0.93      0.98      0.95    392321
+   TREATMENT       0.70      0.38      0.49     26405
+
+    accuracy                           0.91    451712
+   macro avg       0.77      0.60      0.66    451712
+weighted avg       0.90      0.91      0.90    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.70      0.46      0.55     32986
+   TREATMENT       0.70      0.38      0.49     26405
+
+   micro avg       0.70      0.42      0.53     59391
+   macro avg       0.70      0.42      0.52     59391
+weighted avg       0.70      0.42      0.52     59391
+
+Epoch 12
+-------------------------------
+Batch 0, Loss: 12.021820068359375
+Batch 100, Loss: 13.79742431640625
+Batch 200, Loss: 13.45892333984375
+Validation Accuracy: 0.901554530320204
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.60      0.29      0.39      5794
+ B-TREATMENT       0.74      0.30      0.42      6883
+ I-CONDITION       0.69      0.43      0.53     27192
+ I-TREATMENT       0.76      0.25      0.38     19522
+           O       0.92      0.99      0.95    392321
+
+    accuracy                           0.90    451712
+   macro avg       0.74      0.45      0.53    451712
+weighted avg       0.89      0.90      0.88    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.76      0.25      0.38     19522
+ I-CONDITION       0.69      0.43      0.53     27192
+ B-CONDITION       0.60      0.29      0.39      5794
+ B-TREATMENT       0.74      0.30      0.42      6883
+
+   micro avg       0.70      0.34      0.46     59391
+   macro avg       0.70      0.32      0.43     59391
+weighted avg       0.71      0.34      0.45     59391
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.71      0.43      0.53     32986
+           O       0.92      0.99      0.95    392321
+   TREATMENT       0.78      0.27      0.40     26405
+
+    accuracy                           0.90    451712
+   macro avg       0.80      0.56      0.63    451712
+weighted avg       0.89      0.90      0.89    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.71      0.43      0.53     32986
+   TREATMENT       0.78      0.27      0.40     26405
+
+   micro avg       0.73      0.36      0.48     59391
+   macro avg       0.75      0.35      0.47     59391
+weighted avg       0.74      0.36      0.48     59391
+
+Epoch 13
+-------------------------------
+Batch 0, Loss: 10.32989501953125
+Batch 100, Loss: 15.2176513671875
+Batch 200, Loss: 13.21881103515625
+Validation Accuracy: 0.9011626877302352
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.68      0.21      0.32      5794
+ B-TREATMENT       0.69      0.34      0.46      6883
+ I-CONDITION       0.75      0.37      0.49     27192
+ I-TREATMENT       0.63      0.35      0.45     19522
+           O       0.92      0.99      0.95    392321
+
+    accuracy                           0.90    451712
+   macro avg       0.73      0.45      0.53    451712
+weighted avg       0.89      0.90      0.88    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.63      0.35      0.45     19522
+ I-CONDITION       0.75      0.37      0.49     27192
+ B-CONDITION       0.68      0.21      0.32      5794
+ B-TREATMENT       0.69      0.34      0.46      6883
+
+   micro avg       0.69      0.34      0.46     59391
+   macro avg       0.69      0.32      0.43     59391
+weighted avg       0.69      0.34      0.46     59391
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.77      0.35      0.48     32986
+           O       0.92      0.99      0.95    392321
+   TREATMENT       0.67      0.37      0.47     26405
+
+    accuracy                           0.90    451712
+   macro avg       0.79      0.57      0.64    451712
+weighted avg       0.89      0.90      0.89    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.77      0.35      0.48     32986
+   TREATMENT       0.67      0.37      0.47     26405
+
+   micro avg       0.72      0.36      0.48     59391
+   macro avg       0.72      0.36      0.48     59391
+weighted avg       0.73      0.36      0.48     59391
+
+Epoch 14
+-------------------------------
+Batch 0, Loss: 11.7891845703125
+Batch 100, Loss: 15.28424072265625
+Batch 200, Loss: 14.51324462890625
+Validation Accuracy: 0.8997215039671295
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.68      0.23      0.34      5794
+ B-TREATMENT       0.80      0.25      0.38      6883
+ I-CONDITION       0.74      0.37      0.49     27192
+ I-TREATMENT       0.82      0.22      0.35     19522
+           O       0.91      0.99      0.95    392321
+
+    accuracy                           0.90    451712
+   macro avg       0.79      0.41      0.50    451712
+weighted avg       0.89      0.90      0.88    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.82      0.22      0.35     19522
+ I-CONDITION       0.74      0.37      0.49     27192
+ B-CONDITION       0.68      0.23      0.34      5794
+ B-TREATMENT       0.80      0.25      0.38      6883
+
+   micro avg       0.76      0.29      0.42     59391
+   macro avg       0.76      0.27      0.39     59391
+weighted avg       0.77      0.29      0.42     59391
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.76      0.35      0.48     32986
+           O       0.91      0.99      0.95    392321
+   TREATMENT       0.85      0.24      0.37     26405
+
+    accuracy                           0.90    451712
+   macro avg       0.84      0.53      0.60    451712
+weighted avg       0.89      0.90      0.88    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.76      0.35      0.48     32986
+   TREATMENT       0.85      0.24      0.37     26405
+
+   micro avg       0.79      0.30      0.44     59391
+   macro avg       0.81      0.30      0.43     59391
+weighted avg       0.80      0.30      0.43     59391
+
+Epoch 15
+-------------------------------
+Batch 0, Loss: 14.8773193359375
+Batch 100, Loss: 111.24658203125
+Batch 200, Loss: 27.90716552734375
+Validation Accuracy: 0.8573715110512893
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.78      0.09      0.17      5794
+ B-TREATMENT       0.35      0.38      0.37      6883
+ I-CONDITION       0.79      0.12      0.21     27192
+ I-TREATMENT       0.26      0.50      0.34     19522
+           O       0.92      0.95      0.93    392321
+
+    accuracy                           0.86    451712
+   macro avg       0.62      0.41      0.40    451712
+weighted avg       0.88      0.86      0.85    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.26      0.50      0.34     19522
+ I-CONDITION       0.79      0.12      0.21     27192
+ B-CONDITION       0.78      0.09      0.17      5794
+ B-TREATMENT       0.35      0.38      0.37      6883
+
+   micro avg       0.33      0.27      0.30     59391
+   macro avg       0.55      0.27      0.27     59391
+weighted avg       0.56      0.27      0.27     59391
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.82      0.12      0.21     32986
+           O       0.92      0.95      0.93    392321
+   TREATMENT       0.30      0.51      0.38     26405
+
+    accuracy                           0.86    451712
+   macro avg       0.68      0.52      0.51    451712
+weighted avg       0.88      0.86      0.85    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.82      0.12      0.21     32986
+   TREATMENT       0.30      0.51      0.38     26405
+
+   micro avg       0.35      0.29      0.32     59391
+   macro avg       0.56      0.31      0.29     59391
+weighted avg       0.59      0.29      0.28     59391
+
+Epoch 16
+-------------------------------
+Batch 0, Loss: 15.653289794921875
+Batch 100, Loss: 15.3402099609375
+Batch 200, Loss: 13.230377197265625
+Validation Accuracy: 0.8926152061490508
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.65      0.18      0.28      5794
+ B-TREATMENT       0.71      0.22      0.34      6883
+ I-CONDITION       0.68      0.34      0.46     27192
+ I-TREATMENT       0.60      0.22      0.32     19522
+           O       0.91      0.99      0.94    392321
+
+    accuracy                           0.89    451712
+   macro avg       0.71      0.39      0.47    451712
+weighted avg       0.87      0.89      0.87    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.60      0.22      0.32     19522
+ I-CONDITION       0.68      0.34      0.46     27192
+ B-CONDITION       0.65      0.18      0.28      5794
+ B-TREATMENT       0.71      0.22      0.34      6883
+
+   micro avg       0.66      0.27      0.39     59391
+   macro avg       0.66      0.24      0.35     59391
+weighted avg       0.66      0.27      0.38     59391
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.71      0.33      0.45     32986
+           O       0.91      0.99      0.94    392321
+   TREATMENT       0.66      0.23      0.34     26405
+
+    accuracy                           0.89    451712
+   macro avg       0.76      0.52      0.58    451712
+weighted avg       0.88      0.89      0.87    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.71      0.33      0.45     32986
+   TREATMENT       0.66      0.23      0.34     26405
+
+   micro avg       0.69      0.29      0.41     59391
+   macro avg       0.69      0.28      0.40     59391
+weighted avg       0.69      0.29      0.40     59391
+
+Early stopping
+### Valid set performance:
+Validation Accuracy: 0.8925133713516576
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.65      0.18      0.28      5794
+ B-TREATMENT       0.71      0.22      0.34      6883
+ I-CONDITION       0.68      0.34      0.46     27192
+ I-TREATMENT       0.60      0.22      0.32     19522
+           O       0.91      0.99      0.94    392321
+
+    accuracy                           0.89    451712
+   macro avg       0.71      0.39      0.47    451712
+weighted avg       0.87      0.89      0.87    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.60      0.22      0.32     19522
+ I-CONDITION       0.68      0.34      0.46     27192
+ B-CONDITION       0.65      0.18      0.28      5794
+ B-TREATMENT       0.71      0.22      0.34      6883
+
+   micro avg       0.66      0.27      0.39     59391
+   macro avg       0.66      0.24      0.35     59391
+weighted avg       0.66      0.27      0.38     59391
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.71      0.33      0.45     32986
+           O       0.91      0.99      0.94    392321
+   TREATMENT       0.66      0.23      0.34     26405
+
+    accuracy                           0.89    451712
+   macro avg       0.76      0.52      0.58    451712
+weighted avg       0.88      0.89      0.87    451712
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.71      0.33      0.45     32986
+   TREATMENT       0.66      0.23      0.34     26405
+
+   micro avg       0.69      0.29      0.40     59391
+   macro avg       0.69      0.28      0.40     59391
+weighted avg       0.69      0.29      0.40     59391
+
+### Test set performance:
+Validation Accuracy: 0.8941230021537067
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.68      0.18      0.28      7364
+ B-TREATMENT       0.73      0.22      0.34      8520
+ I-CONDITION       0.69      0.34      0.46     33517
+ I-TREATMENT       0.60      0.22      0.32     23954
+           O       0.91      0.99      0.95    491253
+
+    accuracy                           0.89    564608
+   macro avg       0.72      0.39      0.47    564608
+weighted avg       0.88      0.89      0.87    564608
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.60      0.22      0.32     23954
+ I-CONDITION       0.69      0.34      0.46     33517
+ B-CONDITION       0.68      0.18      0.28      7364
+ B-TREATMENT       0.73      0.22      0.34      8520
+
+   micro avg       0.67      0.27      0.39     73355
+   macro avg       0.68      0.24      0.35     73355
+weighted avg       0.67      0.27      0.38     73355
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.73      0.32      0.45     40881
+           O       0.91      0.99      0.95    491253
+   TREATMENT       0.67      0.23      0.34     32474
+
+    accuracy                           0.90    564608
+   macro avg       0.77      0.51      0.58    564608
+weighted avg       0.88      0.90      0.87    564608
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.73      0.32      0.45     40881
+   TREATMENT       0.67      0.23      0.34     32474
+
+   micro avg       0.70      0.28      0.40     73355
+   macro avg       0.70      0.28      0.40     73355
+weighted avg       0.70      0.28      0.40     73355
+
+{'batch_size': 32, 'early_stopping_delta': 0.01, 'early_stopping_patience': 3, 'embedding_dim': 128, 'epochs': 100, 'learning_rate': 0.1, 'max_length': 512, 'num_workers': 0, 'optimizer': 'adam', 'shuffle': True, 'stride': 0, 'tune': True, 'valid_batch_size': 32, 'weight_decay': 1e-05, 'weights': False}
+{'B-CONDITION': 0, 'B-TREATMENT': 1, 'I-CONDITION': 2, 'I-TREATMENT': 3, 'O': 4}
+{0: 'B-CONDITION', 1: 'B-TREATMENT', 2: 'I-CONDITION', 3: 'I-TREATMENT', 4: 'O'}
+{'O': 2419560, 'B-CONDITION': 36700, 'I-CONDITION': 171642, 'B-TREATMENT': 42420, 'I-TREATMENT': 119054}
+{'B-CONDITION': 15.200959128065396, 'B-TREATMENT': 13.151230551626591, 'I-CONDITION': 3.250225469290733, 'I-TREATMENT': 4.6859005157323566, 'O': 0.23056886376035313}
+{'B-CONDITION': 15.200959128065396, 'B-TREATMENT': 13.151230551626591, 'I-CONDITION': 3.250225469290733, 'I-TREATMENT': 4.6859005157323566, 'O': 0.23056886376035313}
+Epoch 1
+-------------------------------
+Batch 0, Loss: 799.6068115234375
+Batch 100, Loss: 655.75390625
+Validation Accuracy: 0.6887789385034404
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.04      0.07      0.05      5850
+ B-TREATMENT       0.04      0.23      0.07      7211
+ I-CONDITION       0.23      0.02      0.04     27535
+ I-TREATMENT       0.08      0.20      0.11     20401
+           O       0.88      0.78      0.83    385467
+
+    accuracy                           0.69    446464
+   macro avg       0.25      0.26      0.22    446464
+weighted avg       0.78      0.69      0.72    446464
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.08      0.20      0.11     20401
+ I-CONDITION       0.23      0.02      0.04     27535
+ B-CONDITION       0.04      0.07      0.05      5850
+ B-TREATMENT       0.04      0.23      0.07      7211
+
+   micro avg       0.06      0.11      0.08     60997
+   macro avg       0.10      0.13      0.07     60997
+weighted avg       0.14      0.11      0.07     60997
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.16      0.06      0.09     33385
+           O       0.88      0.78      0.83    385467
+   TREATMENT       0.10      0.33      0.15     27612
+
+    accuracy                           0.70    446464
+   macro avg       0.38      0.39      0.36    446464
+weighted avg       0.78      0.70      0.73    446464
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.16      0.06      0.09     33385
+   TREATMENT       0.10      0.33      0.15     27612
+
+   micro avg       0.10      0.18      0.13     60997
+   macro avg       0.13      0.20      0.12     60997
+weighted avg       0.13      0.18      0.12     60997
+
+Epoch 2
+-------------------------------
+Batch 0, Loss: 429.890625
+Batch 100, Loss: 398.79296875
+Validation Accuracy: 0.8208970936066514
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.04      0.00      0.00      5850
+ B-TREATMENT       0.06      0.10      0.08      7211
+ I-CONDITION       0.46      0.07      0.12     27535
+ I-TREATMENT       0.12      0.10      0.11     20401
+           O       0.88      0.94      0.91    385467
+
+    accuracy                           0.82    446464
+   macro avg       0.31      0.24      0.24    446464
+weighted avg       0.79      0.82      0.80    446464
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.12      0.10      0.11     20401
+ I-CONDITION       0.46      0.07      0.12     27535
+ B-CONDITION       0.04      0.00      0.00      5850
+ B-TREATMENT       0.06      0.10      0.08      7211
+
+   micro avg       0.14      0.08      0.10     60997
+   macro avg       0.17      0.07      0.08     60997
+weighted avg       0.26      0.08      0.10     60997
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.49      0.06      0.11     33385
+           O       0.88      0.94      0.91    385467
+   TREATMENT       0.13      0.14      0.13     27612
+
+    accuracy                           0.82    446464
+   macro avg       0.50      0.38      0.38    446464
+weighted avg       0.80      0.82      0.80    446464
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.49      0.06      0.11     33385
+   TREATMENT       0.13      0.14      0.13     27612
+
+   micro avg       0.18      0.10      0.13     60997
+   macro avg       0.31      0.10      0.12     60997
+weighted avg       0.33      0.10      0.12     60997
+
+Epoch 3
+-------------------------------
+Batch 0, Loss: 352.212890625
+Batch 100, Loss: 710.59375
+Validation Accuracy: 0.8631782181766054
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.00      0.00      0.00      5850
+ B-TREATMENT       0.00      0.00      0.00      7211
+ I-CONDITION       0.00      0.00      0.00     27535
+ I-TREATMENT       0.00      0.00      0.00     20401
+           O       0.86      1.00      0.93    385467
+
+    accuracy                           0.86    446464
+   macro avg       0.17      0.20      0.19    446464
+weighted avg       0.75      0.86      0.80    446464
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.00      0.00      0.00     20401
+ I-CONDITION       0.00      0.00      0.00     27535
+ B-CONDITION       0.00      0.00      0.00      5850
+ B-TREATMENT       0.00      0.00      0.00      7211
+
+   micro avg       0.00      0.00      0.00     60997
+   macro avg       0.00      0.00      0.00     60997
+weighted avg       0.00      0.00      0.00     60997
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.00      0.00      0.00     33385
+           O       0.86      1.00      0.93    385467
+   TREATMENT       0.02      0.00      0.00     27612
+
+    accuracy                           0.86    446464
+   macro avg       0.30      0.33      0.31    446464
+weighted avg       0.75      0.86      0.80    446464
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.00      0.00      0.00     33385
+   TREATMENT       0.02      0.00      0.00     27612
+
+   micro avg       0.02      0.00      0.00     60997
+   macro avg       0.01      0.00      0.00     60997
+weighted avg       0.01      0.00      0.00     60997
+
+Epoch 4
+-------------------------------
+Batch 0, Loss: 2230.52734375
+Batch 100, Loss: 1481.3388671875
+Validation Accuracy: 0.8414676211295872
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.04      0.04      0.04      5850
+ B-TREATMENT       0.00      0.00      0.00      7211
+ I-CONDITION       0.17      0.07      0.10     27535
+ I-TREATMENT       0.00      0.00      0.00     20401
+           O       0.87      0.97      0.92    385467
+
+    accuracy                           0.84    446464
+   macro avg       0.22      0.22      0.21    446464
+weighted avg       0.76      0.84      0.80    446464
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.00      0.00      0.00     20401
+ I-CONDITION       0.17      0.07      0.10     27535
+ B-CONDITION       0.04      0.04      0.04      5850
+ B-TREATMENT       0.00      0.00      0.00      7211
+
+   micro avg       0.13      0.03      0.05     60997
+   macro avg       0.05      0.03      0.03     60997
+weighted avg       0.08      0.03      0.05     60997
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.18      0.09      0.12     33385
+           O       0.87      0.97      0.92    385467
+   TREATMENT       0.00      0.00      0.00     27612
+
+    accuracy                           0.84    446464
+   macro avg       0.35      0.35      0.34    446464
+weighted avg       0.76      0.84      0.80    446464
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.18      0.09      0.12     33385
+   TREATMENT       0.00      0.00      0.00     27612
+
+   micro avg       0.18      0.05      0.08     60997
+   macro avg       0.09      0.04      0.06     60997
+weighted avg       0.10      0.05      0.06     60997
+
+Epoch 5
+-------------------------------
+Batch 0, Loss: 794.484375
+Batch 100, Loss: 542.013671875
+Validation Accuracy: 0.8626093033256881
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.13      0.00      0.00      5850
+ B-TREATMENT       0.07      0.00      0.00      7211
+ I-CONDITION       0.14      0.00      0.00     27535
+ I-TREATMENT       0.08      0.00      0.00     20401
+           O       0.86      1.00      0.93    385467
+
+    accuracy                           0.86    446464
+   macro avg       0.25      0.20      0.19    446464
+weighted avg       0.76      0.86      0.80    446464
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.08      0.00      0.00     20401
+ I-CONDITION       0.14      0.00      0.00     27535
+ B-CONDITION       0.13      0.00      0.00      5850
+ B-TREATMENT       0.07      0.00      0.00      7211
+
+   micro avg       0.13      0.00      0.00     60997
+   macro avg       0.10      0.00      0.00     60997
+weighted avg       0.11      0.00      0.00     60997
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.16      0.00      0.00     33385
+           O       0.86      1.00      0.93    385467
+   TREATMENT       0.11      0.00      0.00     27612
+
+    accuracy                           0.86    446464
+   macro avg       0.38      0.33      0.31    446464
+weighted avg       0.76      0.86      0.80    446464
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.16      0.00      0.00     33385
+   TREATMENT       0.11      0.00      0.00     27612
+
+   micro avg       0.16      0.00      0.00     60997
+   macro avg       0.14      0.00      0.00     60997
+weighted avg       0.14      0.00      0.00     60997
+
+Epoch 6
+-------------------------------
+Batch 0, Loss: 735.11328125
+Batch 100, Loss: 381.5283203125
+Validation Accuracy: 0.7568986525229358
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.09      0.12      0.10      5850
+ B-TREATMENT       0.11      0.19      0.14      7211
+ I-CONDITION       0.20      0.31      0.24     27535
+ I-TREATMENT       0.17      0.21      0.19     20401
+           O       0.90      0.84      0.87    385467
+
+    accuracy                           0.76    446464
+   macro avg       0.29      0.33      0.31    446464
+weighted avg       0.80      0.76      0.78    446464
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.17      0.21      0.19     20401
+ I-CONDITION       0.20      0.31      0.24     27535
+ B-CONDITION       0.09      0.12      0.10      5850
+ B-TREATMENT       0.11      0.19      0.14      7211
+
+   micro avg       0.17      0.25      0.20     60997
+   macro avg       0.14      0.21      0.17     60997
+weighted avg       0.17      0.25      0.20     60997
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.21      0.33      0.26     33385
+           O       0.90      0.84      0.87    385467
+   TREATMENT       0.19      0.25      0.22     27612
+
+    accuracy                           0.76    446464
+   macro avg       0.43      0.47      0.45    446464
+weighted avg       0.81      0.76      0.78    446464
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.21      0.33      0.26     33385
+   TREATMENT       0.19      0.25      0.22     27612
+
+   micro avg       0.20      0.29      0.24     60997
+   macro avg       0.20      0.29      0.24     60997
+weighted avg       0.20      0.29      0.24     60997
+
+Epoch 7
+-------------------------------
+Batch 0, Loss: 226.6181640625
+Batch 100, Loss: 421.1103515625
+Validation Accuracy: 0.8653082891341743
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.39      0.07      0.12      5850
+ B-TREATMENT       0.07      0.00      0.00      7211
+ I-CONDITION       0.63      0.06      0.10     27535
+ I-TREATMENT       0.07      0.00      0.00     20401
+           O       0.87      1.00      0.93    385467
+
+    accuracy                           0.87    446464
+   macro avg       0.41      0.22      0.23    446464
+weighted avg       0.80      0.87      0.81    446464
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.07      0.00      0.00     20401
+ I-CONDITION       0.63      0.06      0.10     27535
+ B-CONDITION       0.39      0.07      0.12      5850
+ B-TREATMENT       0.07      0.00      0.00      7211
+
+   micro avg       0.55      0.03      0.06     60997
+   macro avg       0.29      0.03      0.06     60997
+weighted avg       0.35      0.03      0.06     60997
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.62      0.07      0.12     33385
+           O       0.87      1.00      0.93    385467
+   TREATMENT       0.07      0.00      0.00     27612
+
+    accuracy                           0.87    446464
+   macro avg       0.52      0.35      0.35    446464
+weighted avg       0.80      0.87      0.81    446464
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.62      0.07      0.12     33385
+   TREATMENT       0.07      0.00      0.00     27612
+
+   micro avg       0.61      0.04      0.07     60997
+   macro avg       0.35      0.03      0.06     60997
+weighted avg       0.37      0.04      0.07     60997
+
+Epoch 8
+-------------------------------
+Batch 0, Loss: 372.744140625
+Batch 100, Loss: 1150.1533203125
+Validation Accuracy: 0.8107663775802753
+### BIO-Scheme
+              precision    recall  f1-score   support
+
+ B-CONDITION       0.04      0.01      0.01      5850
+ B-TREATMENT       0.02      0.02      0.02      7211
+ I-CONDITION       0.14      0.01      0.02     27535
+ I-TREATMENT       0.05      0.05      0.05     20401
+           O       0.87      0.94      0.90    385467
+
+    accuracy                           0.81    446464
+   macro avg       0.22      0.20      0.20    446464
+weighted avg       0.76      0.81      0.78    446464
+
+### Without O
+              precision    recall  f1-score   support
+
+ I-TREATMENT       0.05      0.05      0.05     20401
+ I-CONDITION       0.14      0.01      0.02     27535
+ B-CONDITION       0.04      0.01      0.01      5850
+ B-TREATMENT       0.02      0.02      0.02      7211
+
+   micro avg       0.05      0.02      0.03     60997
+   macro avg       0.06      0.02      0.02     60997
+weighted avg       0.09      0.02      0.03     60997
+
+### Summary
+              precision    recall  f1-score   support
+
+   CONDITION       0.15      0.01      0.02     33385
+           O       0.87      0.94      0.90    385467
+   TREATMENT       0.07      0.07      0.07     27612
+
+    accuracy                           0.81    446464
+   macro avg       0.36      0.34      0.33    446464
+weighted avg       0.76      0.81      0.78    446464
+
+### Without O
+              precision    recall  f1-score   support
+
+   CONDITION       0.15      0.01      0.02     33385
+   TREATMENT       0.07      0.07      0.07     27612
+
+   micro avg       0.08      0.04      0.05     60997
+   macro avg       0.11      0.04      0.05     60997
+weighted avg       0.12      0.04      0.04     60997
+
+Epoch 9
+-------------------------------
+Batch 0, Loss: 681.0732421875
+[1;34mwandb[0m: 🚀 View run [33mstill-sweep-9[0m at: [34mhttps://wandb.ai/julievt-ntnu/model-ner-a-Task.TOKEN-nn-model/runs/69arwv4b[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20250325_043804-69arwv4b/logs[0m
