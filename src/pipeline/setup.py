@@ -102,11 +102,12 @@ class Pipeline:
        
             # For each DCT in document, define the text section corresponding to the given DCT 
             for i, dct in enumerate(sectimes):
-                if i + 1 > len(sectimes):
-                    end = len(doc)
+                start = sectimes[i]["index"]
+                if i + 1 >= len(sectimes):
+                    stop = len(doc)
                 else:
-                    end = i + 1
-                sec_text = doc[sectimes[i]:sectimes[end]] 
+                    stop = sectimes[i+1]["index"]
+                sec_text = doc[start:stop] 
                 tee_output = self.__tee.run(sec_text)
                 tee_output['dct'] = dct['value']
                             
@@ -192,13 +193,14 @@ class Pipeline:
                 ###### Although triple loop, this should be quicker than checking all entities
                 ###### O(N^2)>O(len(dcts)*(N_i^2)) where N_i < N
                 
-                # TODO: candidate pairs: context?
 
                 relations = []
                 for cat in dcts:
                     for i, e_i in enumerate(dcts[cat]):
                         for j, e_j in enumerate(dcts[cat]):
-                            if i == j or e_j.value not in e_i.context:
+                            
+                            # SKIP if not in same context or both are TIMEX
+                            if i == j or e_j.value not in e_i.context or (isinstance(e_i.type, TIMEX) and isinstance(e_j.type, TIMEX)):
                                 continue
 
                             tre_output = self.__tre_tlink.run(e_i, e_j)

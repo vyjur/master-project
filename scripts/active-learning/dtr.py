@@ -84,7 +84,7 @@ for i in range(0, len(batch_inputs), BATCH_SIZE):
 
     # Collect results
     dct_results.extend(batch_outputs[0])
-    prob_results.extend(output.cpu().item() for output in batch_outputs)
+    prob_results.extend(output.cpu().item() for output in batch_outputs[1])
 
 # Assign results to dataset
 dataset['DCT'] = dct_results
