@@ -8,8 +8,7 @@ def find_duplicates(rel_entities, across=False):
         for j in range(i + 1, len(rel_entities)):  # Avoid redundant comparisons
             ent_j = rel_entities[j]
             if ent_i.value == ent_j.value and ent_i.type == ent_j.type:                        
-                # TODO: does this work
-                ent_i.context += ent_j.context
+                duplicates.append(j)
     return duplicates
 
 

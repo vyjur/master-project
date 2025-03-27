@@ -8,13 +8,33 @@ class Util:
     def __init__(self, schema: NER_SCHEMA = None):
         self.schema = schema
 
-    def validate_report(self, labels, predictions):
+    def validate_report(self, labels, predictions, output=True):
+
         if self.schema is not None:
             print(f"### {self.schema.name}-Scheme")
         else:
             print("### Summary")
+            
 
+        tags = list(set(labels).union(set(predictions)))
+        report = classification_report(labels, predictions, output_dict=True)
         print(classification_report(labels, predictions))
+        
+        print("### Without O")
+        try:
+            tags.remove("O")
+        except:
+            pass
+        
+        try: 
+            tags.remove("BEFOREOVERLAP")
+        except:
+            pass
+        
+        if output:
+            print(classification_report(labels, predictions, labels=tags))
+        
+        
 
         if self.schema is not None:
             cat_labels = [self.remove_schema(lab) for lab in labels]
@@ -23,9 +43,22 @@ class Util:
             ]
 
             tags = list(set(cat_labels).union(set(cat_predictions)))
+            
+            report = classification_report(cat_labels, cat_predictions, labels=tags, output_dict=True)
 
-            print("### Summary")
-            print(classification_report(cat_labels, cat_predictions, labels=tags))
+            if output:
+                print("### Summary")
+                print(classification_report(cat_labels, cat_predictions, labels=tags))
+            
+            try:
+                tags.remove("O")
+                if output:
+                    print("### Without O")
+                    print(classification_report(cat_labels, cat_predictions, labels=tags))
+            except:
+                pass
+                   
+        return report
     
     def remove_schema(self, text: str):
         if self.schema == NER_SCHEMA.BIO:
@@ -56,6 +89,7 @@ class Util:
                 tags.add(tag)
 
         tags = list(tags)
+        tags.sort()
 
         label2id = {k: v for v, k in enumerate(tags)}
         id2label = {v: k for v, k in enumerate(tags)}
@@ -89,12 +123,25 @@ class Util:
             for class_label, count in word_count.items()
         }
 
-        # Display the class weights
-        print(class_weights)
-        class_weights = torch.tensor(list(class_weights.values())).to(device)
-        return class_weights
+        # Sort class weights alphabetically by class labels
+        sorted_class_weights = dict(sorted(class_weights.items()))
+        #sorted_class_weights = class_weights
+        
+        
+        print(sorted_class_weights)
+        #reduce = [1, 0.7, 1, 0.86, 2.409]
+    
+        #sorted_class_weights = {key: value * reduce[i] for i, (key, value) in enumerate(sorted_class_weights.items())}
 
-    def tokens_mapping(self, tokenized, annot, word_length):
+        # Display the sorted class weights
+        print(sorted_class_weights)
+
+        # Convert to tensor
+        class_weights_tensor = torch.tensor(list(sorted_class_weights.values())).to(device)
+
+        return class_weights_tensor
+
+    def tokens_mapping(self, tokenized, annot, word_length, terms):
         tokens_annot = []
         for i in range(len(tokenized)):
             
@@ -106,8 +153,12 @@ class Util:
                 tag_prefix = ""
                 if self.schema == NER_SCHEMA.BIO:
                     tag_prefix = "B-" if tokenized.offsets[i][0] == 0 else "I-"
+                    if i != 0 and terms[i-1] == terms[i]:
+                        tag_prefix = "I-"
                 elif self.schema == NER_SCHEMA.IOE:
                     tag_prefix = "E-" if tokenized.offsets[i][1] == word_length[i] else "I-"
+                    if i != (len(tokenized) - 1) and terms[i+1] == terms[i]:
+                        tag_prefix = "I-"
                 elif self.schema == NER_SCHEMA.IO:
                     tag_prefix = "I-"
 

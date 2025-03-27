@@ -1,0 +1,44 @@
+Spawning shell within /cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12
+Installing dependencies from lock file
+
+No dependencies to install or update
+
+Installing the current project: master-project (0.1.0)
+### Processing the files:
+LOAD True
+Using: cpu with BERT
+{'DATE': 0, 'DCT': 1}
+{0: 'DATE', 1: 'DCT'}
+Model and tokenizer loaded successfully.
+### Without more rules
+              precision    recall  f1-score   support
+
+        DATE       1.00      0.54      0.70      3417
+    DURATION       0.00      0.00      0.00         0
+           O       0.00      0.00      0.00         0
+
+    accuracy                           0.54      3417
+   macro avg       0.33      0.18      0.23      3417
+weighted avg       1.00      0.54      0.70      3417
+
+### With handcrafted rules
+LOAD True
+Using: cpu with BERT
+{'DATE': 0, 'DCT': 1}
+{0: 'DATE', 1: 'DCT'}
+Model and tokenizer loaded successfully.
+Error parsing date: unconverted data remains: 3
+Error parsing date: time data '070078' does not match format '%d%m%y'
+Error parsing date: unconverted data remains: 4
+Error parsing date: unconverted data remains: 2
+Error parsing date: unconverted data remains: 93
+              precision    recall  f1-score   support
+
+        DATE       1.00      0.85      0.92      3417
+    DURATION       0.00      0.00      0.00         0
+           O       0.00      0.00      0.00         0
+
+    accuracy                           0.85      3417
+   macro avg       0.33      0.28      0.31      3417
+weighted avg       1.00      0.85      0.92      3417
+

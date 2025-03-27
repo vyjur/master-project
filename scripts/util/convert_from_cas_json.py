@@ -3,7 +3,8 @@ import pandas as pd
 import os
 
 print(os.getcwd())
-folder_path = "./data/helsearkiv/json/"
+BATCH = 3
+folder_path = f"./data/helsearkiv/batch/ner/{BATCH}-json/"
 
 files = [
     (f.replace('.pdf', ''), folder_path + f + "/admin.json")
@@ -11,15 +12,13 @@ files = [
     if os.path.isfile(os.path.join(folder_path, f, "admin.json"))
 ]
 
-id = 1
-
 context_window = 50  # Number of characters before and after each token
 
 for name, file in files:
     empty = 0
     with open(file, 'rb') as f:
         cas = load_cas_from_json(f)
-    
+        
     raw_data = []
     for token in cas.select("de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token"):
         curr_token = {
@@ -34,7 +33,10 @@ for name, file in files:
         if len(token.get_covered_text()) == 1:
             empty += 1
         curr_entity = None
-        medical_entities = cas.select("webanno.custom.MedicalEntity")  # Get all MedicalEntity annotations
+        try:
+            medical_entities = cas.select("webanno.custom.MedicalEntity")  # Get all MedicalEntity annotations
+        except:
+            continue
         for entity in medical_entities:
             if entity.begin <= token.begin < entity.end:  # Token starts within the entity span
                 empty = 0
@@ -64,8 +66,10 @@ for name, file in files:
 
         if empty > 5000:
             break
-    df = pd.DataFrame(raw_data).drop_duplicates()
-    df.to_csv(f'./data/helsearkiv/annotated2/entity/{name}.csv')
+        
+    if len(raw_data) > 0:
+        df = pd.DataFrame(raw_data).drop_duplicates()
+        df.to_csv(f'./data/helsearkiv/batch/ner/final/{name}.csv')
     
     raw_data = []
         

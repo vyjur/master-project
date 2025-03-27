@@ -21,10 +21,13 @@ relation_files = [
 
 ]
 
-tee = TEExtract(rules=False)
+manager = DatasetManager(entity_files, relation_files, False, False)
+
+config_file = "./scripts/evaluate/tee/config.ini"
+save_directory = "./models/tee/model/b-bert"
+tee = TEExtract(config_file=config_file, manager=manager, save_directory=save_directory, rules=False)
 tee.set_dct('2025-02-10')
     
-manager = DatasetManager(entity_files, relation_files, False, False)
 
 dataset = manager.get(Dataset.TEE)
 
@@ -34,34 +37,41 @@ target = []
 pred = []
 for i, data in dataset.iterrows():
     output = tee.run(data['Text'])
+    targ = data['TIMEX'].replace('DCT', 'DATE')
+    if targ not in ['DATE', 'DURATION']:
+        continue
     try:
         if not output.empty:
             pred.append(output["type"].values[0])
-            target.append(data['TIMEX'].replace('DCT', 'DATE'))
+            target.append(targ)
         else:
             pred.append("O")
-            target.append(data['TIMEX'].replace('DCT', 'DATE'))
+            target.append(targ)
     except:
         pass
 
 print(classification_report(target, pred))
 
 print("### With handcrafted rules")
-tee = TEExtract(rules=True)
+tee = TEExtract(config_file=config_file, manager=manager, save_directory=save_directory, rules=True)
 tee.set_dct('2025-02-10')
 
 target = []
 pred = []
 for i, data in dataset.iterrows():
     output = tee.run(data['Text'])
+    targ = data['TIMEX'].replace('DCT', 'DATE')
+    if targ not in ['DATE', 'DURATION']:
+        continue
     try:
         if not output.empty:
             pred.append(output["type"].values[0])
-            target.append(data['TIMEX'].replace('DCT', 'DATE'))
+            target.append(targ)
         else:
             pred.append("O")
-            target.append(data['TIMEX'].replace('DCT', 'DATE'))
+            target.append(targ)
     except:
         pass
+    
 
 print(classification_report(target, pred))

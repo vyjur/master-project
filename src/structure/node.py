@@ -24,8 +24,8 @@ class Node:
                 self.type = te
                 break
 
-        self.dct = None
-        self.set_dct(dct)
+        self.dct = dct
+        # self.set_dct(dct)
 
         self.date = date
         self.prob = 0
@@ -36,7 +36,7 @@ class Node:
         text = f"Node: {self.value} - {self.type} ({self.date})"
         return text
     
-    def set_dct(self, cat):
-        for tr in DocTimeRel:
-            if cat == tr.name:
-                self.dct = tr
+    # def set_dct(self, cat):
+    #     for tr in DocTimeRel:
+    #         if cat == tr.name:
+    #             self.dct = tr
