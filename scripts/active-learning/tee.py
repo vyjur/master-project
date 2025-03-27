@@ -13,8 +13,8 @@ from util import compute_mnlp
 from types import SimpleNamespace
 from datetime import datetime
 
-BATCH = 2
-tee_start = 2
+BATCH = 3
+tee_start = 3
 
 file = f"./data/helsearkiv/batch/tee/{BATCH}.csv"
 
