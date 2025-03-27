@@ -202,18 +202,14 @@ class TEExtract:
         # Only DATE expressions are candidate for DCT 
         dct_candidates = init_output[init_output['type'] == 'DATE']
         
-        print(dct_candidates)
-        
         # For each candidate classify if it is really a DCT /SECTIME or not
-        dcts = []
         sections = []
+        dcts = []
 
         for i, row in dct_candidates.iterrows():
             if row['text'].replace(" ", "").isalpha():
                 continue
             dct_output = self.predict_sectime(row)
-            print(dct_output)
-            
             if dct_output == "DCT":
                 dcts.append(row)
                 context_start = data.index(row['context'])
@@ -224,7 +220,7 @@ class TEExtract:
                     "value": row['value']    
                 })
             
-        return dcts
+        return dcts, sections
     
     def predict_sectime(self, data, prob=False):
         if data['text'].isalpha():
@@ -234,7 +230,6 @@ class TEExtract:
             'Text': data['text']
         }
         text = convert_to_input(self.input_tag_type, data, True, True)
-        print(text)
         return self.__model_run(self.preprocess.run(text), prob)
     
     def batch_predict_sectime(self, datas, prob=False):

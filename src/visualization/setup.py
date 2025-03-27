@@ -73,6 +73,7 @@ class Timeline:
             insidetextfont=dict(size=56),
         )
 
+        # This is if we want to get the plot up right away
         #fig.show()
         plotly.offline.plot(fig, filename=save_path + 'timeline.html')
 

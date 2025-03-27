@@ -16,7 +16,7 @@ timex_df = df[~df['TIMEX'].isna()]
 print("LEN:", len(timex_df))
 
 for i, (index, row) in enumerate(timex_df.iterrows()):
-    if i < 3660:
+    if i < 3670:
         continue
     if i > STOP:
         print("STOPPED AT", i, index)

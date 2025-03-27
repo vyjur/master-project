@@ -117,10 +117,10 @@ class DatasetManager:
     def get(self, task: Dataset):
         match task:
             case Dataset.NER:
-                return self.__get_ent_by_cols(["Id", "Text", "MedicalEntity", "TIMEX", "Context"])
+                return self.__get_ent_by_cols(["Id", "Text", "MedicalEntity", "TIMEX", "DCT", "Context"])
             case Dataset.DTR:
-                result = self.__get_ent_by_cols(["Id", "Text", "DCT", "Context"])
-                return result[result["DCT"].notna()]
+                result = self.__get_ent_by_cols(["Id", "Text", "MedicalEntity", "TIMEX", "DCT", "Context"])
+                return result[result["DCT"].notna() & result['MedicalEntity'].notna() & result['TIMEX'].isna()][["Id", "Text", "DCT", "Context"]]
             case Dataset.TEE:
                 result = self.__get_ent_by_cols(["Id", "Text", "TIMEX", "Context"])
                 return result[result["TIMEX"].notna() & result["TIMEX"].isin(["DATE", "DCT"])]

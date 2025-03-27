@@ -35,6 +35,13 @@ class TRExtract:
             if tag_type.name == self.input_tag_type:
                 self.input_tag_type = tag_type
                 break
+            
+        if task == Dataset.TLINK:
+            self.tlink_input = self.__config['GENERAL']['input']
+            for input in TLINK_INPUT:
+                if input.name == self.tlink_input:
+                    self.tlink_input = input
+                    break
         
         load = self.__config["MODEL"].getboolean("load")
         print("LOAD", load)
@@ -89,14 +96,8 @@ class TRExtract:
             elif task == Dataset.TLINK:
                 dataset_ner = manager.get(Dataset.NER)
                 dataset_ner = dataset_ner[dataset_ner['MedicalEntity'].notna() | dataset_ner['TIMEX'].notna()].reset_index()
-                dataset_tee = dataset.get(Dataset.TEE)
+                dataset_tee = manager.get(Dataset.TEE)
                 full_dataset = pd.concat([dataset_ner, dataset_tee])
-                
-                self.tlink_input = self.__config['GENERAL']['input']
-                for input in TLINK_INPUT:
-                    if input.name == self.tlink_input:
-                        self.tlink_input = input
-                        break
                 
                 for i, rel in dataset_tre.iterrows():
                     
@@ -147,7 +148,10 @@ class TRExtract:
                         if e_i['Text'] not in e_j['Context'] and e_j['Text'] not in e_i['Context']:
                             continue
                         
-                        if e_i['TIMEX'].notna() and e_j['TIMEX'].notna():
+                        if pd.notna(e_i['TIMEX']) and pd.notna(e_j['TIMEX']):
+                            continue
+                        
+                        if e_i['DCT'] != e_j['DCT']:
                             continue
 
                         relations = dataset_tre[
@@ -161,7 +165,7 @@ class TRExtract:
                             relation = "O"
 
                             # TODO: downsample majority class: 
-                            if random.random() < 0.7:
+                            if random.random() < 0.5:
                                 continue
 
                         sentence_i = convert_to_input(self.input_tag_type, e_i, single=False, start=True)
@@ -177,7 +181,6 @@ class TRExtract:
                         }
                         dataset.append(relation_pair)
                         tags.add(relation)
-                        
             
 
             tags = list(tags)
