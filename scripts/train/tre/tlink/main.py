@@ -19,6 +19,28 @@ entity_files = [
     if os.path.isfile(os.path.join(folder_path, f))
 ]
 
+# MEDICAL ENTITY
+folder_path = "./data/helsearkiv/batch/dtr/"
+
+batch_files = [
+    folder_path + f
+    for f in os.listdir(folder_path)
+    if os.path.isfile(os.path.join(folder_path, f))
+]
+
+entity_files.extend(batch_files)
+
+# TIMEX
+folder_path = "./data/helsearkiv/batch/dtr/"
+
+batch_files = [
+    folder_path + f
+    for f in os.listdir(folder_path)
+    if os.path.isfile(os.path.join(folder_path, f))
+]
+
+entity_files.extend(batch_files)
+
 folder_path = "./data/helsearkiv/annotated/relation/"
 
 relation_files = [
@@ -27,14 +49,25 @@ relation_files = [
     if os.path.isfile(os.path.join(folder_path, f))
 ]
 
-manager = DatasetManager(entity_files, relation_files)
+
+folder_path = "./data/helsearkiv/batch/tlink/"
+
+batch_files = [
+    folder_path + f
+    for f in os.listdir(folder_path)
+    if os.path.isfile(os.path.join(folder_path, f))
+]
+
+relation_files.extend(batch_files)
+
+manager = DatasetManager(entity_files, relation_files, window_size=512)
 
 for i, conf in enumerate(configs):
-    if os.path.isdir(folder + conf):
+    if os.path.isdir(folder + conf) or conf != 'b-bert.ini':
         continue
     print(f"###### ({i}) Training for configuration file: {conf}")
     save_directory = f"./models/tre/{TRE_TYPE}/model/" + conf.replace(".ini", "")
-    if not os.path.isdir(save_directory):
+    if not os.path.isdir(save_directory) or conf != 'b-bert.ini':
         os.mkdir(save_directory)
     ner = TRExtract(
         config_file=folder + conf,

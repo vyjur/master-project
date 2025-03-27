@@ -12,10 +12,14 @@ from structure.enum import Dataset
 from util import compute_mnlp
 from types import SimpleNamespace
 
-BATCH = 1
+BATCH = 1000
 PAGES = 36
 
-os.mkdir(f'./data/helsearkiv/batch/ner/{BATCH}-local')
+if not os.path.exists(f'./data/helsearkiv/batch/ner/{BATCH}-local'):
+    os.mkdir(f'./data/helsearkiv/batch/ner/{BATCH}-local')
+    print(f"Folder local has been created.")
+else:
+    print(f"Folder local already exists.")
 
 
 
@@ -40,7 +44,7 @@ relation_files = [
 manager = DatasetManager(entity_files, relation_files)
 
 file = "./scripts/active-learning/config/ner.ini"
-save_directory = "./models/ner/b-bert"
+save_directory = "./models/ner/model/b-bert"
 ner = NERecognition(
     config_file=file,
     manager=manager,
@@ -48,6 +52,7 @@ ner = NERecognition(
 )
 
 file = "./scripts/active-learning/config/tee.ini"
+save_directory = "./models/tee/model/b-bert"
 tee = TEExtract(
     config_file=file,
     manager=manager,
@@ -55,6 +60,7 @@ tee = TEExtract(
 )
 
 file = "./scripts/active-learning/config/tre-dtr.ini"
+save_directory = "./models/tre/dtr/model/b-bert"
 dtr = TRExtract(
     config_file=file,
     manager=manager,
@@ -62,7 +68,9 @@ dtr = TRExtract(
     task=Dataset.DTR
 
 )
+
 file = "./scripts/active-learning/config/tre-tlink.ini"
+save_directory = "./models/tre/tlink/model/b-bert"
 tlink = TRExtract(
     config_file=file,
     manager=manager,
@@ -89,7 +97,7 @@ patients_df = pd.read_csv('./data/helsearkiv/patients.csv')
 
 print("##### Calculating MNLP ... ")
 for i, doc in enumerate(files):
-    if file.split("_")[1].strip() not in patients_df['journalidentifikator']
+    if doc.split("_")[1].strip() not in patients_df['journalidentifikator']:
         reader = pypdf.PdfReader('./data/helsearkiv/journal/' + doc)
         for j, page in enumerate(reader.pages):
             pre_output = preprocess.run(page.extract_text())
@@ -237,7 +245,7 @@ for page in sorted_data[:1200]:
             'sentence-id': '',
             'Relation': ''
         })
-        df.to_csv(f"./data/helsearkiv/batch/ner/{BATCH}/{count // PAGES}.csv")
+        df.to_csv(f"./data/helsearkiv/batch/ner/{BATCH}-local/{count // PAGES}.csv")
         
         merged_entities = []
         merged_offsets = []
@@ -257,7 +265,11 @@ print("### Converting to webanno.tsv style")
 out_folder_path = f"./data/helsearkiv/batch/ner/{BATCH}-webanno/"
 in_folder_path = f"./data/helsearkiv/batch/ner/{BATCH}-local/"
 
-os.mkdir(out_folder_path)
+if not os.path.exists(out_folder_path):
+    os.mkdir(out_folder_path)
+    print(f"Folder '{out_folder_path}' has been created.")
+else:
+    print(f"Folder '{out_folder_path}' already exists.")
 
 entity_files = [
     (in_folder_path + f, f)
@@ -290,7 +302,7 @@ for i, (path, file) in enumerate(entity_files):
         for j, row in df.iterrows():
             row['Text'] = str(row['Text'])
             words = row['Text'].split()
-            df.at[j, 'sentence-id'] = f'{sentence_id}-{j + 1}'
+            df.at[j, 'sentence-id'] = f'{sentence_id}-{total_words + 1}'
             total_words += len(words)
                  
         sentence_id = 1

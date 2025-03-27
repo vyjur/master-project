@@ -6,6 +6,7 @@ __pycache__/
 # C extensions
 *.so
 
+output/
 
 wandb/
 # Distribution / packaging
@@ -176,5 +177,6 @@ tokenizer.json
 
 /data/helsearkiv
 job.slurm
+/slurm
 
 /src/textmining/tee/heideltime/heideltime-standalone

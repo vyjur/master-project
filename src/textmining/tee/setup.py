@@ -3,17 +3,21 @@ from textmining.tee.rules import *
 import xml.etree.ElementTree as ET
 from preprocess.dataset import DatasetManager
 import configparser
-from structure.enum import Task, Dataset, DCT
+from structure.enum import Task, Dataset, DCT, TAGS
 from model.util import Util
 import pandas as pd
 from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
 from model.map import MODEL_MAP
+from textmining.util import convert_to_input
+import html
+import numpy as np
+
 
 
 class TEExtract:
     
-    def __init__(self, config_file:str, manager: DatasetManager, save_directory: str = "./src/textmining/ner/model", rules:bool=True):
+    def __init__(self, config_file:str, manager: DatasetManager, save_directory: str = "./src/textmining/tee/model", rules:bool=True):
         self.__heideltime = Heideltime()
         self.__heideltime.set_document_type('NEWS')
         self.__heideltime.set_language('auto-norwegian')
@@ -21,21 +25,28 @@ class TEExtract:
         
         self.__config = configparser.ConfigParser(allow_no_value=True)
         self.__config.read(config_file)
-
+        
+        self.input_tag_type = self.__config["GENERAL"]['tag']
+        
+        for tag_type in TAGS:
+            if tag_type.name == self.input_tag_type:
+                self.input_tag_type = tag_type
+                break
+        
         load = self.__config["MODEL"].getboolean("load")
         print("LOAD", load)
         
         dataset = []
         tags = [DCT.DATE.name, DCT.DCT.name]   
-
         if not load:
             tags = set()
             raw_dataset = manager.get(Dataset.TEE)
             for _, row in raw_dataset.iterrows():
+                if row['Text'].replace(" ", "").isalpha() or 'ICD' in row['Context']:
+                    continue
                 dataset.append(
                     {
-                        "sentence": row['Context']
-                        .replace(row['Text'], f"<TAG>{row['Text']}</TAG>"),
+                        "sentence": convert_to_input(self.input_tag_type, row, True, True),
                         "relation": row['TIMEX'],
                     }
                 )
@@ -67,6 +78,7 @@ class TEExtract:
             "num_workers": self.__config.getint("train.parameters", "num_workers"),
             "max_length": self.__config.getint("train.parameters", "max_length"),
             "stride": self.__config.getint("train.parameters", "stride"),
+            "weights": self.__config.getboolean("train.parameters", "weights"),
             "tune": self.__config.getboolean("tuning", "tune"),
             "tune_count": self.__config.getint("tuning", "count") 
         }
@@ -88,14 +100,16 @@ class TEExtract:
         return self.__model.tokenizer
 
     def get_max_length(self):
-        return self.__config.getint("MODEL", "max_length")
+        return self.__config.getint("train.parameters", "max_length")
 
     def get_stride(self):
-        return self.__config.getint("MODEL", "stride")
+        return self.__config.getint("train.parameters", "stride")
 
-    def __model_run(self, data):
-        output, _ = self.__model.predict([val.ids for val in data])
-        predictions = [[self.id2label[int(j.cpu().numpy())] for j in i] for i in output]
+    def __model_run(self, data, prob=False):
+        output, prob = self.__model.predict([val.ids for val in data])
+        predictions = [self.id2label[int(i)] if int(i) in self.id2label else "O" for i in output ]
+        if prob:
+            return predictions, prob
         return predictions
 
     def get_model(self):
@@ -104,15 +118,20 @@ class TEExtract:
     def set_dct(self, dct):
         self.__heideltime.set_document_time(dct)
         
-    def __pre_rules(self, text):
-        text = convert_text(text)
-        
-        text = convert_slash_date(text)
+    def __pre_rules(self, text, sectime=False):
+       
+        if not sectime:
+            
+            text = convert_text(text)
+            text = convert_negative_years(text)
+            text = convert_full_year(text)
+            
+        text = expand_norwegian_months(text)
+        text = convert_date_format_2(text)
         text = convert_date_format(text)
-        text = convert_negative_years(text)
-        text = convert_full_year(text)
+        text = convert_slash_date(text)
         
-        if self.__heideltime.document_time is not None:
+        if self.__heideltime.document_time is not None and not sectime:
             # Rule 4: 25.12 => 25.12.YYYY where YYYY is the same year as DCT if 25.12.YYYY < DCT. Else, the year before that.
             dct = datetime.strptime(self.__heideltime.document_time, "%Y-%m-%d")
             
@@ -123,21 +142,24 @@ class TEExtract:
         return text
             
     def __post_rules(self, full_text, text, ttype, value):
-        dct = datetime.strptime(self.__heideltime.document_time, "%Y-%m-%d")
         check_context = self.__get_window(full_text, text, window_size=3)
 
         if self.__heideltime.document_time is not None:
+            dct = datetime.strptime(self.__heideltime.document_time, "%Y-%m-%d")
             if ttype == "DURATION":
                 return convert_duration(check_context, value, dct) 
         return value 
         
-    def run(self, text):
+    def run(self, text, sectime=False):
         if self.__rules:
-            text = self.__pre_rules(text)
-        
-        result = self.__heideltime.parse(text)
-        
-        root = ET.fromstring(result)
+            text = self.__pre_rules(text, sectime)
+    
+        result = self.__heideltime.parse(text).encode("utf-8").decode("utf-8")
+        try:
+            root = ET.fromstring(result)
+        except:
+            columns = ["id", "type", "value", "text", "context"]
+            return pd.DataFrame(columns=columns)
         full_text = " ".join(root.itertext())
 
         timex_elements = root.findall('.//TIMEX3')
@@ -149,13 +171,16 @@ class TEExtract:
             value = timex.get('value')
             text = timex.text
             
+            if text.replace(' ', '').isalpha():
+                continue
+            
             # Get the full text of the document
             
             # Get the 50-token window around this TIMEX3 element
             context = self.__get_window(full_text, text, window_size=50)
             
-            if self.__rules: 
-                value = self.__post_rules(full_text, text, ttype, value)
+            if self.__rules and not sectime: 
+                value = self.__post_rules(full_text, text, ttype, value,)
             
             data.append( {
                 'id': tid,
@@ -164,36 +189,62 @@ class TEExtract:
                 'text': text,
                 'context': context
             })
-
+            
+        if not data:  # This checks if the list is empty
+            return pd.DataFrame(columns=['id', 'type', 'value', 'text', 'context'])
+        
         return pd.DataFrame(data)
             
     def extract_sectime(self, data):
         # Initial output: Extracting all TIMEX expressions
-        init_output = self.run(data)
-       
+        init_output = self.run(data, True)
+        
         # Only DATE expressions are candidate for DCT 
         dct_candidates = init_output[init_output['type'] == 'DATE']
         
         # For each candidate classify if it is really a DCT /SECTIME or not
-        dcts = []
         sections = []
+        dcts = []
 
         for i, row in dct_candidates.iterrows():
+            if row['text'].replace(" ", "").isalpha():
+                continue
             dct_output = self.predict_sectime(row)
-            
             if dct_output == "DCT":
                 dcts.append(row)
                 context_start = data.index(row['context'])
                 dct_start = row['context'].index(row['text'])
                 start = context_start + dct_start
-                sections.append(start)
+                sections.append({
+                    "index": start,
+                    "value": row['value']    
+                })
             
-        return dcts
+        return dcts, sections
     
-    def predict_sectime(self, data):
-        text = data['context'].replace(data['text'], f"<TAG>{data['text']}</TAG>")
-        return self.__model_run(text)
-
+    def predict_sectime(self, data, prob=False):
+        if data['text'].isalpha():
+            return 'DATE'
+        data = {
+            'Context': data['context'],
+            'Text': data['text']
+        }
+        text = convert_to_input(self.input_tag_type, data, True, True)
+        return self.__model_run(self.preprocess.run(text), prob)
+    
+    def batch_predict_sectime(self, datas, prob=False):
+        batch_text = []
+        for data in datas:
+            data = {
+                'Context': data['context'],
+                'Text': data['text']
+            }
+            text = convert_to_input(self.input_tag_type, data, True, True)
+            batch_text.append(self.preprocess.run(text)[0])
+        
+        if len(batch_text) == 0:
+            return None
+        return self.__model_run(np.array(batch_text), prob)
 
     def __get_window(self, full_text, timex_text, window_size=50):
         # Find the index of the TIMEX3 text in the full text

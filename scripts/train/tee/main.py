@@ -3,6 +3,8 @@ from textmining.tee.setup import TEExtract
 from preprocess.dataset import DatasetManager
 from structure.enum import Dataset
 
+BATCH =3
+
 print("##### Start training for TEE... ######")
 
 # Info: Change here
@@ -10,13 +12,26 @@ print("##### Start training for TEE... ######")
 folder = f"./scripts/train/tee/config/model/"
 configs = os.listdir(folder)
 
-folder_path = "./data/helsearkiv/annotated/entity/"
+#folder_path = "./data/helsearkiv/annotated/entity/"
+
+folder_path = "./data/helsearkiv/batch/tee/base/"
 
 entity_files = [
     folder_path + f
     for f in os.listdir(folder_path)
     if os.path.isfile(os.path.join(folder_path, f))
 ]
+
+folder_path = "./data/helsearkiv/batch/tee/"
+
+batch_files = [
+    folder_path + f
+    for f in os.listdir(folder_path)
+    if os.path.isfile(os.path.join(folder_path, f)) and "final" in f
+]
+
+entity_files.extend(batch_files)
+
 
 folder_path = "./data/helsearkiv/annotated/relation/"
 
@@ -26,13 +41,13 @@ relation_files = [
     if os.path.isfile(os.path.join(folder_path, f))
 ]
 
-manager = DatasetManager(entity_files, relation_files)
+manager = DatasetManager(entity_files, relation_files, window_size=50)
 
 for i, conf in enumerate(configs):
-    if os.path.isdir(folder + conf):
+    if os.path.isdir(folder + conf) or conf != 'b-bert.ini':
         continue
     print(f"###### ({i}) Training for configuration file: {conf}")
-    save_directory = f"./models/tee/model/" + conf.replace(".ini", "")
+    save_directory = f"./models/tee/model/" + conf.replace(".ini", "") + f"/b{BATCH}/"
     if not os.path.isdir(save_directory):
         os.mkdir(save_directory)
     ner = TEExtract(

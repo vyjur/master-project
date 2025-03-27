@@ -10,7 +10,7 @@ class Timeline:
         self.__config = config
         self.__offset = offset
 
-    def create(self, data):
+    def create(self, data, save_path="./"):
         timeline = []
         
         levels = list(set([e.date for doc in data for e in doc["entities"]]))
@@ -19,7 +19,6 @@ class Timeline:
         for doc in data:
             
             for e in doc["entities"]:
-                print(e)
                 if e.type is None or isinstance(e.type, TIMEX) or e.date is None:
                     continue
                 
@@ -39,32 +38,7 @@ class Timeline:
                     )
                 )
                 level_dict[e.date] += 1
-            for rel in doc["relations"]:
-                date = None
-                if rel.x.date is None and rel.y.date is not None:
-                    date = datetime.strptime(rel.y.date, "%Y-%m-%d")
-                    start_date =  date - timedelta(hours=self.__offset)
-                    end_date = date
-                elif rel.x.date is not None and rel.y.date is None:
-                    date = datetime.strptime(rel.x.date, "%Y-%m-%d")
-                    start_date =  date + timedelta(hours=self.__offset)
-                    end_date = start_date + timedelta(hours=self.__offset)
-                if date is not None:
-                    if start_date not in level_dict:
-                        level_dict[start_date] = 1
-                    else:
-                        level_dict[start_date] += 1
-                    timeline.append(
-                        dict(
-                            System=level_dict[e.date],
-                            Entity=e.value,
-                            Type=e.type.name,
-                            Start=start_date,
-                            Finish=end_date,
-                            Document=e.dct,
-                        )
-                    )
-                        
+                
         if len(timeline) < 1:
             print("Empty timeline")
             return
@@ -99,6 +73,7 @@ class Timeline:
             insidetextfont=dict(size=56),
         )
 
+        # This is if we want to get the plot up right away
         #fig.show()
-        plotly.offline.plot(fig, filename='./src/visualization/timeline.html')
+        plotly.offline.plot(fig, filename=save_path + 'timeline.html')
 

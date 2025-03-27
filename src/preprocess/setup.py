@@ -51,12 +51,14 @@ class Preprocess:
         self.__config.read("./src/preprocess/config.ini")
 
     def run(self, data: str):
+        data = str(data).split()
         tokenized_dataset = self.__tokenizer(
             data,
             padding="max_length",
             stride=self.__stride,
             max_length=self.__max_length,
             truncation=True,
+            is_split_into_words=True,
             return_offsets_mapping=True,
             return_overflowing_tokens=True,
         ).encodings
@@ -106,6 +108,8 @@ class Preprocess:
         stride: int = 16,
     ):
         label2id, id2label = self.__util.get_tags(task, tags_name)
+        print(label2id)
+        print(id2label)
         tokenized_dataset = []
         
         for row in data:
@@ -115,10 +119,12 @@ class Preprocess:
                 
                 words = []
                 annot = []
+                terms = []
                 for i, word in enumerate(temp_words):
                     for token in str(word).split():
                         words.append(token)
                         annot.append(temp_annot[i])
+                        terms.append(i)
                     
                 split_into_words = True
             else:
@@ -135,8 +141,10 @@ class Preprocess:
                 return_offsets_mapping=True,
                 return_overflowing_tokens=True,
             )
+            
+            included_cat = False
 
-            for encoding in tokenized.encodings:
+            for j, encoding in enumerate(tokenized.encodings):
                 if task == Task.TOKEN:
                     curr_annot = [
                         annot[i] if i is not None else "O"  # type: ignore
@@ -145,8 +153,12 @@ class Preprocess:
                     word_length = [
                         len(words[i]) if i is not None else None for i in encoding.word_ids
                     ]
-                    tokens_annot = self.__util.tokens_mapping(encoding, curr_annot, word_length)
-
+                    curr_terms = [
+                        terms[i] if i is not None else None for i in encoding.word_ids
+                    ]
+                    tokens_annot = self.__util.tokens_mapping(encoding, curr_annot, word_length, curr_terms)
+                elif task == Task.SEQUENCE and j != 0:
+                    break
                 encoding_dict = {
                     "ids": encoding.ids,
                     "type_ids": encoding.type_ids,
@@ -163,7 +175,18 @@ class Preprocess:
                     encoding_dict["labels"] = row["relation"]
                     if "cat" in row:
                         encoding_dict["cat"] = row["cat"]
+                        included_cat = True
+                    
+                    if included_cat and "cat" not in encoding_dict:
+                        encoding_dict['cat'] = None
+                        
                 tokenized_dataset.append(encoding_dict)
+                
+        if len(tokenized_dataset) == 0:
+            return {
+                "label2id": label2id,
+                "id2label": id2label,
+            }
 
         train, test = train_test_split(
             tokenized_dataset, train_size=self.__train_size, random_state=42
@@ -180,6 +203,8 @@ class Preprocess:
         valid_dataset = CustomDataset(val, self.__tokenizer, label2id)
         test_dataset = CustomDataset(test, self.__tokenizer, label2id)
         
+        #torch.save(test_dataset, "./data/helsearkiv/test_dataset/test_dataset.pth")
+        
         return_dict = {
             "train_raw": train,
             "val_raw": val,
@@ -193,8 +218,8 @@ class Preprocess:
         }
         
         if "cat" in tokenized_dataset[0]:
-            intra = [d for d in tokenized_dataset if d["cat"] == SENTENCE.INTRA]
-            inter = [d for d in tokenized_dataset if d["cat"] == SENTENCE.INTER]
+            intra = [d for d in test_dataset if d["cat"] == SENTENCE.INTRA]
+            inter = [d for d in test_dataset if d["cat"] == SENTENCE.INTER]
 
             intra_dataset = CustomDataset(intra, self.__tokenizer, label2id)
             inter_dataset = CustomDataset(inter, self.__tokenizer, label2id)
@@ -202,6 +227,7 @@ class Preprocess:
             return_dict["intra"] = intra_dataset
             return_dict["inter"] = inter_dataset
 
+        raise ValueError
         return return_dict
 
 

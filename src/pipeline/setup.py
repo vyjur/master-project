@@ -1,5 +1,8 @@
 import os
+import pandas as pd
 import configparser
+from datetime import datetime, timedelta
+
 from textmining.ner.setup import NERecognition
 
 from textmining.tre.setup import TRExtract
@@ -56,7 +59,7 @@ class Pipeline:
         self.__ner = NERecognition(self.__config["CONFIGS"]["ner"], manager)
         
         print("### Initializing TEE ###")
-        self.__tee = TEExtract()
+        self.__tee = TEExtract(self.__config["CONFIGS"]["tee"], manager)
 
         print("### Initializing DTR ###")
         self.__tre_dtr = TRExtract(
@@ -78,13 +81,11 @@ class Pipeline:
 
     
 
-    def run(self, documents):
-        ### Extract text from PDF ###
-        # TODO: add document logic, is this necessary?
-
+    def run(self, documents, save_path='./', step=None):
         all_info = []
-        entities = []
         for doc in documents:
+            entities = []
+            
             ### Initialization
             
             graph = Graph()
@@ -93,22 +94,36 @@ class Pipeline:
             
             ##### Perform Temporal Expression Extraction
         
-            sectimes = self.__tee.extract_sectime(doc)
+            dcts, sectimes = self.__tee.extract_sectime(doc)
+            
+            print("SECTIMES", sectimes)
+            
+            if len(sectimes) == 0:
+                if len(dcts) > 0:
+                    default = dcts[0]['value']
+                else:
+                    default = datetime.today().strftime("%Y-%m-%d")
+                sectimes = [{
+                    "index": 0,
+                    "value": default
+                }]
        
             # For each DCT in document, define the text section corresponding to the given DCT 
             for i, dct in enumerate(sectimes):
-                if i + 1 > len(sectimes):
-                    end = len(doc)
+                start = sectimes[i]["index"]
+                if i + 1 >= len(sectimes):
+                    stop = len(doc)
                 else:
-                    end = i + 1
-                sec_text = doc[sectimes[i], sectimes[end]] 
+                    stop = sectimes[i+1]["index"]
+                sec_text = doc[start:stop] 
                 tee_output = self.__tee.run(sec_text)
                 tee_output['dct'] = dct['value']
-                            
-                for _, te in tee_output.iterrows():
-                    entities.append(
-                        Node(te['text'], te['type'], te['dct'], te['context'], te['value'])
-                    )
+                          
+                if step != "MER":  
+                    for _, te in tee_output.iterrows():
+                        entities.append(
+                            Node(te['text'], te['type'], te['dct'], te['context'], te['value'])
+                        )
                     
                 ### Preprocessing based on section text
                 output = self.__preprocess.run(sec_text)
@@ -147,8 +162,14 @@ class Pipeline:
 
                         # Token window based on tokenization output
                         start = sum([len(output[j]) for j in range(i)])
-                        context = all_outputs[max(0, start + int[0] - WINDOW) : min(len(all_outputs),start + int[1] + WINDOW)]
-                        
+                        # TODO: context here is wrong, need to get token context instead
+                        start_context = all_outputs[:start].split()
+                        end_context = all_outputs[start:].split()
+                        context = start_context[max(0, len(start_context) - WINDOW):] + end_context[:min(len(end_context), WINDOW)]
+                        context = " ".join(context)
+                        print("##################")
+                        print("CONTEXT:", len(context))
+                        print(context)
                         context = (
                             context.replace("[CLS]", "")  # type: ignore
                             .replace("[SEP]", "")
@@ -169,70 +190,93 @@ class Pipeline:
                     dcts[cat.name] = []
 
                 #### Remove local duplicates (document-level)
-                duplicates = find_duplicates(entities)
-                entities = remove_duplicates(entities, duplicates)
+                # TODO: how can remove redundancy
+                # duplicates = find_duplicates(entities)
+                # entities = remove_duplicates(entities, duplicates)
 
                 ###### Predicting each entities' DTR group
-                for e in entities:
-                    cat, _ = self.__tre_dtr.run(e)
-                    cat = cat.replace("/", "")
-                    e.set_dct(cat)
-                    
-                    # Set date of entity as the same as DTR if it is overlapping with DCT
-                    if cat == DocTimeRel.OVERLAP:
-                        print("DCT overlap")
-                        print(e)
-                        e.date = e.dct
-                    dcts[cat].append(e)
-
-                ###### The candidate pairs are pairs within a group##### O(N^2)>O(len(dcts)*(N_i^2)) where N_i < N
-                ###### Although triple loop, this should be quicker than checking all entities
-                ###### O(N^2)>O(len(dcts)*(N_i^2)) where N_i < N
-
+                
                 relations = []
-                for cat in dcts:
-                    for i, e_i in enumerate(dcts[cat]):
-                        for j, e_j in enumerate(dcts[cat]):
-                            if i == j:
-                                continue
+                
+                if step != "MER":
+                    
+                    dct_date = datetime.strptime(dct['value'], "%Y-%m-%d")
+                    default_date = datetime.today().strftime("%Y-%m-%d")
 
-                            tre_output = self.__tre_tlink.run(e_i, e_j)
-
-                            relation = tre_output[0]
-                            prob = tre_output[1][0]
-
-                            if relation != "O":
-                                rel = Relation(e_i, e_j, relation, prob)
-                                if rel.tr == TLINK.OVERLAP:
-                                    if isinstance(e_i.type, TIMEX) and not isinstance(e_j.type, TIMEX):
-                                        if e_i.prob >= e_j.prob or e_j.date is None:
-                                            e_j.date = e_i.date
-                                            e_j.prob = e_i.prob 
-                                    elif isinstance(e_j.type, TIMEX) and not isinstance(e_i.type, TIMEX):
-                                        if e_j.prob >= e_i.prob or e_i.date is None:
-                                            e_i.date = e_j.date
-                                            e_i.prob = e_j.prob
-                                                
-                                relations.append(rel)
-
-                ##### Sort relations after probability
-                relations = sorted(relations, key=lambda r: r.prob, reverse=True)
-                            
-                ### For TLINK BEFORE relation, we will add it X hours ahead before the parent entity if it has no date assigned to it.
-                ### This will be handled in the visualization module
-                for rel in relations[:]:
-                    if rel.tr == TLINK.BEFORE: 
-                        if None not in (rel.x.date, rel.y.date):
-                            if rel.x.date < rel.y.date:
-                                graph.add_edge(rel.x.id, rel.y.id)
+                    for e in entities:
+                        if dct_date == default_date:
+                            cat = DocTimeRel.BEFORE.name
+                        elif isinstance(e.type, TIMEX):
+                            date = datetime.strptime(e.date, "%Y-%m-%d")
+                            if date == dct_date:
+                                cat = DocTimeRel.OVERLAP.name
+                            elif date < dct_date:
+                                cat = DocTimeRel.BEFORE.name
+                            else:
+                                cat = DocTimeRel.AFTER.name
                         else:
-                            graph.add_edge(rel.x.id, rel.y.id)
-                    elif rel.tr == TLINK.OVERLAP:
-                        # TODO: do we need to do something here? as we ahve already handled it above
-                        pass
-                    if graph.is_cyclic():
-                        relations.remove(rel)
-                        graph.remove_edge(rel.x.id, rel.y.id)
+                            cat, _ = self.__tre_dtr.run(e)
+                            cat = cat.replace("/", "")
+                        
+                            # Set date of entity as the same as DTR if it is overlapping with DCT
+                            if cat == DocTimeRel.OVERLAP:
+                                e.date = e.dct
+                        dcts[cat].append(e)
+
+                    ###### The candidate pairs are pairs within a group##### O(N^2)>O(len(dcts)*(N_i^2)) where N_i < N
+                    ###### Although triple loop, this should be quicker than checking all entities
+                    ###### O(N^2)>O(len(dcts)*(N_i^2)) where N_i < N
+                    
+
+                    for cat in dcts:
+                        for i, e_i in enumerate(dcts[cat]):
+                            for j, e_j in enumerate(dcts[cat]):
+                                
+                                # SKIP if not in same context or both are TIMEX
+                                if i == j or e_j.value not in e_i.context or (isinstance(e_i.type, TIMEX) and isinstance(e_j.type, TIMEX)):
+                                    continue
+
+                                tre_output = self.__tre_tlink.run(e_i, e_j)
+
+                                relation = tre_output[0]
+                                prob = tre_output[1][0]
+
+                                if relation != "O":
+                                    rel = Relation(e_i, e_j, relation, prob)
+                                    if rel.tr == TLINK.OVERLAP:
+                                        if isinstance(e_i.type, TIMEX) and not isinstance(e_j.type, TIMEX):
+                                            if e_i.prob >= e_j.prob or e_j.date is None:
+                                                e_j.date = e_i.date
+                                                e_j.prob = e_i.prob 
+                                        elif isinstance(e_j.type, TIMEX) and not isinstance(e_i.type, TIMEX):
+                                            if e_j.prob >= e_i.prob or e_i.date is None:
+                                                e_i.date = e_j.date
+                                                e_i.prob = e_j.prob
+                                                    
+                                    relations.append(rel)
+
+                    ##### Sort relations after probability
+                    relations = sorted(relations, key=lambda r: r.prob, reverse=True)
+                                
+                    ### For TLINK BEFORE relation, we will add it X hours ahead before the parent entity if it has no date assigned to it.
+                    ### This will be handled in the visualization module
+                    for rel in relations:
+                        if rel.tr == TLINK.BEFORE: 
+                            if None not in (rel.x.date, rel.y.date):
+                                if rel.x.date < rel.y.date:
+                                    graph.add_edge(rel.x.id, rel.y.id)
+                            else:
+                                graph.add_edge(rel.x.id, rel.y.id)
+                        if graph.is_cyclic():
+                            relations.remove(rel)
+                            graph.remove_edge(rel.x.id, rel.y.id)
+
+                    for rel in relations:
+                        if rel.tr == TLINK.BEFORE:
+                            if rel.x.date is None and rel.y.date is not None and not isinstance(rel.x.type, TIMEX):
+                                rel.x.date = datetime.strptime(rel.y.date, "%Y-%m-%d") - timedelta(days=1)
+                            elif rel.x.date is not None and rel.y.date is None and not isinstance(rel.y.type, TIMEX):
+                                rel.y.date = datetime.strptime(rel.x.date, "%Y-%m-%d") + timedelta(days=1)
 
                 all_info.append(
                     {
@@ -243,7 +287,20 @@ class Pipeline:
                 )
             
         ### Visualize: Using a timeline
-        self.viz.create(all_info)
+        
+        all_entities = []
+        for info in all_info:
+            all_entities.extend(info['entities'])
+            
+        print(len(all_entities))
+        
+        for ent in all_entities:
+            ent.context = ""
+             
+        df = pd.DataFrame([vars(ent) for ent in all_entities])
+        df.to_csv(save_path + "output.csv")
+
+        self.viz.create(all_info, save_path)
 
 
 if __name__ == "__main__":
