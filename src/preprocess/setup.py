@@ -141,6 +141,8 @@ class Preprocess:
                 return_offsets_mapping=True,
                 return_overflowing_tokens=True,
             )
+            
+            included_cat = False
 
             for j, encoding in enumerate(tokenized.encodings):
                 if task == Task.TOKEN:
@@ -173,6 +175,11 @@ class Preprocess:
                     encoding_dict["labels"] = row["relation"]
                     if "cat" in row:
                         encoding_dict["cat"] = row["cat"]
+                        included_cat = True
+                    
+                    if included_cat and "cat" not in encoding_dict:
+                        encoding_dict['cat'] = None
+                        
                 tokenized_dataset.append(encoding_dict)
                 
         if len(tokenized_dataset) == 0:
@@ -220,6 +227,7 @@ class Preprocess:
             return_dict["intra"] = intra_dataset
             return_dict["inter"] = inter_dataset
 
+        raise ValueError
         return return_dict
 
 

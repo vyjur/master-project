@@ -30,13 +30,13 @@ batch_files = [
 
 entity_files.extend(batch_files)
 
-# TIMEX
+# DTR batch
 folder_path = "./data/helsearkiv/batch/dtr/final/"
 
 batch_files = [
     folder_path + f
     for f in os.listdir(folder_path)
-    if os.path.isfile(os.path.join(folder_path, f))
+    if os.path.isfile(os.path.join(folder_path, f) and "b0" not in f)
 ]
 
 entity_files.extend(batch_files)

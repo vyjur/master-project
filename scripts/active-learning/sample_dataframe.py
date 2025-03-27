@@ -19,7 +19,7 @@ def sample_dataframe(df: pd.DataFrame, percentage: float) -> pd.DataFrame:
     if not (0 < percentage <= 100):
         raise ValueError("Percentage must be between 0 and 100.")
 
-    df_sorted = df.sort_values(by='prob', ascending=False)
+    df_sorted = df.sort_values(by='prob', ascending=True)
     print(df_sorted)
     num_rows = int(len(df) * (percentage / 100))
     return df_sorted.head(num_rows)
