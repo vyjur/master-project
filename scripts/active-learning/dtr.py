@@ -47,13 +47,9 @@ dtr = TRExtract(
 batch_path = "./data/helsearkiv/batch/ner/final/"
 csv_files = [f for f in os.listdir(batch_path) if f.endswith(".csv")]
 entities = pd.concat([pd.read_csv(os.path.join(batch_path, file)) for file in csv_files])
-entities = entities[entities["MedicalEntity"].notna()]
+entities = entities[(entities["MedicalEntity"].notna()) & (entities["MedicalEntity"] != "O")]
 
-# TIMEX
-timex = pd.read_csv(f"./data/helsearkiv/batch/tee/{1}.csv")
-timex = timex[timex["TIMEX"].notna()] 
-
-all_entities = pd.concat([entities, timex])
+all_entities = entities
 
 batch_path = './data/helsearkiv/batch/dtr/'
 csv_files = [f for f in os.listdir(batch_path) if f.endswith('.csv') and 'final' in f]
@@ -76,6 +72,8 @@ batch_inputs = [
 # Prepare storage for results
 dct_results = []
 prob_results = []
+page = []
+file = []
 
 # Process in batches
 for i in range(0, len(batch_inputs), BATCH_SIZE):
