@@ -1,0 +1,1458 @@
+
+(25, 'Inappropriate ioctl for device')
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Agent Starting Run: h7vhbsdr with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.0001
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 256
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.001
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.0001
+wandb: 	weights: False
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Currently logged in as: julievt (julievt-ntnu). Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_185419-h7vhbsdr
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run hearty-sweep-1
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/h7vhbsdr
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▁▄▃▇▇▇█▇████
+wandb: train_accuracy ▁▃▅▆▆▆▇▇████
+wandb:     train_loss █▇▆▄▄▃▃▂▂▁▁▁
+wandb:        val_acc ▁▄▅▇▇▇██████
+wandb:       val_loss █▆▄▂▂▁▁▁▃▄▃▃
+wandb:    weighted_f1 ▁▄▄▇▇▇██████
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.85002
+wandb: train_accuracy 0.94123
+wandb:     train_loss 21.12804
+wandb:        val_acc 0.8669
+wandb:       val_loss 54.81766
+wandb:    weighted_f1 0.86413
+wandb: 
+wandb: 🚀 View run hearty-sweep-1 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/h7vhbsdr
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_185419-h7vhbsdr/logs
+wandb: Sweep Agent: Waiting for job.
+wandb: Job received.
+wandb: Agent Starting Run: a08taeg3 with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.0005
+wandb: 	early_stopping_patience: 3
+wandb: 	embedding_dim: 256
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.1
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 1e-05
+wandb: 	weights: True
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_185511-a08taeg3
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run fearless-sweep-2
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/a08taeg3
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▅▂▁█▇▇▇█▅█▅▁▆██
+wandb: train_accuracy ▁▃▂▂▂▃▃▁▂▃▃▂▆▇█
+wandb:     train_loss █▄▅▄▄▄▃▅▄▃▄▅▂▂▁
+wandb:        val_acc ▄▁▁▇▇█▇▇▄▇▇▁▅██
+wandb:       val_loss ▄█▄▁▃▃▁▁▅▁▄▆▂▁▁
+wandb:    weighted_f1 ▅▁▁▇▇█▇█▅█▆▁▆██
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.67432
+wandb: train_accuracy 0.70614
+wandb:     train_loss 77.62672
+wandb:        val_acc 0.70312
+wandb:       val_loss 76.35449
+wandb:    weighted_f1 0.70149
+wandb: 
+wandb: 🚀 View run fearless-sweep-2 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/a08taeg3
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_185511-a08taeg3/logs
+wandb: Sweep Agent: Waiting for job.
+wandb: Job received.
+wandb: Agent Starting Run: 9epfz4w3 with config:
+wandb: 	batch_size: 32
+wandb: 	early_stopping_delta: 0.0005
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 256
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.001
+wandb: 	max_length: 128
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.001
+wandb: 	weights: True
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_185559-9epfz4w3
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run dandy-sweep-3
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/9epfz4w3
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▁▂▄▅▆▇▇▇▇██▇▇█████▇█
+wandb: train_accuracy ▁▃▄▆▆▆▆▇▇▇▇▇▇███████
+wandb:     train_loss █▇▆▅▄▄▄▃▃▂▂▂▂▂▂▁▁▁▁▁
+wandb:        val_acc ▁▂▃▆▇▇▇▇███▇▇█████▇█
+wandb:       val_loss █▇▆▅▃▂▄▂▂▂▂▂▁▂▁▁▂▂▂▁
+wandb:    weighted_f1 ▁▂▃▆▇▇▇▇▇██▇▇█████▇█
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.84481
+wandb: train_accuracy 0.89978
+wandb:     train_loss 72.02008
+wandb:        val_acc 0.86096
+wandb:       val_loss 50.78706
+wandb:    weighted_f1 0.85885
+wandb: 
+wandb: 🚀 View run dandy-sweep-3 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/9epfz4w3
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_185559-9epfz4w3/logs
+wandb: Sweep Agent: Waiting for job.
+wandb: Job received.
+wandb: Agent Starting Run: iha9pz1z with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.0001
+wandb: 	early_stopping_patience: 10
+wandb: 	embedding_dim: 256
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.001
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: sgd
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.01
+wandb: 	weights: False
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_185708-iha9pz1z
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run dutiful-sweep-4
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/iha9pz1z
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▁▁▁▁▁▁▂▂▂▂▃▃▃▃▃▃▄▄▄▅▅▅▅▅▅▆▆▆▆▆▆▆▇▇▇▇▇▇▇█
+wandb: train_accuracy ▆▆▆▆▆▇██▇▆▅▄▃▃▃▃▃▃▂▂▃▂▂▂▃▂▁▁▁▁▂▂▁▁▂▂▂▂▂▃
+wandb:     train_loss █▅▄▄▄▃▃▃▃▃▃▃▃▃▃▂▂▂▂▂▂▂▂▂▂▂▁▂▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:        val_acc ▇▇▇▇▇▇█▇▇▇▆▆▅▄▄▃▃▃▄▂▁▂▂▁▂▃▂▂▁▁▁▁▂▂▃▂▂▂▂▄
+wandb:       val_loss █▆▅▅▄▄▄▄▄▃▄▃▃▄▃▄▃▃▃▂▃▂▃▂▂▂▂▂▂▂▁▂▂▂▁▁▂▁▁▁
+wandb:    weighted_f1 ▁▁▁▁▁▁▂▂▂▃▃▃▃▃▃▃▄▄▄▄▄▄▅▅▅▆▅▆▆▆▆▆▇▇▇▇▇▇▇█
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.4731
+wandb: train_accuracy 0.63437
+wandb:     train_loss 77.99426
+wandb:        val_acc 0.63434
+wandb:       val_loss 77.63403
+wandb:    weighted_f1 0.55487
+wandb: 
+wandb: 🚀 View run dutiful-sweep-4 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/iha9pz1z
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_185708-iha9pz1z/logs
+wandb: Agent Starting Run: 2oki3f1x with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.0001
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 256
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.01
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: sgd
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.001
+wandb: 	weights: False
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_185855-2oki3f1x
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run divine-sweep-5
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/2oki3f1x
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▁▂▃▄▅▅▆▇▆▆▇▇▇▇▇██
+wandb: train_accuracy ▆▆▃▃▁▃▃▃▅▆▆▇▇▇▇██
+wandb:     train_loss █▅▄▃▃▂▂▂▂▂▂▁▁▁▁▁▁
+wandb:        val_acc ▅▂▁▁▃▃▄▆▅▅▆▇▇▇▆▆█
+wandb:       val_loss █▅▅▄▃▃▂▂▂▂▂▁▃▁▁▂▁
+wandb:    weighted_f1 ▁▂▃▄▅▅▆▇▆▆▇▇▇▇▇██
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.55625
+wandb: train_accuracy 0.6418
+wandb:     train_loss 77.63552
+wandb:        val_acc 0.64621
+wandb:       val_loss 77.17997
+wandb:    weighted_f1 0.6123
+wandb: 
+wandb: 🚀 View run divine-sweep-5 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/2oki3f1x
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_185855-2oki3f1x/logs
+wandb: Sweep Agent: Waiting for job.
+wandb: Job received.
+wandb: Agent Starting Run: l5m0acol with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.001
+wandb: 	early_stopping_patience: 10
+wandb: 	embedding_dim: 256
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.001
+wandb: 	max_length: 128
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.01
+wandb: 	weights: False
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_185947-l5m0acol
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run peachy-sweep-6
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/l5m0acol
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▅▁▅█▃▁▁▄
+wandb: train_accuracy ▂▆▅█▆▅▁▁
+wandb:     train_loss █▄▂▁▂▃▄▂
+wandb:        val_acc ▄▁▅█▃▁▁▂
+wandb:       val_loss ▆▆▁▂▃▄█▄
+wandb:    weighted_f1 ▅▁▅█▃▁▁▄
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.45654
+wandb: train_accuracy 0.64229
+wandb:     train_loss 77.37637
+wandb:        val_acc 0.64275
+wandb:       val_loss 76.7382
+wandb:    weighted_f1 0.54579
+wandb: 
+wandb: 🚀 View run peachy-sweep-6 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/l5m0acol
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_185947-l5m0acol/logs
+wandb: Sweep Agent: Waiting for job.
+wandb: Job received.
+wandb: Agent Starting Run: odp7i0sn with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.0001
+wandb: 	early_stopping_patience: 10
+wandb: 	embedding_dim: 512
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.01
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: sgd
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.001
+wandb: 	weights: True
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_190015-odp7i0sn
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run electric-sweep-7
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/odp7i0sn
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▁██▇▇▆▆▆▄▆▆▇▇▇▆▅▆
+wandb: train_accuracy ▅█▆▅▃▃▂▂▂▁▁▂▁▁▂▂▂
+wandb:     train_loss █▅▄▃▂▂▂▂▂▁▁▁▁▁▁▁▁
+wandb:        val_acc ▇█▇▄▅▃▃▄▁▃▄▅▄▄▃▁▃
+wandb:       val_loss █▆▄▄▃▃▂▂▂▂▁▁▁▁▁▂▁
+wandb:    weighted_f1 ▃█▇▅▆▄▃▄▁▃▄▅▅▄▃▁▄
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.60881
+wandb: train_accuracy 0.62225
+wandb:     train_loss 81.34974
+wandb:        val_acc 0.61158
+wandb:       val_loss 80.86391
+wandb:    weighted_f1 0.61804
+wandb: 
+wandb: 🚀 View run electric-sweep-7 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/odp7i0sn
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_190015-odp7i0sn/logs
+wandb: Sweep Agent: Waiting for job.
+wandb: Job received.
+wandb: Agent Starting Run: ptg5djxy with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.0001
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 256
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.001
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.01
+wandb: 	weights: False
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_190107-ptg5djxy
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run dutiful-sweep-8
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/ptg5djxy
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▁█▆▂▂▁
+wandb: train_accuracy ▁▁██▁▁
+wandb:     train_loss █▂▄▁▄▅
+wandb:        val_acc ▁█▇▂▂▁
+wandb:       val_loss ▁█▆▅▆▇
+wandb:    weighted_f1 ▁█▆▂▂▁
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.4862
+wandb: train_accuracy 0.63808
+wandb:     train_loss 78.17079
+wandb:        val_acc 0.63731
+wandb:       val_loss 77.45197
+wandb:    weighted_f1 0.56438
+wandb: 
+wandb: 🚀 View run dutiful-sweep-8 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/ptg5djxy
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_190107-ptg5djxy/logs
+wandb: Agent Starting Run: 4zmst1l8 with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.0001
+wandb: 	early_stopping_patience: 10
+wandb: 	embedding_dim: 512
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.01
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: sgd
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.0001
+wandb: 	weights: False
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_190129-4zmst1l8
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run comfy-sweep-9
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/4zmst1l8
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▁▂▄▅▅▆▅▇▇▇▇█
+wandb: train_accuracy ▂▃▁▂▃▃▅▅▇▇▇█
+wandb:     train_loss █▅▅▄▃▂▂▂▂▂▁▂
+wandb:        val_acc ▁▁▃▃▄▅▅▇▇▆▇█
+wandb:       val_loss █▅▇▄▃▄▁▂▃▁▁▁
+wandb:    weighted_f1 ▁▂▄▅▅▆▅▇▇▇▇█
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.56203
+wandb: train_accuracy 0.64167
+wandb:     train_loss 77.66554
+wandb:        val_acc 0.64869
+wandb:       val_loss 77.13696
+wandb:    weighted_f1 0.61668
+wandb: 
+wandb: 🚀 View run comfy-sweep-9 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/4zmst1l8
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_190129-4zmst1l8/logs
+wandb: Agent Starting Run: e0ivul59 with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.0001
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 256
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.001
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.01
+wandb: 	weights: False
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_190206-e0ivul59
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run flowing-sweep-10
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/e0ivul59
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▅▁▁█▂▅
+wandb: train_accuracy ▁▅▅▆█▁
+wandb:     train_loss █▃▁▁▃▂
+wandb:        val_acc ▅▁▁█▁▄
+wandb:       val_loss ▁▄▃█▃█
+wandb:    weighted_f1 ▅▁▁█▂▅
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.54714
+wandb: train_accuracy 0.63734
+wandb:     train_loss 77.92922
+wandb:        val_acc 0.6472
+wandb:       val_loss 77.9972
+wandb:    weighted_f1 0.60686
+wandb: 
+wandb: 🚀 View run flowing-sweep-10 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/e0ivul59
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_190206-e0ivul59/logs
+wandb: Agent Starting Run: sade7a8o with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.0001
+wandb: 	early_stopping_patience: 10
+wandb: 	embedding_dim: 256
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.001
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.0001
+wandb: 	weights: True
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_190227-sade7a8o
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run deft-sweep-11
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/sade7a8o
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▁▃▆▇██▇██▇███
+wandb: train_accuracy ▁▃▅▅▆▇▇▇▇████
+wandb:     train_loss █▇▆▅▄▄▃▃▂▂▂▁▁
+wandb:        val_acc ▁▂▆▇██▇█▇▇███
+wandb:       val_loss █▇▄▃▁▁▃▁▂▃▂▅▁
+wandb:    weighted_f1 ▁▂▆▇██▇██▇███
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.84259
+wandb: train_accuracy 0.93071
+wandb:     train_loss 27.11583
+wandb:        val_acc 0.85502
+wandb:       val_loss 50.64232
+wandb:    weighted_f1 0.855
+wandb: 
+wandb: 🚀 View run deft-sweep-11 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/sade7a8o
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_190227-sade7a8o/logs
+wandb: Agent Starting Run: yq6owmx9 with config:
+wandb: 	batch_size: 32
+wandb: 	early_stopping_delta: 0.0005
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 128
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.01
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.01
+wandb: 	weights: False
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_190304-yq6owmx9
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run apricot-sweep-12
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/yq6owmx9
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▁█▃▁▅▂▃▃▂█▃▁
+wandb: train_accuracy ██▃▅▃▅▃▅▃▁▅▅
+wandb:     train_loss █▂▄▃▂▂▁▁▂▁▁▆
+wandb:        val_acc ▅█▂▂▄▁▂▂▁█▂▁
+wandb:       val_loss ▃▂▁▂▂▂▁▂▄▃▂█
+wandb:    weighted_f1 ▁█▃▁▅▂▃▃▂█▃▁
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.41823
+wandb: train_accuracy 0.63252
+wandb:     train_loss 157.81714
+wandb:        val_acc 0.62989
+wandb:       val_loss 79.64155
+wandb:    weighted_f1 0.51668
+wandb: 
+wandb: 🚀 View run apricot-sweep-12 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/yq6owmx9
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_190304-yq6owmx9/logs
+wandb: Agent Starting Run: ihkkbi17 with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.0001
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 256
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.01
+wandb: 	max_length: 128
+wandb: 	num_workers: 0
+wandb: 	optimizer: sgd
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.001
+wandb: 	weights: True
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_190346-ihkkbi17
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run dazzling-sweep-13
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/ihkkbi17
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▅▃▂▂▂▁▂▁▂▁▁▁▂▂▂▂▂▂▃▂▃▃▃▃▄▄▄▄▄▅▅▅▅▅▆▇▇▇██
+wandb: train_accuracy █▅▃▂▁▁▁▁▁▂▂▂▁▂▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▆▆▇▆▇
+wandb:     train_loss █▅▄▄▄▄▄▄▃▄▃▃▃▃▃▃▃▃▃▃▃▂▃▂▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁
+wandb:        val_acc ▅▃▂▂▂▁▂▁▂▁▁▁▂▂▂▂▂▂▃▂▃▃▃▃▄▄▄▄▄▅▅▅▅▅▆▇▇▇██
+wandb:       val_loss █▆▅▆▆▅▅▅▅▅▅▄▄▄▄▄▄▄▄▃▃▃▃▃▃▃▃▄▃▃▂▂▂▃▂▁▁▁▂▂
+wandb:    weighted_f1 ▆▃▂▂▂▁▂▁▂▁▁▁▂▂▂▂▂▂▃▂▃▂▂▃▄▄▄▄▄▄▅▅▅▅▆▇▇▇██
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.58408
+wandb: train_accuracy 0.58649
+wandb:     train_loss 80.54872
+wandb:        val_acc 0.58436
+wandb:       val_loss 80.53713
+wandb:    weighted_f1 0.58102
+wandb: 
+wandb: 🚀 View run dazzling-sweep-13 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/ihkkbi17
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_190346-ihkkbi17/logs
+wandb: Agent Starting Run: vpks2bsx with config:
+wandb: 	batch_size: 32
+wandb: 	early_stopping_delta: 0.0005
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 256
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.001
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.001
+wandb: 	weights: False
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_190449-vpks2bsx
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run skilled-sweep-14
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/vpks2bsx
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▂▁▁▄▆▅▆▆▆▅▆▅▆▇▂▇▇▇▇▆█▇██▇██████
+wandb: train_accuracy ▁▂▂▃▄▃▄▅▅▅▄▅▆▆▆▆▆▆▆▇▇▇▇▇█▇██▇██
+wandb:     train_loss █▇▇▇▆▆▆▅▅▅▆▅▄▄▄▄▄▃▃▃▃▂▂▂▂▂▁▂▂▂▁
+wandb:        val_acc ▁▁▁▃▅▄▅▆▆▅▆▅▆▇▃▇▇▇▇▆█▇██▇██████
+wandb:       val_loss ███▅▆▅▄▃▃▅▅▃▃▃▅▂▄▂▂▃▁▂▁▁▂▁▂▃▁▁▁
+wandb:    weighted_f1 ▂▁▁▄▆▅▆▆▆▅▆▅▆▇▂▇▇▇▇▆█▇██▇██████
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.83664
+wandb: train_accuracy 0.90671
+wandb:     train_loss 65.12634
+wandb:        val_acc 0.85552
+wandb:       val_loss 48.1665
+wandb:    weighted_f1 0.85222
+wandb: 
+wandb: 🚀 View run skilled-sweep-14 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/vpks2bsx
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_190449-vpks2bsx/logs
+wandb: Sweep Agent: Waiting for job.
+wandb: Job received.
+wandb: Agent Starting Run: 73y1n89s with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.001
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 512
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.001
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.001
+wandb: 	weights: False
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_190622-73y1n89s
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run frosty-sweep-15
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/73y1n89s
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▁▂▃▄▆▆▇▇▇█▇███▇▇██
+wandb: train_accuracy ▁▂▃▄▆▆▆▇▇▇▇▇██████
+wandb:     train_loss █▇▇▆▄▄▄▃▃▂▂▂▂▁▁▁▁▁
+wandb:        val_acc ▁▁▂▄▆▆▇▇▇▇▇▇██▇▇██
+wandb:       val_loss ██▇▅▃▃▂▂▂▂▃▃▁▁▁▁▂▁
+wandb:    weighted_f1 ▁▂▃▄▆▆▇▇▇█▇███▇▇██
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.83984
+wandb: train_accuracy 0.89421
+wandb:     train_loss 35.98709
+wandb:        val_acc 0.8575
+wandb:       val_loss 48.21135
+wandb:    weighted_f1 0.85476
+wandb: 
+wandb: 🚀 View run frosty-sweep-15 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/73y1n89s
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_190622-73y1n89s/logs
+wandb: Agent Starting Run: lcpnobur with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.001
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 512
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.001
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: sgd
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.01
+wandb: 	weights: False
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_190710-lcpnobur
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run dulcet-sweep-16
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/lcpnobur
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▁▁▂▂▂▃▄▄▄▅▅▆▆▆▆▆▇█
+wandb: train_accuracy ▁█████▇▇█████▇▇▇▇▇
+wandb:     train_loss █▃▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁
+wandb:        val_acc ▆▇█▅▆▄▅▅▄▅▅▆▄▂▁▁▃▄
+wandb:       val_loss █▄▃▃▃▃▂▂▂▂▂▂▁▂▁▁▁▂
+wandb:    weighted_f1 ▁▁▂▂▂▃▄▄▄▅▅▆▆▆▆▆▇█
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.44221
+wandb: train_accuracy 0.63264
+wandb:     train_loss 78.28666
+wandb:        val_acc 0.63236
+wandb:       val_loss 78.15329
+wandb:    weighted_f1 0.53358
+wandb: 
+wandb: 🚀 View run dulcet-sweep-16 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/lcpnobur
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_190710-lcpnobur/logs
+wandb: Agent Starting Run: p1e1ks5d with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.0005
+wandb: 	early_stopping_patience: 10
+wandb: 	embedding_dim: 512
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.0001
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.0001
+wandb: 	weights: True
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_190757-p1e1ks5d
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run celestial-sweep-17
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/p1e1ks5d
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▂▁▂▃▆▅▆▆█▅███▅███▇
+wandb: train_accuracy ▁▁▁▂▄▅▆▇▇▇▇██▄▇▇██
+wandb:     train_loss █▇▇▇▆▅▄▃▃▂▂▁▁▅▃▂▁▁
+wandb:        val_acc ▂▁▂▃▆▆▇▆█▆███▅███▇
+wandb:       val_loss ██▇▇▅▅▃▄▂▄▁▂▁▅▂▁▂▃
+wandb:    weighted_f1 ▂▁▂▃▆▆▇▆█▆███▅███▇
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.78246
+wandb: train_accuracy 0.84657
+wandb:     train_loss 51.89974
+wandb:        val_acc 0.79119
+wandb:       val_loss 61.08542
+wandb:    weighted_f1 0.79469
+wandb: 
+wandb: 🚀 View run celestial-sweep-17 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/p1e1ks5d
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_190757-p1e1ks5d/logs
+wandb: Agent Starting Run: xy5w3bev with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.0005
+wandb: 	early_stopping_patience: 10
+wandb: 	embedding_dim: 512
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.001
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: sgd
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 1e-05
+wandb: 	weights: True
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_190844-xy5w3bev
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run woven-sweep-18
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/xy5w3bev
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▁▁▂▃▄▅▆▆▆▇▇▇████████████████████████████
+wandb: train_accuracy ▃▂▂▂▂▅▆▅▆▆█▇▇▇▇▆▆▅▅▅▅▅▄▄▄▄▄▃▃▄▄▃▄▃▃▂▂▂▂▁
+wandb:     train_loss ██▇▇▇▆▆▅▅▅▄▄▄▄▃▃▃▃▃▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:        val_acc ▅▃▃▅▅▆▆▇█▇█▇▇▆▇▆▆▆▆▆▅▅▅▅▄▄▄▃▄▃▂▂▂▂▁▁▁▁▂▁
+wandb:       val_loss ██▇▇▆▆▅▅▅▄▄▄▄▃▃▃▃▃▃▃▂▂▂▂▂▂▂▂▂▁▂▂▁▁▁▁▁▁▁▁
+wandb:    weighted_f1 ▁▂▄▅▆▇▇▇▇████████████████████▇▇▇▇▇▇▇▇▇▇▇
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.61238
+wandb: train_accuracy 0.62608
+wandb:     train_loss 81.95205
+wandb:        val_acc 0.61851
+wandb:       val_loss 81.5324
+wandb:    weighted_f1 0.62605
+wandb: 
+wandb: 🚀 View run woven-sweep-18 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/xy5w3bev
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_190844-xy5w3bev/logs
+wandb: Agent Starting Run: r65jsh9z with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.0005
+wandb: 	early_stopping_patience: 10
+wandb: 	embedding_dim: 512
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.01
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.001
+wandb: 	weights: True
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_191109-r65jsh9z
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run dauntless-sweep-19
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/r65jsh9z
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▅▄▅▅▅▅▄▅▅▆▅▇▇▇▇▇▇▇▇██▇▇██▇▇████▁▂
+wandb: train_accuracy ▁▁▂▂▂▂▂▂▃▃▃▄▅▅▅▆▆▇▆▇▇▇▇▇▇▇▇▇███▄▂
+wandb:     train_loss ███▇▇▇▇▇▇▇▆▆▅▅▅▄▃▃▃▃▃▃▃▃▃▂▂▂▁▁▁▆▇
+wandb:        val_acc ▄▄▅▄▄▅▄▅▆▆▄▇▇▇▇▇▇▇▇█▇▇▇███▇████▁▁
+wandb:       val_loss ▆▆▆▆▆▆▆▆▆▅▆▃▃▃▃▂▂▃▂▂▂▂▄▂▂▂▄▁▂▂▂██
+wandb:    weighted_f1 ▅▄▅▅▅▅▄▆▆▆▅▇▇▇▇▇▇▇▇███▇███▇████▁▂
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.5023
+wandb: train_accuracy 0.66951
+wandb:     train_loss 78.0931
+wandb:        val_acc 0.50421
+wandb:       val_loss 87.79867
+wandb:    weighted_f1 0.49367
+wandb: 
+wandb: 🚀 View run dauntless-sweep-19 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/r65jsh9z
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_191109-r65jsh9z/logs
+wandb: Agent Starting Run: kek8fh6k with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.0005
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 512
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.0001
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.01
+wandb: 	weights: False
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_191222-kek8fh6k
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run jolly-sweep-20
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/kek8fh6k
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▁▃▂▃▃▃▃▃▄▄▄▄▄▄▄▃▄▄▃▅▄▅▆▆▁▆▇▇▇▇██▇█████▆▆
+wandb: train_accuracy ▁▁▂▂▂▂▂▂▂▂▂▂▃▃▃▃▃▃▃▃▃▃▄▄▅▅▆▇▇▇▇███▇██▆▆▇
+wandb:     train_loss ██▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▆▆▆▅▄▄▂▂▂▂▄▁▁▃▄▂
+wandb:        val_acc ▁▁▁▂▁▂▂▂▂▂▂▂▃▃▃▃▃▃▃▃▄▄▃▄▄▆▅▂▆▆▆▆▇▇▇████▆
+wandb:       val_loss ▅▅▅▅▄▄▅▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▃█▃▂▂▂▂▂▂▂▁▁▁▁▃▄
+wandb:    weighted_f1 ▁▃▂▃▃▃▃▃▃▃▄▃▄▄▄▄▄▄▃▄▃▅▃▄▅▆▆▁▆▇▇▇▇▇███▆█▆
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.68063
+wandb: train_accuracy 0.79498
+wandb:     train_loss 60.51987
+wandb:        val_acc 0.74913
+wandb:       val_loss 72.61437
+wandb:    weighted_f1 0.72213
+wandb: 
+wandb: 🚀 View run jolly-sweep-20 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/kek8fh6k
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_191222-kek8fh6k/logs
+wandb: Agent Starting Run: 7tawttel with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.0001
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 256
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.001
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.0001
+wandb: 	weights: True
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_191443-7tawttel
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run rose-sweep-21
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/7tawttel
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▁▄▆▇███████
+wandb: train_accuracy ▁▃▅▆▆▇▇▇███
+wandb:     train_loss █▇▆▅▄▃▃▂▂▁▁
+wandb:        val_acc ▁▄▇▇███████
+wandb:       val_loss █▆▃▂▂▁▁▂▂▂▃
+wandb:    weighted_f1 ▁▄▆▇███████
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.84928
+wandb: train_accuracy 0.9265
+wandb:     train_loss 28.72568
+wandb:        val_acc 0.86195
+wandb:       val_loss 57.54342
+wandb:    weighted_f1 0.86154
+wandb: 
+wandb: 🚀 View run rose-sweep-21 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/7tawttel
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_191443-7tawttel/logs
+wandb: Agent Starting Run: be2zz7fe with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.0005
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 512
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.01
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: sgd
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.0001
+wandb: 	weights: True
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_191514-be2zz7fe
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run lilac-sweep-22
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/be2zz7fe
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▂▇▅▇██▆▄▅▁▂▅▅▅▄▄▃▃
+wandb: train_accuracy ▄█▇▅▄▄▃▂▁▂▁▁▂▂▂▂▂▁
+wandb:     train_loss █▆▄▃▃▂▂▂▂▂▂▁▁▁▁▁▁▁
+wandb:        val_acc ██▄▇▇▆▅▃▄▁▂▄▄▄▄▃▂▂
+wandb:       val_loss █▆▅▄▃▃▂▂▂▂▂▁▁▁▁▁▁▂
+wandb:    weighted_f1 ▇█▅██▇▆▃▅▁▂▅▅▄▄▃▃▃
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.59843
+wandb: train_accuracy 0.62039
+wandb:     train_loss 81.29541
+wandb:        val_acc 0.5997
+wandb:       val_loss 81.18023
+wandb:    weighted_f1 0.60478
+wandb: 
+wandb: 🚀 View run lilac-sweep-22 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/be2zz7fe
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_191514-be2zz7fe/logs
+wandb: Agent Starting Run: 5nqxnqxg with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.0001
+wandb: 	early_stopping_patience: 10
+wandb: 	embedding_dim: 256
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.0001
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.01
+wandb: 	weights: False
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_191601-5nqxnqxg
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run legendary-sweep-23
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/5nqxnqxg
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▁▃▄▅▆▅█▆▇█▅▆▇▇▆█▇█▇▇
+wandb: train_accuracy ▁▃▂▃▄▅▅▆▆▆▇▆▇▆▇▇█▇▇▇
+wandb:     train_loss █▅▄▄▃▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁
+wandb:        val_acc ▁▁▃▄▅▄▇▅▇▇▅▄▆▇▆█▆█▇▇
+wandb:       val_loss ██▆▄▄▃▄▃▂▂▃▁▁▁▁▂▂▂▂▁
+wandb:    weighted_f1 ▁▃▄▅▆▅█▆▇█▅▅▇▇▆█▇█▇▇
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.54842
+wandb: train_accuracy 0.64823
+wandb:     train_loss 77.03997
+wandb:        val_acc 0.64968
+wandb:       val_loss 76.42058
+wandb:    weighted_f1 0.60841
+wandb: 
+wandb: 🚀 View run legendary-sweep-23 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/5nqxnqxg
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_191601-5nqxnqxg/logs
+wandb: Sweep Agent: Waiting for job.
+wandb: Job received.
+wandb: Agent Starting Run: 3ni9ukdw with config:
+wandb: 	batch_size: 32
+wandb: 	early_stopping_delta: 0.0005
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 256
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.001
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.001
+wandb: 	weights: True
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_191658-3ni9ukdw
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run wandering-sweep-24
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/3ni9ukdw
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▂▂▃▄█▃▁▅▆▅
+wandb: train_accuracy ▁▃▅▆▇▆█▄█▇
+wandb:     train_loss █▆▅▄▂▃▁▅▂▃
+wandb:        val_acc ▃▃▄▄█▃▁▅▇▆
+wandb:       val_loss █▇▆▅▁▆▇▄▂▅
+wandb:    weighted_f1 ▃▃▄▄█▃▁▅▇▆
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.71982
+wandb: train_accuracy 0.73422
+wandb:     train_loss 144.25965
+wandb:        val_acc 0.74518
+wandb:       val_loss 72.49364
+wandb:    weighted_f1 0.74347
+wandb: 
+wandb: 🚀 View run wandering-sweep-24 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/3ni9ukdw
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_191658-3ni9ukdw/logs
+wandb: Agent Starting Run: mqmf86t7 with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.0001
+wandb: 	early_stopping_patience: 10
+wandb: 	embedding_dim: 256
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.01
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: sgd
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.0001
+wandb: 	weights: False
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_191736-mqmf86t7
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run unique-sweep-25
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/mqmf86t7
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▁▂▃▃▅▄▅▅▆▆▇▇▇█▆▇▇▇▇█▇▇▇█▇█▇██▇█▇█▇▇██
+wandb: train_accuracy ▄▂▂▁▂▃▃▄▄▄▅▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇▇▇▇▇█████
+wandb:     train_loss █▆▅▅▄▄▄▄▄▃▃▄▃▄▃▃▃▃▃▃▃▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁
+wandb:        val_acc ▁▁▁▂▄▃▄▄▅▅▅▅▄▆▄▄▅▄▆▇▅▅▇▇▇▇▆▇█▇█▇█▇▇▇▇
+wandb:       val_loss █▇▇▆▆▅▅▅▅▅▄▅▅▅▃▄▃▄▃▃▃▃▂▃▂▃▃▂▃▂▃▁▂▂▁▂▂
+wandb:    weighted_f1 ▁▂▃▃▅▄▅▅▆▆▇▇▇█▆▇▇▇▇█▇▇▇█▇█▇██▇█▇█▇▇██
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.56563
+wandb: train_accuracy 0.65046
+wandb:     train_loss 76.78374
+wandb:        val_acc 0.65215
+wandb:       val_loss 76.5846
+wandb:    weighted_f1 0.62002
+wandb: 
+wandb: 🚀 View run unique-sweep-25 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/mqmf86t7
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_191736-mqmf86t7/logs
+wandb: Sweep Agent: Waiting for job.
+wandb: Job received.
+wandb: Agent Starting Run: yxghog6l with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.001
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 512
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.001
+wandb: 	max_length: 512
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.0001
+wandb: 	weights: True
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_191915-yxghog6l
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run eternal-sweep-26
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/yxghog6l
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▃▃▄▁▅▄▆▆▇▇▆▇▇███▇▇█▇████
+wandb: train_accuracy ▁▃▃▄▄▄▅▅▆▆▆▆▆▆▆▇▇▇▇▇▇▇▇█
+wandb:     train_loss █▇▇▇▇▆▅▅▅▅▅▅▄▄▃▃▂▃▂▂▃▂▂▁
+wandb:        val_acc ▃▄▄▁▅▄▆▇▇▇▇▇▇███▇▇█▇████
+wandb:       val_loss ▅▅▅█▄▅▃▃▃▂▃▂▂▂▂▁▂▂▁▃▁▁▁▂
+wandb:    weighted_f1 ▃▄▄▁▅▄▆▇▇▇▇▇▇███▇▇█▇████
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.85977
+wandb: train_accuracy 0.92081
+wandb:     train_loss 29.08986
+wandb:        val_acc 0.87481
+wandb:       val_loss 49.60115
+wandb:    weighted_f1 0.87266
+wandb: 
+wandb: 🚀 View run eternal-sweep-26 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/yxghog6l
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_191915-yxghog6l/logs
+wandb: Agent Starting Run: jkcim68k with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.0001
+wandb: 	early_stopping_patience: 10
+wandb: 	embedding_dim: 256
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.001
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 1e-05
+wandb: 	weights: True
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_192138-jkcim68k
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run gentle-sweep-27
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/jkcim68k
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▁▂▆▇▇▇▇█▇█
+wandb: train_accuracy ▁▃▅▅▆▇▇███
+wandb:     train_loss █▇▆▅▄▃▂▂▂▁
+wandb:        val_acc ▁▂▆▇▇▇▇█▇█
+wandb:       val_loss █▇▃▁▁▁▄▃▄▆
+wandb:    weighted_f1 ▁▂▆▇▇█▇█▇█
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.83852
+wandb: train_accuracy 0.9463
+wandb:     train_loss 21.04307
+wandb:        val_acc 0.85502
+wandb:       val_loss 69.60853
+wandb:    weighted_f1 0.853
+wandb: 
+wandb: 🚀 View run gentle-sweep-27 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/jkcim68k
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_192138-jkcim68k/logs
+wandb: Agent Starting Run: vg65xf29 with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.001
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 512
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.001
+wandb: 	max_length: 512
+wandb: 	num_workers: 0
+wandb: 	optimizer: adam
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.001
+wandb: 	weights: True
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_192210-vg65xf29
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run woven-sweep-28
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/vg65xf29
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▁▄▄█▇▃▅██
+wandb: train_accuracy ▁▄▆▇▇▆▇▇█
+wandb:     train_loss █▅▄▂▂▃▂▁▁
+wandb:        val_acc ▁▄▅█▆▃▆██
+wandb:       val_loss █▆▆▁▄▆▅▄▁
+wandb:    weighted_f1 ▁▄▅█▆▃▆██
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.73808
+wandb: train_accuracy 0.74524
+wandb:     train_loss 70.66976
+wandb:        val_acc 0.76249
+wandb:       val_loss 68.97192
+wandb:    weighted_f1 0.76052
+wandb: 
+wandb: 🚀 View run woven-sweep-28 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/vg65xf29
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_192210-vg65xf29/logs
+wandb: Agent Starting Run: p13ri2oi with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.0005
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 512
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.001
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: sgd
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.001
+wandb: 	weights: True
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_192312-p13ri2oi
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run polished-sweep-29
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/p13ri2oi
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▁▁▂▄▆▇▇▇█▇████████████████████████▇█████
+wandb: train_accuracy ▂▄▅▆▆████▇▇▇▆▆▅▅▄▅▄▄▄▃▄▄▄▄▃▄▃▃▃▂▂▃▁▁▂▁▁▂
+wandb:     train_loss ██▇▇▇▆▆▅▅▅▄▄▄▄▄▃▃▃▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:        val_acc ▄▄▅▅▆████▇▇██▇▆▆▆▆▄▄▄▄▄▄▄▄▃▄▃▃▂▂▃▂▂▂▃▃▁▁
+wandb:       val_loss ██▇▇▇▅▅▅▄▄▄▃▃▃▃▃▃▃▂▂▂▂▂▂▂▂▁▁▁▁▁▁▂▁▁▁▁▁▁▁
+wandb:    weighted_f1 ▁▂▄▄▅▇▇▇▇▇████████████▇▇█▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.60748
+wandb: train_accuracy 0.62423
+wandb:     train_loss 81.82883
+wandb:        val_acc 0.61257
+wandb:       val_loss 81.5047
+wandb:    weighted_f1 0.62002
+wandb: 
+wandb: 🚀 View run polished-sweep-29 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/p13ri2oi
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_192312-p13ri2oi/logs
+wandb: Sweep Agent: Waiting for job.
+wandb: Job received.
+wandb: Agent Starting Run: ize9mv2t with config:
+wandb: 	batch_size: 64
+wandb: 	early_stopping_delta: 0.0001
+wandb: 	early_stopping_patience: 5
+wandb: 	embedding_dim: 128
+wandb: 	epochs: 100
+wandb: 	learning_rate: 0.001
+wandb: 	max_length: 256
+wandb: 	num_workers: 0
+wandb: 	optimizer: sgd
+wandb: 	shuffle: True
+wandb: 	stride: 0
+wandb: 	tune: True
+wandb: 	valid_batch_size: 16
+wandb: 	weight_decay: 0.001
+wandb: 	weights: True
+wandb: WARNING Ignoring project 'tee-a-Task.SEQUENCE-nn-model' when running a sweep.
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /cluster/home/julievt/master-project/wandb/run-20250402_192558-ize9mv2t
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run winter-sweep-30
+wandb: ⭐️ View project at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: 🧹 View sweep at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/sweeps/j32yl8kk
+wandb: 🚀 View run at https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/ize9mv2t
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:       macro_f1 ▁▁▂▄▄▆▆▆▇▇██████████████████████████████
+wandb: train_accuracy ▄▃▃▃▄▆▆▇██▇▇▇▇▇▇▇▆▆▆▅▅▅▅▅▄▄▄▄▃▃▄▃▃▄▂▁▁▁▁
+wandb:     train_loss █▇▆▆▆▅▄▄▄▄▄▃▃▃▃▃▃▃▃▃▂▂▂▂▂▂▂▁▂▁▁▁▁▁▁▁▁▁▁▁
+wandb:        val_acc ▄▆▆█▇█▇█▇█▇▇▇▆▆▅▅▅▄▄▄▄▄▄▄▃▃▃▃▃▂▂▂▁▁▁▁▁▁▁
+wandb:       val_loss █▇▇▆▆▆▅▅▅▄▄▄▄▄▃▃▃▃▃▃▃▂▂▂▂▂▂▂▂▂▁▂▁▁▁▁▁▁▂▁
+wandb:    weighted_f1 ▁▁▂▂▆▆▇▇▇▇███████████████████▇▇▇▇▇▇▇▇▇▇▇
+wandb: 
+wandb: Run summary:
+wandb:       macro_f1 0.60987
+wandb: train_accuracy 0.62051
+wandb:     train_loss 82.27765
+wandb:        val_acc 0.61653
+wandb:       val_loss 81.92008
+wandb:    weighted_f1 0.62417
+wandb: 
+wandb: 🚀 View run winter-sweep-30 at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model/runs/ize9mv2t
+wandb: ⭐️ View project at: https://wandb.ai/julievt-ntnu/tee-a-Task.SEQUENCE-nn-model
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250402_192558-ize9mv2t/logs

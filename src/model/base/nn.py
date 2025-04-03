@@ -11,6 +11,7 @@ from structure.enum import Task
 import wandb
 from model.tuning.setup import TuningConfig
 import numpy as np
+import gc
 
 sweep_config = TuningConfig.get_config()
 
@@ -100,18 +101,18 @@ class NN(nn.Module):
                 sweep_config["parameters"]["num_workers"] = {
                     "value": parameters["num_workers"]
                 }
-                # sweep_id = wandb.sweep(
-                #     sweep_config,
-                #     project=f"{project_name}-{task}-nn-model".replace('"', ""),
-                # )
-                # wandb.agent(sweep_id, self.train, count=parameters["tune_count"])
+                sweep_id = wandb.sweep(
+                     sweep_config,
+                     project=f"{project_name}-{task}-nn-model".replace('"', ""),
+                 )
+                #wandb.agent(sweep_id, self.train, count=parameters["tune_count"])
                 
-                # bilstm-crf"
+                # ner: bilstm-crf"
                 #sweep_id = '5vn0laxj'
                 
-                # bert-bilstm-crf"
-                sweep_id = 'ibvpiz29' 
-                wandb.agent(sweep_id, project=f"{project_name}-{task}-nn-model".replace('"', ""), function=self.train)
+                # ner: bert-bilstm-crf"
+                # sweep_id = 'ibvpiz29' 
+                wandb.agent(sweep_id, self.train, count=parameters["tune_count"])
             else:
                 wandb.config = {
                     "learning_rate": parameters["learning_rate"],
@@ -177,7 +178,8 @@ class NN(nn.Module):
             
             if hasattr(self, '__model'):
                 del self.__model
-                torch.cuda.empty_cache()
+            gc.collect()
+            torch.cuda.empty_cache()
 
             self.__model = self.__base_model(
                 config["batch_size"],

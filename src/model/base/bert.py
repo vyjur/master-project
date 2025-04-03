@@ -331,8 +331,10 @@ class BERT(nn.Module):
                 # Save the tokenizer
                 self.tokenizer.save_pretrained(self.__save)  # type:ignore
             else:
+                pass
+                # TODO: save
                 if not os.path.exists(f"{self.__save}/{wandb.run.id}"):
-                    os.makedirs(f"{self.__save}/{wandb.run.id}")
+                    os.makedirs(f"{self.__save}/{wandb.run.id}")            
                 self.__model.save_pretrained(f"{self.__save}/{wandb.run.id}")
                 self.tokenizer.save_pretrained(f"{self.__save}/{wandb.run.id}")  # type:ignore
                 

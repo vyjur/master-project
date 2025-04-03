@@ -16,7 +16,6 @@ class DocTimeRel(Enum):
     AFTER = 1
     BEFORE = 2
     OVERLAP = 3 
-    BEFOREOVERLAP = 4
 
 class TLINK(Enum):
     BEFORE = 1
