@@ -218,8 +218,8 @@ class Preprocess:
         }
         
         if "cat" in tokenized_dataset[0]:
-            intra = [d for d in test_dataset if d["cat"] == SENTENCE.INTRA]
-            inter = [d for d in test_dataset if d["cat"] == SENTENCE.INTER]
+            intra = [d for d in test if d["cat"] == SENTENCE.INTRA]
+            inter = [d for d in test if d["cat"] == SENTENCE.INTER]
 
             intra_dataset = CustomDataset(intra, self.__tokenizer, label2id)
             inter_dataset = CustomDataset(inter, self.__tokenizer, label2id)
@@ -227,7 +227,6 @@ class Preprocess:
             return_dict["intra"] = intra_dataset
             return_dict["inter"] = inter_dataset
 
-        raise ValueError
         return return_dict
 
 

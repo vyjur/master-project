@@ -95,13 +95,14 @@ class TRExtract:
                     tags.add(row['DCT'])
             elif task == Dataset.TLINK:
                 dataset_ner = manager.get(Dataset.NER)
-                dataset_ner = dataset_ner[dataset_ner['MedicalEntity'].notna() | dataset_ner['TIMEX'].notna()].reset_index()
+                dataset_ner = dataset_ner[dataset_ner['MedicalEntity'].notna()].reset_index()
                 dataset_tee = manager.get(Dataset.TEE)
                 full_dataset = pd.concat([dataset_ner, dataset_tee])
                 
                 for i, rel in dataset_tre.iterrows():
-                    
-                    if rel['FROM_CONTEXT'].strip() == "" or rel['TO_CONTEXT'].strip() == "" or 'ICD' in rel['FROM_CONTEXT']:
+                    if 'ICD' in rel['FROM_CONTEXT']:
+                        continue
+                    if rel['FROM_CONTEXT'].strip() == "" or rel['TO_CONTEXT'].strip() == "":
                         e_i = dataset_ner[dataset_ner['Id'] == rel['FROM_Id']]
                         e_j = dataset_ner[dataset_ner['Id'] == rel['TO_Id']]
                     
@@ -110,6 +111,16 @@ class TRExtract:
                             e_j = e_j.iloc[0]
                         else:
                             continue
+                    else:
+                        e_i = {
+                            "Text": rel['FROM'],
+                            "Context": rel["FROM_CONTEXT"]
+                        }
+                        
+                        e_j = {
+                            "Text": rel['TO'],
+                            "Context": rel['TO_CONTEXT']
+                        }
                     
                     if self.tlink_input == TLINK_INPUT.DIST:
                         cat, distance = self.__class__.classify_tlink(e_i, e_j, True)
@@ -129,15 +140,16 @@ class TRExtract:
                         else:
                             text = f"{sentence_i} [SEP] {sentence_j}"
                         
+                    relation = rel["RELATION"] if rel["RELATION"] != "BEFORE" else "O"
                                         
                     relation_pair = {
                         "sentence": text,
-                        "relation": rel["RELATION"],
+                        "relation": relation,
                         "cat": cat
                     }
                         
                     dataset.append(relation_pair)
-                    tags.add(rel["RELATION"])
+                    tags.add(relation)
                 
                 # Create negative candidate pairs
                 for i, e_i in full_dataset.iterrows():
@@ -145,7 +157,7 @@ class TRExtract:
                         if i == j or 'ICD' in e_i['Context'] or e_i['Context'].strip() == '':
                             continue
                         
-                        if e_i['Text'] not in e_j['Context'] and e_j['Text'] not in e_i['Context']:
+                        if str(e_i['Text']) not in e_j['Context'] and str(e_j['Text']) not in e_i['Context']:
                             continue
                         
                         if pd.notna(e_i['TIMEX']) and pd.notna(e_j['TIMEX']):
@@ -165,7 +177,7 @@ class TRExtract:
                             relation = "O"
 
                             # TODO: downsample majority class: 
-                            if random.random() < 0.5:
+                            if random.random() < 0.7:
                                 continue
 
                         sentence_i = convert_to_input(self.input_tag_type, e_i, single=False, start=True)
@@ -310,7 +322,7 @@ class TRExtract:
         
         for i, sentence in enumerate(sentences):
             # It is inter sentence if both entities are in the same sentence
-            if e_i['Text'] in sentence and e_j['Text'] in sentence:
+            if str(e_i['Text']) in sentence and str(e_j['Text']) in sentence:
                 if not distance:
                     return SENTENCE.INTRA
                 else:

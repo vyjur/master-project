@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np  # Import NumPy for NaN values
 from datetime import datetime
 
-BATCH = 2
+BATCH = 3
 file = f"./data/helsearkiv/batch/tee/{BATCH}-final.csv"   
 df = pd.read_csv(file)
 
@@ -52,10 +52,10 @@ for i, (index, row) in enumerate(timex_df.iterrows()):
         
     if i % 10 == 0:
         print("CHECKPOINT")
-        df.to_csv(file, index=True)
+        df.to_csv(file)
 
 
 # Save the modified file
-timex_df.iloc[:STOP].to_csv(file, index=True)
+df.iloc[:STOP].to_csv(file)
 
 print("Processing complete!")
