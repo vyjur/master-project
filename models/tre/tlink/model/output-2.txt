@@ -967,3 +967,292 @@ weighted avg       0.92      0.96      0.94      8304
 weighted avg       0.00      0.00      0.00       324
 
 Training Epoch: 5
+Training loss epoch: 0.1835418968642694
+Training accuracy epoch: 0.9554130539499036
+Overall acc: 0.9554130539499036
+Overall loss: 190.51648894511163
+Validation loss per 100 evaluation steps: 0.04697193205356598
+Validation loss per 100 evaluation steps: 0.20095529783480237
+Validation loss per 100 evaluation steps: 0.17530070792012548
+Validation loss per 100 evaluation steps: 0.17299345830003685
+Validation loss per 100 evaluation steps: 0.16805310785175856
+Validation loss per 100 evaluation steps: 0.16584208047021173
+Validation Loss: 0.16537378767149985
+Validation Accuracy: 0.9609826589595376
+Overall accuracy: 0.9609826589595376
+Overall loss: 0.16537378767149985
+### Summary
+              precision    recall  f1-score   support
+
+           O       0.96      1.00      0.98      7980
+     OVERLAP       0.00      0.00      0.00       324
+
+    accuracy                           0.96      8304
+   macro avg       0.48      0.50      0.49      8304
+weighted avg       0.92      0.96      0.94      8304
+
+### Without O
+              precision    recall  f1-score   support
+
+     OVERLAP       0.00      0.00      0.00       324
+
+   micro avg       0.00      0.00      0.00       324
+   macro avg       0.00      0.00      0.00       324
+weighted avg       0.00      0.00      0.00       324
+
+Early stopping
+### Valid set performance:
+Validation loss per 100 evaluation steps: 0.04697113856673241
+Validation loss per 100 evaluation steps: 0.18029888302530392
+Validation loss per 100 evaluation steps: 0.17341337013822883
+Validation loss per 100 evaluation steps: 0.16228145036685507
+Validation loss per 100 evaluation steps: 0.1609583594871132
+Validation loss per 100 evaluation steps: 0.16357064503663316
+Validation Loss: 0.1653737893223992
+Validation Accuracy: 0.9609826589595376
+Overall accuracy: 0.9609826589595376
+Overall loss: 0.1653737893223992
+### Summary
+              precision    recall  f1-score   support
+
+           O       0.96      1.00      0.98      7980
+     OVERLAP       0.00      0.00      0.00       324
+
+    accuracy                           0.96      8304
+   macro avg       0.48      0.50      0.49      8304
+weighted avg       0.92      0.96      0.94      8304
+
+### Without O
+              precision    recall  f1-score   support
+
+     OVERLAP       0.00      0.00      0.00       324
+
+   micro avg       0.00      0.00      0.00       324
+   macro avg       0.00      0.00      0.00       324
+weighted avg       0.00      0.00      0.00       324
+
+### Test set performance:
+Validation loss per 100 evaluation steps: 0.04697171971201897
+Validation loss per 100 evaluation steps: 0.14649763577940442
+Validation loss per 100 evaluation steps: 0.15265422568318263
+Validation loss per 100 evaluation steps: 0.16921260176950514
+Validation loss per 100 evaluation steps: 0.16899881701442665
+Validation loss per 100 evaluation steps: 0.1707632824436514
+Validation loss per 100 evaluation steps: 0.1747807576235836
+Validation Loss: 0.1764330418410213
+Validation Accuracy: 0.9573382126348228
+Overall accuracy: 0.9573217726396918
+Overall loss: 0.1764330418410213
+### Summary
+              precision    recall  f1-score   support
+
+           O       0.96      1.00      0.98      9937
+     OVERLAP       0.00      0.00      0.00       443
+
+    accuracy                           0.96     10380
+   macro avg       0.48      0.50      0.49     10380
+weighted avg       0.92      0.96      0.94     10380
+
+### Without O
+              precision    recall  f1-score   support
+
+     OVERLAP       0.00      0.00      0.00       443
+
+   micro avg       0.00      0.00      0.00       443
+   macro avg       0.00      0.00      0.00       443
+weighted avg       0.00      0.00      0.00       443
+
+### Inter sentences performance:
+Validation loss per 100 evaluation steps: 0.046972110867500305
+Validation loss per 100 evaluation steps: 0.13053573948321956
+Validation Loss: 0.14128463615566655
+Validation Accuracy: 0.9689207650273224
+Overall accuracy: 0.9688142563399589
+Overall loss: 0.14128463615566655
+### Summary
+              precision    recall  f1-score   support
+
+           O       0.97      1.00      0.98      5654
+     OVERLAP       0.00      0.00      0.00       182
+
+    accuracy                           0.97      5836
+   macro avg       0.48      0.50      0.49      5836
+weighted avg       0.94      0.97      0.95      5836
+
+### Without O
+              precision    recall  f1-score   support
+
+     OVERLAP       0.00      0.00      0.00       182
+
+   micro avg       0.00      0.00      0.00       182
+   macro avg       0.00      0.00      0.00       182
+weighted avg       0.00      0.00      0.00       182
+
+### Intra sentences performance:
+Validation loss per 100 evaluation steps: 0.14180128276348114
+Validation loss per 100 evaluation steps: 0.2169167285803521
+Validation Loss: 0.22127407524262516
+Validation Accuracy: 0.9425616197183099
+Overall accuracy: 0.9425616197183099
+Overall loss: 0.22127407524262516
+### Summary
+              precision    recall  f1-score   support
+
+           O       0.94      1.00      0.97      4283
+     OVERLAP       0.00      0.00      0.00       261
+
+    accuracy                           0.94      4544
+   macro avg       0.47      0.50      0.49      4544
+weighted avg       0.89      0.94      0.91      4544
+
+### Without O
+              precision    recall  f1-score   support
+
+     OVERLAP       0.00      0.00      0.00       261
+
+   micro avg       0.00      0.00      0.00       261
+   macro avg       0.00      0.00      0.00       261
+weighted avg       0.00      0.00      0.00       261
+
+{'O': 0, 'OVERLAP': 1}
+{0: 'O', 1: 'OVERLAP'}
+{'OVERLAP': 2248, 'O': 49652}
+{'O': 0.5226375573995006, 'OVERLAP': 11.543594306049823}
+{'O': 0.5226375573995006, 'OVERLAP': 11.543594306049823}
+Training Epoch: 0
+Training loss epoch: 3.055052341695121
+Training accuracy epoch: 0.5822796242774566
+Overall acc: 0.5822796242774566
+Overall loss: 3171.1443306795354
+Validation loss per 100 evaluation steps: 0.5254684090614319
+Validation loss per 100 evaluation steps: 0.5366807727530452
+Validation loss per 100 evaluation steps: 0.5373388270833599
+Validation loss per 100 evaluation steps: 0.5373798907793241
+Validation loss per 100 evaluation steps: 0.5373843670485917
+Validation loss per 100 evaluation steps: 0.5376838282672707
+Validation Loss: 0.5375488618665119
+Validation Accuracy: 0.9605009633911368
+Overall accuracy: 0.9605009633911368
+Overall loss: 0.5375488618665119
+### Summary
+              precision    recall  f1-score   support
+
+           O       0.96      1.00      0.98      7980
+     OVERLAP       0.00      0.00      0.00       324
+
+    accuracy                           0.96      8304
+   macro avg       0.48      0.50      0.49      8304
+weighted avg       0.92      0.96      0.94      8304
+
+### Without O
+              precision    recall  f1-score   support
+
+     OVERLAP       0.00      0.00      0.00       324
+
+   micro avg       0.00      0.00      0.00       324
+   macro avg       0.00      0.00      0.00       324
+weighted avg       0.00      0.00      0.00       324
+
+Training Epoch: 1
+Training loss epoch: 3.3496725120059145
+Training accuracy epoch: 0.5854708574181118
+Overall acc: 0.5854708574181118
+Overall loss: 3476.9600674621392
+Validation loss per 100 evaluation steps: 5.741024971008301
+Validation loss per 100 evaluation steps: 5.6273714811495035
+Validation loss per 100 evaluation steps: 5.617854023454202
+Validation loss per 100 evaluation steps: 5.635207084326253
+Validation loss per 100 evaluation steps: 5.650457781746501
+Validation loss per 100 evaluation steps: 5.642376510444992
+Validation Loss: 5.641548958816969
+Validation Accuracy: 0.03901734104046243
+Overall accuracy: 0.03901734104046243
+Overall loss: 5.641548958816969
+### Summary
+              precision    recall  f1-score   support
+
+           O       0.00      0.00      0.00      7980
+     OVERLAP       0.04      1.00      0.08       324
+
+    accuracy                           0.04      8304
+   macro avg       0.02      0.50      0.04      8304
+weighted avg       0.00      0.04      0.00      8304
+
+### Without O
+              precision    recall  f1-score   support
+
+     OVERLAP       0.04      1.00      0.08       324
+
+   micro avg       0.04      1.00      0.08       324
+   macro avg       0.04      1.00      0.08       324
+weighted avg       0.04      1.00      0.08       324
+
+Training Epoch: 2
+Training loss epoch: 4.789201537354409
+Training accuracy epoch: 0.5833032273603083
+Overall acc: 0.5833032273603083
+Overall loss: 4971.191195773877
+Validation loss per 100 evaluation steps: 1.362205147743225
+Validation loss per 100 evaluation steps: 1.31411615574714
+Validation loss per 100 evaluation steps: 1.3110492976743784
+Validation loss per 100 evaluation steps: 1.309580757372403
+Validation loss per 100 evaluation steps: 1.3071393071861932
+Validation loss per 100 evaluation steps: 1.307548677374027
+Validation Loss: 1.3075197438973223
+Validation Accuracy: 0.03901734104046243
+Overall accuracy: 0.03901734104046243
+Overall loss: 1.3075197438973223
+### Summary
+              precision    recall  f1-score   support
+
+           O       0.00      0.00      0.00      7980
+     OVERLAP       0.04      1.00      0.08       324
+
+    accuracy                           0.04      8304
+   macro avg       0.02      0.50      0.04      8304
+weighted avg       0.00      0.04      0.00      8304
+
+### Without O
+              precision    recall  f1-score   support
+
+     OVERLAP       0.04      1.00      0.08       324
+
+   micro avg       0.04      1.00      0.08       324
+   macro avg       0.04      1.00      0.08       324
+weighted avg       0.04      1.00      0.08       324
+
+Training Epoch: 3
+Training loss epoch: 3.348025710736523
+Training accuracy epoch: 0.5838150289017341
+Overall acc: 0.5838150289017341
+Overall loss: 3475.250687744511
+Validation loss per 100 evaluation steps: 1.2617319822311401
+Validation loss per 100 evaluation steps: 1.227447228856606
+Validation loss per 100 evaluation steps: 1.2267632608983055
+Validation loss per 100 evaluation steps: 1.2259585021738197
+Validation loss per 100 evaluation steps: 1.225569899242715
+Validation loss per 100 evaluation steps: 1.2258717966174888
+Validation Loss: 1.2255302380504864
+Validation Accuracy: 0.03901734104046243
+Overall accuracy: 0.03901734104046243
+Overall loss: 1.2255302380504864
+### Summary
+              precision    recall  f1-score   support
+
+           O       0.00      0.00      0.00      7980
+     OVERLAP       0.04      1.00      0.08       324
+
+    accuracy                           0.04      8304
+   macro avg       0.02      0.50      0.04      8304
+weighted avg       0.00      0.04      0.00      8304
+
+### Without O
+              precision    recall  f1-score   support
+
+     OVERLAP       0.04      1.00      0.08       324
+
+   micro avg       0.04      1.00      0.08       324
+   macro avg       0.04      1.00      0.08       324
+weighted avg       0.04      1.00      0.08       324
+
+Training Epoch: 4
