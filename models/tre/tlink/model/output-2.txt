@@ -967,6 +967,7 @@ weighted avg       0.92      0.96      0.94      8304
 weighted avg       0.00      0.00      0.00       324
 
 Training Epoch: 5
+<<<<<<< HEAD
 Training loss epoch: 0.1835418968642694
 Training accuracy epoch: 0.9554130539499036
 Overall acc: 0.9554130539499036
@@ -1256,3 +1257,5 @@ weighted avg       0.00      0.04      0.00      8304
 weighted avg       0.04      1.00      0.08       324
 
 Training Epoch: 4
+=======
+>>>>>>> c65863b3cda4895548df1d16adb0996e59fdbda2
