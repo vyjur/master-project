@@ -1,8 +1,9 @@
+import os
 import pandas as pd
 
-BATCH = 2
-PERCENTAGE = 15.6
-PREVIOUS = 7
+BATCH = 1
+PERCENTAGE = 7
+PREVIOUS = 2.6
 
 def sample_dataframe(df: pd.DataFrame, percentage: float) -> pd.DataFrame:
     """
@@ -24,9 +25,13 @@ def sample_dataframe(df: pd.DataFrame, percentage: float) -> pd.DataFrame:
     num_rows = int(len(df) * (percentage / 100))
     return df_sorted.head(num_rows)
 
-df = pd.read_csv(f'./data/helsearkiv/batch/tee/{BATCH}-withprob.csv')
+df = pd.read_csv(f'./data/helsearkiv/batch/dtr/{BATCH}.csv')
+print(len(df))
+df = df[(df["MedicalEntity"].notna()) & (df["MedicalEntity"] != "O")]
+print(df)
+
 final_df = sample_dataframe(df, PERCENTAGE-PREVIOUS)
 
-final_df.to_csv(f'./data/helsearkiv/batch/tee/{BATCH}-final.csv')
+final_df.to_csv(f'./data/helsearkiv/batch/dtr/{BATCH}-final.csv')
 
 print(len(df), len(final_df), (len(final_df))/len(df)+PREVIOUS/100)

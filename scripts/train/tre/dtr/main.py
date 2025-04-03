@@ -31,12 +31,12 @@ batch_files = [
 entity_files.extend(batch_files)
 
 # DTR batch
-folder_path = "./data/helsearkiv/batch/dtr/final/"
+folder_path = "./data/helsearkiv/batch/dtr/"
 
 batch_files = [
     folder_path + f
     for f in os.listdir(folder_path)
-    if os.path.isfile(os.path.join(folder_path, f) and "b0" not in f)
+    if os.path.isfile(os.path.join(folder_path, f)) and "final" in f
 ]
 
 entity_files.extend(batch_files)
