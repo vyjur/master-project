@@ -180,3 +180,8 @@ job.slurm
 /slurm
 
 /src/textmining/tee/heideltime/heideltime-standalone
+
+output.csv
+output.txt
+output.err
+timeline.html

@@ -6,12 +6,15 @@ import pypdf
 import pikepdf
 
 
-file = "./data/helsearkiv/batch/dtr copy/1-final.csv"   
+file = "./data/helsearkiv/batch/dtr/2-final.csv"   
 df = pd.read_csv(file)
 
 STOP = len(df)
 df = df.sort_values(by="prob", ascending=True)  # Sort in ascending order
-df = df.rename(columns={"Context_x": "Context"})
+
+if "TIMEX_y" in df.columns:
+    df = df.drop(["TIMEX_y"], axis=1)
+df = df.rename(columns={"Context_x": "Context", "TIMEX_x": "TIMEX"})
 
 # Filter rows where TIMEX is not NaN
 timex_df = df[df['TIMEX'].isna()]
@@ -39,13 +42,15 @@ print("LEN:", len(timex_df))
     #reader = pypdf.PdfReader('./data/helsearkiv/journal/' + str(row['file']))
     #current_page = reader.pages[int(row['page'])]
     #writer.add_page(current_page)
+
     
 for i, (index, row) in enumerate(timex_df.iterrows()):
+    
     if i % 10 == 0:
         print("CHECKPOINT")
-        df.to_csv(file, index=False)
-    
-    if i < 0:
+        df.to_csv(file)
+            
+    if i < 3000:
         continue
     if i > STOP:
         print("STOPPED AT", i, index)
@@ -58,8 +63,10 @@ for i, (index, row) in enumerate(timex_df.iterrows()):
         reader = pypdf.PdfReader('./data/helsearkiv/journal/' + str(row['file']))
         current_page = reader.pages[int(row['page'])]
         context_window = current_page.extract_text()
+        
+        writer = pypdf.PdfWriter()
     print(f"\nText: {row['Text']}, TIMEX: {row['DCT']}")
-    print(f"Context: {context_window.replace(row['Text'], '\n <TAG>' + row['Text'] + '</TAG> \n')}")
+    print(f"Context: {context_window.replace(row['Text'], '\n\n <TAG>' + row['Text'] + '</TAG> \n\n')}")
     
     user_input = input("Enter 'c' to keep, '1' for BEFORE, '2' for OVERLAP, '3' for AFTER: ").strip().lower()
     
@@ -69,9 +76,11 @@ for i, (index, row) in enumerate(timex_df.iterrows()):
         df.at[index, 'DCT'] = "OVERLAP"
     elif user_input == '3':
         df.at[index, 'DCT'] = "AFTER"  # Set TIMEX value to NaN
+    elif user_input == '4':
+        df.at[index, 'DCT'] = np.nan
 
 
 # Save the modified file
-df.to_csv(file, index=False)
+df.to_csv(file)
 
 print("Processing complete!")

@@ -106,6 +106,7 @@ class Preprocess:
         tags_name: list = [],
         window_size: int = 128,
         stride: int = 16,
+        split = True
     ):
         label2id, id2label = self.__util.get_tags(task, tags_name)
         print(label2id)
@@ -188,23 +189,33 @@ class Preprocess:
                 "id2label": id2label,
             }
 
-        train, test = train_test_split(
-            tokenized_dataset, train_size=self.__train_size, random_state=42
-        )
-        
-        train, val = train_test_split(
-            train, train_size=self.__train_size, random_state=42
-        )
-        
-        if self.__config.getboolean("main", "window"):
-            train = self.sliding_window(train, window_size=window_size, stride=stride)
+        train_dataset = None
+        valid_dataset = None
+        test_dataset = None
+        all_dataset = None
+        train = None
+        test = None
+        val = None
+            
+        if split:
+            train, test = train_test_split(
+                tokenized_dataset, train_size=self.__train_size, random_state=42
+            )
+            
+            train, val = train_test_split(
+                train, train_size=self.__train_size, random_state=42
+            )
+            
+            if self.__config.getboolean("main", "window"):
+                train = self.sliding_window(train, window_size=window_size, stride=stride)
 
-        train_dataset = CustomDataset(train, self.__tokenizer, label2id)
-        valid_dataset = CustomDataset(val, self.__tokenizer, label2id)
-        test_dataset = CustomDataset(test, self.__tokenizer, label2id)
+            train_dataset = CustomDataset(train, self.__tokenizer, label2id)
+            valid_dataset = CustomDataset(val, self.__tokenizer, label2id)
+            test_dataset = CustomDataset(test, self.__tokenizer, label2id)
         
-        #torch.save(test_dataset, "./data/helsearkiv/test_dataset/test_dataset.pth")
-        
+        else:
+            all_dataset = CustomDataset(tokenized_dataset, self.__tokenizer, label2id)
+               
         return_dict = {
             "train_raw": train,
             "val_raw": val,
@@ -213,11 +224,14 @@ class Preprocess:
             "train": train_dataset,
             "valid": valid_dataset,
             "test": test_dataset,
+            "all": all_dataset,
             "label2id": label2id,
             "id2label": id2label,
         }
         
         if "cat" in tokenized_dataset[0]:
+            if test is None:
+                test = tokenized_dataset
             intra = [d for d in test if d["cat"] == SENTENCE.INTRA]
             inter = [d for d in test if d["cat"] == SENTENCE.INTER]
 

@@ -13,7 +13,7 @@ from util import compute_mnlp
 from types import SimpleNamespace
 from datetime import datetime
 
-BATCH = 1
+BATCH = 2
 SIZE = 50
 
 folder_path = "./data/helsearkiv/annotated/entity-without-timex/"
@@ -43,12 +43,21 @@ dtr = TRExtract(
     task=Dataset.DTR
 )
 
+patients_df = pd.read_csv('./data/helsearkiv/patients.csv')
+
 # MEDICAL ENTITIES dont need the ones in entities because they alr trained
 batch_path = "./data/helsearkiv/batch/ner/final/"
 csv_files = [f for f in os.listdir(batch_path) if f.endswith(".csv")]
 entities = pd.concat([pd.read_csv(os.path.join(batch_path, file)) for file in csv_files])
 entities = entities[(entities["MedicalEntity"].notna()) & (entities["MedicalEntity"] != "O")]
 
+entities['file_id'] = entities['file'].str.split('_').str[1].str.strip()
+
+# Filter where file_id is NOT in patients_df['journalidentifikator']
+entities = entities[~entities['file_id'].isin(patients_df['journalidentifikator'])]
+
+# Optionally drop the helper column
+entities = entities.drop(columns='file_id')
 all_entities = entities
 
 batch_path = './data/helsearkiv/batch/dtr/'
@@ -56,7 +65,7 @@ csv_files = [f for f in os.listdir(batch_path) if f.endswith('.csv') and 'final'
 
 batch_entities = [pd.read_csv(os.path.join(batch_path, file)) for file in csv_files]
 if batch_entities:  # Check if the list is not empty
-    batch_entities = pd.concat(batch_entities, ignore_index=True)  # Combine all into one DataFrame
+    batch_entities = pd.concat(batch_entities, ignore_index=True).drop(columns=['Context_y'])# Combine all into one DataFrame
 else:
     batch_entities = pd.DataFrame(columns=["page", "file", "Text", "Context"])  # Empty DataFrame with expected columns
 
@@ -64,9 +73,9 @@ filtered_entities = all_entities.merge(batch_entities, on=["page", "file", "Text
 print(len(all_entities), len(filtered_entities))
 dataset = filtered_entities[filtered_entities["_merge"] == "left_only"].drop(columns=["_merge"])
 
-BATCH_SIZE = 64
+BATCH_SIZE = 128
 batch_inputs = [
-    SimpleNamespace(value=str(row['Text']), context=row['Context_x']) for _, row in dataset.iterrows()
+    {'Text': row['Text'], 'Context': row['Context_x'] }for _, row in dataset.iterrows()
 ]
 
 # Prepare storage for results

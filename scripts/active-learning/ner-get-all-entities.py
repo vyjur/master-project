@@ -86,6 +86,8 @@ merged_files = []
 merged_pages = []
 
 for index, file in enumerate(files):
+    if file.split("_")[1].strip() not in patients_df['journalidentifikator']:
+        continue
     reader = pypdf.PdfReader('./data/helsearkiv/journal/' + file)
     info_file.append(file)
     

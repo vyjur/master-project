@@ -45,7 +45,8 @@ class BERT(nn.Module):
         tokenizer=None,
         project_name: str | None = None,
         pretrain: str | None = None,
-        util: Util = None
+        util: Util = None,
+        testset: list = []
     ):
         super(BERT, self).__init__()
 
@@ -67,6 +68,7 @@ class BERT(nn.Module):
         self.__tags_name = tags_name
         self.__project_name = project_name
         self.__util = util if util is not None else Util()
+        self.__testset = testset
         
         if load:
             if task == Task.TOKEN:
@@ -85,6 +87,10 @@ class BERT(nn.Module):
             self.__processed = Preprocess(
                 self.tokenizer, parameters["max_length"], parameters["stride"], self.__util
             ).run_train_test_split(self.__task, self.__dataset, self.__tags_name)
+            
+            self.__test_processed = Preprocess(
+                self.tokenizer, parameters["max_length"], parameters["stride"], self.__util
+            ).run_train_test_split(self.__task, self.__dataset, self.__tags_name, False)
 
             # try:
             #     print("### Extra set performance:")
@@ -174,6 +180,9 @@ class BERT(nn.Module):
             self.__processed = Preprocess(
                 self.tokenizer, config["max_length"], config["stride"], self.__util
             ).run_train_test_split(self.__task, self.__dataset, self.__tags_name)
+            self.__test_processed = Preprocess(
+                self.tokenizer, config["max_length"], config["stride"], self.__util
+            ).run_train_test_split(self.__task, self.__testset, self.__tags_name, split=False)
 
             self.__class_weights = self.__util.class_weights(
                 self.__task, self.__processed["dataset"], self.__device
@@ -194,6 +203,7 @@ class BERT(nn.Module):
             training_loader = DataLoader(self.__processed["train"], **train_params)
             valid_loader = DataLoader(self.__processed["valid"], **test_params)
             testing_loader = DataLoader(self.__processed["test"], **test_params)
+            fixed_test_loader = DataLoader(self.__test_processed["all"], **test_params)
 
             num_training_steps = len(training_loader)
             
@@ -290,6 +300,12 @@ class BERT(nn.Module):
             print("### Test set performance:")
             labels, predictions = self.__valid(
                 testing_loader, loss_fn, self.__processed["id2label"], True
+            )
+            self.__util.validate_report(labels, predictions)
+            
+            print("### Fixed test set performance:")
+            labels, predictions = self.__valid(
+                fixed_test_loader, loss_fn, self.__processed["id2label"], True
             )
             self.__util.validate_report(labels, predictions)
             

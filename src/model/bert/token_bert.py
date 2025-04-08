@@ -18,7 +18,8 @@ class TokenBERT(nn.Module):
         tokenizer=None,
         project_name: str | None = None,
         pretrain: str | None = None,
-        util: Util = None
+        util: Util = None,
+        testset: list = []
     ):
         super(TokenBERT, self).__init__()
         self.__bert = BERT(
@@ -31,7 +32,8 @@ class TokenBERT(nn.Module):
             tokenizer,
             project_name,
             pretrain,
-            util
+            util,
+            testset
         )
         self.tokenizer = self.__bert.tokenizer
 

@@ -17,7 +17,7 @@ import numpy as np
 
 class TEExtract:
     
-    def __init__(self, config_file:str, manager: DatasetManager, save_directory: str = "./src/textmining/tee/model", rules:bool=True):
+    def __init__(self, config_file:str, manager: DatasetManager, save_directory: str = "./src/textmining/tee/model", rules:bool=True, test_manager:DatasetManager = None):
         self.__heideltime = Heideltime()
         self.__heideltime.set_document_type('NEWS')
         self.__heideltime.set_language('auto-norwegian')
@@ -37,6 +37,7 @@ class TEExtract:
         print("LOAD", load)
         
         dataset = []
+        test_dataset = []
         tags = [DCT.DATE.name, DCT.DCT.name]   
         if not load:
             tags = set()
@@ -51,6 +52,17 @@ class TEExtract:
                     }
                 )
                 tags.add(row['TIMEX'])
+            if test_manager:
+                raw_test_dataset = test_manager.get(Dataset.TEE)
+                for _, row in raw_test_dataset.iterrows():
+                    if row['Text'].replace(" ", "").isalpha() or 'ICD' in row['Context']:
+                        continue
+                    test_dataset.append(
+                        {
+                            "sentence": convert_to_input(self.input_tag_type, row, True, True),
+                            "relation": row['TIMEX'],
+                        }
+                    )
             tags = list(tags)
         self.label2id, self.id2label = Util().get_tags(Task.SEQUENCE, tags)
         
@@ -92,6 +104,7 @@ class TEExtract:
             tokenizer=self.tokenizer,
             project_name=self.__config["GENERAL"]["name"],
             pretrain=self.__config["pretrain"]["name"],
+            testset=test_dataset
         )
         
         self.preprocess = Preprocess(self.get_tokenizer(), self.get_max_length(), self.get_stride())
@@ -118,7 +131,7 @@ class TEExtract:
     def set_dct(self, dct):
         self.__heideltime.set_document_time(dct)
         
-    def __pre_rules(self, text, sectime=False):
+    def pre_rules(self, text, sectime=False):
        
         if not sectime:
             
@@ -152,7 +165,7 @@ class TEExtract:
         
     def run(self, text, sectime=False):
         if self.__rules:
-            text = self.__pre_rules(text, sectime)
+            text = self.pre_rules(text, sectime)
     
         result = self.__heideltime.parse(text).encode("utf-8").decode("utf-8")
         try:
@@ -193,11 +206,16 @@ class TEExtract:
         if not data:  # This checks if the list is empty
             return pd.DataFrame(columns=['id', 'type', 'value', 'text', 'context'])
         
-        return pd.DataFrame(data)
+        output = pd.DataFrame(data)
+        
+        if self.__heideltime.document_time is not None:
+            return output[(output['type'] == 'DATE') & (output['type'] == 'DURATION')]
+        return output[output['type'] == 'DATE']
             
     def extract_sectime(self, data):
         # Initial output: Extracting all TIMEX expressions
         init_output = self.run(data, True)
+        data = self.pre_rules(data, True)
         
         # Only DATE expressions are candidate for DCT 
         dct_candidates = init_output[init_output['type'] == 'DATE']
@@ -210,11 +228,10 @@ class TEExtract:
             if row['text'].replace(" ", "").isalpha():
                 continue
             dct_output = self.predict_sectime(row)
-            if dct_output == "DCT":
+            if dct_output[0][0] == "DCT":
                 dcts.append(row)
-                context_start = data.index(row['context'])
-                dct_start = row['context'].index(row['text'])
-                start = context_start + dct_start + len(row['text'])
+                dct_start = data.index(row['text'])
+                start = dct_start + len(row['text'])
                 sections.append({
                     "index": start,
                     "value": row['value']    

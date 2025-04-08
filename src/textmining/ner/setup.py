@@ -15,6 +15,7 @@ class NERecognition:
         config_file: str,
         manager: DatasetManager,
         save_directory: str = "./src/textmining/ner/model",
+        test_manager: DatasetManager = None
     ):
         self.__config = configparser.ConfigParser(allow_no_value=True)
         self.__config.read(config_file)
@@ -23,6 +24,7 @@ class NERecognition:
         print("LOAD", load)
         
         dataset = []
+        test_dataset = []
         
         self.schema = self.__config["MODEL"]["schema"]
         
@@ -36,6 +38,11 @@ class NERecognition:
         else:
             dataset = manager.get(Dataset.NER)
             dataset['MedicalEntity'] = dataset['MedicalEntity'].fillna('O')
+            
+            if test_manager:
+                test_dataset = test_manager.get(Dataset.NER)
+                test_dataset['MedicalEntity'] = test_dataset['MedicalEntity'].fillna('O')
+                test_dataset = [test_dataset]
             tags = dataset['MedicalEntity'].unique()
             dataset = [dataset]
             tags = list(tags)
@@ -83,7 +90,8 @@ class NERecognition:
             tokenizer=self.tokenizer,
             project_name=self.__config["GENERAL"]["name"],
             pretrain=self.__config["pretrain"]["name"],
-            util=self.__util
+            util=self.__util,
+            testset = test_dataset
         )
 
     def get_tokenizer(self):

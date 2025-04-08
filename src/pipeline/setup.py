@@ -81,10 +81,9 @@ class Pipeline:
 
     
 
-    def run(self, documents, save_path='./', step=None):
+    def run(self, documents, save_path='./', step=None, dct_cp = True):
         all_info = []
         for doc in documents:
-            entities = []
             
             ### Initialization
             
@@ -110,15 +109,17 @@ class Pipeline:
        
             # For each DCT in document, define the text section corresponding to the given DCT 
             for i, dct in enumerate(sectimes):
+                entities = []
                 start = sectimes[i]["index"]
                 if i + 1 >= len(sectimes):
                     stop = len(doc)
                 else:
                     stop = sectimes[i+1]["index"]
-                sec_text = doc[start:stop] 
+                sec_text = doc[start:stop]
+                sec_text = self.__tee.pre_rules(sec_text, dct['value']) 
                 tee_output = self.__tee.run(sec_text)
                 tee_output['dct'] = dct['value']
-                          
+                
                 if step != "MER":  
                     for _, te in tee_output.iterrows():
                         entities.append(
@@ -160,16 +161,11 @@ class Pipeline:
                         if len(entity) == 0 or entype == "O":
                             continue
 
-                        # Token window based on tokenization output
                         start = sum([len(output[j]) for j in range(i)])
-                        # TODO: context here is wrong, need to get token context instead
                         start_context = all_outputs[:start].split()
                         end_context = all_outputs[start:].split()
                         context = start_context[max(0, len(start_context) - WINDOW):] + end_context[:min(len(end_context), WINDOW)]
                         context = " ".join(context)
-                        print("##################")
-                        print("CONTEXT:", len(context))
-                        print(context)
                         context = (
                             context.replace("[CLS]", "")  # type: ignore
                             .replace("[SEP]", "")
@@ -177,6 +173,7 @@ class Pipeline:
                         )
                         
                         curr_ent = Node(entity, entype, None, context, None)
+                        
                         entities.append(curr_ent)
                         graph.add_node(curr_ent.id)
 
@@ -189,25 +186,28 @@ class Pipeline:
                 for cat in DocTimeRel:
                     dcts[cat.name] = []
 
-                #### Remove local duplicates (document-level)
-                # TODO: how can remove redundancy
-                # duplicates = find_duplicates(entities)
-                # entities = remove_duplicates(entities, duplicates)
+                #### Remove duplicates (document-level)
+                # TODO: how to remove redundancy
 
                 ###### Predicting each entities' DTR group
                 
                 relations = []
                 
                 if step != "MER":
-                    
-                    dct_date = datetime.strptime(dct['value'], "%Y-%m-%d")
+                    try:
+                        dct_date = datetime.strptime(dct['value'], "%Y-%m-%d")
+                    except:
+                        dct_date = None
                     default_date = datetime.today().strftime("%Y-%m-%d")
 
                     for e in entities:
                         if dct_date == default_date:
                             cat = DocTimeRel.BEFORE.name
                         elif isinstance(e.type, TIMEX):
-                            date = datetime.strptime(e.date, "%Y-%m-%d")
+                            try:
+                                date = datetime.strptime(e.date, "%Y-%m-%d")
+                            except:
+                                date = dct_date
                             if date == dct_date:
                                 cat = DocTimeRel.OVERLAP.name
                             elif date < dct_date:
@@ -219,20 +219,60 @@ class Pipeline:
                             cat = cat.replace("/", "")
                         
                             # Set date of entity as the same as DTR if it is overlapping with DCT
-                            if cat == DocTimeRel.OVERLAP:
-                                e.date = e.dct
+                            if cat == DocTimeRel.OVERLAP.name and dct_date != default_date:
+                                e.date = dct_date
                         dcts[cat].append(e)
 
                     ###### The candidate pairs are pairs within a group##### O(N^2)>O(len(dcts)*(N_i^2)) where N_i < N
                     ###### Although triple loop, this should be quicker than checking all entities
                     ###### O(N^2)>O(len(dcts)*(N_i^2)) where N_i < N
-                    
+                   
+                    # TODO: go through all timex instead?
+                    if not dct_cp:
+                        for i, e_i in enumerate(entities):
+                            print(f"######## {i}")
+                            print("TEXT:", e_i.value)
+                                  
+                            print(e_i.context)
+                            for j, e_j in enumerate(entities):
+                                if not isinstance(e_j.type, TIMEX):
+                                    continue
+                                
+                                print(e_j.value, e_j.date)
+                                if e_j.value not in e_i.context:
+                                    continue
+                                
+                                # TODO: check context
+                                tre_output = self.__tre_tlink.run(e_i, e_j)
+
+                                relation = tre_output[0]
+                                prob = tre_output[1][0]
+                                
+                                print("RELATION:", relation)
+
+                                if relation != "O":
+                                    rel = Relation(e_i, e_j, relation, prob)
+                                    if rel.tr == TLINK.OVERLAP:
+                                        if isinstance(e_i.type, TIMEX) and not isinstance(e_j.type, TIMEX):
+                                            if (e_i.prob >= e_j.prob or e_j.date is None) and e_i.date is not None:
+                                                e_j.date = e_i.date
+                                                e_j.prob = e_i.prob 
+                                        elif isinstance(e_j.type, TIMEX) and not isinstance(e_i.type, TIMEX):
+                                            if (e_j.prob >= e_i.prob or e_i.date is None) and e_j.date is not None:
+                                                e_i.date = e_j.date
+                                                e_i.prob = e_j.prob
+                                                    
+                                    relations.append(rel) 
 
                     for cat in dcts:
                         for i, e_i in enumerate(dcts[cat]):
                             for j, e_j in enumerate(dcts[cat]):
+    
+                                if not dct_cp and (isinstance(e_i.type, TIMEX) or isinstance(e_j.type, TIMEX)):
+                                    continue
                                 
                                 # SKIP if not in same context or both are TIMEX
+
                                 if i == j or e_j.value not in e_i.context or (isinstance(e_i.type, TIMEX) and isinstance(e_j.type, TIMEX)):
                                     continue
 
@@ -242,19 +282,24 @@ class Pipeline:
                                 prob = tre_output[1][0]
 
                                 if relation != "O":
+                                    
                                     rel = Relation(e_i, e_j, relation, prob)
-                                    if rel.tr == TLINK.OVERLAP:
-                                        if isinstance(e_i.type, TIMEX) and not isinstance(e_j.type, TIMEX):
-                                            if e_i.prob >= e_j.prob or e_j.date is None:
-                                                e_j.date = e_i.date
-                                                e_j.prob = e_i.prob 
-                                        elif isinstance(e_j.type, TIMEX) and not isinstance(e_i.type, TIMEX):
-                                            if e_j.prob >= e_i.prob or e_i.date is None:
-                                                e_i.date = e_j.date
-                                                e_i.prob = e_j.prob
+                                    
+                                    if not dct_cp:
+                                        if rel.tr == TLINK.OVERLAP:
+                                            if isinstance(e_i.type, TIMEX) and not isinstance(e_j.type, TIMEX):
+                                                if e_i.prob >= e_j.prob or e_j.date is None or e_i.date == dct_date:
+                                                    e_j.date = e_i.date
+                                                    e_j.prob = e_i.prob 
+                                            elif isinstance(e_j.type, TIMEX) and not isinstance(e_i.type, TIMEX):
+                                                if e_j.prob >= e_i.prob or e_i.date is None or e_i.date == dct_date:
+                                                    e_i.date = e_j.date
+                                                    e_i.prob = e_j.prob
                                                     
                                     relations.append(rel)
-
+                                    
+                    # TODO: tlink is not working
+                    print(len(relations))
                     ##### Sort relations after probability
                     relations = sorted(relations, key=lambda r: r.prob, reverse=True)
                                 
@@ -278,9 +323,25 @@ class Pipeline:
                             elif rel.x.date is not None and rel.y.date is None and not isinstance(rel.y.type, TIMEX):
                                 rel.y.date = datetime.strptime(rel.x.date, "%Y-%m-%d") + timedelta(days=1)
 
+                final_entities = []
+                for ent in entities:
+                    
+                    if isinstance(ent.date, str):
+                        ent_date = datetime.strptime(ent.date, "%Y-%m-%d")
+                    elif ent.date is not None:
+                        ent_date = ent.date.strftime("%Y-%m-%d")
+                    else:
+                        ent_date = ent.date
+                    if isinstance(ent.type, TIMEX) or ent_date is None or ent_date == default_date:
+                        continue
+                    
+                    final_entities.append(ent)
+                        
                 all_info.append(
                     {
-                        "entities": entities,
+                        "dct": dct_date,
+                        "all_entities": entities,
+                        "entities": final_entities,
                         "relations": relations,
                         "graph": graph,
                     }
@@ -289,16 +350,21 @@ class Pipeline:
         ### Visualize: Using a timeline
         
         all_entities = []
+        final_entities = []
         for info in all_info:
-            all_entities.extend(info['entities'])
+            all_entities.extend(info['all_entities'])
+            final_entities.extend(info['entities'])
             
-        print(len(all_entities))
+        print(len(all_entities), len(final_entities))
         
         for ent in all_entities:
             ent.context = ""
              
+        df = pd.DataFrame([vars(ent) for ent in final_entities])
+        df.to_csv(save_path + "final.csv")
+        
         df = pd.DataFrame([vars(ent) for ent in all_entities])
-        df.to_csv(save_path + "output.csv")
+        df.to_csv(save_path + "all.csv")
 
         self.viz.create(all_info, save_path)
 

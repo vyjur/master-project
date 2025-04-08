@@ -22,7 +22,7 @@ class Timeline:
                 if e.type is None or isinstance(e.type, TIMEX) or e.date is None:
                     continue
                 
-                start_date = datetime.strptime(e.date, "%Y-%m-%d")
+                start_date = e.date
                 end_date = start_date + timedelta(
                     hours=self.__offset
                 )
@@ -38,7 +38,8 @@ class Timeline:
                     )
                 )
                 level_dict[e.date] += 1
-                
+        
+        print("Timeline length:", len(timeline))
         if len(timeline) < 1:
             print("Empty timeline")
             return
@@ -49,7 +50,7 @@ class Timeline:
             x_start="Start",
             x_end="Finish",
             y="System",
-            color="Entity",
+            color="Type",
             text="Entity",
             custom_data=df[["Type"]]
         )

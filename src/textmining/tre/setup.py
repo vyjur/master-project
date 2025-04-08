@@ -25,6 +25,7 @@ class TRExtract:
         manager: DatasetManager,
         task: Dataset,
         save_directory: str = "./src/textmining/tre/model",
+        test_manager: DatasetManager = None
     ):
         self.task = task
         self.__config = configparser.ConfigParser()
@@ -45,6 +46,11 @@ class TRExtract:
         
         load = self.__config["MODEL"].getboolean("load")
         print("LOAD", load)
+        
+        if self.__config.has_section("GENERAL") and self.__config.has_option("GENERAL", "dct"):
+            self.__dct = self.__config.getboolean("GENERAL", "dct")
+        else:
+            self.__dct = False  # or whatever default you want
 
         self.tokenizer = AutoTokenizer.from_pretrained(
             self.__config["pretrain"]["name"]
@@ -78,22 +84,130 @@ class TRExtract:
         dataset = []
         tags = set()
         
+        test_dataset = []
+        
         if not load:
 
             dataset_tre = manager.get(task)
+            if test_manager:
+                test_dataset_tre = test_manager.get(task)
+
             if task == Dataset.DTR:
                 dataset_tre = dataset_tre[dataset_tre['DCT'] != 'BEFOREOVERLAP']
                 for _, row in dataset_tre.iterrows():
                     if 'ICD' in row['Context']:
                         continue
-                    dataset.append(
-                        {
-                            "sentence": convert_to_input(self.input_tag_type, row),
-                            "relation": row['DCT'],
+                    if not self.__dct:
+                        dataset.append(
+                            {
+                                "sentence": convert_to_input(self.input_tag_type, row),
+                                "relation": row['DCT'],
+                            }
+                        )
+                        tags.add(row['DCT'])
+                    else:
+                        e_i = {
+                            "Text": row['SECTIME'],
+                            "Context": row["SECTIME_context"]
                         }
-                    )
-                    tags.add(row['DCT'])
+                        
+                        e_j = {
+                            "Text": row['Text'],
+                            "Context": row['Context']
+                        }
+                        
+                        sentence_i = convert_to_input(self.input_tag_type, e_i, single=False, start=True)
+                        sentence_j = convert_to_input(self.input_tag_type, e_j, single=False, start=False)
+                        text = f"{sentence_i} [SEP] {sentence_j}"
+                        test_dataset.append(
+                            {
+                                "sentence": text,
+                                "relation": row['DCT'],
+                            }
+                        )
+                        
+                if test_manager:
+                    test_dataset_tre = test_dataset_tre[test_dataset_tre['DCT'] != 'BEFOREOVERLAP']
+                    for _, row in test_dataset_tre.iterrows():
+                        if 'ICD' in row['Context']:
+                            continue
+                        if not self.__dct:
+                            test_dataset.append(
+                                {
+                                    "sentence": convert_to_input(self.input_tag_type, row),
+                                    "relation": row['DCT'],
+                                }
+                            )
+                        else:
+                            e_i = {
+                                "Text": row['SECTIME'],
+                                "Context": row["SECTIME_context"]
+                            }
+                            
+                            e_j = {
+                                "Text": row['Text'],
+                                "Context": row['Context']
+                            }
+                            
+                            sentence_i = convert_to_input(self.input_tag_type, e_i, single=False, start=True)
+                            sentence_j = convert_to_input(self.input_tag_type, e_j, single=False, start=False)
+                            text = f"{sentence_i} [SEP] {sentence_j}"
+                            test_dataset.append(
+                                {
+                                    "sentence": text,
+                                    "relation": row['DCT'],
+                                }
+                            )
             elif task == Dataset.TLINK:
+                if test_manager:
+                    
+                    test_dataset_tre = test_dataset_tre[test_dataset_tre['RELATION'].notna()]
+                    dataset_ner = test_manager.get(Dataset.NER)
+                    dataset_ner = dataset_ner[dataset_ner['MedicalEntity'].notna()].reset_index()
+                    dataset_tee = test_manager.get(Dataset.TEE)
+                    
+                    for i, rel in test_dataset_tre.iterrows():
+                        if 'ICD' in rel['FROM_CONTEXT']:
+                            continue
+                        e_i = {
+                            "Text": rel['FROM'],
+                            "Context": rel["FROM_CONTEXT"]
+                        }
+                        
+                        e_j = {
+                            "Text": rel['TO'],
+                            "Context": rel['TO_CONTEXT']
+                        }
+                        
+                        if self.tlink_input == TLINK_INPUT.DIST:
+                            cat, distance = self.__class__.classify_tlink(e_i, e_j, True)
+                        else:
+                            cat = self.__class__.classify_tlink(e_i, e_j)
+                        sentence_i = convert_to_input(self.input_tag_type, e_i, single=False, start=True)
+                        if cat == SENTENCE.INTRA:
+                            e_j['Context'] = sentence_i
+                        
+                        sentence_j = convert_to_input(self.input_tag_type, e_j, single=False, start=False)
+                        
+                        if cat == SENTENCE.INTRA:
+                            text = sentence_j
+                        else:
+                            if self.tlink_input == TLINK_INPUT.DIST:
+                                text = f"{sentence_i} [SEP_{distance}] {sentence_j}"
+                            else:
+                                text = f"{sentence_i} [SEP] {sentence_j}"
+                            
+                        # relation = rel["RELATION"] if rel["RELATION"] != "BEFORE" else "O"
+                        relation = rel["RELATION"]
+                                            
+                        relation_pair = {
+                            "sentence": text,
+                            "relation": relation,
+                            "cat": cat
+                        }
+                            
+                        test_dataset.append(relation_pair)
+                
                 dataset_ner = manager.get(Dataset.NER)
                 dataset_ner = dataset_ner[dataset_ner['MedicalEntity'].notna()].reset_index()
                 dataset_tee = manager.get(Dataset.TEE)
@@ -140,7 +254,8 @@ class TRExtract:
                         else:
                             text = f"{sentence_i} [SEP] {sentence_j}"
                         
-                    relation = rel["RELATION"] if rel["RELATION"] != "BEFORE" else "O"
+                    # relation = rel["RELATION"] if rel["RELATION"] != "BEFORE" else "O"
+                    relation = rel["RELATION"]
                                         
                     relation_pair = {
                         "sentence": text,
@@ -222,6 +337,7 @@ class TRExtract:
             self.tokenizer,
             self.__config["GENERAL"]["name"],
             self.__config["pretrain"]["name"],
+            testset = test_dataset
         )
 
         self.preprocess = Preprocess(self.get_tokenizer(), self.get_max_length(), self.get_stride())
@@ -244,21 +360,21 @@ class TRExtract:
         batch_text = []
         for data in datas:
             e_j = None
-            if type(data) is list:
+            if type(data) is tuple:
                 e_i = data[0]
                 e_j = data[1]
             else:
                 e_i = data
-                
+            
             e_i = {
-                "Context": e_i.context,
-                "Text": e_i.value
+                "Context": e_i['Context'],
+                "Text": e_i['Text']
             }
             
             if e_j is not None:
                 e_j = {
-                    "Context": e_j.context,
-                    "Text": e_j.value
+                    "Context": e_j['Context'],
+                    "Text": e_j['Text']
                 }
             
             if self.task == Dataset.DTR:
@@ -329,9 +445,9 @@ class TRExtract:
                     cat = SENTENCE.INTRA
                   
             if distance:  
-                if e_i['Text'] in sentence and entity1_index is None:
+                if str(e_i['Text']) in sentence and entity1_index is None:
                     entity1_index = i
-                if e_j['Text'] in sentence and entity2_index is None:
+                if str(e_j['Text']) in sentence and entity2_index is None:
                     entity2_index = i
         if distance:
             if entity1_index is not None and entity2_index is not None:

@@ -72,7 +72,10 @@ class DatasetManager:
                 df = df[['Text', 'Id', 'MedicalEntity', 'DCT', 'TIMEX', 'Context', 'file', 'page']]
 
                 all_entity_df.append(df)
-            self.__entity_df = pd.concat(all_entity_df).reset_index()
+            if all_entity_df:  # only concatenate if the list is not empty
+                self.__entity_df = pd.concat(all_entity_df).reset_index(drop=True)
+            else:
+                self.__entity_df = pd.DataFrame(columns=['Text', 'Id', 'MedicalEntity', 'DCT', 'TIMEX', 'Context', 'file', 'page'])
             
             tokens_expanded = self.__entity_df["Text"].str.split().explode().tolist()  # Flatten the token list
             # Define the context window size

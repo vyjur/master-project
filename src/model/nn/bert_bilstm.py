@@ -17,7 +17,8 @@ class BERTBiLSTM(nn.Module):
         tokenizer=None,
         project_name: str | None = None,
         pretrain: str | None = None,
-        util: Util = None
+        util: Util = None,
+        testset: list = []
     ):
         super(BERTBiLSTM, self).__init__()
 
@@ -45,6 +46,7 @@ class BERTBiLSTM(nn.Module):
             tokenizer,
             project_name,
             pretrain,
+            testset = testset
         )
         self.tokenizer = self.__model.tokenizer
         self.device = self.__model.device

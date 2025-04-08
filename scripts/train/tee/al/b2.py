@@ -27,7 +27,7 @@ folder_path = "./data/helsearkiv/batch/tee/"
 batch_files = [
     folder_path + f
     for f in os.listdir(folder_path)
-    if os.path.isfile(os.path.join(folder_path, f)) and "final" in f
+    if os.path.isfile(os.path.join(folder_path, f)) and "final" in f and f.split("-")[0] in ["1"]
 ]
 
 entity_files.extend(batch_files)
@@ -43,8 +43,27 @@ relation_files = [
 
 manager = DatasetManager(entity_files, relation_files, window_size=50)
 
+### TEST DATA
+folder_path = "./data/helsearkiv/test_dataset/csv/entity/"
+
+entity_files = [
+    folder_path + f
+    for f in os.listdir(folder_path)
+    if os.path.isfile(os.path.join(folder_path, f))
+]
+
+folder_path = "./data/helsearkiv/test_dataset/csv/relation/"
+
+relation_files = [
+    folder_path + f
+    for f in os.listdir(folder_path)
+    if os.path.isfile(os.path.join(folder_path, f))
+]
+
+test_manager = DatasetManager(entity_files, relation_files)
+
 for i, conf in enumerate(configs):
-    if os.path.isdir(folder + conf) or conf != 'c-bert-bilstm.ini':
+    if os.path.isdir(folder + conf) or conf != 'b-bert.ini':
         continue
     print(f"###### ({i}) Training for configuration file: {conf}")
     save_directory = f"./models/tee/model/" + conf.replace(".ini", "") + f"/b{BATCH}/"
@@ -54,6 +73,7 @@ for i, conf in enumerate(configs):
         config_file=folder + conf,
         manager=manager,
         save_directory=save_directory,
+        test_manager=test_manager
     )
     print("Finished with this task. \n \n")
 

@@ -70,7 +70,8 @@ class BiLSTM(nn.Module):
         tokenizer=None,
         project_name: str | None = None,
         pretrain: str | None = None,
-        util: Util = None
+        util: Util = None,
+        testset: list = []
     ):
         super(BiLSTM, self).__init__()
         self.__model = NN(
@@ -84,7 +85,8 @@ class BiLSTM(nn.Module):
             tokenizer,
             project_name,
             pretrain,
-            util
+            util,
+            testset
         )
         self.tokenizer = self.__model.tokenizer
         

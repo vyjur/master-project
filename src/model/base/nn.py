@@ -41,7 +41,8 @@ class NN(nn.Module):
         tokenizer=None,
         project_name: str | None = None,
         pretrain: str | None = None,
-        util: Util = None
+        util: Util = None,
+        testset: list = []
     ):
         super(NN, self).__init__()
         self.__device = "cuda:0" if cuda.is_available() else "cpu"
@@ -63,10 +64,12 @@ class NN(nn.Module):
         self.__project_name = project_name
         self.__tags_name = tags_name
         self.__dataset = dataset
+        self.__testset = testset
 
         embedding_dim = parameters["embedding_dim"]
 
         self.__processed = {}
+        self.__test_processed = {}
 
         if load:
             tag_to_ix, ix_to_tag = self.__util.get_tags(task, tags_name)
@@ -152,6 +155,10 @@ class NN(nn.Module):
             self.__class_weights = self.__util.class_weights(
                 self.__task, self.__processed["dataset"], self.__device
             )
+            
+            self.__test_processed = Preprocess(
+                self.tokenizer, config["max_length"], config["stride"], self.__util
+            ).run_train_test_split(self.__task, self.__testset, self.__tags_name, split=False)
 
             if self.__task == Task.TOKEN:
                 START_ID = max(self.__processed["id2label"].keys()) + 1
@@ -175,7 +182,8 @@ class NN(nn.Module):
             training_loader = DataLoader(self.__processed["train"], **train_params)
             valid_loader = DataLoader(self.__processed["valid"], **test_params)
             testing_loader = DataLoader(self.__processed["test"], **test_params)
-            
+            fixed_test_loader = DataLoader(self.__test_processed["all"], **test_params)
+
             if hasattr(self, '__model'):
                 del self.__model
             gc.collect()
@@ -244,6 +252,12 @@ class NN(nn.Module):
             print("### Test set performance:")
             labels, predictions = self.__valid(
                 testing_loader, loss_fn, self.__processed["id2label"], True
+            )
+            self.__util.validate_report(labels, predictions)
+            
+            print("### Fixed test set performance:")
+            labels, predictions = self.__valid(
+                fixed_test_loader, loss_fn, self.__processed["id2label"], True
             )
             self.__util.validate_report(labels, predictions)
             

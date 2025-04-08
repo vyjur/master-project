@@ -129,6 +129,7 @@ def convert_slash_date(text):
 def convert_duration(context, value, dct):
     time_units = {"M": relativedelta(months=1), "W": timedelta(weeks=1), "D": timedelta(days=1), "Y": relativedelta(years=1)}
     unit = next((unit for unit in time_units if unit in value), None)
+    
     if unit:
         amount = int(value.replace("P", "").replace(unit, ""))
         adjustment = time_units[unit]
