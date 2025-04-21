@@ -187,3 +187,9 @@ output*.csv
 output*.txt
 output*.err
 timeline.html
+
+/models/dtr/*
+!models/dtr/.gitkeep
+
+/models/ner/*
+!models/ner/.gitkeep
