@@ -18,7 +18,7 @@ class TEExtract:
         self,
         config_file: str,
         manager: DatasetManager,
-        save_directory: str = "./src/textmining/tee/model",
+        save_directory: str = "./models/tee",
         rules: bool = True,
         test_manager: DatasetManager = None,
     ):

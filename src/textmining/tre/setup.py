@@ -36,7 +36,7 @@ class TRExtract:
         config_file: str,
         manager: DatasetManager,
         task: Dataset,
-        save_directory: str = "./src/textmining/tre/model",
+        save_directory: str = "./models/tre",
         test_manager: DatasetManager | None = None,
     ):
         self.task = task

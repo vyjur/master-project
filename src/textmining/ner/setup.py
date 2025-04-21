@@ -13,7 +13,7 @@ class NERecognition:
         self,
         config_file: str,
         manager: DatasetManager,
-        save_directory: str = "./src/textmining/ner/model",
+        save_directory: str = "./models/ner",
         test_manager: DatasetManager = None,
     ):
         self.__config = configparser.ConfigParser(allow_no_value=True)
