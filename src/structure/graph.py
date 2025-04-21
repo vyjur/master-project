@@ -10,7 +10,7 @@ class Graph:
 
     def add_node(self, u):
         self.graph[u] = list()
-        
+
     def remove_node(self, node):
         # Get all children of the node
         children = self.graph[node]
@@ -45,7 +45,7 @@ class Graph:
     def add_edge(self, u, v):
         self.graph[u].append(v)  # Directed edge u -> v
         self.reverse_graph[v].append(u)  # Reverse edge v -> u (parent -> child)
-        
+
     def remove_edge(self, u, v):
         if v in self.graph[u]:
             self.graph[u].remove(v)

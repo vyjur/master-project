@@ -4,7 +4,7 @@ from transformers import (
     AutoModelForSequenceClassification,
     AutoTokenizer,
 )
-from sklearn.metrics import accuracy_score, classification_report
+from sklearn.metrics import accuracy_score
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
@@ -22,6 +22,7 @@ from model.tuning.setup import TuningConfig
 import gc
 
 import random
+
 seed = 42
 torch.manual_seed(seed)
 torch.cuda.manual_seed_all(seed)  # For multi-GPU
@@ -45,8 +46,8 @@ class BERT(nn.Module):
         tokenizer=None,
         project_name: str | None = None,
         pretrain: str | None = None,
-        util: Util = None,
-        testset: list = []
+        util: Util | None = None,
+        testset: list = [],
     ):
         super(BERT, self).__init__()
 
@@ -69,7 +70,7 @@ class BERT(nn.Module):
         self.__project_name = project_name
         self.__util = util if util is not None else Util()
         self.__testset = testset
-                
+
         if load:
             if task == Task.TOKEN:
                 self.__model = AutoModelForTokenClassification.from_pretrained(
@@ -79,63 +80,59 @@ class BERT(nn.Module):
                 self.__model = AutoModelForSequenceClassification.from_pretrained(
                     save, trust_remote_code=True, device_map=self.__device
                 ).to(self.__device)
-                
+
             self.tokenizer = AutoTokenizer.from_pretrained(
                 save, trust_remote_code=True, device_map=self.__device
             )
-            
+
             self.__processed = Preprocess(
-                self.tokenizer, parameters["max_length"], parameters["stride"], self.__util
-            ).run_train_test_split(self.__task, self.__dataset, self.__tags_name, downsample=parameters["downsample"])
-            
+                self.tokenizer,
+                parameters["max_length"],
+                parameters["stride"],
+                self.__util,
+            ).run_train_test_split(
+                self.__task,
+                self.__dataset,
+                self.__tags_name,
+                downsample=parameters["downsample"],
+            )
+
             self.__test_processed = Preprocess(
-                self.tokenizer, parameters["max_length"], parameters["stride"], self.__util
-            ).run_train_test_split(self.__task, self.__dataset, self.__tags_name, False, downsample=parameters["downsample"])
+                self.tokenizer,
+                parameters["max_length"],
+                parameters["stride"],
+                self.__util,
+            ).run_train_test_split(
+                self.__task,
+                self.__dataset,
+                self.__tags_name,
+                False,
+                downsample=parameters["downsample"],
+            )
 
-            # try:
-            #     print("### Extra set performance:")
-            #     test_dataset = torch.load("./data/helsearkiv/test_dataset/test_dataset.pth")
-            #     train_params = {
-            #         "batch_size": parameters["train_batch_size"],
-            #         "shuffle": parameters["shuffle"],
-            #         "num_workers": parameters["num_workers"],
-            #     }
-            #     extra_loader = DataLoader(test_dataset, **train_params)
-            #     loss_fn = nn.CrossEntropyLoss() 
-            #     labels, predictions = self.__valid(
-            #         extra_loader, loss_fn, self.__processed["id2label"], True
-            #     )
-            #     self.__util.validate_report(labels, predictions)
-            # except Exception as e:
-            #     print(e)
-
-            print("Model and tokenizer loaded successfully.")
         else:
-
             self.__processed = None
             self.__class_weights = None
 
             tune = parameters["tune"]
             if tune:
-                sweep_config['parameters']['valid_batch_size'] = {
-                    "value": parameters['valid_batch_size']
-                } 
-                sweep_config['parameters']['shuffle'] = {
-                    "value": parameters["shuffle"]
+                sweep_config["parameters"]["valid_batch_size"] = {
+                    "value": parameters["valid_batch_size"]
                 }
-                sweep_config['parameters']['num_workers'] = {
+                sweep_config["parameters"]["shuffle"] = {"value": parameters["shuffle"]}
+                sweep_config["parameters"]["num_workers"] = {
                     "value": parameters["num_workers"]
                 }
-                sweep_config['parameters']['downsample'] = {
+                sweep_config["parameters"]["downsample"] = {
                     "value": parameters["downsample"]
                 }
                 sweep_id = wandb.sweep(
                     sweep_config,
                     project=f"{project_name}-{task}-bert-model".replace('"', ""),
                 )
-                
+
                 wandb.agent(sweep_id, self.train, count=parameters["tune_count"])
-                
+
             else:
                 wandb.config = {
                     "learning_rate": parameters["learning_rate"],
@@ -147,15 +144,15 @@ class BERT(nn.Module):
                     "weight_decay": parameters["weight_decay"],
                     "early_stopping_patience": parameters["early_stopping_patience"],
                     "early_stopping_delta": parameters["early_stopping_delta"],
-                    'max_length': parameters['max_length'],
-                    'stride': parameters['stride'],
-                    'shuffle': parameters['shuffle'],
-                    'num_workers': parameters['num_workers'],
+                    "max_length": parameters["max_length"],
+                    "stride": parameters["stride"],
+                    "shuffle": parameters["shuffle"],
+                    "num_workers": parameters["num_workers"],
                     "evaluation_strategy": "epoch",
                     "save_strategy": "epoch",
                     "logging_strategy": "epoch",
-                    "weights": parameters['weights'],
-                    "downsample": parameters['downsample'],
+                    "weights": parameters["weights"],
+                    "downsample": parameters["downsample"],
                     "tune": tune,
                 }
                 self.train(wandb.config)
@@ -172,31 +169,38 @@ class BERT(nn.Module):
             tokenizer=self.tokenizer,
             aggregation_strategy="simple",
         )
-        
-        
 
-    def train(self, config = None):
-        
-        with wandb.init(project=f"{self.__project_name}-{self.__task}-bert-model".replace('"', "")):  # type: ignore
+    def train(self, config=None):
+        with wandb.init(
+            project=f"{self.__project_name}-{self.__task}-bert-model".replace('"', "")
+        ):  # type: ignore
             if config is None:
                 config = wandb.config
-                
+
             if "downsample" in config:
-                downsample = config['downsample']
+                downsample = config["downsample"]
             else:
                 downsample = False
 
             self.__processed = Preprocess(
                 self.tokenizer, config["max_length"], config["stride"], self.__util
-            ).run_train_test_split(self.__task, self.__dataset, self.__tags_name, downsample=downsample)
+            ).run_train_test_split(
+                self.__task, self.__dataset, self.__tags_name, downsample=downsample
+            )
             self.__test_processed = Preprocess(
                 self.tokenizer, config["max_length"], config["stride"], self.__util
-            ).run_train_test_split(self.__task, self.__testset, self.__tags_name, split=False, downsample=downsample)
+            ).run_train_test_split(
+                self.__task,
+                self.__testset,
+                self.__tags_name,
+                split=False,
+                downsample=downsample,
+            )
 
             self.__class_weights = self.__util.class_weights(
                 self.__task, self.__processed["dataset"], self.__device
             )
-            
+
             train_params = {
                 "batch_size": config["batch_size"],
                 "shuffle": self.__parameters["shuffle"],
@@ -207,7 +211,7 @@ class BERT(nn.Module):
                 "batch_size": self.__parameters["valid_batch_size"],
                 "shuffle": self.__parameters["shuffle"],
                 "num_workers": self.__parameters["num_workers"],
-            } 
+            }
 
             training_loader = DataLoader(self.__processed["train"], **train_params)
             valid_loader = DataLoader(self.__processed["valid"], **test_params)
@@ -215,8 +219,8 @@ class BERT(nn.Module):
             fixed_test_loader = DataLoader(self.__test_processed["all"], **test_params)
 
             num_training_steps = len(training_loader)
-            
-            if hasattr(self, '__model'):
+
+            if hasattr(self, "__model"):
                 del self.__model
             gc.collect()
             torch.cuda.empty_cache()
@@ -264,8 +268,8 @@ class BERT(nn.Module):
                 num_warmup_steps=0,
                 num_training_steps=num_training_steps,
             )
-            
-            if config['weights']:
+
+            if config["weights"]:
                 loss_fn = nn.CrossEntropyLoss(weight=self.__class_weights)
             else:
                 loss_fn = nn.CrossEntropyLoss()
@@ -291,7 +295,7 @@ class BERT(nn.Module):
                         "val_loss": val_loss,
                         "val_acc": val_acc,
                         "macro_f1": macro_f1,
-                        "weighted_f1": weighted_f1
+                        "weighted_f1": weighted_f1,
                     }
                 )  # type: ignore
 
@@ -311,7 +315,7 @@ class BERT(nn.Module):
                 testing_loader, loss_fn, self.__processed["id2label"], True
             )
             self.__util.validate_report(labels, predictions)
-            
+
             if "intra" in self.__processed and "inter" in self.__processed:
                 intra_loader = DataLoader(self.__processed["intra"], **train_params)
                 inter_loader = DataLoader(self.__processed["inter"], **train_params)
@@ -321,38 +325,41 @@ class BERT(nn.Module):
                     inter_loader, loss_fn, self.__processed["id2label"], True
                 )
                 self.__util.validate_report(labels, predictions)
-                
+
                 print("### Intra sentences performance:")
                 labels, predictions = self.__valid(
                     intra_loader, loss_fn, self.__processed["id2label"], True
                 )
                 self.__util.validate_report(labels, predictions)
-            
+
             print("### Fixed test set performance:")
             labels, predictions = self.__valid(
                 fixed_test_loader, loss_fn, self.__processed["id2label"], True
             )
             self.__util.validate_report(labels, predictions)
-            
+
             if "intra" in self.__processed and "inter" in self.__processed:
-                intra_loader = DataLoader(self.__test_processed["intra"], **train_params)
-                inter_loader = DataLoader(self.__test_processed["inter"], **train_params)
+                intra_loader = DataLoader(
+                    self.__test_processed["intra"], **train_params
+                )
+                inter_loader = DataLoader(
+                    self.__test_processed["inter"], **train_params
+                )
 
                 print("### Inter sentences performance:")
                 labels, predictions = self.__valid(
                     inter_loader, loss_fn, self.__test_processed["id2label"], True
                 )
                 self.__util.validate_report(labels, predictions)
-                
+
                 print("### Intra sentences performance:")
                 labels, predictions = self.__valid(
                     intra_loader, loss_fn, self.__test_processed["id2label"], True
                 )
                 self.__util.validate_report(labels, predictions)
-                
 
             # If tune don't save else too many models heavy
-            if not config['tune']:
+            if not config["tune"]:
                 # Save the model
                 if not os.path.exists(self.__save):
                     os.makedirs(self.__save)
@@ -361,21 +368,17 @@ class BERT(nn.Module):
                 # Save the tokenizer
                 self.tokenizer.save_pretrained(self.__save)  # type:ignore
             else:
-                pass
-                # TODO: save
                 if not os.path.exists(f"{self.__save}/{wandb.run.id}"):
-                    os.makedirs(f"{self.__save}/{wandb.run.id}")            
+                    os.makedirs(f"{self.__save}/{wandb.run.id}")
                 self.__model.save_pretrained(f"{self.__save}/{wandb.run.id}")
                 self.tokenizer.save_pretrained(f"{self.__save}/{wandb.run.id}")  # type:ignore
-                
-                
+
     def predict(self, data, pipeline=False):
         self.__model.eval()
-        
+
         if pipeline:
             return self.__pipeline(data)
         else:
-            
             gc.collect()
             torch.cuda.empty_cache()
 
@@ -383,7 +386,9 @@ class BERT(nn.Module):
                 mask = np.where(np.array(data) == 3, 0, 1)
                 outputs = self.__model(
                     input_ids=torch.tensor(data, dtype=torch.long).to(self.__device),
-                    attention_mask=torch.tensor(mask, dtype=torch.long).to(self.__device),
+                    attention_mask=torch.tensor(mask, dtype=torch.long).to(
+                        self.__device
+                    ),
                 )
                 if self.__task == Task.TOKEN:
                     pred = torch.argmax(outputs.logits, dim=2)
@@ -395,11 +400,13 @@ class BERT(nn.Module):
                     pred = torch.argmax(outputs.logits, dim=1).tolist()
                     prob = [
                         max(all_prob)
-                        for all_prob in nn.functional.log_softmax(outputs.logits, dim=-1)
+                        for all_prob in nn.functional.log_softmax(
+                            outputs.logits, dim=-1
+                        )
                     ]
-            del outputs        
+            del outputs
             gc.collect()
-            torch.cuda.empty_cache()   
+            torch.cuda.empty_cache()
         return pred, prob
 
     def __train(
@@ -460,19 +467,14 @@ class BERT(nn.Module):
                 # Move predictions and targets to CPU only once for accuracy calculation
                 predictions = flattened_predictions.cpu().numpy()
                 targets = flattened_targets.cpu().numpy()
-                
+
                 # Extend predictions and targets
                 tr_preds.extend(predictions)
                 tr_labels.extend(targets)
-                
+
                 # Compute the accuracy
                 tmp_tr_accuracy = accuracy_score(predictions, targets)
                 tr_accuracy += tmp_tr_accuracy
-
-            # TODO:
-            #torch.nn.utils.clip_grad_norm_(
-            #    parameters=self.__model.parameters(), max_norm=10
-            #)
 
             # backward pass
             loss.backward()
@@ -549,7 +551,7 @@ class BERT(nn.Module):
                     targets.cpu().numpy(), predictions.cpu().numpy()
                 )
                 eval_accuracy += tmp_eval_accuracy
-                
+
                 del outputs
                 torch.cuda.empty_cache()
 
@@ -568,9 +570,14 @@ class BERT(nn.Module):
 
             if end:
                 return labels, predictions
-            
+
             report = self.__util.validate_report(labels, predictions, output=True)
-            return eval_loss, acc, report['macro avg']['f1-score'], report['weighted avg']['f1-score']
+            return (
+                eval_loss,
+                acc,
+                report["macro avg"]["f1-score"],
+                report["weighted avg"]["f1-score"],
+            )
 
     def forward(self, x):
         return self.__model(x)

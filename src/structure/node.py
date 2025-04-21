@@ -1,6 +1,6 @@
 import itertools
 from datetime import datetime
-from structure.enum import ME, DocTimeRel, TIMEX
+from structure.enum import ME, TIMEX
 
 
 class Node:
@@ -18,25 +18,19 @@ class Node:
             if type == me.name:
                 self.type = me
                 break
-        
+
         for te in TIMEX:
             if type == te.name:
                 self.type = te
                 break
 
         self.dct = dct
-        # self.set_dct(dct)
 
         self.date = date
         self.prob = 0
-        
+
         self.context = context
 
     def __str__(self):
         text = f"Node {self.id}: {self.value} - {self.type} - ({self.date} - prob: {self.prob})"
         return text
-    
-    # def set_dct(self, cat):
-    #     for tr in DocTimeRel:
-    #         if cat == tr.name:
-    #             self.dct = tr

@@ -71,7 +71,7 @@ class BiLSTM(nn.Module):
         project_name: str | None = None,
         pretrain: str | None = None,
         util: Util = None,
-        testset: list = []
+        testset: list = [],
     ):
         super(BiLSTM, self).__init__()
         self.__model = NN(
@@ -86,10 +86,10 @@ class BiLSTM(nn.Module):
             project_name,
             pretrain,
             util,
-            testset
+            testset,
         )
         self.tokenizer = self.__model.tokenizer
-        
+
         self.device = self.__model.device
 
     def predict(self, data, pipeline=False):
@@ -97,3 +97,4 @@ class BiLSTM(nn.Module):
 
     def forward(self, x):
         return self.__model(x)
+

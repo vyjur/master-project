@@ -1,9 +1,8 @@
 from datetime import datetime, timedelta
-from pyvis.network import Network
 import plotly
 import plotly.express as px
 import pandas as pd
-from structure.enum import ME, TLINK, TIMEX
+from structure.enum import ME, TIMEX
 
 
 class Timeline:
@@ -12,7 +11,6 @@ class Timeline:
         self.__offset = offset
 
     def create(self, data, save_path="./"):
-
         if not isinstance(data, pd.DataFrame):
             timeline = []
 
@@ -20,7 +18,6 @@ class Timeline:
             level_dict = {val: 0 for val in levels}
 
             for doc in data:
-
                 for e in doc["entities"]:
                     if e.type is None or isinstance(e.type, TIMEX) or e.date is None:
                         continue
@@ -68,27 +65,14 @@ class Timeline:
             custom_data=df[["Entity"]],
         )
         fig.update_yaxes(
-            autorange="reversed"
-        )  # otherwise tasks are listed from the bottom up
-        fig.update_traces(textposition="inside")
-        fig.update_layout(
-            xaxis=dict(
-                tickformat="%Y-%m-%d",  # Format the ticks to show only the date,
-                dtick="D1",
-            )
-        )
-        fig.update_yaxes(
+            autorange="reversed",
             visible=False,
             showticklabels=False,
-        )  # Hide the y-axis
-
-        fig.update_layout(barmode="overlay")
-        fig.update_traces(
-            hovertemplate="Document: %{base|%Y-%m-%d}<br>" "Text: %{customdata[0]}",
-            textangle=0,
-            insidetextfont=dict(size=56),
         )
-
+        fig.update_xaxes(
+            scaleanchor="y",  # This makes the x-axis scale dependent on the y-axis
+            scaleratio=5,  # This sets the scaling ratio between the x and y axes
+        )
         fig.update_layout(
             xaxis=dict(
                 tickmode="auto",  # Automatically choose tick spacing
@@ -96,23 +80,21 @@ class Timeline:
                 tickformat="%Y-%m-%d",  # Format the ticks to show only the date,
                 showgrid=True,
             ),
+            barmode="overlay",
         )
-        
-        fig.update_xaxes(
-            scaleanchor = "y",  # This makes the x-axis scale dependent on the y-axis
-            scaleratio = 5      # This sets the scaling ratio between the x and y axes
+        fig.update_traces(
+            textposition="inside",
+            hovertemplate="Document: %{base|%Y-%m-%d}<br>Text: %{customdata[0]}",
+            textangle=0,
+            insidetextfont=dict(size=56),
         )
-        
-        df['Start'] = pd.to_datetime(df['Start'])
-        x_min = df['Start'].min()
-        # Zoom in on a portion (e.g., first 10 units)
-        # Zoom in on the x-axis (e.g., show the first 10 days)
+
+        df["Start"] = pd.to_datetime(df["Start"])
+        x_min = df["Start"].min()
         zoom_factor = pd.Timedelta(days=30)  # 10 days zoom
         fig.update_xaxes(range=[x_min, x_min + zoom_factor])
 
-
-
-        # This is if we want to get the plot up right away
+        # INFO: This is if we want to get the plot up right away
         # fig.show()
         plotly.offline.plot(fig, filename=save_path + "timeline.html")
 

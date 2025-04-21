@@ -1,4 +1,4 @@
-# INFO: Baseline model. Currently fixing!
+# INFO: Baseline model
 import re
 import nltk
 import rapidfuzz
@@ -6,7 +6,6 @@ from rapidfuzz import process
 
 from nltk.stem import SnowballStemmer
 import pandas as pd
-from preprocess.setup import Preprocess
 from collections import Counter
 
 nltk.download("punkt")
@@ -26,12 +25,11 @@ class Lexicon:
             if x == "CONDITION"
             else "O"
         )
-        
+
         self.lexicon["Length"] = self.lexicon["ABBREV"].apply(lambda x: len(x.split()))  # type:ignore
         self.lexicon = self.lexicon[self.lexicon["Length"] < 4]
-        
-        self.__lexicon = self.lexicon.copy()
 
+        self.__lexicon = self.lexicon.copy()
 
         temp = self.lexicon[["a.", "ABBREV"]].values  # type: ignore
 
@@ -70,24 +68,20 @@ class Lexicon:
         common = pd.read_csv("./data/common.csv", header=None, delimiter=",")
         self.common = common.values
         self.common = [self.stemmer.stem(str(word[0])) for word in self.common]
-        
+
     def run(self, data):
         predictions = []
-        terms  = self.__lexicon['a.'].tolist()
+        terms = self.__lexicon["a."].tolist()
         for row in data:
-            
             if len(str(row)) < 3:
                 predictions.append("O")
                 continue
-            
-            threshold = 90 # quick-copy rapidfuzz.fuzz.token_sort_ratio
-            #threshold = 85 quick copy 2 rapidfuzz.fuzz.token_sort_ratio
+
+            threshold = 90  # quick-copy rapidfuzz.fuzz.token_sort_ratio
+            # threshold = 85 quick copy 2 rapidfuzz.fuzz.token_sort_ratio
 
             matches = process.extract(
-                row,
-                terms,
-                limit=5,
-                scorer=rapidfuzz.fuzz.token_sort_ratio
+                row, terms, limit=5, scorer=rapidfuzz.fuzz.token_sort_ratio
             )
 
             # Filter matches by threshold and reasonable term length
@@ -100,7 +94,7 @@ class Lexicon:
             # Get the ABBREVs for the matched terms
             if matched_values:
                 indices = [i[1] for i in matched_values]
-                instances = self.__lexicon.iloc[indices]['ABBREV'].tolist()
+                instances = self.__lexicon.iloc[indices]["ABBREV"].tolist()
             else:
                 instances = []
             counter = Counter(instances)
@@ -111,7 +105,7 @@ class Lexicon:
                 pred = "O"
             predictions.append(pred)
         return predictions
-    
+
     def run2(self, data):
         words = data.strip().split()
 
@@ -131,16 +125,3 @@ class Lexicon:
                     predictions.append(result.to_numpy()[0][1])  # type: ignore
 
         return predictions
-    
-
-if __name__ == "__main__":
-    import os
-    from preprocess.dataset import DatasetManager
-    from sklearn.model_selection import train_test_split
-    from sklearn.metrics import classification_report
-    from structure.enum import Dataset
-
-    lex = Lexicon()
-    text = ["hjerteinfarkt", "diabetes type 2"]
-
-    print(lex.run(text))

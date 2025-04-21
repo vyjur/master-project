@@ -18,7 +18,7 @@ class BERTBiLSTM(nn.Module):
         project_name: str | None = None,
         pretrain: str | None = None,
         util: Util = None,
-        testset: list = []
+        testset: list = [],
     ):
         super(BERTBiLSTM, self).__init__()
 
@@ -46,7 +46,7 @@ class BERTBiLSTM(nn.Module):
             tokenizer,
             project_name,
             pretrain,
-            testset = testset
+            testset=testset,
         )
         self.tokenizer = self.__model.tokenizer
         self.device = self.__model.device
@@ -55,4 +55,5 @@ class BERTBiLSTM(nn.Module):
         return self.__model.predict(data, pipeline)
 
     def forward(self, x):
-        return self.__model(x) 
+        return self.__model(x)
+

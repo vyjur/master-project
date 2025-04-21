@@ -16,6 +16,7 @@ import gc
 sweep_config = TuningConfig.get_config()
 
 import random
+
 seed = 42
 torch.manual_seed(seed)
 torch.cuda.manual_seed_all(seed)  # For multi-GPU
@@ -42,7 +43,7 @@ class NN(nn.Module):
         project_name: str | None = None,
         pretrain: str | None = None,
         util: Util = None,
-        testset: list = []
+        testset: list = [],
     ):
         super(NN, self).__init__()
         self.__device = "cuda:0" if cuda.is_available() else "cpu"
@@ -59,7 +60,6 @@ class NN(nn.Module):
         self.__base_model = model
         self.__save = save
         self.__util = util if util is not None else Util()
-        
 
         self.__project_name = project_name
         self.__tags_name = tags_name
@@ -83,7 +83,7 @@ class NN(nn.Module):
 
             self.__processed["label2id"] = tag_to_ix
             self.__processed["id2label"] = ix_to_tag
-        
+
         self.__vocab_size = self.tokenizer.vocab_size  # type: ignore
         hidden_dim = parameters["max_length"]
 
@@ -94,7 +94,7 @@ class NN(nn.Module):
             self.__model.load_state_dict(
                 torch.load(save + "/model.pth", weights_only=False)
             )
-            
+
             self.__model.to(self.__device)
         else:
             tune = parameters["tune"]
@@ -107,16 +107,9 @@ class NN(nn.Module):
                     "value": parameters["num_workers"]
                 }
                 sweep_id = wandb.sweep(
-                     sweep_config,
-                     project=f"{project_name}-{task}-nn-model".replace('"', ""),
-                 )
-                #wandb.agent(sweep_id, self.train, count=parameters["tune_count"])
-                
-                # ner: bilstm-crf"
-                #sweep_id = '5vn0laxj'
-                
-                # ner: bert-bilstm-crf"
-                # sweep_id = 'ibvpiz29' 
+                    sweep_config,
+                    project=f"{project_name}-{task}-nn-model".replace('"', ""),
+                )
                 wandb.agent(sweep_id, self.train, count=parameters["tune_count"])
             else:
                 wandb.config = {
@@ -137,36 +130,44 @@ class NN(nn.Module):
                     "evaluation_strategy": "epoch",
                     "save_strategy": "epoch",
                     "logging_strategy": "epoch",
-                    "weights": parameters['weights'],
+                    "weights": parameters["weights"],
                     "downsample": parameters["downsample"],
                     "tune": tune,
                 }
                 self.train(wandb.config)
 
     def train(self, config=None):
-        
-        with wandb.init(project=f"{self.__project_name}-{self.__task}-nn-model".replace('"', "")):  # type: ignore
-
+        with wandb.init(
+            project=f"{self.__project_name}-{self.__task}-nn-model".replace('"', "")
+        ):  # type: ignore
             if config is None:
                 config = wandb.config
 
             print(config)
-            
+
             if "downsample" in config:
-                downsample = config['downsample']
+                downsample = config["downsample"]
             else:
                 downsample = False
-            
+
             self.__processed = Preprocess(
-                self.tokenizer, config["max_length"], config['stride'], self.__util
-            ).run_train_test_split(self.__task, self.__dataset, self.__tags_name, downsample=downsample)
+                self.tokenizer, config["max_length"], config["stride"], self.__util
+            ).run_train_test_split(
+                self.__task, self.__dataset, self.__tags_name, downsample=downsample
+            )
             self.__class_weights = self.__util.class_weights(
                 self.__task, self.__processed["dataset"], self.__device
             )
-            
+
             self.__test_processed = Preprocess(
                 self.tokenizer, config["max_length"], config["stride"], self.__util
-            ).run_train_test_split(self.__task, self.__testset, self.__tags_name, split=False, downsample=downsample)
+            ).run_train_test_split(
+                self.__task,
+                self.__testset,
+                self.__tags_name,
+                split=False,
+                downsample=downsample,
+            )
 
             if self.__task == Task.TOKEN:
                 START_ID = max(self.__processed["id2label"].keys()) + 1
@@ -192,7 +193,7 @@ class NN(nn.Module):
             testing_loader = DataLoader(self.__processed["test"], **test_params)
             fixed_test_loader = DataLoader(self.__test_processed["all"], **test_params)
 
-            if hasattr(self, '__model'):
+            if hasattr(self, "__model"):
                 del self.__model
             gc.collect()
             torch.cuda.empty_cache()
@@ -204,14 +205,14 @@ class NN(nn.Module):
                 config["embedding_dim"],
                 config["max_length"],
             ).to(self.__device)
-            
+
             self.__model.num_labels = len(self.__processed["id2label"])
 
-            if config['weights']:
+            if config["weights"]:
                 loss_fn = nn.CrossEntropyLoss(weight=self.__class_weights)
             else:
                 loss_fn = nn.CrossEntropyLoss()
-                
+
             if config["optimizer"] == "adam":
                 optimizer = torch.optim.Adam(  # type: ignore
                     params=self.__model.parameters(),
@@ -227,7 +228,10 @@ class NN(nn.Module):
             else:
                 optimizer = None
 
-            early_stopping = EarlyStopping(patience=5, delta=0.01)
+            early_stopping = EarlyStopping(
+                patience=config["early_stopping_patience"],
+                delta=config["early_stopping_delta"],
+            )
             for t in range(config["epochs"]):
                 print(f"Epoch {t + 1}\n-------------------------------")
                 train_loss, train_acc = self.__train(
@@ -243,7 +247,7 @@ class NN(nn.Module):
                         "val_loss": val_loss,
                         "val_acc": val_acc,
                         "macro_f1": macro_f1,
-                        "weighted_f1": weighted_f1
+                        "weighted_f1": weighted_f1,
                     }
                 )  # type: ignore
                 early_stopping(val_loss, self.__model)
@@ -262,7 +266,7 @@ class NN(nn.Module):
                 testing_loader, loss_fn, self.__processed["id2label"], True
             )
             self.__util.validate_report(labels, predictions)
-            
+
             if "intra" in self.__processed and "inter" in self.__processed:
                 intra_loader = DataLoader(self.__processed["intra"], **train_params)
                 inter_loader = DataLoader(self.__processed["inter"], **train_params)
@@ -272,50 +276,56 @@ class NN(nn.Module):
                     inter_loader, loss_fn, self.__processed["id2label"], True
                 )
                 self.__util.validate_report(labels, predictions)
-                
+
                 print("### Intra sentences performance:")
                 labels, predictions = self.__valid(
                     intra_loader, loss_fn, self.__processed["id2label"], True
                 )
                 self.__util.validate_report(labels, predictions)
-            
+
             print("### Fixed test set performance:")
             labels, predictions = self.__valid(
                 fixed_test_loader, loss_fn, self.__processed["id2label"], True
             )
             self.__util.validate_report(labels, predictions)
-            
+
             if "intra" in self.__processed and "inter" in self.__processed:
-                torch.save(self.__test_processed["intra"], 'output/intra.pt')
-                torch.save(self.__test_processed["inter"], 'output/inter.pt')
-                intra_loader = DataLoader(self.__test_processed["intra"], **train_params)
-                inter_loader = DataLoader(self.__test_processed["inter"], **train_params)
+                torch.save(self.__test_processed["intra"], "output/intra.pt")
+                torch.save(self.__test_processed["inter"], "output/inter.pt")
+                intra_loader = DataLoader(
+                    self.__test_processed["intra"], **train_params
+                )
+                inter_loader = DataLoader(
+                    self.__test_processed["inter"], **train_params
+                )
 
                 print("### Inter sentences performance:")
                 labels, predictions = self.__valid(
                     inter_loader, loss_fn, self.__test_processed["id2label"], True
                 )
                 self.__util.validate_report(labels, predictions)
-                
+
                 print("### Intra sentences performance:")
                 labels, predictions = self.__valid(
                     intra_loader, loss_fn, self.__test_processed["id2label"], True
                 )
                 self.__util.validate_report(labels, predictions)
-                
+
             # If tune don't save else too many models heavy
             if not config["tune"]:
                 if not os.path.exists(self.__save):
                     os.makedirs(self.__save)
                 torch.save(self.__model.state_dict(), self.__save + "/model.pth")
-                
+
             else:
                 full_save_path = os.path.join(self.__save, wandb.run.id)
 
                 # Ensure full directory exists
                 os.makedirs(full_save_path, exist_ok=True)
 
-                torch.save(self.__model.state_dict(), f"{self.__save}/{wandb.run.id}/model.pth")
+                torch.save(
+                    self.__model.state_dict(), f"{self.__save}/{wandb.run.id}/model.pth"
+                )
 
     def predict(self, data, pipeline=False):
         data_tensor = torch.tensor(data, dtype=torch.long).to(self.__device)
@@ -327,9 +337,7 @@ class NN(nn.Module):
             pred = torch.argmax(outputs, axis=1).tolist()  # type: ignore
             prob = [
                 max(all_prob)  # type: ignore
-                for all_prob in nn.functional.log_softmax(
-                    outputs, dim=-1
-                )  # type:ignore
+                for all_prob in nn.functional.log_softmax(outputs, dim=-1)  # type:ignore
             ]
 
             return pred, prob  # type: ignore
@@ -403,12 +411,17 @@ class NN(nn.Module):
             labels = [id2label[id] for id in all_targets]
             predictions = [id2label[id] for id in all_preds]
             print(f"Validation Accuracy: {acc}")
-            
+
             if end:
                 return labels, predictions
 
             report = self.__util.validate_report(labels, predictions)
-            return eval_loss, acc, report['macro avg']['f1-score'], report['weighted avg']['f1-score']
+            return (
+                eval_loss,
+                acc,
+                report["macro avg"]["f1-score"],
+                report["weighted avg"]["f1-score"],
+            )
 
     def forward(self, x):
         self.__model.batch = x.shape[0]

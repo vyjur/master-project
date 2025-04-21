@@ -19,7 +19,7 @@ class TokenBERT(nn.Module):
         project_name: str | None = None,
         pretrain: str | None = None,
         util: Util = None,
-        testset: list = []
+        testset: list = [],
     ):
         super(TokenBERT, self).__init__()
         self.__bert = BERT(
@@ -33,12 +33,12 @@ class TokenBERT(nn.Module):
             project_name,
             pretrain,
             util,
-            testset
+            testset,
         )
         self.tokenizer = self.__bert.tokenizer
 
     def predict(self, data, pipeline=False):
         return self.__bert.predict(data, pipeline)
-    
+
     def forward(self, x):
         return self.predict(x)
