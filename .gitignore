@@ -175,7 +175,9 @@ tokenizer.json
 .DS__Store
 ._.DS_Store
 
-/data/helsearkiv
+#/data/helsearkiv
+/data/helsearkiv/*
+!/data/helsearkiv/.gitkeep
 job.slurm
 /slurm
 

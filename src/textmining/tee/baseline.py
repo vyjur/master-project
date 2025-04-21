@@ -5,7 +5,7 @@ from collections import Counter
 class Baseline:
     def __init__(self):
         self.__patterns = ["Status presens", "Innlagt", "Dato", "Diktert", "Innl.dato", "Journalnotat", "utskrifts", "INNKOMSTJOURNAL"]
-        self.__cities = pd.read_csv('./scripts/evaluate/tee/no-cities.csv')
+        self.__cities = pd.read_csv('./data/no-cities.csv')
         
     def run(self, data):
         

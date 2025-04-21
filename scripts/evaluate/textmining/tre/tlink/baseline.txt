@@ -1,0 +1,30 @@
+Virtual environment already activated: /cluster/home/julievt/.cache/pypoetry/virtualenvs/master-project-118ajfdt-py3.12
+Installing dependencies from lock file
+
+No dependencies to install or update
+
+Installing the current project: master-project (0.1.0)
+### Processing the files:
+######
+LOCAL
+              precision    recall  f1-score   support
+
+     OVERLAP       0.15      0.53      0.24       320
+           O       0.99      0.92      0.95     12163
+
+    accuracy                           0.91     12483
+   macro avg       0.57      0.73      0.59     12483
+weighted avg       0.97      0.91      0.93     12483
+
+### Processing the files:
+205
+GLOBAL
+              precision    recall  f1-score   support
+
+     OVERLAP       0.10      0.63      0.17       182
+           O       0.99      0.84      0.91      6466
+
+    accuracy                           0.83      6648
+   macro avg       0.54      0.73      0.54      6648
+weighted avg       0.96      0.83      0.89      6648
+

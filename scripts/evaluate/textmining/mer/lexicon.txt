@@ -1,0 +1,8 @@
+              precision    recall  f1-score   support
+
+   CONDITION       0.32      0.23      0.26       638
+   TREATMENT       0.33      0.17      0.22       497
+
+   micro avg       0.32      0.20      0.24      1135
+   macro avg       0.32      0.20      0.24      1135
+weighted avg       0.33      0.20      0.24      1135
