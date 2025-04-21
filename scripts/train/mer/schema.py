@@ -1,5 +1,5 @@
 import os
-from textmining.ner.setup import NERecognition
+from textmining.mer.setup import MERecognition
 from preprocess.dataset import DatasetManager
 
 print("##### Start training for NER Schema... ######")
@@ -47,7 +47,7 @@ entity_files = [
     if os.path.isfile(os.path.join(folder_path, f))
 ]
 
-folder_path = "./data/helsearkiv/test_dataset/csv/relation/"
+folder_path = "./data/helsearkiv/test_dataset/csv/relation"
 
 relation_files = [
     folder_path + f
@@ -59,18 +59,17 @@ test_manager = DatasetManager(entity_files, relation_files)
 
 for i, conf in enumerate(configs):
     print(f"###### ({i}) Training for configuration file: {conf}")
-    if os.path.isdir(folder + conf) or conf != 'c-io.ini':
+    if os.path.isdir(folder + conf) or conf != 'b-ioe.ini':
         continue 
 
     save_directory = "./models/ner/schema" + conf.replace(".ini", "")
     if not os.path.isdir(save_directory):
         os.mkdir(save_directory)
         
-    ner = NERecognition(
+    ner = MERecognition(
         config_file=folder + conf,
         manager=manager,
         save_directory=save_directory,
-        test_manager=test_manager
     )
     print("Finished with this task. \n \n")
 

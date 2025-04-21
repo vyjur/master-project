@@ -3,7 +3,7 @@ import re
 import pypdf
 import textwrap
 import pandas as pd
-from textmining.ner.setup import NERecognition
+from textmining.mer.setup import MERecognition
 from textmining.tee.setup import TEExtract
 from textmining.tre.setup import TRExtract
 from preprocess.dataset import DatasetManager

@@ -1,9 +1,9 @@
-from textmining.ner.setup import NERecognition
+from textmining.mer.setup import MERecognition
 from preprocess.setup import Preprocess
 from types import SimpleNamespace
 from sklearn.metrics import classification_report
 
-ner = NERecognition(
+ner = MERecognition(
     config_file='./scripts/evaluate/ner/config.ini',
     manager=None,
     save_directory='./models/ner/model/b-bert'

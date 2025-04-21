@@ -8,7 +8,7 @@ from preprocess.setup import Preprocess
 from structure.enum import Dataset, Task, ME, NER_SCHEMA
 
 
-class NERecognition:
+class MERecognition:
     def __init__(
         self,
         config_file: str,
@@ -193,7 +193,7 @@ if __name__ == "__main__":
     ]
     manager = DatasetManager(["./data/annotated_MTSamples/ex13.tsv"])
 
-    reg = NERecognition("./src/textmining/ner/config.ini", manager)
+    reg = MERecognition("./src/textmining/ner/config.ini", manager)
     preprocess = Preprocess(
         reg.get_tokenizer(), reg.get_max_length(), reg.get_stride(), reg.get_util()
     )

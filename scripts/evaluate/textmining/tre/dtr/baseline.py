@@ -2,7 +2,7 @@ import os
 import pandas as pd
 from preprocess.dataset import DatasetManager
 from structure.enum import Dataset, DocTimeRel
-from textmining.tre.baseline_dtr import Baseline
+from textmining.tre.baseline.dtr import Baseline
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 

@@ -2,7 +2,7 @@ import os
 import pandas as pd
 from preprocess.dataset import DatasetManager
 from structure.enum import Dataset, TLINK, SENTENCE
-from textmining.tre.baseline_tlink import Baseline
+from textmining.tre.baseline.tlink import Baseline
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 from textmining.tre.setup import TRExtract

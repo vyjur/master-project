@@ -3,7 +3,7 @@ import re
 import pypdf
 import textwrap
 import pandas as pd
-from textmining.ner.setup import NERecognition
+from textmining.mer.setup import MERecognition
 from textmining.tee.setup import TEExtract
 from textmining.tre.setup import TRExtract
 from preprocess.dataset import DatasetManager
@@ -37,7 +37,7 @@ manager = DatasetManager(entity_files, relation_files)
 
 file = "./scripts/active-learning/config/ner.ini"
 save_directory = "./models/ner/model/b-bert"
-ner = NERecognition(
+ner = MERecognition(
     config_file=file,
     manager=manager,
     save_directory=save_directory,

@@ -5,7 +5,7 @@ import pandas as pd
 import configparser
 from datetime import datetime
 
-from textmining.ner.setup import NERecognition
+from textmining.mer.setup import MERecognition
 
 from textmining.tre.setup import TRExtract
 from textmining.tee.setup import TEExtract
@@ -60,7 +60,7 @@ class Pipeline:
         ### Initialize text mining modules ###
 
         print("### Initializing NER ###")
-        self.__ner = NERecognition(self.__config["CONFIGS"]["ner"], manager)
+        self.__ner = MERecognition(self.__config["CONFIGS"]["ner"], manager)
 
         print("### Initializing TEE ###")
         self.__tee = TEExtract(self.__config["CONFIGS"]["tee"], manager)
