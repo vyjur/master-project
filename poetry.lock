@@ -1267,24 +1267,6 @@ docs = ["readthedocs-sphinx-ext", "sphinx", "sphinx-rtd-theme"]
 tests = ["pytest"]
 
 [[package]]
-name = "jsonpickle"
-version = "3.3.0"
-description = "Python library for serializing arbitrary object graphs into JSON"
-optional = false
-python-versions = ">=3.7"
-groups = ["main"]
-markers = "python_version <= \"3.11\" or python_version >= \"3.12\""
-files = [
-    {file = "jsonpickle-3.3.0-py3-none-any.whl", hash = "sha256:287c12143f35571ab00e224fa323aa4b090d5a7f086f5f494d7ee9c7eb1a380a"},
-    {file = "jsonpickle-3.3.0.tar.gz", hash = "sha256:ab467e601e5b1a1cd76f1819d014795165da071744ef30bf3786e9bc549de25a"},
-]
-
-[package.extras]
-docs = ["furo", "rst.linker (>=1.9)", "sphinx"]
-packaging = ["build", "twine"]
-testing = ["bson", "ecdsa", "feedparser", "gmpy2", "numpy", "pandas", "pymongo", "pytest (>=3.5,!=3.7.3)", "pytest-benchmark", "pytest-benchmark[histogram]", "pytest-checkdocs (>=1.2.3)", "pytest-cov", "pytest-enabler (>=1.0.1)", "pytest-ruff (>=0.2.1)", "scikit-learn", "scipy", "scipy (>=1.9.3)", "simplejson", "sqlalchemy", "ujson"]
-
-[[package]]
 name = "jsonschema"
 version = "4.23.0"
 description = "An implementation of JSON Schema validation for Python"
@@ -3203,24 +3185,6 @@ files = [
 ]
 
 [[package]]
-name = "pyvis"
-version = "0.3.2"
-description = "A Python network graph visualization library"
-optional = false
-python-versions = ">3.6"
-groups = ["main"]
-markers = "python_version <= \"3.11\" or python_version >= \"3.12\""
-files = [
-    {file = "pyvis-0.3.2-py3-none-any.whl", hash = "sha256:5720c4ca8161dc5d9ab352015723abb7a8bb8fb443edeb07f7a322db34a97555"},
-]
-
-[package.dependencies]
-ipython = ">=5.3.0"
-jinja2 = ">=2.9.6"
-jsonpickle = ">=1.4.1"
-networkx = ">=1.11"
-
-[[package]]
 name = "pywin32"
 version = "307"
 description = "Python for Window Extensions"
@@ -4606,22 +4570,6 @@ pure-eval = "*"
 tests = ["cython", "littleutils", "pygments", "pytest", "typeguard"]
 
 [[package]]
-name = "sutime"
-version = "1.0.1"
-description = "A Python wrapper for Stanford CoreNLP's SUTime"
-optional = false
-python-versions = ">=3.6,<4.0"
-groups = ["main"]
-markers = "python_version <= \"3.11\" or python_version >= \"3.12\""
-files = [
-    {file = "sutime-1.0.1-py3-none-any.whl", hash = "sha256:37f8ed813ec4be03b8fd7ee7993be1d0ce6b5e25a4b1bf842022fda6a3f06884"},
-    {file = "sutime-1.0.1.tar.gz", hash = "sha256:1f2f653ffe9f74b5fb48e5d01ff3a8cc9307592d280f95f137221f904d815b35"},
-]
-
-[package.dependencies]
-JPype1 = ">=1.1.2,<2.0.0"
-
-[[package]]
 name = "sympy"
 version = "1.13.3"
 description = "Computer algebra system (CAS) in Python"
@@ -5365,4 +5313,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<3.13"
-content-hash = "e439675bfea17a17cb366f06ea192a9060a952b4a0375905fbdd2b7d271df848"
+content-hash = "58958c93022a11a8260013c278e16442e93aa15970e2f96c332b4f7f375696bd"
