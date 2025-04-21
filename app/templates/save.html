@@ -1,0 +1,26 @@
+<div class="modal fade" id="saveModal" tabindex="-1" aria-labelledby="saveModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="saveModalLabel">Save File</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Save button that will trigger file download -->
+                <button type="button" class="btn btn-success" id="saveFileBtn">Save to Computer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // When the user clicks the "Save to Computer" button
+    document.getElementById('saveFileBtn').addEventListener('click', function () {
+        // Redirect to Flask's '/save' route to trigger file download
+        window.location.href = '/save';
+
+        // Close the modal after clicking the save button
+        var saveModal = new bootstrap.Modal(document.getElementById('saveModal'));
+        saveModal.hide();
+    });
+</script>

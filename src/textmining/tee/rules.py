@@ -105,6 +105,21 @@ def convert_date_format(text):
     # Replace all dates in the text using the format_date function
     return re.sub(date_pattern, format_date, text)
 
+def convert_date_format_3(text):
+    def convert_date(match):
+        month, day, year = match.groups()
+        # Normalize year to 4 digits
+        if len(year) == 2:
+            year = f"20{year}" if int(year) < 30 else f"19{year}"
+            return f"{int(day):02d}.{int(month):02d}.{year}"
+
+    # Updated pattern: month/day-year (e.g. 11/9-1985)
+    pattern = r'(\d{1,2})/(\d{1,2})-(\d{2,4})'
+
+    new_text = re.sub(pattern, convert_date, text)
+
+    return new_text
+
 def convert_text(text):
     text = text.replace("i dag", "idag")
     text = text.replace("mnd", "måned")
@@ -131,7 +146,11 @@ def convert_duration(context, value, dct):
     unit = next((unit for unit in time_units if unit in value), None)
     
     if unit:
-        amount = int(value.replace("P", "").replace(unit, ""))
+        print("UNIT", unit)
+        try:
+            amount = int(value.replace("P", "").replace(unit, ""))
+        except:
+            amount = 0
         adjustment = time_units[unit]
         resolved_date = dct
         if any(term in context for term in ["siden", "tilbake", "i forveien", "før"]):  

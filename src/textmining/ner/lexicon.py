@@ -1,9 +1,13 @@
 # INFO: Baseline model. Currently fixing!
 import re
 import nltk
+import rapidfuzz
+from rapidfuzz import process
+
 from nltk.stem import SnowballStemmer
 import pandas as pd
 from preprocess.setup import Preprocess
+from collections import Counter
 
 nltk.download("punkt")
 
@@ -22,8 +26,12 @@ class Lexicon:
             if x == "CONDITION"
             else "O"
         )
+        
         self.lexicon["Length"] = self.lexicon["ABBREV"].apply(lambda x: len(x.split()))  # type:ignore
         self.lexicon = self.lexicon[self.lexicon["Length"] < 4]
+        
+        self.__lexicon = self.lexicon.copy()
+
 
         temp = self.lexicon[["a.", "ABBREV"]].values  # type: ignore
 
@@ -62,8 +70,49 @@ class Lexicon:
         common = pd.read_csv("./data/common.csv", header=None, delimiter=",")
         self.common = common.values
         self.common = [self.stemmer.stem(str(word[0])) for word in self.common]
-
+        
     def run(self, data):
+        predictions = []
+        terms  = self.__lexicon['a.'].tolist()
+        for row in data:
+            
+            if len(str(row)) < 3:
+                predictions.append("O")
+                continue
+            
+            threshold = 90 # quick-copy rapidfuzz.fuzz.token_sort_ratio
+            #threshold = 85 quick copy 2 rapidfuzz.fuzz.token_sort_ratio
+
+            matches = process.extract(
+                row,
+                terms,
+                limit=5,
+                scorer=rapidfuzz.fuzz.token_sort_ratio
+            )
+
+            # Filter matches by threshold and reasonable term length
+            matched_values = [
+                (match[0], terms.index(match[0]))
+                for match in matches
+                if match[1] >= threshold and len(match[0]) > 2
+            ]
+
+            # Get the ABBREVs for the matched terms
+            if matched_values:
+                indices = [i[1] for i in matched_values]
+                instances = self.__lexicon.iloc[indices]['ABBREV'].tolist()
+            else:
+                instances = []
+            counter = Counter(instances)
+            # Get the most common element
+            if len(instances):
+                pred, count = counter.most_common(1)[0]
+            else:
+                pred = "O"
+            predictions.append(pred)
+        return predictions
+    
+    def run2(self, data):
         words = data.strip().split()
 
         print("RUN", len(words))
@@ -82,7 +131,7 @@ class Lexicon:
                     predictions.append(result.to_numpy()[0][1])  # type: ignore
 
         return predictions
-
+    
 
 if __name__ == "__main__":
     import os
@@ -91,66 +140,7 @@ if __name__ == "__main__":
     from sklearn.metrics import classification_report
     from structure.enum import Dataset
 
-    folder_path = "./data/annotated/"
-    files = [
-        folder_path + f
-        for f in os.listdir(folder_path)
-        if os.path.isfile(os.path.join(folder_path, f))
-    ]
-    manager = DatasetManager(files)
-    raw_dataset = manager.get(Dataset.NER)
-
-    dataset = []
-    tags = set()
-    for doc in raw_dataset:
-        curr_doc = []
-        for row in doc.itertuples(index=False):
-            curr_doc.append((row[2], row[3]))  # Add (row[1], row[2]) tuple to list
-            tags.add(row[3])  # Add row[2] to the set
-
-        dataset.append(curr_doc)
-
-    train, test = train_test_split(
-        dataset,
-        train_size=0.8,
-        random_state=42,
-    )
-
-    print(test)
-
-    sentences = []
-
-    for sentence in test:
-        curr_sentence = []
-        target = []
-        for term in sentence:
-            splitted_term = term[0].split()
-            for _ in range(len(splitted_term)):
-                target.append(term[1])
-            curr_sentence.extend(splitted_term)
-        sentences.append(
-            {
-                "sentence": " ".join(curr_sentence),
-                "words": curr_sentence,
-                "target": target,
-            }
-        )
-
-    print("TARGET", len(sentences[0]["target"]))
-
     lex = Lexicon()
-
-    result = lex.run(sentences[0]["sentence"])
-
-    for i, cat in enumerate(result):
-        print(cat, sentences[0]["words"][i], sentences[0]["target"][i])
-
-    target = [
-        targ.replace("SYMPTOM", "CONDITION").replace("EVENT", "TREATMENT")
-        for targ in sentences[0]["target"]
-    ]
-    print(classification_report(target, result, labels=list(tags)))
-
-    text = "Pasienten har også opplevd økt tungpust de siste månedene, noe som har begrenset aktivitetsnivået hans og hadde hjerteinfarkt ifjor."
+    text = ["hjerteinfarkt", "diabetes type 2"]
 
     print(lex.run(text))

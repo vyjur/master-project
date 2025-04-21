@@ -68,8 +68,11 @@ class DatasetManager:
                     df['page'] = np.nan
                 if 'file' not in df.columns:
                     df['file'] = ''
-                    
-                df = df[['Text', 'Id', 'MedicalEntity', 'DCT', 'TIMEX', 'Context', 'file', 'page']]
+                
+                if 'SECTIME' in df.columns:
+                    df = df[['Text', 'Id', 'MedicalEntity', 'DCT', 'TIMEX', 'Context', 'file', 'page', 'SECTIME', 'SECTIME_context']]
+                else:
+                    df = df[['Text', 'Id', 'MedicalEntity', 'DCT', 'TIMEX', 'Context', 'file', 'page']]
 
                 all_entity_df.append(df)
             if all_entity_df:  # only concatenate if the list is not empty
@@ -122,7 +125,9 @@ class DatasetManager:
             case Dataset.NER:
                 return self.__get_ent_by_cols(["Id", "Text", "MedicalEntity", "TIMEX", "DCT", "Context"])
             case Dataset.DTR:
-                result = self.__get_ent_by_cols(["Id", "Text", "MedicalEntity", "TIMEX", "DCT", "Context"])
+                result = self.__get_ent_by_cols(["Id", "Text", "MedicalEntity", "TIMEX", "DCT", "Context", "SECTIME", "SECTIME_context"])
+                if "SECTIME" in result.columns:
+                    return result[result["DCT"].notna() & result['MedicalEntity'].notna() & result['TIMEX'].isna()][["Id", "Text", "DCT", "Context", "SECTIME", "SECTIME_context"]]
                 return result[result["DCT"].notna() & result['MedicalEntity'].notna() & result['TIMEX'].isna()][["Id", "Text", "DCT", "Context"]]
             case Dataset.TEE:
                 result = self.__get_ent_by_cols(["Id", "Text", "TIMEX", "Context"])
@@ -131,8 +136,10 @@ class DatasetManager:
                 return self.__get_tlink()
 
     def __get_ent_by_cols(self, cols: List[str]):
-        return self.__entity_df[cols]
-    
+        if not "SECTIME" in self.__entity_df.columns:
+            cols = [x for x in cols if x not in ["SECTIME", "SECTIME_context"]]
+        return self.__entity_df[cols]   
+     
     def __get_tlink(self):
         return self.__relation_df
     

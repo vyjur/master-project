@@ -18,8 +18,10 @@ class DocTimeRel(Enum):
     OVERLAP = 3 
 
 class TLINK(Enum):
-    BEFORE = 1
-    OVERLAP = 2  
+    #BEFORE = 1
+    #OVERLAP = 2  
+    #O = 3
+    OVERLAP = 2
     O = 3
 
 class TIMEX(Enum):

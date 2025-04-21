@@ -1,0 +1,24 @@
+[nltk_data] Downloading package punkt to
+[nltk_data]     /cluster/home/julievt/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+### Processing the files:
+LOCAL
+              precision    recall  f1-score   support
+
+        DATE       0.62      0.78      0.69      1446
+         DCT       0.55      0.37      0.44      1068
+
+    accuracy                           0.60      2514
+   macro avg       0.59      0.57      0.57      2514
+weighted avg       0.59      0.60      0.59      2514
+
+### Processing the files:
+GLOBAL
+              precision    recall  f1-score   support
+
+        DATE       0.93      0.91      0.92       245
+         DCT       0.62      0.67      0.65        52
+
+    accuracy                           0.87       297
+   macro avg       0.78      0.79      0.78       297
+weighted avg       0.88      0.87      0.87       297

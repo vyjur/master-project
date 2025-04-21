@@ -70,6 +70,11 @@ class TEExtract:
             self.__config["pretrain"]["name"]
         )
         
+        if self.__config.has_option('train.parameters', "downsample"):
+            downsample = self.__config.getboolean('train.parameters', 'downsample')
+        else:
+            downsample = False
+        
         train_parameters = {
             "train_batch_size": self.__config.getint(
                 "train.parameters", "train_batch_size"
@@ -92,7 +97,8 @@ class TEExtract:
             "stride": self.__config.getint("train.parameters", "stride"),
             "weights": self.__config.getboolean("train.parameters", "weights"),
             "tune": self.__config.getboolean("tuning", "tune"),
-            "tune_count": self.__config.getint("tuning", "count") 
+            "tune_count": self.__config.getint("tuning", "count"),
+            "downsample": downsample
         }
 
         self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](
@@ -132,6 +138,7 @@ class TEExtract:
         self.__heideltime.set_document_time(dct)
         
     def pre_rules(self, text, sectime=False):
+        text = convert_date_format_3(text)
        
         if not sectime:
             
@@ -160,8 +167,8 @@ class TEExtract:
         if self.__heideltime.document_time is not None:
             dct = datetime.strptime(self.__heideltime.document_time, "%Y-%m-%d")
             if ttype == "DURATION":
-                return convert_duration(check_context, value, dct) 
-        return value 
+                return convert_duration(check_context, value, dct), True
+        return value, False
         
     def run(self, text, sectime=False):
         if self.__rules:
@@ -170,7 +177,8 @@ class TEExtract:
         result = self.__heideltime.parse(text).encode("utf-8").decode("utf-8")
         try:
             root = ET.fromstring(result)
-        except:
+        except ET.ParseError as e:
+            print(f"XML parsing error: {e}")
             columns = ["id", "type", "value", "text", "context"]
             return pd.DataFrame(columns=columns)
         full_text = " ".join(root.itertext())
@@ -193,7 +201,8 @@ class TEExtract:
             context = self.__get_window(full_text, text, window_size=50)
             
             if self.__rules and not sectime: 
-                value = self.__post_rules(full_text, text, ttype, value,)
+                value, changed = self.__post_rules(full_text, text, ttype, value)
+                ttype = "DATE" if changed else ttype
             
             data.append( {
                 'id': tid,
@@ -207,9 +216,7 @@ class TEExtract:
             return pd.DataFrame(columns=['id', 'type', 'value', 'text', 'context'])
         
         output = pd.DataFrame(data)
-        
-        if self.__heideltime.document_time is not None:
-            return output[(output['type'] == 'DATE') & (output['type'] == 'DURATION')]
+        print(output)
         return output[output['type'] == 'DATE']
             
     def extract_sectime(self, data):
@@ -244,9 +251,11 @@ class TEExtract:
             return 'DATE'
         data = {
             'Context': data['context'],
-            'Text': data['text']
+            'Text': data['text'],
+            "TIMEX": True
         }
         text = convert_to_input(self.input_tag_type, data, True, True)
+        print(f"Value: {data['Text']} Context: {text}")
         return self.__model_run(self.preprocess.run(text), prob)
     
     def batch_predict_sectime(self, datas, prob=False):

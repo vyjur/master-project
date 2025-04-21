@@ -1,9 +1,11 @@
 import torch
+import numpy as np
 import configparser
 from torch.utils.data import Dataset
 from sklearn.model_selection import train_test_split
 from model.util import Util
 from structure.enum import Task, SENTENCE
+from imblearn.under_sampling import RandomUnderSampler
 
 
 class CustomDataset(Dataset):
@@ -106,7 +108,8 @@ class Preprocess:
         tags_name: list = [],
         window_size: int = 128,
         stride: int = 16,
-        split = True
+        split = True,
+        downsample = False
     ):
         label2id, id2label = self.__util.get_tags(task, tags_name)
         print(label2id)
@@ -205,7 +208,21 @@ class Preprocess:
             train, val = train_test_split(
                 train, train_size=self.__train_size, random_state=42
             )
-            
+                
+            if downsample:
+                X = np.array([i['ids'] for i in train])
+
+                if task == Task.TOKEN:
+                    y = np.array([[label2id[j] for j in i['labels']] for i in train])
+                else:
+                    y = np.array([label2id[i['labels']] for i in train])
+                print("Downsampled:")
+                rus = RandomUnderSampler(sampling_strategy='auto', random_state=42)
+                _, _ = rus.fit_resample(X, y)
+                kept_indices = rus.sample_indices_
+                print(len(train), len(kept_indices))
+                train = [train[i] for i in kept_indices]
+
             if self.__config.getboolean("main", "window"):
                 train = self.sliding_window(train, window_size=window_size, stride=stride)
 

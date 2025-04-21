@@ -8,3 +8,5 @@ Installing the current project: master-project (0.1.0)
 ### Processing the files:
 ###### (2) Training for configuration file: b-bert.ini
 LOAD False
+Train dataset
+Counter({<SENTENCE.INTRA: 2>: 1288, <SENTENCE.INTER: 1>: 960})

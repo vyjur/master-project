@@ -1,5 +1,6 @@
 import configparser
 import os
+import copy
 import pandas as pd
 import numpy as np
 from types import SimpleNamespace
@@ -9,8 +10,8 @@ from model.map import MODEL_MAP
 from transformers import AutoTokenizer
 from preprocess.setup import Preprocess
 import random
-from structure.enum import Dataset, Task, DocTimeRel, TLINK, SENTENCE, TAGS, TLINK_INPUT
-from textmining.util import convert_to_input
+from structure.enum import Dataset, Task, DocTimeRel, TLINK, SENTENCE, TAGS, TLINK_INPUT, ME, TIMEX
+from textmining.util import convert_to_input, is_date
 
 import nltk
 nltk.download('punkt')
@@ -55,6 +56,11 @@ class TRExtract:
         self.tokenizer = AutoTokenizer.from_pretrained(
             self.__config["pretrain"]["name"]
         )
+        
+        if self.__config.has_option('train.parameters', "downsample"):
+            downsample = self.__config.getboolean('train.parameters', 'downsample')
+        else:
+            downsample = False
 
         train_parameters = {
             "train_batch_size": self.__config.getint(
@@ -78,7 +84,8 @@ class TRExtract:
             "stride": self.__config.getint("train.parameters", "stride"),
             "weights": self.__config.getboolean("train.parameters", "weights"),
             "tune": self.__config.getboolean("tuning", "tune"),
-            "tune_count": self.__config.getint("tuning", "count") 
+            "tune_count": self.__config.getint("tuning", "count"),
+            "downsample": downsample
         }
 
         dataset = []
@@ -94,220 +101,33 @@ class TRExtract:
 
             if task == Dataset.DTR:
                 dataset_tre = dataset_tre[dataset_tre['DCT'] != 'BEFOREOVERLAP']
-                for _, row in dataset_tre.iterrows():
-                    if 'ICD' in row['Context']:
-                        continue
-                    if not self.__dct:
-                        dataset.append(
-                            {
-                                "sentence": convert_to_input(self.input_tag_type, row),
-                                "relation": row['DCT'],
-                            }
-                        )
-                        tags.add(row['DCT'])
-                    else:
-                        e_i = {
-                            "Text": row['SECTIME'],
-                            "Context": row["SECTIME_context"]
-                        }
-                        
-                        e_j = {
-                            "Text": row['Text'],
-                            "Context": row['Context']
-                        }
-                        
-                        sentence_i = convert_to_input(self.input_tag_type, e_i, single=False, start=True)
-                        sentence_j = convert_to_input(self.input_tag_type, e_j, single=False, start=False)
-                        text = f"{sentence_i} [SEP] {sentence_j}"
-                        test_dataset.append(
-                            {
-                                "sentence": text,
-                                "relation": row['DCT'],
-                            }
-                        )
+                
+                dataset, tags = self.__dtr(dataset_tre)
                         
                 if test_manager:
                     test_dataset_tre = test_dataset_tre[test_dataset_tre['DCT'] != 'BEFOREOVERLAP']
-                    for _, row in test_dataset_tre.iterrows():
-                        if 'ICD' in row['Context']:
-                            continue
-                        if not self.__dct:
-                            test_dataset.append(
-                                {
-                                    "sentence": convert_to_input(self.input_tag_type, row),
-                                    "relation": row['DCT'],
-                                }
-                            )
-                        else:
-                            e_i = {
-                                "Text": row['SECTIME'],
-                                "Context": row["SECTIME_context"]
-                            }
-                            
-                            e_j = {
-                                "Text": row['Text'],
-                                "Context": row['Context']
-                            }
-                            
-                            sentence_i = convert_to_input(self.input_tag_type, e_i, single=False, start=True)
-                            sentence_j = convert_to_input(self.input_tag_type, e_j, single=False, start=False)
-                            text = f"{sentence_i} [SEP] {sentence_j}"
-                            test_dataset.append(
-                                {
-                                    "sentence": text,
-                                    "relation": row['DCT'],
-                                }
-                            )
+                    test_dataset, _ = self.__dtr(test_dataset_tre)
+        
             elif task == Dataset.TLINK:
                 if test_manager:
+                    print("Test set:")
+                    test_dataset_tre = test_dataset_tre[test_dataset_tre['RELATION'].notna()] 
                     
-                    test_dataset_tre = test_dataset_tre[test_dataset_tre['RELATION'].notna()]
-                    dataset_ner = test_manager.get(Dataset.NER)
-                    dataset_ner = dataset_ner[dataset_ner['MedicalEntity'].notna()].reset_index()
-                    dataset_tee = test_manager.get(Dataset.TEE)
-                    
-                    for i, rel in test_dataset_tre.iterrows():
-                        if 'ICD' in rel['FROM_CONTEXT']:
-                            continue
-                        e_i = {
-                            "Text": rel['FROM'],
-                            "Context": rel["FROM_CONTEXT"]
-                        }
-                        
-                        e_j = {
-                            "Text": rel['TO'],
-                            "Context": rel['TO_CONTEXT']
-                        }
-                        
-                        if self.tlink_input == TLINK_INPUT.DIST:
-                            cat, distance = self.__class__.classify_tlink(e_i, e_j, True)
-                        else:
-                            cat = self.__class__.classify_tlink(e_i, e_j)
-                        sentence_i = convert_to_input(self.input_tag_type, e_i, single=False, start=True)
-                        if cat == SENTENCE.INTRA:
-                            e_j['Context'] = sentence_i
-                        
-                        sentence_j = convert_to_input(self.input_tag_type, e_j, single=False, start=False)
-                        
-                        if cat == SENTENCE.INTRA:
-                            text = sentence_j
-                        else:
-                            if self.tlink_input == TLINK_INPUT.DIST:
-                                text = f"{sentence_i} [SEP_{distance}] {sentence_j}"
-                            else:
-                                text = f"{sentence_i} [SEP] {sentence_j}"
-                            
-                        # relation = rel["RELATION"] if rel["RELATION"] != "BEFORE" else "O"
-                        relation = rel["RELATION"]
-                                            
-                        relation_pair = {
-                            "sentence": text,
-                            "relation": relation,
-                            "cat": cat
-                        }
-                            
-                        test_dataset.append(relation_pair)
+                    test_dataset_ner = test_manager.get(Dataset.NER)
+                    test_dataset_ner = test_dataset_ner[test_dataset_ner['MedicalEntity'].notna()].reset_index()
+                    test_dataset_tee = test_manager.get(Dataset.TEE)   
+                                    
+                    test_dataset, _ = self.__tlink(test_dataset_tre, test_dataset_ner, test_dataset_tee)
                 
+                print("Train dataset")
                 dataset_ner = manager.get(Dataset.NER)
                 dataset_ner = dataset_ner[dataset_ner['MedicalEntity'].notna()].reset_index()
                 dataset_tee = manager.get(Dataset.TEE)
-                full_dataset = pd.concat([dataset_ner, dataset_tee])
+                # full_dataset = pd.concat([dataset_ner, dataset_tee])
                 
-                for i, rel in dataset_tre.iterrows():
-                    if 'ICD' in rel['FROM_CONTEXT']:
-                        continue
-                    if rel['FROM_CONTEXT'].strip() == "" or rel['TO_CONTEXT'].strip() == "":
-                        e_i = dataset_ner[dataset_ner['Id'] == rel['FROM_Id']]
-                        e_j = dataset_ner[dataset_ner['Id'] == rel['TO_Id']]
-                    
-                        if len(e_i) > 0 and len(e_j) > 0:
-                            e_i = e_i.iloc[0]
-                            e_j = e_j.iloc[0]
-                        else:
-                            continue
-                    else:
-                        e_i = {
-                            "Text": rel['FROM'],
-                            "Context": rel["FROM_CONTEXT"]
-                        }
-                        
-                        e_j = {
-                            "Text": rel['TO'],
-                            "Context": rel['TO_CONTEXT']
-                        }
-                    
-                    if self.tlink_input == TLINK_INPUT.DIST:
-                        cat, distance = self.__class__.classify_tlink(e_i, e_j, True)
-                    else:
-                        cat = self.__class__.classify_tlink(e_i, e_j)
-                    sentence_i = convert_to_input(self.input_tag_type, e_i, single=False, start=True)
-                    if cat == SENTENCE.INTRA:
-                        e_j['Context'] = sentence_i
-                    
-                    sentence_j = convert_to_input(self.input_tag_type, e_j, single=False, start=False)
-                    
-                    if cat == SENTENCE.INTRA:
-                        text = sentence_j
-                    else:
-                        if self.tlink_input == TLINK_INPUT.DIST:
-                            text = f"{sentence_i} [SEP_{distance}] {sentence_j}"
-                        else:
-                            text = f"{sentence_i} [SEP] {sentence_j}"
-                        
-                    # relation = rel["RELATION"] if rel["RELATION"] != "BEFORE" else "O"
-                    relation = rel["RELATION"]
-                                        
-                    relation_pair = {
-                        "sentence": text,
-                        "relation": relation,
-                        "cat": cat
-                    }
-                        
-                    dataset.append(relation_pair)
-                    tags.add(relation)
+                dataset, tags = self.__tlink(dataset_tre, dataset_ner, dataset_tee)
                 
-                # Create negative candidate pairs
-                for i, e_i in full_dataset.iterrows():
-                    for j, e_j in full_dataset.iterrows():
-                        if i == j or 'ICD' in e_i['Context'] or e_i['Context'].strip() == '':
-                            continue
-                        
-                        if str(e_i['Text']) not in e_j['Context'] and str(e_j['Text']) not in e_i['Context']:
-                            continue
-                        
-                        if pd.notna(e_i['TIMEX']) and pd.notna(e_j['TIMEX']):
-                            continue
-                        
-                        if e_i['DCT'] != e_j['DCT']:
-                            continue
-
-                        relations = dataset_tre[
-                            (dataset_tre["FROM_Id"] == e_i['Id'])
-                            & (dataset_tre["TO_Id"] == e_j['Id'])
-                        ]
-
-                        if len(relations) > 0:
-                            continue
-                        else:
-                            relation = "O"
-
-                            # TODO: downsample majority class: 
-                            if random.random() < 0.7:
-                                continue
-
-                        sentence_i = convert_to_input(self.input_tag_type, e_i, single=False, start=True)
-                        sentence_j = convert_to_input(self.input_tag_type, e_j, single=False, start=False)
-                        
-                        cat, distance = self.__class__.classify_tlink(e_i, e_j, True)
-                        words = self.classify_sep(e_i, e_j, cat, distance)
-
-                        relation_pair = {
-                            "sentence": words,
-                            "relation": relation,
-                            "cat": cat
-                        }
-                        dataset.append(relation_pair)
-                        tags.add(relation)
+                
             
 
             tags = list(tags)
@@ -342,6 +162,143 @@ class TRExtract:
 
         self.preprocess = Preprocess(self.get_tokenizer(), self.get_max_length(), self.get_stride())
 
+    def __tlink(self, dataset_tre, dataset_ner, dataset_tee):
+        tags = set()
+        dataset = []
+        for i, rel in dataset_tre.iterrows():
+            if 'ICD' in rel['FROM_CONTEXT']:
+                continue
+            
+            e_i = None
+            e_j = None
+            if dataset_ner is not None:
+                res_e_i = dataset_ner[dataset_ner['Id'] == rel['FROM_Id']]
+                res_e_j = dataset_ner[dataset_ner['Id'] == rel['TO_Id']]
+            
+                if len(res_e_i) > 0 and len(res_e_j) > 0:
+                    e_i = res_e_i.iloc[0]
+                    e_j = res_e_j.iloc[0]
+                    
+                    if pd.isna(e_i['TIMEX']) and pd.isna(e_j['TIMEX']):
+                        continue
+            
+            if e_i is None and e_j is None:
+                e_i = {
+                    "Text": rel['FROM'],
+                    "Context": rel["FROM_CONTEXT"],
+                }
+                
+                if is_date(e_i['Text']):
+                    e_i['TIMEX'] = True
+                else:
+                    e_i['MedicalEntity'] = True
+                    
+                e_j = {
+                    "Text": rel['TO'],
+                    "Context": rel['TO_CONTEXT'],
+                }
+                if is_date(e_j['Text']):
+                    e_j['TIMEX'] = True
+                else:
+                    e_j['MedicalEntity'] = True
+                    
+                if "TIMEX" in e_i and "TIMEX" in e_j:
+                    continue
+            
+            if self.tlink_input == TLINK_INPUT.DIST:
+                cat, distance = self.__class__.classify_tlink(e_i, e_j, True)
+            else:
+                cat, distance = self.__class__.classify_tlink(e_i, e_j)
+                
+            text = self.classify_sep(e_i, e_j, cat, distance)
+                
+            relation = rel["RELATION"] if rel["RELATION"] != "BEFORE" else "O"
+            # relation = rel["RELATION"]
+                                
+            relation_pair = {
+                "sentence": text,
+                "relation": relation,
+                "cat": cat
+            }
+                
+            dataset.append(relation_pair)
+            tags.add(relation)
+            
+        neg_cp = []
+        # Create negative candidate pairs
+        for i, e_i in dataset_ner.iterrows():
+            for j, e_j in dataset_tee.iterrows():
+                if 'ICD' in e_i['Context'] or e_i['Context'].strip() == '':
+                    continue
+                
+                if str(e_i['Text']) not in e_j['Context'] and str(e_j['Text']) not in e_i['Context']:
+                    continue
+                
+                relations = dataset_tre[
+                    (dataset_tre["FROM_Id"] == e_i['Id'])
+                    & (dataset_tre["TO_Id"] == e_j['Id'])
+                ]
+
+                if len(relations) > 0:
+                    continue
+                else:
+                    relation = "O"
+                
+                cat, distance = self.__class__.classify_tlink(e_i, e_j, True)
+                words = self.classify_sep(e_i, e_j, cat, distance)
+
+                relation_pair = {
+                    "sentence": words,
+                    "relation": relation,
+                    "cat": cat
+                }
+                neg_cp.append(relation_pair)
+                tags.add(relation)
+        print("negative cp created:", len(neg_cp))
+        dataset.extend(neg_cp)
+        return dataset, tags
+    
+    def __dtr(self, dataset_tre):
+        
+        tags = set()
+        dataset = []
+        for _, row in dataset_tre.iterrows():
+            if 'ICD' in row['Context']:
+                continue
+            if not self.__dct:
+                dataset.append(
+                    {
+                        "sentence": convert_to_input(self.input_tag_type, row),
+                        "relation": row['DCT'],
+                    }
+                )
+            else:
+                print("With DCT")
+                e_i = {
+                    "Text": row['SECTIME'],
+                    "Context": row["SECTIME_context"],
+                    "TIMEX": True
+                }
+                
+                e_j = {
+                    "Text": row['Text'],
+                    "Context": row['Context'],
+                    "MedicalEntity": True
+                }
+                
+                sentence_i = convert_to_input(self.input_tag_type, e_i, single=False, start=True)
+                sentence_j = convert_to_input(self.input_tag_type, e_j, single=False, start=False)
+                text = f"{sentence_i} [SEP] {sentence_j}"
+                dataset.append(
+                    {
+                        "sentence": text,
+                        "relation": row['DCT'],
+                    }
+                )
+            tags.add(row['DCT'])
+
+        return dataset, tags
+    
     def get_tokenizer(self):
         return self.__model.tokenizer
 
@@ -383,43 +340,66 @@ class TRExtract:
             elif self.task == Dataset.TLINK:
                 if e_j is None:
                     raise ValueError("Missing value for e_j")
-                cat, distance = self.__class__.classify_tlink(e_i, e_j, True)
-                text = self.classify_sep(e_i, e_j, cat, distance)
+
+                text = self.__process_tlink(e_i, e_j)
                 batch_text.append(self.preprocess.run(text)[0])
                 
         return self.__run(np.array(batch_text))
     
     def run(self, e_i, e_j=None):
         
-        e_i = {
+        e_i = copy.deepcopy(e_i)
+        if e_j is not None:
+            e_j = copy.deepcopy(e_j)
+        
+        curr_e_i = {
             "Context": e_i.context,
-            "Text": e_i.value
+            "Text": e_i.value,
+            "MedicalEntity": e_i.type
         }
         
+        if isinstance(e_i.type, TIMEX):
+            curr_e_i['TIMEX'] = e_i.type
+        elif isinstance(e_i.type, ME):
+            curr_e_i['MedicalEntity'] = e_i.type
+            
         if e_j is not None:
-            e_j = {
+            curr_e_j = {
                 "Context": e_j.context,
-                "Text": e_j.value
+                "Text": e_j.value,
             }
+            if isinstance(e_j.type, TIMEX):
+                curr_e_j['TIMEX'] = e_j.type
+            elif isinstance(e_i.type, ME):
+                curr_e_j['MedicalEntity'] = e_j.type
             
         if self.task == Dataset.DTR:
-            text = convert_to_input(self.input_tag_type, e_i)
+            text = convert_to_input(self.input_tag_type, curr_e_i)
         else:
             if e_j is None:
                 raise ValueError("Missing value for e_j")
-            cat, distance = self.__class__.classify_tlink(e_i, e_j, True)
-            text = self.classify_sep(e_i, e_j, cat, distance)
+            
+            text = self.__process_tlink(curr_e_i, curr_e_j)
+            
+        print(text)
                         
         output = self.__run(self.preprocess.run(text))
         return output[0][0], output[1]
     
+    def __process_tlink(self, e_i, e_j):
+        cat, distance = self.__class__.classify_tlink(e_i, e_j, True)
+        text = self.classify_sep(e_i, e_j, cat, distance)
+        return text
+    
     def classify_sep(self, e_i, e_j, cat, distance):
         sentence_i = convert_to_input(self.input_tag_type, e_i, single=False, start=True)
+        # TODO:
         if cat == SENTENCE.INTRA:
             e_j['Context'] = sentence_i
         
         sentence_j = convert_to_input(self.input_tag_type, e_j, single=False, start=False)
-        
+        text = sentence_j
+        # TODO:
         if cat == SENTENCE.INTRA:
             text = sentence_j
         else:
@@ -440,7 +420,7 @@ class TRExtract:
             # It is inter sentence if both entities are in the same sentence
             if str(e_i['Text']) in sentence and str(e_j['Text']) in sentence:
                 if not distance:
-                    return SENTENCE.INTRA
+                    return SENTENCE.INTRA, 100
                 else:
                     cat = SENTENCE.INTRA
                   
@@ -455,7 +435,7 @@ class TRExtract:
             else:
                 return cat, 100    
                     
-        return cat
+        return cat, 100
 
 
 if __name__ == "__main__":

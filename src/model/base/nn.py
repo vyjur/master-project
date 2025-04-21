@@ -94,6 +94,8 @@ class NN(nn.Module):
             self.__model.load_state_dict(
                 torch.load(save + "/model.pth", weights_only=False)
             )
+            
+            self.__model.to(self.__device)
         else:
             tune = parameters["tune"]
             if tune:
@@ -136,6 +138,7 @@ class NN(nn.Module):
                     "save_strategy": "epoch",
                     "logging_strategy": "epoch",
                     "weights": parameters['weights'],
+                    "downsample": parameters["downsample"],
                     "tune": tune,
                 }
                 self.train(wandb.config)
@@ -149,16 +152,21 @@ class NN(nn.Module):
 
             print(config)
             
+            if "downsample" in config:
+                downsample = config['downsample']
+            else:
+                downsample = False
+            
             self.__processed = Preprocess(
                 self.tokenizer, config["max_length"], config['stride'], self.__util
-            ).run_train_test_split(self.__task, self.__dataset, self.__tags_name)
+            ).run_train_test_split(self.__task, self.__dataset, self.__tags_name, downsample=downsample)
             self.__class_weights = self.__util.class_weights(
                 self.__task, self.__processed["dataset"], self.__device
             )
             
             self.__test_processed = Preprocess(
                 self.tokenizer, config["max_length"], config["stride"], self.__util
-            ).run_train_test_split(self.__task, self.__testset, self.__tags_name, split=False)
+            ).run_train_test_split(self.__task, self.__testset, self.__tags_name, split=False, downsample=downsample)
 
             if self.__task == Task.TOKEN:
                 START_ID = max(self.__processed["id2label"].keys()) + 1
@@ -255,12 +263,6 @@ class NN(nn.Module):
             )
             self.__util.validate_report(labels, predictions)
             
-            print("### Fixed test set performance:")
-            labels, predictions = self.__valid(
-                fixed_test_loader, loss_fn, self.__processed["id2label"], True
-            )
-            self.__util.validate_report(labels, predictions)
-            
             if "intra" in self.__processed and "inter" in self.__processed:
                 intra_loader = DataLoader(self.__processed["intra"], **train_params)
                 inter_loader = DataLoader(self.__processed["inter"], **train_params)
@@ -276,12 +278,44 @@ class NN(nn.Module):
                     intra_loader, loss_fn, self.__processed["id2label"], True
                 )
                 self.__util.validate_report(labels, predictions)
+            
+            print("### Fixed test set performance:")
+            labels, predictions = self.__valid(
+                fixed_test_loader, loss_fn, self.__processed["id2label"], True
+            )
+            self.__util.validate_report(labels, predictions)
+            
+            if "intra" in self.__processed and "inter" in self.__processed:
+                torch.save(self.__test_processed["intra"], 'output/intra.pt')
+                torch.save(self.__test_processed["inter"], 'output/inter.pt')
+                intra_loader = DataLoader(self.__test_processed["intra"], **train_params)
+                inter_loader = DataLoader(self.__test_processed["inter"], **train_params)
+
+                print("### Inter sentences performance:")
+                labels, predictions = self.__valid(
+                    inter_loader, loss_fn, self.__test_processed["id2label"], True
+                )
+                self.__util.validate_report(labels, predictions)
+                
+                print("### Intra sentences performance:")
+                labels, predictions = self.__valid(
+                    intra_loader, loss_fn, self.__test_processed["id2label"], True
+                )
+                self.__util.validate_report(labels, predictions)
                 
             # If tune don't save else too many models heavy
             if not config["tune"]:
                 if not os.path.exists(self.__save):
                     os.makedirs(self.__save)
                 torch.save(self.__model.state_dict(), self.__save + "/model.pth")
+                
+            else:
+                full_save_path = os.path.join(self.__save, wandb.run.id)
+
+                # Ensure full directory exists
+                os.makedirs(full_save_path, exist_ok=True)
+
+                torch.save(self.__model.state_dict(), f"{self.__save}/{wandb.run.id}/model.pth")
 
     def predict(self, data, pipeline=False):
         data_tensor = torch.tensor(data, dtype=torch.long).to(self.__device)

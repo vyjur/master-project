@@ -40,9 +40,15 @@ relation_files = [
 
 manager = DatasetManager(entity_files, relation_files, window_size=512)
 
-folder_path = "./data/helsearkiv/test_dataset/csv/relation/"
+folder_path = "./data/helsearkiv/test_dataset/csv/entity-w-dct/"
 
-entity_files = []
+entity_files = [
+    folder_path + f
+    for f in os.listdir(folder_path)
+    if os.path.isfile(os.path.join(folder_path, f))
+]
+
+folder_path = "./data/helsearkiv/test_dataset/csv/relation/"
 
 relation_files = [
     folder_path + f

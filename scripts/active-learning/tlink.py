@@ -98,7 +98,7 @@ entities = entities.drop(columns='file_id')
 timex = pd.read_csv(f"./data/helsearkiv/batch/tee/{1}.csv")
 timex = timex[timex["TIMEX"].notna()] 
 
-all_entities = pd.concat([entities, timex])
+# all_entities = pd.concat([entities, timex])
 
 batch_path = './data/helsearkiv/batch/tlink/'
 csv_files = [f for f in os.listdir(batch_path) if f.endswith('.csv') and 'final' in f]
@@ -122,7 +122,7 @@ else:
 
 
 
-dataset = all_entities
+dataset = entities
 
 BATCH_SIZE = 128
 
@@ -133,11 +133,10 @@ for name, group in grouped_df:
     pairs = []
     metadata = []
     
+    curr_timex = timex[(timex['file'] == name[0]) & (timex['page'] == name[1])] 
+    
     for i, e_i in group.iterrows():
-        for j, e_j in group.iterrows():
-            if i == j:
-                continue
-            
+        for j, e_j in curr_timex.iterrows():
             if str(e_j['Text']) not in e_i['Context']:
                 if random.random() < 0.7:
                     continue
@@ -167,8 +166,20 @@ for name, group in grouped_df:
                 })
 al_df = pd.DataFrame(al_data)
 
-
 filtered_entities = al_df.merge(batch_df, on=["FROM", "FROM_Id", "TO", "TO_Id", "file", "page"], how="left", indicator=True)
+
+
+filtered_entities.to_csv(f'./data/helsearkiv/batch/tlink/{BATCH}.csv')
+filtered_entities = filtered_entities.rename(columns={"prob_x": "prob"})
+
+filtered_entities = filtered_entities.rename({
+    "FROM_CONTEXT_x": "FROM_CONTEXT",
+    "TO_CONTEXT_x": "TO_CONTEXT",
+    "RELATION_x": "RELATION"
+})
+
+filtered_entities = filtered_entities.drop(['FROM_CONTEXT_y', 'TO_CONTEXT_y', "RELATION_y", "prob_y", "_merge"], axis=1)
+
 print(len(al_df), len(filtered_entities))
 filtered_entities = filtered_entities.sort_values('prob', ascending=True)
-filtered_entities.to_csv(f'./data/helsearkiv/batch/tlink/{BATCH}.csv')
+filtered_entities.to_csv(f'./data/helsearkiv/batch/tlink/{BATCH}-final.csv')

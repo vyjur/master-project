@@ -69,7 +69,7 @@ class BERT(nn.Module):
         self.__project_name = project_name
         self.__util = util if util is not None else Util()
         self.__testset = testset
-        
+                
         if load:
             if task == Task.TOKEN:
                 self.__model = AutoModelForTokenClassification.from_pretrained(
@@ -86,11 +86,11 @@ class BERT(nn.Module):
             
             self.__processed = Preprocess(
                 self.tokenizer, parameters["max_length"], parameters["stride"], self.__util
-            ).run_train_test_split(self.__task, self.__dataset, self.__tags_name)
+            ).run_train_test_split(self.__task, self.__dataset, self.__tags_name, downsample=parameters["downsample"])
             
             self.__test_processed = Preprocess(
                 self.tokenizer, parameters["max_length"], parameters["stride"], self.__util
-            ).run_train_test_split(self.__task, self.__dataset, self.__tags_name, False)
+            ).run_train_test_split(self.__task, self.__dataset, self.__tags_name, False, downsample=parameters["downsample"])
 
             # try:
             #     print("### Extra set performance:")
@@ -126,6 +126,9 @@ class BERT(nn.Module):
                 sweep_config['parameters']['num_workers'] = {
                     "value": parameters["num_workers"]
                 }
+                sweep_config['parameters']['downsample'] = {
+                    "value": parameters["downsample"]
+                }
                 sweep_id = wandb.sweep(
                     sweep_config,
                     project=f"{project_name}-{task}-bert-model".replace('"', ""),
@@ -152,6 +155,7 @@ class BERT(nn.Module):
                     "save_strategy": "epoch",
                     "logging_strategy": "epoch",
                     "weights": parameters['weights'],
+                    "downsample": parameters['downsample'],
                     "tune": tune,
                 }
                 self.train(wandb.config)
@@ -176,13 +180,18 @@ class BERT(nn.Module):
         with wandb.init(project=f"{self.__project_name}-{self.__task}-bert-model".replace('"', "")):  # type: ignore
             if config is None:
                 config = wandb.config
+                
+            if "downsample" in config:
+                downsample = config['downsample']
+            else:
+                downsample = False
 
             self.__processed = Preprocess(
                 self.tokenizer, config["max_length"], config["stride"], self.__util
-            ).run_train_test_split(self.__task, self.__dataset, self.__tags_name)
+            ).run_train_test_split(self.__task, self.__dataset, self.__tags_name, downsample=downsample)
             self.__test_processed = Preprocess(
                 self.tokenizer, config["max_length"], config["stride"], self.__util
-            ).run_train_test_split(self.__task, self.__testset, self.__tags_name, split=False)
+            ).run_train_test_split(self.__task, self.__testset, self.__tags_name, split=False, downsample=downsample)
 
             self.__class_weights = self.__util.class_weights(
                 self.__task, self.__processed["dataset"], self.__device
@@ -303,24 +312,6 @@ class BERT(nn.Module):
             )
             self.__util.validate_report(labels, predictions)
             
-            print("### Fixed test set performance:")
-            labels, predictions = self.__valid(
-                fixed_test_loader, loss_fn, self.__processed["id2label"], True
-            )
-            self.__util.validate_report(labels, predictions)
-            
-            # try:
-            #     print("### Extra set performance:")
-            #     test_dataset = torch.load("./data/helsearkiv/test_dataset/test_dataset.pth")
-            #     extra_loader = DataLoader(test_dataset, **train_params)
-                
-            #     labels, predictions = self.__valid(
-            #         extra_loader, loss_fn, self.__processed["id2label"], True
-            #     )
-            #     self.__util.validate_report(labels, predictions)
-            # except Exception as e:
-            #     print(e)
-            
             if "intra" in self.__processed and "inter" in self.__processed:
                 intra_loader = DataLoader(self.__processed["intra"], **train_params)
                 inter_loader = DataLoader(self.__processed["inter"], **train_params)
@@ -336,6 +327,29 @@ class BERT(nn.Module):
                     intra_loader, loss_fn, self.__processed["id2label"], True
                 )
                 self.__util.validate_report(labels, predictions)
+            
+            print("### Fixed test set performance:")
+            labels, predictions = self.__valid(
+                fixed_test_loader, loss_fn, self.__processed["id2label"], True
+            )
+            self.__util.validate_report(labels, predictions)
+            
+            if "intra" in self.__processed and "inter" in self.__processed:
+                intra_loader = DataLoader(self.__test_processed["intra"], **train_params)
+                inter_loader = DataLoader(self.__test_processed["inter"], **train_params)
+
+                print("### Inter sentences performance:")
+                labels, predictions = self.__valid(
+                    inter_loader, loss_fn, self.__test_processed["id2label"], True
+                )
+                self.__util.validate_report(labels, predictions)
+                
+                print("### Intra sentences performance:")
+                labels, predictions = self.__valid(
+                    intra_loader, loss_fn, self.__test_processed["id2label"], True
+                )
+                self.__util.validate_report(labels, predictions)
+                
 
             # If tune don't save else too many models heavy
             if not config['tune']:

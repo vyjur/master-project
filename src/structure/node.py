@@ -33,7 +33,7 @@ class Node:
         self.context = context
 
     def __str__(self):
-        text = f"Node: {self.value} - {self.type} - {self.dct} ({self.date})"
+        text = f"Node {self.id}: {self.value} - {self.type} - ({self.date} - prob: {self.prob})"
         return text
     
     # def set_dct(self, cat):

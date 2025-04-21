@@ -4,7 +4,7 @@ import numpy as np  # Import NumPy for NaN values
 from datetime import datetime
 
 
-file = "./data/helsearkiv/batch/dtr/1.csv"   
+file = "./data/helsearkiv/batch/dtr/1-final.csv"   
 df = pd.read_csv(file)
 
 STOP = len(df)

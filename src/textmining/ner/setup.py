@@ -55,6 +55,11 @@ class NERecognition:
         self.tokenizer = AutoTokenizer.from_pretrained(
             self.__config["pretrain"]["name"]
         )
+        
+        if self.__config.has_option('train.parameters', "downsample"):
+            downsample = self.__config.getboolean('train.parameters', 'downsample')
+        else:
+            downsample = False
 
         train_parameters = {
             "train_batch_size": self.__config.getint(
@@ -78,7 +83,8 @@ class NERecognition:
             "stride": self.__config.getint("train.parameters", "stride"),
             "weights": self.__config.getboolean("train.parameters", "weights"),
             "tune": self.__config.getboolean("tuning", "tune"),
-            "tune_count": self.__config.getint("tuning", "count") 
+            "tune_count": self.__config.getint("tuning", "count"),
+            "downsample": downsample
         }
 
         self.__model = MODEL_MAP[self.__config["MODEL"]["name"]](

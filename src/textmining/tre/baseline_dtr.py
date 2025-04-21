@@ -39,6 +39,6 @@ class Baseline:
 if __name__ == "__main__":
 
     nlp = spacy.load("nb_core_news_sm")
-    sentence = "Apple vurderer å kjøpe britisk oppstartfirma for en milliard dollar, men så bestemte de seg for å kjøpe en annen. Han var ikke klar for det. Hun hadde kjøpt seg et hus. Hun er kul. Hun skal klatre i morgen."            
+    sentence = "Hun skal komme tilbake om 3 uker"            
     tee = Baseline()
     print(tee.run(sentence))
