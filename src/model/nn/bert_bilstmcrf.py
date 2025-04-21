@@ -17,7 +17,8 @@ class BERTBiLSTMCRF(nn.Module):
         tokenizer=None,
         project_name: str | None = None,
         pretrain: str | None = None,
-        util: Util = None
+        util: Util = None,
+        testset: list = [],
     ):
         super(BERTBiLSTMCRF, self).__init__()
 
@@ -26,7 +27,13 @@ class BERTBiLSTMCRF(nn.Module):
                 bert_model = AutoModel.from_pretrained(pretrain, trust_remote_code=True)
 
                 BaseModel.__init__(
-                    self, batch, vocab_size, tag_to_ix, embedding_dim, hidden_dim, bert_model
+                    self,
+                    batch,
+                    vocab_size,
+                    tag_to_ix,
+                    embedding_dim,
+                    hidden_dim,
+                    bert_model,
                 )
 
         self.__model = NN(
@@ -40,7 +47,8 @@ class BERTBiLSTMCRF(nn.Module):
             tokenizer,
             project_name,
             pretrain,
-            util
+            util,
+            testset,
         )
         self.tokenizer = self.__model.tokenizer
         self.device = self.__model.device
@@ -50,3 +58,4 @@ class BERTBiLSTMCRF(nn.Module):
 
     def forward(self, x):
         return self.__model(x)
+

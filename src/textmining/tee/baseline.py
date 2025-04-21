@@ -1,40 +1,35 @@
 # INFO: Baseline model
-import spacy
-from collections import Counter
+import pandas as pd
+
 
 class Baseline:
     def __init__(self):
-        self.__nlp = spacy.load("nb_core_news_sm")
-        
+        self.__patterns = [
+            "Status presens",
+            "Innlagt",
+            "Dato",
+            "Diktert",
+            "Innl.dato",
+            "Journalnotat",
+            "utskrifts",
+            "INNKOMSTJOURNAL",
+        ]
+        self.__cities = pd.read_csv("./data/no-cities.csv")
+
     def run(self, data):
-        doc = self.__nlp(data)
-        
-        counts = []
-        for token in doc:
-            if token.pos_ in ["VERB", "AUX"]:
-                if token.morph.get("Tense"):
-                    counts.append(token.morph.get("Tense")[0])
-                    
-                elif token.morph.get("VerbForm"):
-                    if token.morph.get("VerbForm")[0] == "Part":
-                        counts.append("Past")
-            
-        if len(counts) > 1:
-            most_common = Counter(counts).most_common(1)[0][0]
-            
-            match most_common:
-                case "Pres":
-                    return 'DCT'
-                case _:
-                    return 'DATE'
-                
-        else:
-            return 'DATE'
+        for pattern in self.__patterns:
+            if pattern.lower() in data[1].lower():
+                return "DCT"
+
+        for city in self.__cities:
+            if city.lower() in data[1].lower():
+                return "DCT"
+
+        return "DATE"
 
 
 if __name__ == "__main__":
-
-    nlp = spacy.load("nb_core_news_sm")
-    sentence = "Apple vurderer å kjøpe britisk oppstartfirma for en milliard dollar, men så bestemte de seg for å kjøpe en annen. Han var ikke klar for det. Hun hadde kjøpt seg et hus. Hun er kul. Hun skal klatre i morgen."            
+    sentence = "Apple vurderer å kjøpe britisk oppstartfirma for en milliard dollar, men så bestemte de seg for å kjøpe en annen. Han var ikke klar for det. Hun hadde kjøpt seg et hus. Hun er kul. Hun skal klatre i morgen."
     tee = Baseline()
     print(tee.run(sentence))
+

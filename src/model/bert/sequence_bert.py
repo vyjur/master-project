@@ -18,7 +18,8 @@ class SequenceBERT(nn.Module):
         tokenizer=None,
         project_name: str | None = None,
         pretrain: str | None = None,
-        util: Util = None
+        util: Util = None,
+        testset: list = [],
     ):
         super(SequenceBERT, self).__init__()
 
@@ -32,7 +33,8 @@ class SequenceBERT(nn.Module):
             tokenizer,
             project_name,
             pretrain,
-            util
+            util,
+            testset,
         )
         self.tokenizer = self.__bert.tokenizer
 

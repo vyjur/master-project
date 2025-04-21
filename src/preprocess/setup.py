@@ -1,9 +1,11 @@
 import torch
+import numpy as np
 import configparser
 from torch.utils.data import Dataset
 from sklearn.model_selection import train_test_split
 from model.util import Util
 from structure.enum import Task, SENTENCE
+from imblearn.under_sampling import RandomUnderSampler
 
 
 class CustomDataset(Dataset):
@@ -38,7 +40,14 @@ class CustomDataset(Dataset):
 
 
 class Preprocess:
-    def __init__(self, tokenizer, max_length: int = 512, stride: int = 0, util: Util = None, train_size: float = 0.8):
+    def __init__(
+        self,
+        tokenizer,
+        max_length: int = 512,
+        stride: int = 0,
+        util: Util = None,
+        train_size: float = 0.8,
+    ):
         self.__tokenizer = tokenizer
         self.__util = util
         if self.__util is None:
@@ -106,17 +115,19 @@ class Preprocess:
         tags_name: list = [],
         window_size: int = 128,
         stride: int = 16,
+        split=True,
+        downsample=False,
     ):
         label2id, id2label = self.__util.get_tags(task, tags_name)
         print(label2id)
         print(id2label)
         tokenized_dataset = []
-        
+
         for row in data:
             if task == Task.TOKEN:
-                temp_words = row['Text'].tolist()
-                temp_annot = row['MedicalEntity'].tolist()
-                
+                temp_words = row["Text"].tolist()
+                temp_annot = row["MedicalEntity"].tolist()
+
                 words = []
                 annot = []
                 terms = []
@@ -125,12 +136,12 @@ class Preprocess:
                         words.append(token)
                         annot.append(temp_annot[i])
                         terms.append(i)
-                    
+
                 split_into_words = True
             else:
-                words = row["sentence"] 
+                words = row["sentence"]
                 split_into_words = False
-                
+
             tokenized = self.__tokenizer(
                 words,
                 padding="max_length",
@@ -141,7 +152,7 @@ class Preprocess:
                 return_offsets_mapping=True,
                 return_overflowing_tokens=True,
             )
-            
+
             included_cat = False
 
             for j, encoding in enumerate(tokenized.encodings):
@@ -151,12 +162,15 @@ class Preprocess:
                         for i in encoding.word_ids
                     ]
                     word_length = [
-                        len(words[i]) if i is not None else None for i in encoding.word_ids
+                        len(words[i]) if i is not None else None
+                        for i in encoding.word_ids
                     ]
                     curr_terms = [
                         terms[i] if i is not None else None for i in encoding.word_ids
                     ]
-                    tokens_annot = self.__util.tokens_mapping(encoding, curr_annot, word_length, curr_terms)
+                    tokens_annot = self.__util.tokens_mapping(
+                        encoding, curr_annot, word_length, curr_terms
+                    )
                 elif task == Task.SEQUENCE and j != 0:
                     break
                 encoding_dict = {
@@ -176,35 +190,61 @@ class Preprocess:
                     if "cat" in row:
                         encoding_dict["cat"] = row["cat"]
                         included_cat = True
-                    
+
                     if included_cat and "cat" not in encoding_dict:
-                        encoding_dict['cat'] = None
-                        
+                        encoding_dict["cat"] = None
+
                 tokenized_dataset.append(encoding_dict)
-                
+
         if len(tokenized_dataset) == 0:
             return {
                 "label2id": label2id,
                 "id2label": id2label,
             }
 
-        train, test = train_test_split(
-            tokenized_dataset, train_size=self.__train_size, random_state=42
-        )
-        
-        train, val = train_test_split(
-            train, train_size=self.__train_size, random_state=42
-        )
-        
-        if self.__config.getboolean("main", "window"):
-            train = self.sliding_window(train, window_size=window_size, stride=stride)
+        train_dataset = None
+        valid_dataset = None
+        test_dataset = None
+        all_dataset = None
+        train = None
+        test = None
+        val = None
 
-        train_dataset = CustomDataset(train, self.__tokenizer, label2id)
-        valid_dataset = CustomDataset(val, self.__tokenizer, label2id)
-        test_dataset = CustomDataset(test, self.__tokenizer, label2id)
-        
-        #torch.save(test_dataset, "./data/helsearkiv/test_dataset/test_dataset.pth")
-        
+        if split:
+            train, test = train_test_split(
+                tokenized_dataset, train_size=self.__train_size, random_state=42
+            )
+
+            train, val = train_test_split(
+                train, train_size=self.__train_size, random_state=42
+            )
+
+            if downsample:
+                X = np.array([i["ids"] for i in train])
+
+                if task == Task.TOKEN:
+                    y = np.array([[label2id[j] for j in i["labels"]] for i in train])
+                else:
+                    y = np.array([label2id[i["labels"]] for i in train])
+                print("Downsampled:")
+                rus = RandomUnderSampler(sampling_strategy="auto", random_state=42)
+                _, _ = rus.fit_resample(X, y)
+                kept_indices = rus.sample_indices_
+                print(len(train), len(kept_indices))
+                train = [train[i] for i in kept_indices]
+
+            if self.__config.getboolean("main", "window"):
+                train = self.sliding_window(
+                    train, window_size=window_size, stride=stride
+                )
+
+            train_dataset = CustomDataset(train, self.__tokenizer, label2id)
+            valid_dataset = CustomDataset(val, self.__tokenizer, label2id)
+            test_dataset = CustomDataset(test, self.__tokenizer, label2id)
+
+        else:
+            all_dataset = CustomDataset(tokenized_dataset, self.__tokenizer, label2id)
+
         return_dict = {
             "train_raw": train,
             "val_raw": val,
@@ -213,17 +253,20 @@ class Preprocess:
             "train": train_dataset,
             "valid": valid_dataset,
             "test": test_dataset,
+            "all": all_dataset,
             "label2id": label2id,
             "id2label": id2label,
         }
-        
+
         if "cat" in tokenized_dataset[0]:
+            if test is None:
+                test = tokenized_dataset
             intra = [d for d in test if d["cat"] == SENTENCE.INTRA]
             inter = [d for d in test if d["cat"] == SENTENCE.INTER]
 
             intra_dataset = CustomDataset(intra, self.__tokenizer, label2id)
             inter_dataset = CustomDataset(inter, self.__tokenizer, label2id)
-            
+
             return_dict["intra"] = intra_dataset
             return_dict["inter"] = inter_dataset
 

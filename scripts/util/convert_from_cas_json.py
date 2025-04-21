@@ -5,7 +5,9 @@ import os
 print(os.getcwd())
 BATCH = 3
 folder_path = f"./data/helsearkiv/batch/ner/{BATCH}-json/"
+id = 0
 
+folder_path = f"./data/helsearkiv/test_dataset/annotation/"
 files = [
     (f.replace('.pdf', ''), folder_path + f + "/admin.json")
     for f in os.listdir(folder_path)
@@ -15,6 +17,7 @@ files = [
 context_window = 50  # Number of characters before and after each token
 
 for name, file in files:
+    print(file)
     empty = 0
     with open(file, 'rb') as f:
         cas = load_cas_from_json(f)
@@ -65,11 +68,14 @@ for name, file in files:
             empty += 1
 
         if empty > 5000:
+            print("BREAK")
             break
-        
+    
+    print(file, len(raw_data))
+
     if len(raw_data) > 0:
         df = pd.DataFrame(raw_data).drop_duplicates()
-        df.to_csv(f'./data/helsearkiv/batch/ner/final/{name}.csv')
+        df.to_csv(f'./data/helsearkiv/test_dataset/csv/entity/{name}.csv')
     
     raw_data = []
         
@@ -109,5 +115,5 @@ for name, file in files:
         raw_data.append(curr_link)
 
     df = pd.DataFrame(raw_data).drop_duplicates()
-    df.to_csv(f'./data/helsearkiv/annotated2/relation/{name}.csv')
+    df.to_csv(f'./data/helsearkiv/test_dataset/csv/relation/{name}.csv')
     id += 1

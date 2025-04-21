@@ -1,0 +1,20 @@
+<div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="uploadModalLabel">Upload File</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Example upload form -->
+          <form method="post" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="formFile" class="form-label">Choose file</label>
+              <input class="form-control" type="file" id="formFile" name="file">
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

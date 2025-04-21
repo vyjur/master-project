@@ -8,7 +8,7 @@ print("##### Start training for TRE... ######")
 # Info: Change here
 TRE_TYPE = "dtr"
 
-folder = f"./scripts/train/tre/{TRE_TYPE}/config/model/"
+folder = f"./scripts/train/tre/{TRE_TYPE}/config/"
 configs = os.listdir(folder)
 
 folder_path = "./data/helsearkiv/annotated/entity-without-timex/"
@@ -51,8 +51,27 @@ relation_files = [
 
 manager = DatasetManager(entity_files, relation_files, window_size=50)
 
+### TEST DATA
+folder_path = "./data/helsearkiv/test_dataset/csv/entity-w-dct/"
+
+entity_files = [
+    folder_path + f
+    for f in os.listdir(folder_path)
+    if os.path.isfile(os.path.join(folder_path, f))
+]
+
+folder_path = "./data/helsearkiv/test_dataset/csv/relation/"
+
+relation_files = [
+    folder_path + f
+    for f in os.listdir(folder_path)
+    if os.path.isfile(os.path.join(folder_path, f))
+]
+
+test_manager = DatasetManager(entity_files, relation_files)
+
 for i, conf in enumerate(configs):
-    if os.path.isdir(folder + conf) or conf != 'b-bert.ini':
+    if os.path.isdir(folder + conf) or conf != 'dct.ini':
         continue
     print(f"###### ({i}) Training for configuration file: {conf}")
     save_directory = f"./models/tre/{TRE_TYPE}/model/" + conf.replace(".ini", "")
@@ -62,7 +81,8 @@ for i, conf in enumerate(configs):
         config_file=folder + conf,
         manager=manager,
         save_directory=save_directory,
-        task=Dataset.DTR
+        task=Dataset.DTR,
+        test_manager=test_manager
     )
     print("Finished with this task. \n \n")
 

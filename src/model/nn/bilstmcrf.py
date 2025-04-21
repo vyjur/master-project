@@ -32,15 +32,17 @@ def log_sum_exp(vec):
 
 
 class Model(BaseModel):
-    def __init__(self, batch, vocab_size, tag_to_ix, embedding_dim, hidden_dim, bert_model=None):
+    def __init__(
+        self, batch, vocab_size, tag_to_ix, embedding_dim, hidden_dim, bert_model=None
+    ):
         super(Model, self).__init__(
             batch, vocab_size, tag_to_ix, embedding_dim, hidden_dim, bert_model
         )
-        
+
         # Matrix of transition parameters.  Entry i,j is the score of
         # transitioning *to* i *from* j.
         self.transitions = nn.Parameter(torch.randn(self.tagset_size, self.tagset_size))
-        
+
         # These two statements enforce the constraint that we never transfer
         # to the start tag and we never transfer from the stop tag
         self.transitions.data[tag_to_ix[START_TAG], :] = -10000
@@ -63,7 +65,7 @@ class Model(BaseModel):
 
         # Wrap in a variable so that we will get automatic backprop
         forward_var = init_alphas
-        
+
         # Iterate through the sentence
         for feat in feats:
             alphas_t = []  # The forward tensors at this timestep
@@ -81,7 +83,9 @@ class Model(BaseModel):
                 # scores.
                 alphas_t.append(log_sum_exp(next_tag_var).view(1))
             forward_var = torch.cat(alphas_t).view(1, -1)
-        terminal_var = forward_var + self.transitions[self.tag_to_ix[STOP_TAG]].to(self.device)
+        terminal_var = forward_var + self.transitions[self.tag_to_ix[STOP_TAG]].to(
+            self.device
+        )
         alpha = log_sum_exp(terminal_var)
         return alpha
 
@@ -130,7 +134,9 @@ class Model(BaseModel):
             backpointers.append(bptrs_t)
 
         # Transition to STOP_TAG
-        terminal_var = forward_var + self.transitions[self.tag_to_ix[STOP_TAG]].to(self.device)
+        terminal_var = forward_var + self.transitions[self.tag_to_ix[STOP_TAG]].to(
+            self.device
+        )
         best_tag_id = argmax(terminal_var)
         path_score = terminal_var[0][int(best_tag_id)]
 
@@ -165,15 +171,17 @@ class Model(BaseModel):
     def forward(self, sentences):  # dont confuse this with _forward_alg above.
         # Get the emissiwn scores from the BiLSTM
         lstm_feats = self._get_lstm_features(sentences)
-        
-        sum_score = torch.tensor([self._forward_alg(lstm_feat) for lstm_feat in lstm_feats]).to(self.device)
+
+        sum_score = torch.tensor(
+            [self._forward_alg(lstm_feat) for lstm_feat in lstm_feats]
+        ).to(self.device)
 
         # Find the best path, given the features.
         result = [self._viterbi_decode(lstm_feat) for lstm_feat in lstm_feats]
         score = torch.tensor([res[0] for res in result]).to(self.device)
         tag_seq = [res[1] for res in result]
-        
-        prob = torch.sum(torch.exp(score-sum_score))/len(sentences)
+
+        prob = torch.sum(torch.exp(score - sum_score)) / len(sentences)
         return torch.tensor(tag_seq).to(self.device), prob
 
 
@@ -188,7 +196,8 @@ class BiLSTMCRF(nn.Module):
         tokenizer=None,
         project_name: str | None = None,
         pretrain: str | None = None,
-        util: Util = None
+        util: Util = None,
+        testset: list = [],
     ):
         super(BiLSTMCRF, self).__init__()
 
@@ -203,7 +212,8 @@ class BiLSTMCRF(nn.Module):
             tokenizer,
             project_name,
             pretrain,
-            util
+            util,
+            testset,
         )
         self.tokenizer = self.__model.tokenizer
         self.device = self.__model.device
@@ -213,7 +223,8 @@ class BiLSTMCRF(nn.Module):
 
     def forward(self, x):
         return self.__model(x)
-    
+
+
 if __name__ == "__main__":
     import os
     from preprocess.dataset import DatasetManager

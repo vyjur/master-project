@@ -1,6 +1,4 @@
-# TMfPT: master-project
-
->TMfPT = Text Mining for Patient Timeline
+# NorPatTL: Norwegian Patient Timeline (master-project)
 
 This repository contains the code for the master project that was conducted Spring 2025 as the concluding project for a Master’s in Computer Science with a specialization in Artificial Intelligence degree at the Norwegian University of Science and Technology (NTNU). It includes the proposed pipeline for using text mining to extract patient timelines from Norwegian patient journals. It specifically includes the text mining methods, but does not include the used dataset and trained models because of ethical issues.
 
