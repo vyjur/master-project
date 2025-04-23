@@ -8,14 +8,14 @@ def convert_to_input(input_tag_type, e, single=True, start=True):
     date = e["TIMEX"] if "TIMEX" in e else None
 
     match input_tag_type:
-        case TAGS.XML:
+        case TAGS.SIMPLE:
             return str(e["Context"]).replace(str(e["Text"]), f"<TAG>{e['Text']}</TAG>")
-        case TAGS.XML_TYPE:
+        case TAGS.XML:
             cat = "TAG"
             if entity:
-                cat = entity
+                cat = "EVENT"
             elif date:
-                cat = date
+                cat = "TIMEX"
 
             if start and not single:
                 return str(e["Context"]).replace(
