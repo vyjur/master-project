@@ -1,6 +1,6 @@
 # NorPatTL: Norwegian Patient Timeline (master-project)
 
-This repository contains the code for the master project that was conducted Spring 2025 as the concluding project for a Master’s in Computer Science with a specialization in Artificial Intelligence degree at the Norwegian University of Science and Technology (NTNU). It includes the proposed pipeline for using text mining to extract patient timelines from Norwegian patient journals. It specifically includes the text mining methods, but does not include the used dataset and trained models because of ethical issues.
+This repository contains the code for the master's project that was conducted in Spring 2025 as the concluding project for a Master’s in Computer Science with a specialization in Artificial Intelligence degree at the Norwegian University of Science and Technology (NTNU). It includes the proposed pipeline for using text mining to extract patient timelines from Norwegian patient journals. It specifically includes the text mining methods, but does not include the used dataset and trained models because of ethical issues.
 
 ## How to run
 The following sections describe how to use the pipeline.
@@ -26,17 +26,17 @@ The following sections describe how the text mining models can be trained.
 
 ### Configuration
 
-The configuration file for the pipeline contains the path for each of the text mining component configuration file. Each text mining component can be trained individually by changing the `load` parameter in the config files for the given text mining component to `true`. To allow tuning the hyperparameters in the `train.parameters`section, change the `tune`parameter to `true`.
+The configuration file for the pipeline contains the path for each of the text mining component configuration files. Each text mining component can be trained individually by changing the `load` parameter in the config files for the given text mining component to `true`. To allow tuning the hyperparameters in the `train.parameters`section, change the `tune`parameter to `true`.
 
 
 ### Dataset format
-The project does not use a standardized format but uses two local type. The main one consists of the following columns: 
+The project does not use a global standardized format but uses two local types. The main one consists of the following columns: 
 
 - ``Text``: The entity text found in the original text.
 - ``Id``: The id used to connect the relations between the entities.
-- `MedicalEntity`: The medical entity category that the entity is associated to.
-- ``DCT``: The DocTime relation that the entity is associated to.
-- `TIMEX`: The time expression category that the e`tity is associated to.
+- `MedicalEntity`: The medical entity category that the entity is associated with.
+- ``DCT``: The DocTime relation that the entity is associated with.
+- `TIMEX`: The time expression category that the entity is associated with.
 - ``Context``: The entity's context.
 
 The other one holds the relations between the different entities:
