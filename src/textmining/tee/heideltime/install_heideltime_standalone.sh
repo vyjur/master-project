@@ -20,10 +20,7 @@ wget --no-verbose https://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/
 wget --no-verbose https://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/norwegian.par.gz
 
 # install treetagger
-sh install-tagger.sh -r tree-tagger-linux-3.2.5.tar.gz
-
-cp tree_tagger/norwegian.par tree_tagger/auto-norwegian.par
-cp tree_tagger/norwegian-abbreviations tree_tagger/auto-norwegian-abbreviations
+sh install-tagger.sh -r tree-tagger-linux-3.2.5.tar.gz -r norwegian.par.gz
 
 cd ..
 
