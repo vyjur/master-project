@@ -52,7 +52,7 @@ original_str="Heideltime_path = '/path/to/heideltime/'"
 replace_str="Heideltime_path = '$heideltime_dir'"
 sed -i "s~$original_str~$replace_str~" config_heideltime.py
 
-cp heideltime-standalone/treetagger/lib/norwegian.par heideltime-standalone/treetagger/lib/auto-norwegian.par 
-cp heideltime-standalone/treetagger/lib/auto-norwegian-abbreviations heideltime-standalone/treetagger/lib/auto-norwegian-abbreviations
+cp treetagger/lib/norwegian.par treetagger/lib/auto-norwegian.par 
+cp treetagger/lib/auto-norwegian-abbreviations treetagger/lib/auto-norwegian-abbreviations
 
 echo "HeidelTime-standalone installed successfully. Config files altered."
