@@ -134,14 +134,30 @@ class DatasetManager:
                     ]
                 ]
                 all_relation_df.append(df)
-            self.__relation_df = pd.concat(all_relation_df)
+            
+            if all_relation_df:  # only concatenate if the list is not empty
+                self.__relation_df = self.__relation_df = pd.concat(all_relation_df)
+            else:
+                self.__relation_df = pd.DataFrame(
+                    columns=[
+                        "FROM",
+                        "FROM_Id",
+                        "FROM_CONTEXT",
+                        "TO",
+                        "TO_Id",
+                        "TO_CONTEXT",
+                        "RELATION",
+                    ]
+                )
 
-            self.__entity_df.to_csv(f"{SAVE_FOLDER}/entity_{window_size}.csv")
-            self.__relation_df.to_csv(f"{SAVE_FOLDER}/relation.csv")
+
+            # self.__entity_df.to_csv(f"{SAVE_FOLDER}/entity_{window_size}.csv")
+            # self.__relation_df.to_csv(f"{SAVE_FOLDER}/relation.csv")
         else:
-            print("Loading dataset")
-            self.__entity_df = pd.read_csv(f"{SAVE_FOLDER}/entity_{window_size}.csv")
-            self.__relation_df = pd.read_csv(f"{SAVE_FOLDER}/relation.csv")
+            # print("Loading dataset")
+            # self.__entity_df = pd.read_csv(f"{SAVE_FOLDER}/entity_{window_size}.csv")
+            # self.__relation_df = pd.read_csv(f"{SAVE_FOLDER}/relation.csv")
+            pass
 
     def get(self, task: Dataset):
         match task:

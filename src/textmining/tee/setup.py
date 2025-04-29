@@ -306,26 +306,29 @@ if __name__ == "__main__":
     from preprocess.dataset import DatasetManager
     from sklearn.metrics import classification_report
 
-    folder_path = "./data/helsearkiv/annotated/entity/"
+    # folder_path = "./data/helsearkiv/annotated/entity/"
 
-    entity_files = [
-        folder_path + f
-        for f in os.listdir(folder_path)
-        if os.path.isfile(os.path.join(folder_path, f))
-    ]
+    # entity_files = [
+    #     folder_path + f
+    #     for f in os.listdir(folder_path)
+    #     if os.path.isfile(os.path.join(folder_path, f))
+    # ]
 
-    folder_path = "./data/helsearkiv/annotated/relation/"
+    # folder_path = []
 
-    relation_files = [
-        folder_path + f
-        for f in os.listdir(folder_path)
-        if os.path.isfile(os.path.join(folder_path, f))
-    ]
+    # relation_files = [
+    #     folder_path + f
+    #     for f in os.listdir(folder_path)
+    #     if os.path.isfile(os.path.join(folder_path, f))
+    # ]
+    
+    entity_files = []
+    relation_files = []
+    manager = DatasetManager(entity_files, relation_files, False)
 
-    tee = TEExtract()
+    tee = TEExtract("config/textmining/tee/config.ini", manager)
     tee.set_dct("2025-02-10")
 
-    # manager = DatasetManager(entity_files, relation_files, False)
 
     # dataset = manager.get(Dataset.TEE)
 

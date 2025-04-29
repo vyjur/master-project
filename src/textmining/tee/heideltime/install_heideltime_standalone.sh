@@ -45,14 +45,16 @@ sed -i "s~$original_str~$treetagger_dir~" config.props
 
 # alter config file for python_heideltime
 cd ../../python_heideltime
-rm config_Heideltime.py
+rm config_heideltime.py
 wget --no-verbose -O config_heideltime.py https://raw.githubusercontent.com/PhilipEHausner/python_heideltime/master/python_heideltime/config_Heideltime.py
 
 original_str="Heideltime_path = '/path/to/heideltime/'"
 replace_str="Heideltime_path = '$heideltime_dir'"
 sed -i "s~$original_str~$replace_str~" config_heideltime.py
 
+cd ../heideltime-standalone
 cp treetagger/lib/norwegian.par treetagger/lib/auto-norwegian.par 
-cp treetagger/lib/auto-norwegian-abbreviations treetagger/lib/auto-norwegian-abbreviations
+cp treetagger/lib/norwegian-abbreviations treetagger/lib/auto-norwegian-abbreviations
 
+pwd
 echo "HeidelTime-standalone installed successfully. Config files altered."
